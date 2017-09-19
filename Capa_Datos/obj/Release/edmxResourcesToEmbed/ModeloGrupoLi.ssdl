@@ -1,0 +1,2491 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GrupoLiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="afp">
+    <Key>
+      <PropertyRef Name="id_afp" />
+    </Key>
+    <Property Name="id_afp" Type="int" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="1000" />
+    <Property Name="codigo" Type="varchar" MaxLength="500" />
+    <Property Name="nit" Type="varchar" MaxLength="500" />
+    <Property Name="direccion" Type="varchar" MaxLength="1000" />
+    <Property Name="telefono" Type="varchar" MaxLength="1000" />
+    <Property Name="ciudad" Type="varchar" MaxLength="1000" />
+  </EntityType>
+  <EntityType Name="alarma">
+    <Key>
+      <PropertyRef Name="id_alarmas" />
+    </Key>
+    <Property Name="id_alarmas" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="100" />
+    <Property Name="fecha" Type="date" />
+    <Property Name="prioridad" Type="varchar" MaxLength="50" />
+    <Property Name="id_categorias" Type="int" />
+    <Property Name="id_usuario" Type="int" />
+  </EntityType>
+  <EntityType Name="area">
+    <Key>
+      <PropertyRef Name="id_area" />
+    </Key>
+    <Property Name="id_area" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="100" />
+    <Property Name="id_sucursal" Type="int" Nullable="false" />
+    <Property Name="id_area_padre" Type="bigint" />
+    <Property Name="nivel" Type="int" />
+    <Property Name="tipo" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="arl">
+    <Key>
+      <PropertyRef Name="id_arl" />
+    </Key>
+    <Property Name="id_arl" Type="int" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="100" />
+    <Property Name="codigo" Type="varchar" MaxLength="50" />
+    <Property Name="nit" Type="varchar" MaxLength="50" />
+    <Property Name="direccion" Type="varchar" MaxLength="100" />
+    <Property Name="telefono" Type="varchar" MaxLength="100" />
+    <Property Name="ciudad" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="at_it_el_pa">
+    <Key>
+      <PropertyRef Name="id_at_it_el_pa" />
+    </Key>
+    <Property Name="id_at_it_el_pa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_trabajador" Type="int" />
+    <Property Name="id_area" Type="int" />
+    <Property Name="id_puesto" Type="int" />
+    <Property Name="sitio" Type="varchar" MaxLength="500" />
+    <Property Name="descripcion" Type="varchar" MaxLength="500" />
+    <Property Name="condiciones_inseguras" Type="varchar" MaxLength="5000" />
+    <Property Name="actos_inseguros" Type="varchar" MaxLength="5000" />
+    <Property Name="factores_inseguros" Type="varchar" MaxLength="5000" />
+    <Property Name="factores_personales" Type="varchar" MaxLength="5000" />
+    <Property Name="reporte_accidente" Type="varchar" MaxLength="500" />
+    <Property Name="documento_escaneado" Type="varchar" MaxLength="500" />
+    <Property Name="documento_comunicado" Type="varchar" MaxLength="500" />
+    <Property Name="num_consultas" Type="int" />
+    <Property Name="frecuencia_consultas" Type="varchar" MaxLength="50" />
+    <Property Name="tipo_evento" Type="varchar" MaxLength="50" />
+    <Property Name="fecha_muerte" Type="date" />
+    <Property Name="dias_incapacidad" Type="int" />
+    <Property Name="dias_cargados" Type="int" />
+    <Property Name="dias_perdidos_ausencia" Type="int" />
+    <Property Name="dias_no_perdidos" Type="varchar" MaxLength="10" />
+    <Property Name="tipo_enfermedad" Type="varchar" MaxLength="10" />
+    <Property Name="fecha_accidente" Type="date" />
+    <Property Name="hora_accidente" Type="datetime" />
+    <Property Name="dias_perdidos_restingido" Type="int" />
+  </EntityType>
+  <EntityType Name="brigada_emergencia">
+    <Key>
+      <PropertyRef Name="id_brigada" />
+    </Key>
+    <Property Name="id_brigada" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_sucursal" Type="int" />
+    <Property Name="perfiles" Type="varchar" MaxLength="8000" />
+    <Property Name="func_brigadistas" Type="varchar" MaxLength="8000" />
+    <Property Name="brigada_comunicacion" Type="varchar" MaxLength="8000" />
+    <Property Name="dir_emergencia_int" Type="varchar" MaxLength="8000" />
+    <Property Name="brigada_prim_aux" Type="varchar" MaxLength="8000" />
+    <Property Name="brigada_incendio" Type="varchar" MaxLength="8000" />
+    <Property Name="brigada_evacuacion" Type="varchar" MaxLength="8000" />
+  </EntityType>
+  <EntityType Name="categoria">
+    <Key>
+      <PropertyRef Name="id_categorias" />
+    </Key>
+    <Property Name="id_categorias" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="100" />
+    <Property Name="descripcion" Type="varchar" MaxLength="500" />
+    <Property Name="id_empresa" Type="int" />
+  </EntityType>
+  <EntityType Name="ccf">
+    <Key>
+      <PropertyRef Name="id_ccf" />
+    </Key>
+    <Property Name="id_ccf" Type="int" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="100" />
+    <Property Name="codigo" Type="varchar" MaxLength="50" />
+    <Property Name="nit" Type="varchar" MaxLength="50" />
+    <Property Name="direccion" Type="varchar" MaxLength="100" />
+    <Property Name="telefono" Type="varchar" MaxLength="100" />
+    <Property Name="ciudad" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="claseCiiu">
+    <Key>
+      <PropertyRef Name="id_clase_ciiu" />
+    </Key>
+    <Property Name="id_clase_ciiu" Type="int" Nullable="false" />
+    <Property Name="id_grupo" Type="int" />
+    <Property Name="nombre" Type="varchar" MaxLength="50" />
+    <Property Name="descripcion" Type="varchar" MaxLength="1000" />
+  </EntityType>
+  <EntityType Name="cno">
+    <Key>
+      <PropertyRef Name="id_cno" />
+    </Key>
+    <Property Name="id_cno" Type="int" Nullable="false" />
+    <Property Name="codigo" Type="varchar" MaxLength="50" />
+    <Property Name="ocupacion" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="consulta">
+    <Key>
+      <PropertyRef Name="id_consulta" />
+    </Key>
+    <Property Name="id_consulta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_acc_lab" Type="int" Nullable="false" />
+    <Property Name="tipo" Type="varchar" MaxLength="50" />
+    <Property Name="servicio_medico" Type="varchar" MaxLength="50" />
+    <Property Name="fecha" Type="varchar" MaxLength="50" />
+    <Property Name="medico" Type="varchar" MaxLength="50" />
+    <Property Name="diagnostico" Type="varchar" MaxLength="50" />
+    <Property Name="sug_trat" Type="varchar" MaxLength="50" />
+    <Property Name="id_empresa" Type="int" />
+  </EntityType>
+  <EntityType Name="departamento">
+    <Key>
+      <PropertyRef Name="id_departamento" />
+    </Key>
+    <Property Name="id_departamento" Type="int" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="100" />
+    <Property Name="id_region" Type="int" />
+  </EntityType>
+  <EntityType Name="desc_socio">
+    <Key>
+      <PropertyRef Name="id_desc_socio" />
+    </Key>
+    <Property Name="id_desc_socio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_trabajador" Type="int" />
+    <Property Name="lugar_nac" Type="varchar" MaxLength="1000" />
+    <Property Name="nivel_escolaridad" Type="varchar" MaxLength="1000" />
+    <Property Name="años_aprob" Type="varchar" MaxLength="450" />
+    <Property Name="cabeza_fam" Type="varchar" MaxLength="450" />
+    <Property Name="num_hijos" Type="varchar" MaxLength="450" />
+    <Property Name="repart_resp" Type="varchar" MaxLength="450" />
+    <Property Name="menores_dep" Type="varchar" MaxLength="450" />
+    <Property Name="cond_social" Type="varchar" MaxLength="450" />
+    <Property Name="mot_despl" Type="varchar" MaxLength="450" />
+    <Property Name="tipo_vivienda" Type="varchar" MaxLength="450" />
+    <Property Name="serv_pub" Type="varchar" MaxLength="450" />
+    <Property Name="sist_seg_soc" Type="varchar" MaxLength="450" />
+    <Property Name="reg_afiliacion" Type="varchar" MaxLength="450" />
+    <Property Name="nivel_sisben" Type="varchar" MaxLength="450" />
+    <Property Name="id_eps" Type="int" />
+    <Property Name="afi_sssp" Type="varchar" MaxLength="450" />
+    <Property Name="id_afp" Type="int" />
+    <Property Name="afi_riesgo" Type="varchar" MaxLength="500" />
+    <Property Name="estrato" Type="varchar" MaxLength="500" />
+    <Property Name="vivienda" Type="varchar" MaxLength="500" />
+    <Property Name="industria" Type="varchar" MaxLength="500" />
+    <Property Name="ruido" Type="varchar" MaxLength="500" />
+    <Property Name="contaminacion" Type="varchar" MaxLength="500" />
+    <Property Name="descripcion" Type="varchar" MaxLength="1000" />
+  </EntityType>
+  <EntityType Name="divisionCiiu">
+    <Key>
+      <PropertyRef Name="id_division" />
+    </Key>
+    <Property Name="id_division" Type="int" Nullable="false" />
+    <Property Name="id_seccion" Type="int" />
+    <Property Name="nombre" Type="varchar" MaxLength="50" />
+    <Property Name="descripcion" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="documento">
+    <Key>
+      <PropertyRef Name="id_documento" />
+    </Key>
+    <Property Name="id_documento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_tabla" Type="int" />
+    <Property Name="nombre" Type="varchar" MaxLength="100" />
+    <Property Name="ruta" Type="varchar" MaxLength="500" />
+    <Property Name="tipo" Type="varchar" MaxLength="100" />
+    <Property Name="fecha_subida" Type="date" />
+  </EntityType>
+  <EntityType Name="empleo_anterior">
+    <Key>
+      <PropertyRef Name="id_empleos_ant" />
+    </Key>
+    <Property Name="id_empleos_ant" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="empresa" Type="varchar" MaxLength="50" />
+    <Property Name="area" Type="varchar" MaxLength="50" />
+    <Property Name="cargo" Type="varchar" MaxLength="50" />
+    <Property Name="años" Type="varchar" MaxLength="50" />
+    <Property Name="meses" Type="varchar" MaxLength="50" />
+    <Property Name="enfermedades" Type="varchar" MaxLength="50" />
+    <Property Name="id_desc_socio" Type="int" />
+  </EntityType>
+  <EntityType Name="empresa">
+    <Key>
+      <PropertyRef Name="id_empresa" />
+    </Key>
+    <Property Name="id_empresa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="50" />
+    <Property Name="CodEmpresa" Type="varchar" MaxLength="50" />
+    <Property Name="nit" Type="varchar" MaxLength="50" />
+    <Property Name="email" Type="varchar" MaxLength="100" />
+    <Property Name="representante" Type="varchar" MaxLength="100" />
+    <Property Name="movil" Type="varchar" MaxLength="50" />
+    <Property Name="fijo" Type="varchar" MaxLength="50" />
+    <Property Name="logo_url" Type="varchar" MaxLength="100" />
+    <Property Name="id_arl" Type="int" />
+    <Property Name="jornada" Type="int" />
+    <Property Name="clase_riesgo" Type="varchar" MaxLength="50" />
+    <Property Name="tipo_material" Type="varchar" MaxLength="500" />
+    <Property Name="dependencias_adm" Type="varchar" MaxLength="500" />
+    <Property Name="dependencias_no_adm" Type="varchar" MaxLength="500" />
+    <Property Name="personas_transito" Type="int" />
+    <Property Name="vias_acceso" Type="varchar" MaxLength="500" />
+    <Property Name="salida_emergencia" Type="varchar" MaxLength="500" />
+    <Property Name="senalizacion" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="empresa_itemdivision">
+    <Key>
+      <PropertyRef Name="id_emp_itemdiv" />
+    </Key>
+    <Property Name="id_emp_itemdiv" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_empresa" Type="int" />
+    <Property Name="id_clase_ciiu" Type="int" />
+    <Property Name="num_actividad" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="encuesta_politica">
+    <Key>
+      <PropertyRef Name="id_encuesta" />
+    </Key>
+    <Property Name="id_encuesta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_trabajador" Type="int" />
+    <Property Name="ruta" Type="varchar" MaxLength="100" />
+    <Property Name="si" Type="float" />
+    <Property Name="no" Type="float" />
+    <Property Name="fecha" Type="date" />
+    <Property Name="tipo" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="enfermedad">
+    <Key>
+      <PropertyRef Name="id_enfermedad" />
+    </Key>
+    <Property Name="id_enfermedad" Type="int" Nullable="false" />
+    <Property Name="tipo" Type="int" />
+    <Property Name="nombre" Type="varchar" MaxLength="1000" />
+  </EntityType>
+  <EntityType Name="enfermedadLaboral">
+    <Key>
+      <PropertyRef Name="id_enfermedadLaboral" />
+    </Key>
+    <Property Name="id_enfermedadLaboral" Type="int" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="1000" />
+  </EntityType>
+  <EntityType Name="epp">
+    <Key>
+      <PropertyRef Name="id_epp" />
+    </Key>
+    <Property Name="id_epp" Type="int" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="100" />
+    <Property Name="id_tipo_epp" Type="int" />
+  </EntityType>
+  <EntityType Name="eps">
+    <Key>
+      <PropertyRef Name="id_eps" />
+    </Key>
+    <Property Name="id_eps" Type="int" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="1000" />
+    <Property Name="codigo" Type="varchar" MaxLength="500" />
+    <Property Name="nit" Type="varchar" MaxLength="500" />
+    <Property Name="direccion" Type="varchar" MaxLength="1000" />
+    <Property Name="telefono" Type="varchar" MaxLength="1000" />
+    <Property Name="ciudad" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="estatus">
+    <Key>
+      <PropertyRef Name="id_estatus" />
+    </Key>
+    <Property Name="id_estatus" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="100" />
+    <Property Name="descripcion" Type="varchar" MaxLength="500" />
+    <Property Name="id_empresa" Type="int" />
+  </EntityType>
+  <EntityType Name="evaluacion_riesgo">
+    <Key>
+      <PropertyRef Name="id_evaluacion_riesgo" />
+    </Key>
+    <Property Name="id_evaluacion_riesgo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_ide_puesto" Type="int" />
+    <Property Name="control_fuente" Type="varchar(max)" />
+    <Property Name="control_medio" Type="varchar(max)" />
+    <Property Name="control_individuo" Type="varchar(max)" />
+    <Property Name="fecha_evaluacion" Type="date" />
+    <Property Name="nombre_responsable" Type="varchar" MaxLength="100" />
+    <Property Name="estatus_med_fue" Type="varchar" MaxLength="50" />
+    <Property Name="estatus_med_amb" Type="varchar" MaxLength="50" />
+    <Property Name="estatus_med_trab" Type="varchar" MaxLength="50" />
+    <Property Name="porc_estatus" Type="int" />
+    <Property Name="nivel_deficiencia" Type="varchar" MaxLength="50" />
+    <Property Name="interpretacion_deficiencia" Type="varchar" MaxLength="5000" />
+    <Property Name="nivel_exposicion" Type="varchar" MaxLength="50" />
+    <Property Name="interpretacion_exposicion" Type="varchar" MaxLength="5000" />
+    <Property Name="nivel_probabilidad" Type="varchar" MaxLength="50" />
+    <Property Name="interpretacion_probabilidad" Type="varchar" MaxLength="5000" />
+    <Property Name="nivel_consecuencia" Type="varchar" MaxLength="50" />
+    <Property Name="nivel_riesgo" Type="varchar" MaxLength="50" />
+    <Property Name="interpretacion_nivel_riesgo" Type="varchar" MaxLength="5000" />
+    <Property Name="aceptabilidad_riesgo" Type="varchar" MaxLength="50" />
+    <Property Name="planta" Type="int" />
+    <Property Name="contratistas" Type="int" />
+    <Property Name="visitantes" Type="int" />
+    <Property Name="total" Type="int" />
+    <Property Name="peor_consecuencia" Type="varchar" MaxLength="5000" />
+    <Property Name="existencia_requisito_legal" Type="varchar" MaxLength="50" />
+    <Property Name="eliminación" Type="varchar" MaxLength="500" />
+    <Property Name="sustitución" Type="varchar" MaxLength="5000" />
+    <Property Name="controles_ingenieria" Type="varchar" MaxLength="5000" />
+    <Property Name="controles_administrativos" Type="varchar" MaxLength="5000" />
+    <Property Name="fecha_ejecucion" Type="date" />
+  </EntityType>
+  <EntityType Name="evento">
+    <Key>
+      <PropertyRef Name="id_evento" />
+    </Key>
+    <Property Name="id_evento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fecha_hora" Type="datetime" />
+    <Property Name="id_usuario" Type="int" />
+    <Property Name="id_tipo_evento" Type="int" />
+    <Property Name="datos_viejos" Type="varchar" MaxLength="5000" />
+    <Property Name="datos_nuevos" Type="varchar" MaxLength="5000" />
+    <Property Name="pagina" Type="varchar" MaxLength="100" />
+    <Property Name="tabla" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="extintor">
+    <Key>
+      <PropertyRef Name="id_extintor" />
+    </Key>
+    <Property Name="id_extintor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="serial_extintor" Type="varchar" MaxLength="100" />
+    <Property Name="fecha_ultima_recarga" Type="date" />
+    <Property Name="fecha_proxima_recarga" Type="date" />
+    <Property Name="peso" Type="varchar" MaxLength="10" />
+    <Property Name="presion" Type="varchar" MaxLength="10" />
+    <Property Name="tipo_extintor" Type="varchar" MaxLength="5" />
+    <Property Name="nombre_empresa" Type="varchar" MaxLength="50" />
+    <Property Name="id_area" Type="int" />
+  </EntityType>
+  <EntityType Name="factor_identificacion">
+    <Key>
+      <PropertyRef Name="id_fac_ide" />
+    </Key>
+    <Property Name="id_fac_ide" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_factor" Type="int" />
+    <Property Name="id_identificacion" Type="int" />
+    <Property Name="consecuencias" Type="varchar" MaxLength="1000" />
+    <Property Name="tiempo_exposicion" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="factor_riesgo">
+    <Key>
+      <PropertyRef Name="id_factor_riesgo" />
+    </Key>
+    <Property Name="id_factor_riesgo" Type="int" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="1000" />
+    <Property Name="id_tipo_riesgo" Type="int" />
+  </EntityType>
+  <EntityType Name="frecuencia_control">
+    <Key>
+      <PropertyRef Name="id_frec_con" />
+    </Key>
+    <Property Name="id_frec_con" Type="int" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="45" />
+    <Property Name="num_Dias" Type="int" />
+  </EntityType>
+  <EntityType Name="gestion_laboral">
+    <Key>
+      <PropertyRef Name="id_ges_lab" />
+    </Key>
+    <Property Name="id_ges_lab" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fecha" Type="date" />
+    <Property Name="descripcion" Type="varchar" MaxLength="1000" />
+    <Property Name="soporte" Type="varchar" MaxLength="100" />
+    <Property Name="tipo_gestion" Type="int" />
+    <Property Name="cant_horas" Type="int" />
+    <Property Name="razon_inasistencia" Type="varchar" MaxLength="500" />
+    <Property Name="objetivos" Type="varchar" MaxLength="500" />
+    <Property Name="id_usuario" Type="int" />
+  </EntityType>
+  <EntityType Name="grupoCiiu">
+    <Key>
+      <PropertyRef Name="id_grupo" />
+    </Key>
+    <Property Name="id_grupo" Type="int" Nullable="false" />
+    <Property Name="id_division" Type="int" />
+    <Property Name="nombre" Type="varchar" MaxLength="50" />
+    <Property Name="descripcion" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="historia_clinica_ocupacional">
+    <Key>
+      <PropertyRef Name="id_his_cli_ocu" />
+    </Key>
+    <Property Name="id_his_cli_ocu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_trabajador" Type="int" />
+    <Property Name="id_tipo_exa" Type="int" />
+    <Property Name="fecha" Type="date" />
+    <Property Name="doc_esc_paciente" Type="varchar" MaxLength="100" />
+    <Property Name="doc_esc_medico" Type="varchar" MaxLength="100" />
+    <Property Name="diagnostico" Type="varchar" MaxLength="1000" />
+    <Property Name="recomendaciones" Type="varchar" MaxLength="1000" />
+  </EntityType>
+  <EntityType Name="horario">
+    <Key>
+      <PropertyRef Name="id_horario" />
+    </Key>
+    <Property Name="id_horario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="50" />
+    <Property Name="fecha_inicio" Type="varchar" MaxLength="50" />
+    <Property Name="fecha_fin" Type="varchar" MaxLength="50" />
+    <Property Name="id_empresa" Type="int" />
+    <Property Name="fecha_creacion" Type="datetime" />
+  </EntityType>
+  <EntityType Name="identificacion_peligro">
+    <Key>
+      <PropertyRef Name="id_identificacion_peligro" />
+    </Key>
+    <Property Name="id_identificacion_peligro" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="medidas_control_existentes" Type="varchar" MaxLength="1000" />
+    <Property Name="observaciones" Type="varchar" MaxLength="1000" />
+    <Property Name="fecha_identificacion" Type="date" />
+    <Property Name="matriz_riesgo" Type="int" />
+    <Property Name="estatus" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="identificacion_puesto">
+    <Key>
+      <PropertyRef Name="id_ide_puesto" />
+    </Key>
+    <Property Name="id_ide_puesto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_identificacion" Type="int" />
+    <Property Name="id_puesto" Type="int" />
+  </EntityType>
+  <EntityType Name="investigacion_ac_in">
+    <Key>
+      <PropertyRef Name="id_inv_ac_in" />
+    </Key>
+    <Property Name="id_inv_ac_in" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tipo" Type="varchar" MaxLength="50" />
+    <Property Name="fecha_evento" Type="date" />
+    <Property Name="hora_evento" Type="datetime" />
+    <Property Name="dia_semana" Type="varchar" MaxLength="50" />
+    <Property Name="antiguedad" Type="int" />
+    <Property Name="actividad_realizaba" Type="varchar" MaxLength="500" />
+    <Property Name="naturaleza_lesion" Type="varchar" MaxLength="1000" />
+    <Property Name="gravedad_lesion" Type="varchar" MaxLength="50" />
+    <Property Name="descripcion_lesion" Type="varchar" MaxLength="5000" />
+    <Property Name="reposo" Type="varchar" MaxLength="50" />
+    <Property Name="dias_reposo" Type="int" />
+    <Property Name="fecha_reintegro" Type="date" />
+    <Property Name="adiestramiento" Type="varchar" MaxLength="5000" />
+    <Property Name="costo_transporte" Type="varchar" MaxLength="100" />
+    <Property Name="costo_atencion" Type="varchar" MaxLength="100" />
+    <Property Name="costo_tratamiento" Type="varchar" MaxLength="100" />
+    <Property Name="costo_indemizacion" Type="varchar" MaxLength="100" />
+    <Property Name="costo_reemplazo" Type="varchar" MaxLength="100" />
+    <Property Name="costo_reposo" Type="varchar" MaxLength="100" />
+    <Property Name="costo_materiales" Type="varchar" MaxLength="100" />
+    <Property Name="costo_produccion" Type="varchar" MaxLength="100" />
+    <Property Name="porque1" Type="varchar" MaxLength="500" />
+    <Property Name="respuesta1" Type="varchar" MaxLength="500" />
+    <Property Name="porque2" Type="varchar" MaxLength="500" />
+    <Property Name="respuesta2" Type="varchar" MaxLength="500" />
+    <Property Name="porque3" Type="varchar" MaxLength="500" />
+    <Property Name="respuesta3" Type="varchar" MaxLength="500" />
+    <Property Name="porque4" Type="varchar" MaxLength="500" />
+    <Property Name="respuesta4" Type="varchar" MaxLength="500" />
+    <Property Name="porque5" Type="varchar" MaxLength="500" />
+    <Property Name="respuesta5" Type="varchar" MaxLength="500" />
+    <Property Name="que" Type="varchar" MaxLength="500" />
+    <Property Name="respuesta_que" Type="varchar" MaxLength="1000" />
+    <Property Name="porque" Type="varchar" MaxLength="500" />
+    <Property Name="respuesta_porque" Type="varchar" MaxLength="1000" />
+    <Property Name="quien" Type="varchar" MaxLength="500" />
+    <Property Name="respuesta_quien" Type="varchar" MaxLength="1000" />
+    <Property Name="donde" Type="varchar" MaxLength="500" />
+    <Property Name="respuesta_donde" Type="varchar" MaxLength="1000" />
+    <Property Name="cuando" Type="varchar" MaxLength="500" />
+    <Property Name="respuesta_cuando" Type="varchar" MaxLength="1000" />
+    <Property Name="como" Type="varchar" MaxLength="500" />
+    <Property Name="respuesta_como" Type="varchar" MaxLength="1000" />
+    <Property Name="cuanto" Type="varchar" MaxLength="500" />
+    <Property Name="respuesta_cuanto" Type="varchar" MaxLength="1000" />
+    <Property Name="tipo_accidente" Type="varchar" MaxLength="500" />
+    <Property Name="tipo_lesion" Type="varchar" MaxLength="500" />
+    <Property Name="agente_lesion" Type="varchar" MaxLength="500" />
+    <Property Name="parte_cuerpo" Type="varchar" MaxLength="500" />
+    <Property Name="nota" Type="varchar" MaxLength="1000" />
+    <Property Name="id_at_it_el_pa" Type="int" />
+    <Property Name="medida1" Type="varchar" MaxLength="5000" />
+    <Property Name="responsable1" Type="varchar" MaxLength="50" />
+    <Property Name="fecha_medida1" Type="date" />
+    <Property Name="medida2" Type="varchar" MaxLength="5000" />
+    <Property Name="responsable2" Type="varchar" MaxLength="50" />
+    <Property Name="fecha_medida2" Type="date" />
+    <Property Name="medida3" Type="varchar" MaxLength="5000" />
+    <Property Name="responsable3" Type="varchar" MaxLength="50" />
+    <Property Name="fecha_medida3" Type="date" />
+    <Property Name="supervisor" Type="varchar" MaxLength="100" />
+    <Property Name="tiempo_cargo" Type="varchar" MaxLength="100" />
+    <Property Name="actividad" Type="varchar" MaxLength="5000" />
+  </EntityType>
+  <EntityType Name="ips">
+    <Key>
+      <PropertyRef Name="id_ips" />
+    </Key>
+    <Property Name="id_ips" Type="int" Nullable="false" />
+    <Property Name="beneficiario" Type="varchar" MaxLength="500" />
+    <Property Name="estado" Type="varchar" MaxLength="500" />
+    <Property Name="nit" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="lista_actividad">
+    <Key>
+      <PropertyRef Name="id_lista" />
+    </Key>
+    <Property Name="id_lista" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_sucursal" Type="int" />
+    <Property Name="actividad" Type="varchar" MaxLength="100" />
+    <Property Name="estatus" Type="varchar" MaxLength="2" />
+    <Property Name="anho" Type="int" />
+    <Property Name="fase" Type="varchar" MaxLength="50" />
+    <Property Name="link" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="matriz_responsabilidad">
+    <Key>
+      <PropertyRef Name="id_matriz_responsabilidad" />
+    </Key>
+    <Property Name="id_matriz_responsabilidad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_sucursal" Type="int" />
+    <Property Name="puesto1" Type="varchar(max)" />
+    <Property Name="puesto2" Type="varchar(max)" />
+    <Property Name="puesto3" Type="varchar(max)" />
+    <Property Name="puesto4" Type="varchar(max)" />
+    <Property Name="puesto5" Type="varchar(max)" />
+    <Property Name="puesto6" Type="varchar(max)" />
+    <Property Name="puesto7" Type="varchar(max)" />
+    <Property Name="pusto8" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="medida">
+    <Key>
+      <PropertyRef Name="id_medidas" />
+    </Key>
+    <Property Name="id_medidas" Type="int" Nullable="false" />
+    <Property Name="id_normas" Type="int" Nullable="false" />
+    <Property Name="descripcion" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="medida_sucursal">
+    <Key>
+      <PropertyRef Name="id_medidas_sucursal" />
+    </Key>
+    <Property Name="id_medidas_sucursal" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_normas_sucursal" Type="int" />
+    <Property Name="descripcion" Type="varchar(max)" />
+    <Property Name="estatus_medida" Type="int" />
+    <Property Name="aplica" Type="int" />
+  </EntityType>
+  <EntityType Name="municipio">
+    <Key>
+      <PropertyRef Name="id_municipio" />
+    </Key>
+    <Property Name="id_municipio" Type="int" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="100" />
+    <Property Name="id_departamento" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="norma">
+    <Key>
+      <PropertyRef Name="id_normas" />
+    </Key>
+    <Property Name="id_normas" Type="int" Nullable="false" />
+    <Property Name="tipo_matriz" Type="varchar" MaxLength="50" />
+    <Property Name="tema_especifico" Type="varchar" MaxLength="1000" />
+    <Property Name="documento" Type="varchar" MaxLength="1000" />
+    <Property Name="anho" Type="varchar" MaxLength="50" />
+    <Property Name="articulo" Type="varchar" MaxLength="50" />
+    <Property Name="literal" Type="varchar" MaxLength="50" />
+    <Property Name="paragrafo" Type="varchar" MaxLength="50" />
+    <Property Name="numeral" Type="varchar" MaxLength="50" />
+    <Property Name="concordante" Type="varchar" MaxLength="50" />
+    <Property Name="obligaciones" Type="varchar" MaxLength="1000" />
+    <Property Name="sanciones" Type="varchar" MaxLength="1000" />
+    <Property Name="porc_cum" Type="int" />
+    <Property Name="pdf" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="norma_claseciiu">
+    <Key>
+      <PropertyRef Name="id_normas_clase" />
+    </Key>
+    <Property Name="id_normas_clase" Type="int" Nullable="false" />
+    <Property Name="id_normas" Type="int" />
+    <Property Name="id_clase_ciiu" Type="int" />
+  </EntityType>
+  <EntityType Name="norma_sucursal">
+    <Key>
+      <PropertyRef Name="id_normas_sucursal" />
+    </Key>
+    <Property Name="id_normas_sucursal" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_sucursal" Type="int" />
+    <Property Name="id_normas" Type="int" />
+    <Property Name="estatus_norma" Type="int" />
+  </EntityType>
+  <EntityType Name="obligacion">
+    <Key>
+      <PropertyRef Name="id_obligacion" />
+    </Key>
+    <Property Name="id_obligacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_medida_sucursal" Type="int" />
+    <Property Name="fecha_creacion" Type="date" />
+    <Property Name="fecha_entrega" Type="date" />
+    <Property Name="id_responsable" Type="int" />
+    <Property Name="id_categorias" Type="int" Nullable="false" />
+    <Property Name="prioridad" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="id_frecuencia_con" Type="int" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="2000" />
+    <Property Name="acciones" Type="varchar" MaxLength="2000" />
+    <Property Name="estatus_obl" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="id_identificacion_peligro" Type="int" />
+    <Property Name="id_actividad" Type="int" />
+  </EntityType>
+  <EntityType Name="perfil_cargo">
+    <Key>
+      <PropertyRef Name="id_perfil_cargo" />
+    </Key>
+    <Property Name="id_perfil_cargo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcion" Type="varchar(max)" />
+    <Property Name="id_cno" Type="int" />
+    <Property Name="id_empresa" Type="int" />
+  </EntityType>
+  <EntityType Name="plan">
+    <Key>
+      <PropertyRef Name="id_plan" />
+    </Key>
+    <Property Name="id_plan" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_sucursal" Type="int" />
+    <Property Name="nombre" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="plan_trabajo">
+    <Key>
+      <PropertyRef Name="id_plan_trabajo" />
+    </Key>
+    <Property Name="id_plan_trabajo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="1000" />
+    <Property Name="objetivos" Type="varchar" MaxLength="1000" />
+    <Property Name="anho" Type="int" />
+    <Property Name="id_responsable" Type="int" />
+    <Property Name="semana_ini" Type="int" />
+    <Property Name="semana_fin" Type="int" />
+    <Property Name="recursos_aprobados" Type="int" />
+  </EntityType>
+  <EntityType Name="politica_sst">
+    <Key>
+      <PropertyRef Name="id_politica" />
+    </Key>
+    <Property Name="id_politica" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_empresa" Type="int" />
+    <Property Name="anho" Type="int" />
+    <Property Name="ruta" Type="varchar" MaxLength="200" />
+    <Property Name="nombre_archivo" Type="varchar" MaxLength="50" />
+    <Property Name="compromiso" Type="varchar" MaxLength="2000" />
+    <Property Name="objetivos" Type="varchar" MaxLength="2000" />
+    <Property Name="alcance" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Pregunta">
+    <Key>
+      <PropertyRef Name="id_pregunta" />
+    </Key>
+    <Property Name="id_pregunta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cuerpo_pregunta" Type="varchar(max)" />
+    <Property Name="id_usuario" Type="int" />
+    <Property Name="titulo" Type="varchar" MaxLength="100" />
+    <Property Name="fecha" Type="date" />
+    <Property Name="estatus" Type="int" />
+  </EntityType>
+  <EntityType Name="procedimiento_comunicacion">
+    <Key>
+      <PropertyRef Name="id_procedimiento" />
+    </Key>
+    <Property Name="id_procedimiento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_brigada" Type="int" />
+    <Property Name="nombre" Type="varchar" MaxLength="100" />
+    <Property Name="cargo" Type="varchar" MaxLength="100" />
+    <Property Name="num_telefono" Type="varchar" MaxLength="50" />
+    <Property Name="llamar" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="puesto_trabajo">
+    <Key>
+      <PropertyRef Name="id_puesto_trabajo" />
+    </Key>
+    <Property Name="id_puesto_trabajo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="100" />
+    <Property Name="id_area" Type="int" Nullable="false" />
+    <Property Name="descripcion" Type="varchar(max)" />
+    <Property Name="recurso_humano" Type="varchar(max)" />
+    <Property Name="objeto_trabajo" Type="varchar(max)" />
+    <Property Name="insumos" Type="varchar(max)" />
+    <Property Name="maquinas" Type="varchar(max)" />
+    <Property Name="herramientas" Type="varchar(max)" />
+    <Property Name="emisiones" Type="varchar(max)" />
+    <Property Name="productos" Type="varchar(max)" />
+    <Property Name="desechos" Type="varchar(max)" />
+    <Property Name="foto" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="puesto_trabajo_epp">
+    <Key>
+      <PropertyRef Name="id_puesto_trabajo_epp" />
+    </Key>
+    <Property Name="id_puesto_trabajo_epp" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_puesto_trabajo" Type="int" />
+    <Property Name="id_epp" Type="int" />
+  </EntityType>
+  <EntityType Name="Region">
+    <Key>
+      <PropertyRef Name="id_region" />
+    </Key>
+    <Property Name="id_region" Type="int" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Respuesta">
+    <Key>
+      <PropertyRef Name="id_respuesta" />
+    </Key>
+    <Property Name="id_respuesta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="usuario" Type="varchar" MaxLength="100" />
+    <Property Name="cuerpo_respuesta" Type="varchar(max)" />
+    <Property Name="id_pregunta" Type="int" />
+    <Property Name="calificacion" Type="int" />
+    <Property Name="fecha" Type="date" />
+  </EntityType>
+  <EntityType Name="riesgos_item">
+    <Key>
+      <PropertyRef Name="id_riesgos_item" />
+    </Key>
+    <Property Name="id_riesgos_item" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_item" Type="int" />
+    <Property Name="id_enfermedad_laboral" Type="int" />
+    <Property Name="id_factor_riesgo" Type="int" />
+  </EntityType>
+  <EntityType Name="rol">
+    <Key>
+      <PropertyRef Name="id_rol" />
+    </Key>
+    <Property Name="id_rol" Type="int" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="seccionCiiu">
+    <Key>
+      <PropertyRef Name="id_seccion" />
+    </Key>
+    <Property Name="id_seccion" Type="int" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="50" />
+    <Property Name="descripcion" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="sistema">
+    <Key>
+      <PropertyRef Name="id_sistemas" />
+    </Key>
+    <Property Name="id_sistemas" Type="int" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="soporte">
+    <Key>
+      <PropertyRef Name="id_soporte" />
+    </Key>
+    <Property Name="id_soporte" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="url" Type="varchar" MaxLength="500" />
+    <Property Name="id_tabla" Type="int" />
+    <Property Name="tabla" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="sucursal">
+    <Key>
+      <PropertyRef Name="id_sucursal" />
+    </Key>
+    <Property Name="id_sucursal" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="100" />
+    <Property Name="id_municpio" Type="int" />
+    <Property Name="id_empresa" Type="int" />
+    <Property Name="direccion" Type="varchar" MaxLength="100" />
+    <Property Name="sede_principal" Type="int" />
+    <Property Name="representante" Type="varchar" MaxLength="100" />
+    <Property Name="movil" Type="varchar" MaxLength="50" />
+    <Property Name="fijo" Type="varchar" MaxLength="50" />
+    <Property Name="actividad_ppal" Type="int" />
+    <Property Name="actividad_sec" Type="int" />
+    <Property Name="actividad_otra" Type="int" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="tipo_documento">
+    <Key>
+      <PropertyRef Name="id_tipo_documento" />
+    </Key>
+    <Property Name="id_tipo_documento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_sucursal" Type="int" />
+    <Property Name="nombre" Type="varchar" MaxLength="200" />
+    <Property Name="dirigida" Type="varchar" MaxLength="200" />
+    <Property Name="modalidad" Type="varchar" MaxLength="200" />
+    <Property Name="fecha" Type="date" />
+    <Property Name="responsable" Type="varchar" MaxLength="100" />
+    <Property Name="aprobado" Type="varchar" MaxLength="200" />
+    <Property Name="archivado" Type="varchar" MaxLength="200" />
+    <Property Name="estatus" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="tipo_epp">
+    <Key>
+      <PropertyRef Name="id_tipo_epp" />
+    </Key>
+    <Property Name="id_tipo_epp" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="100" />
+    <Property Name="nombre_senal" Type="varchar" MaxLength="100" />
+    <Property Name="url_senal" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="tipo_evento">
+    <Key>
+      <PropertyRef Name="id_tipo_evento" />
+    </Key>
+    <Property Name="id_tipo_evento" Type="int" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="tipo_examen">
+    <Key>
+      <PropertyRef Name="id_tipo_exa" />
+    </Key>
+    <Property Name="id_tipo_exa" Type="int" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tipo_riesgo">
+    <Key>
+      <PropertyRef Name="id_tipo_riesgo" />
+    </Key>
+    <Property Name="id_tipo_riesgo" Type="int" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="trabajador">
+    <Key>
+      <PropertyRef Name="id_trabajador" />
+    </Key>
+    <Property Name="id_trabajador" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cedula" Type="varchar" MaxLength="15" />
+    <Property Name="primer_nombre" Type="varchar" MaxLength="50" />
+    <Property Name="segundo_nombre" Type="varchar" MaxLength="50" />
+    <Property Name="primer_apellido" Type="varchar" MaxLength="50" />
+    <Property Name="segundo_apellido" Type="varchar" MaxLength="50" />
+    <Property Name="email" Type="varchar" MaxLength="50" />
+    <Property Name="fecha_nacimiento" Type="date" />
+    <Property Name="edo_civil" Type="varchar" MaxLength="20" />
+    <Property Name="sexo" Type="varchar" MaxLength="10" />
+    <Property Name="foto" Type="varchar" MaxLength="100" />
+    <Property Name="telefono_casa" Type="varchar" MaxLength="15" />
+    <Property Name="telefono_movil" Type="varchar" MaxLength="15" />
+    <Property Name="activo" Type="int" />
+    <Property Name="fecha_registro" Type="date" />
+    <Property Name="direccion" Type="varchar" MaxLength="100" />
+    <Property Name="id_municipio" Type="int" Nullable="false" />
+    <Property Name="id_puesto_trabajo" Type="int" Nullable="false" />
+    <Property Name="es_discapacitado" Type="varchar" MaxLength="4" />
+    <Property Name="desc_discapacidad" Type="varchar" MaxLength="200" />
+    <Property Name="id_horario" Type="int" />
+    <Property Name="id_estatus_actual" Type="int" />
+    <Property Name="id_ccf" Type="int" />
+    <Property Name="fecha_ingreso" Type="date" />
+    <Property Name="tipo_vinculacion" Type="varchar" MaxLength="50" />
+    <Property Name="codigo_independiente" Type="varchar" MaxLength="50" />
+    <Property Name="tipo_horario" Type="varchar" MaxLength="50" />
+    <Property Name="id_perfil_cargo" Type="int" />
+    <Property Name="salario" Type="float" />
+    <Property Name="mano_dominante" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="trabajador_estatus">
+    <Key>
+      <PropertyRef Name="id_trabajador_estatus" />
+    </Key>
+    <Property Name="id_trabajador_estatus" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_estatus" Type="int" />
+    <Property Name="id_trabajador" Type="int" />
+    <Property Name="fecha_registro" Type="date" />
+    <Property Name="motivo" Type="varchar" MaxLength="300" />
+    <Property Name="id_enfermedad" Type="int" />
+    <Property Name="id_sistema" Type="int" />
+    <Property Name="dias_reposo" Type="int" />
+    <Property Name="fecha_constancia" Type="date" />
+    <Property Name="url_constancia" Type="varchar" MaxLength="200" />
+    <Property Name="tpo_enfermedad" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="trabajador_gestion">
+    <Key>
+      <PropertyRef Name="id_trabajador_gestion" />
+    </Key>
+    <Property Name="id_trabajador" Type="int" Nullable="false" />
+    <Property Name="id_ges_lab" Type="int" Nullable="false" />
+    <Property Name="asistencia" Type="varchar" MaxLength="45" />
+    <Property Name="id_trabajador_gestion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="usuario">
+    <Key>
+      <PropertyRef Name="id_usuario" />
+    </Key>
+    <Property Name="id_usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="login" Type="varchar" MaxLength="500" />
+    <Property Name="clave" Type="varchar" MaxLength="500" />
+    <Property Name="id_trabajador" Type="int" />
+    <Property Name="id_rol" Type="int" />
+  </EntityType>
+  <Association Name="FK__epp__id_tipo_epp__6D9742D9">
+    <End Role="tipo_epp" Type="Self.tipo_epp" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="epp" Type="Self.epp" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipo_epp">
+        <PropertyRef Name="id_tipo_epp" />
+      </Principal>
+      <Dependent Role="epp">
+        <PropertyRef Name="id_tipo_epp" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__puesto_tr__id_ep__6ABAD62E">
+    <End Role="epp" Type="Self.epp" Multiplicity="0..1" />
+    <End Role="puesto_trabajo_epp" Type="Self.puesto_trabajo_epp" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="epp">
+        <PropertyRef Name="id_epp" />
+      </Principal>
+      <Dependent Role="puesto_trabajo_epp">
+        <PropertyRef Name="id_epp" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__puesto_tr__id_pu__69C6B1F5">
+    <End Role="puesto_trabajo" Type="Self.puesto_trabajo" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="puesto_trabajo_epp" Type="Self.puesto_trabajo_epp" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="puesto_trabajo">
+        <PropertyRef Name="id_puesto_trabajo" />
+      </Principal>
+      <Dependent Role="puesto_trabajo_epp">
+        <PropertyRef Name="id_puesto_trabajo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_alarmas_categorias">
+    <End Role="categoria" Type="Self.categoria" Multiplicity="0..1" />
+    <End Role="alarma" Type="Self.alarma" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="categoria">
+        <PropertyRef Name="id_categorias" />
+      </Principal>
+      <Dependent Role="alarma">
+        <PropertyRef Name="id_categorias" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_alarmas_usuario">
+    <End Role="usuario" Type="Self.usuario" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="alarma" Type="Self.alarma" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="id_usuario" />
+      </Principal>
+      <Dependent Role="alarma">
+        <PropertyRef Name="id_usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_area_sucursal">
+    <End Role="sucursal" Type="Self.sucursal" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="area" Type="Self.area" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sucursal">
+        <PropertyRef Name="id_sucursal" />
+      </Principal>
+      <Dependent Role="area">
+        <PropertyRef Name="id_sucursal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_at_it_el_pa_area">
+    <End Role="area" Type="Self.area" Multiplicity="0..1" />
+    <End Role="at_it_el_pa" Type="Self.at_it_el_pa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="area">
+        <PropertyRef Name="id_area" />
+      </Principal>
+      <Dependent Role="at_it_el_pa">
+        <PropertyRef Name="id_area" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_at_it_el_pa_puesto_trabajo">
+    <End Role="puesto_trabajo" Type="Self.puesto_trabajo" Multiplicity="0..1" />
+    <End Role="at_it_el_pa" Type="Self.at_it_el_pa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="puesto_trabajo">
+        <PropertyRef Name="id_puesto_trabajo" />
+      </Principal>
+      <Dependent Role="at_it_el_pa">
+        <PropertyRef Name="id_puesto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_at_it_el_pa_trabajador">
+    <End Role="trabajador" Type="Self.trabajador" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="at_it_el_pa" Type="Self.at_it_el_pa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="trabajador">
+        <PropertyRef Name="id_trabajador" />
+      </Principal>
+      <Dependent Role="at_it_el_pa">
+        <PropertyRef Name="id_trabajador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_brigada_emergencia_sucursal">
+    <End Role="sucursal" Type="Self.sucursal" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="brigada_emergencia" Type="Self.brigada_emergencia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sucursal">
+        <PropertyRef Name="id_sucursal" />
+      </Principal>
+      <Dependent Role="brigada_emergencia">
+        <PropertyRef Name="id_sucursal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_categorias_empresa">
+    <End Role="empresa" Type="Self.empresa" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="categoria" Type="Self.categoria" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="empresa">
+        <PropertyRef Name="id_empresa" />
+      </Principal>
+      <Dependent Role="categoria">
+        <PropertyRef Name="id_empresa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_claseCiiu_grupoCiiu">
+    <End Role="grupoCiiu" Type="Self.grupoCiiu" Multiplicity="0..1" />
+    <End Role="claseCiiu" Type="Self.claseCiiu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="grupoCiiu">
+        <PropertyRef Name="id_grupo" />
+      </Principal>
+      <Dependent Role="claseCiiu">
+        <PropertyRef Name="id_grupo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_consultas_at_it_el_pa">
+    <End Role="at_it_el_pa" Type="Self.at_it_el_pa" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="consulta" Type="Self.consulta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="at_it_el_pa">
+        <PropertyRef Name="id_at_it_el_pa" />
+      </Principal>
+      <Dependent Role="consulta">
+        <PropertyRef Name="id_acc_lab" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_departamento_Region">
+    <End Role="Region" Type="Self.Region" Multiplicity="0..1" />
+    <End Role="departamento" Type="Self.departamento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Region">
+        <PropertyRef Name="id_region" />
+      </Principal>
+      <Dependent Role="departamento">
+        <PropertyRef Name="id_region" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_desc_socio_afp">
+    <End Role="afp" Type="Self.afp" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="desc_socio" Type="Self.desc_socio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="afp">
+        <PropertyRef Name="id_afp" />
+      </Principal>
+      <Dependent Role="desc_socio">
+        <PropertyRef Name="id_afp" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_desc_socio_eps1">
+    <End Role="eps" Type="Self.eps" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="desc_socio" Type="Self.desc_socio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="eps">
+        <PropertyRef Name="id_eps" />
+      </Principal>
+      <Dependent Role="desc_socio">
+        <PropertyRef Name="id_eps" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_desc_socio_trabajador">
+    <End Role="trabajador" Type="Self.trabajador" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="desc_socio" Type="Self.desc_socio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="trabajador">
+        <PropertyRef Name="id_trabajador" />
+      </Principal>
+      <Dependent Role="desc_socio">
+        <PropertyRef Name="id_trabajador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_divisionCiiu_seccionCiiu">
+    <End Role="seccionCiiu" Type="Self.seccionCiiu" Multiplicity="0..1" />
+    <End Role="divisionCiiu" Type="Self.divisionCiiu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="seccionCiiu">
+        <PropertyRef Name="id_seccion" />
+      </Principal>
+      <Dependent Role="divisionCiiu">
+        <PropertyRef Name="id_seccion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_documentos_sucursal">
+    <End Role="sucursal" Type="Self.sucursal" Multiplicity="0..1" />
+    <End Role="documento" Type="Self.documento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sucursal">
+        <PropertyRef Name="id_sucursal" />
+      </Principal>
+      <Dependent Role="documento">
+        <PropertyRef Name="id_tabla" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_documentos_trabajador">
+    <End Role="trabajador" Type="Self.trabajador" Multiplicity="0..1" />
+    <End Role="documento" Type="Self.documento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="trabajador">
+        <PropertyRef Name="id_trabajador" />
+      </Principal>
+      <Dependent Role="documento">
+        <PropertyRef Name="id_tabla" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_empleos_anteriores_desc_socio">
+    <End Role="desc_socio" Type="Self.desc_socio" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="empleo_anterior" Type="Self.empleo_anterior" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="desc_socio">
+        <PropertyRef Name="id_desc_socio" />
+      </Principal>
+      <Dependent Role="empleo_anterior">
+        <PropertyRef Name="id_desc_socio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_empresa_arl">
+    <End Role="arl" Type="Self.arl" Multiplicity="0..1" />
+    <End Role="empresa" Type="Self.empresa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="arl">
+        <PropertyRef Name="id_arl" />
+      </Principal>
+      <Dependent Role="empresa">
+        <PropertyRef Name="id_arl" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_empresa_itemdivision_claseCiiu">
+    <End Role="claseCiiu" Type="Self.claseCiiu" Multiplicity="0..1" />
+    <End Role="empresa_itemdivision" Type="Self.empresa_itemdivision" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="claseCiiu">
+        <PropertyRef Name="id_clase_ciiu" />
+      </Principal>
+      <Dependent Role="empresa_itemdivision">
+        <PropertyRef Name="id_clase_ciiu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_empresa_itemdivision_empresa">
+    <End Role="empresa" Type="Self.empresa" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="empresa_itemdivision" Type="Self.empresa_itemdivision" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="empresa">
+        <PropertyRef Name="id_empresa" />
+      </Principal>
+      <Dependent Role="empresa_itemdivision">
+        <PropertyRef Name="id_empresa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_encuesta_politica_trabajador">
+    <End Role="trabajador" Type="Self.trabajador" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="encuesta_politica" Type="Self.encuesta_politica" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="trabajador">
+        <PropertyRef Name="id_trabajador" />
+      </Principal>
+      <Dependent Role="encuesta_politica">
+        <PropertyRef Name="id_trabajador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_estatus_empresa">
+    <End Role="empresa" Type="Self.empresa" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="estatus" Type="Self.estatus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="empresa">
+        <PropertyRef Name="id_empresa" />
+      </Principal>
+      <Dependent Role="estatus">
+        <PropertyRef Name="id_empresa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_evaluacion_riesgo_identificacion_puesto">
+    <End Role="identificacion_puesto" Type="Self.identificacion_puesto" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="evaluacion_riesgo" Type="Self.evaluacion_riesgo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="identificacion_puesto">
+        <PropertyRef Name="id_ide_puesto" />
+      </Principal>
+      <Dependent Role="evaluacion_riesgo">
+        <PropertyRef Name="id_ide_puesto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Eventos_tipo_evento">
+    <End Role="tipo_evento" Type="Self.tipo_evento" Multiplicity="0..1" />
+    <End Role="evento" Type="Self.evento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipo_evento">
+        <PropertyRef Name="id_tipo_evento" />
+      </Principal>
+      <Dependent Role="evento">
+        <PropertyRef Name="id_tipo_evento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Eventos_usuario">
+    <End Role="usuario" Type="Self.usuario" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="evento" Type="Self.evento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="id_usuario" />
+      </Principal>
+      <Dependent Role="evento">
+        <PropertyRef Name="id_usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_extintor_area">
+    <End Role="area" Type="Self.area" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="extintor" Type="Self.extintor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="area">
+        <PropertyRef Name="id_area" />
+      </Principal>
+      <Dependent Role="extintor">
+        <PropertyRef Name="id_area" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_factor_identificacion_factor_riesgo">
+    <End Role="factor_riesgo" Type="Self.factor_riesgo" Multiplicity="0..1" />
+    <End Role="factor_identificacion" Type="Self.factor_identificacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="factor_riesgo">
+        <PropertyRef Name="id_factor_riesgo" />
+      </Principal>
+      <Dependent Role="factor_identificacion">
+        <PropertyRef Name="id_factor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_factor_identificacion_identificacion_peligro">
+    <End Role="identificacion_peligro" Type="Self.identificacion_peligro" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="factor_identificacion" Type="Self.factor_identificacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="identificacion_peligro">
+        <PropertyRef Name="id_identificacion_peligro" />
+      </Principal>
+      <Dependent Role="factor_identificacion">
+        <PropertyRef Name="id_identificacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_factor_riesgo_tipo_riesgo1">
+    <End Role="tipo_riesgo" Type="Self.tipo_riesgo" Multiplicity="0..1" />
+    <End Role="factor_riesgo" Type="Self.factor_riesgo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipo_riesgo">
+        <PropertyRef Name="id_tipo_riesgo" />
+      </Principal>
+      <Dependent Role="factor_riesgo">
+        <PropertyRef Name="id_tipo_riesgo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_gestion_laboral_usuario">
+    <End Role="usuario" Type="Self.usuario" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="gestion_laboral" Type="Self.gestion_laboral" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="id_usuario" />
+      </Principal>
+      <Dependent Role="gestion_laboral">
+        <PropertyRef Name="id_usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_grupoCiiu_divisionCiiu">
+    <End Role="divisionCiiu" Type="Self.divisionCiiu" Multiplicity="0..1" />
+    <End Role="grupoCiiu" Type="Self.grupoCiiu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="divisionCiiu">
+        <PropertyRef Name="id_division" />
+      </Principal>
+      <Dependent Role="grupoCiiu">
+        <PropertyRef Name="id_division" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_historia_clinica_ocupacional_Tipo_Examen">
+    <End Role="tipo_examen" Type="Self.tipo_examen" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="historia_clinica_ocupacional" Type="Self.historia_clinica_ocupacional" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipo_examen">
+        <PropertyRef Name="id_tipo_exa" />
+      </Principal>
+      <Dependent Role="historia_clinica_ocupacional">
+        <PropertyRef Name="id_tipo_exa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_historia_clinica_ocupacional_trabajador">
+    <End Role="trabajador" Type="Self.trabajador" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="historia_clinica_ocupacional" Type="Self.historia_clinica_ocupacional" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="trabajador">
+        <PropertyRef Name="id_trabajador" />
+      </Principal>
+      <Dependent Role="historia_clinica_ocupacional">
+        <PropertyRef Name="id_trabajador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_horario_empresa">
+    <End Role="empresa" Type="Self.empresa" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="horario" Type="Self.horario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="empresa">
+        <PropertyRef Name="id_empresa" />
+      </Principal>
+      <Dependent Role="horario">
+        <PropertyRef Name="id_empresa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_identificacion_puesto_identificacion_peligro">
+    <End Role="identificacion_peligro" Type="Self.identificacion_peligro" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="identificacion_puesto" Type="Self.identificacion_puesto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="identificacion_peligro">
+        <PropertyRef Name="id_identificacion_peligro" />
+      </Principal>
+      <Dependent Role="identificacion_puesto">
+        <PropertyRef Name="id_identificacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_identificacion_puesto_puesto_trabajo">
+    <End Role="puesto_trabajo" Type="Self.puesto_trabajo" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="identificacion_puesto" Type="Self.identificacion_puesto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="puesto_trabajo">
+        <PropertyRef Name="id_puesto_trabajo" />
+      </Principal>
+      <Dependent Role="identificacion_puesto">
+        <PropertyRef Name="id_puesto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_investigacion_ac_in_at_it_el_pa">
+    <End Role="at_it_el_pa" Type="Self.at_it_el_pa" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="investigacion_ac_in" Type="Self.investigacion_ac_in" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="at_it_el_pa">
+        <PropertyRef Name="id_at_it_el_pa" />
+      </Principal>
+      <Dependent Role="investigacion_ac_in">
+        <PropertyRef Name="id_at_it_el_pa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_lista_actividades_sucursal">
+    <End Role="sucursal" Type="Self.sucursal" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="lista_actividad" Type="Self.lista_actividad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sucursal">
+        <PropertyRef Name="id_sucursal" />
+      </Principal>
+      <Dependent Role="lista_actividad">
+        <PropertyRef Name="id_sucursal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_matriz_responsabilidad_sucursal">
+    <End Role="sucursal" Type="Self.sucursal" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="matriz_responsabilidad" Type="Self.matriz_responsabilidad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sucursal">
+        <PropertyRef Name="id_sucursal" />
+      </Principal>
+      <Dependent Role="matriz_responsabilidad">
+        <PropertyRef Name="id_sucursal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_medidas_normas">
+    <End Role="norma" Type="Self.norma" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="medida" Type="Self.medida" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="norma">
+        <PropertyRef Name="id_normas" />
+      </Principal>
+      <Dependent Role="medida">
+        <PropertyRef Name="id_normas" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_medidas_sucursal_normas_sucursal">
+    <End Role="norma_sucursal" Type="Self.norma_sucursal" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="medida_sucursal" Type="Self.medida_sucursal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="norma_sucursal">
+        <PropertyRef Name="id_normas_sucursal" />
+      </Principal>
+      <Dependent Role="medida_sucursal">
+        <PropertyRef Name="id_normas_sucursal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_municipio_departamento1">
+    <End Role="departamento" Type="Self.departamento" Multiplicity="1" />
+    <End Role="municipio" Type="Self.municipio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="departamento">
+        <PropertyRef Name="id_departamento" />
+      </Principal>
+      <Dependent Role="municipio">
+        <PropertyRef Name="id_departamento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_normas_claseciiu_claseCiiu">
+    <End Role="claseCiiu" Type="Self.claseCiiu" Multiplicity="0..1" />
+    <End Role="norma_claseciiu" Type="Self.norma_claseciiu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="claseCiiu">
+        <PropertyRef Name="id_clase_ciiu" />
+      </Principal>
+      <Dependent Role="norma_claseciiu">
+        <PropertyRef Name="id_clase_ciiu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_normas_claseciiu_normas">
+    <End Role="norma" Type="Self.norma" Multiplicity="0..1" />
+    <End Role="norma_claseciiu" Type="Self.norma_claseciiu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="norma">
+        <PropertyRef Name="id_normas" />
+      </Principal>
+      <Dependent Role="norma_claseciiu">
+        <PropertyRef Name="id_normas" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_normas_sucursal_normas1">
+    <End Role="norma" Type="Self.norma" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="norma_sucursal" Type="Self.norma_sucursal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="norma">
+        <PropertyRef Name="id_normas" />
+      </Principal>
+      <Dependent Role="norma_sucursal">
+        <PropertyRef Name="id_normas" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_normas_sucursal_sucursal1">
+    <End Role="sucursal" Type="Self.sucursal" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="norma_sucursal" Type="Self.norma_sucursal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sucursal">
+        <PropertyRef Name="id_sucursal" />
+      </Principal>
+      <Dependent Role="norma_sucursal">
+        <PropertyRef Name="id_sucursal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_obligacion_categorias">
+    <End Role="categoria" Type="Self.categoria" Multiplicity="1" />
+    <End Role="obligacion" Type="Self.obligacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="categoria">
+        <PropertyRef Name="id_categorias" />
+      </Principal>
+      <Dependent Role="obligacion">
+        <PropertyRef Name="id_categorias" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_obligacion_frecuencia_control">
+    <End Role="frecuencia_control" Type="Self.frecuencia_control" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="obligacion" Type="Self.obligacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="frecuencia_control">
+        <PropertyRef Name="id_frec_con" />
+      </Principal>
+      <Dependent Role="obligacion">
+        <PropertyRef Name="id_frecuencia_con" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_obligacion_identificacion_peligro1">
+    <End Role="identificacion_peligro" Type="Self.identificacion_peligro" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="obligacion" Type="Self.obligacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="identificacion_peligro">
+        <PropertyRef Name="id_identificacion_peligro" />
+      </Principal>
+      <Dependent Role="obligacion">
+        <PropertyRef Name="id_identificacion_peligro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_obligacion_medidas_sucursal">
+    <End Role="medida_sucursal" Type="Self.medida_sucursal" Multiplicity="0..1" />
+    <End Role="obligacion" Type="Self.obligacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="medida_sucursal">
+        <PropertyRef Name="id_medidas_sucursal" />
+      </Principal>
+      <Dependent Role="obligacion">
+        <PropertyRef Name="id_medida_sucursal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_obligacion_plan_trabajo">
+    <End Role="plan_trabajo" Type="Self.plan_trabajo" Multiplicity="0..1" />
+    <End Role="obligacion" Type="Self.obligacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="plan_trabajo">
+        <PropertyRef Name="id_plan_trabajo" />
+      </Principal>
+      <Dependent Role="obligacion">
+        <PropertyRef Name="id_actividad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_obligacion_usuario">
+    <End Role="usuario" Type="Self.usuario" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="obligacion" Type="Self.obligacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="id_usuario" />
+      </Principal>
+      <Dependent Role="obligacion">
+        <PropertyRef Name="id_responsable" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_perfil_cargo_cno">
+    <End Role="cno" Type="Self.cno" Multiplicity="0..1" />
+    <End Role="perfil_cargo" Type="Self.perfil_cargo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cno">
+        <PropertyRef Name="id_cno" />
+      </Principal>
+      <Dependent Role="perfil_cargo">
+        <PropertyRef Name="id_cno" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_perfil_cargo_empresa">
+    <End Role="empresa" Type="Self.empresa" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="perfil_cargo" Type="Self.perfil_cargo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="empresa">
+        <PropertyRef Name="id_empresa" />
+      </Principal>
+      <Dependent Role="perfil_cargo">
+        <PropertyRef Name="id_empresa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_plan_trabajo_usuario">
+    <End Role="usuario" Type="Self.usuario" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="plan_trabajo" Type="Self.plan_trabajo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="id_usuario" />
+      </Principal>
+      <Dependent Role="plan_trabajo">
+        <PropertyRef Name="id_responsable" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_planes_sucursal">
+    <End Role="sucursal" Type="Self.sucursal" Multiplicity="0..1" />
+    <End Role="plan" Type="Self.plan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sucursal">
+        <PropertyRef Name="id_sucursal" />
+      </Principal>
+      <Dependent Role="plan">
+        <PropertyRef Name="id_sucursal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_politica_sst_empresa1">
+    <End Role="empresa" Type="Self.empresa" Multiplicity="0..1" />
+    <End Role="politica_sst" Type="Self.politica_sst" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="empresa">
+        <PropertyRef Name="id_empresa" />
+      </Principal>
+      <Dependent Role="politica_sst">
+        <PropertyRef Name="id_empresa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pregunta_usuario">
+    <End Role="usuario" Type="Self.usuario" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Pregunta" Type="Self.Pregunta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="id_usuario" />
+      </Principal>
+      <Dependent Role="Pregunta">
+        <PropertyRef Name="id_usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_procedimiento_comunicacion_brigada_emergencia">
+    <End Role="brigada_emergencia" Type="Self.brigada_emergencia" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="procedimiento_comunicacion" Type="Self.procedimiento_comunicacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="brigada_emergencia">
+        <PropertyRef Name="id_brigada" />
+      </Principal>
+      <Dependent Role="procedimiento_comunicacion">
+        <PropertyRef Name="id_brigada" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_puesto_trabajo_area">
+    <End Role="area" Type="Self.area" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="puesto_trabajo" Type="Self.puesto_trabajo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="area">
+        <PropertyRef Name="id_area" />
+      </Principal>
+      <Dependent Role="puesto_trabajo">
+        <PropertyRef Name="id_area" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Respuesta_Pregunta">
+    <End Role="Pregunta" Type="Self.Pregunta" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Respuesta" Type="Self.Respuesta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pregunta">
+        <PropertyRef Name="id_pregunta" />
+      </Principal>
+      <Dependent Role="Respuesta">
+        <PropertyRef Name="id_pregunta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_riesgos_item_factor_riesgo">
+    <End Role="factor_riesgo" Type="Self.factor_riesgo" Multiplicity="0..1" />
+    <End Role="riesgos_item" Type="Self.riesgos_item" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="factor_riesgo">
+        <PropertyRef Name="id_factor_riesgo" />
+      </Principal>
+      <Dependent Role="riesgos_item">
+        <PropertyRef Name="id_factor_riesgo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_riesgos_item_items_division">
+    <End Role="claseCiiu" Type="Self.claseCiiu" Multiplicity="0..1" />
+    <End Role="riesgos_item" Type="Self.riesgos_item" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="claseCiiu">
+        <PropertyRef Name="id_clase_ciiu" />
+      </Principal>
+      <Dependent Role="riesgos_item">
+        <PropertyRef Name="id_item" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_riesgos_item_matrizRiesgo_enfermedadLaboral">
+    <End Role="enfermedadLaboral" Type="Self.enfermedadLaboral" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="riesgos_item" Type="Self.riesgos_item" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="enfermedadLaboral">
+        <PropertyRef Name="id_enfermedadLaboral" />
+      </Principal>
+      <Dependent Role="riesgos_item">
+        <PropertyRef Name="id_enfermedad_laboral" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_soporte_at_it_el_pa">
+    <End Role="at_it_el_pa" Type="Self.at_it_el_pa" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="soporte" Type="Self.soporte" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="at_it_el_pa">
+        <PropertyRef Name="id_at_it_el_pa" />
+      </Principal>
+      <Dependent Role="soporte">
+        <PropertyRef Name="id_tabla" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_soporte_documentos">
+    <End Role="documento" Type="Self.documento" Multiplicity="0..1" />
+    <End Role="soporte" Type="Self.soporte" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="documento">
+        <PropertyRef Name="id_documento" />
+      </Principal>
+      <Dependent Role="soporte">
+        <PropertyRef Name="id_tabla" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_soporte_obligacion">
+    <End Role="obligacion" Type="Self.obligacion" Multiplicity="0..1" />
+    <End Role="soporte" Type="Self.soporte" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="obligacion">
+        <PropertyRef Name="id_obligacion" />
+      </Principal>
+      <Dependent Role="soporte">
+        <PropertyRef Name="id_tabla" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_sucursal_empresa">
+    <End Role="empresa" Type="Self.empresa" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="sucursal" Type="Self.sucursal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="empresa">
+        <PropertyRef Name="id_empresa" />
+      </Principal>
+      <Dependent Role="sucursal">
+        <PropertyRef Name="id_empresa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_sucursal_municipio">
+    <End Role="municipio" Type="Self.municipio" Multiplicity="0..1" />
+    <End Role="sucursal" Type="Self.sucursal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="municipio">
+        <PropertyRef Name="id_municipio" />
+      </Principal>
+      <Dependent Role="sucursal">
+        <PropertyRef Name="id_municpio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tipo_documento_sucursal">
+    <End Role="sucursal" Type="Self.sucursal" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tipo_documento" Type="Self.tipo_documento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sucursal">
+        <PropertyRef Name="id_sucursal" />
+      </Principal>
+      <Dependent Role="tipo_documento">
+        <PropertyRef Name="id_sucursal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_trabajador_ccf">
+    <End Role="ccf" Type="Self.ccf" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="trabajador" Type="Self.trabajador" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ccf">
+        <PropertyRef Name="id_ccf" />
+      </Principal>
+      <Dependent Role="trabajador">
+        <PropertyRef Name="id_ccf" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_trabajador_estatus_enfermedad">
+    <End Role="enfermedad" Type="Self.enfermedad" Multiplicity="0..1" />
+    <End Role="trabajador_estatus" Type="Self.trabajador_estatus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="enfermedad">
+        <PropertyRef Name="id_enfermedad" />
+      </Principal>
+      <Dependent Role="trabajador_estatus">
+        <PropertyRef Name="id_enfermedad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_trabajador_estatus_estatus">
+    <End Role="estatus" Type="Self.estatus" Multiplicity="0..1" />
+    <End Role="trabajador_estatus" Type="Self.trabajador_estatus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="estatus">
+        <PropertyRef Name="id_estatus" />
+      </Principal>
+      <Dependent Role="trabajador_estatus">
+        <PropertyRef Name="id_estatus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_trabajador_estatus_sistemas">
+    <End Role="sistema" Type="Self.sistema" Multiplicity="0..1" />
+    <End Role="trabajador_estatus" Type="Self.trabajador_estatus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sistema">
+        <PropertyRef Name="id_sistemas" />
+      </Principal>
+      <Dependent Role="trabajador_estatus">
+        <PropertyRef Name="id_sistema" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_trabajador_estatus_trabajador">
+    <End Role="trabajador" Type="Self.trabajador" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="trabajador_estatus" Type="Self.trabajador_estatus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="trabajador">
+        <PropertyRef Name="id_trabajador" />
+      </Principal>
+      <Dependent Role="trabajador_estatus">
+        <PropertyRef Name="id_trabajador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_trabajador_gestion_gestion_laboral">
+    <End Role="gestion_laboral" Type="Self.gestion_laboral" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="trabajador_gestion" Type="Self.trabajador_gestion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="gestion_laboral">
+        <PropertyRef Name="id_ges_lab" />
+      </Principal>
+      <Dependent Role="trabajador_gestion">
+        <PropertyRef Name="id_ges_lab" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_trabajador_gestion_trabajador">
+    <End Role="trabajador" Type="Self.trabajador" Multiplicity="1" />
+    <End Role="trabajador_gestion" Type="Self.trabajador_gestion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="trabajador">
+        <PropertyRef Name="id_trabajador" />
+      </Principal>
+      <Dependent Role="trabajador_gestion">
+        <PropertyRef Name="id_trabajador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_trabajador_municipio">
+    <End Role="municipio" Type="Self.municipio" Multiplicity="1" />
+    <End Role="trabajador" Type="Self.trabajador" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="municipio">
+        <PropertyRef Name="id_municipio" />
+      </Principal>
+      <Dependent Role="trabajador">
+        <PropertyRef Name="id_municipio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_trabajador_perfil_cargo">
+    <End Role="perfil_cargo" Type="Self.perfil_cargo" Multiplicity="0..1" />
+    <End Role="trabajador" Type="Self.trabajador" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="perfil_cargo">
+        <PropertyRef Name="id_perfil_cargo" />
+      </Principal>
+      <Dependent Role="trabajador">
+        <PropertyRef Name="id_perfil_cargo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_trabajador_puesto_trabajo">
+    <End Role="puesto_trabajo" Type="Self.puesto_trabajo" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="trabajador" Type="Self.trabajador" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="puesto_trabajo">
+        <PropertyRef Name="id_puesto_trabajo" />
+      </Principal>
+      <Dependent Role="trabajador">
+        <PropertyRef Name="id_puesto_trabajo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_usuario_rol">
+    <End Role="rol" Type="Self.rol" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="rol">
+        <PropertyRef Name="id_rol" />
+      </Principal>
+      <Dependent Role="usuario">
+        <PropertyRef Name="id_rol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_usuario_trabajador">
+    <End Role="trabajador" Type="Self.trabajador" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="trabajador">
+        <PropertyRef Name="id_trabajador" />
+      </Principal>
+      <Dependent Role="usuario">
+        <PropertyRef Name="id_trabajador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="GrupoLiModelStoreContainer">
+    <EntitySet Name="afp" EntityType="Self.afp" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="alarma" EntityType="Self.alarma" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="area" EntityType="Self.area" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="arl" EntityType="Self.arl" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="at_it_el_pa" EntityType="Self.at_it_el_pa" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="brigada_emergencia" EntityType="Self.brigada_emergencia" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="categoria" EntityType="Self.categoria" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ccf" EntityType="Self.ccf" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="claseCiiu" EntityType="Self.claseCiiu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="cno" EntityType="Self.cno" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="consulta" EntityType="Self.consulta" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="departamento" EntityType="Self.departamento" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="desc_socio" EntityType="Self.desc_socio" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="divisionCiiu" EntityType="Self.divisionCiiu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="documento" EntityType="Self.documento" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="empleo_anterior" EntityType="Self.empleo_anterior" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="empresa" EntityType="Self.empresa" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="empresa_itemdivision" EntityType="Self.empresa_itemdivision" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="encuesta_politica" EntityType="Self.encuesta_politica" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="enfermedad" EntityType="Self.enfermedad" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="enfermedadLaboral" EntityType="Self.enfermedadLaboral" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="epp" EntityType="Self.epp" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="eps" EntityType="Self.eps" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="estatus" EntityType="Self.estatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="evaluacion_riesgo" EntityType="Self.evaluacion_riesgo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="evento" EntityType="Self.evento" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="extintor" EntityType="Self.extintor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="factor_identificacion" EntityType="Self.factor_identificacion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="factor_riesgo" EntityType="Self.factor_riesgo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="frecuencia_control" EntityType="Self.frecuencia_control" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="gestion_laboral" EntityType="Self.gestion_laboral" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="grupoCiiu" EntityType="Self.grupoCiiu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="historia_clinica_ocupacional" EntityType="Self.historia_clinica_ocupacional" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="horario" EntityType="Self.horario" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="identificacion_peligro" EntityType="Self.identificacion_peligro" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="identificacion_puesto" EntityType="Self.identificacion_puesto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="investigacion_ac_in" EntityType="Self.investigacion_ac_in" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ips" EntityType="Self.ips" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="lista_actividad" EntityType="Self.lista_actividad" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="matriz_responsabilidad" EntityType="Self.matriz_responsabilidad" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="medida" EntityType="Self.medida" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="medida_sucursal" EntityType="Self.medida_sucursal" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="municipio" EntityType="Self.municipio" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="norma" EntityType="Self.norma" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="norma_claseciiu" EntityType="Self.norma_claseciiu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="norma_sucursal" EntityType="Self.norma_sucursal" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="obligacion" EntityType="Self.obligacion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="perfil_cargo" EntityType="Self.perfil_cargo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="plan" EntityType="Self.plan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="plan_trabajo" EntityType="Self.plan_trabajo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="politica_sst" EntityType="Self.politica_sst" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Pregunta" EntityType="Self.Pregunta" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="procedimiento_comunicacion" EntityType="Self.procedimiento_comunicacion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="puesto_trabajo" EntityType="Self.puesto_trabajo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="puesto_trabajo_epp" EntityType="Self.puesto_trabajo_epp" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Region" EntityType="Self.Region" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Respuesta" EntityType="Self.Respuesta" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="riesgos_item" EntityType="Self.riesgos_item" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="rol" EntityType="Self.rol" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="seccionCiiu" EntityType="Self.seccionCiiu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sistema" EntityType="Self.sistema" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="soporte" EntityType="Self.soporte" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sucursal" EntityType="Self.sucursal" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tipo_documento" EntityType="Self.tipo_documento" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tipo_epp" EntityType="Self.tipo_epp" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tipo_evento" EntityType="Self.tipo_evento" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tipo_examen" EntityType="Self.tipo_examen" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tipo_riesgo" EntityType="Self.tipo_riesgo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="trabajador" EntityType="Self.trabajador" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="trabajador_estatus" EntityType="Self.trabajador_estatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="trabajador_gestion" EntityType="Self.trabajador_gestion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="usuario" EntityType="Self.usuario" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__epp__id_tipo_epp__6D9742D9" Association="Self.FK__epp__id_tipo_epp__6D9742D9">
+      <End Role="tipo_epp" EntitySet="tipo_epp" />
+      <End Role="epp" EntitySet="epp" />
+    </AssociationSet>
+    <AssociationSet Name="FK__puesto_tr__id_ep__6ABAD62E" Association="Self.FK__puesto_tr__id_ep__6ABAD62E">
+      <End Role="epp" EntitySet="epp" />
+      <End Role="puesto_trabajo_epp" EntitySet="puesto_trabajo_epp" />
+    </AssociationSet>
+    <AssociationSet Name="FK__puesto_tr__id_pu__69C6B1F5" Association="Self.FK__puesto_tr__id_pu__69C6B1F5">
+      <End Role="puesto_trabajo" EntitySet="puesto_trabajo" />
+      <End Role="puesto_trabajo_epp" EntitySet="puesto_trabajo_epp" />
+    </AssociationSet>
+    <AssociationSet Name="FK_alarmas_categorias" Association="Self.FK_alarmas_categorias">
+      <End Role="categoria" EntitySet="categoria" />
+      <End Role="alarma" EntitySet="alarma" />
+    </AssociationSet>
+    <AssociationSet Name="FK_alarmas_usuario" Association="Self.FK_alarmas_usuario">
+      <End Role="usuario" EntitySet="usuario" />
+      <End Role="alarma" EntitySet="alarma" />
+    </AssociationSet>
+    <AssociationSet Name="FK_area_sucursal" Association="Self.FK_area_sucursal">
+      <End Role="sucursal" EntitySet="sucursal" />
+      <End Role="area" EntitySet="area" />
+    </AssociationSet>
+    <AssociationSet Name="FK_at_it_el_pa_area" Association="Self.FK_at_it_el_pa_area">
+      <End Role="area" EntitySet="area" />
+      <End Role="at_it_el_pa" EntitySet="at_it_el_pa" />
+    </AssociationSet>
+    <AssociationSet Name="FK_at_it_el_pa_puesto_trabajo" Association="Self.FK_at_it_el_pa_puesto_trabajo">
+      <End Role="puesto_trabajo" EntitySet="puesto_trabajo" />
+      <End Role="at_it_el_pa" EntitySet="at_it_el_pa" />
+    </AssociationSet>
+    <AssociationSet Name="FK_at_it_el_pa_trabajador" Association="Self.FK_at_it_el_pa_trabajador">
+      <End Role="trabajador" EntitySet="trabajador" />
+      <End Role="at_it_el_pa" EntitySet="at_it_el_pa" />
+    </AssociationSet>
+    <AssociationSet Name="FK_brigada_emergencia_sucursal" Association="Self.FK_brigada_emergencia_sucursal">
+      <End Role="sucursal" EntitySet="sucursal" />
+      <End Role="brigada_emergencia" EntitySet="brigada_emergencia" />
+    </AssociationSet>
+    <AssociationSet Name="FK_categorias_empresa" Association="Self.FK_categorias_empresa">
+      <End Role="empresa" EntitySet="empresa" />
+      <End Role="categoria" EntitySet="categoria" />
+    </AssociationSet>
+    <AssociationSet Name="FK_claseCiiu_grupoCiiu" Association="Self.FK_claseCiiu_grupoCiiu">
+      <End Role="grupoCiiu" EntitySet="grupoCiiu" />
+      <End Role="claseCiiu" EntitySet="claseCiiu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_consultas_at_it_el_pa" Association="Self.FK_consultas_at_it_el_pa">
+      <End Role="at_it_el_pa" EntitySet="at_it_el_pa" />
+      <End Role="consulta" EntitySet="consulta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_departamento_Region" Association="Self.FK_departamento_Region">
+      <End Role="Region" EntitySet="Region" />
+      <End Role="departamento" EntitySet="departamento" />
+    </AssociationSet>
+    <AssociationSet Name="FK_desc_socio_afp" Association="Self.FK_desc_socio_afp">
+      <End Role="afp" EntitySet="afp" />
+      <End Role="desc_socio" EntitySet="desc_socio" />
+    </AssociationSet>
+    <AssociationSet Name="FK_desc_socio_eps1" Association="Self.FK_desc_socio_eps1">
+      <End Role="eps" EntitySet="eps" />
+      <End Role="desc_socio" EntitySet="desc_socio" />
+    </AssociationSet>
+    <AssociationSet Name="FK_desc_socio_trabajador" Association="Self.FK_desc_socio_trabajador">
+      <End Role="trabajador" EntitySet="trabajador" />
+      <End Role="desc_socio" EntitySet="desc_socio" />
+    </AssociationSet>
+    <AssociationSet Name="FK_divisionCiiu_seccionCiiu" Association="Self.FK_divisionCiiu_seccionCiiu">
+      <End Role="seccionCiiu" EntitySet="seccionCiiu" />
+      <End Role="divisionCiiu" EntitySet="divisionCiiu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_documentos_sucursal" Association="Self.FK_documentos_sucursal">
+      <End Role="sucursal" EntitySet="sucursal" />
+      <End Role="documento" EntitySet="documento" />
+    </AssociationSet>
+    <AssociationSet Name="FK_documentos_trabajador" Association="Self.FK_documentos_trabajador">
+      <End Role="trabajador" EntitySet="trabajador" />
+      <End Role="documento" EntitySet="documento" />
+    </AssociationSet>
+    <AssociationSet Name="FK_empleos_anteriores_desc_socio" Association="Self.FK_empleos_anteriores_desc_socio">
+      <End Role="desc_socio" EntitySet="desc_socio" />
+      <End Role="empleo_anterior" EntitySet="empleo_anterior" />
+    </AssociationSet>
+    <AssociationSet Name="FK_empresa_arl" Association="Self.FK_empresa_arl">
+      <End Role="arl" EntitySet="arl" />
+      <End Role="empresa" EntitySet="empresa" />
+    </AssociationSet>
+    <AssociationSet Name="FK_empresa_itemdivision_claseCiiu" Association="Self.FK_empresa_itemdivision_claseCiiu">
+      <End Role="claseCiiu" EntitySet="claseCiiu" />
+      <End Role="empresa_itemdivision" EntitySet="empresa_itemdivision" />
+    </AssociationSet>
+    <AssociationSet Name="FK_empresa_itemdivision_empresa" Association="Self.FK_empresa_itemdivision_empresa">
+      <End Role="empresa" EntitySet="empresa" />
+      <End Role="empresa_itemdivision" EntitySet="empresa_itemdivision" />
+    </AssociationSet>
+    <AssociationSet Name="FK_encuesta_politica_trabajador" Association="Self.FK_encuesta_politica_trabajador">
+      <End Role="trabajador" EntitySet="trabajador" />
+      <End Role="encuesta_politica" EntitySet="encuesta_politica" />
+    </AssociationSet>
+    <AssociationSet Name="FK_estatus_empresa" Association="Self.FK_estatus_empresa">
+      <End Role="empresa" EntitySet="empresa" />
+      <End Role="estatus" EntitySet="estatus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_evaluacion_riesgo_identificacion_puesto" Association="Self.FK_evaluacion_riesgo_identificacion_puesto">
+      <End Role="identificacion_puesto" EntitySet="identificacion_puesto" />
+      <End Role="evaluacion_riesgo" EntitySet="evaluacion_riesgo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Eventos_tipo_evento" Association="Self.FK_Eventos_tipo_evento">
+      <End Role="tipo_evento" EntitySet="tipo_evento" />
+      <End Role="evento" EntitySet="evento" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Eventos_usuario" Association="Self.FK_Eventos_usuario">
+      <End Role="usuario" EntitySet="usuario" />
+      <End Role="evento" EntitySet="evento" />
+    </AssociationSet>
+    <AssociationSet Name="FK_extintor_area" Association="Self.FK_extintor_area">
+      <End Role="area" EntitySet="area" />
+      <End Role="extintor" EntitySet="extintor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_factor_identificacion_factor_riesgo" Association="Self.FK_factor_identificacion_factor_riesgo">
+      <End Role="factor_riesgo" EntitySet="factor_riesgo" />
+      <End Role="factor_identificacion" EntitySet="factor_identificacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_factor_identificacion_identificacion_peligro" Association="Self.FK_factor_identificacion_identificacion_peligro">
+      <End Role="identificacion_peligro" EntitySet="identificacion_peligro" />
+      <End Role="factor_identificacion" EntitySet="factor_identificacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_factor_riesgo_tipo_riesgo1" Association="Self.FK_factor_riesgo_tipo_riesgo1">
+      <End Role="tipo_riesgo" EntitySet="tipo_riesgo" />
+      <End Role="factor_riesgo" EntitySet="factor_riesgo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_gestion_laboral_usuario" Association="Self.FK_gestion_laboral_usuario">
+      <End Role="usuario" EntitySet="usuario" />
+      <End Role="gestion_laboral" EntitySet="gestion_laboral" />
+    </AssociationSet>
+    <AssociationSet Name="FK_grupoCiiu_divisionCiiu" Association="Self.FK_grupoCiiu_divisionCiiu">
+      <End Role="divisionCiiu" EntitySet="divisionCiiu" />
+      <End Role="grupoCiiu" EntitySet="grupoCiiu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_historia_clinica_ocupacional_Tipo_Examen" Association="Self.FK_historia_clinica_ocupacional_Tipo_Examen">
+      <End Role="tipo_examen" EntitySet="tipo_examen" />
+      <End Role="historia_clinica_ocupacional" EntitySet="historia_clinica_ocupacional" />
+    </AssociationSet>
+    <AssociationSet Name="FK_historia_clinica_ocupacional_trabajador" Association="Self.FK_historia_clinica_ocupacional_trabajador">
+      <End Role="trabajador" EntitySet="trabajador" />
+      <End Role="historia_clinica_ocupacional" EntitySet="historia_clinica_ocupacional" />
+    </AssociationSet>
+    <AssociationSet Name="FK_horario_empresa" Association="Self.FK_horario_empresa">
+      <End Role="empresa" EntitySet="empresa" />
+      <End Role="horario" EntitySet="horario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_identificacion_puesto_identificacion_peligro" Association="Self.FK_identificacion_puesto_identificacion_peligro">
+      <End Role="identificacion_peligro" EntitySet="identificacion_peligro" />
+      <End Role="identificacion_puesto" EntitySet="identificacion_puesto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_identificacion_puesto_puesto_trabajo" Association="Self.FK_identificacion_puesto_puesto_trabajo">
+      <End Role="puesto_trabajo" EntitySet="puesto_trabajo" />
+      <End Role="identificacion_puesto" EntitySet="identificacion_puesto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_investigacion_ac_in_at_it_el_pa" Association="Self.FK_investigacion_ac_in_at_it_el_pa">
+      <End Role="at_it_el_pa" EntitySet="at_it_el_pa" />
+      <End Role="investigacion_ac_in" EntitySet="investigacion_ac_in" />
+    </AssociationSet>
+    <AssociationSet Name="FK_lista_actividades_sucursal" Association="Self.FK_lista_actividades_sucursal">
+      <End Role="sucursal" EntitySet="sucursal" />
+      <End Role="lista_actividad" EntitySet="lista_actividad" />
+    </AssociationSet>
+    <AssociationSet Name="FK_matriz_responsabilidad_sucursal" Association="Self.FK_matriz_responsabilidad_sucursal">
+      <End Role="sucursal" EntitySet="sucursal" />
+      <End Role="matriz_responsabilidad" EntitySet="matriz_responsabilidad" />
+    </AssociationSet>
+    <AssociationSet Name="FK_medidas_normas" Association="Self.FK_medidas_normas">
+      <End Role="norma" EntitySet="norma" />
+      <End Role="medida" EntitySet="medida" />
+    </AssociationSet>
+    <AssociationSet Name="FK_medidas_sucursal_normas_sucursal" Association="Self.FK_medidas_sucursal_normas_sucursal">
+      <End Role="norma_sucursal" EntitySet="norma_sucursal" />
+      <End Role="medida_sucursal" EntitySet="medida_sucursal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_municipio_departamento1" Association="Self.FK_municipio_departamento1">
+      <End Role="departamento" EntitySet="departamento" />
+      <End Role="municipio" EntitySet="municipio" />
+    </AssociationSet>
+    <AssociationSet Name="FK_normas_claseciiu_claseCiiu" Association="Self.FK_normas_claseciiu_claseCiiu">
+      <End Role="claseCiiu" EntitySet="claseCiiu" />
+      <End Role="norma_claseciiu" EntitySet="norma_claseciiu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_normas_claseciiu_normas" Association="Self.FK_normas_claseciiu_normas">
+      <End Role="norma" EntitySet="norma" />
+      <End Role="norma_claseciiu" EntitySet="norma_claseciiu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_normas_sucursal_normas1" Association="Self.FK_normas_sucursal_normas1">
+      <End Role="norma" EntitySet="norma" />
+      <End Role="norma_sucursal" EntitySet="norma_sucursal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_normas_sucursal_sucursal1" Association="Self.FK_normas_sucursal_sucursal1">
+      <End Role="sucursal" EntitySet="sucursal" />
+      <End Role="norma_sucursal" EntitySet="norma_sucursal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_obligacion_categorias" Association="Self.FK_obligacion_categorias">
+      <End Role="categoria" EntitySet="categoria" />
+      <End Role="obligacion" EntitySet="obligacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_obligacion_frecuencia_control" Association="Self.FK_obligacion_frecuencia_control">
+      <End Role="frecuencia_control" EntitySet="frecuencia_control" />
+      <End Role="obligacion" EntitySet="obligacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_obligacion_identificacion_peligro1" Association="Self.FK_obligacion_identificacion_peligro1">
+      <End Role="identificacion_peligro" EntitySet="identificacion_peligro" />
+      <End Role="obligacion" EntitySet="obligacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_obligacion_medidas_sucursal" Association="Self.FK_obligacion_medidas_sucursal">
+      <End Role="medida_sucursal" EntitySet="medida_sucursal" />
+      <End Role="obligacion" EntitySet="obligacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_obligacion_plan_trabajo" Association="Self.FK_obligacion_plan_trabajo">
+      <End Role="plan_trabajo" EntitySet="plan_trabajo" />
+      <End Role="obligacion" EntitySet="obligacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_obligacion_usuario" Association="Self.FK_obligacion_usuario">
+      <End Role="usuario" EntitySet="usuario" />
+      <End Role="obligacion" EntitySet="obligacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_perfil_cargo_cno" Association="Self.FK_perfil_cargo_cno">
+      <End Role="cno" EntitySet="cno" />
+      <End Role="perfil_cargo" EntitySet="perfil_cargo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_perfil_cargo_empresa" Association="Self.FK_perfil_cargo_empresa">
+      <End Role="empresa" EntitySet="empresa" />
+      <End Role="perfil_cargo" EntitySet="perfil_cargo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_plan_trabajo_usuario" Association="Self.FK_plan_trabajo_usuario">
+      <End Role="usuario" EntitySet="usuario" />
+      <End Role="plan_trabajo" EntitySet="plan_trabajo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_planes_sucursal" Association="Self.FK_planes_sucursal">
+      <End Role="sucursal" EntitySet="sucursal" />
+      <End Role="plan" EntitySet="plan" />
+    </AssociationSet>
+    <AssociationSet Name="FK_politica_sst_empresa1" Association="Self.FK_politica_sst_empresa1">
+      <End Role="empresa" EntitySet="empresa" />
+      <End Role="politica_sst" EntitySet="politica_sst" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pregunta_usuario" Association="Self.FK_Pregunta_usuario">
+      <End Role="usuario" EntitySet="usuario" />
+      <End Role="Pregunta" EntitySet="Pregunta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_procedimiento_comunicacion_brigada_emergencia" Association="Self.FK_procedimiento_comunicacion_brigada_emergencia">
+      <End Role="brigada_emergencia" EntitySet="brigada_emergencia" />
+      <End Role="procedimiento_comunicacion" EntitySet="procedimiento_comunicacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_puesto_trabajo_area" Association="Self.FK_puesto_trabajo_area">
+      <End Role="area" EntitySet="area" />
+      <End Role="puesto_trabajo" EntitySet="puesto_trabajo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Respuesta_Pregunta" Association="Self.FK_Respuesta_Pregunta">
+      <End Role="Pregunta" EntitySet="Pregunta" />
+      <End Role="Respuesta" EntitySet="Respuesta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_riesgos_item_factor_riesgo" Association="Self.FK_riesgos_item_factor_riesgo">
+      <End Role="factor_riesgo" EntitySet="factor_riesgo" />
+      <End Role="riesgos_item" EntitySet="riesgos_item" />
+    </AssociationSet>
+    <AssociationSet Name="FK_riesgos_item_items_division" Association="Self.FK_riesgos_item_items_division">
+      <End Role="claseCiiu" EntitySet="claseCiiu" />
+      <End Role="riesgos_item" EntitySet="riesgos_item" />
+    </AssociationSet>
+    <AssociationSet Name="FK_riesgos_item_matrizRiesgo_enfermedadLaboral" Association="Self.FK_riesgos_item_matrizRiesgo_enfermedadLaboral">
+      <End Role="enfermedadLaboral" EntitySet="enfermedadLaboral" />
+      <End Role="riesgos_item" EntitySet="riesgos_item" />
+    </AssociationSet>
+    <AssociationSet Name="FK_soporte_at_it_el_pa" Association="Self.FK_soporte_at_it_el_pa">
+      <End Role="at_it_el_pa" EntitySet="at_it_el_pa" />
+      <End Role="soporte" EntitySet="soporte" />
+    </AssociationSet>
+    <AssociationSet Name="FK_soporte_documentos" Association="Self.FK_soporte_documentos">
+      <End Role="documento" EntitySet="documento" />
+      <End Role="soporte" EntitySet="soporte" />
+    </AssociationSet>
+    <AssociationSet Name="FK_soporte_obligacion" Association="Self.FK_soporte_obligacion">
+      <End Role="obligacion" EntitySet="obligacion" />
+      <End Role="soporte" EntitySet="soporte" />
+    </AssociationSet>
+    <AssociationSet Name="FK_sucursal_empresa" Association="Self.FK_sucursal_empresa">
+      <End Role="empresa" EntitySet="empresa" />
+      <End Role="sucursal" EntitySet="sucursal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_sucursal_municipio" Association="Self.FK_sucursal_municipio">
+      <End Role="municipio" EntitySet="municipio" />
+      <End Role="sucursal" EntitySet="sucursal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tipo_documento_sucursal" Association="Self.FK_tipo_documento_sucursal">
+      <End Role="sucursal" EntitySet="sucursal" />
+      <End Role="tipo_documento" EntitySet="tipo_documento" />
+    </AssociationSet>
+    <AssociationSet Name="FK_trabajador_ccf" Association="Self.FK_trabajador_ccf">
+      <End Role="ccf" EntitySet="ccf" />
+      <End Role="trabajador" EntitySet="trabajador" />
+    </AssociationSet>
+    <AssociationSet Name="FK_trabajador_estatus_enfermedad" Association="Self.FK_trabajador_estatus_enfermedad">
+      <End Role="enfermedad" EntitySet="enfermedad" />
+      <End Role="trabajador_estatus" EntitySet="trabajador_estatus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_trabajador_estatus_estatus" Association="Self.FK_trabajador_estatus_estatus">
+      <End Role="estatus" EntitySet="estatus" />
+      <End Role="trabajador_estatus" EntitySet="trabajador_estatus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_trabajador_estatus_sistemas" Association="Self.FK_trabajador_estatus_sistemas">
+      <End Role="sistema" EntitySet="sistema" />
+      <End Role="trabajador_estatus" EntitySet="trabajador_estatus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_trabajador_estatus_trabajador" Association="Self.FK_trabajador_estatus_trabajador">
+      <End Role="trabajador" EntitySet="trabajador" />
+      <End Role="trabajador_estatus" EntitySet="trabajador_estatus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_trabajador_gestion_gestion_laboral" Association="Self.FK_trabajador_gestion_gestion_laboral">
+      <End Role="gestion_laboral" EntitySet="gestion_laboral" />
+      <End Role="trabajador_gestion" EntitySet="trabajador_gestion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_trabajador_gestion_trabajador" Association="Self.FK_trabajador_gestion_trabajador">
+      <End Role="trabajador" EntitySet="trabajador" />
+      <End Role="trabajador_gestion" EntitySet="trabajador_gestion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_trabajador_municipio" Association="Self.FK_trabajador_municipio">
+      <End Role="municipio" EntitySet="municipio" />
+      <End Role="trabajador" EntitySet="trabajador" />
+    </AssociationSet>
+    <AssociationSet Name="FK_trabajador_perfil_cargo" Association="Self.FK_trabajador_perfil_cargo">
+      <End Role="perfil_cargo" EntitySet="perfil_cargo" />
+      <End Role="trabajador" EntitySet="trabajador" />
+    </AssociationSet>
+    <AssociationSet Name="FK_trabajador_puesto_trabajo" Association="Self.FK_trabajador_puesto_trabajo">
+      <End Role="puesto_trabajo" EntitySet="puesto_trabajo" />
+      <End Role="trabajador" EntitySet="trabajador" />
+    </AssociationSet>
+    <AssociationSet Name="FK_usuario_rol" Association="Self.FK_usuario_rol">
+      <End Role="rol" EntitySet="rol" />
+      <End Role="usuario" EntitySet="usuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_usuario_trabajador" Association="Self.FK_usuario_trabajador">
+      <End Role="trabajador" EntitySet="trabajador" />
+      <End Role="usuario" EntitySet="usuario" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

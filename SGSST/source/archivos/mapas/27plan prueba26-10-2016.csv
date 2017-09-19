@@ -1,0 +1,9 @@
+id_rol;nombre
+1;Administrador GrupoLi
+2;Administrador Empresa
+3;Administrador Sucursal
+4;Administrador Empresa Departamento Seguridad
+5;Administrador Sucursal Departamento Seguridad
+6;Administrador Empresa Departamento Salud
+7;Administrador Sucursal Departamento Salud
+8;Responsable

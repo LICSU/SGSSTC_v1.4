@@ -1,0 +1,383 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1D47AEB0-564F-4A7C-B107-91542AA45939}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Capa_Datos</RootNamespace>
+    <AssemblyName>Capa_Datos</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AjaxControlToolkit">
+      <HintPath>..\SGSSTC\bin\AjaxControlToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="CkEditor">
+      <HintPath>..\SGSSTC\bin\CkEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="CKEditor.NET">
+      <HintPath>..\SGSSTC\bin\CKEditor.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0-beta1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0-beta1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.12.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.12\lib\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="LinqToExcel">
+      <HintPath>..\SGSSTC\bin\LinqToExcel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Vbe.Interop, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\SGSSTC\bin\Microsoft.Vbe.Interop.dll</HintPath>
+    </Reference>
+    <Reference Include="office, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\SGSSTC\bin\office.dll</HintPath>
+    </Reference>
+    <Reference Include="Remotion">
+      <HintPath>..\SGSSTC\bin\Remotion.dll</HintPath>
+    </Reference>
+    <Reference Include="Remotion.Data.Linq">
+      <HintPath>..\SGSSTC\bin\Remotion.Data.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="Remotion.Interfaces">
+      <HintPath>..\SGSSTC\bin\Remotion.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.DataVisualization" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="afp.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="alarma.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="area.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="arl.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="at_it_el_pa.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="brigada_emergencia.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="categoria.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ccf.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="claseCiiu.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="cno.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ComandosGrid.cs" />
+    <Compile Include="consulta.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ControlesDinamicos.cs" />
+    <Compile Include="departamento.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="desc_socio.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="divisionCiiu.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="documento.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="empleo_anterior.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="empresa.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="empresa_itemdivision.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="encuesta_politica.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="enfermedad.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="enfermedadLaboral.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="epp.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="eps.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="estatus.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="evaluacion_riesgo.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="evento.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="extintor.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="factor_identificacion.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="factor_riesgo.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="frecuencia_control.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="gestion_laboral.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Graficos.cs" />
+    <Compile Include="grupoCiiu.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="historia_clinica_ocupacional.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="horario.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="identificacion_peligro.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="identificacion_puesto.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="investigacion_ac_in.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ips.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="lista_actividad.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="matriz_responsabilidad.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="medida.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="medida_sucursal.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MensajeError.cs" />
+    <Compile Include="ModeloGrupoLi.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModeloGrupoLi.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModeloGrupoLi.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModeloGrupoLi.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModeloGrupoLi.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model_Celda.cs" />
+    <Compile Include="Model_CEPP.cs" />
+    <Compile Include="Model_Data.cs" />
+    <Compile Include="ManageFiles.cs" />
+    <Compile Include="Getter.cs" />
+    <Compile Include="GetterCantidad.cs" />
+    <Compile Include="GetterMax.cs" />
+    <Compile Include="Listas.cs" />
+    <Compile Include="Modal.cs" />
+    <Compile Include="Model_Bitacora.cs" />
+    <Compile Include="CRUD.cs" />
+    <Compile Include="Model_Enfermedad_Sistema.cs" />
+    <Compile Include="municipio.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="norma.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="norma_claseciiu.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="norma_sucursal.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="obligacion.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas.cs" />
+    <Compile Include="perfil_cargo.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="plan.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="plan_trabajo.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="politica_sst.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Pregunta.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PrintFile.cs" />
+    <Compile Include="procedimiento_comunicacion.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="puesto_trabajo.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="puesto_trabajo_epp.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Region.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Respuesta.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="riesgos_item.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="rol.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="seccionCiiu.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sistema.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="soporte.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sucursal.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tabla.cs" />
+    <Compile Include="TipoDocumento.cs" />
+    <Compile Include="Model_UsuarioAutenticado.cs" />
+    <Compile Include="Model_UsuarioSistema.cs" />
+    <Compile Include="tipo_documento.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tipo_epp.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tipo_evento.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tipo_examen.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tipo_riesgo.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="trabajador.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="trabajador_estatus.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="trabajador_gestion.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usuario.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Utilidades.cs" />
+    <Compile Include="Utilidades_GridView.cs" />
+    <Compile Include="ValoresDefault.cs" />
+    <Compile Include="NodosArbol.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <EntityDeploy Include="ModeloGrupoLi.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModeloGrupoLi.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="ModeloGrupoLi.edmx.diagram">
+      <DependentUpon>ModeloGrupoLi.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ModeloGrupoLi.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModeloGrupoLi.edmx</DependentUpon>
+      <LastGenOutput>ModeloGrupoLi.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="ModeloGrupoLi.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModeloGrupoLi.edmx</DependentUpon>
+      <LastGenOutput>ModeloGrupoLi.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

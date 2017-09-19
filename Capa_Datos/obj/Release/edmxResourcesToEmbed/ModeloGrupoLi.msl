@@ -1,0 +1,1013 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="GrupoLiModelStoreContainer" CdmEntityContainer="GrupoLiEntities">
+    <EntitySetMapping Name="afp">
+      <EntityTypeMapping TypeName="GrupoLiModel.afp">
+        <MappingFragment StoreEntitySet="afp">
+          <ScalarProperty Name="id_afp" ColumnName="id_afp" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+          <ScalarProperty Name="nit" ColumnName="nit" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="ciudad" ColumnName="ciudad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="alarma">
+      <EntityTypeMapping TypeName="GrupoLiModel.alarma">
+        <MappingFragment StoreEntitySet="alarma">
+          <ScalarProperty Name="id_alarmas" ColumnName="id_alarmas" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="prioridad" ColumnName="prioridad" />
+          <ScalarProperty Name="id_categorias" ColumnName="id_categorias" />
+          <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="area">
+      <EntityTypeMapping TypeName="GrupoLiModel.area">
+        <MappingFragment StoreEntitySet="area">
+          <ScalarProperty Name="id_area" ColumnName="id_area" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="id_sucursal" ColumnName="id_sucursal" />
+          <ScalarProperty Name="id_area_padre" ColumnName="id_area_padre" />
+          <ScalarProperty Name="nivel" ColumnName="nivel" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="arl">
+      <EntityTypeMapping TypeName="GrupoLiModel.arl">
+        <MappingFragment StoreEntitySet="arl">
+          <ScalarProperty Name="id_arl" ColumnName="id_arl" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+          <ScalarProperty Name="nit" ColumnName="nit" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="ciudad" ColumnName="ciudad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="at_it_el_pa">
+      <EntityTypeMapping TypeName="GrupoLiModel.at_it_el_pa">
+        <MappingFragment StoreEntitySet="at_it_el_pa">
+          <ScalarProperty Name="id_at_it_el_pa" ColumnName="id_at_it_el_pa" />
+          <ScalarProperty Name="id_trabajador" ColumnName="id_trabajador" />
+          <ScalarProperty Name="id_area" ColumnName="id_area" />
+          <ScalarProperty Name="id_puesto" ColumnName="id_puesto" />
+          <ScalarProperty Name="sitio" ColumnName="sitio" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="condiciones_inseguras" ColumnName="condiciones_inseguras" />
+          <ScalarProperty Name="actos_inseguros" ColumnName="actos_inseguros" />
+          <ScalarProperty Name="factores_inseguros" ColumnName="factores_inseguros" />
+          <ScalarProperty Name="factores_personales" ColumnName="factores_personales" />
+          <ScalarProperty Name="reporte_accidente" ColumnName="reporte_accidente" />
+          <ScalarProperty Name="documento_escaneado" ColumnName="documento_escaneado" />
+          <ScalarProperty Name="documento_comunicado" ColumnName="documento_comunicado" />
+          <ScalarProperty Name="num_consultas" ColumnName="num_consultas" />
+          <ScalarProperty Name="frecuencia_consultas" ColumnName="frecuencia_consultas" />
+          <ScalarProperty Name="tipo_evento" ColumnName="tipo_evento" />
+          <ScalarProperty Name="fecha_muerte" ColumnName="fecha_muerte" />
+          <ScalarProperty Name="dias_incapacidad" ColumnName="dias_incapacidad" />
+          <ScalarProperty Name="dias_cargados" ColumnName="dias_cargados" />
+          <ScalarProperty Name="dias_perdidos_ausencia" ColumnName="dias_perdidos_ausencia" />
+          <ScalarProperty Name="dias_no_perdidos" ColumnName="dias_no_perdidos" />
+          <ScalarProperty Name="tipo_enfermedad" ColumnName="tipo_enfermedad" />
+          <ScalarProperty Name="fecha_accidente" ColumnName="fecha_accidente" />
+          <ScalarProperty Name="hora_accidente" ColumnName="hora_accidente" />
+          <ScalarProperty Name="dias_perdidos_restingido" ColumnName="dias_perdidos_restingido" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="brigada_emergencia">
+      <EntityTypeMapping TypeName="GrupoLiModel.brigada_emergencia">
+        <MappingFragment StoreEntitySet="brigada_emergencia">
+          <ScalarProperty Name="id_brigada" ColumnName="id_brigada" />
+          <ScalarProperty Name="id_sucursal" ColumnName="id_sucursal" />
+          <ScalarProperty Name="perfiles" ColumnName="perfiles" />
+          <ScalarProperty Name="func_brigadistas" ColumnName="func_brigadistas" />
+          <ScalarProperty Name="brigada_comunicacion" ColumnName="brigada_comunicacion" />
+          <ScalarProperty Name="dir_emergencia_int" ColumnName="dir_emergencia_int" />
+          <ScalarProperty Name="brigada_prim_aux" ColumnName="brigada_prim_aux" />
+          <ScalarProperty Name="brigada_incendio" ColumnName="brigada_incendio" />
+          <ScalarProperty Name="brigada_evacuacion" ColumnName="brigada_evacuacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="categoria">
+      <EntityTypeMapping TypeName="GrupoLiModel.categoria">
+        <MappingFragment StoreEntitySet="categoria">
+          <ScalarProperty Name="id_categorias" ColumnName="id_categorias" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="id_empresa" ColumnName="id_empresa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ccf">
+      <EntityTypeMapping TypeName="GrupoLiModel.ccf">
+        <MappingFragment StoreEntitySet="ccf">
+          <ScalarProperty Name="id_ccf" ColumnName="id_ccf" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+          <ScalarProperty Name="nit" ColumnName="nit" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="ciudad" ColumnName="ciudad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="claseCiiu">
+      <EntityTypeMapping TypeName="GrupoLiModel.claseCiiu">
+        <MappingFragment StoreEntitySet="claseCiiu">
+          <ScalarProperty Name="id_clase_ciiu" ColumnName="id_clase_ciiu" />
+          <ScalarProperty Name="id_grupo" ColumnName="id_grupo" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cno">
+      <EntityTypeMapping TypeName="GrupoLiModel.cno">
+        <MappingFragment StoreEntitySet="cno">
+          <ScalarProperty Name="id_cno" ColumnName="id_cno" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+          <ScalarProperty Name="ocupacion" ColumnName="ocupacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="consulta">
+      <EntityTypeMapping TypeName="GrupoLiModel.consulta">
+        <MappingFragment StoreEntitySet="consulta">
+          <ScalarProperty Name="id_consulta" ColumnName="id_consulta" />
+          <ScalarProperty Name="id_acc_lab" ColumnName="id_acc_lab" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="servicio_medico" ColumnName="servicio_medico" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="medico" ColumnName="medico" />
+          <ScalarProperty Name="diagnostico" ColumnName="diagnostico" />
+          <ScalarProperty Name="sug_trat" ColumnName="sug_trat" />
+          <ScalarProperty Name="id_empresa" ColumnName="id_empresa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="departamento">
+      <EntityTypeMapping TypeName="GrupoLiModel.departamento">
+        <MappingFragment StoreEntitySet="departamento">
+          <ScalarProperty Name="id_departamento" ColumnName="id_departamento" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="id_region" ColumnName="id_region" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="desc_socio">
+      <EntityTypeMapping TypeName="GrupoLiModel.desc_socio">
+        <MappingFragment StoreEntitySet="desc_socio">
+          <ScalarProperty Name="id_desc_socio" ColumnName="id_desc_socio" />
+          <ScalarProperty Name="id_trabajador" ColumnName="id_trabajador" />
+          <ScalarProperty Name="lugar_nac" ColumnName="lugar_nac" />
+          <ScalarProperty Name="nivel_escolaridad" ColumnName="nivel_escolaridad" />
+          <ScalarProperty Name="años_aprob" ColumnName="años_aprob" />
+          <ScalarProperty Name="cabeza_fam" ColumnName="cabeza_fam" />
+          <ScalarProperty Name="num_hijos" ColumnName="num_hijos" />
+          <ScalarProperty Name="repart_resp" ColumnName="repart_resp" />
+          <ScalarProperty Name="menores_dep" ColumnName="menores_dep" />
+          <ScalarProperty Name="cond_social" ColumnName="cond_social" />
+          <ScalarProperty Name="mot_despl" ColumnName="mot_despl" />
+          <ScalarProperty Name="tipo_vivienda" ColumnName="tipo_vivienda" />
+          <ScalarProperty Name="serv_pub" ColumnName="serv_pub" />
+          <ScalarProperty Name="sist_seg_soc" ColumnName="sist_seg_soc" />
+          <ScalarProperty Name="reg_afiliacion" ColumnName="reg_afiliacion" />
+          <ScalarProperty Name="nivel_sisben" ColumnName="nivel_sisben" />
+          <ScalarProperty Name="id_eps" ColumnName="id_eps" />
+          <ScalarProperty Name="afi_sssp" ColumnName="afi_sssp" />
+          <ScalarProperty Name="id_afp" ColumnName="id_afp" />
+          <ScalarProperty Name="afi_riesgo" ColumnName="afi_riesgo" />
+          <ScalarProperty Name="estrato" ColumnName="estrato" />
+          <ScalarProperty Name="vivienda" ColumnName="vivienda" />
+          <ScalarProperty Name="industria" ColumnName="industria" />
+          <ScalarProperty Name="ruido" ColumnName="ruido" />
+          <ScalarProperty Name="contaminacion" ColumnName="contaminacion" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="divisionCiiu">
+      <EntityTypeMapping TypeName="GrupoLiModel.divisionCiiu">
+        <MappingFragment StoreEntitySet="divisionCiiu">
+          <ScalarProperty Name="id_division" ColumnName="id_division" />
+          <ScalarProperty Name="id_seccion" ColumnName="id_seccion" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="documento">
+      <EntityTypeMapping TypeName="GrupoLiModel.documento">
+        <MappingFragment StoreEntitySet="documento">
+          <ScalarProperty Name="id_documento" ColumnName="id_documento" />
+          <ScalarProperty Name="id_tabla" ColumnName="id_tabla" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="ruta" ColumnName="ruta" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="fecha_subida" ColumnName="fecha_subida" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="empleo_anterior">
+      <EntityTypeMapping TypeName="GrupoLiModel.empleo_anterior">
+        <MappingFragment StoreEntitySet="empleo_anterior">
+          <ScalarProperty Name="id_empleos_ant" ColumnName="id_empleos_ant" />
+          <ScalarProperty Name="empresa" ColumnName="empresa" />
+          <ScalarProperty Name="area" ColumnName="area" />
+          <ScalarProperty Name="cargo" ColumnName="cargo" />
+          <ScalarProperty Name="años" ColumnName="años" />
+          <ScalarProperty Name="meses" ColumnName="meses" />
+          <ScalarProperty Name="enfermedades" ColumnName="enfermedades" />
+          <ScalarProperty Name="id_desc_socio" ColumnName="id_desc_socio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="empresa">
+      <EntityTypeMapping TypeName="GrupoLiModel.empresa">
+        <MappingFragment StoreEntitySet="empresa">
+          <ScalarProperty Name="id_empresa" ColumnName="id_empresa" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="CodEmpresa" ColumnName="CodEmpresa" />
+          <ScalarProperty Name="nit" ColumnName="nit" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="representante" ColumnName="representante" />
+          <ScalarProperty Name="movil" ColumnName="movil" />
+          <ScalarProperty Name="fijo" ColumnName="fijo" />
+          <ScalarProperty Name="logo_url" ColumnName="logo_url" />
+          <ScalarProperty Name="id_arl" ColumnName="id_arl" />
+          <ScalarProperty Name="jornada" ColumnName="jornada" />
+          <ScalarProperty Name="clase_riesgo" ColumnName="clase_riesgo" />
+          <ScalarProperty Name="tipo_material" ColumnName="tipo_material" />
+          <ScalarProperty Name="dependencias_adm" ColumnName="dependencias_adm" />
+          <ScalarProperty Name="dependencias_no_adm" ColumnName="dependencias_no_adm" />
+          <ScalarProperty Name="personas_transito" ColumnName="personas_transito" />
+          <ScalarProperty Name="vias_acceso" ColumnName="vias_acceso" />
+          <ScalarProperty Name="salida_emergencia" ColumnName="salida_emergencia" />
+          <ScalarProperty Name="senalizacion" ColumnName="senalizacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="empresa_itemdivision">
+      <EntityTypeMapping TypeName="GrupoLiModel.empresa_itemdivision">
+        <MappingFragment StoreEntitySet="empresa_itemdivision">
+          <ScalarProperty Name="id_emp_itemdiv" ColumnName="id_emp_itemdiv" />
+          <ScalarProperty Name="id_empresa" ColumnName="id_empresa" />
+          <ScalarProperty Name="id_clase_ciiu" ColumnName="id_clase_ciiu" />
+          <ScalarProperty Name="num_actividad" ColumnName="num_actividad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="encuesta_politica">
+      <EntityTypeMapping TypeName="GrupoLiModel.encuesta_politica">
+        <MappingFragment StoreEntitySet="encuesta_politica">
+          <ScalarProperty Name="id_encuesta" ColumnName="id_encuesta" />
+          <ScalarProperty Name="id_trabajador" ColumnName="id_trabajador" />
+          <ScalarProperty Name="ruta" ColumnName="ruta" />
+          <ScalarProperty Name="si" ColumnName="si" />
+          <ScalarProperty Name="no" ColumnName="no" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="enfermedad">
+      <EntityTypeMapping TypeName="GrupoLiModel.enfermedad">
+        <MappingFragment StoreEntitySet="enfermedad">
+          <ScalarProperty Name="id_enfermedad" ColumnName="id_enfermedad" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="enfermedadLaboral">
+      <EntityTypeMapping TypeName="GrupoLiModel.enfermedadLaboral">
+        <MappingFragment StoreEntitySet="enfermedadLaboral">
+          <ScalarProperty Name="id_enfermedadLaboral" ColumnName="id_enfermedadLaboral" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="epp">
+      <EntityTypeMapping TypeName="GrupoLiModel.epp">
+        <MappingFragment StoreEntitySet="epp">
+          <ScalarProperty Name="id_epp" ColumnName="id_epp" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="id_tipo_epp" ColumnName="id_tipo_epp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="eps">
+      <EntityTypeMapping TypeName="GrupoLiModel.eps">
+        <MappingFragment StoreEntitySet="eps">
+          <ScalarProperty Name="id_eps" ColumnName="id_eps" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+          <ScalarProperty Name="nit" ColumnName="nit" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="ciudad" ColumnName="ciudad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="estatus">
+      <EntityTypeMapping TypeName="GrupoLiModel.estatus">
+        <MappingFragment StoreEntitySet="estatus">
+          <ScalarProperty Name="id_estatus" ColumnName="id_estatus" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="id_empresa" ColumnName="id_empresa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="evaluacion_riesgo">
+      <EntityTypeMapping TypeName="GrupoLiModel.evaluacion_riesgo">
+        <MappingFragment StoreEntitySet="evaluacion_riesgo">
+          <ScalarProperty Name="id_evaluacion_riesgo" ColumnName="id_evaluacion_riesgo" />
+          <ScalarProperty Name="id_ide_puesto" ColumnName="id_ide_puesto" />
+          <ScalarProperty Name="control_fuente" ColumnName="control_fuente" />
+          <ScalarProperty Name="control_medio" ColumnName="control_medio" />
+          <ScalarProperty Name="control_individuo" ColumnName="control_individuo" />
+          <ScalarProperty Name="fecha_evaluacion" ColumnName="fecha_evaluacion" />
+          <ScalarProperty Name="nombre_responsable" ColumnName="nombre_responsable" />
+          <ScalarProperty Name="estatus_med_fue" ColumnName="estatus_med_fue" />
+          <ScalarProperty Name="estatus_med_amb" ColumnName="estatus_med_amb" />
+          <ScalarProperty Name="estatus_med_trab" ColumnName="estatus_med_trab" />
+          <ScalarProperty Name="porc_estatus" ColumnName="porc_estatus" />
+          <ScalarProperty Name="nivel_deficiencia" ColumnName="nivel_deficiencia" />
+          <ScalarProperty Name="interpretacion_deficiencia" ColumnName="interpretacion_deficiencia" />
+          <ScalarProperty Name="nivel_exposicion" ColumnName="nivel_exposicion" />
+          <ScalarProperty Name="interpretacion_exposicion" ColumnName="interpretacion_exposicion" />
+          <ScalarProperty Name="nivel_probabilidad" ColumnName="nivel_probabilidad" />
+          <ScalarProperty Name="interpretacion_probabilidad" ColumnName="interpretacion_probabilidad" />
+          <ScalarProperty Name="nivel_consecuencia" ColumnName="nivel_consecuencia" />
+          <ScalarProperty Name="nivel_riesgo" ColumnName="nivel_riesgo" />
+          <ScalarProperty Name="interpretacion_nivel_riesgo" ColumnName="interpretacion_nivel_riesgo" />
+          <ScalarProperty Name="aceptabilidad_riesgo" ColumnName="aceptabilidad_riesgo" />
+          <ScalarProperty Name="planta" ColumnName="planta" />
+          <ScalarProperty Name="contratistas" ColumnName="contratistas" />
+          <ScalarProperty Name="visitantes" ColumnName="visitantes" />
+          <ScalarProperty Name="total" ColumnName="total" />
+          <ScalarProperty Name="peor_consecuencia" ColumnName="peor_consecuencia" />
+          <ScalarProperty Name="existencia_requisito_legal" ColumnName="existencia_requisito_legal" />
+          <ScalarProperty Name="eliminación" ColumnName="eliminación" />
+          <ScalarProperty Name="sustitución" ColumnName="sustitución" />
+          <ScalarProperty Name="controles_ingenieria" ColumnName="controles_ingenieria" />
+          <ScalarProperty Name="controles_administrativos" ColumnName="controles_administrativos" />
+          <ScalarProperty Name="fecha_ejecucion" ColumnName="fecha_ejecucion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="evento">
+      <EntityTypeMapping TypeName="GrupoLiModel.evento">
+        <MappingFragment StoreEntitySet="evento">
+          <ScalarProperty Name="id_evento" ColumnName="id_evento" />
+          <ScalarProperty Name="fecha_hora" ColumnName="fecha_hora" />
+          <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+          <ScalarProperty Name="id_tipo_evento" ColumnName="id_tipo_evento" />
+          <ScalarProperty Name="datos_viejos" ColumnName="datos_viejos" />
+          <ScalarProperty Name="datos_nuevos" ColumnName="datos_nuevos" />
+          <ScalarProperty Name="pagina" ColumnName="pagina" />
+          <ScalarProperty Name="tabla" ColumnName="tabla" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="extintor">
+      <EntityTypeMapping TypeName="GrupoLiModel.extintor">
+        <MappingFragment StoreEntitySet="extintor">
+          <ScalarProperty Name="id_extintor" ColumnName="id_extintor" />
+          <ScalarProperty Name="serial_extintor" ColumnName="serial_extintor" />
+          <ScalarProperty Name="fecha_ultima_recarga" ColumnName="fecha_ultima_recarga" />
+          <ScalarProperty Name="fecha_proxima_recarga" ColumnName="fecha_proxima_recarga" />
+          <ScalarProperty Name="peso" ColumnName="peso" />
+          <ScalarProperty Name="presion" ColumnName="presion" />
+          <ScalarProperty Name="tipo_extintor" ColumnName="tipo_extintor" />
+          <ScalarProperty Name="nombre_empresa" ColumnName="nombre_empresa" />
+          <ScalarProperty Name="id_area" ColumnName="id_area" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="factor_identificacion">
+      <EntityTypeMapping TypeName="GrupoLiModel.factor_identificacion">
+        <MappingFragment StoreEntitySet="factor_identificacion">
+          <ScalarProperty Name="id_fac_ide" ColumnName="id_fac_ide" />
+          <ScalarProperty Name="id_factor" ColumnName="id_factor" />
+          <ScalarProperty Name="id_identificacion" ColumnName="id_identificacion" />
+          <ScalarProperty Name="consecuencias" ColumnName="consecuencias" />
+          <ScalarProperty Name="tiempo_exposicion" ColumnName="tiempo_exposicion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="factor_riesgo">
+      <EntityTypeMapping TypeName="GrupoLiModel.factor_riesgo">
+        <MappingFragment StoreEntitySet="factor_riesgo">
+          <ScalarProperty Name="id_factor_riesgo" ColumnName="id_factor_riesgo" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="id_tipo_riesgo" ColumnName="id_tipo_riesgo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="frecuencia_control">
+      <EntityTypeMapping TypeName="GrupoLiModel.frecuencia_control">
+        <MappingFragment StoreEntitySet="frecuencia_control">
+          <ScalarProperty Name="id_frec_con" ColumnName="id_frec_con" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="num_Dias" ColumnName="num_Dias" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="gestion_laboral">
+      <EntityTypeMapping TypeName="GrupoLiModel.gestion_laboral">
+        <MappingFragment StoreEntitySet="gestion_laboral">
+          <ScalarProperty Name="id_ges_lab" ColumnName="id_ges_lab" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="soporte" ColumnName="soporte" />
+          <ScalarProperty Name="tipo_gestion" ColumnName="tipo_gestion" />
+          <ScalarProperty Name="cant_horas" ColumnName="cant_horas" />
+          <ScalarProperty Name="razon_inasistencia" ColumnName="razon_inasistencia" />
+          <ScalarProperty Name="objetivos" ColumnName="objetivos" />
+          <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="grupoCiiu">
+      <EntityTypeMapping TypeName="GrupoLiModel.grupoCiiu">
+        <MappingFragment StoreEntitySet="grupoCiiu">
+          <ScalarProperty Name="id_grupo" ColumnName="id_grupo" />
+          <ScalarProperty Name="id_division" ColumnName="id_division" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="historia_clinica_ocupacional">
+      <EntityTypeMapping TypeName="GrupoLiModel.historia_clinica_ocupacional">
+        <MappingFragment StoreEntitySet="historia_clinica_ocupacional">
+          <ScalarProperty Name="id_his_cli_ocu" ColumnName="id_his_cli_ocu" />
+          <ScalarProperty Name="id_trabajador" ColumnName="id_trabajador" />
+          <ScalarProperty Name="id_tipo_exa" ColumnName="id_tipo_exa" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="doc_esc_paciente" ColumnName="doc_esc_paciente" />
+          <ScalarProperty Name="doc_esc_medico" ColumnName="doc_esc_medico" />
+          <ScalarProperty Name="diagnostico" ColumnName="diagnostico" />
+          <ScalarProperty Name="recomendaciones" ColumnName="recomendaciones" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="horario">
+      <EntityTypeMapping TypeName="GrupoLiModel.horario">
+        <MappingFragment StoreEntitySet="horario">
+          <ScalarProperty Name="id_horario" ColumnName="id_horario" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="fecha_inicio" ColumnName="fecha_inicio" />
+          <ScalarProperty Name="fecha_fin" ColumnName="fecha_fin" />
+          <ScalarProperty Name="id_empresa" ColumnName="id_empresa" />
+          <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="identificacion_peligro">
+      <EntityTypeMapping TypeName="GrupoLiModel.identificacion_peligro">
+        <MappingFragment StoreEntitySet="identificacion_peligro">
+          <ScalarProperty Name="id_identificacion_peligro" ColumnName="id_identificacion_peligro" />
+          <ScalarProperty Name="medidas_control_existentes" ColumnName="medidas_control_existentes" />
+          <ScalarProperty Name="observaciones" ColumnName="observaciones" />
+          <ScalarProperty Name="fecha_identificacion" ColumnName="fecha_identificacion" />
+          <ScalarProperty Name="matriz_riesgo" ColumnName="matriz_riesgo" />
+          <ScalarProperty Name="estatus" ColumnName="estatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="identificacion_puesto">
+      <EntityTypeMapping TypeName="GrupoLiModel.identificacion_puesto">
+        <MappingFragment StoreEntitySet="identificacion_puesto">
+          <ScalarProperty Name="id_ide_puesto" ColumnName="id_ide_puesto" />
+          <ScalarProperty Name="id_identificacion" ColumnName="id_identificacion" />
+          <ScalarProperty Name="id_puesto" ColumnName="id_puesto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="investigacion_ac_in">
+      <EntityTypeMapping TypeName="GrupoLiModel.investigacion_ac_in">
+        <MappingFragment StoreEntitySet="investigacion_ac_in">
+          <ScalarProperty Name="id_inv_ac_in" ColumnName="id_inv_ac_in" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="fecha_evento" ColumnName="fecha_evento" />
+          <ScalarProperty Name="hora_evento" ColumnName="hora_evento" />
+          <ScalarProperty Name="dia_semana" ColumnName="dia_semana" />
+          <ScalarProperty Name="antiguedad" ColumnName="antiguedad" />
+          <ScalarProperty Name="actividad_realizaba" ColumnName="actividad_realizaba" />
+          <ScalarProperty Name="naturaleza_lesion" ColumnName="naturaleza_lesion" />
+          <ScalarProperty Name="gravedad_lesion" ColumnName="gravedad_lesion" />
+          <ScalarProperty Name="descripcion_lesion" ColumnName="descripcion_lesion" />
+          <ScalarProperty Name="reposo" ColumnName="reposo" />
+          <ScalarProperty Name="dias_reposo" ColumnName="dias_reposo" />
+          <ScalarProperty Name="fecha_reintegro" ColumnName="fecha_reintegro" />
+          <ScalarProperty Name="adiestramiento" ColumnName="adiestramiento" />
+          <ScalarProperty Name="costo_transporte" ColumnName="costo_transporte" />
+          <ScalarProperty Name="costo_atencion" ColumnName="costo_atencion" />
+          <ScalarProperty Name="costo_tratamiento" ColumnName="costo_tratamiento" />
+          <ScalarProperty Name="costo_indemizacion" ColumnName="costo_indemizacion" />
+          <ScalarProperty Name="costo_reemplazo" ColumnName="costo_reemplazo" />
+          <ScalarProperty Name="costo_reposo" ColumnName="costo_reposo" />
+          <ScalarProperty Name="costo_materiales" ColumnName="costo_materiales" />
+          <ScalarProperty Name="costo_produccion" ColumnName="costo_produccion" />
+          <ScalarProperty Name="porque1" ColumnName="porque1" />
+          <ScalarProperty Name="respuesta1" ColumnName="respuesta1" />
+          <ScalarProperty Name="porque2" ColumnName="porque2" />
+          <ScalarProperty Name="respuesta2" ColumnName="respuesta2" />
+          <ScalarProperty Name="porque3" ColumnName="porque3" />
+          <ScalarProperty Name="respuesta3" ColumnName="respuesta3" />
+          <ScalarProperty Name="porque4" ColumnName="porque4" />
+          <ScalarProperty Name="respuesta4" ColumnName="respuesta4" />
+          <ScalarProperty Name="porque5" ColumnName="porque5" />
+          <ScalarProperty Name="respuesta5" ColumnName="respuesta5" />
+          <ScalarProperty Name="que" ColumnName="que" />
+          <ScalarProperty Name="respuesta_que" ColumnName="respuesta_que" />
+          <ScalarProperty Name="porque" ColumnName="porque" />
+          <ScalarProperty Name="respuesta_porque" ColumnName="respuesta_porque" />
+          <ScalarProperty Name="quien" ColumnName="quien" />
+          <ScalarProperty Name="respuesta_quien" ColumnName="respuesta_quien" />
+          <ScalarProperty Name="donde" ColumnName="donde" />
+          <ScalarProperty Name="respuesta_donde" ColumnName="respuesta_donde" />
+          <ScalarProperty Name="cuando" ColumnName="cuando" />
+          <ScalarProperty Name="respuesta_cuando" ColumnName="respuesta_cuando" />
+          <ScalarProperty Name="como" ColumnName="como" />
+          <ScalarProperty Name="respuesta_como" ColumnName="respuesta_como" />
+          <ScalarProperty Name="cuanto" ColumnName="cuanto" />
+          <ScalarProperty Name="respuesta_cuanto" ColumnName="respuesta_cuanto" />
+          <ScalarProperty Name="tipo_accidente" ColumnName="tipo_accidente" />
+          <ScalarProperty Name="tipo_lesion" ColumnName="tipo_lesion" />
+          <ScalarProperty Name="agente_lesion" ColumnName="agente_lesion" />
+          <ScalarProperty Name="parte_cuerpo" ColumnName="parte_cuerpo" />
+          <ScalarProperty Name="nota" ColumnName="nota" />
+          <ScalarProperty Name="id_at_it_el_pa" ColumnName="id_at_it_el_pa" />
+          <ScalarProperty Name="medida1" ColumnName="medida1" />
+          <ScalarProperty Name="responsable1" ColumnName="responsable1" />
+          <ScalarProperty Name="fecha_medida1" ColumnName="fecha_medida1" />
+          <ScalarProperty Name="medida2" ColumnName="medida2" />
+          <ScalarProperty Name="responsable2" ColumnName="responsable2" />
+          <ScalarProperty Name="fecha_medida2" ColumnName="fecha_medida2" />
+          <ScalarProperty Name="medida3" ColumnName="medida3" />
+          <ScalarProperty Name="responsable3" ColumnName="responsable3" />
+          <ScalarProperty Name="fecha_medida3" ColumnName="fecha_medida3" />
+          <ScalarProperty Name="supervisor" ColumnName="supervisor" />
+          <ScalarProperty Name="tiempo_cargo" ColumnName="tiempo_cargo" />
+          <ScalarProperty Name="actividad" ColumnName="actividad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ips">
+      <EntityTypeMapping TypeName="GrupoLiModel.ips">
+        <MappingFragment StoreEntitySet="ips">
+          <ScalarProperty Name="id_ips" ColumnName="id_ips" />
+          <ScalarProperty Name="beneficiario" ColumnName="beneficiario" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="nit" ColumnName="nit" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lista_actividad">
+      <EntityTypeMapping TypeName="GrupoLiModel.lista_actividad">
+        <MappingFragment StoreEntitySet="lista_actividad">
+          <ScalarProperty Name="id_lista" ColumnName="id_lista" />
+          <ScalarProperty Name="id_sucursal" ColumnName="id_sucursal" />
+          <ScalarProperty Name="actividad" ColumnName="actividad" />
+          <ScalarProperty Name="estatus" ColumnName="estatus" />
+          <ScalarProperty Name="anho" ColumnName="anho" />
+          <ScalarProperty Name="fase" ColumnName="fase" />
+          <ScalarProperty Name="link" ColumnName="link" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="matriz_responsabilidad">
+      <EntityTypeMapping TypeName="GrupoLiModel.matriz_responsabilidad">
+        <MappingFragment StoreEntitySet="matriz_responsabilidad">
+          <ScalarProperty Name="id_matriz_responsabilidad" ColumnName="id_matriz_responsabilidad" />
+          <ScalarProperty Name="id_sucursal" ColumnName="id_sucursal" />
+          <ScalarProperty Name="puesto1" ColumnName="puesto1" />
+          <ScalarProperty Name="puesto2" ColumnName="puesto2" />
+          <ScalarProperty Name="puesto3" ColumnName="puesto3" />
+          <ScalarProperty Name="puesto4" ColumnName="puesto4" />
+          <ScalarProperty Name="puesto5" ColumnName="puesto5" />
+          <ScalarProperty Name="puesto6" ColumnName="puesto6" />
+          <ScalarProperty Name="puesto7" ColumnName="puesto7" />
+          <ScalarProperty Name="pusto8" ColumnName="pusto8" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="medida">
+      <EntityTypeMapping TypeName="GrupoLiModel.medida">
+        <MappingFragment StoreEntitySet="medida">
+          <ScalarProperty Name="id_medidas" ColumnName="id_medidas" />
+          <ScalarProperty Name="id_normas" ColumnName="id_normas" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="medida_sucursal">
+      <EntityTypeMapping TypeName="GrupoLiModel.medida_sucursal">
+        <MappingFragment StoreEntitySet="medida_sucursal">
+          <ScalarProperty Name="id_medidas_sucursal" ColumnName="id_medidas_sucursal" />
+          <ScalarProperty Name="id_normas_sucursal" ColumnName="id_normas_sucursal" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="estatus_medida" ColumnName="estatus_medida" />
+          <ScalarProperty Name="aplica" ColumnName="aplica" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="municipio">
+      <EntityTypeMapping TypeName="GrupoLiModel.municipio">
+        <MappingFragment StoreEntitySet="municipio">
+          <ScalarProperty Name="id_municipio" ColumnName="id_municipio" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="id_departamento" ColumnName="id_departamento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="norma">
+      <EntityTypeMapping TypeName="GrupoLiModel.norma">
+        <MappingFragment StoreEntitySet="norma">
+          <ScalarProperty Name="id_normas" ColumnName="id_normas" />
+          <ScalarProperty Name="tipo_matriz" ColumnName="tipo_matriz" />
+          <ScalarProperty Name="tema_especifico" ColumnName="tema_especifico" />
+          <ScalarProperty Name="documento" ColumnName="documento" />
+          <ScalarProperty Name="anho" ColumnName="anho" />
+          <ScalarProperty Name="articulo" ColumnName="articulo" />
+          <ScalarProperty Name="literal" ColumnName="literal" />
+          <ScalarProperty Name="paragrafo" ColumnName="paragrafo" />
+          <ScalarProperty Name="numeral" ColumnName="numeral" />
+          <ScalarProperty Name="concordante" ColumnName="concordante" />
+          <ScalarProperty Name="obligaciones" ColumnName="obligaciones" />
+          <ScalarProperty Name="sanciones" ColumnName="sanciones" />
+          <ScalarProperty Name="porc_cum" ColumnName="porc_cum" />
+          <ScalarProperty Name="pdf" ColumnName="pdf" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="norma_claseciiu">
+      <EntityTypeMapping TypeName="GrupoLiModel.norma_claseciiu">
+        <MappingFragment StoreEntitySet="norma_claseciiu">
+          <ScalarProperty Name="id_normas_clase" ColumnName="id_normas_clase" />
+          <ScalarProperty Name="id_normas" ColumnName="id_normas" />
+          <ScalarProperty Name="id_clase_ciiu" ColumnName="id_clase_ciiu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="norma_sucursal">
+      <EntityTypeMapping TypeName="GrupoLiModel.norma_sucursal">
+        <MappingFragment StoreEntitySet="norma_sucursal">
+          <ScalarProperty Name="id_normas_sucursal" ColumnName="id_normas_sucursal" />
+          <ScalarProperty Name="id_sucursal" ColumnName="id_sucursal" />
+          <ScalarProperty Name="id_normas" ColumnName="id_normas" />
+          <ScalarProperty Name="estatus_norma" ColumnName="estatus_norma" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="obligacion">
+      <EntityTypeMapping TypeName="GrupoLiModel.obligacion">
+        <MappingFragment StoreEntitySet="obligacion">
+          <ScalarProperty Name="id_obligacion" ColumnName="id_obligacion" />
+          <ScalarProperty Name="id_medida_sucursal" ColumnName="id_medida_sucursal" />
+          <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+          <ScalarProperty Name="fecha_entrega" ColumnName="fecha_entrega" />
+          <ScalarProperty Name="id_responsable" ColumnName="id_responsable" />
+          <ScalarProperty Name="id_categorias" ColumnName="id_categorias" />
+          <ScalarProperty Name="prioridad" ColumnName="prioridad" />
+          <ScalarProperty Name="id_frecuencia_con" ColumnName="id_frecuencia_con" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="acciones" ColumnName="acciones" />
+          <ScalarProperty Name="estatus_obl" ColumnName="estatus_obl" />
+          <ScalarProperty Name="id_identificacion_peligro" ColumnName="id_identificacion_peligro" />
+          <ScalarProperty Name="id_actividad" ColumnName="id_actividad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="perfil_cargo">
+      <EntityTypeMapping TypeName="GrupoLiModel.perfil_cargo">
+        <MappingFragment StoreEntitySet="perfil_cargo">
+          <ScalarProperty Name="id_perfil_cargo" ColumnName="id_perfil_cargo" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="id_cno" ColumnName="id_cno" />
+          <ScalarProperty Name="id_empresa" ColumnName="id_empresa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="plan">
+      <EntityTypeMapping TypeName="GrupoLiModel.plan">
+        <MappingFragment StoreEntitySet="plan">
+          <ScalarProperty Name="id_plan" ColumnName="id_plan" />
+          <ScalarProperty Name="id_sucursal" ColumnName="id_sucursal" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="plan_trabajo">
+      <EntityTypeMapping TypeName="GrupoLiModel.plan_trabajo">
+        <MappingFragment StoreEntitySet="plan_trabajo">
+          <ScalarProperty Name="id_plan_trabajo" ColumnName="id_plan_trabajo" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="objetivos" ColumnName="objetivos" />
+          <ScalarProperty Name="anho" ColumnName="anho" />
+          <ScalarProperty Name="id_responsable" ColumnName="id_responsable" />
+          <ScalarProperty Name="semana_ini" ColumnName="semana_ini" />
+          <ScalarProperty Name="semana_fin" ColumnName="semana_fin" />
+          <ScalarProperty Name="recursos_aprobados" ColumnName="recursos_aprobados" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="politica_sst">
+      <EntityTypeMapping TypeName="GrupoLiModel.politica_sst">
+        <MappingFragment StoreEntitySet="politica_sst">
+          <ScalarProperty Name="id_politica" ColumnName="id_politica" />
+          <ScalarProperty Name="id_empresa" ColumnName="id_empresa" />
+          <ScalarProperty Name="anho" ColumnName="anho" />
+          <ScalarProperty Name="ruta" ColumnName="ruta" />
+          <ScalarProperty Name="nombre_archivo" ColumnName="nombre_archivo" />
+          <ScalarProperty Name="compromiso" ColumnName="compromiso" />
+          <ScalarProperty Name="objetivos" ColumnName="objetivos" />
+          <ScalarProperty Name="alcance" ColumnName="alcance" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pregunta">
+      <EntityTypeMapping TypeName="GrupoLiModel.Pregunta">
+        <MappingFragment StoreEntitySet="Pregunta">
+          <ScalarProperty Name="id_pregunta" ColumnName="id_pregunta" />
+          <ScalarProperty Name="cuerpo_pregunta" ColumnName="cuerpo_pregunta" />
+          <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+          <ScalarProperty Name="titulo" ColumnName="titulo" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="estatus" ColumnName="estatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="procedimiento_comunicacion">
+      <EntityTypeMapping TypeName="GrupoLiModel.procedimiento_comunicacion">
+        <MappingFragment StoreEntitySet="procedimiento_comunicacion">
+          <ScalarProperty Name="id_procedimiento" ColumnName="id_procedimiento" />
+          <ScalarProperty Name="id_brigada" ColumnName="id_brigada" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="cargo" ColumnName="cargo" />
+          <ScalarProperty Name="num_telefono" ColumnName="num_telefono" />
+          <ScalarProperty Name="llamar" ColumnName="llamar" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="puesto_trabajo">
+      <EntityTypeMapping TypeName="GrupoLiModel.puesto_trabajo">
+        <MappingFragment StoreEntitySet="puesto_trabajo">
+          <ScalarProperty Name="id_puesto_trabajo" ColumnName="id_puesto_trabajo" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="id_area" ColumnName="id_area" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="recurso_humano" ColumnName="recurso_humano" />
+          <ScalarProperty Name="objeto_trabajo" ColumnName="objeto_trabajo" />
+          <ScalarProperty Name="insumos" ColumnName="insumos" />
+          <ScalarProperty Name="maquinas" ColumnName="maquinas" />
+          <ScalarProperty Name="herramientas" ColumnName="herramientas" />
+          <ScalarProperty Name="emisiones" ColumnName="emisiones" />
+          <ScalarProperty Name="productos" ColumnName="productos" />
+          <ScalarProperty Name="desechos" ColumnName="desechos" />
+          <ScalarProperty Name="foto" ColumnName="foto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="puesto_trabajo_epp">
+      <EntityTypeMapping TypeName="GrupoLiModel.puesto_trabajo_epp">
+        <MappingFragment StoreEntitySet="puesto_trabajo_epp">
+          <ScalarProperty Name="id_puesto_trabajo_epp" ColumnName="id_puesto_trabajo_epp" />
+          <ScalarProperty Name="id_puesto_trabajo" ColumnName="id_puesto_trabajo" />
+          <ScalarProperty Name="id_epp" ColumnName="id_epp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Region">
+      <EntityTypeMapping TypeName="GrupoLiModel.Region">
+        <MappingFragment StoreEntitySet="Region">
+          <ScalarProperty Name="id_region" ColumnName="id_region" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Respuesta">
+      <EntityTypeMapping TypeName="GrupoLiModel.Respuesta">
+        <MappingFragment StoreEntitySet="Respuesta">
+          <ScalarProperty Name="id_respuesta" ColumnName="id_respuesta" />
+          <ScalarProperty Name="usuario" ColumnName="usuario" />
+          <ScalarProperty Name="cuerpo_respuesta" ColumnName="cuerpo_respuesta" />
+          <ScalarProperty Name="id_pregunta" ColumnName="id_pregunta" />
+          <ScalarProperty Name="calificacion" ColumnName="calificacion" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="riesgos_item">
+      <EntityTypeMapping TypeName="GrupoLiModel.riesgos_item">
+        <MappingFragment StoreEntitySet="riesgos_item">
+          <ScalarProperty Name="id_riesgos_item" ColumnName="id_riesgos_item" />
+          <ScalarProperty Name="id_item" ColumnName="id_item" />
+          <ScalarProperty Name="id_enfermedad_laboral" ColumnName="id_enfermedad_laboral" />
+          <ScalarProperty Name="id_factor_riesgo" ColumnName="id_factor_riesgo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="rol">
+      <EntityTypeMapping TypeName="GrupoLiModel.rol">
+        <MappingFragment StoreEntitySet="rol">
+          <ScalarProperty Name="id_rol" ColumnName="id_rol" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="seccionCiiu">
+      <EntityTypeMapping TypeName="GrupoLiModel.seccionCiiu">
+        <MappingFragment StoreEntitySet="seccionCiiu">
+          <ScalarProperty Name="id_seccion" ColumnName="id_seccion" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sistema">
+      <EntityTypeMapping TypeName="GrupoLiModel.sistema">
+        <MappingFragment StoreEntitySet="sistema">
+          <ScalarProperty Name="id_sistemas" ColumnName="id_sistemas" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="soporte">
+      <EntityTypeMapping TypeName="GrupoLiModel.soporte">
+        <MappingFragment StoreEntitySet="soporte">
+          <ScalarProperty Name="id_soporte" ColumnName="id_soporte" />
+          <ScalarProperty Name="url" ColumnName="url" />
+          <ScalarProperty Name="id_tabla" ColumnName="id_tabla" />
+          <ScalarProperty Name="tabla" ColumnName="tabla" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sucursal">
+      <EntityTypeMapping TypeName="GrupoLiModel.sucursal">
+        <MappingFragment StoreEntitySet="sucursal">
+          <ScalarProperty Name="id_sucursal" ColumnName="id_sucursal" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="id_municpio" ColumnName="id_municpio" />
+          <ScalarProperty Name="id_empresa" ColumnName="id_empresa" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="sede_principal" ColumnName="sede_principal" />
+          <ScalarProperty Name="representante" ColumnName="representante" />
+          <ScalarProperty Name="movil" ColumnName="movil" />
+          <ScalarProperty Name="fijo" ColumnName="fijo" />
+          <ScalarProperty Name="actividad_ppal" ColumnName="actividad_ppal" />
+          <ScalarProperty Name="actividad_sec" ColumnName="actividad_sec" />
+          <ScalarProperty Name="actividad_otra" ColumnName="actividad_otra" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="GrupoLiModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tipo_documento">
+      <EntityTypeMapping TypeName="GrupoLiModel.tipo_documento">
+        <MappingFragment StoreEntitySet="tipo_documento">
+          <ScalarProperty Name="id_tipo_documento" ColumnName="id_tipo_documento" />
+          <ScalarProperty Name="id_sucursal" ColumnName="id_sucursal" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="dirigida" ColumnName="dirigida" />
+          <ScalarProperty Name="modalidad" ColumnName="modalidad" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="responsable" ColumnName="responsable" />
+          <ScalarProperty Name="aprobado" ColumnName="aprobado" />
+          <ScalarProperty Name="archivado" ColumnName="archivado" />
+          <ScalarProperty Name="estatus" ColumnName="estatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tipo_epp">
+      <EntityTypeMapping TypeName="GrupoLiModel.tipo_epp">
+        <MappingFragment StoreEntitySet="tipo_epp">
+          <ScalarProperty Name="id_tipo_epp" ColumnName="id_tipo_epp" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="nombre_senal" ColumnName="nombre_senal" />
+          <ScalarProperty Name="url_senal" ColumnName="url_senal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tipo_evento">
+      <EntityTypeMapping TypeName="GrupoLiModel.tipo_evento">
+        <MappingFragment StoreEntitySet="tipo_evento">
+          <ScalarProperty Name="id_tipo_evento" ColumnName="id_tipo_evento" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tipo_examen">
+      <EntityTypeMapping TypeName="GrupoLiModel.tipo_examen">
+        <MappingFragment StoreEntitySet="tipo_examen">
+          <ScalarProperty Name="id_tipo_exa" ColumnName="id_tipo_exa" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tipo_riesgo">
+      <EntityTypeMapping TypeName="GrupoLiModel.tipo_riesgo">
+        <MappingFragment StoreEntitySet="tipo_riesgo">
+          <ScalarProperty Name="id_tipo_riesgo" ColumnName="id_tipo_riesgo" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="trabajador">
+      <EntityTypeMapping TypeName="GrupoLiModel.trabajador">
+        <MappingFragment StoreEntitySet="trabajador">
+          <ScalarProperty Name="id_trabajador" ColumnName="id_trabajador" />
+          <ScalarProperty Name="cedula" ColumnName="cedula" />
+          <ScalarProperty Name="primer_nombre" ColumnName="primer_nombre" />
+          <ScalarProperty Name="segundo_nombre" ColumnName="segundo_nombre" />
+          <ScalarProperty Name="primer_apellido" ColumnName="primer_apellido" />
+          <ScalarProperty Name="segundo_apellido" ColumnName="segundo_apellido" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="fecha_nacimiento" ColumnName="fecha_nacimiento" />
+          <ScalarProperty Name="edo_civil" ColumnName="edo_civil" />
+          <ScalarProperty Name="sexo" ColumnName="sexo" />
+          <ScalarProperty Name="foto" ColumnName="foto" />
+          <ScalarProperty Name="telefono_casa" ColumnName="telefono_casa" />
+          <ScalarProperty Name="telefono_movil" ColumnName="telefono_movil" />
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="fecha_registro" ColumnName="fecha_registro" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="id_municipio" ColumnName="id_municipio" />
+          <ScalarProperty Name="id_puesto_trabajo" ColumnName="id_puesto_trabajo" />
+          <ScalarProperty Name="es_discapacitado" ColumnName="es_discapacitado" />
+          <ScalarProperty Name="desc_discapacidad" ColumnName="desc_discapacidad" />
+          <ScalarProperty Name="id_horario" ColumnName="id_horario" />
+          <ScalarProperty Name="id_estatus_actual" ColumnName="id_estatus_actual" />
+          <ScalarProperty Name="id_ccf" ColumnName="id_ccf" />
+          <ScalarProperty Name="fecha_ingreso" ColumnName="fecha_ingreso" />
+          <ScalarProperty Name="tipo_vinculacion" ColumnName="tipo_vinculacion" />
+          <ScalarProperty Name="codigo_independiente" ColumnName="codigo_independiente" />
+          <ScalarProperty Name="tipo_horario" ColumnName="tipo_horario" />
+          <ScalarProperty Name="id_perfil_cargo" ColumnName="id_perfil_cargo" />
+          <ScalarProperty Name="salario" ColumnName="salario" />
+          <ScalarProperty Name="mano_dominante" ColumnName="mano_dominante" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="trabajador_estatus">
+      <EntityTypeMapping TypeName="GrupoLiModel.trabajador_estatus">
+        <MappingFragment StoreEntitySet="trabajador_estatus">
+          <ScalarProperty Name="id_trabajador_estatus" ColumnName="id_trabajador_estatus" />
+          <ScalarProperty Name="id_estatus" ColumnName="id_estatus" />
+          <ScalarProperty Name="id_trabajador" ColumnName="id_trabajador" />
+          <ScalarProperty Name="fecha_registro" ColumnName="fecha_registro" />
+          <ScalarProperty Name="motivo" ColumnName="motivo" />
+          <ScalarProperty Name="id_enfermedad" ColumnName="id_enfermedad" />
+          <ScalarProperty Name="id_sistema" ColumnName="id_sistema" />
+          <ScalarProperty Name="dias_reposo" ColumnName="dias_reposo" />
+          <ScalarProperty Name="fecha_constancia" ColumnName="fecha_constancia" />
+          <ScalarProperty Name="url_constancia" ColumnName="url_constancia" />
+          <ScalarProperty Name="tpo_enfermedad" ColumnName="tpo_enfermedad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="trabajador_gestion">
+      <EntityTypeMapping TypeName="GrupoLiModel.trabajador_gestion">
+        <MappingFragment StoreEntitySet="trabajador_gestion">
+          <ScalarProperty Name="id_trabajador" ColumnName="id_trabajador" />
+          <ScalarProperty Name="id_ges_lab" ColumnName="id_ges_lab" />
+          <ScalarProperty Name="asistencia" ColumnName="asistencia" />
+          <ScalarProperty Name="id_trabajador_gestion" ColumnName="id_trabajador_gestion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="usuario">
+      <EntityTypeMapping TypeName="GrupoLiModel.usuario">
+        <MappingFragment StoreEntitySet="usuario">
+          <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+          <ScalarProperty Name="login" ColumnName="login" />
+          <ScalarProperty Name="clave" ColumnName="clave" />
+          <ScalarProperty Name="id_trabajador" ColumnName="id_trabajador" />
+          <ScalarProperty Name="id_rol" ColumnName="id_rol" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

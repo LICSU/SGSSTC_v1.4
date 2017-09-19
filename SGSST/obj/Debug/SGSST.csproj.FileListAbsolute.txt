@@ -1,0 +1,15 @@
+C:\Users\Jezuz\Desktop\Repository\SGSSTC_MVC\SGSSTC\SGSST\bin\ApplicationInsights.config
+C:\Users\Jezuz\Desktop\Repository\SGSSTC_MVC\SGSSTC\SGSST\bin\SGSST.dll.config
+C:\Users\Jezuz\Desktop\Repository\SGSSTC_MVC\SGSSTC\SGSST\bin\SGSST.dll
+C:\Users\Jezuz\Desktop\Repository\SGSSTC_MVC\SGSSTC\SGSST\bin\SGSST.pdb
+C:\Users\Jezuz\Desktop\Repository\SGSSTC_MVC\SGSSTC\SGSST\bin\Capa_Datos.dll
+C:\Users\Jezuz\Desktop\Repository\SGSSTC_MVC\SGSSTC\SGSST\bin\Microsoft.AspNet.TelemetryCorrelation.dll
+C:\Users\Jezuz\Desktop\Repository\SGSSTC_MVC\SGSSTC\SGSST\bin\System.Diagnostics.DiagnosticSource.dll
+C:\Users\Jezuz\Desktop\Repository\SGSSTC_MVC\SGSSTC\SGSST\bin\Remotion.Data.Linq.dll
+C:\Users\Jezuz\Desktop\Repository\SGSSTC_MVC\SGSSTC\SGSST\bin\Capa_Datos.pdb
+C:\Users\Jezuz\Desktop\Repository\SGSSTC_MVC\SGSSTC\SGSST\bin\Capa_Datos.dll.config
+C:\Users\Jezuz\Desktop\Repository\SGSSTC_MVC\SGSSTC\SGSST\bin\Microsoft.AspNet.TelemetryCorrelation.xml
+C:\Users\Jezuz\Desktop\Repository\SGSSTC_MVC\SGSSTC\SGSST\bin\System.Diagnostics.DiagnosticSource.xml
+C:\Users\Jezuz\Desktop\Repository\SGSSTC_MVC\SGSSTC\SGSST\obj\Debug\SGSST.csprojResolveAssemblyReference.cache
+C:\Users\Jezuz\Desktop\Repository\SGSSTC_MVC\SGSSTC\SGSST\obj\Debug\SGSST.dll
+C:\Users\Jezuz\Desktop\Repository\SGSSTC_MVC\SGSSTC\SGSST\obj\Debug\SGSST.pdb
