@@ -40,6 +40,42 @@ namespace SGSSTC.source.sistema.MenuPrincipal {
         protected global::System.Web.UI.WebControls.Label lbAlerta;
         
         /// <summary>
+        /// Control ddlSeccion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlSeccion;
+        
+        /// <summary>
+        /// Control ddlDivision.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlDivision;
+        
+        /// <summary>
+        /// Control ddlClase.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlClase;
+        
+        /// <summary>
+        /// Control ddlRol.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlRol;
+        
+        /// <summary>
         /// Control txtFechaInicio.
         /// </summary>
         /// <remarks>
@@ -56,6 +92,15 @@ namespace SGSSTC.source.sistema.MenuPrincipal {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtFechaFin;
+        
+        /// <summary>
+        /// Control pagination.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::SGSSTC.source.WebUserControl.pagination1 pagination;
         
         /// <summary>
         /// Control GridView1.

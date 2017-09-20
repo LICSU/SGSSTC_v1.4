@@ -3,25 +3,36 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server"></asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+    <script type="text/javascript">
+        function EnviarDatos() {
+            PageMethods.SaveData(document.getElementById("<%=TextBox1.ClientID%>").value,
+                document.getElementById("<%=TextBox2.ClientID%>").value,
+                document.getElementById("<%=TextBox3.ClientID%>").value,
+                document.getElementById("<%=TextBox4.ClientID%>").value,
+                document.getElementById("<%=TextBox5.ClientID%>").value,
+                document.getElementById("<%=TextBox6.ClientID%>").value,
+                OnSuccess);
 
-    <script>
-        function DeleteKartItems() {
-            $.ajax(
-                {
-                    type: "POST",
-                    url: 'Enviando.aspx/SaveData',
-                    data: "",
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "json",
-                    success: function (msg) {
-                        alert(msg.d);
-                        window.location = "index_Sucursal.aspx";
-                    },
-                    error: function (e) { }
-                });
         }
-        window.onload = DeleteKartItems;
-    </script>
+            function OnSuccess(response, userContext, methodName) {
+                location.href = "index_Sucursal";
+            }
+            function onError(result) {
+                alert('Something wrong.');
+            }
+        </script>
+
+
+    <div>
+        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+        <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+        <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
+        <asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
+        <asp:TextBox ID="TextBox5" runat="server"></asp:TextBox>
+        <asp:TextBox ID="TextBox6" runat="server"></asp:TextBox>
+
+        <input id="btnGetTime1" type="button" value="EnviarDatos" onclick="EnviarDatos()" />
+    </div>
 
     <div class="page-header">
         <h1 class="text-center">Enviando Información ...</h1>

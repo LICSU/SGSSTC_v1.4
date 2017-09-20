@@ -2,6 +2,7 @@
 <%@ Register Assembly="CKEditor.NET" Namespace="CKEditor.NET" TagPrefix="CKEditor" %>
 <%@ Register Assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" Namespace="System.Web.UI.DataVisualization.Charting" TagPrefix="asp" %>
 
+<%@ Register Src="~/source/WebUserControl/pagination.ascx" TagPrefix="ucpag" TagName="pagination" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server"></asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
@@ -25,19 +26,57 @@
                 </div>
             </asp:PlaceHolder>
 
-			<div class="row">
-				<div class="col-md-4">
-					<h4 class="text-center">Fecha inicio: </h4>
-					<asp:TextBox ID="txtFechaInicio" runat="server" class="col-md-10" CssClass="form-control" TextMode="Date"
-						AutoPostBack="true" OnTextChanged="txtFechaInicio_TextChanged"></asp:TextBox>
-				</div>
+            <div class="row">
+                <div class="col-md-3">
 
-				<div class="col-md-4">
-					<h4 class="text-center">Fecha fin: </h4>
-					<asp:TextBox ID="txtFechaFin" runat="server" class="col-md-10" CssClass="form-control" TextMode="Date"
-						AutoPostBack="true" OnTextChanged="txtFechaFin_TextChanged"></asp:TextBox>
-				</div>
-			</div>
+                    <h4 class="text-center">Sección: </h4>
+                    <asp:DropDownList runat="server" ID="ddlSeccion" data-toggle="tooltip" data-placement="bottom" 
+                        title="Seleccione una Empresa" class="form-control" AutoPostBack="true"
+                        OnSelectedIndexChanged="ddlSeccion_SelectedIndexChanged">
+                    </asp:DropDownList>
+
+                </div>
+
+                <div class="col-md-3">
+                    <h4 class="text-center">División: </h4>
+                    <asp:DropDownList runat="server" ID="ddlDivision" data-toggle="tooltip" data-placement="bottom" 
+                        title="Seleccione una Empresa" class="form-control" AutoPostBack="true"
+                        OnSelectedIndexChanged="ddlDivision_SelectedIndexChanged">
+                    </asp:DropDownList>
+                </div>
+
+                <div class="col-md-3">
+                    <h4 class="text-center">Clase: </h4>
+                    <asp:DropDownList runat="server" ID="ddlClase" data-toggle="tooltip" data-placement="bottom" 
+                        title="Seleccione una Empresa" class="form-control" AutoPostBack="true"
+                        OnSelectedIndexChanged="ddlClase_SelectedIndexChanged">
+                    </asp:DropDownList>
+                </div>
+
+                <div class="col-md-3">
+                    <h4 class="text-center">Rol: </h4>
+                    <asp:DropDownList runat="server" ID="ddlRol" data-toggle="tooltip" data-placement="bottom" 
+                        title="Seleccione una Empresa" class="form-control" AutoPostBack="true"
+                        OnSelectedIndexChanged="ddlRol_SelectedIndexChanged">
+                    </asp:DropDownList>
+                </div>
+            </div>
+            
+            <br />
+
+            <div class="row">
+                <div class="col-md-3">
+                    <h4 class="text-center">Fecha inicio: </h4>
+                    <asp:TextBox ID="txtFechaInicio" runat="server" class="col-md-10" CssClass="form-control" TextMode="Date"
+                        AutoPostBack="true" OnTextChanged="txtFechaInicio_TextChanged"></asp:TextBox>
+                </div>
+
+                <div class="col-md-3">
+                    <h4 class="text-center">Fecha fin: </h4>
+                    <asp:TextBox ID="txtFechaFin" runat="server" class="col-md-10" CssClass="form-control" TextMode="Date"
+                        AutoPostBack="true" OnTextChanged="txtFechaFin_TextChanged"></asp:TextBox>
+                </div>
+            </div>
 
 
 			<div class="row">

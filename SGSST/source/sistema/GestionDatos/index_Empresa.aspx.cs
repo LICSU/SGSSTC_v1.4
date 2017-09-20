@@ -82,7 +82,7 @@ namespace SGSSTC.source.sistema.GestionDatos
                 int RowIndex = Convert.ToInt32((e.CommandArgument).ToString());
                 GridViewRow gvrow = GridView1.Rows[RowIndex];
 
-                hdfEmpresaIDDel.Value = (gvrow.FindControl("id_empresa") as Label).Text;
+                hdfEmpresaIDDel.Value = (gvrow.FindControl("id") as Label).Text;
                 Modal.registrarModal("deleteModal", "DeleteModalScript", this);
             }
             else if (e.CommandName.Equals("Ver"))
@@ -90,7 +90,7 @@ namespace SGSSTC.source.sistema.GestionDatos
                 int RowIndex = Convert.ToInt32((e.CommandArgument).ToString());
                 GridViewRow gvrow = GridView1.Rows[RowIndex];
 
-                hdfEmpresaID.Value = (gvrow.FindControl("id_empresa") as Label).Text;
+                hdfEmpresaID.Value = (gvrow.FindControl("id") as Label).Text;
                 ConsultarEmpresa(Convert.ToInt32(hdfEmpresaID.Value));
                 Modal.registrarModal("viewModal", "ViewModalScript", this);
             }

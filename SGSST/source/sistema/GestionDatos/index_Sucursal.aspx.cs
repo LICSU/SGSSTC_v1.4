@@ -155,36 +155,39 @@ namespace SGSSTC.source.sistema.GestionDatos
 
         protected void GridView1_RowCreated(object sender, GridViewRowEventArgs e)
         {
-            if (ObjUsuario.isAdm_Sucursal())
+            if (ObjUsuario != null)
             {
-                #region codigo
+                if (ObjUsuario.isAdm_Sucursal())
+                {
+                    #region codigo
 
-                if (e.Row.RowType == DataControlRowType.Header)
-                {
-                    e.Row.Cells[5].Visible = false;
+                    if (e.Row.RowType == DataControlRowType.Header)
+                    {
+                        e.Row.Cells[5].Visible = false;
+                    }
+                    if (e.Row.RowType == DataControlRowType.DataRow)
+                    {
+                        e.Row.Cells[1].RowSpan = 3;
+                        e.Row.Cells[5].Visible = false;
+                    }
+                    #endregion
                 }
-                if (e.Row.RowType == DataControlRowType.DataRow)
+                if (ObjUsuario.isAdmEmp_DptoSalud() || ObjUsuario.isAdmEmp_DptoSeg() || ObjUsuario.isAdm_SucSalud() ||
+                    ObjUsuario.isAdm_SucSeg() || ObjUsuario.isResponsable())
                 {
-                    e.Row.Cells[1].RowSpan = 3;
-                    e.Row.Cells[5].Visible = false;
+                    #region codigo
+                    if (e.Row.RowType == DataControlRowType.Header)
+                    {
+                        e.Row.Cells[4].Visible = false;
+                        e.Row.Cells[5].Visible = false;
+                    }
+                    if (e.Row.RowType == DataControlRowType.DataRow)
+                    {
+                        e.Row.Cells[4].Visible = false;
+                        e.Row.Cells[5].Visible = false;
+                    }
+                    #endregion
                 }
-                #endregion
-            }
-            if (ObjUsuario.isAdmEmp_DptoSalud() || ObjUsuario.isAdmEmp_DptoSeg() || ObjUsuario.isAdm_SucSalud() ||
-                ObjUsuario.isAdm_SucSeg() || ObjUsuario.isResponsable())
-            {
-                #region codigo
-                if (e.Row.RowType == DataControlRowType.Header)
-                {
-                    e.Row.Cells[4].Visible = false;
-                    e.Row.Cells[5].Visible = false;
-                }
-                if (e.Row.RowType == DataControlRowType.DataRow)
-                {
-                    e.Row.Cells[4].Visible = false;
-                    e.Row.Cells[5].Visible = false;
-                }
-                #endregion
             }
 
         }

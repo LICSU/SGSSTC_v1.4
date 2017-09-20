@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Web.UI.WebControls;
@@ -1848,7 +1849,7 @@ namespace Capa_Datos
             GridView1.DataSource = query;
             GridView1.DataBind();
         }
-        public static void IdentificacionPeligro(GridView GridView1, int _id_sucursal, string _fecha = "" )
+        public static void IdentificacionPeligro(GridView GridView1, int _id_sucursal, string _fecha = "")
         {
             if (_id_sucursal != 0)
             {
@@ -1863,7 +1864,7 @@ namespace Capa_Datos
                              PT.area.id_sucursal
                          }).FirstOrDefault().id_sucursal
                         ) == _id_sucursal
-                        orderby IPT.fecha_identificacion descending
+                    orderby IPT.fecha_identificacion descending
                     select new
                     {
                         IPT.id_identificacion_peligro,
@@ -1957,7 +1958,7 @@ namespace Capa_Datos
             GridView GridView1,
             int _id_empresa = 0,
             int _id_sucursal = 0,
-            string _nombre ="")
+            string _nombre = "")
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             var query = (
@@ -2039,7 +2040,7 @@ namespace Capa_Datos
 
             GridView1.DataSource = query;
             GridView1.DataBind();
-            
+
         }
         #endregion
 
@@ -2303,7 +2304,7 @@ namespace Capa_Datos
                     I.fecha_subida
                 }).ToList();
 
-            if (_id_sucursal != "") { query = query.Where(x => x.id_sucursal == Convert.ToInt32( _id_sucursal)).ToList(); }
+            if (_id_sucursal != "") { query = query.Where(x => x.id_sucursal == Convert.ToInt32(_id_sucursal)).ToList(); }
             if (_id_empresa != "") { query = query.Where(x => x.id_empresa == Convert.ToInt32(_id_empresa)).ToList(); }
             if (_nombre != "") { query = query.Where(x => x.nombre.ToUpper().Contains(_nombre.ToUpper())).ToList(); }
             if (_id_trabajador != 0) { query = query.Where(x => x.id_trabajador == _id_trabajador).ToList(); }
@@ -2339,27 +2340,28 @@ namespace Capa_Datos
             GridView1.DataBind();
         }
 
-        public static void SusPreguntas(GridView GridView1, int act1, int act2, int act3, string _fecha_ini = "", string _fecha_fin = "")
+        public static void SusPreguntas(GridView GridView1, int Id_empresa, string _fecha_ini = "", string _fecha_fin = "",
+            int _id_rol = 0, int _id_clase = 0, int _id_division = 0,int _id_seccion = 0)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
-            int Div1 = 0, Div2 = 0, Div3 = 0;
+            List<empresa_itemdivision> consulta = new List<empresa_itemdivision>();
+            consulta = Getter.CodigoCiiu_Empresa(Id_empresa);
 
-            var ListaCodCiiu = contexto.claseCiiu.Where(x => x.id_clase_ciiu == act1).SingleOrDefault();
-            Div1 = ListaCodCiiu.grupoCiiu.divisionCiiu.id_division;
+            int act1 = 0, act2 = 0, act3 = 0, cont = 0;
+            foreach (var item in consulta)
+            {
+                cont++;
+                if (cont == 1) { act1 = Convert.ToInt32(item.id_clase_ciiu); }
+                else if (cont == 2) { act2 = Convert.ToInt32(item.id_clase_ciiu); }
+                else if (cont == 3) { act3 = Convert.ToInt32(item.id_clase_ciiu); }
+            }
 
-            ListaCodCiiu = contexto.claseCiiu.Where(x => x.id_clase_ciiu == act2).SingleOrDefault();
-            Div2 = ListaCodCiiu.grupoCiiu.divisionCiiu.id_division;
-
-            ListaCodCiiu = contexto.claseCiiu.Where(x => x.id_clase_ciiu == act3).SingleOrDefault();
-            Div3 = ListaCodCiiu.grupoCiiu.divisionCiiu.id_division;
 
             var query = (
                 from PR in contexto.Pregunta
                 join EC in contexto.empresa_itemdivision
                 on PR.usuario.trabajador.puesto_trabajo.area.sucursal.id_empresa equals EC.id_empresa
-                where EC.claseCiiu.grupoCiiu.divisionCiiu.id_division == Div1 ||
-                        EC.claseCiiu.grupoCiiu.divisionCiiu.id_division == Div2 ||
-                        EC.claseCiiu.grupoCiiu.divisionCiiu.id_division == Div3
+                where EC.id_clase_ciiu == act1 || EC.id_clase_ciiu == act2 || EC.id_clase_ciiu == act3
 
                 select new
                 {
@@ -2367,14 +2369,21 @@ namespace Capa_Datos
                     PR.titulo,
                     PR.cuerpo_pregunta,
                     PR.id_usuario,
+                    PR.usuario.id_rol,
+                    EC.id_clase_ciiu,
+                    EC.claseCiiu.grupoCiiu.id_division,
+                    EC.claseCiiu.grupoCiiu.divisionCiiu.id_seccion,
                     PR.fecha
                 }).ToList();
 
             if (_fecha_ini != "") { query = query.Where(x => x.fecha >= Convert.ToDateTime(_fecha_ini)).ToList(); }
             if (_fecha_fin != "") { query = query.Where(x => x.fecha <= Convert.ToDateTime(_fecha_fin)).ToList(); }
+            if (_id_rol != 0) { query = query.Where(x => x.id_rol == _id_rol).ToList(); }
+            if (_id_clase != 0) { query = query.Where(x => x.id_clase_ciiu == _id_clase).ToList(); }
+            if (_id_division != 0) { query = query.Where(x => x.id_division == _id_division).ToList(); }
+            if (_id_seccion != 0) { query = query.Where(x => x.id_seccion == _id_seccion).ToList(); }
 
             var Distinto = query.Distinct().ToList();
-
 
             GridView1.DataSource = Distinto;
             GridView1.DataBind();

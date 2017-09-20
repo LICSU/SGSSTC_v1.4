@@ -58,6 +58,15 @@ namespace SGSSTC.source.sistema.MenuPrincipal {
         protected global::System.Web.UI.WebControls.TextBox txtFechaFin;
         
         /// <summary>
+        /// Control pagination.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::SGSSTC.source.WebUserControl.pagination1 pagination;
+        
+        /// <summary>
         /// Control GridView1.
         /// </summary>
         /// <remarks>

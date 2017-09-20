@@ -1034,7 +1034,7 @@
 	<div id="wrap">
 		<div id="main" class="container clear-top">
 			<form id="form1" runat="server">
-				<asp:ScriptManager ID="ScriptManager1" runat="server" />
+				<asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true"/>
 				<div class="container">
 
 					<asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">

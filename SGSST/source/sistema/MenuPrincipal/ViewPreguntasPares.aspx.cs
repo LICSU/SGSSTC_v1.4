@@ -28,25 +28,44 @@ namespace SGSSTC.source.sistema.MenuPrincipal
                 txtFechaInicio.Text = fechaActual.ToString("yyyy-MM-dd");
                 txtFechaFin.Text = fechaActual.AddMonths(1).ToString("yyyy-MM-dd");
 
+                ViewState["Rol"] = "0";
+                ViewState["Clase"] = "0";
+                ViewState["Division"] = "0";
+                ViewState["Seccion"] = "0";
+
+                CargarListas();
                 LlenarGridView();
             }
         }
-        private void LlenarGridView()
-        {
-            List<empresa_itemdivision> consulta = new List<empresa_itemdivision>();
-            consulta = Getter.CodigoCiiu_Empresa(ObjUsuario.Id_empresa);
 
-            int act1 = 0, act2 = 0, act3 = 0, cont = 0;
-            foreach (var item in consulta)
+        private void CargarListas()
+        {
+            if (ObjUsuario.isAdm_Empresa() || ObjUsuario.isAdm_Grupoli())
             {
-                cont++;
-                if (cont == 1) { act1 = Convert.ToInt32(item.id_clase_ciiu); }
-                else if (cont == 2) { act2 = Convert.ToInt32(item.id_clase_ciiu); }
-                else if (cont == 3) { act3 = Convert.ToInt32(item.id_clase_ciiu); }
+                Listas.Rol(ddlRol);
+            }
+            else
+            {
+                Listas.Rol(ddlRol, ObjUsuario.Rol);
             }
 
 
-            Tabla.SusPreguntas(GridView1, act1, act2, act3, string.Empty + ViewState["FechaInicio"], string.Empty + ViewState["FechaFin"]);
+            Listas.Codciiu_Usuario(ddlClase, ObjUsuario.Id_empresa);
+            Listas.Division_Usuario(ddlDivision, ObjUsuario.Id_empresa);
+            Listas.Seccion_Usuario(ddlSeccion, ObjUsuario.Id_empresa);
+        }
+
+        private void LlenarGridView()
+        {
+            Tabla.SusPreguntas(GridView1, 
+                ObjUsuario.Id_empresa, 
+                string.Empty + ViewState["FechaInicio"], 
+                string.Empty + ViewState["FechaFin"],
+                Convert.ToInt32(string.Empty + ViewState["Rol"]),
+                Convert.ToInt32(string.Empty + ViewState["Clase"]),
+                Convert.ToInt32(string.Empty + ViewState["Division"]),
+                Convert.ToInt32(string.Empty + ViewState["Seccion"])
+                );
         }
 
         //Agrega una respuesta a una pregunta
@@ -150,6 +169,7 @@ namespace SGSSTC.source.sistema.MenuPrincipal
         }
         #endregion
 
+        #region filtros
         protected void txtFechaInicio_TextChanged(object sender, EventArgs e)
         {
             if (txtFechaInicio.Text != string.Empty)
@@ -162,6 +182,7 @@ namespace SGSSTC.source.sistema.MenuPrincipal
             }
             LlenarGridView();
         }
+
         protected void txtFechaFin_TextChanged(object sender, EventArgs e)
         {
             if (txtFechaFin.Text != string.Empty)
@@ -174,5 +195,59 @@ namespace SGSSTC.source.sistema.MenuPrincipal
             }
             LlenarGridView();
         }
+
+        protected void ddlRol_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlRol.SelectedValue != string.Empty)
+            {
+                ViewState["Rol"] = ddlRol.SelectedValue;
+            }
+            else
+            {
+                ViewState["Rol"] = "0";
+            }
+            LlenarGridView();
+        }
+
+        protected void ddlClase_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlClase.SelectedValue != string.Empty)
+            {
+                ViewState["Clase"] = ddlClase.SelectedValue;
+            }
+            else
+            {
+                ViewState["Clase"] = "0";
+            }
+            LlenarGridView();
+        }
+
+        protected void ddlDivision_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlDivision.SelectedValue != string.Empty)
+            {
+                ViewState["Division"] = ddlDivision.SelectedValue;
+            }
+            else
+            {
+                ViewState["Division"] = "0";
+            }
+            LlenarGridView();
+        }
+
+        protected void ddlSeccion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlSeccion.SelectedValue != string.Empty)
+            {
+                ViewState["Seccion"] = ddlSeccion.SelectedValue;
+            }
+            else
+            {
+                ViewState["Seccion"] = "0";
+            }
+            LlenarGridView();
+        }
+        #endregion
+
     }
 }

@@ -42,7 +42,8 @@
                 <asp:PlaceHolder runat="server" ID="phEmpresa">
                     <div class="col-md-3">
                         <h4 class="text-center">Empresa</h4>
-                        <asp:DropDownList runat="server" ID="ddlEmpresa" data-toggle="tooltip" data-placement="bottom" title="Seleccione una Empresa" class="form-control" AutoPostBack="true"
+                        <asp:DropDownList runat="server" ID="ddlEmpresa" data-toggle="tooltip" data-placement="bottom" 
+                            title="Seleccione una Empresa" class="form-control" AutoPostBack="true"
                             OnSelectedIndexChanged="ddlEmpresa_SelectedIndexChanged">
                         </asp:DropDownList>
                     </div>

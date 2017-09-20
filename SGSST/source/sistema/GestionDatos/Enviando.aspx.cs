@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Web;
+using System.Web.Script.Services;
 using System.Web.Security;
 using System.Web.Services;
 using System.Web.UI;
@@ -10,11 +11,11 @@ namespace SGSSTC.source.sistema.GestionDatos
 {
     public partial class Enviando : Page
     {
-        protected static Model_UsuarioSistema ObjUsuario;
-        protected static Utilidades objUtilidades = new Utilidades();
-        protected static int act1, act2, act3, IdEmpresa;
-        protected static string nombreSucursal, password, nom_usuario;
-        protected static int id_sucursal;
+        public static Model_UsuarioSistema ObjUsuario;
+        public static Utilidades objUtilidades = new Utilidades();
+        public static int act1, act2, act3, IdEmpresa;
+        public static string nombreSucursal, password, nom_usuario;
+        public static int id_sucursal;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -22,19 +23,37 @@ namespace SGSSTC.source.sistema.GestionDatos
 
             if (!IsPostBack)
             {
-                id_sucursal = Convert.ToInt32(objUtilidades.descifrarCadena(Request.QueryString["id"]));
-                nombreSucursal = objUtilidades.descifrarCadena2(Request.QueryString["suc"]);
-                act1 = Convert.ToInt32(objUtilidades.descifrarCadena(Request.QueryString["act1"]));
-                act2 = Convert.ToInt32(objUtilidades.descifrarCadena(Request.QueryString["act2"]));
-                act3 = Convert.ToInt32(objUtilidades.descifrarCadena(Request.QueryString["act3"]));
-                IdEmpresa = Convert.ToInt32(objUtilidades.descifrarCadena(Request.QueryString["emp"]));
+                string id = Request.QueryString["id"];
+                if ( id != null)
+                {
+                    TextBox1.Text = Convert.ToString(objUtilidades.descifrarCadena(Request.QueryString["id"]));
+                    TextBox2.Text = objUtilidades.descifrarCadena2(Request.QueryString["suc"]);
+                    TextBox3.Text = Convert.ToString(objUtilidades.descifrarCadena(Request.QueryString["act1"]));
+                    TextBox4.Text = Convert.ToString(objUtilidades.descifrarCadena(Request.QueryString["act2"]));
+                    TextBox5.Text = Convert.ToString(objUtilidades.descifrarCadena(Request.QueryString["act3"]));
+                    TextBox6.Text = Convert.ToString(objUtilidades.descifrarCadena(Request.QueryString["emp"]));
+                }
+
             }
         }
-
-        [WebMethod]
-        public static string SaveData()
+        
+        [WebMethod()]
+        public static string SaveData(int _id_sucursal,string _nombreSucursal, int _act1, int _act2, int _act3,int _IdEmpresa)
         {
+            id_sucursal = _id_sucursal;
+            nombreSucursal = _nombreSucursal;
+            act1 = _act1;
+            act2 = _act2;
+            act3 = _act3;
+            IdEmpresa = _IdEmpresa;
+
             return add_Area_Default();
+        }
+        [WebMethod]
+        public static string GetCurrentTime(string name)
+        {
+            return "Hello " + name + Environment.NewLine + "The Current Time is: "
+                + DateTime.Now.ToString();
         }
 
         #region tablas default al agregar sucursal
