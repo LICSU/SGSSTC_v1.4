@@ -67,6 +67,7 @@ namespace SGSSTC.source.sistema.Hacer
                 IdEmpresa,
                 IdSucursal,
                 id_trabajador,
+                "Conocimiento Objetivos PoliticaSST",
                 string.Empty + ViewState["sWhere"].ToString()
                 );
             

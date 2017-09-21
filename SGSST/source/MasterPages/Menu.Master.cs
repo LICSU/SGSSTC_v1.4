@@ -38,6 +38,10 @@ namespace SGSSTC.source.MasterPages
                     imgLogo.ImageUrl = "~/source/archivos/foto_perfil/usuario.png";
                 }
             }
+            if (ObjUsuario.isRolDiferente())
+            {
+                menuPrin.Visible = false;
+            }
         }
     }
 }

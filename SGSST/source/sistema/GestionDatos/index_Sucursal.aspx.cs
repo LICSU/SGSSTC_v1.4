@@ -16,7 +16,7 @@ namespace SGSSTC.source.sistema.GestionDatos
         #region metodos index
         protected void Page_Load(object sender, EventArgs e)
         {
-            ObjUsuario = Utilidades.ValidarSesion(HttpContext.Current.User.Identity as FormsIdentity, this);phAlerta.Visible = false;
+            ObjUsuario = Utilidades.ValidarSesion(HttpContext.Current.User.Identity as FormsIdentity, this); phAlerta.Visible = false;
 
             BoolEmpSuc = Getter.Get_Empresa_Sucursal(ObjUsuario);
 
@@ -44,6 +44,8 @@ namespace SGSSTC.source.sistema.GestionDatos
                     LlenarGridView();
                 }
             }
+
+            
         }
 
         private void ConsultarSucursal(int id_sucursal)
@@ -80,6 +82,8 @@ namespace SGSSTC.source.sistema.GestionDatos
             Tabla.Sucursal(GridView1, ObjUsuario.Id_sucursal, IdEmpresa, IdSucursal, string.Empty + ViewState["sWhere"]);
         }
         #endregion
+
+
 
         #region acciones grid
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)

@@ -358,7 +358,7 @@ namespace SGSSTC.source.sistema.Hacer
             if (ObjUsuario.Error)
             {
                 gestion_laboral tabla = new gestion_laboral();
-                ObjUsuario.Error = CRUD.Delete_Fila(tabla, Convert.ToInt32(hdfEditEntregaID.Value), ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+                //ObjUsuario.Error = CRUD.Delete_Fila(tabla, Convert.ToInt32(hdfEditEntregaID.Value), ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
 
                 foreach (ListItem item in chkTrabajadores.Items)
                 {
@@ -375,6 +375,7 @@ namespace SGSSTC.source.sistema.Hacer
             }
 
             Modal.MostrarAlertaEdit(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error, txtBuscar);
+            Modal.CerrarModal("EditEntrega", "EditModalScript", this);
             LlenarGridView();
         }
         #endregion
@@ -432,6 +433,7 @@ namespace SGSSTC.source.sistema.Hacer
                 }
                 #endregion
 
+                Modal.CerrarModal("AddCapacitacion", "AddModalScript", this);
                 Modal.MostrarAlertaAdd(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error,txtBuscar);
                 LlenarGridView();
             }
@@ -489,6 +491,7 @@ namespace SGSSTC.source.sistema.Hacer
             }
 
             Modal.MostrarAlertaEdit(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error, txtBuscar);
+            Modal.CerrarModal("EditCapacitacion", "EditModalScript", this);
             LlenarGridView();
         }
         #endregion
@@ -540,6 +543,8 @@ namespace SGSSTC.source.sistema.Hacer
                     }
                 }
                 #endregion
+
+                Modal.CerrarModal("AddActividad", "AddModalScript", this);
                 Modal.MostrarAlertaAdd(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error,txtBuscar);
                 LlenarGridView();
             }
@@ -577,7 +582,6 @@ namespace SGSSTC.source.sistema.Hacer
             {
                 #region codigo
                 gestion_laboral tabla = new gestion_laboral();
-                ObjUsuario.Error = CRUD.Delete_Fila(tabla, Convert.ToInt32(hdfEditActividadID.Value), ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
 
                 foreach (ListItem item in chkTrabajadores.Items)
                 {
@@ -594,6 +598,10 @@ namespace SGSSTC.source.sistema.Hacer
                 }
                 #endregion
             }
+
+            Modal.CerrarModal("EditActividad", "EditModalScript", this);
+            Modal.MostrarAlertaAdd(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error, txtBuscar);
+            LlenarGridView();
 
         }
         #endregion
@@ -646,6 +654,7 @@ namespace SGSSTC.source.sistema.Hacer
                 }
                 #endregion
 
+                Modal.CerrarModal("AddJornada", "AddModalScript", this);
                 Modal.MostrarAlertaAdd(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error,txtBuscar);
                 LlenarGridView();
             }
@@ -683,7 +692,7 @@ namespace SGSSTC.source.sistema.Hacer
             {
                 #region codigo
                 gestion_laboral tabla = new gestion_laboral();
-                ObjUsuario.Error = CRUD.Delete_Fila(tabla, Convert.ToInt32(hdfEditJornadaID.Value), ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+                //ObjUsuario.Error = CRUD.Delete_Fila(tabla, Convert.ToInt32(hdfEditJornadaID.Value), ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
 
                 foreach (ListItem item in chkTrabajadores.Items)
                 {
@@ -700,6 +709,10 @@ namespace SGSSTC.source.sistema.Hacer
                 }
                 #endregion
             }
+
+            Modal.CerrarModal("EditJornada", "EditModalScript", this);
+            Modal.MostrarAlertaAdd(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error, txtBuscar);
+            LlenarGridView();
         }
         #endregion
 
@@ -749,25 +762,99 @@ namespace SGSSTC.source.sistema.Hacer
 
                 foreach (ListItem item in chkTrabajadores.Items) { item.Selected = false; }
 
-                if (tipo == ComandosGrid.Gestion_Entrega.Value)
+                if (tipo == "1")
                 {
                     hdfEditEntregaID.Value = Utilidades_GridView.DevolverIdRow(e, GridView1);
+
+                    List<gestion_laboral> EditCapacitacion = new List<gestion_laboral>();
+                    EditCapacitacion = Getter.GestionLaboral(Convert.ToInt32(hdfEditEntregaID.Value));
+
+                    foreach (var item in EditCapacitacion)
+                    {
+                        int idEmpresa = Convert.ToInt32(item.usuario.trabajador.puesto_trabajo.area.sucursal.id_empresa);
+                        int idSucursal = Convert.ToInt32(item.usuario.trabajador.puesto_trabajo.area.id_sucursal);
+                        int idUsuario = Convert.ToInt32(item.id_usuario);
+                        ddlEmpEditEnt.SelectedValue = idEmpresa.ToString();
+
+                        Listas.Sucursal(ddlSucEditEnt, idEmpresa);
+                        ddlSucEditEnt.SelectedValue = idSucursal.ToString();
+
+                        chkTrabajadores.Items.Clear();
+                        Cargartrabajadores(idSucursal);
+                        Listas.Usuario_Sucursal(ddlUsuEditEnt, idSucursal);
+                        ddlUsuEditEnt.SelectedValue = idUsuario.ToString();
+
+                        DateTime fechaGestion = Convert.ToDateTime(Convert.ToString(item.fecha));
+                        txtFechaEditEntrega.Text = fechaGestion.ToString("yyyy-MM-dd");
+
+                        txtDescEditEntrega.Text = item.descripcion;
+                    }
+
                     Modal.registrarModal("EditEntrega", "EditModalScript", this);
                     
                 }
-                else if (tipo == ComandosGrid.Gestion_Jornada.Value)
+                else if (tipo == "3")
                 {
                     hdfEditJornadaID.Value = Utilidades_GridView.DevolverIdRow(e, GridView1);
+
+                    List<gestion_laboral> EditJornada = new List<gestion_laboral>();
+                    EditJornada = Getter.GestionLaboral(Convert.ToInt32(hdfEditJornadaID.Value));
+
+                    foreach (var item in EditJornada)
+                    {
+                        int idEmpresa = Convert.ToInt32(item.usuario.trabajador.puesto_trabajo.area.sucursal.id_empresa);
+                        int idSucursal = Convert.ToInt32(item.usuario.trabajador.puesto_trabajo.area.id_sucursal);
+                        int idUsuario = Convert.ToInt32(item.id_usuario);
+                        ddlEmpEditJor.SelectedValue = idEmpresa.ToString();
+
+                        Listas.Sucursal(ddlSucEditJor, idEmpresa);
+                        ddlSucEditJor.SelectedValue = idSucursal.ToString();
+
+                        chkTrabajadores.Items.Clear();
+                        Cargartrabajadores(idSucursal);
+                        Listas.Usuario_Sucursal(ddlUsuEditJor, idSucursal);
+                        ddlUsuEditJor.SelectedValue = idUsuario.ToString();
+
+                        DateTime fechaGestion = Convert.ToDateTime(Convert.ToString(item.fecha));
+                        txtFechaEditJornada.Text = fechaGestion.ToString("yyyy-MM-dd");
+
+                        txtDescEditJornada.Text = item.descripcion;
+                    }
+
                     Modal.registrarModal("EditJornada", "EditModalScript", this);
                     
                 }
-                else if (tipo == ComandosGrid.Gestion_Recreativa.Value)
+                else if (tipo == "4")
                 {
                     hdfEditActividadID.Value = Utilidades_GridView.DevolverIdRow(e, GridView1);
+
+                    List<gestion_laboral> EditActividad = new List<gestion_laboral>();
+                    EditActividad = Getter.GestionLaboral(Convert.ToInt32(hdfEditActividadID.Value));
+
+                    foreach (var item in EditActividad)
+                    {
+                        int idEmpresa = Convert.ToInt32(item.usuario.trabajador.puesto_trabajo.area.sucursal.id_empresa);
+                        int idSucursal = Convert.ToInt32(item.usuario.trabajador.puesto_trabajo.area.id_sucursal);
+                        int idUsuario = Convert.ToInt32(item.id_usuario);
+                        ddlEmpEditAct.SelectedValue = idEmpresa.ToString();
+
+                        Listas.Sucursal(ddlSucEditAct, idEmpresa);
+                        ddlSucEditAct.SelectedValue = idSucursal.ToString();
+
+                        chkTrabajadores.Items.Clear();
+                        Cargartrabajadores(idSucursal);
+                        Listas.Usuario_Sucursal(ddlUsuEditAct, idSucursal);
+                        ddlUsuEditAct.SelectedValue = idUsuario.ToString();
+
+                        DateTime fechaGestion = Convert.ToDateTime(Convert.ToString(item.fecha));
+                        txtFechaEditActividad.Text = fechaGestion.ToString("yyyy-MM-dd");
+
+                        txtDescEditActividad.Text = item.descripcion;
+                    }
                     Modal.registrarModal("EditActividad", "EditModalScript", this);
                     
                 }
-                else if (tipo == ComandosGrid.Gestion_Capacitacion.Value)
+                else if (tipo == "2")
                 {
                     hdfEditCapacitacionID.Value = Utilidades_GridView.DevolverIdRow(e, GridView1);
                     
@@ -782,6 +869,7 @@ namespace SGSSTC.source.sistema.Hacer
                         int idEmpresa = Convert.ToInt32(item.usuario.trabajador.puesto_trabajo.area.sucursal.id_empresa);
                         int idSucursal = Convert.ToInt32(item.usuario.trabajador.puesto_trabajo.area.id_sucursal);
                         int idUsuario = Convert.ToInt32(item.id_usuario);
+                        ddlEmpEditCap.SelectedValue = idEmpresa.ToString();
 
                         Listas.Sucursal(ddlSucEditCap, idEmpresa);
                         ddlSucEditCap.SelectedValue = idSucursal.ToString();

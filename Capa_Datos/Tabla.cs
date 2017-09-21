@@ -2166,6 +2166,7 @@ namespace Capa_Datos
             int _id_empresa,
             int _id_sucursal = 0,
             int _id_trabajador = 0,
+            string tipo = "",
             string nombre = "")
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
@@ -2189,6 +2190,7 @@ namespace Capa_Datos
             if (_id_sucursal != 0) { query = query.Where(x => x.id_sucursal == _id_sucursal).ToList(); }
             if (_id_trabajador != 0) { query = query.Where(x => x.id_trabajador == _id_trabajador).ToList(); }
             if (nombre != "") { query = query.Where(x => x.NomTrabajador.ToUpper().Contains(nombre.ToUpper())).ToList(); }
+            if (tipo != "") { query = query.Where(x => x.tipo == tipo).ToList(); }
 
             GridView1.DataSource = query;
             GridView1.DataBind();

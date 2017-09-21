@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:18124/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Capa_Datos" />
+  <xs:import schemaLocation="http://localhost:18124/Service1.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/CapaServ" />
+  <xs:element name="GetData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="value" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetDataResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MsjAsync">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MsjAsyncResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="MsjAsyncResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="add_Riesgos_Default">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="act1" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="act2" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="act3" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="id_sucursal" nillable="true" type="xs:string" />
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Capa_Datos" minOccurs="0" name="ObjUsuario" nillable="true" type="q1:Model_UsuarioSistema" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="add_Riesgos_DefaultResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="add_Riesgos_DefaultResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="add_NormasSucursal">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="act1" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="act2" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="act3" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="id_sucursal" nillable="true" type="xs:string" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Capa_Datos" minOccurs="0" name="ObjUsuario" nillable="true" type="q2:Model_UsuarioSistema" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="add_NormasSucursalResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="add_NormasSucursalResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="add_MedidasSucursal">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id_sucursal" nillable="true" type="xs:string" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Capa_Datos" minOccurs="0" name="ObjUsuario" nillable="true" type="q3:Model_UsuarioSistema" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="add_MedidasSucursalResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="add_MedidasSucursalResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDataUsingDataContract">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/CapaServ" minOccurs="0" name="composite" nillable="true" type="q4:CompositeType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDataUsingDataContractResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/CapaServ" minOccurs="0" name="GetDataUsingDataContractResult" nillable="true" type="q5:CompositeType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

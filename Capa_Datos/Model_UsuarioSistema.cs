@@ -121,6 +121,14 @@
             }
             return false;
         }
+        public bool isRolDiferente()
+        {
+            if (Rol > 8)
+            {
+                return true;
+            }
+            return false;
+        }
 
     }
 }
