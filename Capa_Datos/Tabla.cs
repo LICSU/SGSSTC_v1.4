@@ -302,6 +302,27 @@ namespace Capa_Datos
             GridView1.DataBind();
         }
 
+        public static void Rol(GridView GridView1, int id_empresa = 0, string _nombre = "")
+        {
+            GrupoLiEntities contexto = new GrupoLiEntities();
+            var query = (
+                from RO in contexto.rol
+                select new
+                {
+                    RO.id_rol,
+                    RO.nombre,
+                    RO.id_empresa,
+                    empresa = RO.empresa.nombre
+                }).ToList();
+
+            if (id_empresa != 0) { query = query.Where(x => x.id_empresa == id_empresa).ToList(); }
+            if (_nombre != string.Empty) { query = query.Where(x => x.nombre.ToLower().Contains(_nombre.ToLower())).ToList(); }
+
+            GridView1.DataSource = query;
+
+            GridView1.DataBind();
+        }
+
         public static void Categorias(GridView GridView1, int id_empresa = 0, string _nombre = "")
         {
             GrupoLiEntities contexto = new GrupoLiEntities();

@@ -257,6 +257,12 @@
     <Compile Include="norma_sucursal.cs">
       <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
     </Compile>
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="obligacion.cs">
       <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
     </Compile>
@@ -352,6 +358,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="bin\Debug\Capa_Datos.dll.config" />
+    <None Include="bin\Release\Capa_Datos.dll.config" />
     <EntityDeploy Include="ModeloGrupoLi.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ModeloGrupoLi.Designer.cs</LastGenOutput>
@@ -359,6 +367,12 @@
     <None Include="ModeloGrupoLi.edmx.diagram">
       <DependentUpon>ModeloGrupoLi.edmx</DependentUpon>
     </None>
+    <None Include="obj\Release\Capa_Datos.csprojResolveAssemblyReference.cache" />
+    <None Include="obj\Release\CoreCompileInputs.cache" />
+    <None Include="obj\Release\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\Release\edmxResourcesToEmbed\ModeloGrupoLi.csdl" />
+    <None Include="obj\Release\edmxResourcesToEmbed\ModeloGrupoLi.msl" />
+    <None Include="obj\Release\edmxResourcesToEmbed\ModeloGrupoLi.ssdl" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -368,6 +382,28 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\Debug\Capa_Datos.dll" />
+    <Content Include="bin\Debug\Capa_Datos.pdb" />
+    <Content Include="bin\Debug\EntityFramework.dll" />
+    <Content Include="bin\Debug\EntityFramework.SqlServer.dll" />
+    <Content Include="bin\Debug\EntityFramework.SqlServer.xml" />
+    <Content Include="bin\Debug\EntityFramework.xml" />
+    <Content Include="bin\Debug\itextsharp.dll" />
+    <Content Include="bin\Debug\itextsharp.xml" />
+    <Content Include="bin\Release\AjaxControlToolkit.dll" />
+    <Content Include="bin\Release\Capa_Datos.dll" />
+    <Content Include="bin\Release\Capa_Datos.pdb" />
+    <Content Include="bin\Release\CkEditor.dll" />
+    <Content Include="bin\Release\CKEditor.NET.dll" />
+    <Content Include="bin\Release\EntityFramework.dll" />
+    <Content Include="bin\Release\EntityFramework.SqlServer.dll" />
+    <Content Include="bin\Release\EntityFramework.SqlServer.xml" />
+    <Content Include="bin\Release\EntityFramework.xml" />
+    <Content Include="bin\Release\itextsharp.dll" />
+    <Content Include="bin\Release\LinqToExcel.dll" />
+    <Content Include="bin\Release\Remotion.Data.Linq.dll" />
+    <Content Include="bin\Release\Remotion.dll" />
+    <Content Include="bin\Release\Remotion.Interfaces.dll" />
     <Content Include="ModeloGrupoLi.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModeloGrupoLi.edmx</DependentUpon>
@@ -378,6 +414,12 @@
       <DependentUpon>ModeloGrupoLi.edmx</DependentUpon>
       <LastGenOutput>ModeloGrupoLi.cs</LastGenOutput>
     </Content>
+    <Content Include="obj\Release\Capa_Datos.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Release\Capa_Datos.dll" />
+    <Content Include="obj\Release\Capa_Datos.pdb" />
+    <Content Include="obj\Release\TempPE\ModeloGrupoLi.Context.cs.dll" />
+    <Content Include="obj\Release\TempPE\ModeloGrupoLi.cs.dll" />
+    <Content Include="obj\Release\TempPE\ModeloGrupoLi.Designer.cs.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

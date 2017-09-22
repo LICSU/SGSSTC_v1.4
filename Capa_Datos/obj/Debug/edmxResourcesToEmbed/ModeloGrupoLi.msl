@@ -695,8 +695,8 @@
     <EntitySetMapping Name="perfil_cargo">
       <EntityTypeMapping TypeName="GrupoLiModel.perfil_cargo">
         <MappingFragment StoreEntitySet="perfil_cargo">
-          <ScalarProperty Name="nombre" ColumnName="nombre" />
           <ScalarProperty Name="id_perfil_cargo" ColumnName="id_perfil_cargo" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
           <ScalarProperty Name="descripcion" ColumnName="descripcion" />
           <ScalarProperty Name="id_cno" ColumnName="id_cno" />
           <ScalarProperty Name="id_empresa" ColumnName="id_empresa" />
@@ -709,6 +709,7 @@
           <ScalarProperty Name="id_plan" ColumnName="id_plan" />
           <ScalarProperty Name="id_sucursal" ColumnName="id_sucursal" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -825,6 +826,7 @@
     <EntitySetMapping Name="rol">
       <EntityTypeMapping TypeName="GrupoLiModel.rol">
         <MappingFragment StoreEntitySet="rol">
+          <ScalarProperty Name="id_empresa" ColumnName="id_empresa" />
           <ScalarProperty Name="id_rol" ColumnName="id_rol" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
         </MappingFragment>

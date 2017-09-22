@@ -41,7 +41,12 @@ namespace SGSSTC.source.MasterPages
             if (ObjUsuario.isRolDiferente())
             {
                 menuPrin.Visible = false;
+                if (Utilidades.VerificarUsuario(ObjUsuario.Rol, Request.Url.AbsoluteUri))
+                {
+                    Response.Redirect("~/source/sistema/MenuPrincipal/index.aspx");
+                }
             }
+            
         }
     }
 }

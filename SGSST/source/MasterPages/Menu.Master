@@ -135,6 +135,12 @@
 								</a>
 							</li>
 
+                            <li>
+								<a href="../GestionDatos/index_Rol.aspx"><i class="fa fa-circle-o"></i>
+									<span>Rol</span>
+								</a>
+							</li>
+
 							<li>
 								<a href="../GestionDatos/index_Usuario.aspx"><i class="fa fa-circle-o"></i>
 									<span>Usuario</span>

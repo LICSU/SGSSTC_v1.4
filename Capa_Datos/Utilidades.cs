@@ -358,5 +358,20 @@ namespace Capa_Datos
                 return false;
             }
         }
+
+        public static bool VerificarUsuario(int rol, string url)
+        {
+            if (rol > 8)
+            { 
+                //Comparar paginas
+                string[] partes = url.Split('/');
+                int tamanho = partes.Length - 1;
+                if (!partes[tamanho].Equals("index.aspx"))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }

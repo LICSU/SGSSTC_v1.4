@@ -1071,6 +1071,7 @@
     <Content Include="source\sistema\GestionDatos\Index_Extintor.aspx" />
     <Content Include="source\sistema\GestionDatos\index_Horarios.aspx" />
     <Content Include="source\sistema\GestionDatos\index_PuestoTrabajo.aspx" />
+    <Content Include="source\sistema\GestionDatos\index_Rol.aspx" />
     <Content Include="source\sistema\GestionDatos\index_Sucursal.aspx" />
     <Content Include="source\sistema\GestionDatos\Index_Tipo_EPP.aspx" />
     <Content Include="source\sistema\GestionDatos\index_Trabajador.aspx" />
@@ -1171,6 +1172,7 @@
     <Content Include="source\sistema\Planear\index_AsignacionResponsable.aspx" />
     <Content Include="source\sistema\Planear\index_ComunicacionPoliticaSST.aspx" />
     <Content Include="source\sistema\Planear\index_ControlDocumentos.aspx" />
+    <Content Include="source\sistema\Planear\index_Encuesta_ObjetivosSST.aspx" />
     <Content Include="source\sistema\Planear\index_Encuesta_PoliticaSST.aspx" />
     <Content Include="source\sistema\Planear\index_MatrizLegal.aspx" />
     <Content Include="source\sistema\Planear\index_MatrizResponsabilidades.aspx" />
@@ -1498,6 +1500,13 @@
     </Compile>
     <Compile Include="source\sistema\GestionDatos\index_PuestoTrabajo.aspx.designer.cs">
       <DependentUpon>index_PuestoTrabajo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="source\sistema\GestionDatos\index_Rol.aspx.cs">
+      <DependentUpon>index_Rol.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="source\sistema\GestionDatos\index_Rol.aspx.designer.cs">
+      <DependentUpon>index_Rol.aspx</DependentUpon>
     </Compile>
     <Compile Include="source\sistema\GestionDatos\index_Sucursal.aspx.cs">
       <DependentUpon>index_Sucursal.aspx</DependentUpon>
@@ -2192,6 +2201,13 @@
     </Compile>
     <Compile Include="source\sistema\Planear\index_ControlDocumentos.aspx.designer.cs">
       <DependentUpon>index_ControlDocumentos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="source\sistema\Planear\index_Encuesta_ObjetivosSST.aspx.cs">
+      <DependentUpon>index_Encuesta_ObjetivosSST.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="source\sistema\Planear\index_Encuesta_ObjetivosSST.aspx.designer.cs">
+      <DependentUpon>index_Encuesta_ObjetivosSST.aspx</DependentUpon>
     </Compile>
     <Compile Include="source\sistema\Planear\index_Encuesta_PoliticaSST.aspx.cs">
       <DependentUpon>index_Encuesta_PoliticaSST.aspx</DependentUpon>

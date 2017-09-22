@@ -4,27 +4,27 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="4cc05d0fcdad48a18fc317e02386c2a1" Name="Diagram1">
-        <EntityTypeShape EntityType="GrupoLiModel.afp" Width="1.5" PointX="17.25" PointY="42.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="GrupoLiModel.alarma" Width="1.5" PointX="24.75" PointY="69.125" IsExpanded="true" />
+      <Diagram DiagramId="9cb0566aa8a541a7a8d12f31cb22b945" Name="Diagram1">
+        <EntityTypeShape EntityType="GrupoLiModel.afp" Width="1.5" PointX="17.25" PointY="42.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GrupoLiModel.alarma" Width="1.5" PointX="24.75" PointY="69.25" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.area" Width="1.5" PointX="9.75" PointY="48.125" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.arl" Width="1.5" PointX="3" PointY="52.125" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.at_it_el_pa" Width="1.5" PointX="14.25" PointY="56.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="GrupoLiModel.brigada_emergencia" Width="1.5" PointX="9.75" PointY="54.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GrupoLiModel.brigada_emergencia" Width="1.5" PointX="9.75" PointY="54.5" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.categoria" Width="1.5" PointX="24.75" PointY="59.125" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.ccf" Width="1.5" PointX="15" PointY="45.625" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.claseCiiu" Width="1.5" PointX="7.5" PointY="4" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.cno" Width="1.5" PointX="12.75" PointY="42.25" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.consulta" Width="1.5" PointX="16.5" PointY="49.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="GrupoLiModel.departamento" Width="1.5" PointX="3" PointY="57.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="GrupoLiModel.desc_socio" Width="1.5" PointX="19.5" PointY="61" IsExpanded="true" />
+        <EntityTypeShape EntityType="GrupoLiModel.departamento" Width="1.5" PointX="3" PointY="57.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GrupoLiModel.desc_socio" Width="1.5" PointX="19.5" PointY="61.125" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.divisionCiiu" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="GrupoLiModel.documento" Width="1.5" PointX="22.5" PointY="61" IsExpanded="true" />
+        <EntityTypeShape EntityType="GrupoLiModel.documento" Width="1.5" PointX="22.5" PointY="61.125" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.empleo_anterior" Width="1.5" PointX="21.75" PointY="69.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="GrupoLiModel.empresa" Width="1.5" PointX="5.25" PointY="50.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GrupoLiModel.empresa" Width="1.5" PointX="5.25" PointY="50.375" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.empresa_itemdivision" Width="1.5" PointX="9.75" PointY="29.125" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.encuesta_politica" Width="1.5" PointX="19.5" PointY="74.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="GrupoLiModel.enfermedad" Width="1.5" PointX="23.25" PointY="52.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GrupoLiModel.enfermedad" Width="1.5" PointX="23.25" PointY="53" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.enfermedadLaboral" Width="1.5" PointX="7.5" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.epp" Width="1.5" PointX="12" PointY="75.375" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.eps" Width="1.5" PointX="17.25" PointY="38.875" IsExpanded="true" />
@@ -35,46 +35,46 @@
         <EntityTypeShape EntityType="GrupoLiModel.factor_identificacion" Width="1.5" PointX="27" PointY="42.25" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.factor_riesgo" Width="1.5" PointX="7.5" PointY="7.375" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.frecuencia_control" Width="1.5" PointX="24.75" PointY="56.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="GrupoLiModel.gestion_laboral" Width="1.5" PointX="21.75" PointY="73.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GrupoLiModel.gestion_laboral" Width="1.5" PointX="21.75" PointY="73.5" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.grupoCiiu" Width="1.5" PointX="5.25" PointY="4.125" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.historia_clinica_ocupacional" Width="1.5" PointX="22.5" PointY="65" IsExpanded="true" />
-        <EntityTypeShape EntityType="GrupoLiModel.horario" Width="1.5" PointX="7.5" PointY="50.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="GrupoLiModel.identificacion_peligro" Width="1.5" PointX="24.75" PointY="76.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GrupoLiModel.horario" Width="1.5" PointX="7.5" PointY="50.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GrupoLiModel.identificacion_peligro" Width="1.5" PointX="24.75" PointY="76.875" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.identificacion_puesto" Width="1.5" PointX="14.25" PointY="68.375" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.investigacion_ac_in" Width="1.5" PointX="16.5" PointY="70" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.ips" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.lista_actividad" Width="1.5" PointX="9.75" PointY="58.375" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.matriz_responsabilidad" Width="1.5" PointX="9.75" PointY="61.625" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.medida" Width="1.5" PointX="14.75" PointY="38.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="GrupoLiModel.medida_sucursal" Width="1.5" PointX="17" PointY="53.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="GrupoLiModel.municipio" Width="1.5" PointX="5.25" PointY="57.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GrupoLiModel.medida_sucursal" Width="1.5" PointX="17" PointY="53.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GrupoLiModel.municipio" Width="1.5" PointX="5.25" PointY="57.375" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.norma" Width="1.5" PointX="12.5" PointY="49.25" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.norma_claseciiu" Width="1.5" PointX="14.75" PointY="27.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="GrupoLiModel.norma_sucursal" Width="1.5" PointX="14.75" PointY="53.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="GrupoLiModel.obligacion" Width="1.5" PointX="27" PointY="67.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GrupoLiModel.norma_sucursal" Width="1.5" PointX="14.75" PointY="53.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GrupoLiModel.obligacion" Width="1.5" PointX="27" PointY="67.625" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.perfil_cargo" Width="1.5" PointX="15" PointY="41.875" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.plan" Width="1.5" PointX="9.75" PointY="68.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="GrupoLiModel.plan_trabajo" Width="1.5" PointX="21.75" PointY="81.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="GrupoLiModel.politica_sst" Width="1.5" PointX="7.5" PointY="46.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GrupoLiModel.plan_trabajo" Width="1.5" PointX="21.75" PointY="82" IsExpanded="true" />
+        <EntityTypeShape EntityType="GrupoLiModel.politica_sst" Width="1.5" PointX="7.5" PointY="46.625" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.Pregunta" Width="1.5" PointX="21.75" PointY="85.625" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.procedimiento_comunicacion" Width="1.5" PointX="12" PointY="54.875" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.puesto_trabajo" Width="1.5" PointX="12" PointY="67.125" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.puesto_trabajo_epp" Width="1.5" PointX="14.25" PointY="65.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="GrupoLiModel.Region" Width="1.5" PointX="0.75" PointY="57.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="GrupoLiModel.Respuesta" Width="1.5" PointX="24" PointY="85.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GrupoLiModel.Region" Width="1.5" PointX="0.75" PointY="57.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GrupoLiModel.Respuesta" Width="1.5" PointX="24" PointY="85.75" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.riesgos_item" Width="1.5" PointX="9.75" PointY="4" IsExpanded="true" />
-        <EntityTypeShape EntityType="GrupoLiModel.rol" Width="1.5" PointX="17.25" PointY="46.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GrupoLiModel.rol" Width="1.5" PointX="17.25" PointY="46.75" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.seccionCiiu" Width="1.5" PointX="0.75" PointY="4.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="GrupoLiModel.sistema" Width="1.5" PointX="23.25" PointY="46.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GrupoLiModel.sistema" Width="1.5" PointX="23.25" PointY="46.5" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.soporte" Width="1.5" PointX="16.5" PointY="56.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="GrupoLiModel.sucursal" Width="1.5" PointX="7.5" PointY="55.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GrupoLiModel.sucursal" Width="1.5" PointX="7.5" PointY="55.875" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="GrupoLiModel.tipo_documento" Width="1.5" PointX="9.75" PointY="71.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GrupoLiModel.tipo_documento" Width="1.5" PointX="9.75" PointY="71.375" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.tipo_epp" Width="1.5" PointX="9.75" PointY="75.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="GrupoLiModel.tipo_evento" Width="1.5" PointX="22.5" PointY="77.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="GrupoLiModel.tipo_examen" Width="1.5" PointX="20.25" PointY="54.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GrupoLiModel.tipo_evento" Width="1.5" PointX="22.5" PointY="77.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GrupoLiModel.tipo_examen" Width="1.5" PointX="20.25" PointY="54.75" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.tipo_riesgo" Width="1.5" PointX="5.25" PointY="7.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="GrupoLiModel.trabajador" Width="1.5" PointX="17.25" PointY="59.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GrupoLiModel.trabajador" Width="1.5" PointX="17.25" PointY="60" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.trabajador_estatus" Width="1.5" PointX="25.5" PointY="62.5" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.trabajador_gestion" Width="1.5" PointX="19.5" PointY="57.375" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.usuario" Width="1.5" PointX="19.5" PointY="68.75" IsExpanded="true" />

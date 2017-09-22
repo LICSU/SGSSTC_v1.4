@@ -328,6 +328,14 @@ namespace Capa_Datos
             consulta = contexto.categoria.Where(x => x.id_categorias == _idCategoria).SingleOrDefault();
             return consulta;
         }
+
+        public static rol Rol(int _idRol)
+        {
+            GrupoLiEntities contexto = new GrupoLiEntities();
+            rol consulta = new rol();
+            consulta = contexto.rol.Where(x => x.id_rol == _idRol).SingleOrDefault();
+            return consulta;
+        }
         #endregion
 
         #region C_EPP

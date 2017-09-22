@@ -76,6 +76,7 @@ namespace Capa_Datos
                 else if (_nuevo.GetType() == typeof(identificacion_puesto)) { contexto.identificacion_puesto.Add(_nuevo); }
                 else if (_nuevo.GetType() == typeof(factor_identificacion)) { contexto.factor_identificacion.Add(_nuevo); }
                 else if (_nuevo.GetType() == typeof(evaluacion_riesgo)) { contexto.evaluacion_riesgo.Add(_nuevo); }
+                else if (_nuevo.GetType() == typeof(rol)) { contexto.rol.Add(_nuevo); }
 
                 contexto.SaveChanges();
             }
@@ -320,6 +321,12 @@ namespace Capa_Datos
                     var Eliminar = new empresa { id_empresa = _id };
                     contexto.empresa.Attach(Eliminar);
                     contexto.empresa.Remove(Eliminar);
+                }
+                else if (tabla.GetType() == typeof(rol))
+                {
+                    var Eliminar = new rol { id_rol = _id };
+                    contexto.rol.Attach(Eliminar);
+                    contexto.rol.Remove(Eliminar);
                 }
 
                 contexto.SaveChanges();

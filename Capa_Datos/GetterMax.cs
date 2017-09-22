@@ -48,6 +48,14 @@ namespace Capa_Datos
             var consulta = new empresa();
             return contexto.empresa.Max(x => x.id_empresa);
         }
+
+        public static int Roles()
+        {
+            GrupoLiEntities contexto = new GrupoLiEntities();
+            var consulta = new rol();
+            return contexto.rol.Max(x => x.id_rol);
+        }
+
         public static int DescripcionSociodemografica()
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
