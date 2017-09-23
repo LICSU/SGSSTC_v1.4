@@ -775,6 +775,7 @@
           </Key>
           <Property Name="id_rol" Type="int" Nullable="false" />
           <Property Name="nombre" Type="varchar" MaxLength="50" />
+          <Property Name="id_empresa" Type="int" />
         </EntityType>
         <EntityType Name="seccionCiiu">
           <Key>
@@ -1844,6 +1845,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_rol_empresa">
+          <End Role="empresa" Type="Self.empresa" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="rol" Type="Self.rol" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="empresa">
+              <PropertyRef Name="id_empresa" />
+            </Principal>
+            <Dependent Role="rol">
+              <PropertyRef Name="id_empresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_soporte_at_it_el_pa">
           <End Role="at_it_el_pa" Type="Self.at_it_el_pa" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -2051,9 +2066,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_usuario_rol">
-          <End Role="rol" Type="Self.rol" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
+          <End Role="rol" Type="Self.rol" Multiplicity="0..1" />
           <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="rol">
@@ -2424,6 +2437,10 @@
             <End Role="enfermedadLaboral" EntitySet="enfermedadLaboral" />
             <End Role="riesgos_item" EntitySet="riesgos_item" />
           </AssociationSet>
+          <AssociationSet Name="FK_rol_empresa" Association="Self.FK_rol_empresa">
+            <End Role="empresa" EntitySet="empresa" />
+            <End Role="rol" EntitySet="rol" />
+          </AssociationSet>
           <AssociationSet Name="FK_soporte_at_it_el_pa" Association="Self.FK_soporte_at_it_el_pa">
             <End Role="at_it_el_pa" EntitySet="at_it_el_pa" />
             <End Role="soporte" EntitySet="soporte" />
@@ -2784,6 +2801,7 @@
           <NavigationProperty Name="horario" Relationship="Self.FK_horario_empresa" FromRole="empresa" ToRole="horario" />
           <NavigationProperty Name="perfil_cargo" Relationship="Self.FK_perfil_cargo_empresa" FromRole="empresa" ToRole="perfil_cargo" />
           <NavigationProperty Name="politica_sst" Relationship="Self.FK_politica_sst_empresa1" FromRole="empresa" ToRole="politica_sst" />
+          <NavigationProperty Name="rol" Relationship="Self.FK_rol_empresa" FromRole="empresa" ToRole="rol" />
           <NavigationProperty Name="sucursal" Relationship="Self.FK_sucursal_empresa" FromRole="empresa" ToRole="sucursal" />
         </EntityType>
         <EntityType Name="empresa_itemdivision">
@@ -3397,6 +3415,8 @@
           </Key>
           <Property Name="id_rol" Type="Int32" Nullable="false" />
           <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="id_empresa" Type="Int32" />
+          <NavigationProperty Name="empresa" Relationship="Self.FK_rol_empresa" FromRole="rol" ToRole="empresa" />
           <NavigationProperty Name="usuario" Relationship="Self.FK_usuario_rol" FromRole="rol" ToRole="usuario" />
         </EntityType>
         <EntityType Name="seccionCiiu">
@@ -4107,6 +4127,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_rol_empresa">
+          <End Role="empresa" Type="Self.empresa" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="rol" Type="Self.rol" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="empresa">
+              <PropertyRef Name="id_empresa" />
+            </Principal>
+            <Dependent Role="rol">
+              <PropertyRef Name="id_empresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_sucursal_empresa">
           <End Role="empresa" Type="Self.empresa" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -4668,9 +4702,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_usuario_rol">
-          <End Role="rol" Type="Self.rol" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
+          <End Role="rol" Type="Self.rol" Multiplicity="0..1" />
           <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="rol">
@@ -4972,6 +5004,10 @@
           <AssociationSet Name="FK_politica_sst_empresa1" Association="Self.FK_politica_sst_empresa1">
             <End Role="empresa" EntitySet="empresa" />
             <End Role="politica_sst" EntitySet="politica_sst" />
+          </AssociationSet>
+          <AssociationSet Name="FK_rol_empresa" Association="Self.FK_rol_empresa">
+            <End Role="empresa" EntitySet="empresa" />
+            <End Role="rol" EntitySet="rol" />
           </AssociationSet>
           <AssociationSet Name="FK_sucursal_empresa" Association="Self.FK_sucursal_empresa">
             <End Role="empresa" EntitySet="empresa" />
@@ -5999,6 +6035,7 @@
               <MappingFragment StoreEntitySet="rol">
                 <ScalarProperty Name="id_rol" ColumnName="id_rol" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id_empresa" ColumnName="id_empresa" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

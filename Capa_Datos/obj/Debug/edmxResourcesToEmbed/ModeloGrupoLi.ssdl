@@ -978,18 +978,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__rol__id_empresa__5AB9788F">
-    <End Role="empresa" Type="Self.empresa" Multiplicity="0..1" />
-    <End Role="rol" Type="Self.rol" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="empresa">
-        <PropertyRef Name="id_empresa" />
-      </Principal>
-      <Dependent Role="rol">
-        <PropertyRef Name="id_empresa" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_alarmas_categorias">
     <End Role="categoria" Type="Self.categoria" Multiplicity="0..1" />
     <End Role="alarma" Type="Self.alarma" Multiplicity="*" />
@@ -1852,6 +1840,20 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_rol_empresa">
+    <End Role="empresa" Type="Self.empresa" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="rol" Type="Self.rol" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="empresa">
+        <PropertyRef Name="id_empresa" />
+      </Principal>
+      <Dependent Role="rol">
+        <PropertyRef Name="id_empresa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_soporte_at_it_el_pa">
     <End Role="at_it_el_pa" Type="Self.at_it_el_pa" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
@@ -2059,9 +2061,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_usuario_rol">
-    <End Role="rol" Type="Self.rol" Multiplicity="0..1">
-      <OnDelete Action="Cascade" />
-    </End>
+    <End Role="rol" Type="Self.rol" Multiplicity="0..1" />
     <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="rol">
@@ -2171,10 +2171,6 @@
     <AssociationSet Name="FK__puesto_tr__id_pu__69C6B1F5" Association="Self.FK__puesto_tr__id_pu__69C6B1F5">
       <End Role="puesto_trabajo" EntitySet="puesto_trabajo" />
       <End Role="puesto_trabajo_epp" EntitySet="puesto_trabajo_epp" />
-    </AssociationSet>
-    <AssociationSet Name="FK__rol__id_empresa__5AB9788F" Association="Self.FK__rol__id_empresa__5AB9788F">
-      <End Role="empresa" EntitySet="empresa" />
-      <End Role="rol" EntitySet="rol" />
     </AssociationSet>
     <AssociationSet Name="FK_alarmas_categorias" Association="Self.FK_alarmas_categorias">
       <End Role="categoria" EntitySet="categoria" />
@@ -2435,6 +2431,10 @@
     <AssociationSet Name="FK_riesgos_item_matrizRiesgo_enfermedadLaboral" Association="Self.FK_riesgos_item_matrizRiesgo_enfermedadLaboral">
       <End Role="enfermedadLaboral" EntitySet="enfermedadLaboral" />
       <End Role="riesgos_item" EntitySet="riesgos_item" />
+    </AssociationSet>
+    <AssociationSet Name="FK_rol_empresa" Association="Self.FK_rol_empresa">
+      <End Role="empresa" EntitySet="empresa" />
+      <End Role="rol" EntitySet="rol" />
     </AssociationSet>
     <AssociationSet Name="FK_soporte_at_it_el_pa" Association="Self.FK_soporte_at_it_el_pa">
       <End Role="at_it_el_pa" EntitySet="at_it_el_pa" />

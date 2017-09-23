@@ -282,8 +282,8 @@
     <NavigationProperty Name="horario" Relationship="Self.FK_horario_empresa" FromRole="empresa" ToRole="horario" />
     <NavigationProperty Name="perfil_cargo" Relationship="Self.FK_perfil_cargo_empresa" FromRole="empresa" ToRole="perfil_cargo" />
     <NavigationProperty Name="politica_sst" Relationship="Self.FK_politica_sst_empresa1" FromRole="empresa" ToRole="politica_sst" />
+    <NavigationProperty Name="rol" Relationship="Self.FK_rol_empresa" FromRole="empresa" ToRole="rol" />
     <NavigationProperty Name="sucursal" Relationship="Self.FK_sucursal_empresa" FromRole="empresa" ToRole="sucursal" />
-    <NavigationProperty Name="rol" Relationship="GrupoLiModel.FK__rol__id_empresa__5AB9788F" FromRole="empresa" ToRole="rol" />
   </EntityType>
   <EntityType Name="empresa_itemdivision">
     <Key>
@@ -896,9 +896,9 @@
     </Key>
     <Property Name="id_rol" Type="Int32" Nullable="false" />
     <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="usuario" Relationship="Self.FK_usuario_rol" FromRole="rol" ToRole="usuario" />
     <Property Name="id_empresa" Type="Int32" />
-    <NavigationProperty Name="empresa" Relationship="GrupoLiModel.FK__rol__id_empresa__5AB9788F" FromRole="rol" ToRole="empresa" />
+    <NavigationProperty Name="empresa" Relationship="Self.FK_rol_empresa" FromRole="rol" ToRole="empresa" />
+    <NavigationProperty Name="usuario" Relationship="Self.FK_usuario_rol" FromRole="rol" ToRole="usuario" />
   </EntityType>
   <EntityType Name="seccionCiiu">
     <Key>
@@ -1608,6 +1608,20 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_rol_empresa">
+    <End Role="empresa" Type="Self.empresa" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="rol" Type="Self.rol" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="empresa">
+        <PropertyRef Name="id_empresa" />
+      </Principal>
+      <Dependent Role="rol">
+        <PropertyRef Name="id_empresa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_sucursal_empresa">
     <End Role="empresa" Type="Self.empresa" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
@@ -2169,9 +2183,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_usuario_rol">
-    <End Role="rol" Type="Self.rol" Multiplicity="0..1">
-      <OnDelete Action="Cascade" />
-    </End>
+    <End Role="rol" Type="Self.rol" Multiplicity="0..1" />
     <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="rol">
@@ -2474,6 +2486,10 @@
       <End Role="empresa" EntitySet="empresa" />
       <End Role="politica_sst" EntitySet="politica_sst" />
     </AssociationSet>
+    <AssociationSet Name="FK_rol_empresa" Association="Self.FK_rol_empresa">
+      <End Role="empresa" EntitySet="empresa" />
+      <End Role="rol" EntitySet="rol" />
+    </AssociationSet>
     <AssociationSet Name="FK_sucursal_empresa" Association="Self.FK_sucursal_empresa">
       <End Role="empresa" EntitySet="empresa" />
       <End Role="sucursal" EntitySet="sucursal" />
@@ -2666,21 +2682,5 @@
       <End Role="trabajador" EntitySet="trabajador" />
       <End Role="usuario" EntitySet="usuario" />
     </AssociationSet>
-    <AssociationSet Name="FK__rol__id_empresa__5AB9788F" Association="GrupoLiModel.FK__rol__id_empresa__5AB9788F">
-      <End Role="empresa" EntitySet="empresa" />
-      <End Role="rol" EntitySet="rol" />
-    </AssociationSet>
   </EntityContainer>
-  <Association Name="FK__rol__id_empresa__5AB9788F">
-    <End Type="GrupoLiModel.empresa" Role="empresa" Multiplicity="0..1" />
-    <End Type="GrupoLiModel.rol" Role="rol" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="empresa">
-        <PropertyRef Name="id_empresa" />
-      </Principal>
-      <Dependent Role="rol">
-        <PropertyRef Name="id_empresa" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
 </Schema>

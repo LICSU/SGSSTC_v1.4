@@ -826,9 +826,9 @@
     <EntitySetMapping Name="rol">
       <EntityTypeMapping TypeName="GrupoLiModel.rol">
         <MappingFragment StoreEntitySet="rol">
-          <ScalarProperty Name="id_empresa" ColumnName="id_empresa" />
           <ScalarProperty Name="id_rol" ColumnName="id_rol" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="id_empresa" ColumnName="id_empresa" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -33,9 +33,9 @@ namespace SGSSTC.source.sistema.GestionDatos
         {
             
             var cliente = new Service1Client();
-            cliente.InnerChannel.OperationTimeout = new TimeSpan(0, 10, 0);
+            cliente.InnerChannel.OperationTimeout = new TimeSpan(0, 20, 0);
 
-            var time = new TimeSpan(0, 10, 0);
+            var time = new TimeSpan(0, 20, 0);
             cliente.Endpoint.Binding.CloseTimeout = time;
             cliente.Endpoint.Binding.OpenTimeout = time;
             cliente.Endpoint.Binding.ReceiveTimeout = time;
