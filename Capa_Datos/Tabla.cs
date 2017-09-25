@@ -162,6 +162,29 @@ namespace Capa_Datos
         }
         #endregion
 
+        #region objetivos sg-sst
+        public static void objetivosSgsst(GridView GridView1, int _id_empresa, int _id_sucursal = 0)
+        {
+            GrupoLiEntities contexto = new GrupoLiEntities();
+            var query = (
+                from I in contexto.documento
+                where I.sucursal.id_empresa == _id_empresa && I.tipo == "ObjetivosSGSST"
+                select new
+                {
+                    I.id_documento,
+                    I.ruta,
+                    I.id_tabla,
+                    sucursal = I.sucursal.nombre,
+                    archivo = I.nombre == null ? "No se ha subido" : "" + I.nombre
+                }).ToList();
+
+            if (_id_sucursal != 0) { query = query.Where(x => x.id_tabla == _id_sucursal).ToList(); }
+
+            GridView1.DataSource = query;
+            GridView1.DataBind();
+        }
+        #endregion
+
         #region modulo desc socio
         public static void DescSocio(GridView GridView1, string _where = "")
         {

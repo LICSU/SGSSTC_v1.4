@@ -268,6 +268,7 @@
 											<span>Acta del Copasst</span>
 										</a>
 									</li>
+                                                                        
 								</ul>
 							</li>
 
@@ -415,6 +416,14 @@
 										</a>
 									</li>
 								</ul>
+							</li>
+
+                            <!-- Objetivos SGSST -->
+                            <li>
+								<a href="../Planear/index_ObjetivosSGSST.aspx">
+									<i class="fa fa-circle-o"></i>
+									<span>Objetivos del SG-SST</span>
+								</a>
 							</li>
 						</ul>
 					</li>
