@@ -4,9 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web;
-using System.Web.Script.Services;
 using System.Web.Security;
-using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -19,12 +17,13 @@ namespace SGSSTC.source.sistema.GestionDatos
         private Tuple<bool, bool> BoolEmpSuc;
         private static int IdSucursal = 0, IdSucursalEsp = 0;
         private static int IdTrabajador = 0, IdTrabajadorEsp = 0;
-        private static int IdPuesto = 0, IdPuestoEsp = 0;
 
         #region acciones index
         protected void Page_Load(object sender, EventArgs e)
         {
             ObjUsuario = Utilidades.ValidarSesion(HttpContext.Current.User.Identity as FormsIdentity, this);phAlerta.Visible = false;
+
+            hdfSucursal.Value = "" + IdSucursal;
 
             BoolEmpSuc = Getter.Get_Empresa_Sucursal(ObjUsuario);
 
@@ -41,6 +40,7 @@ namespace SGSSTC.source.sistema.GestionDatos
             {
                 phAgregar.Visible = true;
             }
+
             if (!IsPostBack)
             {
                 LlenarGridView();
@@ -102,7 +102,7 @@ namespace SGSSTC.source.sistema.GestionDatos
             if (validacion)
             {
                 string clave = objUtilidades.cifrarCadena(Convert.ToString(txtClave.Text));
-
+                
                 usuario nuevo = new usuario()
                 {
                     login = txtLogin.Text,
@@ -132,8 +132,6 @@ namespace SGSSTC.source.sistema.GestionDatos
                 LlenarGridView();
                 CargarListas();
             }
-
-
         }
 
         protected void EditarRegistro(object sender, EventArgs e)
@@ -311,6 +309,8 @@ namespace SGSSTC.source.sistema.GestionDatos
             {
                 txtTrabajadorEsp.Text = "";
                 IdSucursalEsp = Convert.ToInt32(ddlSucursalEdit.SelectedValue);
+
+                hdfSucursal.Value = "" + IdSucursalEsp;
             }
                 
         }
@@ -357,22 +357,5 @@ namespace SGSSTC.source.sistema.GestionDatos
         }
         #endregion
 
-        #region AutoCompletar
-        [ScriptMethod()]
-        [WebMethod]
-        public static List<string> SearchTrabajador(string prefixText, int count)
-        {
-            List<string> listTrabajadores = Utilidades.SearchTrabajador(prefixText, count, IdSucursal, ref IdTrabajador, IdPuesto);
-            return listTrabajadores;
-        }
-
-        [ScriptMethod()]
-        [WebMethod]
-        public static List<string> SearchTrabajadorEsp(string prefixText, int count)
-        {
-            List<string> listTrabajadores = Utilidades.SearchTrabajador(prefixText, count, IdSucursalEsp, ref IdTrabajadorEsp, IdPuestoEsp);
-            return listTrabajadores;
-        }
-        #endregion
     }
 }

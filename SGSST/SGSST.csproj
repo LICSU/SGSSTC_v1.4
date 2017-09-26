@@ -886,6 +886,7 @@
     <Content Include="Scripts\WebForms\WebForms.js" />
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
+    <Content Include="Services\WS_Trabajador.asmx" />
     <Content Include="source\archivos\foto_perfil\usuario.png" />
     <Content Include="source\archivos\images_graf\graficaDiagnostico.jpg" />
     <Content Include="source\archivos\images_graf\graficaEvaCli.jpg" />
@@ -1222,6 +1223,10 @@
     </Compile>
     <Compile Include="Recuperar.aspx.designer.cs">
       <DependentUpon>Recuperar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Services\WS_Trabajador.asmx.cs">
+      <DependentUpon>WS_Trabajador.asmx</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="source\MasterPages\Menu.Master.cs">
       <DependentUpon>Menu.Master</DependentUpon>

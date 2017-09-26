@@ -237,7 +237,7 @@ namespace Capa_Datos
                 mail.To.Add(destino);
 
                 StringBuilder sb = new StringBuilder();
-                sb.Append("la matriz fue generada exitosamente!");
+                sb.Append("Las matrices (Legal y de riesgos) fueron generadas exitosamente! para la Sucursal "+ sucursal+" de la Empresa "+ empresa);
                 mail.Body = sb.ToString();
 
                 return enviarCorreo(mail);
