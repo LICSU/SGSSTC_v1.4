@@ -25,6 +25,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -1015,6 +1016,7 @@
     <Content Include="source\sistema\MenuPrincipal\ViewPreguntasPares.aspx" />
     <Content Include="source\sistema\Planear\Create_ActaCierre.aspx" />
     <Content Include="source\sistema\Planear\Create_AperturaElecciones.aspx" />
+    <Content Include="source\sistema\Planear\create_ObjetivosSGSST.aspx" />
     <Content Include="source\sistema\Planear\Create_ComunicadoElecciones.aspx" />
     <Content Include="source\sistema\Planear\Create_ConformacionCopasst.aspx" />
     <Content Include="source\sistema\Planear\Create_DesignacionVigia.aspx" />
@@ -1026,6 +1028,7 @@
     <Content Include="source\sistema\Planear\Create_RegistroVotantes.aspx" />
     <Content Include="source\sistema\Planear\Create_ResultadoVotos.aspx" />
     <Content Include="source\sistema\Planear\Create_ReunionCopasst.aspx" />
+    <Content Include="source\sistema\Planear\index_ObjetivosSGSST.aspx" />
     <Content Include="source\sistema\Planear\index_ActaCopasst.aspx" />
     <Content Include="source\sistema\Planear\index_AsignacionResponsable.aspx" />
     <Content Include="source\sistema\Planear\index_ComunicacionPoliticaSST.aspx" />
@@ -1955,6 +1958,13 @@
     <Compile Include="source\sistema\Planear\Create_AperturaElecciones.aspx.designer.cs">
       <DependentUpon>Create_AperturaElecciones.aspx</DependentUpon>
     </Compile>
+    <Compile Include="source\sistema\Planear\create_ObjetivosSGSST.aspx.cs">
+      <DependentUpon>create_ObjetivosSGSST.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="source\sistema\Planear\create_ObjetivosSGSST.aspx.designer.cs">
+      <DependentUpon>create_ObjetivosSGSST.aspx</DependentUpon>
+    </Compile>
     <Compile Include="source\sistema\Planear\Create_ComunicadoElecciones.aspx.cs">
       <DependentUpon>Create_ComunicadoElecciones.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2031,6 +2041,13 @@
     </Compile>
     <Compile Include="source\sistema\Planear\Create_ReunionCopasst.aspx.designer.cs">
       <DependentUpon>Create_ReunionCopasst.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="source\sistema\Planear\index_ObjetivosSGSST.aspx.cs">
+      <DependentUpon>index_ObjetivosSGSST.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="source\sistema\Planear\index_ObjetivosSGSST.aspx.designer.cs">
+      <DependentUpon>index_ObjetivosSGSST.aspx</DependentUpon>
     </Compile>
     <Compile Include="source\sistema\Planear\index_ActaCopasst.aspx.cs">
       <DependentUpon>index_ActaCopasst.aspx</DependentUpon>
@@ -2211,6 +2228,7 @@
     <Folder Include="source\archivos\indicadores\" />
     <Folder Include="source\archivos\inspecciones\" />
     <Folder Include="source\archivos\mapas\" />
+    <Folder Include="source\archivos\objetivos_sgsst\" />
     <Folder Include="source\archivos\obligacion\" />
     <Folder Include="source\archivos\planes\" />
     <Folder Include="source\archivos\politicasst\" />

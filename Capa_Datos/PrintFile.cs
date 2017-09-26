@@ -854,6 +854,22 @@ namespace Capa_Datos
             ManageFiles.PdfPart2(DocumentoPDF.Item1, DocumentoPDF.Item2, Convert.ToInt32(valores[0]), _page);
         }
 
+        public static void PrintObjetivosSGSST(String[] valores, Page _page)
+        {
+            Tuple<Document, PdfPTable> DocumentoPDF = ManageFiles.PdfParte1(
+                Convert.ToInt32(valores[0]),
+                "ObjetivosSGSST_",
+                "OBJETIVOS SG-SST",
+                _page);
+
+            #region cuerpo
+            miCelda73.Texto = valores[1];
+            DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCeldaHTML(DocumentoPDF.Item2, miCelda73));
+            #endregion
+
+            ManageFiles.PdfPart2(DocumentoPDF.Item1, DocumentoPDF.Item2, Convert.ToInt32(valores[0]), _page);
+        }
+
         public static void PrintCronogramaInspeccion(String[] valores, Page _page, Panel _Panel)
         {
             Tuple<Document, PdfPTable> DocumentoPDF = ManageFiles.PdfParte1(
