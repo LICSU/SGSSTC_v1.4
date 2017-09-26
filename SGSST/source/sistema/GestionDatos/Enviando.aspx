@@ -9,47 +9,34 @@
 
 	<script>
 
-        $(document).ready(function () {
-            $("#ContentPlaceHolder1_Button1").click(function () {
-                $("#ContentPlaceHolder1_Button1").hide();
-            });
-        });
+		$(document).ready(function () {
+			$("#ContentPlaceHolder1_Button2").hide();
+
+			$("#ContentPlaceHolder1_Button1").click(function () {
+				$("#ContentPlaceHolder1_Button1").hide();
+
+				$("#ContentPlaceHolder1_Button2").show();
+			});
+		});
 
 	</script>
+		
 
-	<div class="page-header">
-		<h1 class="text-center">Enviando Información ...</h1>
-	</div>
-    
-	<asp:Button ID="Button1" runat="server" Text="Button1" OnClick="llamarwebserviceAsync1" />
-
-	<div class="row">
-		<div class="col-md-10 col-md-offset-1">
-			<hr />
-			<br />
-
-			<div class="box box-warning box-solid">
-				<div class="box-header">
-					<h3 class="box-title">Enviando Datos...</h3>
-				</div>
-				<asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
-				<div class="box-body">
-					<h4>Por favor espere mientras guardamos la informacion!</h4>
-					<br />
-					<h4>Generando Puestos de Trabajos y Areas...</h4>
-					<br />
-					<h4>Generando Matriz legal para esta sucursal...</h4>
-					<br />
-					<h4>Generando Matriz de riesgos para esta sucursal...</h4>
-					<br />
-					<h5>Este proceso puede durar varios minutos.</h5>
-				</div>
-
-				<div class="overlay">
-					<i class="fa fa-refresh fa-spin"></i>
-				</div>
-			</div>
-		</div>
+	<div class="jumbotron">
+		<h1>Matriz de Riesgos y Matriz Legal...</h1>
+		<hr />
+		<p>
+			Debido a la gran cantidad de infomración que se tiene que generar, este proceso puede durar varios minutos,
+			se le notificara mediante correo electronico, cuando ya se haya generado la matriz legal y la matriz de riesgos, para la sucursal
+			creada.
+			<br /><br />
+			Puede seguir usando el sistema con total normalidad.
+			<br /><br />
+			Muchas gracias por su paciencia.
+		</p>
+		
+		<asp:Button ID="Button1" CssClass="btn btn-info" runat="server" Text="Generar Matrices" OnClick="llamarwebserviceAsync1" />
+		<asp:Button ID="Button2" CssClass="btn btn-success" runat="server" Text="Volver al Menu principal" OnClick="Button2_Click"/>
 	</div>
 
 </asp:Content>

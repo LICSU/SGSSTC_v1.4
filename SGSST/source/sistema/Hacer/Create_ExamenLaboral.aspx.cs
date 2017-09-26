@@ -466,7 +466,7 @@ namespace SGSSTC.source.sistema.Hacer
         protected void ddlSucursal_SelectedIndexChanged(object sender, EventArgs e)
         {
             List<sucursal> ListaSucursal = new List<sucursal>();
-            ListaSucursal = Getter.Sucursal(Convert.ToInt32(ddlSucursal.SelectedValue));
+            ListaSucursal = Getter.Sucursal(Convert.ToInt32(ddlSucursal.SelectedValue), 0, "");
 
             foreach (var item in ListaSucursal)
             {

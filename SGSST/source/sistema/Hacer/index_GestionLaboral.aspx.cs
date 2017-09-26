@@ -129,7 +129,7 @@ namespace SGSSTC.source.sistema.Hacer
         private void Cargartrabajadores(int _id_sucursal)
         {
             List<sucursal> ListaSucursal = new List<sucursal>();
-            ListaSucursal = Getter.Sucursal(_id_sucursal);
+            ListaSucursal = Getter.Sucursal(_id_sucursal, 0, "");
 
             foreach (var itemSucursal in ListaSucursal)
             {

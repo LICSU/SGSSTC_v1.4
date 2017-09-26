@@ -907,6 +907,7 @@
     <Content Include="source\archivos\plantillasCorreo\images\tweet.gif" />
     <Content Include="source\archivos\plantillasCorreo\logo.png" />
     <Content Include="source\archivos\plantillasCorreo\mailer.html" />
+    <Content Include="source\archivos\plantillasCorreo\Matrices.html" />
     <Content Include="source\archivos\plantillasCorreo\recuperacionClave.html" />
     <Content Include="source\archivos\plantillasCorreo\registroUsuario.html" />
     <Content Include="source\archivos\plantillas\Archivo.txt" />

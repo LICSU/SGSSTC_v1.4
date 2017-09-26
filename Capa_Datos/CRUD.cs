@@ -927,6 +927,7 @@ namespace Capa_Datos
 
             return ObjUsuario.Error;
         }
+
         public static bool Add_Riesgos_Sucursal(Model_UsuarioSistema ObjUsuario, String[] valores)
         {
             DateTime fechaActual = DateTime.Now;
@@ -1114,6 +1115,7 @@ namespace Capa_Datos
             }
             return true;
         }
+
         public static bool Add_Lista_Actividad(Model_UsuarioSistema ObjUsuario, int id_sucursal)
         {
             lista_actividad nuevo = new lista_actividad()

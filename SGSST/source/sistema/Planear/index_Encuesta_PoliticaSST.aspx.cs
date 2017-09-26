@@ -81,7 +81,7 @@ namespace SGSSTC.source.sistema.Hacer
             List<sucursal> ListaSucursal = new List<sucursal>();
             List<trabajador> ListaTrabajador = new List<trabajador>();
 
-            ListaSucursal = Getter.Sucursal(ObjUsuario.Id_sucursal);
+            ListaSucursal = Getter.Sucursal(ObjUsuario.Id_sucursal, 0, "");
             ListaTrabajador = Getter.Trabajador(0, 0, ObjUsuario.Id_sucursal);
 
             string[] valores = {

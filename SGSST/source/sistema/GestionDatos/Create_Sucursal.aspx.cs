@@ -262,7 +262,6 @@ namespace SGSSTC.source.sistema.GestionDatos
             }
         }
 
-
         #region filtros
         protected void ddlEmpresaAdd_SelectedIndexChanged(object sender, EventArgs e)
         {

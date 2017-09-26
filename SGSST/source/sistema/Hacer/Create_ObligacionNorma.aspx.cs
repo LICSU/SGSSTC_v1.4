@@ -28,7 +28,7 @@ namespace SGSSTC.source.sistema.Hacer
             lbAnho.Text = DateTime.Now.Year.ToString();
 
             List<sucursal> ListaSucursal = new List<sucursal>();
-            ListaSucursal = Getter.Sucursal(Convert.ToInt32(IdSucursal));
+            ListaSucursal = Getter.Sucursal(Convert.ToInt32(IdSucursal), 0, "");
             foreach (var item in ListaSucursal)
             {
                 IdEmpresa = Convert.ToInt32(item.id_empresa);

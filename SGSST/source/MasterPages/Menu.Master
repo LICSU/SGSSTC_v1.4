@@ -24,13 +24,13 @@
 
 <body>
 	<style>
-     
-        .table table > tbody > tr > td > span {
-            background-color: transparent !important;
-            border-color: transparent !important;
-            color: #337ab7 !important;
-        }
-        
+	 
+		.table table > tbody > tr > td > span {
+			background-color: transparent !important;
+			border-color: transparent !important;
+			color: #337ab7 !important;
+		}
+		
 
 		.dropdown-submenu {
 			position: relative;
@@ -85,8 +85,8 @@
 					<a href="../MenuPrincipal/index.aspx" class="navbar-brand">SGSSTC</a>
 				</div>
 
-                <asp:PlaceHolder runat="server" ID="menuPrin">
-				    <ul class="nav navbar-nav">
+				<asp:PlaceHolder runat="server" ID="menuPrin">
+					<ul class="nav navbar-nav">
 
 					<li class="dropdown">
 						<a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa  fa-gears"></i>
@@ -135,7 +135,7 @@
 								</a>
 							</li>
 
-                            <li>
+							<li>
 								<a href="../GestionDatos/index_Rol.aspx"><i class="fa fa-circle-o"></i>
 									<span>Rol</span>
 								</a>
@@ -268,7 +268,7 @@
 											<span>Acta del Copasst</span>
 										</a>
 									</li>
-                                                                        
+																		
 								</ul>
 							</li>
 
@@ -418,8 +418,8 @@
 								</ul>
 							</li>
 
-                            <!-- Objetivos SGSST -->
-                            <li>
+							<!-- Objetivos SGSST -->
+							<li>
 								<a href="../Planear/index_ObjetivosSGSST.aspx">
 									<i class="fa fa-circle-o"></i>
 									<span>Objetivos del SG-SST</span>
@@ -1029,7 +1029,7 @@
 						</ul>
 					</li>
 				</ul>
-                </asp:PlaceHolder>
+				</asp:PlaceHolder>
 				<ul class="nav navbar-nav navbar-right">
 					<li>
 						<div class="user-panel">
@@ -1077,9 +1077,8 @@
 	<ucpag:pagination runat="server" ID="pagination" />
 	
 	
-	<asp:PlaceHolder runat="server">
 	<%: Scripts.Render("~/bundles/SGSSTJs") %>
-	</asp:PlaceHolder>
+
 
 </body>
 

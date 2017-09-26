@@ -16,6 +16,7 @@ namespace SGSSTC.source.sistema.GestionDatos
         #region metodos index
         protected void Page_Load(object sender, EventArgs e)
         {
+
             ObjUsuario = Utilidades.ValidarSesion(HttpContext.Current.User.Identity as FormsIdentity, this); phAlerta.Visible = false;
 
             BoolEmpSuc = Getter.Get_Empresa_Sucursal(ObjUsuario);
@@ -50,7 +51,7 @@ namespace SGSSTC.source.sistema.GestionDatos
         {
             List<sucursal> ListaSucursal = new List<sucursal>();
             int IdSucursal = Convert.ToInt32(id_sucursal);
-            ListaSucursal = Getter.Sucursal(IdSucursal);
+            ListaSucursal = Getter.Sucursal(IdSucursal, 0, "");
 
             foreach (var item in ListaSucursal)
             {
@@ -92,7 +93,7 @@ namespace SGSSTC.source.sistema.GestionDatos
 
 
                 List<sucursal> ListaSucursal = new List<sucursal>();
-                ListaSucursal = Getter.Sucursal(Convert.ToInt32(hdfSucursalEditID.Value));
+                ListaSucursal = Getter.Sucursal(Convert.ToInt32(hdfSucursalEditID.Value), 0, "");
 
                 foreach (var item in ListaSucursal)
                 {
@@ -130,7 +131,7 @@ namespace SGSSTC.source.sistema.GestionDatos
                 hdfSucursalID.Value = Utilidades_GridView.DevolverIdRow(e, GridView1);
 
                 List<sucursal> ListaSucursal = new List<sucursal>();
-                ListaSucursal = Getter.Sucursal(Convert.ToInt32(hdfSucursalID.Value));
+                ListaSucursal = Getter.Sucursal(Convert.ToInt32(hdfSucursalID.Value), 0, "");
                 foreach (var item in ListaSucursal)
                 {
                     lblNombreView.Text = item.nombre;

@@ -1,6 +1,7 @@
 ﻿using System;
 using Capa_Datos;
 using System.Threading;
+using System.Collections.Generic;
 
 namespace CapaServ
 {
@@ -76,6 +77,16 @@ namespace CapaServ
         {
             if (CRUD.Add_Medidas_Sucursal(ObjUsuario, Convert.ToInt32(id_sucursal)))
             {
+                string empresa = "", correo = "";
+                var _sucursal = Getter.Sucursal(Convert.ToInt32(id_sucursal));
+
+                List<empresa> data_empresa = Getter.EmpresaEmail(Convert.ToInt32(_sucursal.id_empresa));
+                foreach (var datos in data_empresa)
+                {
+                    empresa = datos.nombre;
+                    correo = datos.email;
+                }
+                Utilidades.enviarCorreoMatriz(correo, empresa, _sucursal.nombre);
                 return true;
             }
             else
