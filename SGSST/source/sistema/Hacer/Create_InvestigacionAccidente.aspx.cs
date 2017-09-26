@@ -61,7 +61,7 @@ namespace SGSSTC.source.sistema.Verificar
 
 			foreach (var item in consulta)
 			{
-				ObjUsuario.Error = CRUD.Delete_Fila(tabla, Convert.ToInt32(item.id_inv_ac_in), ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+				ObjUsuario.Error = CRUD.Delete_Fila(tabla, Convert.ToInt32(item.id_inv_ac_in));
 			}
 			#endregion
 
@@ -141,7 +141,7 @@ namespace SGSSTC.source.sistema.Verificar
 				actividad = txtActividad.Text
 			};
 
-			ObjUsuario.Error = CRUD.Add_Fila(nuevo, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+			ObjUsuario.Error = CRUD.Add_Fila(nuevo);
 
 			Modal.MostrarAlertaAdd(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error, txtFechaEvento);
 
@@ -160,7 +160,7 @@ namespace SGSSTC.source.sistema.Verificar
 							url = ruta,
 							id_tabla = idAccidente
 						};
-						ObjUsuario.Error = CRUD.Add_Fila(nuevoFA, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+						ObjUsuario.Error = CRUD.Add_Fila(nuevoFA);
 
 					}
 				}

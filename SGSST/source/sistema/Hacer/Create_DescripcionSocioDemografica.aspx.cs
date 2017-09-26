@@ -187,7 +187,7 @@ namespace SGSSTC.source.sistema.Hacer
                     descripcion = txtDescripcion.Text
                 };
 
-                ObjUsuario.Error = CRUD.Add_Fila(nuevoDesc, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+                ObjUsuario.Error = CRUD.Add_Fila(nuevoDesc);
 
                 if (ObjUsuario.Error)
                 {
@@ -204,7 +204,7 @@ namespace SGSSTC.source.sistema.Hacer
                             enfermedades = txtEnfermadades1.Text,
                             id_desc_socio = GetterMax.DescripcionSociodemografica()
                         };
-                        ObjUsuario.Error = CRUD.Add_Fila(nuevo1, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+                        ObjUsuario.Error = CRUD.Add_Fila(nuevo1);
                     }
                     if (txtEmpresa2.Text != string.Empty)
                     {
@@ -218,7 +218,7 @@ namespace SGSSTC.source.sistema.Hacer
                             enfermedades = txtEnfermadades2.Text,
                             id_desc_socio = GetterMax.DescripcionSociodemografica()
                         };
-                        ObjUsuario.Error = CRUD.Add_Fila(nuevo2, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+                        ObjUsuario.Error = CRUD.Add_Fila(nuevo2);
                     }
                     if (txtEmpresa3.Text != string.Empty)
                     {
@@ -232,7 +232,7 @@ namespace SGSSTC.source.sistema.Hacer
                             enfermedades = txtEnfermadades3.Text,
                             id_desc_socio = GetterMax.DescripcionSociodemografica()
                         };
-                        ObjUsuario.Error = CRUD.Add_Fila(nuevo3, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+                        ObjUsuario.Error = CRUD.Add_Fila(nuevo3);
                     }
                     #endregion
                 }

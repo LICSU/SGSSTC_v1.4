@@ -60,7 +60,7 @@ namespace SGSSTC.source.sistema.MenuPrincipal
                     Edit.estatus = "No";
                     Edit.anho = Anho;
                 }
-                ObjUsuario.Error = CRUD.Edit_Fila(contexto, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+                ObjUsuario.Error = CRUD.Edit_Fila(contexto);
 
                 #endregion
 
@@ -170,7 +170,7 @@ namespace SGSSTC.source.sistema.MenuPrincipal
                     Edit.estatus = "No";
                     Edit.anho = Anho;
                 }
-                ObjUsuario.Error = CRUD.Edit_Fila(contexto, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+                ObjUsuario.Error = CRUD.Edit_Fila(contexto);
 
                 #endregion
 
@@ -447,7 +447,7 @@ namespace SGSSTC.source.sistema.MenuPrincipal
                 Convert.ToString(idPregunta)
                 };
 
-            ObjUsuario.Error = CRUD.Add_Respuesta(ObjUsuario, valores);
+            ObjUsuario.Error = CRUD.Add_Respuesta( valores);
 
             Modal.CerrarModal("RespuestaModal", "RespuestaModalScript", this);
 

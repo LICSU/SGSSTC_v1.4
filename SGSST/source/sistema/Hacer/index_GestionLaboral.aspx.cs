@@ -187,14 +187,14 @@ namespace SGSSTC.source.sistema.Hacer
                 Edit.soporte = ruta;
             }
 
-            CRUD.Edit_Fila(contexto, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            CRUD.Edit_Fila(contexto);
             LlenarGridView();
         }
         protected void EliminarRegistro(object sender, EventArgs e)
         {
             gestion_laboral tabla = new gestion_laboral();
 
-            ObjUsuario.Error = CRUD.Delete_Fila(tabla, Convert.ToInt32(hdfIDDel.Value), ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            ObjUsuario.Error = CRUD.Delete_Fila(tabla, Convert.ToInt32(hdfIDDel.Value));
 
             Modal.CerrarModal("deleteModal", "DeleteModalScript", this);
             Modal.MostrarAlertaDelete(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error, txtBuscar);
@@ -288,7 +288,7 @@ namespace SGSSTC.source.sistema.Hacer
                 id_usuario = IdUsuario
             };
 
-            ObjUsuario.Error = CRUD.Add_Fila(nuevoGestion, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            ObjUsuario.Error = CRUD.Add_Fila(nuevoGestion);
 
             if (ObjUsuario.Error)
             {
@@ -301,7 +301,7 @@ namespace SGSSTC.source.sistema.Hacer
                     id_usuario = IdUsuario
                 };
 
-                ObjUsuario.Error = CRUD.Add_Fila(nuevo, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+                ObjUsuario.Error = CRUD.Add_Fila(nuevo);
             }
 
             if (ObjUsuario.Error)
@@ -318,7 +318,7 @@ namespace SGSSTC.source.sistema.Hacer
                             id_ges_lab = Convert.ToInt32(id_ges_lab)
                         };
 
-                        ObjUsuario.Error = CRUD.Add_Fila(nuevoTG, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+                        ObjUsuario.Error = CRUD.Add_Fila(nuevoTG);
                     }
                 }
                 Modal.CerrarModal("AddEntrega", "AddModalScript", this);
@@ -339,7 +339,7 @@ namespace SGSSTC.source.sistema.Hacer
                 Edit.descripcion = txtDescEditEntrega.Text;
                 Edit.cant_horas = 0;
             }
-            ObjUsuario.Error = CRUD.Edit_Fila(contexto, IdUsuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            ObjUsuario.Error = CRUD.Edit_Fila(contexto);
 
             if (ObjUsuario.Error)
             {
@@ -352,13 +352,13 @@ namespace SGSSTC.source.sistema.Hacer
                     id_usuario = IdUsuario
                 };
 
-                ObjUsuario.Error = CRUD.Add_Fila(nuevo, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+                ObjUsuario.Error = CRUD.Add_Fila(nuevo);
             }
 
             if (ObjUsuario.Error)
             {
                 gestion_laboral tabla = new gestion_laboral();
-                //ObjUsuario.Error = CRUD.Delete_Fila(tabla, Convert.ToInt32(hdfEditEntregaID.Value), ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+                //ObjUsuario.Error = CRUD.Delete_Fila(tabla, Convert.ToInt32(hdfEditEntregaID.Value));
 
                 foreach (ListItem item in chkTrabajadores.Items)
                 {
@@ -369,7 +369,7 @@ namespace SGSSTC.source.sistema.Hacer
                             id_trabajador = Convert.ToInt32(item.Value),
                             id_ges_lab = Convert.ToInt32(hdfEditEntregaID.Value)
                         };
-                        ObjUsuario.Error = CRUD.Add_Fila(nuevoTG1, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+                        ObjUsuario.Error = CRUD.Add_Fila(nuevoTG1);
                     }
                 }
             }
@@ -395,8 +395,7 @@ namespace SGSSTC.source.sistema.Hacer
                 id_usuario = IdUsuario
             };
 
-            ObjUsuario.Error = CRUD.Add_Fila(nuevoGestion, ObjUsuario.Id_usuario,
-                HttpContext.Current.Request.Url.AbsoluteUri);
+            ObjUsuario.Error = CRUD.Add_Fila(nuevoGestion);
 
             if (ObjUsuario.Error)
             {
@@ -408,7 +407,7 @@ namespace SGSSTC.source.sistema.Hacer
                     id_categorias = 1,
                     id_usuario = IdUsuario
                 };
-                ObjUsuario.Error = CRUD.Add_Fila(nuevo, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+                ObjUsuario.Error = CRUD.Add_Fila(nuevo);
             }
 
             if (ObjUsuario.Error)
@@ -426,8 +425,7 @@ namespace SGSSTC.source.sistema.Hacer
                             id_ges_lab = Convert.ToInt32(id_ges_lab),
                             asistencia = "-"
                         };
-                        ObjUsuario.Error = CRUD.Add_Fila(nuevoTG2, ObjUsuario.Id_usuario,
-                            HttpContext.Current.Request.Url.AbsoluteUri);
+                        ObjUsuario.Error = CRUD.Add_Fila(nuevoTG2);
 
                     }
                 }
@@ -454,7 +452,7 @@ namespace SGSSTC.source.sistema.Hacer
                 Edit.objetivos = txtObjCapEdit.Text;
                 Edit.id_usuario = IdUsuario;
             }
-            ObjUsuario.Error = CRUD.Edit_Fila(contexto, IdUsuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            ObjUsuario.Error = CRUD.Edit_Fila(contexto);
 
             if (ObjUsuario.Error)
             {
@@ -467,13 +465,13 @@ namespace SGSSTC.source.sistema.Hacer
                     id_usuario = IdUsuario
                 };
 
-                ObjUsuario.Error = CRUD.Add_Fila(nuevo, IdUsuario, HttpContext.Current.Request.Url.AbsoluteUri);
+                ObjUsuario.Error = CRUD.Add_Fila(nuevo);
             }
 
             if (ObjUsuario.Error)
             {
                 trabajador_gestion tabla = new trabajador_gestion();
-                ObjUsuario.Error = CRUD.Delete_Fila(tabla, Convert.ToInt32(hdfEditCapacitacionID.Value), ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+                ObjUsuario.Error = CRUD.Delete_Fila(tabla, Convert.ToInt32(hdfEditCapacitacionID.Value));
 
                 foreach (ListItem item in chkTrabajadores.Items)
                 {
@@ -485,7 +483,7 @@ namespace SGSSTC.source.sistema.Hacer
                             id_ges_lab = Convert.ToInt32(hdfEditCapacitacionID.Value),
                             asistencia = "-"
                         };
-                        ObjUsuario.Error = CRUD.Add_Fila(nuevoTG3, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+                        ObjUsuario.Error = CRUD.Add_Fila(nuevoTG3);
                     }
                 }
             }
@@ -508,7 +506,7 @@ namespace SGSSTC.source.sistema.Hacer
                 tipo_gestion = 4,
                 id_usuario = IdUsuario
             };
-            ObjUsuario.Error = CRUD.Add_Fila(nuevoGestion, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            ObjUsuario.Error = CRUD.Add_Fila(nuevoGestion);
 
             if (ObjUsuario.Error)
             {
@@ -521,7 +519,7 @@ namespace SGSSTC.source.sistema.Hacer
                     id_usuario = IdUsuario
                 };
 
-                ObjUsuario.Error = CRUD.Add_Fila(nuevo, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+                ObjUsuario.Error = CRUD.Add_Fila(nuevo);
             }
 
             if (ObjUsuario.Error)
@@ -538,7 +536,7 @@ namespace SGSSTC.source.sistema.Hacer
                             id_trabajador = Convert.ToInt32(item.Value),
                             id_ges_lab = Convert.ToInt32(id_ges_lab)
                         };
-                        ObjUsuario.Error = CRUD.Add_Fila(nuevoTG4, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+                        ObjUsuario.Error = CRUD.Add_Fila(nuevoTG4);
 
                     }
                 }
@@ -562,7 +560,7 @@ namespace SGSSTC.source.sistema.Hacer
                 Edit.fecha = Convert.ToDateTime(txtFechaEditActividad.Text);
                 Edit.descripcion = txtDescEditActividad.Text;
             }
-            ObjUsuario.Error = CRUD.Edit_Fila(contexto, IdUsuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            ObjUsuario.Error = CRUD.Edit_Fila(contexto);
 
             if (ObjUsuario.Error)
             {
@@ -575,7 +573,7 @@ namespace SGSSTC.source.sistema.Hacer
                     id_usuario = IdUsuario
                 };
 
-                ObjUsuario.Error = CRUD.Add_Fila(nuevo, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+                ObjUsuario.Error = CRUD.Add_Fila(nuevo);
             }
 
             if (ObjUsuario.Error)
@@ -592,7 +590,7 @@ namespace SGSSTC.source.sistema.Hacer
                             id_trabajador = Convert.ToInt32(item.Value),
                             id_ges_lab = Convert.ToInt32(hdfEditActividadID.Value)
                         };
-                        ObjUsuario.Error = CRUD.Add_Fila(nuevoTG5, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+                        ObjUsuario.Error = CRUD.Add_Fila(nuevoTG5);
 
                     }
                 }
@@ -618,7 +616,7 @@ namespace SGSSTC.source.sistema.Hacer
                 tipo_gestion = 3,
                 id_usuario = IdUsuario
             };
-            ObjUsuario.Error = CRUD.Add_Fila(nuevoGestion, IdUsuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            ObjUsuario.Error = CRUD.Add_Fila(nuevoGestion);
 
             if (ObjUsuario.Error)
             {
@@ -631,7 +629,7 @@ namespace SGSSTC.source.sistema.Hacer
                     id_usuario = IdUsuario
                 };
 
-                ObjUsuario.Error = CRUD.Add_Fila(nuevo, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+                ObjUsuario.Error = CRUD.Add_Fila(nuevo);
             }
 
             if (ObjUsuario.Error)
@@ -648,7 +646,7 @@ namespace SGSSTC.source.sistema.Hacer
                             id_trabajador = Convert.ToInt32(item.Value),
                             id_ges_lab = Convert.ToInt32(id_ges_lab)
                         };
-                        ObjUsuario.Error = CRUD.Add_Fila(nuevoTG6, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+                        ObjUsuario.Error = CRUD.Add_Fila(nuevoTG6);
 
                     }
                 }
@@ -672,7 +670,7 @@ namespace SGSSTC.source.sistema.Hacer
                 Edit.fecha = Convert.ToDateTime(txtFechaEditJornada.Text);
                 Edit.descripcion = txtDescEditJornada.Text;
             }
-            ObjUsuario.Error = CRUD.Edit_Fila(contexto, IdUsuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            ObjUsuario.Error = CRUD.Edit_Fila(contexto);
 
             if (ObjUsuario.Error)
             {
@@ -685,14 +683,14 @@ namespace SGSSTC.source.sistema.Hacer
                     id_usuario = IdUsuario
                 };
 
-                ObjUsuario.Error = CRUD.Add_Fila(nuevo, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+                ObjUsuario.Error = CRUD.Add_Fila(nuevo);
             }
 
             if (ObjUsuario.Error)
             {
                 #region codigo
                 gestion_laboral tabla = new gestion_laboral();
-                //ObjUsuario.Error = CRUD.Delete_Fila(tabla, Convert.ToInt32(hdfEditJornadaID.Value), ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+                //ObjUsuario.Error = CRUD.Delete_Fila(tabla, Convert.ToInt32(hdfEditJornadaID.Value));
 
                 foreach (ListItem item in chkTrabajadores.Items)
                 {
@@ -703,7 +701,7 @@ namespace SGSSTC.source.sistema.Hacer
                             id_trabajador = Convert.ToInt32(item.Value),
                             id_ges_lab = Convert.ToInt32(hdfEditJornadaID.Value)
                         };
-                        ObjUsuario.Error = CRUD.Add_Fila(nuevoTG7, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+                        ObjUsuario.Error = CRUD.Add_Fila(nuevoTG7);
 
                     }
                 }

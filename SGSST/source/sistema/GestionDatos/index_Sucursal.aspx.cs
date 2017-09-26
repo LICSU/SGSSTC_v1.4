@@ -223,7 +223,7 @@ namespace SGSSTC.source.sistema.GestionDatos
                 Edit.movil = txtFijoEdit.Text;
                 Edit.fijo = txtMovilEdit.Text;
             }
-            ObjUsuario.Error = CRUD.Edit_Fila(contexto, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            ObjUsuario.Error = CRUD.Edit_Fila(contexto);
 
             Modal.CerrarModal("editModal", "EditModalScript", this);
             Modal.MostrarAlertaEdit(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error, txtBuscar);
@@ -239,9 +239,7 @@ namespace SGSSTC.source.sistema.GestionDatos
 
             ObjUsuario.Error = CRUD.Delete_Fila(
                 tabla,
-                Convert.ToInt32(IdSucursal),
-                ObjUsuario.Id_usuario,
-                HttpContext.Current.Request.Url.AbsoluteUri);
+                Convert.ToInt32(IdSucursal));
 
             Modal.CerrarModal("deleteModal", "DeleteModalScript", this);
             Modal.MostrarAlertaDelete(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error, txtBuscar);

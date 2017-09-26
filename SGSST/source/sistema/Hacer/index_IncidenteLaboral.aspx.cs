@@ -83,7 +83,7 @@ namespace SGSSTC.source.sistema.Verificar
         protected void EliminarRegistro(object sender, EventArgs e)
         {
             Respuesta tabla = new Respuesta();
-            ObjUsuario.Error = CRUD.Delete_Fila(tabla, Convert.ToInt32(hdfIDDel.Value), ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            ObjUsuario.Error = CRUD.Delete_Fila(tabla, Convert.ToInt32(hdfIDDel.Value));
 
             LlenarGridView();
             Modal.MostrarAlertaDelete(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error, txtBuscar);
@@ -108,7 +108,7 @@ namespace SGSSTC.source.sistema.Verificar
                     Edit.documento_comunicado = ruta;
                 }
 
-                ObjUsuario.Error = CRUD.Edit_Fila(contexto, ObjUsuario.Id_usuario,HttpContext.Current.Request.Url.AbsoluteUri);
+                ObjUsuario.Error = CRUD.Edit_Fila(contexto);
 
             }
 

@@ -75,7 +75,7 @@ namespace SGSSTC.source.sistema.GestionDatos
                 fecha_creacion = DateTime.Today
             };
 
-            ObjUsuario.Error = CRUD.Add_Fila(nuevo, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            ObjUsuario.Error = CRUD.Add_Fila(nuevo);
             Modal.CerrarModal("addModal", "AddModalScript", this);
             Modal.MostrarAlertaAdd(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error, txtBuscar);
             LlenarGridView();
@@ -96,7 +96,7 @@ namespace SGSSTC.source.sistema.GestionDatos
                 Edit.fecha_fin = txtFechaFinEdit.Text;
             }
 
-            ObjUsuario.Error = CRUD.Edit_Fila(contexto, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            ObjUsuario.Error = CRUD.Edit_Fila(contexto);
             Modal.CerrarModal("editModal", "EditModalScript", this);
             Modal.MostrarAlertaEdit(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error, txtBuscar);
             LlenarGridView();
@@ -111,7 +111,7 @@ namespace SGSSTC.source.sistema.GestionDatos
                 IdHorario = Convert.ToInt32(user.trabajador.id_horario);
             }
 
-            ObjUsuario.Error = CRUD.Delete_Fila(tabla, Convert.ToInt32(hdfHorarioIDDel.Value), ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            ObjUsuario.Error = CRUD.Delete_Fila(tabla, Convert.ToInt32(hdfHorarioIDDel.Value));
 
             Modal.CerrarModal("deleteModal", "DeleteModalScript", this);
             Modal.MostrarAlertaDelete(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error, txtBuscar);

@@ -86,7 +86,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
                 "Indicadores"
             };
 
-            ObjUsuario.Error = CRUD.AddIndicadores(IdEmpSuc, ObjUsuario, valores, flpArchivo);
+            ObjUsuario.Error = CRUD.AddIndicadores(IdEmpSuc,  valores, flpArchivo);
 
             Modal.CerrarModal("printModal", "printModalScript", this);
             TextBox txtBuscar = new TextBox();

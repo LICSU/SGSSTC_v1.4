@@ -242,7 +242,6 @@
     <Compile Include="GetterMax.cs" />
     <Compile Include="Listas.cs" />
     <Compile Include="Modal.cs" />
-    <Compile Include="Model_Bitacora.cs" />
     <Compile Include="CRUD.cs" />
     <Compile Include="Model_Enfermedad_Sistema.cs" />
     <Compile Include="municipio.cs">

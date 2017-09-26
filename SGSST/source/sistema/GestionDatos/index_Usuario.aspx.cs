@@ -111,7 +111,7 @@ namespace SGSSTC.source.sistema.GestionDatos
                     id_rol = Convert.ToInt32(ddlRolAdd.SelectedValue)
                 };
 
-                ObjUsuario.Error = CRUD.Add_Fila(nuevo, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+                ObjUsuario.Error = CRUD.Add_Fila(nuevo);
                 List<trabajador> trab = Getter.Trabajador(Convert.ToInt32(IdTrabajador));
                 string destino = string.Empty;
                 string empresa = string.Empty;
@@ -154,7 +154,7 @@ namespace SGSSTC.source.sistema.GestionDatos
                         Edit.id_trabajador = Convert.ToInt32(IdTrabajadorEsp);
                         Edit.id_rol = Convert.ToInt32(ddlRolEdit.SelectedValue);
                     }
-                    ObjUsuario.Error = CRUD.Edit_Fila(contexto, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+                    ObjUsuario.Error = CRUD.Edit_Fila(contexto);
 
                 }
                 Modal.CerrarModal("editModal", "EditModalScript", this);
@@ -176,7 +176,7 @@ namespace SGSSTC.source.sistema.GestionDatos
             usuario tabla = new usuario();
             if (ObjUsuario.Id_usuario != Convert.ToInt32(hdfUsuarioIDDel.Value))
             {
-                ObjUsuario.Error = CRUD.Delete_Fila(tabla, Convert.ToInt32(hdfUsuarioIDDel.Value), ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+                ObjUsuario.Error = CRUD.Delete_Fila(tabla, Convert.ToInt32(hdfUsuarioIDDel.Value));
                 Modal.CerrarModal("deleteModal", "DeleteModalScript", this);
                 Modal.MostrarAlertaDelete(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error, txtBuscar);
                 LlenarGridView();

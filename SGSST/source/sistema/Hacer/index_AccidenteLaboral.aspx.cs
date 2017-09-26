@@ -85,7 +85,7 @@ namespace SGSSTC.source.sistema.Verificar
         protected void EliminarRegistro(object sender, EventArgs e)
         {
             at_it_el_pa tabla = new at_it_el_pa();
-            ObjUsuario.Error = CRUD.Delete_Fila(tabla, Convert.ToInt32(hdfIDDel.Value), ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            ObjUsuario.Error = CRUD.Delete_Fila(tabla, Convert.ToInt32(hdfIDDel.Value));
 
             LlenarGridView();
             Modal.CerrarModal("deleteModal", "DeleteModalScript", this);
@@ -110,8 +110,7 @@ namespace SGSSTC.source.sistema.Verificar
                     Edit.documento_comunicado = ruta;
                 }
 
-                ObjUsuario.Error = CRUD.Edit_Fila(contexto, ObjUsuario.Id_usuario,
-                    HttpContext.Current.Request.Url.AbsoluteUri);
+                ObjUsuario.Error = CRUD.Edit_Fila(contexto);
 
             }
 
@@ -128,7 +127,7 @@ namespace SGSSTC.source.sistema.Verificar
                     Edit.reporte_accidente = ruta;
                 }
 
-                ObjUsuario.Error = CRUD.Edit_Fila(contexto, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+                ObjUsuario.Error = CRUD.Edit_Fila(contexto);
             }
 
             Modal.MostrarAlertaAdd(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error,txtBuscar);
@@ -146,7 +145,7 @@ namespace SGSSTC.source.sistema.Verificar
                 Edit.frecuencia_consulta = txtFeConsultas.Text;
             }
 
-            ObjUsuario.Error = Modelo_CRUD.Edit_Fila(contexto, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            ObjUsuario.Error = Modelo_CRUD.Edit_Fila(contexto);
 
             Modal.MostrarAlertaAdd(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error,txtBuscar);
             LlenarGridView();*/

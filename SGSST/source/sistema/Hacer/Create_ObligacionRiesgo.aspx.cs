@@ -99,7 +99,7 @@ namespace SGSSTC.source.sistema.Hacer
                 id_actividad = Convert.ToInt32(ddlActividad.SelectedValue)
             };
 
-            ObjUsuario.Error = CRUD.Add_Fila(nuevo, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            ObjUsuario.Error = CRUD.Add_Fila(nuevo);
 
             Modal.MostrarAlertaAdd(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error, txtFechaFin);
 
@@ -116,7 +116,7 @@ namespace SGSSTC.source.sistema.Hacer
                     id_usuario = IdUsuario
                 };
 
-                ObjUsuario.Error = CRUD.Add_Fila(nuevoalarma, IdUsuario, HttpContext.Current.Request.Url.AbsoluteUri);
+                ObjUsuario.Error = CRUD.Add_Fila(nuevoalarma);
             }
         }
 

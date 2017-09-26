@@ -940,15 +940,6 @@
 									</li>
 								</ul>
 							</li>
-
-							<!-- Registro -->
-							<li class="dropdown-submenu">
-								<a href="../Registro/index.aspx">
-									<i class="fa fa-line-chart"></i>
-									<span>Registro de Transacciones  </span>
-									<span class="label bg-green">Fase Beta</span>
-								</a>
-							</li>
 						</ul>
 					</li>
 

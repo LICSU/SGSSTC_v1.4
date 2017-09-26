@@ -30,7 +30,7 @@ namespace SGSSTC.source.sistema.Hacer
                 id_cno = Convert.ToInt32(ddlCargo.SelectedValue)
             };
 
-            ObjUsuario.Error = CRUD.Add_Fila(nuevo, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            ObjUsuario.Error = CRUD.Add_Fila(nuevo);
 
             Modal.MostrarAlertaAdd(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error, txtNombre);
         }

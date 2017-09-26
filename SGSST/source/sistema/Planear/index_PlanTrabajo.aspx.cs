@@ -129,7 +129,7 @@ namespace SGSSTC.source.sistema.Hacer
 					recursos_aprobados = Convert.ToInt32(txtRecursosAdd.Text),
 					id_responsable = Convert.ToInt32(ddlResponsable.SelectedValue)
 				};
-				ObjUsuario.Error = CRUD.Add_Fila(nuevo, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+				ObjUsuario.Error = CRUD.Add_Fila(nuevo);
 
 				Modal.CerrarModal("addModal", "AddModalScript", this);
 
@@ -170,7 +170,7 @@ namespace SGSSTC.source.sistema.Hacer
 					Edit.id_responsable = Convert.ToInt32(ddlResponsableEdit.SelectedValue);
 				}
 
-				ObjUsuario.Error = CRUD.Edit_Fila(contexto, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+				ObjUsuario.Error = CRUD.Edit_Fila(contexto);
 
 				Modal.CerrarModal("editModal", "EditModalScript", this);
 
@@ -181,7 +181,7 @@ namespace SGSSTC.source.sistema.Hacer
 		protected void EliminarRegistro(object sender, EventArgs e)
 		{
 			plan_trabajo tabla = new plan_trabajo();
-			ObjUsuario.Error = CRUD.Delete_Fila(tabla, Convert.ToInt32(hdfIDDel.Value), ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+			ObjUsuario.Error = CRUD.Delete_Fila(tabla, Convert.ToInt32(hdfIDDel.Value));
 
 			Modal.CerrarModal("deleteModal", "DeleteModalScript", this);
 

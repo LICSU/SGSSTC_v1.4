@@ -67,7 +67,7 @@ namespace SGSSTC.source.sistema.Hacer
                 tipo = "RecursosEconomicos"
             };
 
-            ObjUsuario.Error = CRUD.Add_Fila(nuevo, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            ObjUsuario.Error = CRUD.Add_Fila(nuevo);
 
             if (ObjUsuario.Error)
             {
@@ -87,7 +87,7 @@ namespace SGSSTC.source.sistema.Hacer
                             id_tabla = idRec,
                             tabla = "RecursosEconomicos"
                         };
-                        ObjUsuario.Error = CRUD.Add_Fila(nuevoFA, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+                        ObjUsuario.Error = CRUD.Add_Fila(nuevoFA);
 
                     }
                 }
@@ -99,12 +99,7 @@ namespace SGSSTC.source.sistema.Hacer
         protected void EliminarRegistro(object sender, EventArgs e)
         {
             documento tabla = new documento();
-            ObjUsuario.Error = CRUD.Delete_Fila(
-                tabla,
-                Convert.ToInt32(hdfIDDel.Value),
-                ObjUsuario.Id_usuario,
-                HttpContext.Current.Request.Url.AbsoluteUri
-                );
+            ObjUsuario.Error = CRUD.Delete_Fila(tabla,Convert.ToInt32(hdfIDDel.Value));
 
             Modal.CerrarModal("deleteModal", "DeleteModalScript", this);
             Modal.MostrarAlertaDelete(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error, txtBuscar);

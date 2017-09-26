@@ -123,7 +123,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
                 ddlTipoInspeccionAdd.SelectedValue
             };
 
-            ObjUsuario.Error = CRUD.AddInspeccion(IdEmpSuc, ObjUsuario, valores, flpArchivo);
+            ObjUsuario.Error = CRUD.AddInspeccion(IdEmpSuc,  valores, flpArchivo);
 
             Modal.MostrarAlertaAdd(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error,txtBuscar);
             LlenarGridView();
@@ -132,7 +132,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
         protected void EliminarRegistro(object sender, EventArgs e)
         {
             documento tabla = new documento();
-            ObjUsuario.Error = CRUD.Delete_Fila(tabla, Convert.ToInt32(hdfIDDel.Value), ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            ObjUsuario.Error = CRUD.Delete_Fila(tabla, Convert.ToInt32(hdfIDDel.Value));
             Modal.CerrarModal("deleteModal", "DeleteModalScript", this);
             Modal.MostrarAlertaDelete(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error, txtBuscar);
             LlenarGridView();

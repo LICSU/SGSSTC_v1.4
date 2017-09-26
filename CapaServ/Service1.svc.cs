@@ -34,7 +34,7 @@ namespace CapaServ
             return "se guardo los registros";
         }
 
-        public Boolean add_Riesgos_Default(string act1, string act2, string act3, string id_sucursal, Model_UsuarioSistema ObjUsuario)
+        public Boolean add_Riesgos_Default(string act1, string act2, string act3, string id_sucursal)
         {
             String[] valores = {
                 ""+act1,
@@ -43,9 +43,9 @@ namespace CapaServ
                 ""+id_sucursal
             };
 
-            if (CRUD.Add_Riesgos_Sucursal(ObjUsuario, valores))
+            if (CRUD.Add_Riesgos_Sucursal(valores))
             {
-                return add_NormasSucursal( act1, act2, act3, id_sucursal, ObjUsuario);
+                return add_NormasSucursal( act1, act2, act3, id_sucursal);
             }
             else
             {
@@ -54,7 +54,7 @@ namespace CapaServ
 
         }
 
-        public Boolean add_NormasSucursal(string act1, string act2, string act3, string id_sucursal, Model_UsuarioSistema ObjUsuario)
+        public Boolean add_NormasSucursal(string act1, string act2, string act3, string id_sucursal )
         {
             String[] valores = {
                 ""+act1,
@@ -63,9 +63,9 @@ namespace CapaServ
                 ""+id_sucursal
             };
 
-            if (CRUD.Add_Normas_Sucursal(ObjUsuario, valores))
+            if (CRUD.Add_Normas_Sucursal(valores))
             {
-                return add_MedidasSucursal( id_sucursal,  ObjUsuario);
+                return add_MedidasSucursal( id_sucursal);
             }
             else
             {
@@ -73,9 +73,9 @@ namespace CapaServ
             }
         }
 
-        public Boolean add_MedidasSucursal(string id_sucursal, Model_UsuarioSistema ObjUsuario)
+        public Boolean add_MedidasSucursal(string id_sucursal)
         {
-            if (CRUD.Add_Medidas_Sucursal(ObjUsuario, Convert.ToInt32(id_sucursal)))
+            if (CRUD.Add_Medidas_Sucursal(Convert.ToInt32(id_sucursal)))
             {
                 string empresa = "", correo = "";
                 var _sucursal = Getter.Sucursal(Convert.ToInt32(id_sucursal));

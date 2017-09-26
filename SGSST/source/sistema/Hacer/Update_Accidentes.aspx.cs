@@ -152,7 +152,7 @@ namespace SGSSTC.source.sistema.Verificar
 				Edit.tipo_enfermedad = ddlEmpresa.SelectedValue;
 			}
 
-			ObjUsuario.Error = CRUD.Edit_Fila(contexto, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+			ObjUsuario.Error = CRUD.Edit_Fila(contexto);
 
 
 			Modal.MostrarAlertaAdd(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error, txtFechaAcc);

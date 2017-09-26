@@ -125,7 +125,7 @@ namespace SGSSTC.source.sistema.GestionDatos
                 Edit.id_area = Convert.ToInt32(ddlArea.SelectedValue);
             }
 
-            ObjUsuario.Error = CRUD.Edit_Fila(contextoEdit, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            ObjUsuario.Error = CRUD.Edit_Fila(contextoEdit);
 
             if (ObjUsuario.Error)
             {
@@ -146,7 +146,7 @@ namespace SGSSTC.source.sistema.GestionDatos
                                     id_puesto_trabajo = idPuestos,
                                     id_epp = idEpp
                                 };
-                                ObjUsuario.Error = CRUD.Add_Fila(nuevopuestoEpp, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+                                ObjUsuario.Error = CRUD.Add_Fila(nuevopuestoEpp);
                             }
                         }
                         else
@@ -156,7 +156,7 @@ namespace SGSSTC.source.sistema.GestionDatos
                             {
                                 int idPEpp = Getter.Trae_ID_PEPP(idPuestos, idEpp);
                                 puesto_trabajo_epp tabla = new puesto_trabajo_epp();
-                                ObjUsuario.Error = CRUD.Delete_Fila(tabla, idPEpp, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+                                ObjUsuario.Error = CRUD.Delete_Fila(tabla, idPEpp);
                             }
                         }
                     }

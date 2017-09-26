@@ -69,7 +69,7 @@ namespace SGSSTC.source.sistema.MenuPrincipal
                 Edit.calificacion = Convert.ToInt32(ddlCalificacion.SelectedValue);
             }
 
-            ObjUsuario.Error = CRUD.Edit_Fila(contexto, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            ObjUsuario.Error = CRUD.Edit_Fila(contexto);
 
             TextBox txtBuscar = new TextBox();
             Modal.MostrarAlertaAdd(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error,txtBuscar);

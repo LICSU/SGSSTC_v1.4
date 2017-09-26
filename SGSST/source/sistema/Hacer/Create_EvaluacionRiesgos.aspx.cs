@@ -104,7 +104,7 @@ namespace SGSSTC.source.sistema.Hacer
 				fecha_ejecucion = Convert.ToDateTime(txtFechaEjecucion.Text)
 			};
 
-			ObjUsuario.Error = CRUD.Add_Fila(nuevoEvaRiesgo, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+			ObjUsuario.Error = CRUD.Add_Fila(nuevoEvaRiesgo);
 
 			Modal.MostrarAlertaAdd(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error, txtResponsableSGSST);
 

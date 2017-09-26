@@ -108,7 +108,7 @@ namespace SGSSTC.source.sistema.GestionDatos
                 nombre_empresa = txtNombreEmpresa.Text,
                 id_area = Convert.ToInt32(ddlAreaAdd.SelectedValue)
             };
-            ObjUsuario.Error = CRUD.Add_Fila(nuevo, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            ObjUsuario.Error = CRUD.Add_Fila(nuevo);
 
             if (ObjUsuario.Error)
             {
@@ -120,7 +120,7 @@ namespace SGSSTC.source.sistema.GestionDatos
                     id_categorias = 1,
                     id_usuario = ObjUsuario.Id_usuario
                 };
-                ObjUsuario.Error = CRUD.Add_Fila(nueva_alarma, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+                ObjUsuario.Error = CRUD.Add_Fila(nueva_alarma);
                 if (ObjUsuario.Error)
                 {
                     Modal.CerrarModal("addModal", "AddModalScript", this);
@@ -146,7 +146,7 @@ namespace SGSSTC.source.sistema.GestionDatos
                 Edit.nombre_empresa = txtNombreEmpresaEdit.Text;
                 Edit.id_area = Convert.ToInt32(ddlAreasEdit.SelectedValue);
             }
-            ObjUsuario.Error = CRUD.Edit_Fila(contexto, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            ObjUsuario.Error = CRUD.Edit_Fila(contexto);
             Modal.CerrarModal("editModal", "EditModalScript", this);
             Modal.MostrarAlertaEdit(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error, txtBuscar);
             LlenarGridView();
@@ -155,7 +155,7 @@ namespace SGSSTC.source.sistema.GestionDatos
         protected void EliminarRegistro(object sender, EventArgs e)
         {
             extintor tabla = new extintor();
-            ObjUsuario.Error = CRUD.Delete_Fila(tabla, Convert.ToInt32(hdfExtintorIDDel.Value), ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            ObjUsuario.Error = CRUD.Delete_Fila(tabla, Convert.ToInt32(hdfExtintorIDDel.Value));
             Modal.CerrarModal("deleteModal", "DeleteModalScript", this);
             Modal.MostrarAlertaDelete(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error, txtBuscar);
             LlenarGridView();

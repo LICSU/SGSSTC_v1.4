@@ -175,7 +175,7 @@ namespace SGSSTC.source.sistema.Hacer
                     Edit.asistencia = Asistencia;
                 }
 
-                ObjUsuario.Error = CRUD.Edit_Fila(contexto, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+                ObjUsuario.Error = CRUD.Edit_Fila(contexto);
 
             }
 

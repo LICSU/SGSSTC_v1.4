@@ -79,7 +79,7 @@ namespace SGSSTC.source.sistema.GestionDatos
 
                 };
 
-                ObjUsuario.Error = CRUD.Add_PuestoTrabajo(ObjUsuario, valores, fuAnexo, ddlEpp);
+                ObjUsuario.Error = CRUD.Add_PuestoTrabajo(ObjUsuario , valores, fuAnexo, ddlEpp);
 
             }
             else

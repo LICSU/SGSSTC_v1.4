@@ -413,7 +413,7 @@ namespace SGSSTC.source.sistema.Hacer
                 recomendaciones = txtRecomendaciones.Text
             };
 
-            CRUD.Add_Fila(nuevo, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            CRUD.Add_Fila(nuevo);
 
             Modal.MostrarAlertaAdd(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error, txtFecha);
         }

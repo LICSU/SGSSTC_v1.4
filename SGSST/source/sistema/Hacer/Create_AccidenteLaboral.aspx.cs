@@ -83,7 +83,7 @@ namespace SGSSTC.source.sistema.Verificar
                 tipo_enfermedad = ddlTipoEnfermedad.SelectedValue
             };
 
-            ObjUsuario.Error = CRUD.Add_Fila(nuevo, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            ObjUsuario.Error = CRUD.Add_Fila(nuevo);
 
             if (ObjUsuario.Error)
             {
@@ -104,8 +104,7 @@ namespace SGSSTC.source.sistema.Verificar
                             url = ruta,
                             id_tabla = id_at_it_el_pa
                         };
-                        ObjUsuario.Error = CRUD.Add_Fila(nuevoFA, ObjUsuario.Id_usuario,
-                            HttpContext.Current.Request.Url.AbsoluteUri);
+                        ObjUsuario.Error = CRUD.Add_Fila(nuevoFA);
 
                     }
                 }

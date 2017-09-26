@@ -60,7 +60,7 @@ namespace SGSSTC.source.sistema.Hacer
                 tipo = "ObjetivosSGSST"
             };
 
-            ObjUsuario.Error = CRUD.Add_Fila(nuevo, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            ObjUsuario.Error = CRUD.Add_Fila(nuevo);
 
             Modal.MostrarAlertaAdd(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error,txtBuscar);
             LlenarGridView();
@@ -69,11 +69,7 @@ namespace SGSSTC.source.sistema.Hacer
         {
             documento tabla = new documento();
 
-            ObjUsuario.Error = CRUD.Delete_Fila(
-                tabla,
-                Convert.ToInt32(hdfIDDel.Value),
-                ObjUsuario.Id_usuario,
-                HttpContext.Current.Request.Url.AbsoluteUri);
+            ObjUsuario.Error = CRUD.Delete_Fila(tabla,Convert.ToInt32(hdfIDDel.Value));
 
             Modal.CerrarModal("deleteModal", "DeleteModalScript", this);
             Modal.MostrarAlertaDelete(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error, txtBuscar);

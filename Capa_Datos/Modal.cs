@@ -128,6 +128,22 @@ namespace Capa_Datos
             txtAlerta.Focus();
         }
 
+        public static void MostrarMensajeAlerta(PlaceHolder phAlerta, HtmlGenericControl divAlerta, Label lbAlerta, bool bError, TextBox txtAlerta, String mensaje)
+        {
+            phAlerta.Visible = true;
+
+            if (bError)
+            {
+                divAlerta.Attributes.Add("class", "alert alert-dismissable alert-success fade in");
+                lbAlerta.Text = mensaje;
+            }
+            else
+            {
+                divAlerta.Attributes.Add("class", "alert alert-dismissable alert-danger fade in");
+                lbAlerta.Text = mensaje;
+            }
+            txtAlerta.Focus();
+        }
 
 
 

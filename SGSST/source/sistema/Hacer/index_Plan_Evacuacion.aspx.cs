@@ -79,9 +79,7 @@ namespace SGSSTC.source.sistema.Hacer
                 nombre = txtPlanEvacuacion.Text,
                 tipo = "Evacuacion"
             };
-            ObjUsuario.Error = CRUD.Add_Fila(nuevo,
-                ObjUsuario.Id_usuario,
-                HttpContext.Current.Request.Url.AbsoluteUri);
+            ObjUsuario.Error = CRUD.Add_Fila(nuevo);
 
             if (ObjUsuario.Error)
             {
