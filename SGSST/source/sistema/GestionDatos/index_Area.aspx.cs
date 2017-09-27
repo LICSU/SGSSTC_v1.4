@@ -227,6 +227,7 @@ namespace SGSSTC.source.sistema.GestionDatos
             LlenarGridView();
             GridView1.Columns[9].Visible = false;
             GridView1.Columns[10].Visible = false;
+            GridView1.Columns[11].Visible = false;
         }
         protected void btnExportWord_Click(object sender, EventArgs e)
         {

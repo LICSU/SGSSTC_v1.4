@@ -397,7 +397,7 @@
                                 </div>
 
                                 <div class="col-md-8">
-                                    <asp:TextBox ID="txtFechaEdit" runat="server" type="date" ClientIDMode="Static" CssClass="form-control"></asp:TextBox>
+                                    <asp:TextBox ID="txtFechaEdit" runat="server" TextMode="Date" ClientIDMode="Static" CssClass="form-control"></asp:TextBox>
                                     <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>"
                                         SetFocusOnError="true" Display="Dynamic" ForeColor="#B50128" Font-Size="10"
                                         Font-Bold="true" ControlToValidate="txtFechaEdit" runat="server"

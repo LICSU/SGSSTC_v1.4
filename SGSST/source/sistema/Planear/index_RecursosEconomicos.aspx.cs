@@ -57,7 +57,7 @@ namespace SGSSTC.source.sistema.Hacer
             int IdEmpresa = ObjUsuario.Id_empresa;
             int IdSucursal = Getter.Set_IdSucursalDDl(ObjUsuario, ddlSucursalSubir);
 
-            string _ruta = Utilidades.GuardarArchivo(flpArchivo, IdEmpresa + "_InformeRecursosEconomicos_" + IdSucursal, "~/source/archivos/recursos_economicos/");
+            string _ruta = Utilidades.GuardarArchivo(flpArchivo, IdEmpresa + "_InformeRecursosEconomicos_" + IdSucursal, "~/archivos/recursos_economicos/");
 
             documento nuevo = new documento()
             {
@@ -79,7 +79,7 @@ namespace SGSSTC.source.sistema.Hacer
                     foreach (var archivo in fuSoporte.PostedFiles)
                     {
                         i++;
-                        string ruta = Utilidades.GuardarArchivo(archivo, "Soporte_" + txtNombreSubir.Text + "_" + i, "~/source/archivos/recursos_economicos/");
+                        string ruta = Utilidades.GuardarArchivo(archivo, "Soporte_" + txtNombreSubir.Text + "_" + i, "~/archivos/recursos_economicos/");
 
                         soporte nuevoFA = new soporte()
                         {

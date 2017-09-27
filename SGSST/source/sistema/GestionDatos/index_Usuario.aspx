@@ -202,6 +202,7 @@
                                     <h4>Trabajador</h4>
 
                                    <asp:TextBox ID="txtTrabajador" runat="server" CssClass="form-control"></asp:TextBox>
+
                                     <div ID="ListDivisor">
                                         <cc1:AutoCompleteExtender ServiceMethod="SearchTrabajador" MinimumPrefixLength="1"
                                             CompletionInterval="100" EnableCaching="false" CompletionSetCount="10"

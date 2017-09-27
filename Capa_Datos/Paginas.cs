@@ -105,13 +105,13 @@
         public static Paginas View_GestionLaboral { get { return new Paginas("View_GestionLaboral.aspx"); } }
         public static Paginas View_EvaluacionPuesto { get { return new Paginas("View_EvaluacionPuesto.aspx"); } }
 
-        public static Paginas Archivos_Autoevaluacion { get { return new Paginas("~/source/archivos/autoevaluacion/"); } }
-        public static Paginas Archivos_Inspecciones { get { return new Paginas("~/source/archivos/inspecciones/"); } }
-        public static Paginas Archivos_ReporteTrabajadores { get { return new Paginas("~/source/archivos/reportes/"); } }
-        public static Paginas Archivos_LogosEmpresas { get { return new Paginas("~/source/archivos/LogosEmpresas/"); } }
-        public static Paginas Archivos_PuestoTrabajo { get { return new Paginas("~/source/archivos/puesto_trabajo/"); } }
-        public static Paginas Archivos_Foto_Perfil { get { return new Paginas("~/source/archivos/foto_perfil/"); } }
-        public static Paginas Archivos_Indicadores { get { return new Paginas("~/source/archivos/indicadores/"); } }
+        public static Paginas Archivos_Autoevaluacion { get { return new Paginas("~/archivos/autoevaluacion/"); } }
+        public static Paginas Archivos_Inspecciones { get { return new Paginas("~/archivos/inspecciones/"); } }
+        public static Paginas Archivos_ReporteTrabajadores { get { return new Paginas("~/archivos/reportes/"); } }
+        public static Paginas Archivos_LogosEmpresas { get { return new Paginas("~/archivos/LogosEmpresas/"); } }
+        public static Paginas Archivos_PuestoTrabajo { get { return new Paginas("~/archivos/puesto_trabajo/"); } }
+        public static Paginas Archivos_Foto_Perfil { get { return new Paginas("~/archivos/foto_perfil/"); } }
+        public static Paginas Archivos_Indicadores { get { return new Paginas("~/archivos/indicadores/"); } }
 
         public static Paginas URL_Señalizacion { get { return new Paginas("~/ico/epp/"); } }
 

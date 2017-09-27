@@ -276,6 +276,7 @@ namespace SGSSTC.source.sistema.Hacer
                 GridViewRow gvrow = GridView1.Rows[RowIndex];
 
                 hdfEditID.Value = (gvrow.FindControl("id_plan_trabajo") as Label).Text;
+                //hdfEditID.Value = Utilidades_GridView.DevolverIdRow(e, GridView1);
 
                 List<plan_trabajo> ListaPlanTrabajo = new List<plan_trabajo>();
                 ListaPlanTrabajo = Getter.Plan_Trabajo(0, 0, Convert.ToInt32(hdfEditID.Value));

@@ -28,14 +28,15 @@ namespace SGSSTC.source.sistema.Hacer
             phSucursalAdd.Visible = BoolEmpSuc.Item2;
             phSucursalEdit.Visible = BoolEmpSuc.Item2;
 
-            Listas.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
-            Listas.Sucursal(ddlSucursalAdd, ObjUsuario.Id_empresa);
-            Listas.Sucursal(ddlSucursalEdit, ObjUsuario.Id_empresa);
+            
 
             if (!IsPostBack)
             {
                 ViewState["buscar"] = "";
                 LlenarGridView();
+                Listas.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+                Listas.Sucursal(ddlSucursalAdd, ObjUsuario.Id_empresa);
+                Listas.Sucursal(ddlSucursalEdit, ObjUsuario.Id_empresa);
             }
         }
         private void LlenarGridView()
@@ -74,7 +75,7 @@ namespace SGSSTC.source.sistema.Hacer
             int idDocumento = Convert.ToInt32(hdfEditID.Value);
 
             tipo_documento Edit = contexto.tipo_documento.SingleOrDefault(b => b.id_tipo_documento == idDocumento);
-            int IdSucursal = Getter.Set_IdSucursalDDl(ObjUsuario, ddlSucursalAdd);
+            int IdSucursal = Getter.Set_IdSucursalDDl(ObjUsuario, ddlSucursalEdit);
 
             if (Edit != null)
             {
@@ -121,12 +122,15 @@ namespace SGSSTC.source.sistema.Hacer
                 List<tipo_documento> ListaTipoDocumento = new List<tipo_documento>();
                 ListaTipoDocumento = Getter.TipoDocumento(Convert.ToInt32(hdfEditID.Value));
 
+                Listas.Sucursal(ddlSucursalEdit, ObjUsuario.Id_empresa);
+
                 foreach (var item in ListaTipoDocumento)
                 {
                     txtNombreEdit.Text = item.nombre;
                     txtDirigidaEdit.Text = item.dirigida;
                     txtModalidadEdit.Text = item.modalidad;
-                    txtFechaEdit.Text = Convert.ToString(item.fecha);
+                    if(item.fecha != null)
+                        txtFechaEdit.Text = item.fecha.Value.ToString("yyyy-MM-dd"); 
                     txtResponsableEdit.Text = item.responsable;
                     txtAprobadoEdit.Text = item.aprobado;
                     txtArchivadoEdit.Text = item.archivado;

@@ -96,7 +96,7 @@ namespace SGSSTC.source.sistema.Verificar
 					{
 						i++;
 						string ruta = Utilidades.GuardarArchivo(archivo,
-							"Accidente_" + id_at_it_el_pa + "_" + i, "~/source/archivos/incidentes/");
+							"Accidente_" + id_at_it_el_pa + "_" + i, "~/archivos/incidentes/");
 
 						soporte nuevoFA = new soporte()
 						{

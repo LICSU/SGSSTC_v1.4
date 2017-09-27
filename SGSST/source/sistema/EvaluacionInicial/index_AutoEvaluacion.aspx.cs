@@ -107,7 +107,6 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
             {
                 hdfIDDel.Value = Utilidades_GridView.DevolverIdRow(e, GridView1);
                 Modal.registrarModal("deleteModal", "DeleteModalScript", this);
-                
             }
         }
 

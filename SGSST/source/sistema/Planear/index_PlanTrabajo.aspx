@@ -94,7 +94,7 @@
                                     <asp:TemplateField HeaderText="Actividad" HeaderStyle-CssClass="text-center">
                                         <ItemTemplate>
                                             <asp:Label ID="actividad" runat="server" Text='<%# Eval("actividad") %>' />
-                                            <asp:Label ID="id_planTrabajo" runat="server" Visible="false" Text='<%# Eval("id_plan_trabajo") %>' />
+                                            <asp:Label ID="id_planTrabajo" runat="server" Visible="true" Text='<%# Eval("id_plan_trabajo") %>' />
                                         </ItemTemplate>
                                     </asp:TemplateField>
 

@@ -150,7 +150,7 @@ namespace SGSSTC.source.sistema.Hacer
         {
             int IdEmpresa = ObjUsuario.Id_empresa;
 
-            string _ruta = Utilidades.GuardarArchivo(flpArchivo, IdEmpresa + "_Encuesta_" + IdTrabajadorSub, "~/source/archivos/encuesta_politicasst/");
+            string _ruta = Utilidades.GuardarArchivo(flpArchivo, IdEmpresa + "_Encuesta_" + IdTrabajadorSub, "~/archivos/encuesta_politicasst/");
 
             GrupoLiEntities contexto = new GrupoLiEntities();
             int idEncuesta = Convert.ToInt32(hdfIDEsc.Value);

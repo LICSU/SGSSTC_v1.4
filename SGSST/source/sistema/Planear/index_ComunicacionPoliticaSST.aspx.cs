@@ -213,7 +213,7 @@ namespace SGSSTC.source.sistema.Hacer
             string _ruta = Utilidades.GuardarArchivo(
                 flpArchivo,
                 IdEmpresa + txtNombreSubir.Text,
-                "~/source/archivos/comunicado_politicasst/");
+                "~/archivos/comunicado_politicasst/");
 
             documento nuevo = new documento()
             {

@@ -104,7 +104,7 @@ namespace SGSSTC.source.sistema.GestionDatos
             string ruta = ViewState["url"].ToString();
 
             if (fuAnexo.HasFile)
-                ruta = Utilidades.GuardarImagen(fuAnexo, txtNombre.Text + "PuestoTrabajo", "~/source/archivos/puesto_trabajo/");
+                ruta = Utilidades.GuardarImagen(fuAnexo, txtNombre.Text + "PuestoTrabajo", "~/archivos/puesto_trabajo/");
 
             GrupoLiEntities contextoEdit = new GrupoLiEntities();
             puesto_trabajo Edit = contextoEdit.puesto_trabajo.SingleOrDefault(b => b.id_puesto_trabajo == idPuestos);

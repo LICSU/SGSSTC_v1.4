@@ -125,7 +125,7 @@ namespace SGSSTC.source.sistema.Hacer
 				}
 				else
 				{
-					foto = "~/source/archivos/foto_perfil/usuario.png";
+					foto = "~/archivos/foto_perfil/usuario.png";
 				}
 			}
 

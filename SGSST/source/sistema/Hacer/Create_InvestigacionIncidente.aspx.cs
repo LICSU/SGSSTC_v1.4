@@ -144,7 +144,7 @@ namespace SGSSTC.source.sistema.Verificar
 					foreach (var archivo in fuAnexo.PostedFiles)
 					{
 						i++;
-						string ruta = Utilidades.GuardarArchivo(archivo, "InvIncidente_" + idAccidente + "_" + i, "~/source/archivos/incidentes/");
+						string ruta = Utilidades.GuardarArchivo(archivo, "InvIncidente_" + idAccidente + "_" + i, "~/archivos/incidentes/");
 
 						soporte nuevoFA = new soporte()
 						{
