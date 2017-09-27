@@ -96,7 +96,7 @@ namespace SGSSTC.source.sistema.MenuPrincipal
                 Convert.ToString(idPregunta)
                 };
 
-            ObjUsuario.Error = CRUD.Add_Respuesta(ObjUsuario, valores);
+            ObjUsuario.Error = CRUD.Add_Respuesta( valores);
 
             Modal.CerrarModal("RespuestaModal", "RespuestaModalScript", this);
 

@@ -24,7 +24,7 @@ namespace Capa_Datos
         /// <summary>
         /// añade una registro a una tabla de la base de datos
         /// </summary>
-        public static bool Add_Fila(dynamic _nuevo, int _usu_bit, string _pagina)
+        public static bool Add_Fila(dynamic _nuevo)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             bool bError = true;
@@ -86,18 +86,13 @@ namespace Capa_Datos
                 Utilidades.LogMessage("Execpción: " + e);
             }
 
-            if (bError)
-            {
-                Model_Bitacora.Add_Registro(DateTime.Now, _usu_bit, 1, _pagina, Convert.ToString(_nuevo.ToString()));
-            }
-
             return bError;
         }
 
         /// <summary>
         /// edita una registro de una tabla de la base de datos
         /// </summary>
-        public static bool Edit_Fila(GrupoLiEntities contexto, int _usu_bit, string _pagina)
+        public static bool Edit_Fila(GrupoLiEntities contexto)
         {
             bool bError = true;
 
@@ -109,17 +104,14 @@ namespace Capa_Datos
             {
                 bError = false; Utilidades.LogMessage("Execpción: " + e);
             }
-            if (bError)
-            {
-                Model_Bitacora.Add_Registro(DateTime.Now, _usu_bit, 2, _pagina, _pagina);
-            }
+
             return bError;
         }
 
         /// <summary>
         /// elimina una registro de una tabla de la base de datos
         /// </summary>
-        public static bool Delete_Fila(dynamic tabla, int _id, int _usu_bit, string _pagina)
+        public static bool Delete_Fila(dynamic tabla, int _id)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             bool bError = true;
@@ -336,20 +328,16 @@ namespace Capa_Datos
                 bError = false; Utilidades.LogMessage("Execpción: " + e);
             }
 
-            if (bError)
-            {
-                Model_Bitacora.Add_Registro(DateTime.Now, _usu_bit, 4, _pagina, Convert.ToString(tabla.ToString()));
-            }
 
             return bError;
         }
 
 
-        public static bool AddAutoEvaluacion(Tuple<int, int> IdEmpSuc, Model_UsuarioSistema ObjUsuario, String[] valores, FileUpload flpArchivo)
+        public static bool AddAutoEvaluacion(Tuple<int, int> IdEmpSuc, String[] valores, FileUpload flpArchivo)
         {
             int IdEmpresa = IdEmpSuc.Item1;
             int IdSucursal = IdEmpSuc.Item2;
-
+            Boolean berror = false;
             string _ruta = Utilidades.GuardarArchivo(flpArchivo, IdEmpresa + valores[0], Paginas.Archivos_Autoevaluacion.Value);
 
             DateTime fecha = new DateTime(Convert.ToInt32(valores[1]), 1, 1);
@@ -363,9 +351,9 @@ namespace Capa_Datos
                 tipo = TipoDocumento.Auto_Evaluacion.Value
             };
 
-            ObjUsuario.Error = Add_Fila(nuevo, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            berror = Add_Fila(nuevo);
 
-            if (ObjUsuario.Error)
+            if (berror)
             {
                 GrupoLiEntities contexto = new GrupoLiEntities();
                 lista_actividad Edit = contexto.lista_actividad.SingleOrDefault(b => b.id_sucursal == IdSucursal);
@@ -373,12 +361,13 @@ namespace Capa_Datos
                 {
                     Edit.estatus = "Si";
                 }
-                ObjUsuario.Error = CRUD.Edit_Fila(contexto, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+                berror = CRUD.Edit_Fila(contexto);
 
             }
 
-            return ObjUsuario.Error;
+            return berror;
         }
+
         public static bool DeleteAutoEvaluacion(String idAutoEvaluacion, Model_UsuarioSistema ObjUsuario)
         {
             int idAuto = Convert.ToInt32(idAutoEvaluacion);
@@ -394,7 +383,7 @@ namespace Capa_Datos
             }
 
             documento tabla = new documento();
-            ObjUsuario.Error = Delete_Fila(tabla, idAuto, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            ObjUsuario.Error = Delete_Fila(tabla, idAuto);
 
             if (ObjUsuario.Error)
             {
@@ -404,14 +393,14 @@ namespace Capa_Datos
                 {
                     Edit.estatus = "No";
                 }
-                ObjUsuario.Error = CRUD.Edit_Fila(contexto, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+                ObjUsuario.Error = CRUD.Edit_Fila(contexto);
 
             }
 
             return ObjUsuario.Error;
         }
 
-        public static bool AddInspeccion(Tuple<int, int> IdEmpSuc, Model_UsuarioSistema ObjUsuario, String[] valores, FileUpload flpArchivo)
+        public static bool AddInspeccion(Tuple<int, int> IdEmpSuc, String[] valores, FileUpload flpArchivo)
         {
             int IdEmpresa = IdEmpSuc.Item1;
             int IdSucursal = IdEmpSuc.Item2;
@@ -427,10 +416,10 @@ namespace Capa_Datos
                 ruta = ruta
             };
 
-            return Add_Fila(nuevo, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            return Add_Fila(nuevo);
         }
 
-        public static bool AddReporteTrabajadores(Tuple<int, int> IdEmpSuc, Model_UsuarioSistema ObjUsuario, String[] valores, FileUpload flpArchivo)
+        public static bool AddReporteTrabajadores(Tuple<int, int> IdEmpSuc, String[] valores, FileUpload flpArchivo)
         {
             int IdEmpresa = IdEmpSuc.Item1;
             int IdSucursal = IdEmpSuc.Item2;
@@ -445,10 +434,10 @@ namespace Capa_Datos
                 tipo = valores[1],
                 ruta = ruta
             };
-            return Add_Fila(nuevo, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            return Add_Fila(nuevo);
         }
 
-        public static bool AddIndicadores(Tuple<int, int> IdEmpSuc, Model_UsuarioSistema ObjUsuario, String[] valores, FileUpload flpArchivo)
+        public static bool AddIndicadores(Tuple<int, int> IdEmpSuc, String[] valores, FileUpload flpArchivo)
         {
             int IdEmpresa = IdEmpSuc.Item1;
             int IdSucursal = IdEmpSuc.Item2;
@@ -463,10 +452,10 @@ namespace Capa_Datos
                 tipo = valores[1],
                 ruta = ruta
             };
-            return Add_Fila(nuevo, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            return Add_Fila(nuevo);
         }
 
-        public static bool AddEmpresa(Model_UsuarioSistema ObjUsuario, String[] valores, FileUpload fuLogoEmpresa)
+        public static bool AddEmpresa(String[] valores, FileUpload fuLogoEmpresa)
         {
             string ruta = Utilidades.GuardarImagen(fuLogoEmpresa, valores[0], Paginas.Archivos_LogosEmpresas.Value);
 
@@ -486,24 +475,23 @@ namespace Capa_Datos
                     jornada = Convert.ToInt32(valores[8])
                 };
 
-                ObjUsuario.Error = Add_Fila(nuevo, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
-
-                return ObjUsuario.Error;
+                return Add_Fila(nuevo);
             }
             else
             {
                 return false;
             }
         }
-        public static bool DeleteEmpresa(Model_UsuarioSistema ObjUsuario, int IdEmpresa)
+        public static bool DeleteEmpresa(int IdEmpresa)
         {
             empresa tabla = new empresa();
-            return Delete_Fila(tabla, IdEmpresa, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            return Delete_Fila(tabla, IdEmpresa);
         }
 
-        public static bool AddCodigoCiiu_Empresa(Model_UsuarioSistema ObjUsuario, String[] valores)
+        public static bool AddCodigoCiiu_Empresa(String[] valores)
         {
             empresa_itemdivision nuevo;
+            Boolean berror = false;
 
             #region se guarda la actividad principal
             nuevo = new empresa_itemdivision()
@@ -512,7 +500,7 @@ namespace Capa_Datos
                 id_clase_ciiu = Convert.ToInt32(valores[1]),
                 num_actividad = "Actividad Principal"
             };
-            ObjUsuario.Error = CRUD.Add_Fila(nuevo, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            berror = CRUD.Add_Fila(nuevo);
             #endregion
 
             #region se guarda la actividad secundaria
@@ -524,7 +512,7 @@ namespace Capa_Datos
                     id_clase_ciiu = Convert.ToInt32(valores[2]),
                     num_actividad = "Actividad Secundaria"
                 };
-                ObjUsuario.Error = CRUD.Add_Fila(nuevo, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+                berror = CRUD.Add_Fila(nuevo);
             }
             #endregion
 
@@ -537,15 +525,17 @@ namespace Capa_Datos
                     id_clase_ciiu = Convert.ToInt32(valores[3]),
                     num_actividad = "Otras Actividades"
                 };
-                ObjUsuario.Error = CRUD.Add_Fila(nuevo, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+                berror = Add_Fila(nuevo);
             }
             #endregion
 
-            return ObjUsuario.Error;
+            return berror;
         }
-        public static bool Add_Categoria_Empresa(Model_UsuarioSistema ObjUsuario, String[] valores)
+        public static bool Add_Categoria_Empresa(String[] valores)
         {
             List<categoria> Listacategoria = new List<categoria>();
+
+            Boolean berror = false;
 
             for (int i = 0; i < ValoresDefault.Nombre_Categorias.Value.Length; i++)
             {
@@ -560,20 +550,20 @@ namespace Capa_Datos
 
                 Listacategoria.Add(ListaCategoria);
 
-                ObjUsuario.Error = Add_Fila(ListaCategoria, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+                berror = Add_Fila(ListaCategoria);
 
-                if (!ObjUsuario.Error)
+                if (!berror)
                 {
                     i = valores.Length;
                 }
             }
 
-            return ObjUsuario.Error;
+            return berror;
         }
-        public static bool Add_Estatus_Empresa(Model_UsuarioSistema ObjUsuario, String[] valores)
+        public static bool Add_Estatus_Empresa(String[] valores)
         {
             List<estatus> ListaEstatus = new List<estatus>();
-
+            Boolean berror = false;
             for (int i = 0; i < ValoresDefault.Nombre_Estatus.Value.Length; i++)
             {
                 estatus ObjEstatus = new estatus();
@@ -583,15 +573,15 @@ namespace Capa_Datos
 
                 ListaEstatus.Add(ObjEstatus);
 
-                ObjUsuario.Error = Add_Fila(ObjEstatus, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+                berror = Add_Fila(ObjEstatus);
 
-                if (!ObjUsuario.Error)
+                if (!berror)
                 {
                     i = valores.Length;
                 }
             }
 
-            return ObjUsuario.Error;
+            return berror;
         }
         public static bool Add_TipoEpp_Empresa(Model_UsuarioSistema ObjUsuario)
         {
@@ -604,7 +594,7 @@ namespace Capa_Datos
                 ObjTipoEpp.nombre_senal = ValoresDefault.Descripcion_TipoEpp.Value[i];
                 ObjTipoEpp.url_senal = Paginas.URL_Señalizacion.Value + ValoresDefault.Nombre_TipoEpp.Value[i] + ".jpg";
 
-                ObjUsuario.Error = CRUD.Add_Fila(ObjTipoEpp, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+                ObjUsuario.Error = CRUD.Add_Fila(ObjTipoEpp);
 
                 if (!ObjUsuario.Error)
                 {
@@ -656,7 +646,7 @@ namespace Capa_Datos
                 }
                 posTipo++;
 
-                ObjUsuario.Error = Add_Fila(ObjEpp, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+                ObjUsuario.Error = Add_Fila(ObjEpp);
 
                 if (!ObjUsuario.Error)
                 {
@@ -666,7 +656,7 @@ namespace Capa_Datos
 
             return ObjUsuario.Error;
         }
-        public static bool Add_Sucursal_Empresa(Model_UsuarioSistema ObjUsuario, String[] valores)
+        public static bool Add_Sucursal_Empresa(String[] valores)
         {
             sucursal nuevo = new sucursal()
             {
@@ -683,9 +673,9 @@ namespace Capa_Datos
                 actividad_otra = 0
             };
 
-            return Add_Fila(nuevo, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            return Add_Fila(nuevo);
         }
-        public static bool Add_Area_Sucursal(Model_UsuarioSistema ObjUsuario, String[] valores)
+        public static bool Add_Area_Sucursal(String[] valores)
         {
             area nuevo = new area()
             {
@@ -696,9 +686,9 @@ namespace Capa_Datos
                 tipo = "Administrativa"
             };
 
-            return Add_Fila(nuevo, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            return Add_Fila(nuevo);
         }
-        public static bool Add_PuestoTrabajo_Sucursal(Model_UsuarioSistema ObjUsuario, String[] valores)
+        public static bool Add_PuestoTrabajo_Sucursal(String[] valores)
         {
             puesto_trabajo nuevo = new puesto_trabajo()
             {
@@ -706,9 +696,9 @@ namespace Capa_Datos
                 descripcion = "Descripcion del Puesto Default",
                 id_area = GetterMax.Areas()
             };
-            return Add_Fila(nuevo, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            return Add_Fila(nuevo);
         }
-        public static bool Add_Horario_Sucursal(Model_UsuarioSistema ObjUsuario, String[] valores)
+        public static bool Add_Horario_Sucursal(String[] valores)
         {
             horario nuevo = new horario()
             {
@@ -718,9 +708,9 @@ namespace Capa_Datos
                 fecha_fin = "01:00",
                 fecha_creacion = DateTime.Today
             };
-            return Add_Fila(nuevo, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            return Add_Fila(nuevo);
         }
-        public static bool Add_Trabajador_Sucursal(Model_UsuarioSistema ObjUsuario, String[] valores)
+        public static bool Add_Trabajador_Sucursal(String[] valores)
         {
             trabajador nuevo = new trabajador()
             {
@@ -747,9 +737,9 @@ namespace Capa_Datos
                 id_estatus_actual = 1,
                 fecha_ingreso = DateTime.Now
             };
-            return Add_Fila(nuevo, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            return Add_Fila(nuevo);
         }
-        public static bool Add_Usuario_Sucursal(Model_UsuarioSistema ObjUsuario, String[] valores)
+        public static bool Add_Usuario_Sucursal(String[] valores)
         {
             usuario nuevo = new usuario()
             {
@@ -759,11 +749,12 @@ namespace Capa_Datos
                 id_rol = Convert.ToInt32(valores[2])
             };
 
-            return Add_Fila(nuevo, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            return Add_Fila(nuevo);
         }
-        public static bool Add_TipoDocumento_Sucursal(Model_UsuarioSistema ObjUsuario, String[] valores)
+        public static bool Add_TipoDocumento_Sucursal(String[] valores)
         {
             List<tipo_documento> ListaTipoDocumento = new List<tipo_documento>();
+            Boolean berror = false;
 
             for (int i = 0; i < 41; i++)
             {
@@ -778,15 +769,15 @@ namespace Capa_Datos
                 ObjTipoDocumento.estatus = "No Cumplido";
                 ListaTipoDocumento.Add(ObjTipoDocumento);
 
-                ObjUsuario.Error = Add_Fila(ObjTipoDocumento, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+                berror = Add_Fila(ObjTipoDocumento);
 
-                if (!ObjUsuario.Error)
+                if (!berror)
                 {
-                    return ObjUsuario.Error;
+                    return berror;
                 }
             }
 
-            return ObjUsuario.Error;
+            return berror;
         }
 
         public static bool Add_PuestoTrabajo(Model_UsuarioSistema ObjUsuario, String[] valores, FileUpload fuAnexo, ListBox ddlEpp)
@@ -812,10 +803,9 @@ namespace Capa_Datos
 
             int IdUsuario = ObjUsuario.Id_usuario;
             DateTime fechaActual = DateTime.Now;
+            Boolean bError = false;
 
-            ObjUsuario.Error = Add_Fila(nuevo, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
-
-            if (ObjUsuario.Error)
+            if (Add_Fila(nuevo))
             {
                 if (ddlEpp.SelectedValue != string.Empty)
                 {
@@ -828,23 +818,22 @@ namespace Capa_Datos
                                 id_puesto_trabajo = Convert.ToInt32(GetterMax.PuestoTrabajo()),
                                 id_epp = Convert.ToInt32(li.Value)
                             };
-                            ObjUsuario.Error = Add_Fila(nuevopuestoEpp, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+                            bError = Add_Fila(nuevopuestoEpp);
 
-                            if (!ObjUsuario.Error)
+                            if (!bError)
                             {
-                                return ObjUsuario.Error;
+                                return bError;
                             }
                         }
                     }
                 }
             }
 
-            return ObjUsuario.Error;
-
+            return bError;
 
 
         }
-        public static bool Add_Sucursal(Model_UsuarioSistema ObjUsuario, String[] valores)
+        public static bool Add_Sucursal(String[] valores)
         {
             sucursal nuevo = new sucursal()
             {
@@ -861,14 +850,14 @@ namespace Capa_Datos
                 actividad_otra = Convert.ToInt32(valores[9]),
             };
 
-            return Add_Fila(nuevo, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            return Add_Fila(nuevo);
         }
-        public static bool DeleteSucursal(Model_UsuarioSistema ObjUsuario, int id_sucursal)
+        public static bool DeleteSucursal(int id_sucursal)
         {
             sucursal tabla = new sucursal();
-            return Delete_Fila(tabla, id_sucursal, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            return Delete_Fila(tabla, id_sucursal);
         }
-        public static bool Add_Trabajador(Model_UsuarioSistema ObjUsuario, String[] valores, FileUpload fuFoto)
+        public static bool Add_Trabajador(String[] valores, FileUpload fuFoto)
         {
             string ruta = Utilidades.GuardarImagen(fuFoto, valores[0] + "_foto", Paginas.Archivos_Foto_Perfil.Value);
             trabajador nuevo = new trabajador()
@@ -901,10 +890,9 @@ namespace Capa_Datos
                 salario = Convert.ToInt32(valores[23]),
                 mano_dominante = valores[24]
             };
+            Boolean berror = false;
 
-            ObjUsuario.Error = Add_Fila(nuevo, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
-
-            if (ObjUsuario.Error)
+            if (Add_Fila(nuevo))
             {
                 int idTrabajador = GetterMax.Trabajador();
                 trabajador_estatus nuevoTE = new trabajador_estatus()
@@ -920,14 +908,15 @@ namespace Capa_Datos
                     dias_reposo = 0,
                     tpo_enfermedad = ""
                 };
-                ObjUsuario.Error = Add_Fila(nuevoTE, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+                berror = Add_Fila(nuevoTE);
 
             }
 
 
-            return ObjUsuario.Error;
+            return berror;
         }
-        public static bool Add_Riesgos_Sucursal(Model_UsuarioSistema ObjUsuario, String[] valores)
+
+        public static bool Add_Riesgos_Sucursal(String[] valores)
         {
             DateTime fechaActual = DateTime.Now;
 
@@ -967,7 +956,7 @@ namespace Capa_Datos
                 }
                 catch
                 {
-                    DeleteSucursal(ObjUsuario, Convert.ToInt32(valores[3]));
+                    DeleteSucursal(Convert.ToInt32(valores[3]));
                     return false;
                 }
 
@@ -988,7 +977,7 @@ namespace Capa_Datos
                 }
                 catch
                 {
-                    DeleteSucursal(ObjUsuario, Convert.ToInt32(valores[3]));
+                    DeleteSucursal(Convert.ToInt32(valores[3]));
                     return false;
                 }
 
@@ -1010,7 +999,7 @@ namespace Capa_Datos
                 }
                 catch
                 {
-                    DeleteSucursal(ObjUsuario, Convert.ToInt32(valores[3]));
+                    DeleteSucursal(Convert.ToInt32(valores[3]));
                     return false;
                 }
 
@@ -1020,7 +1009,7 @@ namespace Capa_Datos
             return true;
 
         }
-        public static bool Add_Normas_Sucursal(Model_UsuarioSistema ObjUsuario, String[] valores)
+        public static bool Add_Normas_Sucursal(String[] valores)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
 
@@ -1076,13 +1065,13 @@ namespace Capa_Datos
             }
             catch
             {
-                DeleteSucursal(ObjUsuario, Convert.ToInt32(valores[3]));
+                DeleteSucursal(Convert.ToInt32(valores[3]));
                 return false;
             }
 
             return true;
         }
-        public static bool Add_Medidas_Sucursal(Model_UsuarioSistema ObjUsuario, int id_sucursal)
+        public static bool Add_Medidas_Sucursal(int id_sucursal)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             List<norma_sucursal> ListaNormasSucursal = Getter.Normas_Sucursal(id_sucursal, 0);
@@ -1109,12 +1098,13 @@ namespace Capa_Datos
             }
             catch
             {
-                DeleteSucursal(ObjUsuario, id_sucursal);
+                DeleteSucursal(id_sucursal);
                 return false;
             }
             return true;
         }
-        public static bool Add_Lista_Actividad(Model_UsuarioSistema ObjUsuario, int id_sucursal)
+
+        public static bool Add_Lista_Actividad(int id_sucursal)
         {
             lista_actividad nuevo = new lista_actividad()
             {
@@ -1126,9 +1116,10 @@ namespace Capa_Datos
                 anho = DateTime.Now.Year
             };
 
-            return Add_Fila(nuevo, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            return Add_Fila(nuevo);
         }
-        public static bool Add_Area(Model_UsuarioSistema ObjUsuario, CheckBox chkAreaPadre, String[] valores)
+
+        public static bool Add_Area(CheckBox chkAreaPadre, String[] valores)
         {
             int id_area_padre = 0;
 
@@ -1162,7 +1153,7 @@ namespace Capa_Datos
                 tipo = valores[4]
             };
 
-            return Add_Fila(nuevo, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            return Add_Fila(nuevo);
 
         }
 
@@ -1177,10 +1168,10 @@ namespace Capa_Datos
                 fecha = DateTime.Now
             };
 
-            return Add_Fila(nuevo, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            return Add_Fila(nuevo);
         }
 
-        public static bool Add_Respuesta(Model_UsuarioSistema ObjUsuario, String[] valores)
+        public static bool Add_Respuesta(String[] valores)
         {
             Respuesta nuevo = new Respuesta()
             {
@@ -1191,7 +1182,7 @@ namespace Capa_Datos
                 calificacion = 0
             };
 
-            return Add_Fila(nuevo, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            return Add_Fila(nuevo);
         }
 
     }

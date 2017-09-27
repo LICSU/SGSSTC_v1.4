@@ -310,7 +310,7 @@ namespace SGSSTC.source.sistema.Hacer
                     Edit.descripcion = txtDescripcion.Text;
                 }
 
-                ObjUsuario.Error = CRUD.Edit_Fila(contexto, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+                ObjUsuario.Error = CRUD.Edit_Fila(contexto);
 
                 TextBox txtBuscar = new TextBox();
                 Modal.MostrarAlertaEdit(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error, txtBuscar);
@@ -347,7 +347,7 @@ namespace SGSSTC.source.sistema.Hacer
                                         enfermedades = txtEnfermadades1.Text,
                                         id_desc_socio = Convert.ToInt32(ViewState["DescID"])
                                     };
-                                    ObjUsuario.Error = CRUD.Add_Fila(nuevo1, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+                                    ObjUsuario.Error = CRUD.Add_Fila(nuevo1);
                                 }
                                 else
                                 {
@@ -363,7 +363,7 @@ namespace SGSSTC.source.sistema.Hacer
                                         Edit1.meses = txtMeses1.Text;
                                         Edit1.enfermedades = txtEnfermadades1.Text;
                                     }
-                                    ObjUsuario.Error = CRUD.Edit_Fila(contexto1, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+                                    ObjUsuario.Error = CRUD.Edit_Fila(contexto1);
                                 }
                                 #endregion
                             }
@@ -382,7 +382,7 @@ namespace SGSSTC.source.sistema.Hacer
                                         enfermedades = txtEnfermadades2.Text,
                                         id_desc_socio = Convert.ToInt32(ViewState["DescID"])
                                     };
-                                    ObjUsuario.Error = CRUD.Add_Fila(nuevo2, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+                                    ObjUsuario.Error = CRUD.Add_Fila(nuevo2);
                                 }
                                 else
                                 {
@@ -398,7 +398,7 @@ namespace SGSSTC.source.sistema.Hacer
                                         Edit1.meses = txtMeses2.Text;
                                         Edit1.enfermedades = txtEnfermadades2.Text;
                                     }
-                                    ObjUsuario.Error = CRUD.Edit_Fila(contexto1, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+                                    ObjUsuario.Error = CRUD.Edit_Fila(contexto1);
                                 }
                                 #endregion
 
@@ -418,7 +418,7 @@ namespace SGSSTC.source.sistema.Hacer
                                         enfermedades = txtEnfermadades3.Text,
                                         id_desc_socio = Convert.ToInt32(ViewState["DescID"])
                                     };
-                                    ObjUsuario.Error = CRUD.Add_Fila(nuevo3, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+                                    ObjUsuario.Error = CRUD.Add_Fila(nuevo3);
                                 }
                                 else
                                 {
@@ -434,7 +434,7 @@ namespace SGSSTC.source.sistema.Hacer
                                         Edit1.meses = txtMeses3.Text;
                                         Edit1.enfermedades = txtEnfermadades3.Text;
                                     }
-                                    ObjUsuario.Error = CRUD.Edit_Fila(contexto1, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+                                    ObjUsuario.Error = CRUD.Edit_Fila(contexto1);
                                 }
                                 #endregion
                             }

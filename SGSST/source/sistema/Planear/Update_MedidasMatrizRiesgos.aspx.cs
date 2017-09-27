@@ -192,7 +192,7 @@ namespace SGSSTC.source.sistema.Hacer
 						itemEvaRiesgo.estatus_med_fue = estatusFue;
 						itemEvaRiesgo.estatus_med_trab = estatusTrab;
 
-						ObjUsuario.Error = CRUD.Edit_Fila(contexto, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+						ObjUsuario.Error = CRUD.Edit_Fila(contexto);
 
 					}
 				}
@@ -232,7 +232,7 @@ namespace SGSSTC.source.sistema.Hacer
 					if (itemEvaRiesgo != null)
 					{
 						itemEvaRiesgo.porc_estatus = Convert.ToInt32(estatus);
-						ObjUsuario.Error = CRUD.Edit_Fila(contexto1, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+						ObjUsuario.Error = CRUD.Edit_Fila(contexto1);
 					}
 				}
 			}

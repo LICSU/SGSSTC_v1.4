@@ -151,7 +151,7 @@ namespace SGSSTC.source.sistema.GestionDatos
         protected void EliminarRegistro(object sender, EventArgs e)
         {
             trabajador tabla = new trabajador();
-            ObjUsuario.Error = CRUD.Delete_Fila(tabla, Convert.ToInt32(hdfTrabajadorIDDel.Value), ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            ObjUsuario.Error = CRUD.Delete_Fila(tabla, Convert.ToInt32(hdfTrabajadorIDDel.Value));
             Modal.CerrarModal("deleteModal", "DeleteModalScript", this);
             Modal.MostrarAlertaDelete(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error, txtBuscar);
             LlenarGridView();
@@ -256,7 +256,7 @@ namespace SGSSTC.source.sistema.GestionDatos
                 tpo_enfermedad = tpo_enfermedad
             };
 
-            ObjUsuario.Error = CRUD.Add_Fila(nuevo, ObjUsuario.Id_usuario, "GestionDatos/Trabajador.aspx");
+            ObjUsuario.Error = CRUD.Add_Fila(nuevo);
 
             Modal.MostrarAlertaAdd(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error, txtBuscar);
             LlenarGridView();

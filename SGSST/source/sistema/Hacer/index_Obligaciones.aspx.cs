@@ -100,7 +100,7 @@ namespace SGSSTC.source.sistema.Hacer
                 Edit.estatus_obl = ddlEstatusEdit.SelectedValue;
             }
 
-            ObjUsuario.Error = CRUD.Edit_Fila(contexto, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            ObjUsuario.Error = CRUD.Edit_Fila(contexto);
 
             Modal.MostrarAlertaEdit(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error, txtBuscar);
             LlenarGridView();
@@ -112,9 +112,8 @@ namespace SGSSTC.source.sistema.Hacer
 
             ObjUsuario.Error = CRUD.Delete_Fila(
                 tabla,
-                Convert.ToInt32(hdfObligacionIDDel.Value),
-                ObjUsuario.Id_usuario,
-                HttpContext.Current.Request.Url.AbsoluteUri);
+                Convert.ToInt32(hdfObligacionIDDel.Value));
+				
             Modal.CerrarModal("deleteModal", "DeleteModalScript", this);
             Modal.MostrarAlertaDelete(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error, txtBuscar);
             LlenarGridView();

@@ -69,7 +69,7 @@ namespace SGSSTC.source.sistema.Hacer
         protected void EliminarRegistro(object sender, EventArgs e)
         {
             historia_clinica_ocupacional tabla = new historia_clinica_ocupacional();
-            ObjUsuario.Error = CRUD.Delete_Fila(tabla, Convert.ToInt32(hdfIDDel.Value), ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            ObjUsuario.Error = CRUD.Delete_Fila(tabla, Convert.ToInt32(hdfIDDel.Value));
             Modal.MostrarAlertaDelete(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error, txtBuscar);
             LlenarGridView();
         }

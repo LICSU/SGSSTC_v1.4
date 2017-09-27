@@ -413,7 +413,7 @@ namespace SGSSTC.source.sistema.Hacer
                 recomendaciones = txtRecomendaciones.Text
             };
 
-            CRUD.Add_Fila(nuevo, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            CRUD.Add_Fila(nuevo);
 
             Modal.MostrarAlertaAdd(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error, txtFecha);
         }
@@ -466,7 +466,7 @@ namespace SGSSTC.source.sistema.Hacer
         protected void ddlSucursal_SelectedIndexChanged(object sender, EventArgs e)
         {
             List<sucursal> ListaSucursal = new List<sucursal>();
-            ListaSucursal = Getter.Sucursal(Convert.ToInt32(ddlSucursal.SelectedValue));
+            ListaSucursal = Getter.Sucursal(Convert.ToInt32(ddlSucursal.SelectedValue), 0, "");
 
             foreach (var item in ListaSucursal)
             {

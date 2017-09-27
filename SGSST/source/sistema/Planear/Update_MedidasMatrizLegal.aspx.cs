@@ -181,7 +181,7 @@ namespace SGSSTC.source.sistema.Hacer
 					EditMedida.estatus_medida = EstatusMedida;
 				}
 
-				ObjUsuario.Error = CRUD.Edit_Fila(contextoMedida, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+				ObjUsuario.Error = CRUD.Edit_Fila(contextoMedida);
 
 			}
 			#endregion
@@ -213,7 +213,7 @@ namespace SGSSTC.source.sistema.Hacer
 					}
 				}
 
-				ObjUsuario.Error = CRUD.Edit_Fila(contextoMedida, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);//NO
+				ObjUsuario.Error = CRUD.Edit_Fila(contextoMedida);//NO
 
 			}
 			#endregion
@@ -263,7 +263,7 @@ namespace SGSSTC.source.sistema.Hacer
 				Edit.estatus_norma = Convert.ToInt32(estatus);
 			}
 
-			ObjUsuario.Error = CRUD.Edit_Fila(contexto, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+			ObjUsuario.Error = CRUD.Edit_Fila(contexto);
 
 			#endregion
 

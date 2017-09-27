@@ -893,6 +893,16 @@ namespace Capa_Datos
             return consulta;
         }
 
+        public static sucursal Sucursal(int _id_sucursal)
+        {
+            GrupoLiEntities contexto = new GrupoLiEntities();
+            sucursal consulta = new sucursal();
+
+            consulta = contexto.sucursal.Where(x => x.id_sucursal == _id_sucursal).SingleOrDefault(); 
+
+            return consulta;
+        }
+
         public static int SucursalByNombre(string nombre, int id_empresa)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();

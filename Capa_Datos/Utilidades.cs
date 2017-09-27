@@ -225,6 +225,28 @@ namespace Capa_Datos
                 return false;
             }
         }
+
+        public static bool enviarCorreoMatriz(string destino, string empresa, string sucursal)
+        {
+            try
+            {
+                MailMessage mail = new MailMessage();
+                mail.From = new MailAddress("grupoliacademia@gmail.com", "Administrador", Encoding.UTF8);
+                mail.IsBodyHtml = true;
+                mail.Subject = "Generacion de Matrices (Legal y de Riesgos)";
+                mail.To.Add(destino);
+
+                StringBuilder sb = new StringBuilder();
+                sb.Append("Las matrices (Legal y de riesgos) fueron generadas exitosamente! para la Sucursal "+ sucursal+" de la Empresa "+ empresa);
+                mail.Body = sb.ToString();
+
+                return enviarCorreo(mail);
+            }
+            catch
+            {
+                return false;
+            }
+        }
         #endregion
 
         #region Enviar registro de Empresa

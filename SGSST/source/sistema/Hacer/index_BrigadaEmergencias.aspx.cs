@@ -315,7 +315,7 @@ namespace SGSSTC.source.sistema.Hacer
                 brigada_incendio = txtBrigIncendio.Text,
                 brigada_evacuacion = txtBrigEvacuacion.Text
             };
-            ObjUsuario.Error = CRUD.Add_Fila(nuevo, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            ObjUsuario.Error = CRUD.Add_Fila(nuevo);
 
             if (ObjUsuario.Error)
             {
@@ -354,7 +354,7 @@ namespace SGSSTC.source.sistema.Hacer
                                 num_telefono = _telefono,
                                 llamar = _llamar
                             };
-                            ObjUsuario.Error = CRUD.Add_Fila(nuevoProc, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+                            ObjUsuario.Error = CRUD.Add_Fila(nuevoProc);
                             contador = 0;
                         }
 

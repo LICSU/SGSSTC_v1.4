@@ -6091,7 +6091,7 @@ namespace Capa_Datos
                 nomEmpresa = item.nombre;
             }
             List<trabajador> trabajador = Getter.Trabajador(Convert.ToInt32(valores[2]));
-            List<sucursal> sucursal = Getter.Sucursal(Convert.ToInt32(valores[3]));
+            List<sucursal> sucursal = Getter.Sucursal(Convert.ToInt32(valores[3]),0,string.Empty);
             string direccion = string.Empty;
             foreach (var item in sucursal)
             {

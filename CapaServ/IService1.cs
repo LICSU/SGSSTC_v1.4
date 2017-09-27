@@ -18,13 +18,13 @@ namespace CapaServ
         string MsjAsync();
 
         [OperationContract]
-        Boolean add_Riesgos_Default(string act1, string act2, string act3, string id_sucursal, Model_UsuarioSistema ObjUsuario);
+        Boolean add_Riesgos_Default(string act1, string act2, string act3, string id_sucursal );
 
         [OperationContract]
-        Boolean add_NormasSucursal(string act1, string act2, string act3, string id_sucursal, Model_UsuarioSistema ObjUsuario);
+        Boolean add_NormasSucursal(string act1, string act2, string act3, string id_sucursal );
 
         [OperationContract]
-        Boolean add_MedidasSucursal(string id_sucursal, Model_UsuarioSistema ObjUsuario);
+        Boolean add_MedidasSucursal(string id_sucursal);
 
         [OperationContract]
         CompositeType GetDataUsingDataContract(CompositeType composite);

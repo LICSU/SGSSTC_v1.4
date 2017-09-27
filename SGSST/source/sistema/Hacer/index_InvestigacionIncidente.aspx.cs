@@ -79,7 +79,7 @@ namespace SGSSTC.source.sistema.Verificar
 
             foreach (var item in consulta)
             {
-                ObjUsuario.Error = CRUD.Delete_Fila(tabla, Convert.ToInt32(item.id_inv_ac_in), ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+                ObjUsuario.Error = CRUD.Delete_Fila(tabla, Convert.ToInt32(item.id_inv_ac_in));
             }
 
             LlenarGridView();

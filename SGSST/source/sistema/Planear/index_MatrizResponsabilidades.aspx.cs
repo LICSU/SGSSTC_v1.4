@@ -192,7 +192,7 @@ namespace SGSSTC.source.sistema.Hacer
             int IdSucursal = Getter.Set_IdSucursalDDl(ObjUsuario, ddlSucursal);
 
             matriz_responsabilidad tabla = new matriz_responsabilidad();
-            ObjUsuario.Error = CRUD.Delete_Fila(tabla, GetterMax.MatrizResponsabilidad(IdSucursal), ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            ObjUsuario.Error = CRUD.Delete_Fila(tabla, GetterMax.MatrizResponsabilidad(IdSucursal));
 
             matriz_responsabilidad nuevo = new matriz_responsabilidad()
             {
@@ -206,7 +206,7 @@ namespace SGSSTC.source.sistema.Hacer
                 puesto7 = txt7.Text,
                 pusto8 = txt8.Text
             };
-            ObjUsuario.Error = CRUD.Add_Fila(nuevo, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            ObjUsuario.Error = CRUD.Add_Fila(nuevo);
 
             if (ObjUsuario.Error)
             {

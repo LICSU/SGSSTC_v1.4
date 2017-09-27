@@ -120,7 +120,7 @@ namespace SGSSTC.source.sistema.Hacer
                     id_empresa = ObjUsuario.Id_empresa
                 };
 
-                CRUD.Add_Fila(nuevo, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+                CRUD.Add_Fila(nuevo);
 
                 List<categoria> ListaCategoria = new List<categoria>();
                 ListaCategoria = Getter.Categoria(txtCatAddOtro.Text);
@@ -153,7 +153,7 @@ namespace SGSSTC.source.sistema.Hacer
                 id_categorias = idCategoria,
                 id_usuario = IdUsuario
             };
-            ObjUsuario.Error = CRUD.Add_Fila(nuevoAlarma, IdUsuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            ObjUsuario.Error = CRUD.Add_Fila(nuevoAlarma);
 
             Modal.MostrarAlertaAdd(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error,txtBuscar);
             CargarListas();
@@ -184,7 +184,7 @@ namespace SGSSTC.source.sistema.Hacer
                 Edit.id_categorias = Convert.ToInt32(ddlCategoriaEdit.SelectedValue);
                 Edit.id_usuario = IdUsuario;
             }
-            ObjUsuario.Error = CRUD.Edit_Fila(contexto, IdUsuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            ObjUsuario.Error = CRUD.Edit_Fila(contexto);
 
             Modal.MostrarAlertaEdit(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error, txtBuscar);
             CargarListas();
@@ -194,7 +194,7 @@ namespace SGSSTC.source.sistema.Hacer
         protected void EliminarRegistro(object sender, EventArgs e)
         {
             alarma tabla = new alarma();
-            ObjUsuario.Error = CRUD.Delete_Fila(tabla, Convert.ToInt32(hdfIDDel.Value), ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            ObjUsuario.Error = CRUD.Delete_Fila(tabla, Convert.ToInt32(hdfIDDel.Value));
             Modal.CerrarModal("deleteModal", "DeleteModalScript", this);
             Modal.MostrarAlertaDelete(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error, txtBuscar);
             LlenarGridView();

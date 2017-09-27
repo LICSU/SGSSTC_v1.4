@@ -13,6 +13,11 @@ namespace SGSSTC.source.sistema.GestionDatos
         private static Utilidades objUtilidades = new Utilidades();
         private static string act1, act2, act3, IdEmpresa, id_sucursal, nombreSucursal;
 
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("../MenuPrincipal/index.aspx");
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             ObjUsuario = Utilidades.ValidarSesion(HttpContext.Current.User.Identity as FormsIdentity, this);
@@ -48,15 +53,6 @@ namespace SGSSTC.source.sistema.GestionDatos
         private void msjcompletado(object sender, add_Riesgos_DefaultCompletedEventArgs e)
         {
             Button1.Visible = false;
-
-            if (e.Result)
-            {
-                Label1.Text = "exito";
-            }
-            else
-            {
-                Label1.Text = "falla";
-            }
         }
 
     }

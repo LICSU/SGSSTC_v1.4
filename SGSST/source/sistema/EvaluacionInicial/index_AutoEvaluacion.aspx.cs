@@ -77,7 +77,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
                 txtNombre.Text
             };
 
-            ObjUsuario.Error = CRUD.AddAutoEvaluacion(IdEmpSuc, ObjUsuario, valores, flpArchivo);
+            ObjUsuario.Error = CRUD.AddAutoEvaluacion(IdEmpSuc, valores, flpArchivo);
 
             Modal.MostrarAlertaAdd(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error,txtBuscar);
 

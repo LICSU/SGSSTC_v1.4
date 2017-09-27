@@ -197,5 +197,8 @@
 		</Triggers>
 	</asp:UpdatePanel>
 
-
+	
+	<script type="text/javascript">
+		window.onload = window.history.forward(0);
+	</script>
 </asp:Content>

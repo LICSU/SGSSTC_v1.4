@@ -28,7 +28,7 @@ namespace SGSSTC.source.sistema.Hacer
             lbAnho.Text = DateTime.Now.Year.ToString();
 
             List<sucursal> ListaSucursal = new List<sucursal>();
-            ListaSucursal = Getter.Sucursal(Convert.ToInt32(IdSucursal));
+            ListaSucursal = Getter.Sucursal(Convert.ToInt32(IdSucursal), 0, "");
             foreach (var item in ListaSucursal)
             {
                 IdEmpresa = Convert.ToInt32(item.id_empresa);
@@ -90,7 +90,7 @@ namespace SGSSTC.source.sistema.Hacer
                 id_actividad = Convert.ToInt32(ddlActividad.SelectedValue)
             };
 
-            ObjUsuario.Error = CRUD.Add_Fila(nuevoObli, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            ObjUsuario.Error = CRUD.Add_Fila(nuevoObli);
 
             if (ObjUsuario.Error)
             {
@@ -103,7 +103,7 @@ namespace SGSSTC.source.sistema.Hacer
                     id_usuario = IdUsuario
                 };
 
-                ObjUsuario.Error = CRUD.Add_Fila(nuevo, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+                ObjUsuario.Error = CRUD.Add_Fila(nuevo);
             }
 
             Modal.MostrarAlertaAdd(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error, txtFechaFin);

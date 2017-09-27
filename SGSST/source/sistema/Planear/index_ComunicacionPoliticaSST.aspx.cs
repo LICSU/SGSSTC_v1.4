@@ -150,7 +150,7 @@ namespace SGSSTC.source.sistema.Hacer
             List<sucursal> ListaSucursal = new List<sucursal>();
             List<trabajador> ListaTrabajador = new List<trabajador>();
 
-            ListaSucursal = Getter.Sucursal(ObjUsuario.Id_sucursal);
+            ListaSucursal = Getter.Sucursal(ObjUsuario.Id_sucursal, 0, "");
             ListaTrabajador = Getter.Trabajador(0, 0, ObjUsuario.Id_sucursal);
 
             string[] valores = {
@@ -223,10 +223,7 @@ namespace SGSSTC.source.sistema.Hacer
                 tipo = "ComunicacionPolitica"
             };
 
-            ObjUsuario.Error = CRUD.Add_Fila(
-                nuevo,
-                ObjUsuario.Id_usuario,
-                HttpContext.Current.Request.Url.AbsoluteUri);
+            ObjUsuario.Error = CRUD.Add_Fila(nuevo);
 
             Modal.MostrarAlertaAdd(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error,txtBuscar);
             LlenarGridView();
@@ -236,10 +233,7 @@ namespace SGSSTC.source.sistema.Hacer
         {
             documento tabla = new documento();
 
-            ObjUsuario.Error = CRUD.Delete_Fila(tabla,
-                Convert.ToInt32(hdfIDDel.Value),
-                ObjUsuario.Id_usuario,
-                HttpContext.Current.Request.Url.AbsoluteUri);
+            ObjUsuario.Error = CRUD.Delete_Fila(tabla,Convert.ToInt32(hdfIDDel.Value));
 
             Modal.MostrarAlertaDelete(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error, txtBuscar);
             LlenarGridView();

@@ -146,7 +146,7 @@ namespace SGSSTC.source.sistema.Hacer
                 Edit.empresa.salida_emergencia = Textbox13.Text;
                 Edit.empresa.senalizacion = Textbox14.Text;
             }
-            ObjUsuario.Error = CRUD.Edit_Fila(contexto, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            ObjUsuario.Error = CRUD.Edit_Fila(contexto);
 
             Modal.MostrarAlertaAdd(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error, Textbox1);
         }

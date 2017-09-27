@@ -141,7 +141,7 @@ namespace SGSSTC.source.sistema.Hacer
 				tipo = "Conocimiento Objetivos PoliticaSST"
 			};
 
-			ObjUsuario.Error = CRUD.Add_Fila(nuevo, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+			ObjUsuario.Error = CRUD.Add_Fila(nuevo);
 
 			if (ObjUsuario.Error)
 			{

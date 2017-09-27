@@ -98,7 +98,7 @@ namespace SGSSTC.source.sistema.GestionDatos
 
                  };
 
-                ObjUsuario.Error = CRUD.Add_Trabajador(ObjUsuario, valores, fuFoto);
+                ObjUsuario.Error = CRUD.Add_Trabajador( valores, fuFoto);
 
                 Modal.MostrarAlertaAdd(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error, txtNombre1);
 

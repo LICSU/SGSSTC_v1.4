@@ -22,8 +22,9 @@
 </head>
 
 <body>
-
     <form id="form2" runat="server" class="form-signin">
+        
+        <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true" />
 
         <asp:Label ID="lblValidado" runat="server" Text="" Visible="False"></asp:Label>
 
@@ -37,6 +38,7 @@
                     </div>
                     <div class="col-xs-8 text-right menu-1">
                         <ul>
+                            <li><a href="#registro">Registrar</a></li>
                             <li><a href="#noticias">Noticias</a></li>
                             <li><a href="#faq">FAQ</a></li>
                             <li class="has-dropdown">
@@ -267,7 +269,6 @@
                                             <div class="tab-content-inner active" data-content="login">
                                                 <span id="reauth-email" class="reauth-email"></span>
 
-                                                <asp:ScriptManager runat="server" ID="ScriptManager1" />
                                                 <asp:HiddenField runat="server" ID="hfUsuarioActual" />
                                                 <asp:HiddenField runat="server" ID="hfClaveActual" />
 
@@ -340,6 +341,290 @@
                 text-align: justify;
             }
         </style>
+
+        <section id="registro">
+            <asp:UpdatePanel ID="MyUpdatePanel" runat="server">
+                <ContentTemplate>
+
+                    <div class="container">
+
+                        <div class="row text-left">
+                            <div class="col-md-12">
+                                <div class="page-header">
+                                    <h1 class="text-center">Registre su Empresa</h1>
+                                    <h3 class="text-center">Y empiece a disfrutar del sistema</h3>
+                                </div>
+
+                                <asp:PlaceHolder ID="phAlerta" runat="server" Visible="false">
+                                    <div id="divAlerta" runat="server">
+                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                        <asp:Label ID="lbAlerta" runat="server" Text="Label"></asp:Label>
+                                    </div>
+                                </asp:PlaceHolder>
+
+                                <div class="row text-left">
+                                    <div class="col-md-6">
+                                        <h4>Nombre de la Empresa</h4>
+
+                                        <asp:TextBox runat="server" ID="txtNomEmpresa" CssClass="form-control" PlaceHolder="Nombre"
+                                            MaxLength="50"></asp:TextBox>
+
+                                        <asp:RequiredFieldValidator SetFocusOnError="true" runat="server" Font-Size="10" Font-Bold="true"
+                                            Display="Dynamic" ForeColor="#B50128" ControlToValidate="txtNomEmpresa"
+                                            ValidationGroup="ValidationAdd" ErrorMessage="<p>Campo Obligatorio!</p>" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <br />
+
+                        <div class="row text-left">
+                            <div class="col-md-12">
+                                <h4>Actividad Principal</h4>
+                            </div>
+
+                            <div class="col-md-3">
+                                <h5 class="text-info text-left">Sección</h5>
+
+                                <asp:DropDownList runat="server" ID="ddlSeccion1" CssClass="form-control" AutoPostBack="true"
+                                    OnSelectedIndexChanged="ddlCodigoCiuu_SelectedIndexChanged">
+                                </asp:DropDownList>
+                            </div>
+
+                            <div class="col-md-3">
+                                <h5 class="text-info text-left">División</h5>
+                                <asp:DropDownList runat="server" ID="ddlDivision1" CssClass="form-control" AutoPostBack="true"
+                                    OnSelectedIndexChanged="ddlCodigoCiuu_SelectedIndexChanged">
+                                </asp:DropDownList>
+                            </div>
+
+                            <div class="col-md-3">
+                                <h5 class="text-info text-left">Grupo</h5>
+                                <asp:DropDownList runat="server" ID="ddlGrupo1" CssClass="form-control" AutoPostBack="true"
+                                    OnSelectedIndexChanged="ddlCodigoCiuu_SelectedIndexChanged">
+                                </asp:DropDownList>
+                            </div>
+
+                            <div class="col-md-3">
+                                <h5 class="text-info text-left">Clase</h5>
+                                <asp:DropDownList runat="server" ID="ddlClase1" CssClass="form-control" AutoPostBack="true"
+                                    OnSelectedIndexChanged="ddlCodigoCiuu_SelectedIndexChanged">
+                                </asp:DropDownList>
+                            </div>
+                        </div>
+
+                        <br />
+
+                        <asp:PlaceHolder runat="server" ID="phActividad2" Visible="false">
+                            <div class="row text-left">
+                                <div class="col-md-12">
+                                    <h4>Actividad Secundaria</h4>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <h5 class="text-info text-left">Sección</h5>
+
+                                    <asp:DropDownList runat="server" ID="ddlSeccion2" CssClass="form-control" AutoPostBack="true"
+                                        OnSelectedIndexChanged="ddlCodigoCiuu_SelectedIndexChanged">
+                                    </asp:DropDownList>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <h5 class="text-info text-left">División</h5>
+                                    <asp:DropDownList runat="server" ID="ddlDivision2" CssClass="form-control" AutoPostBack="true"
+                                        OnSelectedIndexChanged="ddlCodigoCiuu_SelectedIndexChanged">
+                                    </asp:DropDownList>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <h5 class="text-info text-left">Grupo</h5>
+                                    <asp:DropDownList runat="server" ID="ddlGrupo2" CssClass="form-control" AutoPostBack="true"
+                                        OnSelectedIndexChanged="ddlCodigoCiuu_SelectedIndexChanged">
+                                    </asp:DropDownList>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <h5 class="text-info text-left">Clase</h5>
+                                    <asp:DropDownList runat="server" ID="ddlClase2" CssClass="form-control" AutoPostBack="true"
+                                        OnSelectedIndexChanged="ddlCodigoCiuu_SelectedIndexChanged">
+                                    </asp:DropDownList>
+                                </div>
+
+                            </div>
+                            <br />
+                        </asp:PlaceHolder>
+
+                        <asp:PlaceHolder runat="server" ID="phActividad3" Visible="false">
+                            <div class="row text-left">
+                                <div class="col-md-12">
+                                    <h4>Otras Actividades</h4>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <h5 class="text-info text-left">Sección</h5>
+
+                                    <asp:DropDownList runat="server" ID="ddlSeccion3" CssClass="form-control" AutoPostBack="true"
+                                        OnSelectedIndexChanged="ddlCodigoCiuu_SelectedIndexChanged">
+                                    </asp:DropDownList>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <h5 class="text-info text-left">División</h5>
+                                    <asp:DropDownList runat="server" ID="ddlDivision3" CssClass="form-control" AutoPostBack="true"
+                                        OnSelectedIndexChanged="ddlCodigoCiuu_SelectedIndexChanged">
+                                    </asp:DropDownList>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <h5 class="text-info text-left">Grupo</h5>
+                                    <asp:DropDownList runat="server" ID="ddlGrupo3" CssClass="form-control" AutoPostBack="true"
+                                        OnSelectedIndexChanged="ddlCodigoCiuu_SelectedIndexChanged">
+                                    </asp:DropDownList>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <h5 class="text-info text-left">Clase</h5>
+                                    <asp:DropDownList runat="server" ID="ddlClase3" CssClass="form-control"></asp:DropDownList>
+                                </div>
+                            </div>
+                            <br />
+                        </asp:PlaceHolder>
+
+                        <div class="row text-left">
+                            <div class="col-md-4">
+                                <h4>Código de la Empresa</h4>
+
+                                <asp:TextBox runat="server" ID="txtCodigoEmpresa" CssClass="form-control" PlaceHolder="Código"
+                                    MaxLength="50"></asp:TextBox>
+                            </div>
+
+                            <div class="col-md-4">
+                                <h4>NIT</h4>
+
+                                <asp:TextBox runat="server" ID="txtNit" CssClass="form-control" PlaceHolder="NIT" MaxLength="50"></asp:TextBox>
+
+                            </div>
+
+                            <div class="col-md-4">
+                                <style>
+                                    span.valerror[style*="inline"] {
+                                        display: block !Important;
+                                        background-color: #f56954;
+                                        border: 1px solid #f56954;
+                                        font-size: 1em;
+                                    }
+                                </style>
+
+                                <h4>Email</h4>
+
+                                <asp:TextBox runat="server" ID="txtemailEmpresa" TextMode="Email" CssClass="form-control" MaxLength="100"
+                                    PlaceHolder="mi_correo@grupoli.com"></asp:TextBox>
+                            </div>
+                        </div>
+
+                        <br />
+
+                        <div class="row text-left">
+                            <div class="col-md-12">
+                                <h4>Dirección</h4>
+
+                                <asp:TextBox runat="server" ID="txtDireccion" CssClass="form-control" PlaceHolder="Dirección"
+                                    MaxLength="100"></asp:TextBox>
+                            </div>
+                        </div>
+
+                        <br />
+
+                        <div class="row text-left">
+                            <div class="col-md-4">
+                                <h4>Región</h4>
+
+                                <asp:DropDownList runat="server" ID="ddlRegion" CssClass="form-control" AutoPostBack="true"
+                                    OnSelectedIndexChanged="ddlRegion_SelectedIndexChanged">
+                                </asp:DropDownList>
+                            </div>
+
+                            <div class="col-md-4">
+                                <h4>Departamento</h4>
+
+                                <asp:DropDownList runat="server" ID="ddlDepartamento" CssClass="form-control" AutoPostBack="true"
+                                    OnSelectedIndexChanged="ddlDepartamento_SelectedIndexChanged">
+                                </asp:DropDownList>
+                            </div>
+
+                            <div class="col-md-4">
+                                <h4>Municipio</h4>
+
+                                <asp:DropDownList runat="server" ID="ddlMunicipio" CssClass="form-control"></asp:DropDownList>
+                            </div>
+                        </div>
+
+                        <br />
+
+                        <div class="row text-left">
+                            <div class="col-md-4">
+                                <h4>Representante</h4>
+
+                                <asp:TextBox runat="server" ID="txtRepresentante" CssClass="form-control" PlaceHolder="Representante"
+                                    MaxLength="100"></asp:TextBox>
+                            </div>
+
+                            <div class="col-md-4">
+                                <h4>Teléfono Fijo</h4>
+
+                                <asp:TextBox runat="server" ID="txtTelFijo" CssClass="form-control" PlaceHolder="Numero Fijo"
+                                    TextMode="Number" MaxLength="50"></asp:TextBox>
+                            </div>
+
+                            <div class="col-md-4">
+                                <h4>Teléfono Movil</h4>
+
+                                <asp:TextBox runat="server" ID="txtTelMovil" CssClass="form-control" PlaceHolder="Movil" TextMode="Number"
+                                    MaxLength="50"></asp:TextBox>
+                            </div>
+                        </div>
+
+                        <br />
+
+                        <div class="row text-left">
+                            <div class="col-md-4">
+                                <h4>ARL</h4>
+                                <asp:DropDownList runat="server" ID="ddlArp" CssClass="form-control"></asp:DropDownList>
+                            </div>
+
+                            <div class="col-md-4">
+                                <h4>Jornada Laboral</h4>
+
+                                <asp:DropDownList runat="server" ID="ddlJornada" CssClass="form-control">
+                                    <asp:ListItem Text="Lunes a Viernes" Value="1" />
+                                    <asp:ListItem Text="Lunes a Sabado" Value="2" />
+                                </asp:DropDownList>
+                            </div>
+
+                            <div class="col-md-4">
+                                <h4>Logo</h4>
+
+                                <asp:FileUpload runat="server" ID="fuLogoEmpresa" />
+                            </div>
+                        </div>
+
+                        <br />
+
+                        <div class="row text-center">
+                            <div class="col-md-4 col-md-offset-4">
+                                <asp:Button ID="Button1" runat="server" Text="Registrar" OnClick="GuardarRegistro"
+                                    CssClass="btn btn-primary"/>
+                            </div>
+                        </div>
+
+                    </div>
+                    <br />
+                    <br />
+                </ContentTemplate>
+                <Triggers></Triggers>
+            </asp:UpdatePanel>
+        </section>
 
         <section id="noticias">
             <div id="gtco-products">
@@ -531,7 +816,6 @@
 
         <%: Scripts.Render("~/bundles/SplashJs") %>
     </form>
-
 </body>
 
 </html>

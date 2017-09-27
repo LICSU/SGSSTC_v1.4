@@ -74,7 +74,7 @@ namespace SGSSTC.source.sistema.GestionDatos
                 id_tipo_epp = Convert.ToInt32(ddlTipoEppAdd.SelectedValue)
             };
 
-            ObjUsuario.Error = CRUD.Add_Fila(nuevo, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            ObjUsuario.Error = CRUD.Add_Fila(nuevo);
             Modal.MostrarAlertaAdd(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error,txtBuscar);
             LlenarGridView();
 
@@ -90,7 +90,7 @@ namespace SGSSTC.source.sistema.GestionDatos
                 Edit.nombre = txtNombreEdit.Text;
                 Edit.id_tipo_epp = Convert.ToInt32(ddlTipoEppEdit.SelectedValue);
             }
-            ObjUsuario.Error = CRUD.Edit_Fila(contexto, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            ObjUsuario.Error = CRUD.Edit_Fila(contexto);
             Modal.MostrarAlertaEdit(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error, txtBuscar);
             LlenarGridView();
 
@@ -98,7 +98,7 @@ namespace SGSSTC.source.sistema.GestionDatos
         protected void EliminarRegistro(object sender, EventArgs e)
         {
             epp tabla = new epp();
-            ObjUsuario.Error = CRUD.Delete_Fila(tabla, Convert.ToInt32(hdfIDEppDel.Value), ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            ObjUsuario.Error = CRUD.Delete_Fila(tabla, Convert.ToInt32(hdfIDEppDel.Value));
             Modal.MostrarAlertaDelete(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error, txtBuscar);
             LlenarGridView();
         }

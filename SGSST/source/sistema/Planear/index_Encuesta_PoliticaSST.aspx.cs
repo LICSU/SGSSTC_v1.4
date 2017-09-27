@@ -81,7 +81,7 @@ namespace SGSSTC.source.sistema.Hacer
             List<sucursal> ListaSucursal = new List<sucursal>();
             List<trabajador> ListaTrabajador = new List<trabajador>();
 
-            ListaSucursal = Getter.Sucursal(ObjUsuario.Id_sucursal);
+            ListaSucursal = Getter.Sucursal(ObjUsuario.Id_sucursal, 0, "");
             ListaTrabajador = Getter.Trabajador(0, 0, ObjUsuario.Id_sucursal);
 
             string[] valores = {
@@ -160,8 +160,7 @@ namespace SGSSTC.source.sistema.Hacer
                 Edit.ruta = _ruta;
             }
 
-            ObjUsuario.Error = CRUD.Edit_Fila(contexto, ObjUsuario.Id_usuario,
-                HttpContext.Current.Request.Url.AbsoluteUri);
+            ObjUsuario.Error = CRUD.Edit_Fila(contexto);
 
             Modal.MostrarAlertaAdd(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error,txtBuscar);
             LlenarGridView();
@@ -170,8 +169,7 @@ namespace SGSSTC.source.sistema.Hacer
         protected void EliminarRegistro(object sender, EventArgs e)
         {
             encuesta_politica tabla = new encuesta_politica();
-            ObjUsuario.Error = CRUD.Delete_Fila(tabla, Convert.ToInt32(hdfIDDel.Value),
-                ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            ObjUsuario.Error = CRUD.Delete_Fila(tabla, Convert.ToInt32(hdfIDDel.Value));
 
             Modal.MostrarAlertaDelete(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error, txtBuscar);
             LlenarGridView();

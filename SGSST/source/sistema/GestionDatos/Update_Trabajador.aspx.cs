@@ -144,7 +144,7 @@ namespace SGSSTC.source.sistema.GestionDatos
                 Edit.mano_dominante = ddlManodominante.SelectedValue;
             }
 
-            ObjUsuario.Error = CRUD.Edit_Fila(contexto, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            ObjUsuario.Error = CRUD.Edit_Fila(contexto);
 
 
             Modal.MostrarAlertaEdit(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error, txtNombre1);

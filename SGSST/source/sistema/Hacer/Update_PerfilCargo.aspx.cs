@@ -48,7 +48,7 @@ namespace SGSSTC.source.sistema.Hacer
                 Edit.id_cno = Convert.ToInt32(ddlCargo.SelectedValue);
             }
 
-            ObjUsuario.Error = CRUD.Edit_Fila(contexto, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            ObjUsuario.Error = CRUD.Edit_Fila(contexto);
 
             Modal.MostrarAlertaEdit(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error, txtNombre);
         }

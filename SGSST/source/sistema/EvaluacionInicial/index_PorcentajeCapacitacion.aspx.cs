@@ -169,7 +169,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
             IdSucursal = IdEmpSuc.Item2;
 
             List<empresa> empresa_list = Getter.Empresa(Convert.ToInt32(IdEmpresa));
-            List<sucursal> sucursal_list = Getter.Sucursal(Convert.ToInt32(IdSucursal));
+            List<sucursal> sucursal_list = Getter.Sucursal(Convert.ToInt32(IdSucursal), 0, "");
 
             phEncabezado.Visible = true;
         }

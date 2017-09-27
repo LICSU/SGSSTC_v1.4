@@ -81,10 +81,7 @@ namespace SGSSTC.source.sistema.Hacer
                 nombre = txtProgInspecciones.Text
             };
 
-            ObjUsuario.Error = CRUD.Add_Fila(
-                nuevo,
-                ObjUsuario.Id_usuario,
-                HttpContext.Current.Request.Url.AbsoluteUri);
+            ObjUsuario.Error = CRUD.Add_Fila(nuevo);
             Modal.MostrarAlertaAdd(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error, txtProgInspecciones);
         }
 

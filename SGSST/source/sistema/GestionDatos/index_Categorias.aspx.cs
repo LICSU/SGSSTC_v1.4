@@ -78,7 +78,7 @@ namespace SGSSTC.source.sistema.GestionDatos
                 descripcion = txtDescripcion.Text,
                 id_empresa = IdEmpresa
             };
-            ObjUsuario.Error = CRUD.Add_Fila(nuevo, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            ObjUsuario.Error = CRUD.Add_Fila(nuevo);
             Modal.CerrarModal("addModal", "AddModalScript", this);
 
             Modal.MostrarAlertaAdd(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error, txtBuscar);
@@ -100,7 +100,7 @@ namespace SGSSTC.source.sistema.GestionDatos
                 Edit.descripcion = txtDescripcionEdit.Text;
             }
 
-            ObjUsuario.Error = CRUD.Edit_Fila(contexto, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            ObjUsuario.Error = CRUD.Edit_Fila(contexto);
             Modal.CerrarModal("editModal", "EditModalScript", this);
 
             Modal.MostrarAlertaEdit(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error, txtBuscar);
@@ -110,7 +110,7 @@ namespace SGSSTC.source.sistema.GestionDatos
         protected void EliminarRegistro(object sender, EventArgs e)
         {
             categoria tabla = new categoria();
-            ObjUsuario.Error = CRUD.Delete_Fila(tabla, Convert.ToInt32(hdfIDDel.Value), ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            ObjUsuario.Error = CRUD.Delete_Fila(tabla, Convert.ToInt32(hdfIDDel.Value));
             Modal.CerrarModal("deleteModal", "DeleteModalScript", this);
 
             Modal.MostrarAlertaDelete(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error, txtBuscar);

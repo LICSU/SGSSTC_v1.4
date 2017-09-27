@@ -592,7 +592,7 @@ namespace Capa_Datos
             List<sucursal> objSucursal = new List<sucursal>();
             List<trabajador> objTrabajador = new List<trabajador>();
 
-            objSucursal = Getter.Sucursal(IdSucursal);
+            objSucursal = Getter.Sucursal(IdSucursal,0,"");
             objTrabajador = Getter.Trabajador(0, 0, IdSucursal);
 
             Document pdfDoc = InicializarPDF(objSucursal, _page, Titulo1, _Horizontal);

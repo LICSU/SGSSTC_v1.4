@@ -52,7 +52,7 @@ namespace SGSSTC.source.sistema.MenuPrincipal
                 Edit.cuerpo_pregunta = txtPreguntaEdit.Text;
             }
 
-            ObjUsuario.Error = CRUD.Edit_Fila(contexto, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            ObjUsuario.Error = CRUD.Edit_Fila(contexto);
 
             Modal.MostrarAlertaEdit(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error, txtFechaInicio);
             LlenarGridView();
@@ -62,7 +62,7 @@ namespace SGSSTC.source.sistema.MenuPrincipal
         {
             Pregunta tabla = new Pregunta();
 
-            ObjUsuario.Error = CRUD.Delete_Fila(tabla, Convert.ToInt32(hdfPreguntaIDDel.Value), ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            ObjUsuario.Error = CRUD.Delete_Fila(tabla, Convert.ToInt32(hdfPreguntaIDDel.Value));
 
             Modal.MostrarAlertaDelete(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error, txtFechaInicio);
             LlenarGridView();

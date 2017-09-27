@@ -136,7 +136,7 @@ namespace SGSSTC.source.sistema.GestionDatos
                 id_empresa = IdEmpresa
             };
 
-            ObjUsuario.Error = CRUD.Add_Fila(nuevo, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            ObjUsuario.Error = CRUD.Add_Fila(nuevo);
             Modal.CerrarModal("addModal", "AddModalScript", this);
             Modal.MostrarAlertaAdd(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error,txtBuscar);
 
@@ -157,7 +157,7 @@ namespace SGSSTC.source.sistema.GestionDatos
                 Edit.id_empresa = IdEmpresa;
             }
 
-            ObjUsuario.Error = CRUD.Edit_Fila(contexto, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            ObjUsuario.Error = CRUD.Edit_Fila(contexto);
             Modal.CerrarModal("editModal", "EditModalScript", this);
             Modal.MostrarAlertaEdit(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error, txtBuscar);
 
@@ -166,7 +166,7 @@ namespace SGSSTC.source.sistema.GestionDatos
         protected void EliminarRegistro(object sender, EventArgs e)
         {
             estatus tabla = new estatus();
-            ObjUsuario.Error = CRUD.Delete_Fila(tabla, Convert.ToInt32(hdfEstatusIDDel.Value), ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            ObjUsuario.Error = CRUD.Delete_Fila(tabla, Convert.ToInt32(hdfEstatusIDDel.Value));
             Modal.CerrarModal("deleteModal", "DeleteModalScript", this);
             Modal.MostrarAlertaDelete(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error, txtBuscar);
             LlenarGridView();

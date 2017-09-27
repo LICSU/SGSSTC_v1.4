@@ -124,7 +124,7 @@ namespace SGSSTC.source.sistema.Hacer
 				fecha_identificacion = DateTime.Now
 			};
 
-			ObjUsuario.Error = CRUD.Add_Fila(nuevoIdentificacionPeligro, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+			ObjUsuario.Error = CRUD.Add_Fila(nuevoIdentificacionPeligro);
 
 			if (ObjUsuario.Error)
 			{
@@ -137,7 +137,7 @@ namespace SGSSTC.source.sistema.Hacer
 						id_identificacion = idIdentificacionRiesgo,
 						id_puesto = IdPuestos
 					};
-					ObjUsuario.Error = CRUD.Add_Fila(nuevoIdentificacionPuesto, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+					ObjUsuario.Error = CRUD.Add_Fila(nuevoIdentificacionPuesto);
 				}
 
 				foreach (Tuple<int, string, string> item in IdFactor_Consecuencia)
@@ -149,7 +149,7 @@ namespace SGSSTC.source.sistema.Hacer
 						consecuencias = item.Item2,
 						tiempo_exposicion = item.Item3
 					};
-					ObjUsuario.Error = CRUD.Add_Fila(nuevoFactorIdentificacion, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+					ObjUsuario.Error = CRUD.Add_Fila(nuevoFactorIdentificacion);
 				}
 
 			}
