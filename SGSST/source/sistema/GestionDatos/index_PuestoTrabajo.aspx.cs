@@ -83,7 +83,7 @@ namespace SGSSTC.source.sistema.GestionDatos
             }
             if (IdPuesto != Convert.ToInt32(hdfIDDel.Value))
             {
-                ObjUsuario.Error = CRUD.Delete_Fila(tabla, Convert.ToInt32(hdfIDDel.Value), ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+                ObjUsuario.Error = CRUD.Delete_Fila(tabla, Convert.ToInt32(hdfIDDel.Value));
             }
             LlenarGridView();
             Modal.CerrarModal("deleteModal", "DeleteModalScript", this);

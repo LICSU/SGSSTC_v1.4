@@ -403,7 +403,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
                  string.Empty + IdEmpSuc.Item2,
                  "Área a Inspeccionar: " + ddlArea.SelectedItem.Text,
                  "Fecha: " + DateTime.Today.Date.ToString("yyyy-MM-dd"),
-                 "Datos del Trabajador: " + txtTrabajador.Text,
+                 "Datos del Trabajador: " + ddlTrabajador.SelectedItem.Text,
                  "Cargo: " + ddlPuesto.SelectedItem.Text,
                  "N°",
                  "ORGANIZACIÓN DE TRABAJO",
@@ -1072,16 +1072,6 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
         }
         #endregion
 
-        #region AutoCompletar
-        [ScriptMethod()]
-        [WebMethod]
-        public static List<string> SearchTrabajador(string prefixText, int count)
-        {
-            List<string> listTrabajadores = Utilidades.SearchTrabajador(prefixText, count, IdSucursal, ref IdTrabajador);
-            return listTrabajadores;
-        }
-        #endregion
-
         #region filtro
         protected void ddlEmpresa_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -1132,6 +1122,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
                 else IdSucursal = Convert.ToInt32(ddlSucursal.SelectedValue);
                 phInformacion.Visible = true;
                 phTrabajdor.Visible = true;
+                Listas.Trabajadores_Puestos(ddlTrabajador, Convert.ToInt32(ddlPuesto.SelectedValue));
             }
             else
             {

@@ -15,15 +15,6 @@ namespace SGSSTC.source.sistema.Hacer
 		private Model_UsuarioSistema ObjUsuario;
 		private Tuple<bool, bool> BoolEmpSuc;
         private static int IdSucursal = 0;
-        private static int IdTrabajador = 0;
-        private static int IdPuesto = 0;
-        private static int IdSucursal2 = 0;
-        private static int IdTrabajador2 = 0;
-        private static int IdSucursal3 = 0;
-        private static int IdTrabajador3 = 0;
-        private static int IdSucursal4 = 0;
-        private static int IdTrabajador4 = 0;
-
 
         protected void Page_Load(object sender, EventArgs e)
 		{
@@ -57,10 +48,11 @@ namespace SGSSTC.source.sistema.Hacer
 			if (!BoolEmpSuc.Item2)
 			{
                 IdSucursal = Convert.ToInt32(ObjUsuario.Id_sucursal);
-                IdSucursal2 = Convert.ToInt32(ObjUsuario.Id_sucursal);
-                IdSucursal3 = Convert.ToInt32(ObjUsuario.Id_sucursal);
-                IdSucursal4 = Convert.ToInt32(ObjUsuario.Id_sucursal);
-			}
+                Listas.Trabajadores_Sucursal(ddlTrabajador, IdSucursal);
+                Listas.Trabajadores_Sucursal(ddlTrabajador2, IdSucursal);
+                Listas.Trabajadores_Sucursal(ddlTrabajador3, IdSucursal);
+                Listas.Trabajadores_Sucursal(ddlTrabajador4, IdSucursal);
+            }
 		}
 
 		protected void GenerarDocumento(object sender, EventArgs e)
@@ -68,18 +60,18 @@ namespace SGSSTC.source.sistema.Hacer
 			int IdSucursal = Getter.Set_IdSucursalDDl(ObjUsuario, ddlSucursal);
 			String[] valores = {
 				string.Empty + IdSucursal,
-				IdTrabajador.ToString(),
-                IdTrabajador2.ToString(),
-                IdTrabajador3.ToString(),
-                IdTrabajador4.ToString(),
+                ddlTrabajador.SelectedValue.ToString(),
+                ddlTrabajador2.SelectedValue.ToString(),
+                ddlTrabajador3.SelectedValue.ToString(),
+                ddlTrabajador4.SelectedValue.ToString(),
                 Image1.ImageUrl,
 				Image3.ImageUrl,
 				Image2.ImageUrl,
 				Image4.ImageUrl,
-				txtTrabajador.Text,
-                txtTrabajador2.Text,
-                txtTrabajador3.Text,
-                txtTrabajador4.Text
+				ddlTrabajador.SelectedItem.Text,
+				ddlTrabajador2.SelectedItem.Text,
+				ddlTrabajador3.SelectedItem.Text,
+				ddlTrabajador4.SelectedItem.Text
             };
 			PrintFile.PrintFormatoVotos(valores, this);
 		   
@@ -100,11 +92,13 @@ namespace SGSSTC.source.sistema.Hacer
 			if (ddlSucursal.SelectedValue != string.Empty)
 			{
 				IdSucursal = Convert.ToInt32(ddlSucursal.SelectedValue);
-				IdSucursal2 = Convert.ToInt32(ddlSucursal.SelectedValue);
-				IdSucursal3 = Convert.ToInt32(ddlSucursal.SelectedValue);
-				IdSucursal4 = Convert.ToInt32(ddlSucursal.SelectedValue);
 
-				Image1.ImageUrl = "";
+                Listas.Trabajadores_Sucursal(ddlTrabajador, IdSucursal);
+                Listas.Trabajadores_Sucursal(ddlTrabajador2, IdSucursal);
+                Listas.Trabajadores_Sucursal(ddlTrabajador3, IdSucursal);
+                Listas.Trabajadores_Sucursal(ddlTrabajador4, IdSucursal);
+
+                Image1.ImageUrl = "";
 				Image2.ImageUrl = "";
 				Image3.ImageUrl = "";
 				Image4.ImageUrl = "";
@@ -133,52 +127,25 @@ namespace SGSSTC.source.sistema.Hacer
 		}
         #endregion
 
-        protected void hdnValue_ValueChanged(object sender, EventArgs e)
+        protected void ddlTrabajador_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Image1.ImageUrl = TraerFoto(IdTrabajador);
-        }
-        protected void hdnValue2_ValueChanged(object sender, EventArgs e)
-        {
-            Image2.ImageUrl = TraerFoto(IdTrabajador2);
-        }
-        protected void hdnValue3_ValueChanged(object sender, EventArgs e)
-        {
-            Image3.ImageUrl = TraerFoto(IdTrabajador3);
-        }
-        protected void hdnValue4_ValueChanged(object sender, EventArgs e)
-        {
-            Image4.ImageUrl = TraerFoto(IdTrabajador4);
+            Image1.ImageUrl = TraerFoto(Convert.ToInt32(ddlTrabajador.SelectedValue));
         }
 
-        #region AutoCompletar
-        [ScriptMethod()]
-        [WebMethod]
-        public static List<string> SearchTrabajador(string prefixText, int count)
+        protected void ddlTrabajador2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            List<string> listTrabajadores = Utilidades.SearchTrabajador(prefixText, count, IdSucursal, ref IdTrabajador, IdPuesto);
-            return listTrabajadores;
+            Image2.ImageUrl = TraerFoto(Convert.ToInt32(ddlTrabajador2.SelectedValue));
         }
-        [ScriptMethod()]
-        [WebMethod]
-        public static List<string> SearchTrabajador2(string prefixText, int count)
+
+        protected void ddlTrabajador3_SelectedIndexChanged(object sender, EventArgs e)
         {
-            List<string> listTrabajadores = Utilidades.SearchTrabajador(prefixText, count, IdSucursal2, ref IdTrabajador2, IdPuesto);
-            return listTrabajadores;
+            Image3.ImageUrl = TraerFoto(Convert.ToInt32(ddlTrabajador3.SelectedValue));
         }
-        [ScriptMethod()]
-        [WebMethod]
-        public static List<string> SearchTrabajador3(string prefixText, int count)
+
+        protected void ddlTrabajador4_SelectedIndexChanged(object sender, EventArgs e)
         {
-            List<string> listTrabajadores = Utilidades.SearchTrabajador(prefixText, count, IdSucursal2, ref IdTrabajador3, IdPuesto);
-            return listTrabajadores;
+            Image4.ImageUrl = TraerFoto(Convert.ToInt32(ddlTrabajador4.SelectedValue));
+
         }
-        [ScriptMethod()]
-        [WebMethod]
-        public static List<string> SearchTrabajador4(string prefixText, int count)
-        {
-            List<string> listTrabajadores = Utilidades.SearchTrabajador(prefixText, count, IdSucursal4, ref IdTrabajador4, IdPuesto);
-            return listTrabajadores;
-        }
-        #endregion
     }
 }

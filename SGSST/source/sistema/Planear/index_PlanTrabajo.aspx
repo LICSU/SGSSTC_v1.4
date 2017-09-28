@@ -94,7 +94,7 @@
                                     <asp:TemplateField HeaderText="Actividad" HeaderStyle-CssClass="text-center">
                                         <ItemTemplate>
                                             <asp:Label ID="actividad" runat="server" Text='<%# Eval("actividad") %>' />
-                                            <asp:Label ID="id_planTrabajo" runat="server" Visible="true" Text='<%# Eval("id_plan_trabajo") %>' />
+                                            <asp:Label ID="id" runat="server" Visible="true" Text='<%# Eval("id_plan_trabajo") %>' />
                                         </ItemTemplate>
                                     </asp:TemplateField>
 
@@ -421,7 +421,7 @@
                                         </ItemTemplate>
                                     </asp:TemplateField>
 
-                                    <asp:TemplateField HeaderText="ID" Visible="false" HeaderStyle-CssClass="text-center">
+                                    <asp:TemplateField HeaderText="ID" Visible="true" HeaderStyle-CssClass="text-center">
                                         <ItemTemplate>
                                             <asp:Label ID="id_plan_trabajo" runat="server" Text='<%# Eval("id_plan_trabajo") %>' />
                                         </ItemTemplate>

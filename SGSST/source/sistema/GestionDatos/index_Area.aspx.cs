@@ -119,7 +119,7 @@ namespace SGSSTC.source.sistema.GestionDatos
                     ddlTipoAreaAdd.SelectedValue
                 };
 
-                ObjUsuario.Error = CRUD.Add_Area(ObjUsuario, chkAreaPadre, valores);
+                ObjUsuario.Error = CRUD.Add_Area(chkAreaPadre, valores);
 
                 Modal.CerrarModal("addModal", "AddModalScript", this);
 
@@ -185,7 +185,7 @@ namespace SGSSTC.source.sistema.GestionDatos
                 Edit.nivel = strNivel;
                 Edit.tipo = ddlTipoAreaEdit.SelectedValue;
             }
-            ObjUsuario.Error = CRUD.Edit_Fila(contexto, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            ObjUsuario.Error = CRUD.Edit_Fila(contexto);
 
             Modal.CerrarModal("editModal", "EditModalScript", this);
 
@@ -207,7 +207,7 @@ namespace SGSSTC.source.sistema.GestionDatos
 
             if (idArea != Convert.ToInt32(hdfAreaIDDel.Value))
             {
-                ObjUsuario.Error = CRUD.Delete_Fila(tabla, Convert.ToInt32(hdfAreaIDDel.Value), ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+                ObjUsuario.Error = CRUD.Delete_Fila(tabla, Convert.ToInt32(hdfAreaIDDel.Value));
             }
 
             Modal.CerrarModal("deleteModal", "DeleteModalScript", this);

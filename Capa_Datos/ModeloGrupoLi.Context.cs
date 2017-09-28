@@ -88,7 +88,6 @@ namespace Capa_Datos
         public virtual DbSet<sistema> sistema { get; set; }
         public virtual DbSet<soporte> soporte { get; set; }
         public virtual DbSet<sucursal> sucursal { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<tipo_documento> tipo_documento { get; set; }
         public virtual DbSet<tipo_epp> tipo_epp { get; set; }
         public virtual DbSet<tipo_evento> tipo_evento { get; set; }

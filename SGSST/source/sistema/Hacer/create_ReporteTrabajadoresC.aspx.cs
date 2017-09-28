@@ -48,6 +48,10 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
             {
                 Listas.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
             }
+            if (!BoolEmpSuc.Item2)
+            {
+                Listas.Trabajadores_Sucursal(ddlTrabajador, ObjUsuario.Id_sucursal);
+            }
         }
 
         protected void GenerarDocumento(object sender, EventArgs e)
@@ -115,13 +119,14 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
             if (ddlSucursal.SelectedValue != string.Empty)
             {
                 IdSucursal = Convert.ToInt32(ddlSucursal.SelectedValue);
+                Listas.Trabajadores_Sucursal(ddlTrabajador, IdSucursal);
             }
         }
 
-        protected void hdnValue_ValueChanged(object sender, EventArgs e)
+        protected void ddlTrabajador_SelectedIndexChanged(object sender, EventArgs e)
         {
             List<trabajador> ListaTrabajador = new List<trabajador>();
-            int idTrabajador = Convert.ToInt32(IdTrabajador);
+            int idTrabajador = Convert.ToInt32(ddlTrabajador.SelectedValue);
             ListaTrabajador = Getter.Trabajador(idTrabajador);
 
             foreach (var itemTrabajador in ListaTrabajador)
@@ -145,14 +150,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
         }
         #endregion
 
-        #region AutoCompletar
-        [ScriptMethod()]
-        [WebMethod]
-        public static List<string> SearchTrabajador(string prefixText, int count)
-        {
-            List<string> listTrabajadores = Utilidades.SearchTrabajador(prefixText, count, IdSucursal, ref IdTrabajador, IdPuesto);
-            return listTrabajadores;
-        }
-        #endregion
+
+
     }
 }

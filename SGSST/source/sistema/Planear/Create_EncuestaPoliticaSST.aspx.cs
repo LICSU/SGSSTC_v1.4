@@ -40,6 +40,7 @@ namespace SGSSTC.source.sistema.Hacer
             if (!BoolEmpSuc.Item2)
             {
                 IdSucursal = Convert.ToInt32(ObjUsuario.Id_sucursal);
+                Listas.Trabajadores_Sucursal(ddlTrabajador, IdSucursal);
             }
         }
 
@@ -133,7 +134,7 @@ namespace SGSSTC.source.sistema.Hacer
 
             encuesta_politica nuevo = new encuesta_politica()
             {
-                id_trabajador = IdTrabajador,
+                id_trabajador = Convert.ToInt32(ddlTrabajador.SelectedValue),
                 fecha = DateTime.Now,
                 si = (100 - porcentaje),
                 no = porcentaje,
@@ -150,17 +151,8 @@ namespace SGSSTC.source.sistema.Hacer
             if (ddlSucursal.SelectedValue != string.Empty)
             {
                 IdSucursal = Convert.ToInt32(ddlSucursal.SelectedValue);
+                Listas.Trabajadores_Sucursal(ddlTrabajador, IdSucursal);
             }
         }
-
-        #region AutoCompletar
-        [ScriptMethod()]
-        [WebMethod]
-        public static List<string> SearchTrabajador(string prefixText, int count)
-        {
-            List<string> listTrabajadores = Utilidades.SearchTrabajador(prefixText, count, IdSucursal, ref IdTrabajador, IdPuesto);
-            return listTrabajadores;
-        }
-        #endregion
     }
 }

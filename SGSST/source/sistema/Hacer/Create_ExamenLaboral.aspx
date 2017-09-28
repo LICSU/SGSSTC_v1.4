@@ -708,7 +708,6 @@
 							<div class="row">
 								<div class="box-body">
 									<div class="dataTables_wrapper form-inline dt-bootstrap">
-										<ucpag:pagination runat="server" ID="pagination0" />
 
 										<asp:GridView ID="GridView1"
 											class="table table-bordered table-hover dataTable"
@@ -778,7 +777,6 @@
 							<div class="row">
 								<div class="box-body">
 									<div class="dataTables_wrapper form-inline dt-bootstrap">
-										<ucpag:pagination runat="server" ID="pagination1" />
 
 										<asp:GridView ID="GridView2"
 											class="table table-bordered table-hover dataTable"
@@ -842,7 +840,6 @@
 							<div class="row">
 								<div class="box-body">
 									<div class="dataTables_wrapper form-inline dt-bootstrap">
-										<ucpag:pagination runat="server" ID="pagination2" />
 
 										<asp:GridView ID="GridView3"
 											class="table table-bordered table-hover dataTable"

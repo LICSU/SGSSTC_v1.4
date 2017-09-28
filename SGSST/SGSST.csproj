@@ -910,6 +910,7 @@
     <Content Include="archivos\plantillasCorreo\recuperacionClave.html" />
     <Content Include="archivos\plantillasCorreo\registroUsuario.html" />
     <Content Include="archivos\plantillas\Archivo.txt" />
+    <Content Include="Services\WS_Trabajador.asmx" />
     <Content Include="source\css\custom1.css" />
     <Content Include="source\sistema\Consulta\create.aspx" />
     <Content Include="source\sistema\EvaluacionInicial\create_AutoEvaluacion.aspx" />
@@ -1047,7 +1048,6 @@
     <Content Include="source\sistema\Planear\index_RecursosEconomicos.aspx" />
     <Content Include="source\sistema\Planear\Update_MedidasMatrizLegal.aspx" />
     <Content Include="source\sistema\Planear\Update_MedidasMatrizRiesgos.aspx" />
-    <Content Include="source\sistema\Registro\index.aspx" />
     <Content Include="source\sistema\Verificar\index_Indicadores.aspx" />
     <Content Include="source\WebUserControl\pagination.ascx" />
     <Content Include="source\WebUserControl\ucMsjModal.ascx" />
@@ -1221,6 +1221,10 @@
     </Compile>
     <Compile Include="Recuperar.aspx.designer.cs">
       <DependentUpon>Recuperar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Services\WS_Trabajador.asmx.cs">
+      <DependentUpon>WS_Trabajador.asmx</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="source\MasterPages\Menu.Master.cs">
       <DependentUpon>Menu.Master</DependentUpon>
@@ -2175,13 +2179,6 @@
     <Compile Include="source\sistema\Planear\Update_MedidasMatrizRiesgos.aspx.designer.cs">
       <DependentUpon>Update_MedidasMatrizRiesgos.aspx</DependentUpon>
     </Compile>
-    <Compile Include="source\sistema\Registro\index.aspx.cs">
-      <DependentUpon>index.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="source\sistema\Registro\index.aspx.designer.cs">
-      <DependentUpon>index.aspx</DependentUpon>
-    </Compile>
     <Compile Include="source\sistema\Verificar\index_Indicadores.aspx.cs">
       <DependentUpon>index_Indicadores.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2236,6 +2233,7 @@
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />
     <Folder Include="obj\Debug\TempPE\" />
+    <Folder Include="source\sistema\Registro\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

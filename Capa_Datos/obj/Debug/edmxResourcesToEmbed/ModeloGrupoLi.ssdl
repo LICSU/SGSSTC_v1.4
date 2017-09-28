@@ -1179,9 +1179,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_documentos_sucursal">
-    <End Role="sucursal" Type="Self.sucursal" Multiplicity="0..1">
-      <OnDelete Action="Cascade" />
-    </End>
+    <End Role="sucursal" Type="Self.sucursal" Multiplicity="0..1" />
     <End Role="documento" Type="Self.documento" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="sucursal">

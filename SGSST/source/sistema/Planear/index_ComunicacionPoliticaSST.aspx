@@ -48,17 +48,7 @@
 
                 <div class="col-md-4">
                     <h4 class="text-center">Trabajador</h4>
-                    <asp:TextBox ID="txtTrabajador" runat="server" CssClass="form-control"></asp:TextBox>
-                    <asp:hiddenfield id="hdnValue" onvaluechanged="hdnValue_ValueChanged" runat="server"/>
-                    <cc1:AutoCompleteExtender ServiceMethod="SearchTrabajador" MinimumPrefixLength="1"
-                        CompletionInterval="100" EnableCaching="false" CompletionSetCount="10"
-                        TargetControlID="txtTrabajador" ID="AutoCompleteExtender1" runat="server"
-                        FirstRowSelected="false"
-                        CompletionListCssClass="completionList"
-                        CompletionListItemCssClass="listItem"
-                        OnClientItemSelected="OnContactSelected"
-                        CompletionListHighlightedItemCssClass="itemHighlighted">
-                    </cc1:AutoCompleteExtender>
+                    <asp:DropDownList ID="ddlTrabajador" runat="server" CssClass="form-control" OnSelectedIndexChanged="ddlTrabajador_SelectedIndexChanged"></asp:DropDownList>
                 </div>
             </div>
 
@@ -218,21 +208,11 @@
                                         <div>
                                             <label class="col-md-4 control-label">Trabajador: </label>
                                             <div class="col-md-6">
-                                                <asp:TextBox ID="txtTrabajadorEsp" runat="server" CssClass="form-control"></asp:TextBox>
-                                                <div ID="ListDivisor">
-                                                    <cc1:AutoCompleteExtender ServiceMethod="SearchTrabajadorEsp" MinimumPrefixLength="1"
-                                                        CompletionInterval="100" EnableCaching="false" CompletionSetCount="10"
-                                                        TargetControlID="txtTrabajadorEsp" ID="AutoCompleteExtender2" runat="server"
-                                                        FirstRowSelected="false"
-                                                        CompletionListCssClass="completionList"
-                                                        CompletionListItemCssClass="listItem"
-                                                        CompletionListElementID="ListDivisor" 
-                                                        CompletionListHighlightedItemCssClass="itemHighlighted">
-                                                    </cc1:AutoCompleteExtender>
-                                                </div>
+                                                <asp:DropDownList ID="ddlTrabajadorEsp" runat="server" CssClass="form-control"></asp:DropDownList>
+                                                
                                                 <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>"
                                                     SetFocusOnError="true" Display="Dynamic" ForeColor="#B50128" Font-Size="10"
-                                                    Font-Bold="true" ControlToValidate="txtTrabajadorEsp" runat="server"
+                                                    Font-Bold="true" ControlToValidate="ddlTrabajadorEsp" runat="server"
                                                     ValidationGroup="ValidationAdd" />
                                             </div>
                                         </div>
@@ -297,22 +277,11 @@
                                         <div>
                                             <label class="col-md-4 control-label">Trabajador: </label>
                                             <div class="col-md-6">
-                                                <asp:TextBox ID="txtTrabajadorSub" runat="server" CssClass="form-control"></asp:TextBox>
-                                                <div ID="ListDivisor3">
-                                                    <cc1:AutoCompleteExtender ServiceMethod="SearchTrabajadorSub" MinimumPrefixLength="1"
-                                                        CompletionInterval="100" EnableCaching="false" CompletionSetCount="10"
-                                                        TargetControlID="txtTrabajadorSub" ID="AutoCompleteExtender3" runat="server"
-                                                        FirstRowSelected="false"
-                                                        CompletionListCssClass="completionList"
-                                                        CompletionListItemCssClass="listItem"
-                                                        CompletionListElementID="ListDivisor3" 
-                                                        CompletionListHighlightedItemCssClass="itemHighlighted">
-                                                    </cc1:AutoCompleteExtender>
-                                                </div>
-
+                                                <asp:DropDownList ID="ddlTrabajadorSub" runat="server" CssClass="form-control"></asp:DropDownList>
+                            
                                                 <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>"
                                                     SetFocusOnError="true" Display="Dynamic" ForeColor="#B50128" Font-Size="10"
-                                                    Font-Bold="true" ControlToValidate="txtTrabajadorSub" runat="server"
+                                                    Font-Bold="true" ControlToValidate="ddlTrabajadorSub" runat="server"
                                                     ValidationGroup="ValidationAdd" />
                                             </div>
                                         </div>
@@ -393,16 +362,5 @@
             </div>
         </div>
     </div>
-
-    <script>
-        function OnContactSelected(source, eventArgs) {
-        
-            var hdnValueID = "<%= hdnValue.ClientID %>";
-
-            document.getElementById(hdnValueID).value = eventArgs.get_value();
-            __doPostBack(hdnValueID, "");
-        } 
-    </script>
-
 
 </asp:Content>

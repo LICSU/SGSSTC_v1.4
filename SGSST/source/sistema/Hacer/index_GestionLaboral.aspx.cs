@@ -357,8 +357,8 @@ namespace SGSSTC.source.sistema.Hacer
 
             if (ObjUsuario.Error)
             {
-                gestion_laboral tabla = new gestion_laboral();
-                //ObjUsuario.Error = CRUD.Delete_Fila(tabla, Convert.ToInt32(hdfEditEntregaID.Value));
+                trabajador_gestion tabla = new trabajador_gestion();
+                ObjUsuario.Error = CRUD.Delete_Fila(tabla, Convert.ToInt32(hdfEditEntregaID.Value));
 
                 foreach (ListItem item in chkTrabajadores.Items)
                 {
@@ -789,6 +789,13 @@ namespace SGSSTC.source.sistema.Hacer
                         txtFechaEditEntrega.Text = fechaGestion.ToString("yyyy-MM-dd");
 
                         txtDescEditEntrega.Text = item.descripcion;
+
+                        List<trabajador_gestion> _listatrab = Getter.TrabajadorInGestion(0, Convert.ToInt32(hdfEditEntregaID.Value));
+
+                        foreach (var trab in _listatrab)
+                        {
+                            
+                        }
                     }
 
                     Modal.registrarModal("EditEntrega", "EditModalScript", this);

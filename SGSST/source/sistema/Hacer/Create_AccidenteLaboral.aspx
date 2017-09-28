@@ -52,7 +52,7 @@
                 </asp:PlaceHolder>
 
                 <asp:PlaceHolder runat="server" ID="phSucursal">
-                    <div class="col-md-4">
+                    <div class="col-md-4 col-md-offset-2">
                         <h4>Sucursal</h4>
                         <asp:DropDownList runat="server" ID="ddlSucursal" data-toggle="tooltip" data-placement="bottom" title="Seleccione una Sucursal" CssClass="form-control" AutoPostBack="true"
                             OnSelectedIndexChanged="ddlSucursal_SelectedIndexChanged">
@@ -102,19 +102,11 @@
                 <div class="col-md-4 col-md-offset-2">
 
                     <h4>Trabajador</h4>
-                    <asp:TextBox ID="txtTrabajador" runat="server" CssClass="form-control" Placeholder="Ingrese el Trabajador"></asp:TextBox>
-                    <cc1:AutoCompleteExtender ServiceMethod="SearchTrabajador" MinimumPrefixLength="1"
-                        CompletionInterval="100" EnableCaching="false" CompletionSetCount="10"
-                        TargetControlID="txtTrabajador" ID="AutoCompleteExtender1" runat="server"
-                        FirstRowSelected="false"
-                        CompletionListCssClass="completionList"
-                        CompletionListItemCssClass="listItem"
-                        CompletionListHighlightedItemCssClass="itemHighlighted">
-                    </cc1:AutoCompleteExtender>
+                    <asp:DropDownList ID="ddlTrabajador" runat="server" CssClass="form-control"></asp:DropDownList>
 
                     <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
                         Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true"
-                        ControlToValidate="txtTrabajador" runat="server" ValidationGroup="ValidationAdd" />
+                        ControlToValidate="ddlTrabajador" runat="server" ValidationGroup="ValidationAdd" />
                 </div>
 
                 <div class="col-md-4">

@@ -61,7 +61,8 @@ namespace SGSSTC.source.sistema.Hacer
 			ObjUsuario.Error = CRUD.Delete_Fila(tabla, Convert.ToInt32(hdfIDDel.Value));
 			LlenarGridView();
 			Modal.MostrarAlertaDelete(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error, txtBuscar);
-		}
+            Modal.CerrarModal("deleteModal", "DeleteModalScript", this);
+        }
 		
 		#endregion
 

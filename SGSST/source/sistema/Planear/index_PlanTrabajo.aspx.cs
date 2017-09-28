@@ -70,13 +70,9 @@ namespace SGSSTC.source.sistema.Hacer
 
             if (IdSucursal != 0)
             {
-                List<sucursal> ListaSucursal = new List<sucursal>();
-                ListaSucursal = Getter.Sucursal(IdSucursal);
-
-                foreach (var item in ListaSucursal)
-                {
-                    lbSucursal.Text = item.nombre;
-                }
+                
+                sucursal ListaSucursal = Getter.Sucursal(IdSucursal);
+                lbSucursal.Text = ListaSucursal.nombre;
 
                 lbAnho.Text = string.Empty + ViewState["anho"];
             }
@@ -129,7 +125,7 @@ namespace SGSSTC.source.sistema.Hacer
                     recursos_aprobados = Convert.ToInt32(txtRecursosAdd.Text),
                     id_responsable = Convert.ToInt32(ddlResponsable.SelectedValue)
                 };
-                ObjUsuario.Error = CRUD.Add_Fila(nuevo, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+                ObjUsuario.Error = CRUD.Add_Fila(nuevo);
 
                 Modal.CerrarModal("addModal", "AddModalScript", this);
 
@@ -170,7 +166,7 @@ namespace SGSSTC.source.sistema.Hacer
                     Edit.id_responsable = Convert.ToInt32(ddlResponsableEdit.SelectedValue);
                 }
 
-                ObjUsuario.Error = CRUD.Edit_Fila(contexto, ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+                ObjUsuario.Error = CRUD.Edit_Fila(contexto);
 
                 Modal.CerrarModal("editModal", "EditModalScript", this);
 
@@ -181,7 +177,7 @@ namespace SGSSTC.source.sistema.Hacer
         protected void EliminarRegistro(object sender, EventArgs e)
         {
             plan_trabajo tabla = new plan_trabajo();
-            ObjUsuario.Error = CRUD.Delete_Fila(tabla, Convert.ToInt32(hdfIDDel.Value), ObjUsuario.Id_usuario, HttpContext.Current.Request.Url.AbsoluteUri);
+            ObjUsuario.Error = CRUD.Delete_Fila(tabla, Convert.ToInt32(hdfIDDel.Value));
 
             Modal.CerrarModal("deleteModal", "DeleteModalScript", this);
 
@@ -275,8 +271,8 @@ namespace SGSSTC.source.sistema.Hacer
                 int RowIndex = Convert.ToInt32((e.CommandArgument).ToString());
                 GridViewRow gvrow = GridView1.Rows[RowIndex];
 
-                hdfEditID.Value = (gvrow.FindControl("id_plan_trabajo") as Label).Text;
-                //hdfEditID.Value = Utilidades_GridView.DevolverIdRow(e, GridView1);
+                //hdfEditID.Value = (gvrow.FindControl("id_plan_trabajo") as Label).Text;
+                hdfEditID.Value = Utilidades_GridView.DevolverIdRow(e, GridView1);
 
                 List<plan_trabajo> ListaPlanTrabajo = new List<plan_trabajo>();
                 ListaPlanTrabajo = Getter.Plan_Trabajo(0, 0, Convert.ToInt32(hdfEditID.Value));
@@ -338,7 +334,7 @@ namespace SGSSTC.source.sistema.Hacer
 
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                string idPlanTrabajo = (e.Row.FindControl("id_planTrabajo") as Label).Text;
+                string idPlanTrabajo = (e.Row.FindControl("id") as Label).Text;
 
                 List<plan_trabajo> ListaPlanTrabajo = new List<plan_trabajo>();
                 ListaPlanTrabajo = Getter.Plan_Trabajo(0, 0, Convert.ToInt32(idPlanTrabajo));

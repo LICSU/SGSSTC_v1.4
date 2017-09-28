@@ -89,7 +89,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
             String[] valores = {
                 string.Empty + IdEmpSuc.Item2,
                 "Área o Sector. " + ddlArea.SelectedItem.Text,
-                "Trabajador. " + txtTrabajador.Text,
+                "Trabajador. " + ddlTrabajador.SelectedItem.Text,
                 "Inspector",
                 cantInspecciones.Value
             };
@@ -113,19 +113,12 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
         #endregion
 
         #region AutoCompletar
-        [ScriptMethod()]
-        [WebMethod]
-        public static List<string> SearchTrabajador(string prefixText, int count)
-        {
-            List<string> listTrabajadores = Utilidades.SearchTrabajador(prefixText, count, IdSucursal, ref IdTrabajador, IdPuesto);
-            return listTrabajadores;
-        }
-
+  
         protected void btnBuscar_OnClick(object sender, EventArgs e)
         {
-            if (IdTrabajador != 0)
+            if (ddlTrabajador.SelectedValue != string.Empty)
             {
-                ViewState["trabajador"] = IdTrabajador;
+                ViewState["trabajador"] = ddlTrabajador.SelectedValue;
                 eppTrab = Getter.Epp(Convert.ToInt32(ddlPuesto.SelectedValue));
                 if (eppTrab.Count > 0)
                 {
@@ -194,6 +187,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
                 if (!BoolEmpSuc.Item2) IdSucursal = ObjUsuario.Id_sucursal;
                 else IdSucursal = Convert.ToInt32(ddlSucursal.SelectedValue);
                 IdPuesto = Convert.ToInt32(ddlPuesto.SelectedValue);
+                Listas.Trabajadores_Puestos(ddlTrabajador, IdPuesto);
             }
             else
             {
