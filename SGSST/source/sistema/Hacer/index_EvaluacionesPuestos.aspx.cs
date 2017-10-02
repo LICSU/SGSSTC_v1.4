@@ -49,11 +49,11 @@ namespace SGSSTC.source.sistema.Hacer
 				"",
 				ViewState["Imprimir"].ToString(),
 			};
-			
-			PrintFile.PrintEvaluacionPuestos(valores, this);
+           
+            PrintFile.PrintEvaluacionPuestos(valores, this);
             Modal.CerrarModal("printModal", "printModalScript", this);
             LlenarGridView();
-		}
+        }
 
 		protected void EliminarRegistro(object sender, EventArgs e)
 		{

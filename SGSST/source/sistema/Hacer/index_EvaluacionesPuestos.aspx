@@ -97,7 +97,9 @@
 			<br />
 
 		</ContentTemplate>
-		<Triggers></Triggers>
+		<Triggers>
+
+		</Triggers>
 	</asp:UpdatePanel>
 
 	<!-- print lista Modal-->
@@ -109,30 +111,36 @@
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">Cerrar</button>
 					<h3>Imprimir Registro</h3>
 				</div>
+                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+					<ContentTemplate>
+				        <div class="modal-body form-group">
+					        <asp:HiddenField ID="hImprimir" runat="server" />
 
-				<div class="modal-body form-group">
-					<asp:HiddenField ID="hImprimir" runat="server" />
+					        <div class="row">
+						        <h4 class="text-center">¿Seguro desea imprimir este registro?</h4>
+					        </div>
+				        </div>
 
-					<div class="row">
-						<h4 class="text-center">¿Seguro desea imprimir este registro?</h4>
-					</div>
-				</div>
+				        <div class="modal-footer">
+					        <div class="row">
 
-				<div class="modal-footer">
-					<div class="row">
+						        <div class="col-md-4 col-md-offset-2">
+							        <asp:Button ID="btPrint" runat="server" Text="Imprimir" AutoPostBack="true"
+								        class="btn btn-block btn-info" OnClick="btPrint_Click" />
+						        </div>
 
-						<div class="col-md-4 col-md-offset-2">
-							<asp:Button ID="btPrint" runat="server" Text="Imprimir" AutoPostBack="true"
-								class="btn btn-block btn-info" OnClick="btPrint_Click" />
-						</div>
-
-						<div class="col-md-4">
-							<button class="btn btn-block btn-default" data-dismiss="modal"
-								aria-hidden="true">
-								Cerrar</button>
-						</div>
-					</div>
-				</div>
+						        <div class="col-md-4">
+							        <button class="btn btn-block btn-default" data-dismiss="modal"
+								        aria-hidden="true">
+								        Cerrar</button>
+						        </div>
+					        </div>
+				        </div>
+                </ContentTemplate>
+                    <Triggers>
+						<asp:PostBackTrigger ControlID="btPrint" />
+					</Triggers>
+                </asp:UpdatePanel>
 			</div>
 		</div>
 	</div>
@@ -177,5 +185,4 @@
 			</div>
 		</div>
 	</div>
-
 </asp:Content>

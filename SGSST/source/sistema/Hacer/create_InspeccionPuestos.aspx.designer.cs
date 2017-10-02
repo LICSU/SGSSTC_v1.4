@@ -4351,13 +4351,31 @@ namespace SGSSTC.source.sistema.EvaluacionInicial {
         protected global::System.Web.UI.WebControls.Label lblResultado;
         
         /// <summary>
-        /// Control graficaPie.
+        /// Control ltReporte.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.DataVisualization.Charting.Chart graficaPie;
+        protected global::System.Web.UI.WebControls.Literal ltReporte;
+        
+        /// <summary>
+        /// Control ImgChart.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image ImgChart;
+        
+        /// <summary>
+        /// Control rutaImg.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField rutaImg;
         
         /// <summary>
         /// Control btnGenerarResultados.

@@ -202,69 +202,11 @@ namespace SGSSTC.source.sistema.Hacer
         }
         protected void btPrint_Click(object sender, EventArgs e)
         {
-            //List<gestion_laboral> ListaGestionLaboral = new List<gestion_laboral>();
-            //ListaGestionLaboral = Getter.GestionLaboral(Convert.ToInt32(ViewState["Imprimir"]));
+            String[] valores = {
+                ViewState["Imprimir"].ToString()
+            };
 
-            //foreach (var itemGestionLaboral in ListaGestionLaboral)
-            //{
-            //    int tipoGestion = Convert.ToInt32(itemGestionLaboral.tipo_gestion);
-
-            //    string tituloGestion =
-            //        tipoGestion == 1 ? "ENTREGA DE EQUIPOS" :
-            //        tipoGestion == 2 ? "CAPACITACIÓN" :
-            //        tipoGestion == 3 ? "JORNADA DE EXAMENES" :
-            //        "ACTIVIDADES RECREATIVAS";
-
-
-            //    int IdSucursal = Convert.ToInt32(itemGestionLaboral.usuario.trabajador.puesto_trabajo.area.id_sucursal);
-            //    Tuple<iTextSharp.text.Document, iTextSharp.text.pdf.PdfPTable> DocumentoPDF = ManageFiles.PdfParte1(
-            //        IdSucursal,
-            //        "GestionLaboral_",
-            //        "GESTION LABORAL - " + tituloGestion,
-            //        this);
-
-            //    int ContadorTrabajadores = 0;
-
-            //    #region 1erbloque consulta
-            //    DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, 1, "H4", "C", "1|1|1|1", 3, 2, "azul", "EMPRESA"));
-            //    DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, 1, "H4", "C", "1|1|1|1", 3, 2, "azul", "FECHA"));
-            //    DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, 1, "H4", "C", "1|1|1|1", 3, 2, "azul", "DESCRIPCIÓN"));
-            //    DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, 1, "H4", "C", "1|1|1|1", 3, 2, "azul", "RESPONSABLE"));
-
-            //    DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, 1, "H4", "C", "1|1|1|1", 3, 2, "", Convert.ToString(itemGestionLaboral.usuario.trabajador.puesto_trabajo.area.sucursal.empresa.nombre)));
-            //    DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, 1, "H4", "C", "1|1|1|1", 3, 2, "", Convert.ToString(itemGestionLaboral.fecha)));
-            //    DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, 1, "H4", "C", "1|1|1|1", 3, 2, "", itemGestionLaboral.descripcion));
-            //    DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, 1, "H4", "C", "1|1|1|1", 3, 2, "", Convert.ToString(itemGestionLaboral.usuario.login)));
-
-            //    if (tipoGestion == 2)
-            //    {
-            //        DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, 1, "H4", "C", "1|1|1|1", 6, 2, "azul", "OBJETIVOS"));
-            //        DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, 1, "H4", "C", "1|1|1|1", 6, 2, "azul", "CANTIDAD DE HORAS"));
-            //        DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, 1, "H4", "C", "1|1|1|1", 6, 2, "", itemGestionLaboral.objetivos));
-            //        DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, 1, "H4", "C", "1|1|1|1", 6, 2, "", Convert.ToString(itemGestionLaboral.cant_horas)));
-            //    }
-
-            //    #endregion
-
-            //    #region 2do bloque consulta
-            //    /*List<trabajador_gestion> ListaTrabajadorGestion = Getter.GestLab_Asis(Convert.ToInt32(ViewState["Imprimir"]));
-
-            //    DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ExportFiles.AddCelda(DocumentoPDF.Item2, 1, "H4", "C", "1|1|1|1", 12, 2, "azul", "TRABAJADORES QUE ASISTIRAN"));
-
-            //    foreach (var item in ListaTrabajadorGestion)
-            //    {
-            //        string ruta = item.trabajador.foto;
-            //        ruta = ruta.Replace("~/source", "../..");
-            //        ContadorTrabajadores++;
-
-            //        DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ExportFiles.AddCelda(DocumentoPDF.Item2, 1, "H4", "C", "1|1|1|1", 6, 2, "", "TRABAJADOR " + ContadorTrabajadores));
-            //        DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ExportFiles.AddCelda(DocumentoPDF.Item2, 1, "H4", "C", "1|1|1|1", 6, 2, "", "" + item.trabajador.primer_nombre + " " + item.trabajador.primer_apellido));
-            //    }*/
-            //    #endregion
-
-            //    ManageFiles.PdfPart2(DocumentoPDF.Item1, DocumentoPDF.Item2, IdSucursal, this);
-            //}
-
+            PrintFile.PrintGestionLaboral(valores, this);            
         }
         #endregion
 
@@ -794,7 +736,10 @@ namespace SGSSTC.source.sistema.Hacer
 
                         foreach (var trab in _listatrab)
                         {
-                            
+                            if (chkTrabajadores.Items.FindByValue(trab.id_trabajador.ToString()) != null)
+                            {
+                                chkTrabajadores.Items.FindByValue(trab.id_trabajador.ToString()).Selected = true;
+                            }
                         }
                     }
 
@@ -827,6 +772,16 @@ namespace SGSSTC.source.sistema.Hacer
                         txtFechaEditJornada.Text = fechaGestion.ToString("yyyy-MM-dd");
 
                         txtDescEditJornada.Text = item.descripcion;
+
+                        List<trabajador_gestion> _listatrab = Getter.TrabajadorInGestion(0, Convert.ToInt32(hdfEditJornadaID.Value));
+
+                        foreach (var trab in _listatrab)
+                        {
+                            if (chkTrabajadores.Items.FindByValue(trab.id_trabajador.ToString()) != null)
+                            {
+                                chkTrabajadores.Items.FindByValue(trab.id_trabajador.ToString()).Selected = true;
+                            }
+                        }
                     }
 
                     Modal.registrarModal("EditJornada", "EditModalScript", this);
@@ -858,6 +813,16 @@ namespace SGSSTC.source.sistema.Hacer
                         txtFechaEditActividad.Text = fechaGestion.ToString("yyyy-MM-dd");
 
                         txtDescEditActividad.Text = item.descripcion;
+
+                        List<trabajador_gestion> _listatrab = Getter.TrabajadorInGestion(0, Convert.ToInt32(hdfEditActividadID.Value));
+
+                        foreach (var trab in _listatrab)
+                        {
+                            if (chkTrabajadores.Items.FindByValue(trab.id_trabajador.ToString()) != null)
+                            {
+                                chkTrabajadores.Items.FindByValue(trab.id_trabajador.ToString()).Selected = true;
+                            }
+                        }
                     }
                     Modal.registrarModal("EditActividad", "EditModalScript", this);
                     
@@ -893,6 +858,16 @@ namespace SGSSTC.source.sistema.Hacer
                         txtDesCapEdit.Text = item.descripcion;
                         txtObjCapEdit.Text = item.objetivos;
                         txtHorasEditCapacitacion.Text = item.cant_horas.ToString();
+
+                        List<trabajador_gestion> _listatrab = Getter.TrabajadorInGestion(0, Convert.ToInt32(hdfEditCapacitacionID.Value));
+
+                        foreach (var trab in _listatrab)
+                        {
+                            if (chkTrabajadores.Items.FindByValue(trab.id_trabajador.ToString()) != null)
+                            {
+                                chkTrabajadores.Items.FindByValue(trab.id_trabajador.ToString()).Selected = true;
+                            }
+                        }
                     }
 
                 }

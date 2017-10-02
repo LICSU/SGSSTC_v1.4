@@ -5,12 +5,6 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server"></asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js" type="text/javascript"></script>
-    <script type="text/javascript" src="//www.google.com/jsapi"></script>
-
-    <asp:UpdatePanel runat="server">
-        <ContentTemplate>
             
             <ol class="breadcrumb">
                 <li><a href="#">Fase: Hacer</a></li>
@@ -1830,18 +1824,21 @@
                         </div>
                     </div>
                     <!-- Grafica -->
-                    <div class="text-center">
-                        <asp:Chart ID="graficaPie" runat="server" AntiAliasing="Graphics">
-                            <Series>
-                                <asp:Series Name="seriesPie" ChartType="Pie" Legend="Legend1" Label="#PERCENT{P}"></asp:Series>
-                            </Series>
-                            <ChartAreas>
-                                <asp:ChartArea Name="ChartArea1">
-                                    <Area3DStyle Enable3D="true" WallWidth="0" />
-                                </asp:ChartArea>
-                            </ChartAreas>
-                        </asp:Chart>
+                    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js" type="text/javascript"></script>
+                    <script type="text/javascript" src="//www.google.com/jsapi"></script>
+
+                    <div class="row">
+                        <div class="col-md-10 col-md-offset-1">
+                            <asp:Literal ID="ltReporte" runat="server"></asp:Literal>
+                            <div id="piechart"></div>
+                        </div>
+                        <asp:PlaceHolder runat="server" Visible="false">
+                            <asp:Image alt="-" ID="ImgChart" runat="server" />
+                        </asp:PlaceHolder>
+                        <asp:HiddenField ID="rutaImg" runat="server"></asp:HiddenField>
+                        <asp:Label ID="lbl1" runat="server" Text="IMAGEN: "></asp:Label>
                     </div>
+                    <!-- Fin de Grafica -->
                 </asp:PlaceHolder>
                 <div class="row text-center">
                     <div class="col-md-3 col-md-offset-1">
@@ -1870,10 +1867,5 @@
                     </div>
                 </div>
             </asp:PlaceHolder>
-        </ContentTemplate>
-        <Triggers>
-            <asp:PostBackTrigger ControlID="btnDocumento" />
-        </Triggers>
-    </asp:UpdatePanel>
 
 </asp:Content>
