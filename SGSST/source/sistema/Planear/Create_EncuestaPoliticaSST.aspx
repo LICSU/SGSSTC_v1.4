@@ -9,8 +9,8 @@
     <asp:Panel runat="server" ID="panel1">
         
         <ol class="breadcrumb">
-            <li><a href="#">Fase: Hacer</a></li>
-            <li><a href="../Hacer/index_Encuesta_PoliticaSST.aspx">Encuesta De Conocimiento</a></li>
+            <li><a href="#">Fase: Planear</a></li>
+            <li><a href="../Planear/index_Encuesta_PoliticaSST.aspx">Encuesta De Conocimiento</a></li>
             <li><a href="#">Crear Encuesta</a></li>
         </ol>
 

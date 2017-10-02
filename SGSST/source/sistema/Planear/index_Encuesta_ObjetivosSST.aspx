@@ -135,7 +135,7 @@
 
             <div class="row text-center">
 
-                <div class="col-md-4 col-md-offset-4">
+                <div class="col-md-4 col-md-offset-2">
                     <asp:ImageButton alt="-" runat="server" ImageUrl="~\ico\agregar.png" OnClick="btnAgregarObj_Click" />
                     <h4>Crear Encuesta Conocimiento Objetivos Politica SST</h4>
                 </div>

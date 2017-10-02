@@ -493,18 +493,19 @@ namespace Capa_Datos
                 List<claseCiiu> objCodCiiu = new List<claseCiiu>();
                 objCodCiiu = Getter.CodigoCiiu(Convert.ToInt32(item.actividad_ppal));
 
+                nomEmpresa = item.empresa.nombre;
+                nomSucursal = item.nombre;
+                NIT = item.empresa.nit;
+                dpto = item.municipio.departamento.nombre;
+                mcpio = item.municipio.nombre;
+                NumTrab = Convert.ToString(_NumTrab);
+                direccion = item.direccion;
+                telefono = item.fijo;
+                URL = item.empresa.logo_url;
+
                 foreach (var item1 in objCodCiiu)
                 {
-                    nomEmpresa = item.empresa.nombre;
-                    nomSucursal = item.nombre;
-                    NIT = item.empresa.nit;
-                    dpto = item.municipio.departamento.nombre;
-                    mcpio = item.municipio.nombre;
-                    NumTrab = Convert.ToString(_NumTrab);
-                    CodCiiu = item1.nombre;
-                    direccion = item.direccion;
-                    telefono = item.fijo;
-                    URL = item.empresa.logo_url;
+                    CodCiiu = ""+item1.nombre;
                 }
             }
 

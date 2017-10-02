@@ -482,6 +482,28 @@ namespace Capa_Datos
                 return false;
             }
         }
+        public static bool AddEmpresaSimple(String[] valores)
+        {
+
+            empresa nuevo = new empresa()
+            {
+                nombre = valores[0],
+                CodEmpresa = valores[1],
+                nit = valores[2],
+                email = valores[3],
+                representante = valores[4],
+                movil = valores[5],
+                fijo = valores[6],
+                logo_url = "",
+                id_arl = Convert.ToInt32(valores[7]),
+                jornada = Convert.ToInt32(valores[8])
+            };
+
+            return Add_Fila(nuevo);
+
+        }
+
+
         public static bool DeleteEmpresa(int IdEmpresa)
         {
             empresa tabla = new empresa();
@@ -668,9 +690,9 @@ namespace Capa_Datos
                 representante = valores[4],
                 movil = valores[5],
                 fijo = valores[6],
-                actividad_ppal = 0,
-                actividad_sec = 0,
-                actividad_otra = 0
+                actividad_ppal = Convert.ToInt32(valores[7]),
+                actividad_sec = Convert.ToInt32(valores[8]),
+                actividad_otra = Convert.ToInt32(valores[9]),
             };
 
             return Add_Fila(nuevo);

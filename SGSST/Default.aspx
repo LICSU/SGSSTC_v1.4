@@ -363,7 +363,7 @@
                                 </asp:PlaceHolder>
 
                                 <div class="row text-left">
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <h4>Nombre de la Empresa</h4>
 
                                         <asp:TextBox runat="server" ID="txtNomEmpresa" CssClass="form-control" PlaceHolder="Nombre"
@@ -372,6 +372,19 @@
                                         <asp:RequiredFieldValidator SetFocusOnError="true" runat="server" Font-Size="10" Font-Bold="true"
                                             Display="Dynamic" ForeColor="#B50128" ControlToValidate="txtNomEmpresa"
                                             ValidationGroup="ValidationAdd" ErrorMessage="<p>Campo Obligatorio!</p>" />
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <h4>Representante</h4>
+
+                                        <asp:TextBox runat="server" ID="txtRepresentante" CssClass="form-control" PlaceHolder="Representante"
+                                            MaxLength="100"></asp:TextBox>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <h4>Teléfono</h4>
+
+                                        <asp:TextBox runat="server" ID="txtTelFijo" CssClass="form-control" MaxLength="50"></asp:TextBox>
                                     </div>
                                 </div>
                             </div>
@@ -492,21 +505,7 @@
                         </asp:PlaceHolder>
 
                         <div class="row text-left">
-                            <div class="col-md-4">
-                                <h4>Código de la Empresa</h4>
-
-                                <asp:TextBox runat="server" ID="txtCodigoEmpresa" CssClass="form-control" PlaceHolder="Código"
-                                    MaxLength="50"></asp:TextBox>
-                            </div>
-
-                            <div class="col-md-4">
-                                <h4>NIT</h4>
-
-                                <asp:TextBox runat="server" ID="txtNit" CssClass="form-control" PlaceHolder="NIT" MaxLength="50"></asp:TextBox>
-
-                            </div>
-
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <style>
                                     span.valerror[style*="inline"] {
                                         display: block !Important;
@@ -521,91 +520,11 @@
                                 <asp:TextBox runat="server" ID="txtemailEmpresa" TextMode="Email" CssClass="form-control" MaxLength="100"
                                     PlaceHolder="mi_correo@grupoli.com"></asp:TextBox>
                             </div>
-                        </div>
-
-                        <br />
-
-                        <div class="row text-left">
-                            <div class="col-md-12">
+                            <div class="col-md-9">
                                 <h4>Dirección</h4>
 
                                 <asp:TextBox runat="server" ID="txtDireccion" CssClass="form-control" PlaceHolder="Dirección"
                                     MaxLength="100"></asp:TextBox>
-                            </div>
-                        </div>
-
-                        <br />
-
-                        <div class="row text-left">
-                            <div class="col-md-4">
-                                <h4>Región</h4>
-
-                                <asp:DropDownList runat="server" ID="ddlRegion" CssClass="form-control" AutoPostBack="true"
-                                    OnSelectedIndexChanged="ddlRegion_SelectedIndexChanged">
-                                </asp:DropDownList>
-                            </div>
-
-                            <div class="col-md-4">
-                                <h4>Departamento</h4>
-
-                                <asp:DropDownList runat="server" ID="ddlDepartamento" CssClass="form-control" AutoPostBack="true"
-                                    OnSelectedIndexChanged="ddlDepartamento_SelectedIndexChanged">
-                                </asp:DropDownList>
-                            </div>
-
-                            <div class="col-md-4">
-                                <h4>Municipio</h4>
-
-                                <asp:DropDownList runat="server" ID="ddlMunicipio" CssClass="form-control"></asp:DropDownList>
-                            </div>
-                        </div>
-
-                        <br />
-
-                        <div class="row text-left">
-                            <div class="col-md-4">
-                                <h4>Representante</h4>
-
-                                <asp:TextBox runat="server" ID="txtRepresentante" CssClass="form-control" PlaceHolder="Representante"
-                                    MaxLength="100"></asp:TextBox>
-                            </div>
-
-                            <div class="col-md-4">
-                                <h4>Teléfono Fijo</h4>
-
-                                <asp:TextBox runat="server" ID="txtTelFijo" CssClass="form-control" PlaceHolder="Numero Fijo"
-                                    TextMode="Number" MaxLength="50"></asp:TextBox>
-                            </div>
-
-                            <div class="col-md-4">
-                                <h4>Teléfono Movil</h4>
-
-                                <asp:TextBox runat="server" ID="txtTelMovil" CssClass="form-control" PlaceHolder="Movil" TextMode="Number"
-                                    MaxLength="50"></asp:TextBox>
-                            </div>
-                        </div>
-
-                        <br />
-
-                        <div class="row text-left">
-                            <div class="col-md-4">
-                                <h4>ARL</h4>
-                                <asp:DropDownList runat="server" ID="ddlArp" CssClass="form-control"></asp:DropDownList>
-                            </div>
-
-                            <div class="col-md-4">
-                                <h4>Jornada Laboral</h4>
-
-                                <asp:DropDownList runat="server" ID="ddlJornada" CssClass="form-control">
-                                    <asp:ListItem Text="Lunes a Viernes" Value="1" />
-                                    <asp:ListItem Text="Lunes a Sabado" Value="2" />
-                                </asp:DropDownList>
-                            </div>
-
-                            <div class="col-md-4">
-                                <h4>Logo</h4>
-
-                                <asp:FileUpload runat="server" ID="fuLogoEmpresa" />
                             </div>
                         </div>
 

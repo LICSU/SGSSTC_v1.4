@@ -28,8 +28,6 @@ namespace SGSST
             if (!IsPostBack)
             {
                 Listas.Codciiu_Div_item(ddlSeccion1, "SeccionCiiu");
-                Listas.Reg_Dpto_Mcpio(ddlRegion, "Region");
-                Listas.Arl(ddlArp);
             }
         }
 
@@ -110,17 +108,17 @@ namespace SGSST
         {
             String[] valores = {
                 txtNomEmpresa.Text,
-                txtCodigoEmpresa.Text,
-                txtNit.Text,
+                "-",
+                "-",
                 txtemailEmpresa.Text,
                 txtRepresentante.Text,
-                txtTelMovil.Text,
+                "",
                 txtTelFijo.Text,
-                ddlArp.SelectedValue,
-                ddlJornada.SelectedValue
+                "0",
+                "-"
             };
 
-            if (CRUD.AddEmpresa(valores, fuLogoEmpresa))
+            if (CRUD.AddEmpresaSimple(valores))
             {
                 nombreEmpresa = Utilidades.FormatearPalabra(valores[0]);
                 nombreEmpresa = nombreEmpresa.Replace(" ", "");
@@ -221,12 +219,12 @@ namespace SGSST
         {
             String[] valores = {
                 "Sede Principal - " + nombreEmpresa,
-                ddlMunicipio.SelectedValue,
+                "0",
                 ""+IdEmpresa,
                 txtDireccion.Text,
                 txtRepresentante.Text,
                 txtTelFijo.Text,
-                txtTelMovil.Text
+                ""
             };
 
             if (CRUD.Add_Sucursal_Empresa(valores))
@@ -363,22 +361,6 @@ namespace SGSST
         #endregion
 
         #region eventos
-        protected void ddlRegion_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (ddlRegion.SelectedValue != string.Empty)
-            {
-                Listas.Reg_Dpto_Mcpio(ddlDepartamento, "RegionDpto", Convert.ToInt32(ddlRegion.SelectedValue));
-            }
-        }
-
-        protected void ddlDepartamento_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (ddlDepartamento.SelectedValue != string.Empty)
-            {
-                Listas.Reg_Dpto_Mcpio(ddlMunicipio, "McpioDpto", Convert.ToInt32(ddlDepartamento.SelectedValue));
-            }
-        }
-
         protected void ddlCodigoCiuu_SelectedIndexChanged(object sender, EventArgs e)
         {
             DropDownList miDDl = (DropDownList)sender;
