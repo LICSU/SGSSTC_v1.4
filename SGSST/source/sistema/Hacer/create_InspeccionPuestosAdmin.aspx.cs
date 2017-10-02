@@ -1,6 +1,7 @@
 ﻿using Capa_Datos;
 using System;
 using System.Collections.Generic;
+using System.Text;
 using System.Web;
 using System.Web.Script.Services;
 using System.Web.Security;
@@ -326,9 +327,41 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
         {
             Double[] yAsistencias = { TotalSi, TotalNo };
             String[] xCadenas = { "SI", "NO" };
-            graficaPie.ChartAreas[0].AxisX.LabelStyle.Interval = 1;
-            graficaPie.Series["seriesPie"].Points.DataBindXY(xCadenas, yAsistencias);
-            graficaPie.SaveImage(Server.MapPath("~/archivos/images_graf/graficaInspPA.jpg"));
+            //graficaPie.ChartAreas[0].AxisX.LabelStyle.Interval = 1;
+            //graficaPie.Series["seriesPie"].Points.DataBindXY(xCadenas, yAsistencias);
+            //graficaPie.SaveImage(Server.MapPath("~/archivos/images_graf/graficaInspPA.jpg"));
+            StringBuilder str = new StringBuilder();
+            str.Append(@"<script type = *text/javascript* >
+					   google.load( *visualization*, *1*, {packages:[*corechart*]});
+					   google.setOnLoadCallback(drawChart);
+						function drawChart()
+						{
+							var data = google.visualization.arrayToDataTable([
+	
+							  ['Task', 'Hours per Day'],
+	
+							  ['SI', " + TotalSi + "],");
+            str.Append(@"['NO'," + TotalNo + "]]); ");
+
+            str.Append(@"var options = {
+						  title: 'Puestos Administrativos',
+						  is3D: true,
+						  width: 1000, 
+						  height: 350,
+						};
+
+						var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+						chart.draw(data, options);
+						
+						$('#ImgChart').attr('src', chart.getImageURI());
+						$('#rutaImg').val(chart.getImageURI());
+
+					}
+					</script>");
+
+            string Myscript = str.ToString().Replace('*', '"');
+            ltReporte.Text = Myscript;
+            btnGenerarResultados.Focus();
         }
 
         protected void GenerarDocumento(object sender, EventArgs e)

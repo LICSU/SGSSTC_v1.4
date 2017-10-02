@@ -1,4 +1,5 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/source/MasterPages/Menu.Master" AutoEventWireup="true" CodeBehind="index_PlanTrabajo.aspx.cs" Inherits="SGSSTC.source.sistema.Hacer.index_PlanTrabajo" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/source/MasterPages/Menu.Master" AutoEventWireup="true" CodeBehind="index_PlanTrabajo.aspx.cs" 
+    EnableEventValidation="false" Inherits="SGSSTC.source.sistema.Hacer.index_PlanTrabajo" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server"></asp:Content>
 
@@ -82,9 +83,11 @@
                 <div class="col-md-12">
                     <div class="box-body">
                         <div class="dataTables_wrapper form-inline dt-bootstrap" style="overflow: auto;">
-                            <asp:GridView ID="GridView1" class="table table-bordered table-hover dataTable" runat="server"
-                                AutoGenerateColumns="false" AllowPaging="true" PageSize="10" EmptyDataText="No existen Registros"
-                                OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound"
+                            <asp:GridView ID="GridView1" 
+                                class="table table-bordered table-hover dataTable" runat="server" AutoGenerateColumns="false" 
+                                AllowPaging="true" PageSize="10" EmptyDataText="No existen Registros"
+                                OnRowCommand="GridView1_RowCommand" 
+                                OnRowDataBound="GridView1_RowDataBound"
                                 OnRowCreated="GridView1_RowCreated">
 
                                 <RowStyle HorizontalAlign="Center" />
