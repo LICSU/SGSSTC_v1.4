@@ -87,7 +87,7 @@ namespace SGSSTC.source.sistema.Hacer
             int IdEmpresa = ObjUsuario.Id_empresa;
             int IdSucursal = Getter.Set_IdSucursalDDl(ObjUsuario, ddlSucursalSubir);
 
-            string _ruta = Utilidades.GuardarArchivo(flpArchivo, IdEmpresa + "_ActaReunionCopasst_" + ddlSucursalSubir.SelectedValue, "~/source/archivos/encuesta_politicasst/");
+            string _ruta = Utilidades.GuardarArchivo(flpArchivo, IdEmpresa + "_ActaReunionCopasst_" + ddlSucursalSubir.SelectedValue, "~/archivos/encuesta_politicasst/");
 
             documento nuevo = new documento()
             {

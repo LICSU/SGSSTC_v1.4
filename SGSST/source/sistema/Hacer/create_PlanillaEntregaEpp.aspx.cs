@@ -60,7 +60,10 @@ namespace SGSSTC.source.sistema.Hacer
 			{
 				Listas.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
 			}
-
+            if (!BoolEmpSuc.Item2)
+            {
+                Listas.Trabajadores_Sucursal(ddlTrabajador, ObjUsuario.Id_sucursal);
+            }
 		}
 		#endregion
 
@@ -84,7 +87,8 @@ namespace SGSSTC.source.sistema.Hacer
 			{
 				ViewState["sucursal"] = ddlSucursal.SelectedValue;
 				IdSucursal = Convert.ToInt32(ddlSucursal.SelectedValue);
-			}
+                Listas.Trabajadores_Sucursal(ddlTrabajador, IdSucursal);
+            }
 			else
 			{
 				ViewState["sucursal"] = "0";
@@ -110,7 +114,7 @@ namespace SGSSTC.source.sistema.Hacer
 				string.Empty + IdEmpSuc.Item1,
 				IdTrabajador.ToString(),
 				ddlSucursal.SelectedValue,
-				txtTrabajador.Text
+				ddlTrabajador.SelectedItem.Text
 			};
 			PrintFile.PrintPlantillaEntregaEPP(valores, pnDatos, this);
 		}
@@ -131,7 +135,7 @@ namespace SGSSTC.source.sistema.Hacer
 			TableRow _row;
 			Label _label;
 			TextBox _textbox;
-			int id_puesto_trabajo = Getter.idPuestoTrabajador(Convert.ToInt32(IdTrabajador));
+			int id_puesto_trabajo = Getter.idPuestoTrabajador(Convert.ToInt32(ddlTrabajador.SelectedValue));
 			List<Model_CEPP> epps = Getter.Epp(id_puesto_trabajo);
 			int cont = 0;
 
@@ -182,18 +186,11 @@ namespace SGSSTC.source.sistema.Hacer
 		#endregion
 
 		#region AutoCompletar
-		[ScriptMethod()]
-		[WebMethod]
-		public static List<string> SearchTrabajador(string prefixText, int count)
-		{
-			List<string> listTrabajadores = Utilidades.SearchTrabajador(prefixText, count, IdSucursal, ref IdTrabajador);
-			return listTrabajadores;
-		}
 		protected void btnGenerar_OnClick(object sender, EventArgs e)
 		{
-			if (IdTrabajador != 0)
+			if (ddlTrabajador.SelectedValue != string.Empty)
 			{
-				ViewState["trabajador"] = IdTrabajador;
+				ViewState["trabajador"] = ddlTrabajador.SelectedValue;
 				agregar_fila();
 				phInformacion.Visible = true;
 			}

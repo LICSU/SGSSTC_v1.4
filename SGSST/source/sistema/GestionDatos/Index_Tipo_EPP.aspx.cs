@@ -57,7 +57,7 @@ namespace SGSSTC.source.sistema.GestionDatos
 
         protected void AgregarRegistro(object sender, EventArgs e)
         {
-            string ruta = Utilidades.GuardarArchivo(flpArchivo, txtNombreEdit.Text, "~/source/archivos/ico_tipo_epp/");
+            string ruta = Utilidades.GuardarArchivo(flpArchivo, txtNombreEdit.Text, "~/archivos/ico_tipo_epp/");
             int IdEmpresa = Getter.Set_IdEmpresaDDl(ObjUsuario, ddlEmpresaAdd);
 
             tipo_epp nuevo = new tipo_epp()
@@ -77,7 +77,7 @@ namespace SGSSTC.source.sistema.GestionDatos
         {
             string ruta = string.Empty;
             if (flpArchivoEdit.HasFile)
-                ruta = Utilidades.GuardarArchivo(flpArchivoEdit, txtNombreEdit.Text, "~/source/archivos/ico_tipo_epp/");
+                ruta = Utilidades.GuardarArchivo(flpArchivoEdit, txtNombreEdit.Text, "~/archivos/ico_tipo_epp/");
 
             GrupoLiEntities contexto = new GrupoLiEntities();
             int idTipoEpp = Convert.ToInt32(hdfIdEppEdit.Value);

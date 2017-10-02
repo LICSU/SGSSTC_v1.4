@@ -29,7 +29,7 @@
 			<div class="row">
 				<div class="col-md-4">
 					<asp:Image alt="-" runat="server" ID="imgLogo" CssClass="thumbnail"
-						ImageUrl="~/source/archivos/LogosEmpresas/LICSU.jpg" />
+						ImageUrl="~/archivos/LogosEmpresas/LICSU.jpg" />
 				</div>
 			</div>
 			<br />

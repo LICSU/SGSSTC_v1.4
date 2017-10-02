@@ -14,9 +14,8 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
     {
         private Model_UsuarioSistema ObjUsuario;
         private Tuple<bool, bool> BoolEmpSuc;
-        private static int IdSucursal = 0;
         private static int IdTrabajador = 0;
-        private static int IdPuesto = 0;
+        private static int IdSucursal = 0;
 
         #region Index
         protected void Page_Load(object sender, EventArgs e)
@@ -329,7 +328,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
             String[] xCadenas = { "SI", "NO" };
             graficaPie.ChartAreas[0].AxisX.LabelStyle.Interval = 1;
             graficaPie.Series["seriesPie"].Points.DataBindXY(xCadenas, yAsistencias);
-            graficaPie.SaveImage(Server.MapPath("~/source/archivos/images_graf/graficaInspPA.jpg"));
+            graficaPie.SaveImage(Server.MapPath("~/archivos/images_graf/graficaInspPA.jpg"));
         }
 
         protected void GenerarDocumento(object sender, EventArgs e)
@@ -339,7 +338,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
                  string.Empty + IdEmpSuc.Item2,
                  "Área a Inspeccionar: " + ddlArea.SelectedItem.Text,
                  "Fecha: " + DateTime.Today.Date.ToString("yyyy-MM-dd"),
-                 "Datos del Trabajador: " + txtTrabajador.Text,
+                 "Datos del Trabajador: " + ddlTrabajador.SelectedItem.Text,
                  "Cargo: " + ddlPuesto.SelectedItem.Text,
                  "N°",
                  "Pregunta",
@@ -943,8 +942,8 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
                 {
                     IdSucursal = Convert.ToInt32(ddlSucursal.SelectedValue);
                 }
-                
-                IdPuesto = Convert.ToInt32(ddlPuesto.SelectedValue);
+
+                Listas.Trabajadores_Puestos(ddlTrabajador, Convert.ToInt32(ddlPuesto.SelectedValue));
                 phInformacion.Visible = true;
                 phTrabajdor.Visible = true;
             }
@@ -952,16 +951,6 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
             {
                 ViewState["puesto"] = "0";
             }
-        }
-        #endregion
-
-        #region AutoCompletar
-        [ScriptMethod()]
-        [WebMethod]
-        public static List<string> SearchTrabajador(string prefixText, int count)
-        {
-            List<string> listTrabajadores = Utilidades.SearchTrabajador(prefixText, count, IdSucursal, ref IdTrabajador, IdPuesto);
-            return listTrabajadores;
         }
         #endregion
     }

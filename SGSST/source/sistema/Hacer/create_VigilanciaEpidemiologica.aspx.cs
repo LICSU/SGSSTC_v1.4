@@ -535,7 +535,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
             cantResEvaCli = Convert.ToInt32(nroResEvaCli.Text);
             cantRep = Convert.ToInt32(monRepMed.Text);
             cargarGraficaPrincipal();
-            graficoFuerzaLab.SaveImage(HttpContext.Current.Server.MapPath("~/source/archivos/images_graf/graficoFuerzaLab.jpg"));
+            graficoFuerzaLab.SaveImage(HttpContext.Current.Server.MapPath("~/archivos/images_graf/graficoFuerzaLab.jpg"));
             #endregion
 
             #region evaluacion clinica
@@ -547,7 +547,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
             cantEvaPosEmp = Convert.ToInt32(cellEvaPosEmpV.Text);
             cantEvaAsi = Convert.ToInt32(cellEvaAsiV.Text);
             cargarGraficaEvaClinica();
-            graficaEvaCli.SaveImage(HttpContext.Current.Server.MapPath("~/source/archivos/images_graf/graficaEvaCli.jpg"));
+            graficaEvaCli.SaveImage(HttpContext.Current.Server.MapPath("~/archivos/images_graf/graficaEvaCli.jpg"));
             #endregion
 
             #region reposos
@@ -557,11 +557,11 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
             cantRepEnfOcu = Convert.ToInt32(cellRepEnfOcuV.Text);
             cantRepAccCom = Convert.ToInt32(cellRepAccComV.Text);
             cargarGraficaMonReposos();
-            graficaRepMed.SaveImage(HttpContext.Current.Server.MapPath("~/source/archivos/images_graf/graficaRepMed.jpg"));
+            graficaRepMed.SaveImage(HttpContext.Current.Server.MapPath("~/archivos/images_graf/graficaRepMed.jpg"));
             #endregion
 
-            graficaDiagnostico.SaveImage(HttpContext.Current.Server.MapPath("~/source/archivos/images_graf/graficaDiagnostico.jpg"));
-            graficaSistema.SaveImage(HttpContext.Current.Server.MapPath("~/source/archivos/images_graf/graficaSistema.jpg"));
+            graficaDiagnostico.SaveImage(HttpContext.Current.Server.MapPath("~/archivos/images_graf/graficaDiagnostico.jpg"));
+            graficaSistema.SaveImage(HttpContext.Current.Server.MapPath("~/archivos/images_graf/graficaSistema.jpg"));
 
 
             Tuple<int, int> IdEmpSuc = Getter.Get_IdEmpresa_IdSucursal(ObjUsuario, ddlEmpresa, ddlSucursal);

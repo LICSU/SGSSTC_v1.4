@@ -190,7 +190,7 @@ namespace SGSSTC.source.sistema.GestionDatos
                 }
                 else
                 {
-                    imgLogo.ImageUrl = "~/source/archivos/foto_perfil/usuario.png";
+                    imgLogo.ImageUrl = "~/archivos/foto_perfil/usuario.png";
                 }
                 imgLogo.Width = 200;
                 imgLogo.Height = 200;
@@ -240,7 +240,7 @@ namespace SGSSTC.source.sistema.GestionDatos
                 tpo_enfermedad = "OTRO";
             }
 
-            string ruta = Utilidades.GuardarArchivo(fuConstancia, id_trabajador + "ConstanciaReposo", "~/source/archivos/constancias/");
+            string ruta = Utilidades.GuardarArchivo(fuConstancia, id_trabajador + "ConstanciaReposo", "~/archivos/constancias/");
 
             trabajador_estatus nuevo = new trabajador_estatus()
             {

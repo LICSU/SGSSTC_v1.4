@@ -53,6 +53,10 @@ namespace SGSSTC.source.sistema.Hacer
                 Listas.Sucursal(ddlSucursalAdd, ObjUsuario.Id_empresa);
                 Listas.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
             }
+            if (!BoolEmpSuc.Item2)
+            {
+                Listas.Trabajadores_Sucursal(ddlTrabajador, ObjUsuario.Id_sucursal);
+            }
         }
         private void LlenarGridView()
         {
@@ -77,7 +81,7 @@ namespace SGSSTC.source.sistema.Hacer
             int IdSucursal = Getter.Set_IdSucursalDDl(ObjUsuario, ddlSucursalAdd);
             int IdEmpresa = Getter.Set_IdEmpresaDDl(ObjUsuario, ddlEmpresaAdd);
 
-            string ruta = Utilidades.GuardarArchivo(flpArchivo, IdEmpresa + txtNombre.Text, "~/source/archivos/entregasepp/");
+            string ruta = Utilidades.GuardarArchivo(flpArchivo, IdEmpresa + txtNombre.Text, "~/archivos/entregasepp/");
 
             documento nuevo = new documento()
             {
@@ -100,6 +104,7 @@ namespace SGSSTC.source.sistema.Hacer
             ObjUsuario.Error = CRUD.Delete_Fila(tabla, Convert.ToInt32(hdfIDDel.Value));
             Modal.MostrarAlertaDelete(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error, txtBuscar);
             LlenarGridView();
+            Modal.CerrarModal("deleteModal", "DeleteModalScript", this);
         }
         #endregion
 
@@ -155,8 +160,8 @@ namespace SGSSTC.source.sistema.Hacer
             if (ddlSucursal.SelectedValue != string.Empty)
             {
                 ViewState["sucursal"] = ddlSucursal.SelectedValue;
-                txtTrabajador.Text = "";
                 IdSucursal = Convert.ToInt32(ddlSucursal.SelectedValue);
+                Listas.Trabajadores_Sucursal(ddlTrabajador, IdSucursal);
             }
             else
             {
@@ -179,18 +184,11 @@ namespace SGSSTC.source.sistema.Hacer
         #endregion
 
         #region AutoCompletar
-        [ScriptMethod()]
-        [WebMethod]
-        public static List<string> SearchTrabajador(string prefixText, int count)
-        {
-            List<string> listTrabajadores = Utilidades.SearchTrabajador(prefixText, count, IdSucursal, ref IdTrabajador);
-            return listTrabajadores;
-        }
         protected void btnGenerar_OnClick(object sender, EventArgs e)
         {
-            if (IdTrabajador != 0)
+            if (ddlTrabajador.SelectedValue != string.Empty)
             {
-                ViewState["trabajador"] = IdTrabajador;
+                ViewState["trabajador"] = ddlTrabajador.SelectedValue;
                 LlenarGridView();
             }
             else

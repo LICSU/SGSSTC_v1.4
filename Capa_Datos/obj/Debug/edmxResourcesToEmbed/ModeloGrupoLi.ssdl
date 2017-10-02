@@ -813,16 +813,6 @@
     <Property Name="actividad_sec" Type="int" />
     <Property Name="actividad_otra" Type="int" />
   </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-    <Property Name="principal_id" Type="int" Nullable="false" />
-    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="version" Type="int" />
-    <Property Name="definition" Type="varbinary(max)" />
-  </EntityType>
   <EntityType Name="tipo_documento">
     <Key>
       <PropertyRef Name="id_tipo_documento" />
@@ -975,6 +965,18 @@
       </Principal>
       <Dependent Role="puesto_trabajo_epp">
         <PropertyRef Name="id_puesto_trabajo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__rol__id_empresa__5AB9788F">
+    <End Role="empresa" Type="Self.empresa" Multiplicity="0..1" />
+    <End Role="rol" Type="Self.rol" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="empresa">
+        <PropertyRef Name="id_empresa" />
+      </Principal>
+      <Dependent Role="rol">
+        <PropertyRef Name="id_empresa" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1177,9 +1179,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_documentos_sucursal">
-    <End Role="sucursal" Type="Self.sucursal" Multiplicity="0..1">
-      <OnDelete Action="Cascade" />
-    </End>
+    <End Role="sucursal" Type="Self.sucursal" Multiplicity="0..1" />
     <End Role="documento" Type="Self.documento" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="sucursal">
@@ -1723,9 +1723,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_planes_sucursal">
-    <End Role="sucursal" Type="Self.sucursal" Multiplicity="0..1">
-      <OnDelete Action="Cascade" />
-    </End>
+    <End Role="sucursal" Type="Self.sucursal" Multiplicity="0..1" />
     <End Role="plan" Type="Self.plan" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="sucursal">
@@ -1839,20 +1837,6 @@
       </Principal>
       <Dependent Role="riesgos_item">
         <PropertyRef Name="id_enfermedad_laboral" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_rol_empresa">
-    <End Role="empresa" Type="Self.empresa" Multiplicity="0..1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="rol" Type="Self.rol" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="empresa">
-        <PropertyRef Name="id_empresa" />
-      </Principal>
-      <Dependent Role="rol">
-        <PropertyRef Name="id_empresa" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -2063,7 +2047,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_usuario_rol">
-    <End Role="rol" Type="Self.rol" Multiplicity="0..1" />
+    <End Role="rol" Type="Self.rol" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="rol">
@@ -2152,7 +2138,6 @@
     <EntitySet Name="sistema" EntityType="Self.sistema" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="soporte" EntityType="Self.soporte" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sucursal" EntityType="Self.sucursal" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tipo_documento" EntityType="Self.tipo_documento" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tipo_epp" EntityType="Self.tipo_epp" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tipo_evento" EntityType="Self.tipo_evento" Schema="dbo" store:Type="Tables" />
@@ -2173,6 +2158,10 @@
     <AssociationSet Name="FK__puesto_tr__id_pu__69C6B1F5" Association="Self.FK__puesto_tr__id_pu__69C6B1F5">
       <End Role="puesto_trabajo" EntitySet="puesto_trabajo" />
       <End Role="puesto_trabajo_epp" EntitySet="puesto_trabajo_epp" />
+    </AssociationSet>
+    <AssociationSet Name="FK__rol__id_empresa__5AB9788F" Association="Self.FK__rol__id_empresa__5AB9788F">
+      <End Role="empresa" EntitySet="empresa" />
+      <End Role="rol" EntitySet="rol" />
     </AssociationSet>
     <AssociationSet Name="FK_alarmas_categorias" Association="Self.FK_alarmas_categorias">
       <End Role="categoria" EntitySet="categoria" />
@@ -2433,10 +2422,6 @@
     <AssociationSet Name="FK_riesgos_item_matrizRiesgo_enfermedadLaboral" Association="Self.FK_riesgos_item_matrizRiesgo_enfermedadLaboral">
       <End Role="enfermedadLaboral" EntitySet="enfermedadLaboral" />
       <End Role="riesgos_item" EntitySet="riesgos_item" />
-    </AssociationSet>
-    <AssociationSet Name="FK_rol_empresa" Association="Self.FK_rol_empresa">
-      <End Role="empresa" EntitySet="empresa" />
-      <End Role="rol" EntitySet="rol" />
     </AssociationSet>
     <AssociationSet Name="FK_soporte_at_it_el_pa" Association="Self.FK_soporte_at_it_el_pa">
       <End Role="at_it_el_pa" EntitySet="at_it_el_pa" />

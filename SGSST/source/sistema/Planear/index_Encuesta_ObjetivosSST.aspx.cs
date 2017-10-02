@@ -120,7 +120,7 @@ namespace SGSSTC.source.sistema.Hacer
 
             string[] valores2 = {
                 string.Empty + ObjUsuario.Id_sucursal,
-                txtTrabajadorEsp.Text
+                ddlTrabajadorEsp.SelectedItem.Text
             };
             string[] valores = {
                 "¿Es de su Conocimiento la Política de Seguridad y Salud en el Trabajo de la Organización?",
@@ -150,7 +150,7 @@ namespace SGSSTC.source.sistema.Hacer
         {
             int IdEmpresa = ObjUsuario.Id_empresa;
 
-            string _ruta = Utilidades.GuardarArchivo(flpArchivo, IdEmpresa + "_Encuesta_" + IdTrabajadorSub, "~/source/archivos/encuesta_politicasst/");
+            string _ruta = Utilidades.GuardarArchivo(flpArchivo, IdEmpresa + "_Encuesta_" + IdTrabajadorSub, "~/archivos/encuesta_politicasst/");
 
             GrupoLiEntities contexto = new GrupoLiEntities();
             int idEncuesta = Convert.ToInt32(hdfIDEsc.Value);
@@ -237,6 +237,7 @@ namespace SGSSTC.source.sistema.Hacer
             {
                 ViewState["sucursal"] = ddlSucursal.SelectedValue;
                 IdSucursal = Convert.ToInt32(ddlSucursal.SelectedValue);
+                Listas.Trabajadores_Sucursal(ddlTrabajador, IdSucursal);
             }
             else
             {
@@ -246,7 +247,7 @@ namespace SGSSTC.source.sistema.Hacer
         }
         protected void ddlTrabajador_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ViewState["trabajador"] = IdTrabajador.ToString();
+            ViewState["trabajador"] = ddlTrabajador.SelectedValue;
             LlenarGridView();
         }
         protected void BuscarRegistro(object sender, EventArgs e)
@@ -266,39 +267,10 @@ namespace SGSSTC.source.sistema.Hacer
             if (ddlSucursalAdd.SelectedValue != string.Empty)
             {
                 IdSucursalEsp = Convert.ToInt32(ddlSucursalAdd.SelectedValue);
+                Listas.Trabajadores_Sucursal(ddlTrabajadorEsp, IdSucursalEsp);
             }
         }
         
-        #endregion
-
-        protected void hdnValue_ValueChanged(object sender, EventArgs e)
-        {
-            ViewState["trabajador"] = IdTrabajador.ToString();
-            LlenarGridView();
-        }
-
-        #region AutoCompletar
-        [ScriptMethod()]
-        [WebMethod]
-        public static List<string> SearchTrabajador(string prefixText, int count)
-        {
-            List<string> listTrabajadores = Utilidades.SearchTrabajador(prefixText, count, IdSucursal, ref IdTrabajador, IdPuesto);
-            return listTrabajadores;
-        }
-        [ScriptMethod()]
-        [WebMethod]
-        public static List<string> SearchTrabajadorEsp(string prefixText, int count)
-        {
-            List<string> listTrabajadores = Utilidades.SearchTrabajador(prefixText, count, IdSucursalEsp, ref IdTrabajadorEsp, IdPuestoEsp);
-            return listTrabajadores;
-        }
-        [ScriptMethod()]
-        [WebMethod]
-        public static List<string> SearchTrabajadorSub(string prefixText, int count)
-        {
-            List<string> listTrabajadores = Utilidades.SearchTrabajador(prefixText, count, IdSucursalSub, ref IdTrabajadorSub, IdPuestoSub);
-            return listTrabajadores;
-        }
         #endregion
     }
 }

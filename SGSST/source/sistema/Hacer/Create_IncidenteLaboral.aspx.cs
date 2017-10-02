@@ -50,13 +50,14 @@ namespace SGSSTC.source.sistema.Verificar
 			{
 				IdSucursal = Convert.ToInt32(ddlSucursal.SelectedValue);
 				Listas.Area_Sucursal(ddlArea, ObjUsuario.Id_sucursal);
-				Listas.PuestoTrabajo(ddlProcesoTrabajo, "Sucursal", ObjUsuario.Id_sucursal);
+				Listas.Trabajadores_Sucursal(ddlTrabajador, ObjUsuario.Id_sucursal);
+                Listas.PuestoTrabajo(ddlProcesoTrabajo, "Sucursal", ObjUsuario.Id_sucursal);
 			}
 
 		}
 		protected void btPrintSave_Click(object sender, EventArgs e)
 		{
-			IdTrabajador = Getter.TrabajadorAutocomplete(txtTrabajador.Text);
+            IdTrabajador = Convert.ToInt32(ddlTrabajador.SelectedValue);
 
 			at_it_el_pa nuevo = new at_it_el_pa()
 			{
@@ -96,7 +97,7 @@ namespace SGSSTC.source.sistema.Verificar
 					{
 						i++;
 						string ruta = Utilidades.GuardarArchivo(archivo,
-							"Accidente_" + id_at_it_el_pa + "_" + i, "~/source/archivos/incidentes/");
+							"Accidente_" + id_at_it_el_pa + "_" + i, "~/archivos/incidentes/");
 
 						soporte nuevoFA = new soporte()
 						{
@@ -131,7 +132,8 @@ namespace SGSSTC.source.sistema.Verificar
 				IdSucursal = Convert.ToInt32(ddlSucursal.SelectedValue);
 				Listas.Area_Sucursal(ddlArea, Convert.ToInt32(ddlSucursal.SelectedValue), "Ninguna");
 				Listas.PuestoTrabajo(ddlProcesoTrabajo, "Sucursal", Convert.ToInt32(ddlSucursal.SelectedValue), "Ninguno");
-			}
+                Listas.Trabajadores_Sucursal(ddlTrabajador, Convert.ToInt32(ddlSucursal.SelectedValue));
+            }
 
 		}
 		protected void btnReset_Click(object sender, EventArgs e)

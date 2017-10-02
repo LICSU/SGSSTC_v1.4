@@ -199,7 +199,7 @@ namespace SGSSTC.source.sistema.Hacer
                 Anho,
                 Compromisos,
                 Objetivos,
-                txtTrabajadorEsp.Text
+                ddlTrabajadorEsp.SelectedItem.Value
             };
             PrintFile.PrintComunicacionPoliticaSST(valores, this);
 
@@ -213,7 +213,7 @@ namespace SGSSTC.source.sistema.Hacer
             string _ruta = Utilidades.GuardarArchivo(
                 flpArchivo,
                 IdEmpresa + txtNombreSubir.Text,
-                "~/source/archivos/comunicado_politicasst/");
+                "~/archivos/comunicado_politicasst/");
 
             documento nuevo = new documento()
             {
@@ -246,30 +246,34 @@ namespace SGSSTC.source.sistema.Hacer
             {
                 ViewState["sucursal"] = ddlSucursal.SelectedValue;
                 IdSucursal = Convert.ToInt32(ddlSucursal.SelectedValue);
-                txtTrabajador.Text = "";
+                Listas.Trabajadores_Sucursal(ddlTrabajador, IdSucursal);
+                ViewState["trabajador"] = "0";
             }
             else
             {
                 ViewState["sucursal"] = "0";
             }
-            //LlenarGridView();
+            LlenarGridView();
         }
         protected void ddlTrabajador_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-        }
-        protected void hdnValue_ValueChanged(object sender, EventArgs e)
-        {
-            ViewState["trabajador"] = IdTrabajador.ToString();
+            if (ddlTrabajador.SelectedValue != string.Empty)
+            {
+                ViewState["trabajador"] = IdTrabajador.ToString();
+            }
+            else
+            {
+                ViewState["trabajador"] = "0";
+            }
             LlenarGridView();
         }
-
+        
         protected void ddlSucursalAdd_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ddlSucursalAdd.SelectedValue != string.Empty)
             {
                 IdSucursalEsp = Convert.ToInt32(ddlSucursalAdd.SelectedValue);
-                txtTrabajadorEsp.Text = "";
+                Listas.Trabajadores_Sucursal(ddlTrabajadorEsp, IdSucursalEsp);
             }
         }
         protected void ddlSucursalSubir_SelectedIndexChanged(object sender, EventArgs e)
@@ -277,6 +281,7 @@ namespace SGSSTC.source.sistema.Hacer
             if (ddlSucursalSubir.SelectedValue != string.Empty)
             {
                 IdSucursalSub = Convert.ToInt32(ddlSucursalSubir.SelectedValue);
+                Listas.Trabajadores_Sucursal(ddlTrabajadorSub, IdSucursalSub);
             }
         }
         protected void BuscarRegistro(object sender, EventArgs e)
@@ -293,29 +298,5 @@ namespace SGSSTC.source.sistema.Hacer
         }
         #endregion
 
-        #region AutoCompletar
-        [ScriptMethod()]
-        [WebMethod]
-        public static List<string> SearchTrabajador(string prefixText, int count)
-        {
-            List<string> listTrabajadores = Utilidades.SearchTrabajador(prefixText, count, IdSucursal, ref IdTrabajador, IdPuesto);
-            return listTrabajadores;
-        }
-
-        [ScriptMethod()]
-        [WebMethod]
-        public static List<string> SearchTrabajadorEsp(string prefixText, int count)
-        {
-            List<string> listTrabajadores = Utilidades.SearchTrabajador(prefixText, count, IdSucursalEsp, ref IdTrabajadorEsp, IdPuestoEsp);
-            return listTrabajadores;
-        }
-        [ScriptMethod()]
-        [WebMethod]
-        public static List<string> SearchTrabajadorSub(string prefixText, int count)
-        {
-            List<string> listTrabajadores = Utilidades.SearchTrabajador(prefixText, count, IdSucursalSub, ref IdTrabajadorSub, IdPuestoSub);
-            return listTrabajadores;
-        }
-        #endregion
     }
 }

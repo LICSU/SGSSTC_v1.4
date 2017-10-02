@@ -46,6 +46,7 @@ namespace SGSSTC.source.sistema.Hacer
             if (!BoolEmpSuc.Item2)
             {
                 IdSucursal = ObjUsuario.Id_sucursal;
+                Listas.Trabajadores_Sucursal(ddlTrabajador, IdSucursal);
             }
 
             Listas.Empresa(ddlEmpresa);
@@ -148,7 +149,7 @@ namespace SGSSTC.source.sistema.Hacer
             if (validarCampos() && IdTrabajador != 0)
             {
                 int id_fondo = 0, id_eps = 0;
-                IdTrabajador = Getter.TrabajadorAutocomplete(txtContactsSearch.Text);
+                IdTrabajador = Convert.ToInt32(ddlTrabajador.SelectedValue);
 
                 if (ddlFondo.SelectedValue != string.Empty)
                 {
@@ -237,20 +238,12 @@ namespace SGSSTC.source.sistema.Hacer
                     #endregion
                 }
 
-                Modal.MostrarAlertaAdd(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error, txtContactsSearch);
+                Modal.MostrarAlertaAdd(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error, txtBuscar);
                 limpiarCampos();
                 Response.Redirect(Paginas.index_DescripcionSocioDemografica.Value);
             }
         }
         #endregion
-
-        [ScriptMethod()]
-        [WebMethod]
-        public static List<string> SearchTrabajador(string prefixText, int count)
-        {
-            List<string> listTrabajadores = Utilidades.SearchTrabajador(prefixText, count, IdSucursal, ref IdTrabajador);
-            return listTrabajadores;
-        }
 
         #region eventos
         protected void ddlEmpresa_SelectedIndexChanged(object sender, EventArgs e)
@@ -268,6 +261,7 @@ namespace SGSSTC.source.sistema.Hacer
             if (ddlSucursal.SelectedValue != string.Empty)
             {
                 IdSucursal = Convert.ToInt32(ddlSucursal.SelectedValue);
+                Listas.Trabajadores_Sucursal(ddlTrabajador, IdSucursal);
             }
         }
         protected void rblNivel_SelectedIndexChanged(object sender, EventArgs e)

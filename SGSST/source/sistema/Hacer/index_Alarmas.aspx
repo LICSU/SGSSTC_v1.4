@@ -100,7 +100,7 @@
                             <RowStyle HorizontalAlign="Center" />
 
                             <Columns>
-                                <asp:TemplateField HeaderText="Id Alarma" HeaderStyle-CssClass="text-center">
+                                <asp:TemplateField HeaderText="Id Alarma" HeaderStyle-CssClass="text-center" Visible="false">
                                     <ItemTemplate>
                                         <asp:Label ID="id" runat="server" Text='<%# Eval("id_alarmas") %>' />
                                     </ItemTemplate>
@@ -405,7 +405,12 @@
                             <div class="row">
                                 <label class="col-md-4 control-label">Prioridad: </label>
                                 <div class="col-md-6">
-                                    <asp:DropDownList ID="ddlPrioridadEdit" runat="server" ClientIDMode="Static" CssClass="form-control"></asp:DropDownList>
+                                    <asp:DropDownList ID="ddlPrioridadEdit" runat="server" ClientIDMode="Static" CssClass="form-control">
+                                        <asp:ListItem Text="Seleccione un Valor" Value=""></asp:ListItem>
+                                        <asp:ListItem Text="Alta" Value="Alta"></asp:ListItem>
+                                        <asp:ListItem Text="Media" Value="Media"></asp:ListItem>
+                                        <asp:ListItem Text="Baja" Value="Baja"></asp:ListItem>
+                                    </asp:DropDownList>
                                     <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>"
                                         SetFocusOnError="true" Display="Dynamic" ForeColor="#B50128" Font-Size="10"
                                         Font-Bold="true" ControlToValidate="ddlPrioridadEdit" runat="server"

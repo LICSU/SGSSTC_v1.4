@@ -45,6 +45,25 @@ namespace SGSSTC.source.sistema.Hacer
 			{
 				Listas.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
 			}
+            if (!BoolEmpSuc.Item2)
+            {
+                List<trabajador> LisTrabajador = new List<trabajador>();
+                LisTrabajador = Getter.Trabajador(0, 0, Convert.ToInt32(ObjUsuario.Id_sucursal));
+                int contTrabajadortes = 0;
+
+                foreach (var item in LisTrabajador)
+                {
+                    contTrabajadortes++;
+
+                    ControlesDinamicos.CrearLiteral("" +
+                       "<tr>" +
+                           "<td>" + contTrabajadortes + "</td>" +
+                           "<td>" + item.primer_nombre + " " + item.primer_apellido + "</td>" +
+                           "<td>" + item.cedula + "</td>" +
+                           "<td> </td>" +
+                       "</tr> ", pDatos);
+                }
+            }
 		}
 
 		protected void GenerarDocumento(object sender, EventArgs e)

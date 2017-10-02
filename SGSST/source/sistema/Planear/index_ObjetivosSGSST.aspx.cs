@@ -50,7 +50,7 @@ namespace SGSSTC.source.sistema.Hacer
             int IdEmpresa = ObjUsuario.Id_empresa;
             int IdSucursal = Getter.Set_IdSucursalDDl(ObjUsuario, ddlSucursalSubir);
 
-            string _ruta = Utilidades.GuardarArchivo(flpArchivo, IdEmpresa + "_ObjetivosSGSST_" + ddlSucursalSubir.SelectedValue, "~/source/archivos/objetivos_sgsst/");
+            string _ruta = Utilidades.GuardarArchivo(flpArchivo, IdEmpresa + "_ObjetivosSGSST_" + ddlSucursalSubir.SelectedValue, "~/archivos/objetivos_sgsst/");
 
             documento nuevo = new documento()
             {

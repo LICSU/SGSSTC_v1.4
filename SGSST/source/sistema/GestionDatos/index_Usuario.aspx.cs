@@ -77,6 +77,7 @@ namespace SGSSTC.source.sistema.GestionDatos
                 Listas.Rol_AdmSucursal(ddlRolAdd);
                 Listas.Rol_AdmSucursal(ddlRolEdit);
                 Listas.Rol(ddlRol1);
+                Listas.Trabajadores_Sucursal(ddlTrabajadorAdd, Convert.ToInt32(ObjUsuario.Id_sucursal));
             }
 
         }
@@ -107,7 +108,7 @@ namespace SGSSTC.source.sistema.GestionDatos
                 {
                     login = txtLogin.Text,
                     clave = clave,
-                    id_trabajador = IdTrabajador,
+                    id_trabajador = Convert.ToInt32(ddlTrabajadorAdd.SelectedValue),
                     id_rol = Convert.ToInt32(ddlRolAdd.SelectedValue)
                 };
 
@@ -125,7 +126,7 @@ namespace SGSSTC.source.sistema.GestionDatos
                 {
                     clave = objUtilidades.descifrarCadena2(clave);
                     if (Utilidades.EmailValido(destino))
-                        Utilidades.registroUsuario(destino, empresa, txtTrabajador.Text, txtLogin.Text, clave);
+                        Utilidades.registroUsuario(destino, empresa, ddlTrabajadorAdd.SelectedItem.Text, txtLogin.Text, clave);
                 }
                 Modal.CerrarModal("addModal", "AddModalScript", this);
                 Modal.MostrarAlertaAdd(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error,txtBuscar);
@@ -151,7 +152,7 @@ namespace SGSSTC.source.sistema.GestionDatos
                     {
                         Edit.login = txtLoginEdit.Text;
                         Edit.clave = clave;
-                        Edit.id_trabajador = Convert.ToInt32(IdTrabajadorEsp);
+                        Edit.id_trabajador = Convert.ToInt32(ddlTrabajadorEsp.SelectedValue);
                         Edit.id_rol = Convert.ToInt32(ddlRolEdit.SelectedValue);
                     }
                     ObjUsuario.Error = CRUD.Edit_Fila(contexto);
@@ -235,7 +236,6 @@ namespace SGSSTC.source.sistema.GestionDatos
                 GridViewRow gvrow = GridView1.Rows[RowIndex];
                 hdfUsuarioID.Value = Utilidades_GridView.DevolverIdRow(e, GridView1);
 
-
                 List<usuario> ListaUsuarios = new List<usuario>();
                 ListaUsuarios = Getter.Usuario(Convert.ToInt32(hdfUsuarioID.Value));
 
@@ -247,13 +247,15 @@ namespace SGSSTC.source.sistema.GestionDatos
                     ddlEmpresaEdit.SelectedValue = Convert.ToString(itemUsuarios.trabajador.puesto_trabajo.area.sucursal.id_empresa);
                     string claveA = objUtilidades.descifrarCadena2(itemUsuarios.clave);
 
-
+                    txtClaveActual.Attributes["value"] = claveA;
+                    txtClaveConf.Attributes["value"] = claveA;
                     Listas.Sucursal(ddlSucursalEdit, Convert.ToInt32(ddlEmpresaEdit.SelectedValue));
                     ddlSucursalEdit.SelectedValue = Convert.ToString(itemUsuarios.trabajador.puesto_trabajo.area.id_sucursal);
 
                     IdSucursalEsp = Convert.ToInt32(ddlSucursalEdit.SelectedValue);
+                    Listas.Trabajadores_Sucursal(ddlTrabajadorEsp, IdSucursalEsp);
                     IdTrabajadorEsp = Convert.ToInt32(itemUsuarios.id_trabajador);
-                    txtTrabajadorEsp.Text = itemUsuarios.trabajador.primer_nombre + ' ' + itemUsuarios.trabajador.primer_apellido + ' ' + itemUsuarios.trabajador.cedula;
+                    ddlTrabajadorEsp.SelectedValue = IdTrabajadorEsp.ToString();
                 }
 
                 System.Text.StringBuilder sb = new System.Text.StringBuilder();
@@ -295,7 +297,7 @@ namespace SGSSTC.source.sistema.GestionDatos
         protected void ddlSucursalAdd_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ddlSucursalAdd.SelectedValue != string.Empty)
-                IdSucursal = Convert.ToInt32(ddlSucursalAdd.SelectedValue);
+                Listas.Trabajadores_Sucursal(ddlTrabajadorAdd, Convert.ToInt32(ddlSucursalAdd.SelectedValue));
         }
 
         protected void ddlEmpresaEdit_SelectedIndexChanged(object sender, EventArgs e)
@@ -306,11 +308,10 @@ namespace SGSSTC.source.sistema.GestionDatos
         protected void ddlSucursalEdit_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ddlSucursalEdit.SelectedValue != string.Empty)
-            {
-                txtTrabajadorEsp.Text = "";
+            {                
                 IdSucursalEsp = Convert.ToInt32(ddlSucursalEdit.SelectedValue);
-
                 hdfSucursal.Value = "" + IdSucursalEsp;
+                Listas.Trabajadores_Sucursal(ddlTrabajadorAdd, IdSucursalEsp);
             }
                 
         }

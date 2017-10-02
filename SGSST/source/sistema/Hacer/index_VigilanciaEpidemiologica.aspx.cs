@@ -72,7 +72,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
             int IdEmpresa = IdEmpSuc.Item1;
             int IdSucursal = IdEmpSuc.Item2;
 
-            string _ruta = Utilidades.GuardarArchivo(flpArchivo, IdEmpresa + txtNombre.Text, "~/source/archivos/vigilancia/");
+            string _ruta = Utilidades.GuardarArchivo(flpArchivo, IdEmpresa + txtNombre.Text, "~/archivos/vigilancia/");
 
             documento nuevo = new documento()
             {

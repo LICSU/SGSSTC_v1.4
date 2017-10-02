@@ -68,7 +68,6 @@
         <EntityTypeShape EntityType="GrupoLiModel.sistema" Width="1.5" PointX="23.25" PointY="46.5" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.soporte" Width="1.5" PointX="16.5" PointY="56.75" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.sucursal" Width="1.5" PointX="7.5" PointY="55.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="GrupoLiModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.tipo_documento" Width="1.5" PointX="9.75" PointY="71.375" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.tipo_epp" Width="1.5" PointX="9.75" PointY="75.375" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.tipo_evento" Width="1.5" PointX="22.5" PointY="77.75" IsExpanded="true" />

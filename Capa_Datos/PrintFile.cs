@@ -5395,9 +5395,26 @@ namespace Capa_Datos
             Tuple<Document, PdfPTable> DocumentoPDF = ManageFiles.PdfParte1(Convert.ToInt32(valores[0]),
                                         "IdentificacionPeligro_", "IDENTIFICACIÓN DE PELIGRO", _page);
 
+            List<identificacion_peligro> listta = Getter.IdentificacionPeligro(Convert.ToInt32(valores[1]));
             #region contenido
-            miCelda41.Texto = valores[1];
-            DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, miCelda41));
+            foreach(var item in listta)
+            {
+                miCelda12.Texto = "Medidas de control Existentes";
+                DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, miCelda12));
+                miCelda41.Texto = item.medidas_control_existentes;
+                DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, miCelda41));
+
+                miCelda12.Texto = "Observaciones";
+                DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, miCelda12));
+                miCelda41.Texto = item.observaciones;
+                DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, miCelda41));
+
+                miCelda12.Texto = "Fecha";
+                DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, miCelda12));
+                miCelda41.Texto = item.fecha_identificacion.ToString();
+                DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, miCelda41));
+            }
+            
             #endregion
 
             ManageFiles.PdfPart2(DocumentoPDF.Item1, DocumentoPDF.Item2, Convert.ToInt32(valores[0]), _page);

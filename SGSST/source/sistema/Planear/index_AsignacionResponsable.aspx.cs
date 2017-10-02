@@ -42,6 +42,10 @@ namespace SGSSTC.source.sistema.Hacer
             {
                 Listas.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
             }
+            if (!BoolEmpSuc.Item2)
+            {
+                Listas.Trabajadores_Sucursal(ddlTrabajador, Convert.ToInt32(ObjUsuario.Id_sucursal));
+            }
         }
 
         protected void GenerarDocumento(object sender, EventArgs e)
@@ -87,23 +91,16 @@ namespace SGSSTC.source.sistema.Hacer
             if (ddlSucursal.SelectedValue != string.Empty)
             {
                 IdSucursal = Convert.ToInt32(ddlSucursal.SelectedValue);
+                Listas.Trabajadores_Sucursal(ddlTrabajador, IdSucursal);
             }
         }
-
-        [ScriptMethod()]
-        [WebMethod]
-        public static List<string> SearchTrabajador(string prefixText, int count)
-        {
-            List<string> listTrabajadores = Utilidades.SearchTrabajador(prefixText, count, IdSucursal, ref IdTrabajador);
-            return listTrabajadores;
-        }
-
         protected void btnGenerarActa_OnClick(object sender, EventArgs e)
         {
             lblFecha.Text = "" + DateTime.Today.Date.ToString("yyyy-MM-dd");
             lblEmpresa.Text = ddlSucursal.SelectedItem.Text;
             lblEmpresaSel.Text = ddlSucursal.SelectedItem.Text;
-            lblEmpleado.Text = txtTrabajador.Text;
+            lblEmpleado.Text = ddlTrabajador.SelectedItem.Text;
+            IdTrabajador = Convert.ToInt32(ddlTrabajador.SelectedValue);
             List<trabajador> listTrabajadores = Getter.Trabajador(IdTrabajador);
             lblCedula.Text = listTrabajadores.ElementAt(0).cedula;
             phActa.Visible = true;

@@ -176,7 +176,7 @@ namespace SGSSTC.source.sistema.Hacer
         #region acciones
         protected void btnSubirArchivo(object sender, EventArgs e)
         {
-            string ruta = Utilidades.GuardarArchivo(flEscaneado, hdfIDEsc.Value + "ArchivoGestionLaboral", "~/source/archivos/gestiones/");
+            string ruta = Utilidades.GuardarArchivo(flEscaneado, hdfIDEsc.Value + "ArchivoGestionLaboral", "~/archivos/gestiones/");
 
             GrupoLiEntities contexto = new GrupoLiEntities();
             int idGestion = Convert.ToInt32(hdfIDEsc.Value);
@@ -357,8 +357,8 @@ namespace SGSSTC.source.sistema.Hacer
 
             if (ObjUsuario.Error)
             {
-                gestion_laboral tabla = new gestion_laboral();
-                //ObjUsuario.Error = CRUD.Delete_Fila(tabla, Convert.ToInt32(hdfEditEntregaID.Value));
+                trabajador_gestion tabla = new trabajador_gestion();
+                ObjUsuario.Error = CRUD.Delete_Fila(tabla, Convert.ToInt32(hdfEditEntregaID.Value));
 
                 foreach (ListItem item in chkTrabajadores.Items)
                 {
@@ -721,10 +721,13 @@ namespace SGSSTC.source.sistema.Hacer
         }
         private void incializarExports()
         {
-            GridView1.Columns[4].Visible = false;
-            GridView1.Columns[5].Visible = false;
             GridView1.Columns[6].Visible = false;
             GridView1.Columns[7].Visible = false;
+            GridView1.Columns[8].Visible = false;
+            GridView1.Columns[9].Visible = false;
+            GridView1.Columns[10].Visible = false;
+            GridView1.Columns[11].Visible = false;
+            GridView1.Columns[12].Visible = false;
             LlenarGridView();
         }
         protected void btnExportWord_Click(object sender, EventArgs e)
@@ -786,6 +789,13 @@ namespace SGSSTC.source.sistema.Hacer
                         txtFechaEditEntrega.Text = fechaGestion.ToString("yyyy-MM-dd");
 
                         txtDescEditEntrega.Text = item.descripcion;
+
+                        List<trabajador_gestion> _listatrab = Getter.TrabajadorInGestion(0, Convert.ToInt32(hdfEditEntregaID.Value));
+
+                        foreach (var trab in _listatrab)
+                        {
+                            
+                        }
                     }
 
                     Modal.registrarModal("EditEntrega", "EditModalScript", this);

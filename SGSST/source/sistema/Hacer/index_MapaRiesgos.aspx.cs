@@ -130,7 +130,7 @@ namespace SGSSTC.source.sistema.Hacer
             int IdEmpresa = Getter.Set_IdEmpresaDDl(ObjUsuario, ddlEmpresaAdd);
             int IdSucursal = Getter.Set_IdSucursalDDl(ObjUsuario, ddlSucursalAdd);
 
-            string ruta = Utilidades.GuardarArchivo(flpArchivo, IdEmpresa + txtNombre.Text, "~/source/archivos/mapas/");
+            string ruta = Utilidades.GuardarArchivo(flpArchivo, IdEmpresa + txtNombre.Text, "~/archivos/mapas/");
 
             documento nuevo = new documento()
             {
@@ -151,7 +151,7 @@ namespace SGSSTC.source.sistema.Hacer
             int IdEmpresa = Getter.Set_IdEmpresaDDl(ObjUsuario, ddlEmpresaEdit);
             int IdSucursal = Getter.Set_IdSucursalDDl(ObjUsuario, ddlSucursalEdit);
 
-            string ruta = Utilidades.GuardarArchivo(flpArchivoEdit, IdEmpresa + txtNombreEdit.Text, "~/source/archivos/mapas/");
+            string ruta = Utilidades.GuardarArchivo(flpArchivoEdit, IdEmpresa + txtNombreEdit.Text, "~/archivos/mapas/");
 
             GrupoLiEntities contexto = new GrupoLiEntities();
             int idPlan = Convert.ToInt32(hdfPlanID.Value);

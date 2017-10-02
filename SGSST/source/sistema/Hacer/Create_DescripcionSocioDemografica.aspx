@@ -27,7 +27,7 @@
                     <asp:Label ID="lbAlerta" runat="server" Text="Label"></asp:Label>
                 </div>
             </asp:PlaceHolder>
-
+            <asp:TextBox Visible="false" runat="server" ID="txtBuscar"></asp:TextBox>
             <!-- empresa y sucursal-->
             <div class="row">
                 <asp:PlaceHolder runat="server" ID="phEmpresa">
@@ -68,18 +68,11 @@
                 <div class="col-md-4 col-md-offset-2">
                     <h5>0) Seleccione el Trabajador</h5>
 
-                    <asp:TextBox ID="txtContactsSearch" runat="server" CssClass="form-control"></asp:TextBox>
-
-                    <cc1:AutoCompleteExtender ServiceMethod="SearchTrabajador" MinimumPrefixLength="1"
-                        CompletionInterval="100" EnableCaching="false" CompletionSetCount="10"
-                        TargetControlID="txtContactsSearch" ID="AutoCompleteExtender1" runat="server"
-                        FirstRowSelected="false" CompletionListCssClass="completionList"
-                        CompletionListItemCssClass="listItem" CompletionListHighlightedItemCssClass="itemHighlighted">
-                    </cc1:AutoCompleteExtender>
+                    <asp:DropDownList ID="ddlTrabajador" runat="server" CssClass="form-control"></asp:DropDownList>
 
                     <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
                         Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true"
-                        ControlToValidate="txtContactsSearch" runat="server" ValidationGroup="ValidationAdd" />
+                        ControlToValidate="ddlTrabajador" runat="server" ValidationGroup="ValidationAdd" />
                 </div>
 
                 <div class="col-md-4">

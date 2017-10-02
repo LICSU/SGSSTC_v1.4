@@ -112,22 +112,13 @@ namespace SGSSTC.source.sistema.EvaluacionInicial {
         protected global::System.Web.UI.WebControls.DropDownList ddlPuesto;
         
         /// <summary>
-        /// Control txtTrabajador.
+        /// Control ddlTrabajador.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTrabajador;
-        
-        /// <summary>
-        /// Control AutoCompleteExtender1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::AjaxControlToolkit.AutoCompleteExtender AutoCompleteExtender1;
+        protected global::System.Web.UI.WebControls.DropDownList ddlTrabajador;
         
         /// <summary>
         /// Control btnBuscar.

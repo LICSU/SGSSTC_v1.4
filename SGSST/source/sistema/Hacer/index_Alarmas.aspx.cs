@@ -243,15 +243,27 @@ namespace SGSSTC.source.sistema.Hacer
 
                 List<alarma> ListaAlarma = new List<alarma>();
                 ListaAlarma = Getter.Alarma(Convert.ToInt32(hdfEditID.Value));
+                int IDUsuario = 0;
+                int IDEmpresa = 0;
+                int IDSucursal = 0;
+                int IDCategoria = 0;
 
                 foreach (var item in ListaAlarma)
                 {
+                    IDUsuario = Convert.ToInt32(item.id_usuario);
+                    IDEmpresa = Convert.ToInt32(item.usuario.trabajador.puesto_trabajo.area.sucursal.id_empresa);
+                    IDSucursal = Convert.ToInt32(item.usuario.trabajador.puesto_trabajo.area.id_sucursal);
+                    IDCategoria = Convert.ToInt32(item.id_categorias);
                     txtDescripcionEdit.Text = item.descripcion;
-
                     ddlPrioridadEdit.SelectedValue = item.prioridad;
-
-                    txtFechaEdit.Text = item.fecha.ToString();
+                    txtFechaEdit.Text = item.fecha.Value.ToString("yyyy-MM-dd"); 
                 }
+                Listas.Usuario_Sucursal(ddlUsuEdit, IDSucursal);
+                Listas.Categorias(ddlCategoriaEdit, IDEmpresa);
+                ddlEmpEdit.SelectedValue = IDEmpresa.ToString();
+                ddlSucEdit.SelectedValue = IDSucursal.ToString();
+                ddlCategoriaEdit.SelectedValue = IDCategoria.ToString();
+                ddlUsuEdit.SelectedValue = IDUsuario.ToString();
 
                 Modal.registrarModal("editModal", "EditModalScript", this);
                 

@@ -7,33 +7,6 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
 
-	<%: Scripts.Render("~/bundles/SGSSTJs") %>
-
-	<script>
-		var prm = Sys.WebForms.PageRequestManager.getInstance();
-		if (prm != null) {
-			prm.add_endRequest(function (sender, e) {
-				if (sender._postBackSettings.panelsToUpdate != null) {
-                    $(document).ready(function () {
-                        $find('<%=AutoCompleteExtender2.ClientID%>').set_contextKey($get("<%=hdfSucursal.ClientID %>").value);
-					});
-				}
-			});
-		};
-
-		$(document).ready(function () {
-            $find('<%=AutoCompleteExtender2.ClientID%>').set_contextKey($get("<%=hdfSucursal.ClientID %>").value);
-		});
-
-        function SelectItem(source, eventArgs)
-        {
-            alert(" Key : " + eventArgs.get_text() + "  Value :  " + eventArgs.get_value());
-            $("#ContentPlaceHolder1_hdfTrabajador").text(eventArgs.get_value());
-            $("#ContentPlaceHolder1_Label1").text(eventArgs.get_value());
-		}
-
-	</script>
-
 	<asp:UpdatePanel ID="updatePanelPrinicpal" runat="server">
 		<ContentTemplate>
             
@@ -230,30 +203,10 @@
 							<div class="row">
 								<div class="col-md-8 col-md-offset-2">
 									<h4>Trabajador</h4>
-
-								   <asp:TextBox ID="txtTrabajador" runat="server" CssClass="form-control"></asp:TextBox>
-
-									<div ID="ListDivisor">
-										<cc1:AutoCompleteExtender ServiceMethod="GetCompletionList" MinimumPrefixLength="1"
-											CompletionInterval="100" EnableCaching="false" CompletionSetCount="10"
-											TargetControlID="txtTrabajador" ID="AutoCompleteExtender2" runat="server"
-											FirstRowSelected="false"
-											CompletionListCssClass="completionList"
-											CompletionListItemCssClass="listItem"
-											CompletionListElementID="ListDivisor" 
-											CompletionListHighlightedItemCssClass="itemHighlighted"
-											ServicePath="~/Services/WS_Trabajador.asmx"  UseContextKey = "true"
-											OnClientItemSelected ="SelectItem">
-										</cc1:AutoCompleteExtender>
-									</div>
-									
-										
-
-
-
-									<asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
+								   <asp:DropDownList ID="ddlTrabajadorAdd" runat="server" CssClass="form-control"></asp:DropDownList>
+								   <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
 										Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true"
-										ControlToValidate="txtTrabajador" runat="server" ValidationGroup="ValidationAdd" />
+										ControlToValidate="ddlTrabajadorAdd" runat="server" ValidationGroup="ValidationAdd" />
 
 								</div>
 
@@ -394,22 +347,10 @@
 								<div class="col-md-8 col-md-offset-2">
 									<h4>Trabajador</h4>
 
-									<asp:TextBox ID="txtTrabajadorEsp" runat="server" CssClass="form-control"></asp:TextBox>
-									<div ID="ListDivisor2">
-										<cc1:AutoCompleteExtender ServiceMethod="SearchTrabajadorEsp" MinimumPrefixLength="1"
-											CompletionInterval="100" EnableCaching="false" CompletionSetCount="10"
-											TargetControlID="txtTrabajadorEsp" ID="AutoCompleteExtender1" runat="server"
-											FirstRowSelected="false"
-											CompletionListCssClass="completionList"
-											CompletionListItemCssClass="listItem"
-											CompletionListElementID="ListDivisor2" 
-											CompletionListHighlightedItemCssClass="itemHighlighted">
-										</cc1:AutoCompleteExtender>
-									</div>
-
+									<asp:DropDownList ID="ddlTrabajadorEsp" runat="server" CssClass="form-control"></asp:DropDownList>
 									<asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
 										Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true"
-										ControlToValidate="txtTrabajadorEsp" runat="server" ValidationGroup="ValidationEdit" />
+										ControlToValidate="ddlTrabajadorEsp" runat="server" ValidationGroup="ValidationEdit" />
 								</div>
 							</div>
 

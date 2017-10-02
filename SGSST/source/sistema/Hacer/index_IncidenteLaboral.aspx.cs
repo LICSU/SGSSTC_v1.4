@@ -97,7 +97,7 @@ namespace SGSSTC.source.sistema.Verificar
         {
             if (fuComunicado.FileName != string.Empty)
             {
-                string ruta = Utilidades.GuardarArchivo(fuComunicado, hdfIDEsc.Value + "ArchivoIncidente", "~/source/archivos/incidentes/");
+                string ruta = Utilidades.GuardarArchivo(fuComunicado, hdfIDEsc.Value + "ArchivoIncidente", "~/archivos/incidentes/");
 
                 GrupoLiEntities contexto = new GrupoLiEntities();
                 int id_Acc = Convert.ToInt32(hdfIDEsc.Value);

@@ -51,6 +51,7 @@ namespace SGSSTC.source.sistema.Verificar
                 IdSucursal = Convert.ToInt32(ObjUsuario.Id_sucursal);
                 Listas.Area_Sucursal(ddlArea, ObjUsuario.Id_sucursal);
                 Listas.PuestoTrabajo(ddlProcesoTrabajo, "Sucursal", ObjUsuario.Id_sucursal);
+                Listas.Trabajadores_Sucursal(ddlTrabajador, ObjUsuario.Id_sucursal);
             }
 
         }
@@ -58,13 +59,13 @@ namespace SGSSTC.source.sistema.Verificar
         {
             DateTime? myDate = null;
             myDate = txtFechaMuerte.Text == string.Empty ? myDate : Convert.ToDateTime(txtFechaMuerte.Text);
-            IdTrabajador = Getter.TrabajadorAutocomplete(txtTrabajador.Text);
+            IdTrabajador = Convert.ToInt32(ddlTrabajador.SelectedValue);
 
             at_it_el_pa nuevo = new at_it_el_pa()
             {
                 fecha_accidente = Convert.ToDateTime(txtFechaAcc.Text),
                 hora_accidente = Convert.ToDateTime(txtHoraAcc.Text),
-                id_trabajador = IdTrabajador,
+                id_trabajador = Convert.ToInt32(ddlTrabajador.SelectedValue),
                 id_area = Convert.ToInt32(ddlArea.SelectedValue),
                 id_puesto = Convert.ToInt32(ddlProcesoTrabajo.SelectedValue),
                 sitio = txtSitioAccidente.Text,
@@ -97,7 +98,7 @@ namespace SGSSTC.source.sistema.Verificar
                     {
                         i++;
                         string ruta = Utilidades.GuardarArchivo(archivo,
-                            "Accidente_" + id_at_it_el_pa + "_" + i, "~/source/archivos/accidentes/");
+                            "Accidente_" + id_at_it_el_pa + "_" + i, "~/archivos/accidentes/");
 
                         soporte nuevoFA = new soporte()
                         {
@@ -132,6 +133,7 @@ namespace SGSSTC.source.sistema.Verificar
                 IdSucursal = Convert.ToInt32(ddlSucursal.SelectedValue);
                 Listas.Area_Sucursal(ddlArea, Convert.ToInt32(ddlSucursal.SelectedValue), "Ninguna");
                 Listas.PuestoTrabajo(ddlProcesoTrabajo, "Sucursal", Convert.ToInt32(ddlSucursal.SelectedValue), "Ninguno");
+                Listas.Trabajadores_Sucursal(ddlTrabajador, Convert.ToInt32(ddlSucursal.SelectedValue));
             }
 
         }
@@ -310,16 +312,6 @@ namespace SGSSTC.source.sistema.Verificar
             else if (ddlFactorPersonal.SelectedValue == "FacPer5") { phFacPer5.Visible = true; }
             else if (ddlFactorPersonal.SelectedValue == "FacPer6") { phFacPer6.Visible = true; }
             else if (ddlFactorPersonal.SelectedValue == "FacPer7") { phFacPer7.Visible = true; }
-        }
-        #endregion
-
-        #region AutoCompletar
-        [ScriptMethod()]
-        [WebMethod]
-        public static List<string> SearchTrabajador(string prefixText, int count)
-        {
-            List<string> listTrabajadores = Utilidades.SearchTrabajador(prefixText, count, IdSucursal, ref IdTrabajador);
-            return listTrabajadores;
         }
         #endregion
     }

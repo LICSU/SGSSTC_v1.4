@@ -181,6 +181,7 @@ namespace SGSSTC.source.sistema.Hacer
 				"Puesto de Trabajo:" + ddlPuestos.SelectedItem + "\n" +
 				"-----------------------------------------------------------\n";
 
+            ddlPuestos.Items.RemoveAt(ddlPuestos.SelectedIndex);
 			txtPuestos.Rows = txtPuestos.Rows + 3;
 			contadorPuestos++;
 			ViewState["puestos"] = string.Empty + Convert.ToString(contadorPuestos);

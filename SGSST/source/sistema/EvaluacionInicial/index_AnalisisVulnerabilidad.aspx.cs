@@ -58,7 +58,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
         #region acciones grid
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            if (e.CommandName.Equals(ComandosGrid.Editar.Value))
+            if (e.CommandName.Equals(ComandosGrid.Eliminar.Value))
             {
                 hdfIDDel.Value = Utilidades_GridView.DevolverIdRow(e, GridView1);
 
