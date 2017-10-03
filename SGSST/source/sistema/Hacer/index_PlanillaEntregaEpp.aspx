@@ -58,11 +58,6 @@
                     <h4 class="text-center">Trabajador</h4>
                     <asp:DropDownList ID="ddlTrabajador" runat="server" CssClass="form-control"></asp:DropDownList>
                 </div>
-                <div class="col-md-3">
-                    <h4 class="text-center">&nbsp;</h4>
-                    <asp:Button runat="server" ID="btnBuscar" data-toggle="tooltip" data-placement="bottom" title="Presione para buscar" Text="Buscar" 
-                        CssClass="btn btn-default" OnClick="btnGenerar_OnClick" />
-                </div>
             </div>
             <br />
 

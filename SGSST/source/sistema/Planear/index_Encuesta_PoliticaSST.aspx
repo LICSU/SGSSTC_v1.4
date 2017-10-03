@@ -135,7 +135,7 @@
 
             <div class="row text-center">
 
-                <div class="col-md-4 col-md-offset-4">
+                <div class="col-md-4 col-md-offset-2">
                     <asp:ImageButton alt="-" ID="btnAgregar" runat="server" ImageUrl="~\ico\agregar.png" OnClick="AgregarRegistro" />
                     <h4>Crear Encuesta Conocimiento Politica SST</h4>
                 </div>
@@ -211,42 +211,43 @@
                                         class="btn btn-block btn-warning" OnClick="btnAgregarEsp_Onclick"></asp:Button>
 
                                 </div>
-                            </div>
 
+                                <asp:PlaceHolder runat="server" ID="phEspecifico" Visible="false">
+                                    <div class="modal-body form-group col-md-8 col-md-offset-2 well">
 
-                            <asp:PlaceHolder runat="server" ID="phEspecifico" Visible="false">
-                                <div class="modal-body form-group col-md-8 col-md-offset-2 well">
+                                        <asp:PlaceHolder runat="server" ID="phSucursalAdd">
+                                            <h4>Sucursal: </h4>
+                                            <asp:DropDownList ID="ddlSucursalAdd" data-toggle="tooltip" data-placement="bottom" title="Seleccione una Sucursal" runat="server" ClientIDMode="Static"
+                                                CssClass="form-control" AutoPostBack="true"
+                                                OnSelectedIndexChanged="ddlSucursalAdd_SelectedIndexChanged">
+                                            </asp:DropDownList>
 
-                                    <asp:PlaceHolder runat="server" ID="phSucursalAdd">
-                                        <h4>Sucursal: </h4>
-                                        <asp:DropDownList ID="ddlSucursalAdd" data-toggle="tooltip" data-placement="bottom" title="Seleccione una Sucursal" runat="server" ClientIDMode="Static"
-                                            CssClass="form-control" AutoPostBack="true"
-                                            OnSelectedIndexChanged="ddlSucursalAdd_SelectedIndexChanged">
-                                        </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>"
+                                                SetFocusOnError="true" Display="Dynamic" ForeColor="#B50128" Font-Size="10"
+                                                Font-Bold="true" ControlToValidate="ddlSucursalAdd" runat="server"
+                                                ValidationGroup="ValidationAdd" />
+                                        </asp:PlaceHolder>
+
+                                        <h4>Trabajador: </h4>
+                                        <asp:DropDownList ID="ddlTrabajadorEsp" runat="server" CssClass="form-control"></asp:DropDownList>
 
                                         <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>"
                                             SetFocusOnError="true" Display="Dynamic" ForeColor="#B50128" Font-Size="10"
-                                            Font-Bold="true" ControlToValidate="ddlSucursalAdd" runat="server"
+                                            Font-Bold="true" ControlToValidate="ddlTrabajadorEsp" runat="server"
                                             ValidationGroup="ValidationAdd" />
-                                    </asp:PlaceHolder>
 
-                                    <h4>Trabajador: </h4>
-                                    <asp:DropDownList ID="ddlTrabajadorEsp" runat="server" CssClass="form-control"></asp:DropDownList>
-                                    
-                                    <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>"
-                                        SetFocusOnError="true" Display="Dynamic" ForeColor="#B50128" Font-Size="10"
-                                        Font-Bold="true" ControlToValidate="ddlTrabajadorEsp" runat="server"
-                                        ValidationGroup="ValidationAdd" />
-                                          
-                                    <br />
+                                        <br />
 
-                                    <div class="row">
-                                        <div class="col-md-4 col-md-offset-4">
-                                            <asp:Button ID="btnEspecifico" runat="server" Text="Crear" class="btn btn-block btn-info" OnClick="Guardar" />
+                                        <div class="row">
+                                            <div class="col-md-4 col-md-offset-4">
+                                                <asp:Button ID="btnEspecifico" runat="server" Text="Crear" class="btn btn-block btn-info" OnClick="Guardar" />
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </asp:PlaceHolder>
+                                </asp:PlaceHolder>
+                            </div>
+
+
                         </div>
                     </ContentTemplate>
                     <Triggers>
@@ -275,15 +276,13 @@
                             <asp:HiddenField ID="hdfIDEsc" runat="server" />
 
                             <div class="row">
-                                <div>
-                                    <label class="col-md-4 control-label">Archivo: </label>
-                                    <div class="col-md-6">
-                                        <asp:FileUpload ID="flpArchivo" runat="server" ClientIDMode="Static" ></asp:FileUpload>
-                                        <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>"
-                                            SetFocusOnError="true" Display="Dynamic" ForeColor="#B50128" Font-Size="10"
-                                            Font-Bold="true" ControlToValidate="flpArchivo" runat="server"
-                                            ValidationGroup="ValidationAdd" />
-                                    </div>
+                                <label class="col-md-4 control-label">Archivo: </label>
+                                <div class="col-md-6">
+                                    <asp:FileUpload ID="flpArchivo" runat="server" ClientIDMode="Static"></asp:FileUpload>
+                                    <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>"
+                                        SetFocusOnError="true" Display="Dynamic" ForeColor="#B50128" Font-Size="10"
+                                        Font-Bold="true" ControlToValidate="flpArchivo" runat="server"
+                                        ValidationGroup="ValidationAdd" />
                                 </div>
                             </div>
                             <br />

@@ -145,7 +145,10 @@ namespace SGSSTC.source.sistema.GestionDatos
                 txtDireccion.Text,
                 txtRepresentante.Text,
                 txtTelFijo.Text,
-                txtTelMovil.Text
+                txtTelMovil.Text,
+                ddlClase1.SelectedValue,
+                ddlClase2.SelectedValue,
+                ddlClase3.SelectedValue
             };
 
             if (CRUD.Add_Sucursal_Empresa( valores))

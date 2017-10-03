@@ -49,8 +49,9 @@ namespace SGSSTC.source.sistema.GestionDatos
                 txtEmisiones.Text = itemPuestos.emisiones;
                 txtProductos.Text = itemPuestos.productos;
                 txtDesechos.Text = itemPuestos.desechos;
+
                 ImgFoto.ImageUrl = itemPuestos.foto;
-                ViewState["url"] = itemPuestos.foto;
+                ViewState["url"] = string.Empty + itemPuestos.foto;
 
                 Listas.Empresa(ddlEmpresa);
                 ddlEmpresa.SelectedValue = Convert.ToString(itemPuestos.area.sucursal.id_empresa);
@@ -101,6 +102,7 @@ namespace SGSSTC.source.sistema.GestionDatos
         {
             int idPuestos = 0;
             idPuestos = objUtilidades.descifrarCadena(Request.QueryString["id"]);
+
             string ruta = ViewState["url"].ToString();
 
             if (fuAnexo.HasFile)

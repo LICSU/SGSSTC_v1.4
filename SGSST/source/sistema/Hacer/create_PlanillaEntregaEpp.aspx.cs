@@ -60,10 +60,10 @@ namespace SGSSTC.source.sistema.Hacer
 			{
 				Listas.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
 			}
-            if (!BoolEmpSuc.Item2)
-            {
-                Listas.Trabajadores_Sucursal(ddlTrabajador, ObjUsuario.Id_sucursal);
-            }
+			if (!BoolEmpSuc.Item2)
+			{
+				Listas.Trabajadores_Sucursal(ddlTrabajador, ObjUsuario.Id_sucursal);
+			}
 		}
 		#endregion
 
@@ -87,8 +87,8 @@ namespace SGSSTC.source.sistema.Hacer
 			{
 				ViewState["sucursal"] = ddlSucursal.SelectedValue;
 				IdSucursal = Convert.ToInt32(ddlSucursal.SelectedValue);
-                Listas.Trabajadores_Sucursal(ddlTrabajador, IdSucursal);
-            }
+				Listas.Trabajadores_Sucursal(ddlTrabajador, IdSucursal);
+			}
 			else
 			{
 				ViewState["sucursal"] = "0";
@@ -191,6 +191,8 @@ namespace SGSSTC.source.sistema.Hacer
 			if (ddlTrabajador.SelectedValue != string.Empty)
 			{
 				ViewState["trabajador"] = ddlTrabajador.SelectedValue;
+				IdTrabajador = Convert.ToInt32(ddlTrabajador.SelectedValue);
+
 				agregar_fila();
 				phInformacion.Visible = true;
 			}

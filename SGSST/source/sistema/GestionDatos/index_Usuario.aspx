@@ -6,16 +6,16 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server"></asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+    
 
 	<asp:UpdatePanel ID="updatePanelPrinicpal" runat="server">
 		<ContentTemplate>
-            
-	        <asp:HiddenField ID="hdfSucursal" runat="server" />
+			
+			<asp:HiddenField ID="hdfSucursal" runat="server" />
 
 			<ol class="breadcrumb">
 				<li><a href="#">Gestión de Datos</a></li>
 				<li><a href="#">Usuario</a></li>
-
 			</ol>
 
 			<div class="page-header">
@@ -159,7 +159,7 @@
 
 				<asp:UpdatePanel ID="UpdatePanel1" runat="server">
 					<ContentTemplate>
-
+                        
 						<div class="modal-body form-group text-left">
 
 							<asp:PlaceHolder runat="server" Visible="true" ID="phEmpresaAdd">
@@ -241,6 +241,7 @@
 								</div>
 							</div>
 
+                            
 							<div class="row">
 								<div class="col-md-8 col-md-offset-2">
 									<h4>Clave</h4>

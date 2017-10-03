@@ -318,6 +318,9 @@
     <Compile Include="sucursal.cs">
       <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
     </Compile>
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
     <Compile Include="Tabla.cs" />
     <Compile Include="TipoDocumento.cs" />
     <Compile Include="Model_UsuarioAutenticado.cs" />
