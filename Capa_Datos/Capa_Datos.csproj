@@ -306,6 +306,9 @@
     <Compile Include="seccionCiiu.cs">
       <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
     </Compile>
+    <Compile Include="senalizacion.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
     <Compile Include="sistema.cs">
       <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
     </Compile>

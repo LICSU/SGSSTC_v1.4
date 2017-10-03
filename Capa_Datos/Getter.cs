@@ -1214,5 +1214,12 @@ namespace Capa_Datos
             GrupoLiEntities contexto = new GrupoLiEntities();
             return contexto.perfil_cargo.Where(x => x.id_perfil_cargo == _id_perfil).SingleOrDefault();
         }
+
+        public static List<senalizacion> Senalizacion(int _id_senal)
+        {
+            GrupoLiEntities contexto = new GrupoLiEntities();
+            List<senalizacion> consulta = contexto.senalizacion.Where(x => x.id_senalizacion == _id_senal).ToList();
+            return consulta;
+        }
     }
 }

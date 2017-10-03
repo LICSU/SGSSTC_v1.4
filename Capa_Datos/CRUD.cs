@@ -76,6 +76,7 @@ namespace Capa_Datos
                 else if (_nuevo.GetType() == typeof(identificacion_puesto)) { contexto.identificacion_puesto.Add(_nuevo); }
                 else if (_nuevo.GetType() == typeof(factor_identificacion)) { contexto.factor_identificacion.Add(_nuevo); }
                 else if (_nuevo.GetType() == typeof(evaluacion_riesgo)) { contexto.evaluacion_riesgo.Add(_nuevo); }
+                else if (_nuevo.GetType() == typeof(senalizacion)) { contexto.senalizacion.Add(_nuevo); }
                 else if (_nuevo.GetType() == typeof(rol)) { contexto.rol.Add(_nuevo); }
 
                 contexto.SaveChanges();
@@ -319,6 +320,12 @@ namespace Capa_Datos
                     var Eliminar = new rol { id_rol = _id };
                     contexto.rol.Attach(Eliminar);
                     contexto.rol.Remove(Eliminar);
+                }
+                else if (tabla.GetType() == typeof(senalizacion))
+                {
+                    var Eliminar = new senalizacion { id_senalizacion = _id };
+                    contexto.senalizacion.Attach(Eliminar);
+                    contexto.senalizacion.Remove(Eliminar);
                 }
 
                 contexto.SaveChanges();
@@ -1183,6 +1190,28 @@ namespace Capa_Datos
             };
 
             return Add_Fila(nuevo);
+        }
+
+        //Senalizacion
+        public static bool AddSenalizacion(String[] valores, FileUpload fuImagen)
+        {
+            string ruta = Utilidades.GuardarImagen(fuImagen, valores[0], Paginas.Archivos_Senalizacion.Value);
+
+            if (!ruta.Contains("ERR-"))
+            {
+                senalizacion nuevo = new senalizacion()
+                {
+                    nombre = valores[0],
+                    descripcion = valores[1],
+                    url_imagen = ruta
+                };
+
+                return Add_Fila(nuevo);
+            }
+            else
+            {
+                return false;
+            }
         }
 
     }

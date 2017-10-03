@@ -1001,5 +1001,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="senalizacion">
+      <EntityTypeMapping TypeName="GrupoLiModel.senalizacion">
+        <MappingFragment StoreEntitySet="senalizacion">
+          <ScalarProperty Name="url_imagen" ColumnName="url_imagen" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="id_senalizacion" ColumnName="id_senalizacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

@@ -925,6 +925,7 @@
     <Content Include="source\sistema\GestionDatos\index_Area.aspx" />
     <Content Include="source\sistema\GestionDatos\index_Calendario.aspx" />
     <Content Include="source\sistema\GestionDatos\index_Categorias.aspx" />
+    <Content Include="source\sistema\Hacer\index_Senalizacion.aspx" />
     <Content Include="source\sistema\GestionDatos\index_Empresa.aspx" />
     <Content Include="source\sistema\GestionDatos\index_Epp.aspx" />
     <Content Include="source\sistema\GestionDatos\index_Estatus.aspx" />
@@ -1323,6 +1324,13 @@
     </Compile>
     <Compile Include="source\sistema\GestionDatos\index_Categorias.aspx.designer.cs">
       <DependentUpon>index_Categorias.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="source\sistema\Hacer\index_Senalizacion.aspx.cs">
+      <DependentUpon>index_Senalizacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="source\sistema\Hacer\index_Senalizacion.aspx.designer.cs">
+      <DependentUpon>index_Senalizacion.aspx</DependentUpon>
     </Compile>
     <Compile Include="source\sistema\GestionDatos\index_Empresa.aspx.cs">
       <DependentUpon>index_Empresa.aspx</DependentUpon>
@@ -2229,6 +2237,7 @@
     <Folder Include="archivos\puesto_trabajo\" />
     <Folder Include="archivos\recursos_economicos\" />
     <Folder Include="archivos\reportes\" />
+    <Folder Include="archivos\senalizacion\" />
     <Folder Include="archivos\vigilancia\" />
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />
