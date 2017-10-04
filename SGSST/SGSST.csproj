@@ -1049,6 +1049,7 @@
     <Content Include="source\sistema\Planear\index_RecursosEconomicos.aspx" />
     <Content Include="source\sistema\Planear\Update_MedidasMatrizLegal.aspx" />
     <Content Include="source\sistema\Planear\Update_MedidasMatrizRiesgos.aspx" />
+    <Content Include="source\sistema\Planear\ValidacionProvCont.aspx" />
     <Content Include="source\sistema\Verificar\index_Indicadores.aspx" />
     <Content Include="source\WebUserControl\pagination.ascx" />
     <Content Include="source\WebUserControl\ucMsjModal.ascx" />
@@ -2186,6 +2187,13 @@
     </Compile>
     <Compile Include="source\sistema\Planear\Update_MedidasMatrizRiesgos.aspx.designer.cs">
       <DependentUpon>Update_MedidasMatrizRiesgos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="source\sistema\Planear\ValidacionProvCont.aspx.cs">
+      <DependentUpon>ValidacionProvCont.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="source\sistema\Planear\ValidacionProvCont.aspx.designer.cs">
+      <DependentUpon>ValidacionProvCont.aspx</DependentUpon>
     </Compile>
     <Compile Include="source\sistema\Verificar\index_Indicadores.aspx.cs">
       <DependentUpon>index_Indicadores.aspx</DependentUpon>

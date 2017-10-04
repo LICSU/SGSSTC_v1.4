@@ -11,16 +11,16 @@ namespace Capa_Datos
 {
     public class PrintFile
     {
-        public static Model_Celda miCelda1  = new Model_Celda(1, "H4", "C", "1|1|1|1", 1, 1, "", "");
+        public static Model_Celda miCelda1 = new Model_Celda(1, "H4", "C", "1|1|1|1", 1, 1, "", "");
         public static Model_Celda miCelda58 = new Model_Celda(1, "H4", "C", "1|1|0|1", 1, 1, "", "");
         public static Model_Celda miCelda59 = new Model_Celda(1, "H4", "C", "0|1|1|1", 1, 1, "", "");
         public static Model_Celda miCelda20 = new Model_Celda(1, "H4", "C", "1|1|1|1", 1, 1, "azul", "");
-        public static Model_Celda miCelda5  = new Model_Celda(1, "H4", "C", "0|0|1|1", 1, 1, "rojo", "");
+        public static Model_Celda miCelda5 = new Model_Celda(1, "H4", "C", "0|0|1|1", 1, 1, "rojo", "");
         public static Model_Celda miCelda35 = new Model_Celda(1, "H4", "C", "1|1|1|1", 1, 1, "rojo", "");
-        public static Model_Celda miCelda6  = new Model_Celda(1, "H4", "C", "0|0|1|0", 1, 1, "amarillo", "");
+        public static Model_Celda miCelda6 = new Model_Celda(1, "H4", "C", "0|0|1|0", 1, 1, "amarillo", "");
         public static Model_Celda miCelda36 = new Model_Celda(1, "H4", "C", "1|1|1|0", 1, 1, "amarillo", "");
-        public static Model_Celda miCelda7  = new Model_Celda(1, "H4", "C", "0|1|1|0", 1, 1, "verde", "");
-        public static Model_Celda miCelda63  = new Model_Celda(1, "H4", "C", "0|0|1|1", 1, 1, "verde", "");
+        public static Model_Celda miCelda7 = new Model_Celda(1, "H4", "C", "0|1|1|0", 1, 1, "verde", "");
+        public static Model_Celda miCelda63 = new Model_Celda(1, "H4", "C", "0|0|1|1", 1, 1, "verde", "");
 
         public static Model_Celda miCelda37 = new Model_Celda(1, "H4", "C", "1|1|1|1", 1, 1, "verde", "");
         public static Model_Celda miCelda17 = new Model_Celda(1, "H4", "C", "1|0|1|1", 1, 1, "azul", "");
@@ -29,15 +29,15 @@ namespace Capa_Datos
 
         public static Model_Celda miCelda77 = new Model_Celda(1, "H3", "C", "1|1|1|1", 1, 2, "azul", "");
 
-        public static Model_Celda miCelda2  = new Model_Celda(1, "H4", "C", "1|1|1|1", 2, 1, "", "");
+        public static Model_Celda miCelda2 = new Model_Celda(1, "H4", "C", "1|1|1|1", 2, 1, "", "");
         public static Model_Celda miCelda15 = new Model_Celda(0, "H4", "C", "1|1|1|1", 2, 1, "", "");
         public static Model_Celda miCelda13 = new Model_Celda(1, "H4", "C", "1|1|1|1", 2, 1, "azul", "");
         public static Model_Celda miCelda74 = new Model_Celda(1, "H4", "C", "0|0|1|1", 2, 1, "verde", "");
         public static Model_Celda miCelda75 = new Model_Celda(1, "H4", "C", "0|0|1|0", 2, 1, "amarillo", "");
         public static Model_Celda miCelda45 = new Model_Celda(1, "H4", "C", "0|0|0|0", 2, 1, "azul", "");
-        public static Model_Celda miCelda8  = new Model_Celda(1, "H4", "C", "1|1|1|1", 2, 2, "azul", "");
+        public static Model_Celda miCelda8 = new Model_Celda(1, "H4", "C", "1|1|1|1", 2, 2, "azul", "");
 
-        public static Model_Celda miCelda3  = new Model_Celda(1, "H4", "C", "1|1|1|1", 3, 1, "", "");
+        public static Model_Celda miCelda3 = new Model_Celda(1, "H4", "C", "1|1|1|1", 3, 1, "", "");
         public static Model_Celda miCelda60 = new Model_Celda(1, "H4", "C", "1|1|0|1", 3, 1, "", "");
         public static Model_Celda miCelda61 = new Model_Celda(1, "H4", "C", "0|1|1|1", 3, 1, "", "");
         public static Model_Celda miCelda11 = new Model_Celda(1, "H4", "C", "1|1|1|1", 3, 1, "azul", "");
@@ -49,10 +49,10 @@ namespace Capa_Datos
         public static Model_Celda miCelda57 = new Model_Celda(1, "H3", "C", "1|1|1|1", 3, 1, "azul", "");
         public static Model_Celda miCelda67 = new Model_Celda(1, "H3", "C", "0|0|0|0", 3, 1, "azul", "");
 
-        public static Model_Celda miCelda9  = new Model_Celda(1, "H4", "C", "1|1|1|1", 3, 2, "azul", "");
-        public static Model_Celda miCelda76  = new Model_Celda(1, "H4", "C", "1|1|1|1", 3, 2, "", "");
+        public static Model_Celda miCelda9 = new Model_Celda(1, "H4", "C", "1|1|1|1", 3, 2, "azul", "");
+        public static Model_Celda miCelda76 = new Model_Celda(1, "H4", "C", "1|1|1|1", 3, 2, "", "");
 
-        public static Model_Celda miCelda4  = new Model_Celda(1, "H4", "C", "1|1|1|1", 4, 1, "", "");
+        public static Model_Celda miCelda4 = new Model_Celda(1, "H4", "C", "1|1|1|1", 4, 1, "", "");
         public static Model_Celda miCelda16 = new Model_Celda(0, "H4", "C", "1|1|1|1", 4, 1, "", "");
         public static Model_Celda miCelda14 = new Model_Celda(1, "H4", "C", "1|1|1|1", 4, 1, "azul", "");
         public static Model_Celda miCelda32 = new Model_Celda(1, "H4", "C", "1|1|1|1", 4, 1, "amarillo", "");
@@ -942,7 +942,7 @@ namespace Capa_Datos
             }
         }
 
-            public static void PrintObjetivosSGSST(String[] valores, Page _page)
+        public static void PrintObjetivosSGSST(String[] valores, Page _page)
         {
             Tuple<Document, PdfPTable> DocumentoPDF = ManageFiles.PdfParte1(
                 Convert.ToInt32(valores[0]),
@@ -985,7 +985,7 @@ namespace Capa_Datos
 
             miCelda14.Texto = "Objetivo";
             DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, miCelda14));
-            
+
             int filas = Convert.ToInt32(valores[1]);
             TextBox miTextBox;
             DropDownList miDropDownList;
@@ -1003,7 +1003,7 @@ namespace Capa_Datos
                 miTextBox = (TextBox)_Panel.FindControl("txtFecha" + i);
                 miCelda15.Texto = "" + miTextBox.Text;
                 DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, miCelda15));
-                
+
                 miTextBox = (TextBox)_Panel.FindControl("txtResp" + i);
                 miCelda15.Texto = "" + miTextBox.Text;
                 DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, miCelda15));
@@ -1055,7 +1055,7 @@ namespace Capa_Datos
             #endregion
         }
 
-        public static void PrintDocumento_InspeccionEPP(Panel _Panel, DropDownList ddlArea, DropDownList ddlPuesto )
+        public static void PrintDocumento_InspeccionEPP(Panel _Panel, DropDownList ddlArea, DropDownList ddlPuesto)
         {
             RadioButton _radio;
             Table _table;
@@ -1104,13 +1104,13 @@ namespace Capa_Datos
             }
         }
 
-        public static void PrintAnalisisVulnerabilidad(String[] valores, String[] valoresText, Page _page, TextBox _txtArea, 
+        public static void PrintAnalisisVulnerabilidad(String[] valores, String[] valoresText, Page _page, TextBox _txtArea,
                                                        TextBox _txtObjetivo, TextBox _txtAlcance, String total, String conclusiones,
                                                        String fortalezas, String debilidades)
         {
             Tuple<Document, PdfPTable> DocumentoPDF = ManageFiles.PdfParte1(
-                Convert.ToInt32(valores[0]), "AnalisisVulnerabilidad_", 
-                "ANALISIS DE VULNERABILIDAD", 
+                Convert.ToInt32(valores[0]), "AnalisisVulnerabilidad_",
+                "ANALISIS DE VULNERABILIDAD",
                 _page);
 
             miCelda12.Texto = "Área de Evaluación";
@@ -1124,7 +1124,7 @@ namespace Capa_Datos
 
             miCelda12.Texto = _txtObjetivo.Text;
             DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCeldaHTML(DocumentoPDF.Item2, miCelda12));
-            
+
             miCelda12.Texto = "Álcance";
             DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, miCelda12));
 
@@ -2928,9 +2928,9 @@ namespace Capa_Datos
                 }
             }
 
-            
 
-            #endregion 
+
+            #endregion
         }
 
         public static void PrintAccidenteLaboral(String[] valores, Page _page)
@@ -3116,7 +3116,7 @@ namespace Capa_Datos
         }
 
 
-            public static void PrintInspeccionPuestos(String[] valores, String[] titulos, String[] valoressi, String[] valoresno, String[] textos, String[] encabezado, Page _page)
+        public static void PrintInspeccionPuestos(String[] valores, String[] titulos, String[] valoressi, String[] valoresno, String[] textos, String[] encabezado, Page _page)
         {
             Tuple<Document, PdfPTable> DocumentoPDF = ManageFiles.PdfParte1(Convert.ToInt32(valores[0]),
                                         "InspeccionDePuestos_", "INSPECCIÓN DE LOS PUESTOS DE TRABAJO", _page);
@@ -3151,11 +3151,11 @@ namespace Capa_Datos
 
             miCelda11.Texto = valores[9];
             DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, miCelda11));
- 
+
             int TotalFavorable = 0, TotalDesfavorable = 0, posicion = 0, pos_enca = 0, i = 0;
-            while(posicion < titulos.Length)
-            {              
-                if (i == 5 || i == 18 || i == 44 || i == 55 || i == 63 || i == 77 || i == 84 || 
+            while (posicion < titulos.Length)
+            {
+                if (i == 5 || i == 18 || i == 44 || i == 55 || i == 63 || i == 77 || i == 84 ||
                     i == 88 || i == 96 || i == 100 || i == 108 || i == 121 || i == 128 || i == 138 ||
                     i == 146 || i == 151 || i == 159 || i == 164)
                 {
@@ -3199,7 +3199,7 @@ namespace Capa_Datos
                 }
                 i++;
             }
-            miCelda29.Texto = "Observaciones Generales: "+valores[10];
+            miCelda29.Texto = "Observaciones Generales: " + valores[10];
             DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, miCelda29));
 
             miCelda3.Texto = "Total de Condiciones";
@@ -3237,7 +3237,7 @@ namespace Capa_Datos
 
         public static void PrintInspeccionEpp(String[] valores, Page _page, Panel _panel)
         {
-            Tuple<Document, PdfPTable> DocumentoPDF = ManageFiles.PdfParte1(Convert.ToInt32(valores[0]), "InspeccionEPP_", 
+            Tuple<Document, PdfPTable> DocumentoPDF = ManageFiles.PdfParte1(Convert.ToInt32(valores[0]), "InspeccionEPP_",
                                         "HOJA DE INSPECCIONES DE LOS EQUIPOS DE PROTECCION PERSONAL", _page);
             #region contenido
             miCelda12.Texto = "HOJA DE INSPECCIONES DE LOS EQUIPOS DE PROTECCION PERSONAL";
@@ -3396,7 +3396,7 @@ namespace Capa_Datos
 
         public static void PrintEvaluacionPuestos(String[] valores, Page _page)
         {
-            
+
             #region contenido
             List<evaluacion_riesgo> Lista_EvaRiesgo = new List<evaluacion_riesgo>();
             Lista_EvaRiesgo = Getter.EvaluacionRiesgo(Convert.ToInt32(valores[1]));
@@ -3634,7 +3634,7 @@ namespace Capa_Datos
                 DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, miCelda25));
                 miCelda27.Texto = itemEvaRiesgo.peor_consecuencia.ToString();
                 DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, miCelda27));
-                miCelda27.Texto = ""+itemEvaRiesgo.existencia_requisito_legal;
+                miCelda27.Texto = "" + itemEvaRiesgo.existencia_requisito_legal;
                 DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, miCelda27));
 
                 miCelda12.Texto = "MEDIDAS DE INTERVENCIÓN";
@@ -3684,7 +3684,7 @@ namespace Capa_Datos
             #endregion
         }
 
-            public static void PrintInspeccionUsoEpp(String[] valores, Page _page, Panel _panel)
+        public static void PrintInspeccionUsoEpp(String[] valores, Page _page, Panel _panel)
         {
             Tuple<Document, PdfPTable> DocumentoPDF = ManageFiles.PdfParte1(Convert.ToInt32(valores[0]),
                                         "InspeccionUsoEpp_", "INSPECCIÓN USO EPP", _page);
@@ -3756,9 +3756,9 @@ namespace Capa_Datos
             ManageFiles.PdfPart2(DocumentoPDF.Item1, DocumentoPDF.Item2, Convert.ToInt32(valores[0]), _page);
         }
 
-        public static void PrintInspeccionMediosEscape(String[] valores, String[] areaUbicacion, String[] edoConservacion, String[] fteIluminacion, 
-                                                       String[] marcaLampara, String[] lucesLampara, String[] cajtaLampara, String[] senas, 
-                                                       String[] exisSena, String[] obsEst, String[] senaSena, String[] txtPas, String[] obsEstPasi, 
+        public static void PrintInspeccionMediosEscape(String[] valores, String[] areaUbicacion, String[] edoConservacion, String[] fteIluminacion,
+                                                       String[] marcaLampara, String[] lucesLampara, String[] cajtaLampara, String[] senas,
+                                                       String[] exisSena, String[] obsEst, String[] senaSena, String[] txtPas, String[] obsEstPasi,
                                                        String[] obsAccPasi, String[] obsAusPasi, Page _page)
         {
             Tuple<Document, PdfPTable> DocumentoPDF = ManageFiles.PdfParte1(Convert.ToInt32(valores[0]),
@@ -4401,7 +4401,7 @@ namespace Capa_Datos
                 miCelda41.Texto = cadenas[i];
                 DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCeldaHTML(DocumentoPDF.Item2, miCelda41));
             }
-            
+
 
             miCelda42.Texto = "FUNCIONES DE LOS BRIGADISTAS";
             DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCeldaHTML(DocumentoPDF.Item2, miCelda42));
@@ -5099,7 +5099,7 @@ namespace Capa_Datos
             TextBox _texbox = new TextBox();
             for (int i = 0; i < 10; i++)
             {
-                _texbox = (TextBox)_panel.FindControl("Textbox"+valor);
+                _texbox = (TextBox)_panel.FindControl("Textbox" + valor);
                 miCelda4.Texto = _texbox.Text;
                 DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, miCelda4));
                 valor++;
@@ -5146,7 +5146,7 @@ namespace Capa_Datos
             #region contenido
             miCelda41.Texto = "<p align='justify'><h3>" +
                                 "En cumplimiento a lo establecido en el Decreto 1072 del 2015, se designa como Vigía en Seguridad y Salud en " +
-                                "el Trabajo a: <strong>" +valores[1] + "</strong><br/> En virtud a lo anterior, el referido actuará como vigía en Seguridad " +
+                                "el Trabajo a: <strong>" + valores[1] + "</strong><br/> En virtud a lo anterior, el referido actuará como vigía en Seguridad " +
                                 "y Salud en el trabajo por el término de 2 años de conformidad con el Decreto 1295 de 1994, período durante el cual el " +
                                 "empleador se obliga a facilitar el tiempo necesario dentro de la jornada laboral para que realice sus " +
                                 "respectivas funciones. <br/><br/> La presente se firma el <strong>" + valores[2] + "</strong>, con la" +
@@ -5162,7 +5162,7 @@ namespace Capa_Datos
             TextBox _textbox;
             for (int i = 1; i <= 18; i = i + 2)
             {
-                
+
                 miCelda1.Texto = i.ToString();
                 DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, miCelda1));
                 _textbox = (TextBox)_panel.FindControl("Textbox" + i);
@@ -5415,7 +5415,7 @@ namespace Capa_Datos
 
             miCelda69.Texto = valores[10];
             DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, miCelda69));
-            miCelda69.Texto = "El representante legal de la empresa designa a :" +valores[12] + " Como presidente del comité y por votación del comité se nombra a " +
+            miCelda69.Texto = "El representante legal de la empresa designa a :" + valores[12] + " Como presidente del comité y por votación del comité se nombra a " +
                              valores[12] + " Como secretario (a) del mismo.";
             DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, miCelda69));
 
@@ -5477,6 +5477,25 @@ namespace Capa_Datos
 
             ManageFiles.PdfPart2(DocumentoPDF.Item1, DocumentoPDF.Item2, Convert.ToInt32(valores[0]), _page);
         }
+        
+        public static void PrintValidacionProvCont(String[] valores, Page _page)
+        {
+            Tuple<Document, PdfPTable> DocumentoPDF = ManageFiles.PdfParte1(Convert.ToInt32(valores[0]),
+                                        "ValidacionProvCont_", "VALIDACIÓN DE PROVEEDORES Y CONTRATISTAS", _page);
+
+            #region contenido
+            string cadena = valores[1];
+            string[] delimitadores = { "#NOBORRAR#" };
+            string[] cadenas = cadena.Split(delimitadores, StringSplitOptions.None);
+            for (int i = 0; i < cadenas.Length; i++)
+            {
+                miCelda41.Texto = cadenas[i];
+                DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCeldaHTML(DocumentoPDF.Item2, miCelda41));
+            }
+            #endregion
+
+            ManageFiles.PdfPart2(DocumentoPDF.Item1, DocumentoPDF.Item2, Convert.ToInt32(valores[0]), _page);
+        }
 
         public static void PrintIdentificacionPeligro(String[] valores, Page _page)
         {
@@ -5485,7 +5504,7 @@ namespace Capa_Datos
 
             List<identificacion_peligro> listta = Getter.IdentificacionPeligro(Convert.ToInt32(valores[1]));
             #region contenido
-            foreach(var item in listta)
+            foreach (var item in listta)
             {
                 miCelda12.Texto = "Medidas de control Existentes";
                 DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, miCelda12));
@@ -5502,7 +5521,7 @@ namespace Capa_Datos
                 miCelda41.Texto = item.fecha_identificacion.ToString();
                 DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, miCelda41));
             }
-            
+
             #endregion
 
             ManageFiles.PdfPart2(DocumentoPDF.Item1, DocumentoPDF.Item2, Convert.ToInt32(valores[0]), _page);
@@ -5639,7 +5658,7 @@ namespace Capa_Datos
 
         public static void PrintEncuestaPoliticaSST2(String[] valores2, String[] valores, List<trabajador> ListaTrabajador, Page _page)
         {
-            
+
 
             #region contenido
             foreach (var itemTrab in ListaTrabajador)
@@ -5687,10 +5706,10 @@ namespace Capa_Datos
 
                 ManageFiles.PdfPart2(DocumentoPDF.Item1, DocumentoPDF.Item2, Convert.ToInt32(valores2[0]), _page);
             }
-                
+
             #endregion
 
-            
+
         }
 
 
@@ -5716,7 +5735,7 @@ namespace Capa_Datos
             ManageFiles.PdfPart2(DocumentoPDF.Item1, DocumentoPDF.Item2, Convert.ToInt32(valores[0]), _page);
         }
 
-        public static void PrintComunicadoIncidenteLaboral (String[] valores, Page _page)
+        public static void PrintComunicadoIncidenteLaboral(String[] valores, Page _page)
         {
             #region contenido 
             List<at_it_el_pa> ListAccidentes = new List<at_it_el_pa>();
@@ -5886,7 +5905,7 @@ namespace Capa_Datos
             }
             #endregion
 
-           
+
         }
 
 
@@ -5927,7 +5946,7 @@ namespace Capa_Datos
                 int contadorPuesto = 1;
                 foreach (var item_IdePue in item_IdePel.identificacion_puesto)
                 {
-                    miCelda2.Texto = "Puesto N°"+contadorPuesto;
+                    miCelda2.Texto = "Puesto N°" + contadorPuesto;
                     DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, miCelda2));
                     miCelda38.Texto = "Sucursal: " + item_IdePue.puesto_trabajo.area.sucursal.nombre;
                     DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, miCelda38));
@@ -5962,7 +5981,7 @@ namespace Capa_Datos
                 miCelda49.Texto = item_IdePel.observaciones;
                 DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, miCelda49));
             }
-           
+
             #endregion
 
             ManageFiles.PdfPart2(DocumentoPDF.Item1, DocumentoPDF.Item2, Convert.ToInt32(valores[0]), _page);
@@ -6196,7 +6215,7 @@ namespace Capa_Datos
                 nomEmpresa = item.nombre;
             }
             List<trabajador> trabajador = Getter.Trabajador(Convert.ToInt32(valores[2]));
-            List<sucursal> sucursal = Getter.Sucursal(Convert.ToInt32(valores[3]),0,string.Empty);
+            List<sucursal> sucursal = Getter.Sucursal(Convert.ToInt32(valores[3]), 0, string.Empty);
             string direccion = string.Empty;
             foreach (var item in sucursal)
             {
@@ -6427,7 +6446,7 @@ namespace Capa_Datos
                 {
                     if (i == 1)
                     {
-     
+
                         miCelda38.Texto = columna1[i];
                         DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, miCelda38));
                         miCelda1.Texto = " ";
@@ -6960,7 +6979,7 @@ namespace Capa_Datos
 
             miCelda12.Texto = "¿Tiene Ud. algún hobbie, o practica algún deporte? ¿Cual(es)? ¿Qué tiempo le dedica a cada uno?";
             DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, miCelda12));
-             
+
             miCelda49.Texto = " ";
             DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, miCelda49));
 

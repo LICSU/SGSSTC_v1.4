@@ -25,7 +25,6 @@
     </asp:PlaceHolder>
 
     <div class="row form-group">
-
         <asp:PlaceHolder runat="server" ID="phEmpresa">
             <div class="col-md-4">
                 <h4 class="text-center">Empresa</h4>
@@ -1149,8 +1148,5 @@
             <h4>Generar Documento</h4>
         </div>
     </div>
-
-
-
 
 </asp:Content>
