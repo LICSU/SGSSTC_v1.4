@@ -112,6 +112,7 @@
         public static Paginas Archivos_PuestoTrabajo { get { return new Paginas("~/archivos/puesto_trabajo/"); } }
         public static Paginas Archivos_Foto_Perfil { get { return new Paginas("~/archivos/foto_perfil/"); } }
         public static Paginas Archivos_Indicadores { get { return new Paginas("~/archivos/indicadores/"); } }
+        public static Paginas Archivos_Senalizacion { get { return new Paginas("~/archivos/senalizacion/"); } }
 
         public static Paginas URL_Señalizacion { get { return new Paginas("~/ico/epp/"); } }
 

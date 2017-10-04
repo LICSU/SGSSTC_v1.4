@@ -2684,5 +2684,15 @@
       <End Role="trabajador" EntitySet="trabajador" />
       <End Role="usuario" EntitySet="usuario" />
     </AssociationSet>
+    <EntitySet Name="senalizacion" EntityType="GrupoLiModel.senalizacion" />
   </EntityContainer>
+  <EntityType Name="senalizacion">
+    <Key>
+      <PropertyRef Name="id_senalizacion" />
+    </Key>
+    <Property Name="id_senalizacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="url_imagen" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
 </Schema>

@@ -880,6 +880,24 @@
 									</li>
 								</ul>
 							</li>
+
+                            <!-- Senalizacion -->
+							<li class="dropdown-submenu">
+								<a href="#">
+									<i class="fa fa-circle-o"></i>
+									<span>Señalización</span>
+								</a>
+
+								<ul class="dropdown-menu">
+									<li>
+										<a href="../Hacer/index_Senalizacion.aspx">
+											<i class="fa fa-map-o"></i>
+											<span>Señalización  </span>
+										</a>
+
+									</li>
+								</ul>
+							</li>
 						</ul>
 					</li>
 

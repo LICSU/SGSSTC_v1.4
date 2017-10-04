@@ -780,6 +780,15 @@
     <Property Name="nombre" Type="varchar" MaxLength="50" />
     <Property Name="descripcion" Type="varchar" MaxLength="500" />
   </EntityType>
+  <EntityType Name="senalizacion">
+    <Key>
+      <PropertyRef Name="id_senalizacion" />
+    </Key>
+    <Property Name="id_senalizacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="200" />
+    <Property Name="url_imagen" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
   <EntityType Name="sistema">
     <Key>
       <PropertyRef Name="id_sistemas" />
@@ -2149,6 +2158,7 @@
     <EntitySet Name="riesgos_item" EntityType="Self.riesgos_item" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="rol" EntityType="Self.rol" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="seccionCiiu" EntityType="Self.seccionCiiu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="senalizacion" EntityType="Self.senalizacion" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sistema" EntityType="Self.sistema" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="soporte" EntityType="Self.soporte" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sucursal" EntityType="Self.sucursal" Schema="dbo" store:Type="Tables" />

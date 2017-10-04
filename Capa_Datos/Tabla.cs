@@ -404,6 +404,13 @@ namespace Capa_Datos
             GridView1.DataBind();
         }
 
+        public static void Senalizacion(GridView GridView1)
+        {
+            GrupoLiEntities contexto = new GrupoLiEntities();
+            GridView1.DataSource = contexto.senalizacion.ToList();
+            GridView1.DataBind();
+        }
+
         public static void Estatus(
             GridView GridView1,
             int _id_sucursal = 0,

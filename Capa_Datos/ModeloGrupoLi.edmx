@@ -785,6 +785,15 @@
           <Property Name="nombre" Type="varchar" MaxLength="50" />
           <Property Name="descripcion" Type="varchar" MaxLength="500" />
         </EntityType>
+        <EntityType Name="senalizacion">
+          <Key>
+            <PropertyRef Name="id_senalizacion" />
+          </Key>
+          <Property Name="id_senalizacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="200" />
+          <Property Name="url_imagen" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
         <EntityType Name="sistema">
           <Key>
             <PropertyRef Name="id_sistemas" />
@@ -2154,6 +2163,7 @@
           <EntitySet Name="riesgos_item" EntityType="Self.riesgos_item" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="rol" EntityType="Self.rol" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="seccionCiiu" EntityType="Self.seccionCiiu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="senalizacion" EntityType="Self.senalizacion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sistema" EntityType="Self.sistema" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="soporte" EntityType="Self.soporte" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sucursal" EntityType="Self.sucursal" Schema="dbo" store:Type="Tables" />
@@ -5205,7 +5215,17 @@
             <End Role="trabajador" EntitySet="trabajador" />
             <End Role="usuario" EntitySet="usuario" />
           </AssociationSet>
+          <EntitySet Name="senalizacion" EntityType="GrupoLiModel.senalizacion" />
         </EntityContainer>
+        <EntityType Name="senalizacion">
+          <Key>
+            <PropertyRef Name="id_senalizacion" />
+          </Key>
+          <Property Name="id_senalizacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="url_imagen" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -6220,6 +6240,16 @@
                 <ScalarProperty Name="clave" ColumnName="clave" />
                 <ScalarProperty Name="id_trabajador" ColumnName="id_trabajador" />
                 <ScalarProperty Name="id_rol" ColumnName="id_rol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="senalizacion">
+            <EntityTypeMapping TypeName="GrupoLiModel.senalizacion">
+              <MappingFragment StoreEntitySet="senalizacion">
+                <ScalarProperty Name="url_imagen" ColumnName="url_imagen" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id_senalizacion" ColumnName="id_senalizacion" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

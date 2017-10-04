@@ -165,6 +165,7 @@
         <AssociationConnector Association="GrupoLiModel.FK_trabajador_estatus_trabajador" ManuallyRouted="false" />
         <AssociationConnector Association="GrupoLiModel.FK_trabajador_gestion_trabajador" ManuallyRouted="false" />
         <AssociationConnector Association="GrupoLiModel.FK_usuario_trabajador" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="GrupoLiModel.senalizacion" Width="1.5" PointX="3.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

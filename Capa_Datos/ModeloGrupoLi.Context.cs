@@ -98,5 +98,6 @@ namespace Capa_Datos
         public virtual DbSet<trabajador_estatus> trabajador_estatus { get; set; }
         public virtual DbSet<trabajador_gestion> trabajador_gestion { get; set; }
         public virtual DbSet<usuario> usuario { get; set; }
+        public virtual DbSet<senalizacion> senalizacion { get; set; }
     }
 }
