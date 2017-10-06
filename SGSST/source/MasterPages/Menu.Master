@@ -86,337 +86,342 @@
 				</div>
 
 				<asp:PlaceHolder runat="server" ID="menuPrin">
-                    <ul class="nav navbar-nav">
 
-                        <%--Gestión--%>
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa  fa-gears"></i><span>Gestión</span><span class="caret"></span></a>
+					<ul class="nav navbar-nav">
 
-                            <ul class="dropdown-menu">
-                                <li><a href="../GestionDatos/index_Calendario.aspx"><i class="fa fa-circle-o"></i><span>Calendario</span></a></li>
-                                <li><a href="../GestionDatos/index_Empresa.aspx"><i class="fa fa-circle-o"></i><span>Empresa</span></a></li>
-                                <li><a href="../GestionDatos/index_Sucursal.aspx"><i class="fa fa-circle-o"></i><span>Sucursal</span></a></li>
-                                <li><a href="../GestionDatos/index_Area.aspx"><i class="fa fa-circle-o"></i><span>Área</span></a></li>
-                                <li><a href="../GestionDatos/index_PuestoTrabajo.aspx"><i class="fa fa-circle-o"></i><span>Puesto de Trabajo</span></a></li>
-                                <li><a href="../GestionDatos/index_Horarios.aspx"><i class="fa fa-circle-o"></i><span>Horarios</span></a></li>
-                                <li><a href="../GestionDatos/index_Trabajador.aspx"><i class="fa fa-circle-o"></i><span>Trabajador</span></a></li>
-                                <li><a href="../GestionDatos/index_Rol.aspx"><i class="fa fa-circle-o"></i><span>Rol</span></a></li>
-                                <li><a href="../GestionDatos/index_Usuario.aspx"><i class="fa fa-circle-o"></i><span>Usuario</span></a></li>
-                                <li><a href="../GestionDatos/index_Categorias.aspx"><i class="fa fa-circle-o"></i><span>Categorias</span></a></li>
-                                <li><a href="../GestionDatos/index_Estatus.aspx"><i class="fa fa-circle-o"></i><span>Estatus Trabajador</span></a></li>
-                                <li><a href="../GestionDatos/Index_Extintor.aspx"><i class="fa fa-circle-o"></i><span>Extintores</span></a></li>
-                                <li><a href="../GestionDatos/Index_Tipo_EPP.aspx"><i class="fa fa-circle-o"></i><span>Tipo de EPP</span></a></li>
-                                <li><a href="../GestionDatos/index_EPP.aspx"><i class="fa fa-circle-o"></i><span>EPP</span></a></li>
-                            </ul>
-                        </li>
+						<%--Gestión--%>
+						<li class="dropdown">
+							<a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa  fa-gears"></i><span>Gestión</span><span class="caret"></span></a>
 
-                        <%-- Evaluación Inicial--%>
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-bar-chart-o"></i><span>Evaluación Inicial</span><span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="../GestionDatos/index_Calendario.aspx"><i class="fa fa-circle-o"></i><span>Calendario</span></a></li>
+								<li><a href="../GestionDatos/index_Empresa.aspx"><i class="fa fa-circle-o"></i><span>Empresa</span></a></li>
+								<li><a href="../GestionDatos/index_Sucursal.aspx"><i class="fa fa-circle-o"></i><span>Sucursal</span></a></li>
+								<li><a href="../GestionDatos/index_Area.aspx"><i class="fa fa-circle-o"></i><span>Área</span></a></li>
+								<li><a href="../GestionDatos/index_PuestoTrabajo.aspx"><i class="fa fa-circle-o"></i><span>Puesto de Trabajo</span></a></li>
+								<li><a href="../GestionDatos/index_Horarios.aspx"><i class="fa fa-circle-o"></i><span>Horarios</span></a></li>
+								<li><a href="../GestionDatos/index_Trabajador.aspx"><i class="fa fa-circle-o"></i><span>Trabajador</span></a></li>
+								<li><a href="../GestionDatos/index_Rol.aspx"><i class="fa fa-circle-o"></i><span>Rol</span></a></li>
+								<li><a href="../GestionDatos/index_Usuario.aspx"><i class="fa fa-circle-o"></i><span>Usuario</span></a></li>
+								<li><a href="../GestionDatos/index_Categorias.aspx"><i class="fa fa-circle-o"></i><span>Categorias</span></a></li>
+								<li><a href="../GestionDatos/index_Estatus.aspx"><i class="fa fa-circle-o"></i><span>Estatus Trabajador</span></a></li>
+								<li><a href="../GestionDatos/Index_Extintor.aspx"><i class="fa fa-circle-o"></i><span>Extintores</span></a></li>
+								<li><a href="../GestionDatos/Index_Tipo_EPP.aspx"><i class="fa fa-circle-o"></i><span>Tipo de EPP</span></a></li>
+								<li><a href="../GestionDatos/index_EPP.aspx"><i class="fa fa-circle-o"></i><span>EPP</span></a></li>
+							</ul>
+						</li>
 
-                            <ul class="dropdown-menu">
-                                <li><a href="../EvaluacionInicial/index_AutoEvaluacion.aspx"><i class="fa fa-circle-o"></i><span>Documento de Autoevaluación</span></a></li>
-                                <li><a href="../EvaluacionInicial/index_AnalisisVulnerabilidad.aspx"><i class="fa fa-circle-o"></i><span>Análisis de vulnerabilidad</span></a></li>
-                                <li><a href="../EvaluacionInicial/index_PorcentajeCapacitacion.aspx"><i class="fa fa-circle-o"></i><span>Porcentaje de cumplimiento de Capacitaciones</span></a></li>
-                            </ul>
-                        </li>
+						<%-- Evaluación Inicial--%>
+						<li class="dropdown">
+							<a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-bar-chart-o"></i><span>Evaluación Inicial</span><span class="caret"></span></a>
 
-                        <%--Planear--%>
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-calendar-check-o"></i><span>Planear</span><span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="../EvaluacionInicial/index_AutoEvaluacion.aspx"><i class="fa fa-circle-o"></i><span>Documento de Autoevaluación</span></a></li>
+								<li><a href="../EvaluacionInicial/index_AnalisisVulnerabilidad.aspx"><i class="fa fa-circle-o"></i><span>Análisis de vulnerabilidad</span></a></li>
+								<li><a href="../EvaluacionInicial/index_PorcentajeCapacitacion.aspx"><i class="fa fa-circle-o"></i><span>Porcentaje de cumplimiento de Capacitaciones</span></a></li>
+							</ul>
+						</li>
 
-                            <ul class="dropdown-menu dropdown-menu-right">
+						<%--Planear--%>
+						<li class="dropdown">
+							<a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-calendar-check-o"></i><span>Planear</span><span class="caret"></span></a>
 
-                                <li class="dropdown-submenu">
-                                    <a href="#"><i class="fa fa-circle-o"></i><span>Liderazgo y compromiso</span></a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="../Planear/index_PlanTrabajo.aspx"><i class="fa fa-circle-o"></i><span>Plan de trabajo anual</span></a></li>
-                                        <li><a href="../Planear/index_Politica_SST.aspx"><i class="fa fa-circle-o"></i><span>Política SST</span></a></li>
-                                        <li><a href="../Planear/index_ComunicacionPoliticaSST.aspx"><i class="fa fa-circle-o"></i><span>Comunicación de la Política SST</span></a></li>
-                                        <li><a href="../Planear/index_Encuesta_PoliticaSST.aspx"><i class="fa fa-circle-o"></i><span>Encuesta de Conocimiento de la Política de SST</span></a></li>
-                                        <li><a href="../Planear/index_Encuesta_ObjetivosSST.aspx"><i class="fa fa-circle-o"></i><span>Encuesta de Conocimiento de los Objetivos de SST</span></a></li>
-                                        <li><a href="../Planear/index_RecursosEconomicos.aspx"><i class="fa fa-circle-o"></i><span>Recursos Económicos aprobados por la Gerencia</span></a></li>
-                                        <li><a href="../Planear/index_ActaCopasst.aspx"><i class="fa fa-circle-o"></i><span>Acta del Copasst</span></a></li>
-                                        <li><a href="../Planear/index_ObjetivosSGSST.aspx"><i class="fa fa-circle-o"></i><span>Objetivos del SG-SST</span></a></li>
-                                    </ul>
-                                </li>
+							<ul class="dropdown-menu dropdown-menu-right">
 
-                                <li class="dropdown-submenu">
-                                    <a href="#"><i class="fa fa-circle-o"></i><span>Administración de la Documentación</span></a>
+								<li class="dropdown-submenu">
+									<a href="#"><i class="fa fa-circle-o"></i><span>Liderazgo y compromiso</span></a>
+									<ul class="dropdown-menu">
+										<li><a href="../Planear/index_PlanTrabajo.aspx"><i class="fa fa-circle-o"></i><span>Plan de trabajo anual</span></a></li>
+										<li><a href="../Planear/index_Politica_SST.aspx"><i class="fa fa-circle-o"></i><span>Política SST</span></a></li>
+										<li><a href="../Planear/index_ComunicacionPoliticaSST.aspx"><i class="fa fa-circle-o"></i><span>Comunicación de la Política SST</span></a></li>
+										<li><a href="../Planear/index_Encuesta_PoliticaSST.aspx"><i class="fa fa-circle-o"></i><span>Encuesta de Conocimiento de la Política de SST</span></a></li>
+										<li><a href="../Planear/index_Encuesta_ObjetivosSST.aspx"><i class="fa fa-circle-o"></i><span>Encuesta de Conocimiento de los Objetivos de SST</span></a></li>
+										<li><a href="../Planear/index_RecursosEconomicos.aspx"><i class="fa fa-circle-o"></i><span>Recursos Económicos aprobados por la Gerencia</span></a></li>
+										<li><a href="../Planear/index_ActaCopasst.aspx"><i class="fa fa-circle-o"></i><span>Acta del Copasst</span></a></li>
+										<li><a href="../Planear/index_ObjetivosSGSST.aspx"><i class="fa fa-circle-o"></i><span>Objetivos del SG-SST</span></a></li>
+									</ul>
+								</li>
 
-                                    <ul class="dropdown-menu">
-                                        <li><a href="../Planear/index_ControlDocumentos.aspx"><i class="fa fa-circle-o"></i><span>Control de Documentos</span></a></li>
-                                        <li><a href="../Planear/index_Mecanismos.aspx"><i class="fa fa-circle-o"></i><span>Mecanismos</span></a></li>
-                                    </ul>
-                                </li>
+								<li class="dropdown-submenu">
+									<a href="#"><i class="fa fa-circle-o"></i><span>Administración de la Documentación</span></a>
 
-                                <li class="dropdown-submenu">
-                                    <a href="#"><i class="fa fa-circle-o"></i><span>Funciones, responsabilidades y competencias</span></a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="../Planear/index_MatrizResponsabilidades.aspx"><i class="fa fa-circle-o"></i><span>Matriz de Responsabilidades y competencias</span></a></li>
-                                        <li><a href="#"><i class="fa fa-circle-o"></i><span>Evaluación del desempeño</span></a></li>
-                                        <li><a href="../Planear/index_AsignacionResponsable.aspx"><i class="fa fa-circle-o"></i><span>Acta de Asignación del Responsable del SGSST</span></a></li>
-                                    </ul>
-                                </li>
+									<ul class="dropdown-menu">
+										<li><a href="../Planear/index_ControlDocumentos.aspx"><i class="fa fa-circle-o"></i><span>Control de Documentos</span></a></li>
+										<li><a href="../Planear/index_Mecanismos.aspx"><i class="fa fa-circle-o"></i><span>Mecanismos</span></a></li>
+									</ul>
+								</li>
 
-                                <li class="dropdown-submenu">
-                                    <a href="#"><i class="fa fa-circle-o"></i><span>Capacitación y entrenamiento.</span></a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#"><i class="fa fa-circle-o"></i><span>Programa de Capacitación Anual</span></a></li>
-                                        <li><a href="../Planear/index_PlanCapacitacion.aspx"><i class="fa fa-circle-o"></i><span>Plan de Capacitación, Matriz de Capacitación</span></a></li>
-                                        <li><a href="../Planear/index_PlanInduccion.aspx"><i class="fa fa-circle-o"></i><span>Programa de Inducción y reinducción</span></a></li>
-                                    </ul>
-                                </li>
+								<li class="dropdown-submenu">
+									<a href="#"><i class="fa fa-circle-o"></i><span>Funciones, responsabilidades y competencias</span></a>
+									<ul class="dropdown-menu">
+										<li><a href="../Planear/index_MatrizResponsabilidades.aspx"><i class="fa fa-circle-o"></i><span>Matriz de Responsabilidades y competencias</span></a></li>
+										<li><a href="#"><i class="fa fa-circle-o"></i><span>Evaluación del desempeño</span></a></li>
+										<li><a href="../Planear/index_AsignacionResponsable.aspx"><i class="fa fa-circle-o"></i><span>Acta de Asignación del Responsable del SGSST</span></a></li>
+									</ul>
+								</li>
 
-                                <li class="dropdown-submenu">
-                                    <a href="#"><i class="fa fa-circle-o"></i><span>Identificación de peligros</span></a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="../Planear/index_MetIdentificacionRiesgos.aspx"><i class="fa fa-circle-o"></i><span>Metodología para la identificación de riesgos</span></a></li>
-                                        <li><a href="../Planear/index_MatrizRiesgos.aspx"><i class="fa fa-circle-o"></i><span>Matriz de Riesgos</span></a></li>
-                                        <li><a href="#"><i class="fa fa-circle-o"></i><span>Estructura para identificación de peligros</span><span class="label bg-yellow">Fase desarrollo</span></a></li>
-                                    </ul>
-                                </li>
+								<li class="dropdown-submenu">
+									<a href="#"><i class="fa fa-circle-o"></i><span>Capacitación y entrenamiento.</span></a>
+									<ul class="dropdown-menu">
+										<li><a href="#"><i class="fa fa-circle-o"></i><span>Programa de Capacitación Anual</span></a></li>
+										<li><a href="../Planear/index_PlanCapacitacion.aspx"><i class="fa fa-circle-o"></i><span>Plan de Capacitación, Matriz de Capacitación</span></a></li>
+										<li><a href="../Planear/index_PlanInduccion.aspx"><i class="fa fa-circle-o"></i><span>Programa de Inducción y reinducción</span></a></li>
+									</ul>
+								</li>
 
-                                <li class="dropdown-submenu">
-                                    <a href="#"><i class="fa fa-circle-o"></i><span>Requisitos Legales</span></a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="../Planear/index_MatrizLegal.aspx"><i class="fa fa-circle-o"></i><span>Matriz Legal</span></a></li>
-                                        <li><a href="#"><i class="fa fa-circle-o"></i><span>Reglamento Higiene y Salud</span></a></li>
-                                    </ul>
-                                </li>
+								<li class="dropdown-submenu">
+									<a href="#"><i class="fa fa-circle-o"></i><span>Identificación de peligros</span></a>
+									<ul class="dropdown-menu">
+										<li><a href="../Planear/index_MetIdentificacionRiesgos.aspx"><i class="fa fa-circle-o"></i><span>Metodología para la identificación de riesgos</span></a></li>
+										<li><a href="../Planear/index_MatrizRiesgos.aspx"><i class="fa fa-circle-o"></i><span>Matriz de Riesgos</span></a></li>
+										<li><a href="#"><i class="fa fa-circle-o"></i><span>Estructura para identificación de peligros</span><span class="label bg-yellow">Fase desarrollo</span></a></li>
+									</ul>
+								</li>
+
+								<li class="dropdown-submenu">
+									<a href="#"><i class="fa fa-circle-o"></i><span>Requisitos Legales</span></a>
+									<ul class="dropdown-menu">
+										<li><a href="../Planear/index_MatrizLegal.aspx"><i class="fa fa-circle-o"></i><span>Matriz Legal</span></a></li>
+										<li><a href="#"><i class="fa fa-circle-o"></i><span>Reglamento Higiene y Salud</span></a></li>
+									</ul>
+								</li>
 
 
-                                <li class="dropdown-submenu">
-                                    <a href="#"><i class="fa fa-circle-o"></i><span>Proveedores y Contratistas</span></a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="../Planear/ValidacionProvCont.aspx"><i class="fa fa-circle-o"></i><span>Validación para seleccionar Proveedores y/o Contratistas</span></a></li>
-                                    </ul>
-                                </li>
+								<li class="dropdown-submenu">
+									<a href="#"><i class="fa fa-circle-o"></i><span>Proveedores y Contratistas</span></a>
+									<ul class="dropdown-menu">
+										<li><a href="../Planear/ValidacionProvCont.aspx"><i class="fa fa-circle-o"></i><span>Validación para seleccionar Proveedores y/o Contratistas</span></a></li>
+									</ul>
+								</li>
 
-                            </ul>
-                        </li>
+							</ul>
+						</li>
 
-                        <%--Hacer--%>
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-list-ol"></i><span>Hacer</span><span class="caret"></span></a>
+						<%--Hacer--%>
+						<li class="dropdown">
+							<a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-list-ol"></i><span>Hacer</span><span class="caret"></span></a>
 
-                            <ul class="dropdown-menu dropdown-menu-right">
-                                <li class="dropdown-submenu">
-                                    <a href="#"><i class="fa fa-circle-o"></i><span>Gestiones Laborales</span></a>
+							<ul class="dropdown-menu dropdown-menu-right">
+								<li class="dropdown-submenu">
+									<a href="#"><i class="fa fa-circle-o"></i><span>Gestiones Laborales</span></a>
 
-                                    <ul class="dropdown-menu">
-                                        <li><a href="../Hacer/index_GestionLaboral.aspx"><i class="fa fa-files-o"></i><span>Gestiones Laborales</span></a></li>
-                                    </ul>
-                                </li>
+									<ul class="dropdown-menu">
+										<li><a href="../Hacer/index_GestionLaboral.aspx"><i class="fa fa-files-o"></i><span>Gestiones Laborales</span></a></li>
+									</ul>
+								</li>
 
-                                <li class="dropdown-submenu">
-                                    <a href="#"><i class="fa fa-circle-o"></i><span>Control Operacional</span></a>
+								<li class="dropdown-submenu">
+									<a href="#"><i class="fa fa-circle-o"></i><span>Control Operacional</span></a>
 
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#"><i class="fa fa-circle-o"></i><span>Procedimientos operativos</span></a></li>
-                                    </ul>
-                                </li>
+									<ul class="dropdown-menu">
+										<li><a href="#"><i class="fa fa-circle-o"></i><span>Procedimientos operativos</span></a></li>
+									</ul>
+								</li>
 
-                                <li class="dropdown-submenu">
-                                    <a href="#"><i class="fa fa-circle-o"></i><span>Inspecciones de seguridad</span></a>
+								<li class="dropdown-submenu">
+									<a href="#"><i class="fa fa-circle-o"></i><span>Inspecciones de seguridad</span></a>
 
-                                    <ul class="dropdown-menu">
-                                        <li><a href="../Hacer/index_Inspecciones.aspx"><i class="fa fa-circle-o"></i><span>Inspecciones</span></a></li>
-                                        <li><a href="../Hacer/index_ProgramaInspecciones.aspx"><i class="fa fa-circle-o"></i><span>Programa de Inspecciones</span></a></li>
-                                    </ul>
-                                </li>
+									<ul class="dropdown-menu">
+										<li><a href="../Hacer/index_Inspecciones.aspx"><i class="fa fa-circle-o"></i><span>Inspecciones</span></a></li>
+										<li><a href="../Hacer/index_ProgramaInspecciones.aspx"><i class="fa fa-circle-o"></i><span>Programa de Inspecciones</span></a></li>
+									</ul>
+								</li>
 
-                                <li class="dropdown-submenu">
-                                    <a href="../Hacer/index_ReporteTrabajadores.aspx"><i class="fa fa-circle-o"></i><span>Reportes de los trabajadores</span></a>
-                                </li>
+								<li class="dropdown-submenu">
+									<a href="../Hacer/index_ReporteTrabajadores.aspx"><i class="fa fa-circle-o"></i><span>Reportes de los trabajadores</span></a>
+								</li>
 
-                                <li class="dropdown-submenu">
-                                    <a href="#"><i class="fa fa-circle-o"></i><span>Seguridad y Salud en el Trabajo</span></a>
+								<li class="dropdown-submenu">
+									<a href="#"><i class="fa fa-circle-o"></i><span>Seguridad y Salud en el Trabajo</span></a>
 
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#"><i class="fa fa-circle-o"></i><span>Programa EPP</span></a></li>
-                                        <li><a href="../Hacer/index_Inventario_EPP.aspx"><i class="fa fa-circle-o"></i><span>Inventario EPP</span></a></li>
-                                        <li><a href="../Hacer/index_PlanillaEntregaEpp.aspx"><i class="fa fa-circle-o"></i><span>Planilla Entrega de Epp</span></a></li>
-                                        <li><a href="#"><i class="fa fa-circle-o"></i><span>Inspección para el Control y uso de EPP</span></a></li>
-                                        <li><a href="#"><i class="fa fa-circle-o"></i><span>Señalización</span></a></li>
-                                        <li><a href="#"><i class="fa fa-circle-o"></i><span>Programa de Vigilancia Epidemiológica</span></a></li>
-                                        <li><a href="../Hacer/index_IdentificacionPeligros.aspx"><i class="fa fa-circle-o"></i><span>Identificación de riesgos</span></a></li>
-                                        <li><a href="../Hacer/index_EvaluacionRiesgo.aspx"><i class="fa fa-circle-o"></i><span>Evaluación de riesgos</span></a></li>
-                                    </ul>
-                                </li>
+									<ul class="dropdown-menu">
+										<li><a href="#"><i class="fa fa-circle-o"></i><span>Programa EPP</span></a></li>
+										<li><a href="../Hacer/index_Inventario_EPP.aspx"><i class="fa fa-circle-o"></i><span>Inventario EPP</span></a></li>
+										<li><a href="../Hacer/index_PlanillaEntregaEpp.aspx"><i class="fa fa-circle-o"></i><span>Planilla Entrega de Epp</span></a></li>
+										<li><a href="#"><i class="fa fa-circle-o"></i><span>Inspección para el Control y uso de EPP</span></a></li>
+										<li><a href="#"><i class="fa fa-circle-o"></i><span>Señalización</span></a></li>
+										<li><a href="#"><i class="fa fa-circle-o"></i><span>Programa de Vigilancia Epidemiológica</span></a></li>
+										<li><a href="../Hacer/index_IdentificacionPeligros.aspx"><i class="fa fa-circle-o"></i><span>Identificación de riesgos</span></a></li>
+										<li><a href="../Hacer/index_EvaluacionRiesgo.aspx"><i class="fa fa-circle-o"></i><span>Evaluación de riesgos</span></a></li>
+									</ul>
+								</li>
 
-                                <li class="dropdown-submenu">
-                                    <a href="../Hacer/index_DescripcionSocioDemografica.aspx"><i class="fa fa-circle-o"></i><span>Descripción Sociodemográfica</span></a>
-                                </li>
+								<li class="dropdown-submenu">
+									<a href="../Hacer/index_DescripcionSocioDemografica.aspx"><i class="fa fa-circle-o"></i><span>Descripción Sociodemográfica</span></a>
+								</li>
 
-                                <li class="dropdown-submenu">
-                                    <a href="#"><i class="fa fa-circle-o"></i><span>Gestión de la Salud</span></a>
+								<li class="dropdown-submenu">
+									<a href="#"><i class="fa fa-circle-o"></i><span>Gestión de la Salud</span></a>
 
-                                    <ul class="dropdown-menu">
-                                        <li><a href="../Hacer/index_ExamenLaboral.aspx"><i class="fa fa-circle-o"></i><span>Exámenes Laborales</span></a></li>
-                                        <li><a href="../Hacer/index_VigilanciaEpidemiologica.aspx"><i class="fa fa-circle-o"></i><span>Vigilancia Epidemiológica</span></a></li>
-                                        <li><a href="../Hacer/index_PerfilCargo.aspx"><i class="fa fa-circle-o"></i><span>Perfiles de Cargo</span></a></li>
-                                        <li><a href="#"><i class="fa fa-circle-o"></i><span>Documento de Reubicación</span></a></li>
-                                        <li><a href="#"><i class="fa fa-circle-o"></i><span>Readaptación Laboral</span></a></li>
-                                    </ul>
-                                </li>
+									<ul class="dropdown-menu">
+										<li><a href="../Hacer/index_ExamenLaboral.aspx"><i class="fa fa-circle-o"></i><span>Exámenes Laborales</span></a></li>
+										<li><a href="../Hacer/index_VigilanciaEpidemiologica.aspx"><i class="fa fa-circle-o"></i><span>Vigilancia Epidemiológica</span></a></li>
+										<li><a href="../Hacer/index_PerfilCargo.aspx"><i class="fa fa-circle-o"></i><span>Perfiles de Cargo</span></a></li>
+										<li><a href="#"><i class="fa fa-circle-o"></i><span>Documento de Reubicación</span></a></li>
+										<li><a href="#"><i class="fa fa-circle-o"></i><span>Readaptación Laboral</span></a></li>
+									</ul>
+								</li>
 
-                                <li class="dropdown-submenu">
-                                    <a href="#"><i class="fa fa-circle-o"></i><span>Accidentes, incidentes<br />
-                                        y enfermedades Laborales</span></a>
+								<li class="dropdown-submenu">
+									<a href="#"><i class="fa fa-circle-o"></i><span>Accidentes, incidentes<br />
+										y enfermedades Laborales</span></a>
 
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#"><i class="fa fa-circle-o"></i><span>Procedimiento de investigación de Accidentes<br />
-                                            e Incidentes</span></a></li>
-                                        <li><a href="../Hacer/index_InvestigacionAccidente.aspx"><i class="fa fa-circle-o"></i><span>Investigación de Accidente Laboral</span></a></li>
-                                        <li><a href="../Hacer/index_AccidenteLaboral.aspx"><i class="fa fa-circle-o"></i><span>Registro de Accidentes Laborales</span></a></li>
-                                        <li><a href="../Hacer/index_InvestigacionIncidente.aspx"><i class="fa fa-circle-o"></i><span>Investigación de Incidente Laborales</span></a></li>
-                                        <li><a href="../Hacer/index_IncidenteLaboral.aspx"><i class="fa fa-circle-o"></i><span>Registro de Incidentes Laborales</span></a></li>
-                                        <li><a href="../Hacer/index_IndiceAccidentalidad.aspx"><i class="fa fa-circle-o"></i><span>Índices de Accidentalidad</span></a></li>
-                                        <li><a href="#"><i class="fa fa-circle-o"></i><span>Lecciones aprendidas</span></a></li>
-                                    </ul>
-                                </li>
+									<ul class="dropdown-menu">
+										<li><a href="#"><i class="fa fa-circle-o"></i><span>Procedimiento de investigación de Accidentes<br />
+											e Incidentes</span></a></li>
+										<li><a href="../Hacer/index_InvestigacionAccidente.aspx"><i class="fa fa-circle-o"></i><span>Investigación de Accidente Laboral</span></a></li>
+										<li><a href="../Hacer/index_AccidenteLaboral.aspx"><i class="fa fa-circle-o"></i><span>Registro de Accidentes Laborales</span></a></li>
+										<li><a href="../Hacer/index_InvestigacionIncidente.aspx"><i class="fa fa-circle-o"></i><span>Investigación de Incidente Laborales</span></a></li>
+										<li><a href="../Hacer/index_IncidenteLaboral.aspx"><i class="fa fa-circle-o"></i><span>Registro de Incidentes Laborales</span></a></li>
+										<li><a href="../Hacer/index_IndiceAccidentalidad.aspx"><i class="fa fa-circle-o"></i><span>Índices de Accidentalidad</span></a></li>
+										<li><a href="#"><i class="fa fa-circle-o"></i><span>Lecciones aprendidas</span></a></li>
+									</ul>
+								</li>
 
-                                <li class="dropdown-submenu">
-                                    <a href="#"><i class="fa fa-circle-o"></i><span>Comunicación, Participación y Consulta</span></a>
+								<li class="dropdown-submenu">
+									<a href="#"><i class="fa fa-circle-o"></i><span>Comunicación, Participación y Consulta</span></a>
 
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#"><i class="fa fa-circle-o"></i><span>Plan de Comunicaciones</span></a></li>
-                                        <li><a href="#"><i class="fa fa-circle-o"></i><span>Programa de motivación en SST</span></a></li>
-                                    </ul>
-                                </li>
+									<ul class="dropdown-menu">
+										<li><a href="#"><i class="fa fa-circle-o"></i><span>Plan de Comunicaciones</span></a></li>
+										<li><a href="#"><i class="fa fa-circle-o"></i><span>Programa de motivación en SST</span></a></li>
+									</ul>
+								</li>
 
-                                <li class="dropdown-submenu">
-                                    <a href="#"><i class="fa fa-circle-o"></i><span>Prevención y respuesta ante emergencias</span></a>
+								<li class="dropdown-submenu">
+									<a href="#"><i class="fa fa-circle-o"></i><span>Prevención y respuesta ante emergencias</span></a>
 
-                                    <ul class="dropdown-menu">
-                                        <li><a href="../Hacer/index_DescGeneralEmpresa.aspx"><i class="fa fa-circle-o"></i><span>Descripción General de La Empresa</span></a></li>
-                                        <li><a href="../Hacer/index_InventarioRiesgos.aspx"><i class="fa fa-circle-o"></i><span>Inventario de Riesgos</span></a></li>
-                                        <li><a href="../Hacer/index_InventarioRecursos.aspx"><i class="fa fa-circle-o"></i><span>Inventario de Recursos</span></a></li>
-                                        <li><a href="../Hacer/index_BrigadaEmergencias.aspx"><i class="fa fa-circle-o"></i><span>Brigadas de Emergencia</span></a></li>
-                                        <li><a href="../Hacer/index_Plan_Emergencias.aspx"><i class="fa fa-circle-o"></i><span>Plan de Emergencias</span></a></li>
-                                        <li><a href="../Hacer/index_Plan_Evacuacion.aspx"><i class="fa fa-circle-o"></i><span>Plan de Evacuación</span></a></li>
-                                        <li><a href="#"><i class="fa fa-circle-o"></i><span>Plan de prevención</span></a></li>
-                                        <li><a href="#"><i class="fa fa-circle-o"></i><span>Plan de ayuda mutua</span></a></li>
-                                        <li><a href="#"><i class="fa fa-circle-o"></i><span>Programa de simulacros</span></a></li>
-                                    </ul>
-                                </li>
+									<ul class="dropdown-menu">
+										<li><a href="../Hacer/index_DescGeneralEmpresa.aspx"><i class="fa fa-circle-o"></i><span>Descripción General de La Empresa</span></a></li>
+										<li><a href="../Hacer/index_InventarioRiesgos.aspx"><i class="fa fa-circle-o"></i><span>Inventario de Riesgos</span></a></li>
+										<li><a href="../Hacer/index_InventarioRecursos.aspx"><i class="fa fa-circle-o"></i><span>Inventario de Recursos</span></a></li>
+										<li><a href="../Hacer/index_BrigadaEmergencias.aspx"><i class="fa fa-circle-o"></i><span>Brigadas de Emergencia</span></a></li>
+										<li><a href="../Hacer/index_Plan_Emergencias.aspx"><i class="fa fa-circle-o"></i><span>Plan de Emergencias</span></a></li>
+										<li><a href="../Hacer/index_Plan_Evacuacion.aspx"><i class="fa fa-circle-o"></i><span>Plan de Evacuación</span></a></li>
+										<li><a href="#"><i class="fa fa-circle-o"></i><span>Plan de prevención</span></a></li>
+										<li><a href="#"><i class="fa fa-circle-o"></i><span>Plan de ayuda mutua</span></a></li>
+										<li><a href="#"><i class="fa fa-circle-o"></i><span>Programa de simulacros</span></a></li>
+									</ul>
+								</li>
 
-                                <li class="dropdown-submenu">
-                                    <a href="#"><i class="fa fa-circle-o"></i><span>Gestión del cambio</span></a>
+								<li class="dropdown-submenu">
+									<a href="#"><i class="fa fa-circle-o"></i><span>Gestión del cambio</span></a>
 
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#"><i class="fa fa-circle-o"></i><span>Programa del gestión del cambio</span></a></li>
-                                    </ul>
-                                </li>
+									<ul class="dropdown-menu">
+										<li><a href="#"><i class="fa fa-circle-o"></i><span>Programa del gestión del cambio</span></a></li>
+									</ul>
+								</li>
 
-                                <li class="dropdown-submenu">
-                                    <a href="#"><i class="fa fa-circle-o"></i><span>Adquisiciones</span></a>
+								<li class="dropdown-submenu">
+									<a href="#"><i class="fa fa-circle-o"></i><span>Adquisiciones</span></a>
 
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#"><i class="fa fa-circle-o"></i><span>Programa de selección y evaluación de proveedores</span></a></li>
-                                    </ul>
-                                </li>
+									<ul class="dropdown-menu">
+										<li><a href="#"><i class="fa fa-circle-o"></i><span>Programa de selección y evaluación de proveedores</span></a></li>
+									</ul>
+								</li>
 
-                                <li class="dropdown-submenu">
-                                    <a href="#"><i class="fa fa-circle-o"></i><span>Administración de contratistas</span></a>
+								<li class="dropdown-submenu">
+									<a href="#"><i class="fa fa-circle-o"></i><span>Administración de contratistas</span></a>
 
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#"><i class="fa fa-circle-o"></i><span>Manual de contratistas y proveedores</span></a></li>
-                                    </ul>
-                                </li>
+									<ul class="dropdown-menu">
+										<li><a href="#"><i class="fa fa-circle-o"></i><span>Manual de contratistas y proveedores</span></a></li>
+									</ul>
+								</li>
 
-                                <li class="dropdown-submenu">
-                                    <a href="#"><i class="fa fa-circle-o"></i><span>Obligaciones</span></a>
+								<li class="dropdown-submenu">
+									<a href="#"><i class="fa fa-circle-o"></i><span>Obligaciones</span></a>
 
-                                    <ul class="dropdown-menu">
-                                        <li><a href="../Hacer/index_Obligaciones.aspx"><i class="fa fa-navicon"></i><span>Obligaciones</span></a></li>
-                                    </ul>
-                                </li>
+									<ul class="dropdown-menu">
+										<li><a href="../Hacer/index_Obligaciones.aspx"><i class="fa fa-navicon"></i><span>Obligaciones</span></a></li>
+									</ul>
+								</li>
 
-                                <li class="dropdown-submenu">
-                                    <a href="#"><i class="fa fa-circle-o"></i><span>Alarmas</span></a>
+								<li class="dropdown-submenu">
+									<a href="#"><i class="fa fa-circle-o"></i><span>Alarmas</span></a>
 
-                                    <ul class="dropdown-menu">
-                                        <li><a href="../Hacer/index_Alarmas.aspx"><i class="fa fa-bell"></i><span>Alarmas</span></a></li>
-                                    </ul>
-                                </li>
+									<ul class="dropdown-menu">
+										<li><a href="../Hacer/index_Alarmas.aspx"><i class="fa fa-bell"></i><span>Alarmas</span></a></li>
+									</ul>
+								</li>
 
-                                <li class="dropdown-submenu">
-                                    <a href="#"><i class="fa fa-circle-o"></i><span>Mapa de Riesgos</span></a>
+								<li class="dropdown-submenu">
+									<a href="#"><i class="fa fa-circle-o"></i><span>Mapa de Riesgos</span></a>
 
-                                    <ul class="dropdown-menu">
-                                        <li><a href="../Hacer/index_MapaRiesgos.aspx"><i class="fa fa-map-o"></i><span>Mapa de Riesgos</span></a></li>
-                                    </ul>
-                                </li>
+									<ul class="dropdown-menu">
+										<li><a href="../Hacer/index_MapaRiesgos.aspx"><i class="fa fa-map-o"></i><span>Mapa de Riesgos</span></a></li>
+									</ul>
+								</li>
 
-                                <li class="dropdown-submenu">
-                                    <a href="#"><i class="fa fa-circle-o"></i><span>Señalización</span></a>
+								<li class="dropdown-submenu">
+									<a href="#"><i class="fa fa-circle-o"></i><span>Señalización</span></a>
 
-                                    <ul class="dropdown-menu">
-                                        <li><a href="../Hacer/index_Senalizacion.aspx"><i class="fa fa-map-o"></i><span>Señalización</span></a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
+									<ul class="dropdown-menu">
+										<li><a href="../Hacer/index_Senalizacion.aspx"><i class="fa fa-map-o"></i><span>Señalización</span></a></li>
+									</ul>
+								</li>
+							</ul>
+						</li>
 
-                        <%--Verificar--%>
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-check-square-o"></i><span>Verificar</span><span class="caret"></span></a>
+						<%--Verificar--%>
+						<li class="dropdown">
+							<a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-check-square-o"></i><span>Verificar</span><span class="caret"></span></a>
 
-                            <ul class="dropdown-menu dropdown-menu-right">
+							<ul class="dropdown-menu dropdown-menu-right">
 
-                                <li class="dropdown-submenu">
-                                    <a href="../Verificar/index_Indicadores.aspx"><i class="fa fa-circle-o"></i><span>Indicadores de la Empresa</span></a>
-                                </li>
+								<li class="dropdown-submenu">
+									<a href="../Verificar/index_Indicadores.aspx"><i class="fa fa-circle-o"></i><span>Indicadores de la Empresa</span></a>
+								</li>
 
-                                <li class="dropdown-submenu">
-                                    <a href="#"><i class="fa fa-circle-o"></i><span>Auditoria de cumplimiento del SGSST</span></a>
+								<li class="dropdown-submenu">
+									<a href="#"><i class="fa fa-circle-o"></i><span>Auditoria de cumplimiento del SGSST</span></a>
 
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#"><i class="fa fa-circle-o"></i><span>Programa de auditoria</span></a></li>
+									<ul class="dropdown-menu">
+										<li><a href="#"><i class="fa fa-circle-o"></i><span>Programa de auditoria</span></a></li>
 
-                                        <li><a href="#"><i class="fa fa-circle-o"></i><span>Planificación</span></a></li>
-                                    </ul>
-                                </li>
+										<li><a href="#"><i class="fa fa-circle-o"></i><span>Planificación</span></a></li>
+									</ul>
+								</li>
 
-                                <li class="dropdown-submenu">
-                                    <a href="#"><i class="fa fa-circle-o"></i><span>Revisión por la alta dirección</span></a>
+								<li class="dropdown-submenu">
+									<a href="#"><i class="fa fa-circle-o"></i><span>Revisión por la alta dirección</span></a>
 
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#"><i class="fa fa-circle-o"></i><span>Comité de la alta dirección</span></a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
+									<ul class="dropdown-menu">
+										<li><a href="#"><i class="fa fa-circle-o"></i><span>Comité de la alta dirección</span></a></li>
+									</ul>
+								</li>
+							</ul>
+						</li>
 
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-repeat"></i><span>Actuar</span><span class="caret"></span></a>
+						<li class="dropdown">
+							<a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-repeat"></i><span>Actuar</span><span class="caret"></span></a>
 
-                            <ul class="dropdown-menu dropdown-menu-right">
-                                <li class="dropdown-submenu">
-                                    <a href="#"><i class="fa fa-circle-o"></i><span>Acciones correctivas</span></a>
+							<ul class="dropdown-menu dropdown-menu-right">
+								<li class="dropdown-submenu">
+									<a href="#"><i class="fa fa-circle-o"></i><span>Acciones correctivas</span></a>
 
-                                    <ul class="dropdown-menu dropdown-menu-left">
-                                        <li><a href="#"><i class="fa fa-circle-o"></i><span>Instructivo para las acciones preventivas y correctivas</span></a></li>
-                                        <li><a href="#"><i class="fa fa-circle-o"></i><span>Análisis de causalidad</span></a></li>
-                                        <li><a href="#"><i class="fa fa-circle-o"></i><span>Formato de acciones preventivas y acciones correctivas</span></a></li>
-                                    </ul>
-                                </li>
+									<ul class="dropdown-menu dropdown-menu-left">
+										<li><a href="#"><i class="fa fa-circle-o"></i><span>Instructivo para las acciones preventivas y correctivas</span></a></li>
+										<li><a href="#"><i class="fa fa-circle-o"></i><span>Análisis de causalidad</span></a></li>
+										<li><a href="#"><i class="fa fa-circle-o"></i><span>Formato de acciones preventivas y acciones correctivas</span></a></li>
+									</ul>
+								</li>
 
-                                <li class="dropdown-submenu">
-                                    <a href="#"><i class="fa fa-circle-o"></i><span>Mejora continua</span></a>
+								<li class="dropdown-submenu">
+									<a href="#"><i class="fa fa-circle-o"></i><span>Mejora continua</span></a>
 
-                                    <ul class="dropdown-menu dropdown-menu-left">
-                                        <li><a href="#"><i class="fa fa-circle-o"></i><span>Revisión de las acciones correctivas o preventivas</span></a></li>
-                                        <li><a href="#"><i class="fa fa-circle-o"></i><span>Comunicación de resultados de las acciones<br />preventivas</span></a></li>
-                                        <li><a href="#"><i class="fa fa-circle-o"></i><span>Comunicación de resultados de las acciones<br />correctivas</span></a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
+									<ul class="dropdown-menu dropdown-menu-left">
+										<li><a href="#"><i class="fa fa-circle-o"></i><span>Revisión de las acciones correctivas o preventivas</span></a></li>
+										<li><a href="#"><i class="fa fa-circle-o"></i><span>Comunicación de resultados de las acciones<br />preventivas</span></a></li>
+										<li><a href="#"><i class="fa fa-circle-o"></i><span>Comunicación de resultados de las acciones<br />correctivas</span></a></li>
+									</ul>
+								</li>
+							</ul>
+						</li>
 
-                    </ul>
+					</ul>
+
+                    
+
+
 				</asp:PlaceHolder>
 
 				<ul class="nav navbar-nav navbar-right">

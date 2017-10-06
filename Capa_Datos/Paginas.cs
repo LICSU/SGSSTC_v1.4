@@ -84,6 +84,7 @@
         public static Paginas Create_PuestoTrabajo { get { return new Paginas("Create_PuestoTrabajo.aspx"); } }
         public static Paginas create_PlanillaEntregaEpp { get { return new Paginas("create_PlanillaEntregaEpp.aspx"); } }
         public static Paginas create_VigilanciaEpidemiologica { get { return new Paginas("create_VigilanciaEpidemiologica.aspx"); } }
+        public static Paginas create_DocumentoCorrespondencia { get { return new Paginas("create_DocumentoCorrespondencia.aspx"); } }
 
 
         public static Paginas Update_Empresa { get { return new Paginas("Update_Empresa.aspx"); } }

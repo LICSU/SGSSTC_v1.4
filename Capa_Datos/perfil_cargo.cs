@@ -18,6 +18,7 @@ namespace Capa_Datos
         public perfil_cargo()
         {
             this.trabajador = new HashSet<trabajador>();
+            this.perfil_medico = new HashSet<perfil_medico>();
         }
     
         public int id_perfil_cargo { get; set; }
@@ -30,5 +31,7 @@ namespace Capa_Datos
         public virtual empresa empresa { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<trabajador> trabajador { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<perfil_medico> perfil_medico { get; set; }
     }
 }

@@ -109,7 +109,7 @@ namespace SGSST
             String[] valores = {
                 txtNomEmpresa.Text,
                 "-",
-                "-",
+                txtNitEmpresa.Text,
                 txtemailEmpresa.Text,
                 txtRepresentante.Text,
                 "",

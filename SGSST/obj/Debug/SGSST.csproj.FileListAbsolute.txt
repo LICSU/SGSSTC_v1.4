@@ -17,6 +17,7 @@ C:\Users\rober\Documents\GitHub\SGSSTC_v1.4\SGSST\obj\Debug\SGSST.csprojResolveA
 C:\Users\rober\Documents\GitHub\SGSSTC_v1.4\SGSST\obj\Debug\SGSST.csproj.CoreCompileInputs.cache
 C:\Users\rober\Documents\GitHub\SGSSTC_v1.4\SGSST\obj\Debug\SGSST.dll
 C:\Users\rober\Documents\GitHub\SGSSTC_v1.4\SGSST\obj\Debug\SGSST.pdb
+C:\Users\Jezuz\Desktop\Repository\SGSSTCV1.4\SGSST\obj\Debug\SGSST.csprojResolveAssemblyReference.cache
 C:\Users\Jezuz\Desktop\Repository\SGSSTCV1.4\SGSST\bin\ApplicationInsights.config
 C:\Users\Jezuz\Desktop\Repository\SGSSTCV1.4\SGSST\bin\SGSST.dll.config
 C:\Users\Jezuz\Desktop\Repository\SGSSTCV1.4\SGSST\bin\SGSST.dll
@@ -32,6 +33,5 @@ C:\Users\Jezuz\Desktop\Repository\SGSSTCV1.4\SGSST\bin\Capa_Datos.pdb
 C:\Users\Jezuz\Desktop\Repository\SGSSTCV1.4\SGSST\bin\Capa_Datos.dll.config
 C:\Users\Jezuz\Desktop\Repository\SGSSTCV1.4\SGSST\bin\Microsoft.AspNet.TelemetryCorrelation.xml
 C:\Users\Jezuz\Desktop\Repository\SGSSTCV1.4\SGSST\bin\System.Diagnostics.DiagnosticSource.xml
-C:\Users\Jezuz\Desktop\Repository\SGSSTCV1.4\SGSST\obj\Debug\SGSST.csprojResolveAssemblyReference.cache
 C:\Users\Jezuz\Desktop\Repository\SGSSTCV1.4\SGSST\obj\Debug\SGSST.dll
 C:\Users\Jezuz\Desktop\Repository\SGSSTCV1.4\SGSST\obj\Debug\SGSST.pdb

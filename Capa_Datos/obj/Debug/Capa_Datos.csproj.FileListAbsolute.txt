@@ -84,6 +84,5 @@ C:\Users\Jezuz\Desktop\Repository\SGSSTCV1.4\Capa_Datos\bin\Debug\LinqToExcel.dl
 C:\Users\Jezuz\Desktop\Repository\SGSSTCV1.4\Capa_Datos\bin\Debug\Remotion.Data.Linq.dll
 C:\Users\Jezuz\Desktop\Repository\SGSSTCV1.4\Capa_Datos\bin\Debug\Remotion.dll
 C:\Users\Jezuz\Desktop\Repository\SGSSTCV1.4\Capa_Datos\bin\Debug\Remotion.Interfaces.dll
-C:\Users\Jezuz\Desktop\Repository\SGSSTCV1.4\Capa_Datos\obj\Debug\Capa_Datos.csprojResolveAssemblyReference.cache
 C:\Users\Jezuz\Desktop\Repository\SGSSTCV1.4\Capa_Datos\obj\Debug\Capa_Datos.dll
 C:\Users\Jezuz\Desktop\Repository\SGSSTCV1.4\Capa_Datos\obj\Debug\Capa_Datos.pdb

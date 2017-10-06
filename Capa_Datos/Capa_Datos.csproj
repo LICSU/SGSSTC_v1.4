@@ -269,6 +269,9 @@
     <Compile Include="perfil_cargo.cs">
       <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
     </Compile>
+    <Compile Include="perfil_medico.cs">
+      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
+    </Compile>
     <Compile Include="plan.cs">
       <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
     </Compile>
@@ -316,9 +319,6 @@
       <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
     </Compile>
     <Compile Include="sucursal.cs">
-      <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sysdiagrams.cs">
       <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
     </Compile>
     <Compile Include="Tabla.cs" />
