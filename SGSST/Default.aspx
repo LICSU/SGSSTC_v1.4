@@ -363,7 +363,7 @@
                                 </asp:PlaceHolder>
 
                                 <div class="row text-left">
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <h4>Nombre de la Empresa</h4>
 
                                         <asp:TextBox runat="server" ID="txtNomEmpresa" CssClass="form-control" PlaceHolder="Nombre"
@@ -374,14 +374,25 @@
                                             ValidationGroup="ValidationAdd" ErrorMessage="<p>Campo Obligatorio!</p>" />
                                     </div>
 
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
+                                        <h4>NIT</h4>
+
+                                        <asp:TextBox runat="server" ID="txtNitEmpresa" CssClass="form-control" PlaceHolder="Nit"
+                                            MaxLength="50"></asp:TextBox>
+
+                                        <asp:RequiredFieldValidator SetFocusOnError="true" runat="server" Font-Size="10" Font-Bold="true"
+                                            Display="Dynamic" ForeColor="#B50128" ControlToValidate="txtNitEmpresa"
+                                            ValidationGroup="ValidationAdd" ErrorMessage="<p>Campo Obligatorio!</p>" />
+                                    </div>
+
+                                    <div class="col-md-3">
                                         <h4>Representante</h4>
 
                                         <asp:TextBox runat="server" ID="txtRepresentante" CssClass="form-control" PlaceHolder="Representante"
                                             MaxLength="100"></asp:TextBox>
                                     </div>
 
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <h4>Teléfono</h4>
 
                                         <asp:TextBox runat="server" ID="txtTelFijo" CssClass="form-control" MaxLength="50"></asp:TextBox>
