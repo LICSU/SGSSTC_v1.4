@@ -194,6 +194,17 @@
 									</ul>
 								</li>
 
+								<li class="dropdown-submenu">
+									<a href="#"><i class="fa fa-circle-o"></i><span>Convivencia Laboral</span></a>
+									<ul class="dropdown-menu">
+										<li><a href="../Planear/index_PolPrevAcoLab.aspx"><i class="fa fa-circle-o"></i><span>Pólitica de Prevencion de Acoso Laboral</span></a></li>
+										<li><a href="../Planear/ManualConvivencia.aspx"><i class="fa fa-circle-o"></i><span>Manual de Convivencia</span></a></li>
+										<li><a href="../Planear/ComiteConvivencia.aspx"><i class="fa fa-circle-o"></i><span>Acta de Constitución del Comité de Convivencia</span></a></li>
+										<li><a href="../Planear/-.aspx"><i class="fa fa-circle-o"></i><span>Formato de reunión Comité de convivencia</span></a></li>
+										<li><a href="../Planear/index_Quejas.aspx"><i class="fa fa-circle-o"></i><span>Formato de Quejas</span></a></li>
+									</ul>
+								</li>
+
 							</ul>
 						</li>
 
@@ -418,9 +429,6 @@
 						</li>
 
 					</ul>
-
-                    
-
 
 				</asp:PlaceHolder>
 

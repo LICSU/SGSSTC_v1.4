@@ -86,3 +86,4 @@ C:\Users\Jezuz\Desktop\Repository\SGSSTCV1.4\Capa_Datos\bin\Debug\Remotion.dll
 C:\Users\Jezuz\Desktop\Repository\SGSSTCV1.4\Capa_Datos\bin\Debug\Remotion.Interfaces.dll
 C:\Users\Jezuz\Desktop\Repository\SGSSTCV1.4\Capa_Datos\obj\Debug\Capa_Datos.dll
 C:\Users\Jezuz\Desktop\Repository\SGSSTCV1.4\Capa_Datos\obj\Debug\Capa_Datos.pdb
+C:\Users\Jezuz\Desktop\Repository\SGSSTCV1.4\Capa_Datos\obj\Debug\Capa_Datos.csprojResolveAssemblyReference.cache

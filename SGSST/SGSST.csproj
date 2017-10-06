@@ -1016,6 +1016,7 @@
     <Content Include="source\sistema\MenuPrincipal\VerRespuesta.aspx" />
     <Content Include="source\sistema\MenuPrincipal\ViewMisPreguntas.aspx" />
     <Content Include="source\sistema\MenuPrincipal\ViewPreguntasPares.aspx" />
+    <Content Include="source\sistema\Planear\ComiteConvivencia.aspx" />
     <Content Include="source\sistema\Planear\Create_ActaCierre.aspx" />
     <Content Include="source\sistema\Planear\Create_AperturaElecciones.aspx" />
     <Content Include="source\sistema\Planear\create_DocumentoCorrespondencia.aspx" />
@@ -1048,7 +1049,10 @@
     <Content Include="source\sistema\Planear\index_PlanInduccion.aspx" />
     <Content Include="source\sistema\Planear\index_PlanTrabajo.aspx" />
     <Content Include="source\sistema\Planear\index_Politica_SST.aspx" />
+    <Content Include="source\sistema\Planear\index_PolPrevAcoLab.aspx" />
+    <Content Include="source\sistema\Planear\index_Quejas.aspx" />
     <Content Include="source\sistema\Planear\index_RecursosEconomicos.aspx" />
+    <Content Include="source\sistema\Planear\ManualConvivencia.aspx" />
     <Content Include="source\sistema\Planear\Update_MedidasMatrizLegal.aspx" />
     <Content Include="source\sistema\Planear\Update_MedidasMatrizRiesgos.aspx" />
     <Content Include="source\sistema\Planear\ValidacionProvCont.aspx" />
@@ -1959,6 +1963,13 @@
     <Compile Include="source\sistema\MenuPrincipal\ViewPreguntasPares.aspx.designer.cs">
       <DependentUpon>ViewPreguntasPares.aspx</DependentUpon>
     </Compile>
+    <Compile Include="source\sistema\Planear\ComiteConvivencia.aspx.cs">
+      <DependentUpon>ComiteConvivencia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="source\sistema\Planear\ComiteConvivencia.aspx.designer.cs">
+      <DependentUpon>ComiteConvivencia.aspx</DependentUpon>
+    </Compile>
     <Compile Include="source\sistema\Planear\Create_ActaCierre.aspx.cs">
       <DependentUpon>Create_ActaCierre.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2183,12 +2194,33 @@
     <Compile Include="source\sistema\Planear\index_Politica_SST.aspx.designer.cs">
       <DependentUpon>index_Politica_SST.aspx</DependentUpon>
     </Compile>
+    <Compile Include="source\sistema\Planear\index_PolPrevAcoLab.aspx.cs">
+      <DependentUpon>index_PolPrevAcoLab.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="source\sistema\Planear\index_PolPrevAcoLab.aspx.designer.cs">
+      <DependentUpon>index_PolPrevAcoLab.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="source\sistema\Planear\index_Quejas.aspx.cs">
+      <DependentUpon>index_Quejas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="source\sistema\Planear\index_Quejas.aspx.designer.cs">
+      <DependentUpon>index_Quejas.aspx</DependentUpon>
+    </Compile>
     <Compile Include="source\sistema\Planear\index_RecursosEconomicos.aspx.cs">
       <DependentUpon>index_RecursosEconomicos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="source\sistema\Planear\index_RecursosEconomicos.aspx.designer.cs">
       <DependentUpon>index_RecursosEconomicos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="source\sistema\Planear\ManualConvivencia.aspx.cs">
+      <DependentUpon>ManualConvivencia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="source\sistema\Planear\ManualConvivencia.aspx.designer.cs">
+      <DependentUpon>ManualConvivencia.aspx</DependentUpon>
     </Compile>
     <Compile Include="source\sistema\Planear\Update_MedidasMatrizLegal.aspx.cs">
       <DependentUpon>Update_MedidasMatrizLegal.aspx</DependentUpon>
