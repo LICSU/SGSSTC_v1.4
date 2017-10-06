@@ -73,7 +73,6 @@ C:\Users\rober\Documents\GitHub\SGSSTC_v1.4\Capa_Datos\bin\Debug\Remotion.Interf
 C:\Users\rober\Documents\GitHub\SGSSTC_v1.4\Capa_Datos\obj\Debug\Capa_Datos.csproj.CoreCompileInputs.cache
 C:\Users\rober\Documents\GitHub\SGSSTC_v1.4\Capa_Datos\obj\Debug\Capa_Datos.dll
 C:\Users\rober\Documents\GitHub\SGSSTC_v1.4\Capa_Datos\obj\Debug\Capa_Datos.pdb
-C:\Users\rober\Documents\GitHub\SGSSTC_v1.4\Capa_Datos\obj\Debug\Capa_Datos.csprojResolveAssemblyReference.cache
 C:\Users\Jezuz\Desktop\Repository\SGSSTCV1.4\Capa_Datos\bin\Debug\Capa_Datos.dll.config
 C:\Users\Jezuz\Desktop\Repository\SGSSTCV1.4\Capa_Datos\bin\Debug\Capa_Datos.dll
 C:\Users\Jezuz\Desktop\Repository\SGSSTCV1.4\Capa_Datos\bin\Debug\Capa_Datos.pdb
@@ -87,3 +86,4 @@ C:\Users\Jezuz\Desktop\Repository\SGSSTCV1.4\Capa_Datos\bin\Debug\Remotion.Inter
 C:\Users\Jezuz\Desktop\Repository\SGSSTCV1.4\Capa_Datos\obj\Debug\Capa_Datos.csprojResolveAssemblyReference.cache
 C:\Users\Jezuz\Desktop\Repository\SGSSTCV1.4\Capa_Datos\obj\Debug\Capa_Datos.dll
 C:\Users\Jezuz\Desktop\Repository\SGSSTCV1.4\Capa_Datos\obj\Debug\Capa_Datos.pdb
+C:\Users\rober\Documents\GitHub\SGSSTC_v1.4\Capa_Datos\obj\Debug\Capa_Datos.csprojResolveAssemblyReference.cache

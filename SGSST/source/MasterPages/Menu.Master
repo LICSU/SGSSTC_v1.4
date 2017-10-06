@@ -294,6 +294,13 @@
 											<span>Mecanismos  </span>
 										</a>
 									</li>
+
+                                    <li>
+										<a href="../Planear/index_DocumentoCorrespondencia.aspx"><i class="fa fa-circle-o"></i>
+											<span>Documento de Correspondencia</span>
+											<span class="label bg-green">Fase Beta</span>
+										</a>
+									</li>
 								</ul>
 							</li>
 
@@ -610,6 +617,7 @@
 											<span class="label bg-yellow">Fase En Desarrollo</span>
 										</a>
 									</li>
+                                    
 								</ul>
 							</li>
 

@@ -78,6 +78,7 @@ namespace Capa_Datos
                 else if (_nuevo.GetType() == typeof(evaluacion_riesgo)) { contexto.evaluacion_riesgo.Add(_nuevo); }
                 else if (_nuevo.GetType() == typeof(senalizacion)) { contexto.senalizacion.Add(_nuevo); }
                 else if (_nuevo.GetType() == typeof(rol)) { contexto.rol.Add(_nuevo); }
+                else if (_nuevo.GetType() == typeof(perfil_medico)) { contexto.perfil_medico.Add(_nuevo); }
 
                 contexto.SaveChanges();
             }
@@ -326,6 +327,12 @@ namespace Capa_Datos
                     var Eliminar = new senalizacion { id_senalizacion = _id };
                     contexto.senalizacion.Attach(Eliminar);
                     contexto.senalizacion.Remove(Eliminar);
+                }
+                else if (tabla.GetType() == typeof(perfil_medico))
+                {
+                    var Eliminar = new perfil_medico { id_perfil_medico = _id };
+                    contexto.perfil_medico.Attach(Eliminar);
+                    contexto.perfil_medico.Remove(Eliminar);
                 }
 
                 contexto.SaveChanges();

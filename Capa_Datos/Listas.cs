@@ -146,11 +146,16 @@ namespace Capa_Datos
             DropDownList1.DataBind();
             DropDownList1.Items.Insert(0, new ListItem("Seleccione el Cargo", ""));
         }
-        public static void PerfilCargo(DropDownList DropDownList1)
+        public static void PerfilCargo(DropDownList DropDownList1, int _id_empresa = 0)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             var Consulta = (from c in contexto.perfil_cargo
-                            select new { c.id_perfil_cargo, nombre = c.nombre}).OrderBy(x => x.nombre.Trim()).ToList();
+                            select new { c.id_perfil_cargo, nombre = c.nombre, c.id_empresa}).OrderBy(x => x.nombre.Trim()).ToList();
+
+            if (_id_empresa > 0)
+            {
+                Consulta = Consulta.Where(x => x.id_empresa == _id_empresa).ToList();
+            }
 
             DropDownList1.DataValueField = "id_perfil_cargo";
             DropDownList1.DataTextField = "nombre";

@@ -1018,6 +1018,7 @@
     <Content Include="source\sistema\MenuPrincipal\ViewPreguntasPares.aspx" />
     <Content Include="source\sistema\Planear\Create_ActaCierre.aspx" />
     <Content Include="source\sistema\Planear\Create_AperturaElecciones.aspx" />
+    <Content Include="source\sistema\Planear\create_DocumentoCorrespondencia.aspx" />
     <Content Include="source\sistema\Planear\create_ObjetivosSGSST.aspx" />
     <Content Include="source\sistema\Planear\Create_ComunicadoElecciones.aspx" />
     <Content Include="source\sistema\Planear\Create_ConformacionCopasst.aspx" />
@@ -1030,6 +1031,7 @@
     <Content Include="source\sistema\Planear\Create_RegistroVotantes.aspx" />
     <Content Include="source\sistema\Planear\Create_ResultadoVotos.aspx" />
     <Content Include="source\sistema\Planear\Create_ReunionCopasst.aspx" />
+    <Content Include="source\sistema\Planear\index_DocumentoCorrespondencia.aspx" />
     <Content Include="source\sistema\Planear\index_ObjetivosSGSST.aspx" />
     <Content Include="source\sistema\Planear\index_ActaCopasst.aspx" />
     <Content Include="source\sistema\Planear\index_AsignacionResponsable.aspx" />
@@ -1970,6 +1972,13 @@
     <Compile Include="source\sistema\Planear\Create_AperturaElecciones.aspx.designer.cs">
       <DependentUpon>Create_AperturaElecciones.aspx</DependentUpon>
     </Compile>
+    <Compile Include="source\sistema\Planear\create_DocumentoCorrespondencia.aspx.cs">
+      <DependentUpon>create_DocumentoCorrespondencia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="source\sistema\Planear\create_DocumentoCorrespondencia.aspx.designer.cs">
+      <DependentUpon>create_DocumentoCorrespondencia.aspx</DependentUpon>
+    </Compile>
     <Compile Include="source\sistema\Planear\create_ObjetivosSGSST.aspx.cs">
       <DependentUpon>create_ObjetivosSGSST.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2053,6 +2062,13 @@
     </Compile>
     <Compile Include="source\sistema\Planear\Create_ReunionCopasst.aspx.designer.cs">
       <DependentUpon>Create_ReunionCopasst.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="source\sistema\Planear\index_DocumentoCorrespondencia.aspx.cs">
+      <DependentUpon>index_DocumentoCorrespondencia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="source\sistema\Planear\index_DocumentoCorrespondencia.aspx.designer.cs">
+      <DependentUpon>index_DocumentoCorrespondencia.aspx</DependentUpon>
     </Compile>
     <Compile Include="source\sistema\Planear\index_ObjetivosSGSST.aspx.cs">
       <DependentUpon>index_ObjetivosSGSST.aspx</DependentUpon>
@@ -2232,6 +2248,7 @@
     <Folder Include="archivos\mapas\" />
     <Folder Include="archivos\objetivos_sgsst\" />
     <Folder Include="archivos\obligacion\" />
+    <Folder Include="archivos\perfilmedico\" />
     <Folder Include="archivos\planes\" />
     <Folder Include="archivos\politicasst\" />
     <Folder Include="archivos\puesto_trabajo\" />

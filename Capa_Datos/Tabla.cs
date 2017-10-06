@@ -2468,5 +2468,32 @@ namespace Capa_Datos
             GridView1.DataBind();
         }
         #endregion
+
+        #region PerfilMedico
+        public static void PerfilMedico(GridView GridView1, int id_empresa = 0, int id_cargo = 0, string _nombre = "")
+        {
+            GrupoLiEntities contexto = new GrupoLiEntities();
+            var query = (
+                from PM in contexto.perfil_medico
+                select new
+                {
+                    PM.id_perfil_medico,
+                    PM.nombre,
+                    PM.id_empresa,
+                    PM.descripcion,
+                    PM.id_cargo,
+                    PM.ruta,
+                    empresa = PM.perfil_cargo.empresa.nombre,
+                    cargo = PM.perfil_cargo.nombre
+                }).ToList();
+
+            if (id_empresa != 0) { query = query.Where(x => x.id_empresa == id_empresa).ToList(); }
+            if (id_cargo != 0) { query = query.Where(x => x.id_cargo == id_cargo).ToList(); }
+            if (_nombre != string.Empty) { query = query.Where(x => x.nombre.ToLower().Contains(_nombre.ToLower())).ToList(); }
+
+            GridView1.DataSource = query;
+            GridView1.DataBind();
+        }
+        #endregion
     }
 }
