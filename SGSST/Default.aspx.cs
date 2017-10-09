@@ -115,7 +115,8 @@ namespace SGSST
                 "",
                 txtTelFijo.Text,
                 "0",
-                "-"
+                "0",
+                ""
             };
 
             if (CRUD.AddEmpresaSimple(valores))
@@ -219,15 +220,17 @@ namespace SGSST
         {
             String[] valores = {
                 "Sede Principal - " + nombreEmpresa,
-                "0",
                 ""+IdEmpresa,
                 txtDireccion.Text,
                 txtRepresentante.Text,
                 txtTelFijo.Text,
-                ""
+                "",
+                ddlClase1.SelectedValue,
+                ddlClase2.SelectedValue,
+                ddlClase3.SelectedValue
             };
 
-            if (CRUD.Add_Sucursal_Empresa(valores))
+            if (CRUD.Add_Sucursal_Empresa_2(valores))
             {
                 add_Area_Default(GetterMax.Sucursal());
             }

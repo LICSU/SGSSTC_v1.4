@@ -165,6 +165,14 @@
                 </div>
 
                 <br />
+
+                <div class="row text-center">
+                    <div class="col-md-4 col-md-offset-4">
+					<asp:ImageButton alt="-" ID="btnActualizar" runat="server" ImageUrl="~\ico\editar.png"
+						OnClick="btnActualizar_Click" ValidationGroup="ValidationAdd" />
+
+					<h4>Actualizar</h4>
+                </div>
             </div>
         </div>
     </asp:PlaceHolder>

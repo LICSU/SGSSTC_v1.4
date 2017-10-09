@@ -1,6 +1,7 @@
 ﻿using Capa_Datos;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web;
 using System.Web.Security;
 
@@ -10,6 +11,7 @@ namespace SGSSTC.source.sistema.GestionDatos
     {
         private Model_UsuarioSistema ObjUsuario;
         private Tuple<bool, bool> BoolEmpSuc;
+        private Utilidades objUtilidades = new Utilidades();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -21,16 +23,16 @@ namespace SGSSTC.source.sistema.GestionDatos
             {
                 if (Request.QueryString["id"] != string.Empty)
                 {
-                    ObjUsuario.Id_empresa = Convert.ToInt32(Request.QueryString["id"]);
-                    ViewState["id_empresa"] = ObjUsuario.Id_empresa;
                     cargarDatos();
+                    Listas.Arl(ddlArp);
                 }
             }
         }
 
         private void cargarDatos()
         {
-            int IdEmpresa = Convert.ToInt32(ViewState["id_empresa"]);
+            int IdEmpresa = 0;
+            IdEmpresa = objUtilidades.descifrarCadena(Request.QueryString["id"]);
 
             List<empresa> ListaEmpresa = new List<empresa>();
             ListaEmpresa = Getter.Empresa(IdEmpresa);
@@ -44,9 +46,10 @@ namespace SGSSTC.source.sistema.GestionDatos
                 txtRepresentante.Text = item.representante;
                 txtTelFijo.Text = item.fijo;
                 txtTelMovil.Text = item.movil;
-                hfLogo.Value = item.logo_url;
-
-                String ruta = hfLogo.Value;
+                ddlArp.SelectedValue = item.id_arl.ToString();
+                ddlJornada.SelectedValue = item.jornada.ToString();
+                String ruta = item.logo_url;
+                ViewState["url"] = ruta;
                 imgLogo.ImageUrl = ruta;
             }
 
@@ -54,6 +57,34 @@ namespace SGSSTC.source.sistema.GestionDatos
 
         protected void EditarRegistro(object sender, EventArgs e)
         {
+            int idEmpresa = 0;
+            idEmpresa = objUtilidades.descifrarCadena(Request.QueryString["id"]);
+
+            string ruta = ViewState["url"].ToString();
+
+            if (fuLogoEmpresa.HasFile)
+                ruta = Utilidades.GuardarImagen(fuLogoEmpresa, txtNombreEmpresa.Text, "~/archivos/LogosEmpresas/");
+
+            GrupoLiEntities contextoEdit = new GrupoLiEntities();
+            empresa Edit = contextoEdit.empresa.SingleOrDefault(b => b.id_empresa == idEmpresa);
+
+            if (Edit != null)
+            {
+                Edit.nombre = txtNombreEmpresa.Text;
+                Edit.CodEmpresa = txtCodigoEmpresa.Text;
+                Edit.nit = txtNit.Text;
+                Edit.email = txtEmail.Text;
+                Edit.representante = txtRepresentante.Text;
+                Edit.movil = txtTelMovil.Text;
+                Edit.fijo = txtTelFijo.Text;
+                Edit.logo_url = ruta;
+                Edit.id_arl = Convert.ToInt32(ddlArp.SelectedValue);
+                Edit.jornada = Convert.ToInt32(ddlJornada.SelectedValue);
+            }
+
+            ObjUsuario.Error = CRUD.Edit_Fila(contextoEdit);
+
+            Modal.MostrarAlertaEdit(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error, txtNombreEmpresa);
         }
 
     }

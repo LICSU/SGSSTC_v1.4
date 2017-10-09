@@ -130,13 +130,22 @@ namespace SGSSTC.source.sistema.GestionDatos {
         protected global::System.Web.UI.WebControls.TextBox txtTelMovil;
         
         /// <summary>
-        /// Control hfLogo.
+        /// Control ddlArp.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hfLogo;
+        protected global::System.Web.UI.WebControls.DropDownList ddlArp;
+        
+        /// <summary>
+        /// Control ddlJornada.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlJornada;
         
         /// <summary>
         /// Control fuLogoEmpresa.

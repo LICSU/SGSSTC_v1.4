@@ -11,6 +11,7 @@ namespace SGSSTC.source.sistema.GestionDatos
     {
         private Model_UsuarioSistema ObjUsuario;
         private Tuple<bool, bool> BoolEmpSuc;
+        private Utilidades objUtilidades = new Utilidades();
 
         #region metodos index
         protected void Page_Load(object sender, EventArgs e)
@@ -115,5 +116,12 @@ namespace SGSSTC.source.sistema.GestionDatos
         {
         }
         #endregion
+
+        protected void btnActualizar_Click(object sender, System.Web.UI.ImageClickEventArgs e)
+        {
+            int IdEmpresa = Convert.ToInt32(ObjUsuario.Id_empresa);
+            string idEmpresa = objUtilidades.cifrarCadena(Convert.ToString(IdEmpresa));
+            Response.Redirect(Paginas.Update_Empresa.Value + "?id=" + idEmpresa);
+        }
     }
 }

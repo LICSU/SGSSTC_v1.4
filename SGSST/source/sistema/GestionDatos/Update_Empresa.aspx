@@ -144,19 +144,35 @@
 			<br />
 
 			<div class="row text-left">
-				<div class="col-md-3">
-					<h4>Logo</h4>
-					<asp:HiddenField runat="server" ID="hfLogo" />
-				</div>
-				<div class="col-md-3">
-					<asp:FileUpload runat="server" ID="fuLogoEmpresa" />
+                <div class="col-md-4">
+                    <h4>ARL</h4>
+                    <asp:DropDownList runat="server" ID="ddlArp" CssClass="form-control"></asp:DropDownList>
 
-					<asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
-						Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true"
-						ControlToValidate="fuLogoEmpresa" runat="server" ValidationGroup="ValidationAdd" />
-				</div>
-			</div>
-			<br />
+                    <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true" runat="server"
+                        Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true" ControlToValidate="ddlArp"
+                        ValidationGroup="ValidationAdd" />
+                </div>
+
+                <div class="col-md-4">
+                    <h4>Jornada Laboral</h4>
+
+                    <asp:DropDownList runat="server" ID="ddlJornada" CssClass="form-control">
+                        <asp:ListItem Text="Lunes a Viernes" Value="1" />
+                        <asp:ListItem Text="Lunes a Sabado" Value="2" />
+                    </asp:DropDownList>
+
+                    <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true" runat="server"
+                        Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true" ControlToValidate="ddlJornada"
+                        ValidationGroup="ValidationAdd" />
+                </div>
+
+                <div class="col-md-4">
+                    <h4>Logo</h4>
+
+                    <asp:FileUpload runat="server" ID="fuLogoEmpresa" />
+
+                </div>
+            </div>
 
 			<div class="row text-center">
 				<div class="col-md-4 col-md-offset-4">
