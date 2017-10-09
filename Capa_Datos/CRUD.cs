@@ -508,9 +508,9 @@ namespace Capa_Datos
                 representante = valores[4],
                 movil = valores[5],
                 fijo = valores[6],
-                logo_url = "",
-                id_arl = Convert.ToInt32(valores[7]),
-                jornada = Convert.ToInt32(valores[8])
+                logo_url = ""
+                //id_arl = Convert.ToInt32(valores[7]),
+                //jornada = Convert.ToInt32(valores[8])
             };
 
             return Add_Fila(nuevo);
@@ -694,10 +694,13 @@ namespace Capa_Datos
         }
         public static bool Add_Sucursal_Empresa(String[] valores)
         {
+            string _id_municipio = null;
+            if (valores[1] != "0")
+                _id_municipio = valores[1]; 
             sucursal nuevo = new sucursal()
             {
                 nombre = valores[0],
-                id_municpio = Convert.ToInt32(valores[1]),
+                id_municpio = Convert.ToInt32(_id_municipio),
                 id_empresa = Convert.ToInt32(valores[2]),
                 direccion = valores[3],
                 sede_principal = 1,
@@ -711,6 +714,26 @@ namespace Capa_Datos
 
             return Add_Fila(nuevo);
         }
+
+        public static bool Add_Sucursal_Empresa_2(String[] valores)
+        {
+            sucursal nuevo = new sucursal()
+            {
+                nombre = valores[0],
+                id_empresa = Convert.ToInt32(valores[1]),
+                direccion = valores[2],
+                sede_principal = 1,
+                representante = valores[3],
+                movil = valores[4],
+                fijo = valores[5],
+                actividad_ppal = Convert.ToInt32(valores[6]),
+                actividad_sec = Convert.ToInt32(valores[7]),
+                actividad_otra = Convert.ToInt32(valores[8]),
+            };
+
+            return Add_Fila(nuevo);
+        }
+
         public static bool Add_Area_Sucursal(String[] valores)
         {
             area nuevo = new area()
