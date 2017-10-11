@@ -204,7 +204,15 @@
 										<li><a href="../Planear/index_Quejas.aspx"><i class="fa fa-circle-o"></i><span>Formato de Quejas</span></a></li>
 									</ul>
 								</li>
-
+								
+								<li class="dropdown-submenu">
+									<a href="#"><i class="fa fa-circle-o"></i><span>Inducción y ReInducción</span></a>
+									<ul class="dropdown-menu">
+										<li><a href="../Planear/ConstanciaInducción.aspx"><i class="fa fa-circle-o"></i><span>Constancia de Inducción</span></a></li>
+										<li><a href="../Planear/ConstanciaReinduccionAdm.aspx"><i class="fa fa-circle-o"></i><span>Constancia de ReInducción de Area Administrativa</span></a></li>
+										<li><a href="../Planear/ConstanciaReinduccionOpe.aspx"><i class="fa fa-circle-o"></i><span>Constancia de ReInducción de Area Operativa</span></a></li>
+									</ul>
+								</li>
 							</ul>
 						</li>
 
@@ -478,9 +486,7 @@
 	<!-- Pagination -->
 	<ucpag:pagination runat="server" ID="pagination" />
 	
-	
 	<%: Scripts.Render("~/bundles/SGSSTJs") %>
-
 
 </body>
 

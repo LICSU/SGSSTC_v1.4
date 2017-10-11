@@ -1017,6 +1017,9 @@
     <Content Include="source\sistema\MenuPrincipal\ViewMisPreguntas.aspx" />
     <Content Include="source\sistema\MenuPrincipal\ViewPreguntasPares.aspx" />
     <Content Include="source\sistema\Planear\ComiteConvivencia.aspx" />
+    <Content Include="source\sistema\Planear\ConstanciaInducción.aspx" />
+    <Content Include="source\sistema\Planear\ConstanciaReinduccionAdm.aspx" />
+    <Content Include="source\sistema\Planear\ConstanciaReinduccionOpe.aspx" />
     <Content Include="source\sistema\Planear\Create_ActaCierre.aspx" />
     <Content Include="source\sistema\Planear\Create_AperturaElecciones.aspx" />
     <Content Include="source\sistema\Planear\create_DocumentoCorrespondencia.aspx" />
@@ -1970,6 +1973,27 @@
     </Compile>
     <Compile Include="source\sistema\Planear\ComiteConvivencia.aspx.designer.cs">
       <DependentUpon>ComiteConvivencia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="source\sistema\Planear\ConstanciaInducción.aspx.cs">
+      <DependentUpon>ConstanciaInducción.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="source\sistema\Planear\ConstanciaInducción.aspx.designer.cs">
+      <DependentUpon>ConstanciaInducción.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="source\sistema\Planear\ConstanciaReinduccionAdm.aspx.cs">
+      <DependentUpon>ConstanciaReinduccionAdm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="source\sistema\Planear\ConstanciaReinduccionAdm.aspx.designer.cs">
+      <DependentUpon>ConstanciaReinduccionAdm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="source\sistema\Planear\ConstanciaReinduccionOpe.aspx.cs">
+      <DependentUpon>ConstanciaReinduccionOpe.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="source\sistema\Planear\ConstanciaReinduccionOpe.aspx.designer.cs">
+      <DependentUpon>ConstanciaReinduccionOpe.aspx</DependentUpon>
     </Compile>
     <Compile Include="source\sistema\Planear\Create_ActaCierre.aspx.cs">
       <DependentUpon>Create_ActaCierre.aspx</DependentUpon>
