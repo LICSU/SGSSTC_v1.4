@@ -1053,6 +1053,7 @@
     <Content Include="source\sistema\Planear\index_Quejas.aspx" />
     <Content Include="source\sistema\Planear\index_RecursosEconomicos.aspx" />
     <Content Include="source\sistema\Planear\ManualConvivencia.aspx" />
+    <Content Include="source\sistema\Planear\ReunionComite.aspx" />
     <Content Include="source\sistema\Planear\Update_MedidasMatrizLegal.aspx" />
     <Content Include="source\sistema\Planear\Update_MedidasMatrizRiesgos.aspx" />
     <Content Include="source\sistema\Planear\ValidacionProvCont.aspx" />
@@ -2221,6 +2222,13 @@
     </Compile>
     <Compile Include="source\sistema\Planear\ManualConvivencia.aspx.designer.cs">
       <DependentUpon>ManualConvivencia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="source\sistema\Planear\ReunionComite.aspx.cs">
+      <DependentUpon>ReunionComite.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="source\sistema\Planear\ReunionComite.aspx.designer.cs">
+      <DependentUpon>ReunionComite.aspx</DependentUpon>
     </Compile>
     <Compile Include="source\sistema\Planear\Update_MedidasMatrizLegal.aspx.cs">
       <DependentUpon>Update_MedidasMatrizLegal.aspx</DependentUpon>

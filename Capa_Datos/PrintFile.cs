@@ -5857,6 +5857,25 @@ namespace Capa_Datos
             ManageFiles.PdfPart2(DocumentoPDF.Item1, DocumentoPDF.Item2, Convert.ToInt32(valores[0]), _page);
         }
 
+        public static void PrintReunionComiteConvivencia(String[] valores, Page _page)
+        {
+            Tuple<Document, PdfPTable> DocumentoPDF = ManageFiles.PdfParte1(Convert.ToInt32(valores[0]),
+                                        "ReunionComiteConvivencia", "REUNIÓN DEL COMITÉ DE CONVIVENCIA", _page);
+
+            #region contenido
+            string cadena = valores[1];
+            string[] delimitadores = { "#NOBORRAR#" };
+            string[] cadenas = cadena.Split(delimitadores, StringSplitOptions.None);
+            for (int i = 0; i < cadenas.Length; i++)
+            {
+                miCelda41.Texto = cadenas[i];
+                DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCeldaHTML(DocumentoPDF.Item2, miCelda41));
+            }
+            #endregion
+
+            ManageFiles.PdfPart2(DocumentoPDF.Item1, DocumentoPDF.Item2, Convert.ToInt32(valores[0]), _page);
+        }
+
         public static void PrintComiteConvivencia(String[] valores, Page _page)
         {
             Tuple<Document, PdfPTable> DocumentoPDF = ManageFiles.PdfParte1(Convert.ToInt32(valores[0]),
