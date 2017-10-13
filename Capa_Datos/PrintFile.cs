@@ -4060,9 +4060,9 @@ namespace Capa_Datos
         }
 
         public static void PrintInspeccionMediosEscape(String[] valores, String[] areaUbicacion, String[] edoConservacion, String[] fteIluminacion,
-                                                       String[] marcaLampara, String[] lucesLampara, String[] cajtaLampara, String[] senas,
-                                                       String[] exisSena, String[] obsEst, String[] senaSena, String[] txtPas, String[] obsEstPasi,
-                                                       String[] obsAccPasi, String[] obsAusPasi, Page _page)
+            String[] marcaLampara, String[] lucesLampara, String[] cajtaLampara, String[] senas,
+            String[] exisSena, String[] obsEst, String[] senaSena, String[] txtPas, String[] obsEstPasi,
+            String[] obsAccPasi, String[] obsAusPasi, Page _page)
         {
             Tuple<Document, PdfPTable> DocumentoPDF = ManageFiles.PdfParte1(Convert.ToInt32(valores[0]),
                                       "InspeccionMediosEscape_", "INSPECCIÓN DE LOS MEDIOS DE ESCAPE", _page);
@@ -6260,6 +6260,63 @@ namespace Capa_Datos
             ManageFiles.PdfPart2(DocumentoPDF.Item1, DocumentoPDF.Item2, Convert.ToInt32(valores[0]), _page);
         }
 
+        public static void PrintConstanciaInduccion(String[] valores, Page _page)
+        {
+            Tuple<Document, PdfPTable> DocumentoPDF = ManageFiles.PdfParte1(Convert.ToInt32(valores[0]),
+                                        "ConstanciaInduccion", "CONSTANCIA DE INDUCCIÓN", _page);
+
+            #region contenido
+            string cadena = valores[1];
+            string[] delimitadores = { "#NOBORRAR#" };
+            string[] cadenas = cadena.Split(delimitadores, StringSplitOptions.None);
+            for (int i = 0; i < cadenas.Length; i++)
+            {
+                miCelda41.Texto = cadenas[i];
+                DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCeldaHTML(DocumentoPDF.Item2, miCelda41));
+            }
+            #endregion
+
+            ManageFiles.PdfPart2(DocumentoPDF.Item1, DocumentoPDF.Item2, Convert.ToInt32(valores[0]), _page);
+        }
+
+        public static void PrintConstanciaReinduccionAdm(String[] valores, Page _page)
+        {
+            Tuple<Document, PdfPTable> DocumentoPDF = ManageFiles.PdfParte1(Convert.ToInt32(valores[0]),
+                                        "ConstanciaReinduccionAdm", "CONSTANCIA DE REINDUCCIÓN DE AREA ADMINISTRATIVA", _page);
+
+            #region contenido
+            string cadena = valores[1];
+            string[] delimitadores = { "#NOBORRAR#" };
+            string[] cadenas = cadena.Split(delimitadores, StringSplitOptions.None);
+            for (int i = 0; i < cadenas.Length; i++)
+            {
+                miCelda41.Texto = cadenas[i];
+                DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCeldaHTML(DocumentoPDF.Item2, miCelda41));
+            }
+            #endregion
+
+            ManageFiles.PdfPart2(DocumentoPDF.Item1, DocumentoPDF.Item2, Convert.ToInt32(valores[0]), _page);
+        }
+
+        public static void PrintConstanciaReinduccionOpe(String[] valores, Page _page)
+        {
+            Tuple<Document, PdfPTable> DocumentoPDF = ManageFiles.PdfParte1(Convert.ToInt32(valores[0]),
+                                        "ConstanciaReinduccionOpe", "CONSTANCIA DE REINDUCCIÓN DE AREA OPERATIVA", _page);
+
+            #region contenido
+            string cadena = valores[1];
+            string[] delimitadores = { "#NOBORRAR#" };
+            string[] cadenas = cadena.Split(delimitadores, StringSplitOptions.None);
+            for (int i = 0; i < cadenas.Length; i++)
+            {
+                miCelda41.Texto = cadenas[i];
+                DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCeldaHTML(DocumentoPDF.Item2, miCelda41));
+            }
+            #endregion
+
+            ManageFiles.PdfPart2(DocumentoPDF.Item1, DocumentoPDF.Item2, Convert.ToInt32(valores[0]), _page);
+        }
+
         public static void PrintPoliticaPrevencionAcoso(String[] valores, Page _page)
         {
             Tuple<Document, PdfPTable> DocumentoPDF = ManageFiles.PdfParte1(Convert.ToInt32(valores[0]),
@@ -6302,6 +6359,25 @@ namespace Capa_Datos
         {
             Tuple<Document, PdfPTable> DocumentoPDF = ManageFiles.PdfParte1(Convert.ToInt32(valores[0]),
                                         "FormatoQuejas", "QUEJA", _page);
+
+            #region contenido
+            string cadena = valores[1];
+            string[] delimitadores = { "#NOBORRAR#" };
+            string[] cadenas = cadena.Split(delimitadores, StringSplitOptions.None);
+            for (int i = 0; i < cadenas.Length; i++)
+            {
+                miCelda41.Texto = cadenas[i];
+                DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCeldaHTML(DocumentoPDF.Item2, miCelda41));
+            }
+            #endregion
+
+            ManageFiles.PdfPart2(DocumentoPDF.Item1, DocumentoPDF.Item2, Convert.ToInt32(valores[0]), _page);
+        }
+
+        public static void PrintReunionComiteConvivencia(String[] valores, Page _page)
+        {
+            Tuple<Document, PdfPTable> DocumentoPDF = ManageFiles.PdfParte1(Convert.ToInt32(valores[0]),
+                                        "ReunionComiteConvivencia", "REUNIÓN DEL COMITÉ DE CONVIVENCIA", _page);
 
             #region contenido
             string cadena = valores[1];

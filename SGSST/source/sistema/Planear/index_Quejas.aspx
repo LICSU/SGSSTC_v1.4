@@ -4,16 +4,16 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server"></asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-        
+
     <ol class="breadcrumb">
         <li><a href="#">Fase: Planear</a></li>
         <li><a href="#">Manual de Convivencia</a></li>
     </ol>
-    
+
     <div class="page-header">
         <h1 class="text-center">Manual de Convivencia</h1>
     </div>
-    
+
     <div class="row form-group">
         <asp:PlaceHolder runat="server" ID="phEmpresa">
             <div class="col-md-4">
@@ -36,7 +36,7 @@
             </div>
         </asp:PlaceHolder>
     </div>
-    
+
     <div class="row text-center">
         <CKEditor:CKEditorControl ID="txtValProvCont" BasePath="/ckeditor/" runat="server" Height="500px"> 
             
@@ -91,7 +91,8 @@
         </CKEditor:CKEditorControl>
     </div>
 
-    <hr /><br />
+    <hr />
+    <br />
     <div class="row text-center">
         <div class="col-md-4 col-md-offset-4">
             <asp:ImageButton alt="-" ID="btnGuardar" runat="server" ImageUrl="~\ico\print.png" OnClick="GenerarDocumento" ValidationGroup="ValidationAdd" />
