@@ -86,6 +86,16 @@
         public static Paginas create_VigilanciaEpidemiologica { get { return new Paginas("create_VigilanciaEpidemiologica.aspx"); } }
         public static Paginas create_DocumentoCorrespondencia { get { return new Paginas("create_DocumentoCorrespondencia.aspx"); } }
 
+        public static Paginas Create_EstructuraInformacion { get { return new Paginas("Create_EstructuraInformacion.aspx"); } }
+        public static Paginas Create_EstructuraQuimicos { get { return new Paginas("Create_EstructuraQuimicos.aspx"); } }
+        public static Paginas Create_EstructuraFisicos { get { return new Paginas("Create_EstructuraFisicos.aspx"); } }
+        public static Paginas Create_EstructuraMecanicos { get { return new Paginas("Create_EstructuraMecanicos.aspx"); } }
+        public static Paginas Create_EstructuraBiologicos { get { return new Paginas("Create_EstructuraBiologicos.aspx"); } }
+        public static Paginas Create_EstructuraDisergonomicos { get { return new Paginas("Create_EstructuraDisergonomicos.aspx"); } }
+        public static Paginas Create_EstructuraPsicosociales { get { return new Paginas("Create_EstructuraPsicosociales.aspx"); } }
+        public static Paginas Create_EstructuraElectricos { get { return new Paginas("Create_EstructuraElectricos.aspx"); } }
+        public static Paginas Create_EstructuraLocativos { get { return new Paginas("Create_EstructuraLocativos.aspx"); } }
+
 
         public static Paginas Update_Empresa { get { return new Paginas("Update_Empresa.aspx"); } }
         public static Paginas Update_Accidentes { get { return new Paginas("Update_Accidentes.aspx"); } }

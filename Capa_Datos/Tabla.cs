@@ -2495,5 +2495,28 @@ namespace Capa_Datos
             GridView1.DataBind();
         }
         #endregion
+
+        #region Estructura de Riesgos
+        public static void EstructuraRiesgos(GridView GridView1, int _id_empresa, int _id_sucursal = 0)
+        {
+            GrupoLiEntities contexto = new GrupoLiEntities();
+            var query = (
+                from I in contexto.documento
+                where I.sucursal.id_empresa == _id_empresa && I.tipo == "EstructuraRiesgos"
+                select new
+                {
+                    I.id_documento,
+                    I.ruta,
+                    I.id_tabla,
+                    sucursal = I.sucursal.nombre,
+                    archivo = I.nombre == null ? "No se ha subido" : "" + I.nombre
+                }).ToList();
+
+            if (_id_sucursal != 0) { query = query.Where(x => x.id_tabla == _id_sucursal).ToList(); }
+
+            GridView1.DataSource = query;
+            GridView1.DataBind();
+        }
+        #endregion
     }
 }
