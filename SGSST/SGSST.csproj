@@ -1017,6 +1017,15 @@
     <Content Include="source\sistema\MenuPrincipal\ViewMisPreguntas.aspx" />
     <Content Include="source\sistema\MenuPrincipal\ViewPreguntasPares.aspx" />
     <Content Include="source\sistema\Planear\ComiteConvivencia.aspx" />
+    <Content Include="source\sistema\Planear\Create_EstructuraLocativos.aspx" />
+    <Content Include="source\sistema\Planear\Create_EstructuraElectricos.aspx" />
+    <Content Include="source\sistema\Planear\Create_EstructuraPsicosociales.aspx" />
+    <Content Include="source\sistema\Planear\Create_EstructuraDisergonomicos.aspx" />
+    <Content Include="source\sistema\Planear\Create_EstructuraBiologicos.aspx" />
+    <Content Include="source\sistema\Planear\Create_EstructuraMecanicos.aspx" />
+    <Content Include="source\sistema\Planear\Create_EstructuraFisicos.aspx" />
+    <Content Include="source\sistema\Planear\Create_EstructuraQuimicos.aspx" />
+    <Content Include="source\sistema\Planear\Create_EstructuraInformacion.aspx" />
     <Content Include="source\sistema\Planear\Create_ActaCierre.aspx" />
     <Content Include="source\sistema\Planear\Create_AperturaElecciones.aspx" />
     <Content Include="source\sistema\Planear\create_DocumentoCorrespondencia.aspx" />
@@ -1032,6 +1041,7 @@
     <Content Include="source\sistema\Planear\Create_RegistroVotantes.aspx" />
     <Content Include="source\sistema\Planear\Create_ResultadoVotos.aspx" />
     <Content Include="source\sistema\Planear\Create_ReunionCopasst.aspx" />
+    <Content Include="source\sistema\Planear\index_EstructuraRiesgos.aspx" />
     <Content Include="source\sistema\Planear\index_DocumentoCorrespondencia.aspx" />
     <Content Include="source\sistema\Planear\index_ObjetivosSGSST.aspx" />
     <Content Include="source\sistema\Planear\index_ActaCopasst.aspx" />
@@ -1970,6 +1980,69 @@
     <Compile Include="source\sistema\Planear\ComiteConvivencia.aspx.designer.cs">
       <DependentUpon>ComiteConvivencia.aspx</DependentUpon>
     </Compile>
+    <Compile Include="source\sistema\Planear\Create_EstructuraLocativos.aspx.cs">
+      <DependentUpon>Create_EstructuraLocativos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="source\sistema\Planear\Create_EstructuraLocativos.aspx.designer.cs">
+      <DependentUpon>Create_EstructuraLocativos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="source\sistema\Planear\Create_EstructuraElectricos.aspx.cs">
+      <DependentUpon>Create_EstructuraElectricos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="source\sistema\Planear\Create_EstructuraElectricos.aspx.designer.cs">
+      <DependentUpon>Create_EstructuraElectricos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="source\sistema\Planear\Create_EstructuraPsicosociales.aspx.cs">
+      <DependentUpon>Create_EstructuraPsicosociales.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="source\sistema\Planear\Create_EstructuraPsicosociales.aspx.designer.cs">
+      <DependentUpon>Create_EstructuraPsicosociales.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="source\sistema\Planear\Create_EstructuraDisergonomicos.aspx.cs">
+      <DependentUpon>Create_EstructuraDisergonomicos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="source\sistema\Planear\Create_EstructuraDisergonomicos.aspx.designer.cs">
+      <DependentUpon>Create_EstructuraDisergonomicos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="source\sistema\Planear\Create_EstructuraBiologicos.aspx.cs">
+      <DependentUpon>Create_EstructuraBiologicos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="source\sistema\Planear\Create_EstructuraBiologicos.aspx.designer.cs">
+      <DependentUpon>Create_EstructuraBiologicos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="source\sistema\Planear\Create_EstructuraMecanicos.aspx.cs">
+      <DependentUpon>Create_EstructuraMecanicos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="source\sistema\Planear\Create_EstructuraMecanicos.aspx.designer.cs">
+      <DependentUpon>Create_EstructuraMecanicos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="source\sistema\Planear\Create_EstructuraFisicos.aspx.cs">
+      <DependentUpon>Create_EstructuraFisicos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="source\sistema\Planear\Create_EstructuraFisicos.aspx.designer.cs">
+      <DependentUpon>Create_EstructuraFisicos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="source\sistema\Planear\Create_EstructuraQuimicos.aspx.cs">
+      <DependentUpon>Create_EstructuraQuimicos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="source\sistema\Planear\Create_EstructuraQuimicos.aspx.designer.cs">
+      <DependentUpon>Create_EstructuraQuimicos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="source\sistema\Planear\Create_EstructuraInformacion.aspx.cs">
+      <DependentUpon>Create_EstructuraInformacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="source\sistema\Planear\Create_EstructuraInformacion.aspx.designer.cs">
+      <DependentUpon>Create_EstructuraInformacion.aspx</DependentUpon>
+    </Compile>
     <Compile Include="source\sistema\Planear\Create_ActaCierre.aspx.cs">
       <DependentUpon>Create_ActaCierre.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2074,6 +2147,13 @@
     </Compile>
     <Compile Include="source\sistema\Planear\Create_ReunionCopasst.aspx.designer.cs">
       <DependentUpon>Create_ReunionCopasst.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="source\sistema\Planear\index_EstructuraRiesgos.aspx.cs">
+      <DependentUpon>index_EstructuraRiesgos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="source\sistema\Planear\index_EstructuraRiesgos.aspx.designer.cs">
+      <DependentUpon>index_EstructuraRiesgos.aspx</DependentUpon>
     </Compile>
     <Compile Include="source\sistema\Planear\index_DocumentoCorrespondencia.aspx.cs">
       <DependentUpon>index_DocumentoCorrespondencia.aspx</DependentUpon>
@@ -2280,6 +2360,7 @@
     <Folder Include="archivos\constancias\" />
     <Folder Include="archivos\encuesta_politicasst\" />
     <Folder Include="archivos\entregasepp\" />
+    <Folder Include="archivos\estructura_riesgos\" />
     <Folder Include="archivos\gestiones\" />
     <Folder Include="archivos\ico_tipo_epp\" />
     <Folder Include="archivos\incidentes\" />

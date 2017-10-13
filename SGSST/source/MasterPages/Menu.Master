@@ -205,6 +205,10 @@
 									</ul>
 								</li>
 
+                                <li class="dropdown-submenu">
+									<a href="../Planear/index_EstructuraRiesgos.aspx"><i class="fa fa-circle-o"></i><span>Estructura de Riesgos</span></a>
+                                </li>
+
 							</ul>
 						</li>
 
