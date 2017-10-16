@@ -52,7 +52,8 @@ namespace SGSST
 
             bundles.Add(new StyleBundle("~/bundles/SGSSTCss").Include(
                             "~/Content/bootstrap.min.css",
-                            "~/Content/Site.css"));
+                            "~/Content/Site.css",
+                            "~/Content/MenuPrincipal.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/SGSSTJs").Include(
                             "~/Scripts/jquery-3.1.1.slim.js",

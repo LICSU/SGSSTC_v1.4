@@ -2150,22 +2150,21 @@ namespace Capa_Datos
             GridView1.DataBind();
         }
 
-        public static void Epp(
-            GridView GridView1,
-            string _id_tipo = "",
-            string _id_area = "",
-            string id_puesto = "",
-            string _nombre = "")
+        public static void Epp(GridView GridView1,string _id_tipo = "",string _nombre = "")
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             var query = (
-                from CT in contexto.epp
+                from _EPP in contexto.epp
+                orderby _EPP.nombre
                 select new
                 {
-                    CT.id_epp,
-                    CT.nombre,
-                    CT.id_tipo_epp,
-                    tipo = CT.tipo_epp.nombre
+                    _EPP.id_epp,
+                    nombre = _EPP.nombre.ToUpper(),
+                    _EPP.id_tipo_epp,
+                    tipo = _EPP.tipo_epp.nombre,
+                    _EPP.marca_modelo,
+                    _EPP.uso,
+                    _EPP.url_imagen
                 }).ToList();
 
             if (_id_tipo != string.Empty) { query = query.Where(x => x.id_tipo_epp == Convert.ToInt32(_id_tipo)).ToList(); }

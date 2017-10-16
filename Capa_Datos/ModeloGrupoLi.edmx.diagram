@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="1af269fded8943ac9936601b3fb84a48" Name="Diagram1">
+      <Diagram DiagramId="ac6e7a176437470b88ee5102be0374cc" Name="Diagram1">
         <EntityTypeShape EntityType="GrupoLiModel.afp" Width="1.5" PointX="17.25" PointY="42.625" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.alarma" Width="1.5" PointX="24.75" PointY="69.25" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.area" Width="1.5" PointX="9.75" PointY="48.125" IsExpanded="true" />
@@ -12,7 +12,7 @@
         <EntityTypeShape EntityType="GrupoLiModel.at_it_el_pa" Width="1.5" PointX="14.25" PointY="56.375" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.brigada_emergencia" Width="1.5" PointX="9.75" PointY="54.5" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.categoria" Width="1.5" PointX="24.75" PointY="59" IsExpanded="true" />
-        <EntityTypeShape EntityType="GrupoLiModel.ccf" Width="1.5" PointX="15" PointY="45.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GrupoLiModel.ccf" Width="1.5" PointX="15" PointY="45.5" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.claseCiiu" Width="1.5" PointX="7.5" PointY="4" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.cno" Width="1.5" PointX="12.75" PointY="42.25" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.consulta" Width="1.5" PointX="16.5" PointY="49.25" IsExpanded="true" />
@@ -26,7 +26,7 @@
         <EntityTypeShape EntityType="GrupoLiModel.encuesta_politica" Width="1.5" PointX="19.5" PointY="74.25" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.enfermedad" Width="1.5" PointX="23.25" PointY="53" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.enfermedadLaboral" Width="1.5" PointX="7.5" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="GrupoLiModel.epp" Width="1.5" PointX="12" PointY="75.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GrupoLiModel.epp" Width="1.5" PointX="12" PointY="76.125" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.eps" Width="1.5" PointX="17.25" PointY="38.875" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.estatus" Width="1.5" PointX="23.25" PointY="49.5" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.evaluacion_riesgo" Width="1.5" PointX="16.5" PointY="84.75" IsExpanded="true" />
@@ -52,7 +52,8 @@
         <EntityTypeShape EntityType="GrupoLiModel.norma_claseciiu" Width="1.5" PointX="14.75" PointY="27.75" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.norma_sucursal" Width="1.5" PointX="14.75" PointY="53.25" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.obligacion" Width="1.5" PointX="27" PointY="67.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="GrupoLiModel.perfil_cargo" Width="1.5" PointX="15" PointY="41.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GrupoLiModel.perfil_cargo" Width="1.5" PointX="15" PointY="41.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GrupoLiModel.perfil_medico" Width="1.5" PointX="17.25" PointY="35" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.plan" Width="1.5" PointX="9.75" PointY="68.625" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.plan_trabajo" Width="1.5" PointX="21.75" PointY="82" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.politica_sst" Width="1.5" PointX="7.5" PointY="45.625" IsExpanded="true" />
@@ -68,8 +69,9 @@
         <EntityTypeShape EntityType="GrupoLiModel.sistema" Width="1.5" PointX="23.25" PointY="46.5" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.soporte" Width="1.5" PointX="16.5" PointY="56.75" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.sucursal" Width="1.5" PointX="7.5" PointY="55.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GrupoLiModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.tipo_documento" Width="1.5" PointX="9.75" PointY="71.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="GrupoLiModel.tipo_epp" Width="1.5" PointX="9.75" PointY="75.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GrupoLiModel.tipo_epp" Width="1.5" PointX="9.75" PointY="76.375" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.tipo_evento" Width="1.5" PointX="22.5" PointY="77.75" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.tipo_examen" Width="1.5" PointX="20.25" PointY="54.75" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.tipo_riesgo" Width="1.5" PointX="5.25" PointY="7.625" IsExpanded="true" />
@@ -77,6 +79,7 @@
         <EntityTypeShape EntityType="GrupoLiModel.trabajador_estatus" Width="1.5" PointX="25.5" PointY="62.5" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.trabajador_gestion" Width="1.5" PointX="19.5" PointY="57.375" IsExpanded="true" />
         <EntityTypeShape EntityType="GrupoLiModel.usuario" Width="1.5" PointX="19.5" PointY="68.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GrupoLiModel.senalizacion" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="GrupoLiModel.FK_desc_socio_afp" ManuallyRouted="false" />
         <AssociationConnector Association="GrupoLiModel.FK_alarmas_categorias" ManuallyRouted="false" />
         <AssociationConnector Association="GrupoLiModel.FK_alarmas_usuario" ManuallyRouted="false" />
@@ -151,6 +154,7 @@
         <AssociationConnector Association="GrupoLiModel.FK_obligacion_plan_trabajo" ManuallyRouted="false" />
         <AssociationConnector Association="GrupoLiModel.FK_obligacion_usuario" ManuallyRouted="false" />
         <AssociationConnector Association="GrupoLiModel.FK_soporte_obligacion" ManuallyRouted="false" />
+        <AssociationConnector Association="GrupoLiModel.FK_perfil_medico_perfil_cargo" ManuallyRouted="false" />
         <AssociationConnector Association="GrupoLiModel.FK_trabajador_perfil_cargo" ManuallyRouted="false" />
         <AssociationConnector Association="GrupoLiModel.FK_planes_sucursal" ManuallyRouted="false" />
         <AssociationConnector Association="GrupoLiModel.FK_plan_trabajo_usuario" ManuallyRouted="false" />
@@ -164,9 +168,6 @@
         <AssociationConnector Association="GrupoLiModel.FK_trabajador_estatus_trabajador" ManuallyRouted="false" />
         <AssociationConnector Association="GrupoLiModel.FK_trabajador_gestion_trabajador" ManuallyRouted="false" />
         <AssociationConnector Association="GrupoLiModel.FK_usuario_trabajador" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="GrupoLiModel.senalizacion" Width="1.5" PointX="5" PointY="0.75" />
-        <EntityTypeShape EntityType="GrupoLiModel.perfil_medico" Width="1.5" PointX="0.75" PointY="7.75" />
-        <AssociationConnector Association="GrupoLiModel.FK__perfil_me__id_ca__65370702" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
