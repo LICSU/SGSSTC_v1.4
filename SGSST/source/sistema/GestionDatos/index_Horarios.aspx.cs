@@ -1,4 +1,8 @@
 ﻿using Capa_Datos;
+using Capa_Datos.Manager.Trabajador;
+using Capa_Datos.Manager.Area;
+using Capa_Datos.Manager.Sucursal;
+using Capa_Datos.Manager.Empresa;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +26,7 @@ namespace SGSSTC.source.sistema.GestionDatos
             ObjUsuario = Utilidades.ValidarSesion(HttpContext.Current.User.Identity as FormsIdentity, this); phAlerta.Visible = false;
 
 
-            BoolEmpSuc = Getter.Get_Empresa_Sucursal(ObjUsuario);
+            BoolEmpSuc = Mgr_Empresa.Get_Empresa_Sucursal(ObjUsuario);
 
             phAgregar.Visible = BoolEmpSuc.Item2;
             phEmpresa.Visible = BoolEmpSuc.Item1;
@@ -42,15 +46,15 @@ namespace SGSSTC.source.sistema.GestionDatos
         {
             if (BoolEmpSuc.Item1)
             {
-                Listas.Empresa(ddlEmpresa);
-                Listas.Empresa(ddlEmpresaAdd);
-                Listas.Empresa(ddlEmpresaEdit);
+                Mgr_Empresa.Lista_Empresa(ddlEmpresa);
+                Mgr_Empresa.Lista_Empresa(ddlEmpresaAdd);
+                Mgr_Empresa.Lista_Empresa(ddlEmpresaEdit);
             }
         }
 
         private void LlenarGridView()
         {
-            int IdEmpresa = Getter.Set_IdEmpresa(ObjUsuario, Convert.ToInt32(ViewState["empresa"]));
+            int IdEmpresa = Mgr_Empresa.Set_IdEmpresa(ObjUsuario, Convert.ToInt32(ViewState["empresa"]));
             Tabla.Horario(GridView1, IdEmpresa, string.Empty + ViewState["sWhere"]);
         }
         #endregion
@@ -64,7 +68,7 @@ namespace SGSSTC.source.sistema.GestionDatos
 
         protected void AgregarRegistro(object sender, EventArgs e)
         {
-            int IdEmpresa = Getter.Set_IdEmpresaDDl(ObjUsuario, ddlEmpresaAdd);
+            int IdEmpresa = Mgr_Empresa.Set_IdEmpresaDDl(ObjUsuario, ddlEmpresaAdd);
 
             horario nuevo = new horario()
             {
@@ -82,7 +86,7 @@ namespace SGSSTC.source.sistema.GestionDatos
         }
         protected void EditarRegistro(object sender, EventArgs e)
         {
-            int IdEmpresa = Getter.Set_IdEmpresaDDl(ObjUsuario, ddlEmpresaEdit);
+            int IdEmpresa = Mgr_Empresa.Set_IdEmpresaDDl(ObjUsuario, ddlEmpresaEdit);
 
             GrupoLiEntities contexto = new GrupoLiEntities();
             int idHorario = Convert.ToInt32(hdfHorarioID.Value);
@@ -104,7 +108,7 @@ namespace SGSSTC.source.sistema.GestionDatos
         protected void EliminarRegistro(object sender, EventArgs e)
         {
             horario tabla = new horario();
-            List<usuario> usuarioData = Getter.AreaByUsuario(ObjUsuario.Id_usuario);
+            List<usuario> usuarioData = Mgr_Area.AreaByUsuario(ObjUsuario.Id_usuario);
             int IdHorario = 0;
             foreach (var user in usuarioData)
             {

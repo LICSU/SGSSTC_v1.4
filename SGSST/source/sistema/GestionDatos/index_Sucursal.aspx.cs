@@ -1,4 +1,8 @@
 ﻿using Capa_Datos;
+using Capa_Datos.Manager.Trabajador;
+using Capa_Datos.Manager.Area;
+using Capa_Datos.Manager.Sucursal;
+using Capa_Datos.Manager.Empresa;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +23,7 @@ namespace SGSSTC.source.sistema.GestionDatos
 
             ObjUsuario = Utilidades.ValidarSesion(HttpContext.Current.User.Identity as FormsIdentity, this); phAlerta.Visible = false;
 
-            BoolEmpSuc = Getter.Get_Empresa_Sucursal(ObjUsuario);
+            BoolEmpSuc = Mgr_Empresa.Get_Empresa_Sucursal(ObjUsuario);
 
             phAgregar.Visible = BoolEmpSuc.Item2;
             phEmpresa.Visible = BoolEmpSuc.Item1;
@@ -51,7 +55,7 @@ namespace SGSSTC.source.sistema.GestionDatos
         {
             List<sucursal> ListaSucursal = new List<sucursal>();
             int IdSucursal = Convert.ToInt32(id_sucursal);
-            ListaSucursal = Getter.Sucursal(IdSucursal, 0, "");
+            ListaSucursal = Mgr_Sucursal.Sucursal(IdSucursal, 0, "");
 
             foreach (var item in ListaSucursal)
             {
@@ -67,18 +71,18 @@ namespace SGSSTC.source.sistema.GestionDatos
         {
             if (BoolEmpSuc.Item1)
             {
-                Listas.Empresa(ddlEmpresa);
-                Listas.Empresa(ddlEmpresaEdit);
+                Mgr_Empresa.Lista_Empresa(ddlEmpresa);
+                Mgr_Empresa.Lista_Empresa(ddlEmpresaEdit);
             }
             Listas.Reg_Dpto_Mcpio(ddlRegionEdit, "Region");
         }
 
         private void LlenarGridView()
         {
-            int IdEmpresa = Getter.Set_IdEmpresa(ObjUsuario, Convert.ToInt32(ViewState["empresa"]));
-            int IdSucursal = Getter.Set_IdSucursal(ObjUsuario, Convert.ToInt32(ViewState["sucursal"]));
+            int IdEmpresa = Mgr_Empresa.Set_IdEmpresa(ObjUsuario, Convert.ToInt32(ViewState["empresa"]));
+            int IdSucursal = Mgr_Sucursal.Set_IdSucursal(ObjUsuario, Convert.ToInt32(ViewState["sucursal"]));
 
-            Tabla.Sucursal(GridView1, ObjUsuario.Id_sucursal, IdEmpresa, IdSucursal, string.Empty + ViewState["sWhere"]);
+            Mgr_Sucursal.Sucursal(GridView1, ObjUsuario.Id_sucursal, IdEmpresa, IdSucursal, string.Empty + ViewState["sWhere"]);
         }
         #endregion
 
@@ -93,7 +97,7 @@ namespace SGSSTC.source.sistema.GestionDatos
 
 
                 List<sucursal> ListaSucursal = new List<sucursal>();
-                ListaSucursal = Getter.Sucursal(Convert.ToInt32(hdfSucursalEditID.Value), 0, "");
+                ListaSucursal = Mgr_Sucursal.Sucursal(Convert.ToInt32(hdfSucursalEditID.Value), 0, "");
 
                 foreach (var item in ListaSucursal)
                 {
@@ -131,7 +135,7 @@ namespace SGSSTC.source.sistema.GestionDatos
                 hdfSucursalID.Value = Utilidades_GridView.DevolverIdRow(e, GridView1);
 
                 List<sucursal> ListaSucursal = new List<sucursal>();
-                ListaSucursal = Getter.Sucursal(Convert.ToInt32(hdfSucursalID.Value), 0, "");
+                ListaSucursal = Mgr_Sucursal.Sucursal(Convert.ToInt32(hdfSucursalID.Value), 0, "");
                 foreach (var item in ListaSucursal)
                 {
                     lblNombreView.Text = item.nombre;
@@ -207,7 +211,7 @@ namespace SGSSTC.source.sistema.GestionDatos
 
         protected void EditarRegistro(object sender, EventArgs e)
         {
-            int IdEmpresa = Getter.Set_IdEmpresaDDl(ObjUsuario, ddlEmpresaEdit);
+            int IdEmpresa = Mgr_Empresa.Set_IdEmpresaDDl(ObjUsuario, ddlEmpresaEdit);
 
             GrupoLiEntities contexto = new GrupoLiEntities();
             int IdSucursal = Convert.ToInt32(hdfSucursalEditID.Value);

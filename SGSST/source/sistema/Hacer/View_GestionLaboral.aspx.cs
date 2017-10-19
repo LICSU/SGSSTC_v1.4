@@ -1,4 +1,4 @@
-﻿using Capa_Datos;
+﻿using Capa_Datos;using Capa_Datos.Manager.Trabajador;using Capa_Datos.Manager.Area;using Capa_Datos.Manager.Sucursal;using Capa_Datos.Manager.Empresa;
 using System;
 using System.Collections.Generic;
 using System.Web;
@@ -52,7 +52,7 @@ namespace SGSSTC.source.sistema.Hacer
 				#endregion
 
 				#region 2do bloque consulta
-				List<trabajador_gestion> ListaTrabajadorGestion = Getter.TrabajadorInGestion(0, Convert.ToInt32(idGestion));
+				List<trabajador_gestion> ListaTrabajadorGestion = Mgr_Trabajador.TrabajadorInGestion(0, Convert.ToInt32(idGestion));
 
 				ControlesDinamicos.CrearLiteral("<div class='row'>", pListaTrab);
 				foreach (var item in ListaTrabajadorGestion)

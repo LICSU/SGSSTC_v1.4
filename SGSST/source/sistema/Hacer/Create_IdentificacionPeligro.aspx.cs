@@ -1,4 +1,8 @@
 ﻿using Capa_Datos;
+using Capa_Datos.Manager.Trabajador;
+using Capa_Datos.Manager.Area;
+using Capa_Datos.Manager.Sucursal;
+using Capa_Datos.Manager.Empresa;
 using System;
 using System.Collections.Generic;
 using System.Web;
@@ -19,7 +23,7 @@ namespace SGSSTC.source.sistema.Hacer
 
 			ObjUsuario = Utilidades.ValidarSesion(HttpContext.Current.User.Identity as FormsIdentity, this);phAlerta.Visible = false;
 
-			BoolEmpSuc = Getter.Get_Empresa_Sucursal(ObjUsuario);
+			BoolEmpSuc = Mgr_Empresa.Get_Empresa_Sucursal(ObjUsuario);
 
 			phEmpresa.Visible = BoolEmpSuc.Item1;
 			phSucursal.Visible = BoolEmpSuc.Item2;
@@ -35,11 +39,11 @@ namespace SGSSTC.source.sistema.Hacer
 		{
 			if (BoolEmpSuc.Item1)
 			{
-				Listas.Empresa(ddlEmpresa);
+				Mgr_Empresa.Lista_Empresa(ddlEmpresa);
 			}
 			else
 			{
-				Listas.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+				Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
 			}
 
 			if (!BoolEmpSuc.Item2)
@@ -59,7 +63,7 @@ namespace SGSSTC.source.sistema.Hacer
 
 			int IdSucursal = 0;
 			int IdFactor = 0;
-			int IdEmpresa = Getter.Set_IdEmpresaDDl(ObjUsuario, ddlEmpresa);
+			int IdEmpresa = Mgr_Empresa.Set_IdEmpresaDDl(ObjUsuario, ddlEmpresa);
 			string PosibleConsecuencia = string.Empty;
 
 			List<int> Lista_IdPuestos = new List<int>();
@@ -74,7 +78,7 @@ namespace SGSSTC.source.sistema.Hacer
 				if (puestos[i].Contains("Sucursal:"))
 				{
 					ListaSucursal = new List<sucursal>();
-					ListaSucursal = Getter.Sucursal(0, IdEmpresa, puestos[i].Replace("Sucursal:", ""));
+					ListaSucursal = Mgr_Sucursal.Sucursal(0, IdEmpresa, puestos[i].Replace("Sucursal:", ""));
 
 					foreach (var item in ListaSucursal)
 					{
@@ -193,7 +197,7 @@ namespace SGSSTC.source.sistema.Hacer
 		{
 			if (ddlEmpresa.SelectedValue != string.Empty)
 			{
-				Listas.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
+				Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
 				Listas.Riesgos(ddlTipoRiesgo1, "TipoRiesgo");
 			}
 		}

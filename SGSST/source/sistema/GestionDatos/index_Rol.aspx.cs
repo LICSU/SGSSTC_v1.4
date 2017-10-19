@@ -1,4 +1,8 @@
 using Capa_Datos;
+using Capa_Datos.Manager.Trabajador;
+using Capa_Datos.Manager.Area;
+using Capa_Datos.Manager.Sucursal;
+using Capa_Datos.Manager.Empresa;
 using System;
 using System.Linq;
 using System.Web;
@@ -19,7 +23,7 @@ namespace SGSSTC.source.sistema.GestionDatos
             Page.Form.Attributes.Add("enctype", "multipart/form-data");
             ObjUsuario = Utilidades.ValidarSesion(HttpContext.Current.User.Identity as FormsIdentity, this);phAlerta.Visible = false;
 
-            BoolEmpSuc = Getter.Get_Empresa_Sucursal(ObjUsuario);
+            BoolEmpSuc = Mgr_Empresa.Get_Empresa_Sucursal(ObjUsuario);
 
             phAgregarRol.Visible = BoolEmpSuc.Item2;
 
@@ -37,14 +41,14 @@ namespace SGSSTC.source.sistema.GestionDatos
 
         private void CargarListas()
         {
-            Listas.Empresa(ddlEmpresa);
-            Listas.Empresa(ddlEmpresaAdd);
-            Listas.Empresa(ddlEmpresaEdit);
+            Mgr_Empresa.Lista_Empresa(ddlEmpresa);
+            Mgr_Empresa.Lista_Empresa(ddlEmpresaAdd);
+            Mgr_Empresa.Lista_Empresa(ddlEmpresaEdit);
         }
 
         private void LlenarGridView()
         {
-            int IdEmpresa = Getter.Set_IdEmpresa(ObjUsuario, Convert.ToInt32(ViewState["empresa"]));
+            int IdEmpresa = Mgr_Empresa.Set_IdEmpresa(ObjUsuario, Convert.ToInt32(ViewState["empresa"]));
 
             Tabla.Rol(GridView1, IdEmpresa, string.Empty + ViewState["sWhere"]);
         }
@@ -70,7 +74,7 @@ namespace SGSSTC.source.sistema.GestionDatos
         #region  aciones de editar insertar y eliminar
         protected void Guardar(object sender, EventArgs e)
         {
-            int IdEmpresa = Getter.Set_IdEmpresaDDl(ObjUsuario, ddlEmpresaAdd);
+            int IdEmpresa = Mgr_Empresa.Set_IdEmpresaDDl(ObjUsuario, ddlEmpresaAdd);
             int _id_rol = GetterMax.Roles() + 1;
 
             rol nuevo = new rol()
@@ -88,7 +92,7 @@ namespace SGSSTC.source.sistema.GestionDatos
 
         protected void EditarRegistro(object sender, EventArgs e)
         {
-            int IdEmpresa = Getter.Set_IdEmpresaDDl(ObjUsuario, ddlEmpresaEdit);
+            int IdEmpresa = Mgr_Empresa.Set_IdEmpresaDDl(ObjUsuario, ddlEmpresaEdit);
 
             GrupoLiEntities contexto = new GrupoLiEntities();
             int idRol = Convert.ToInt32(hdfEditID.Value);

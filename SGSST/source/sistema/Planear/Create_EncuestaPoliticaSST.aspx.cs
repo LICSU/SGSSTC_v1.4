@@ -1,11 +1,11 @@
 ﻿using Capa_Datos;
+using Capa_Datos.Manager.Trabajador;
+using Capa_Datos.Manager.Sucursal;
+using Capa_Datos.Manager.Empresa;
 using System;
-using System.Collections.Generic;
 using System.Text;
 using System.Web;
-using System.Web.Script.Services;
 using System.Web.Security;
-using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 
@@ -23,7 +23,7 @@ namespace SGSSTC.source.sistema.Hacer
         {
             ObjUsuario = Utilidades.ValidarSesion(HttpContext.Current.User.Identity as FormsIdentity, this);phAlerta.Visible = false;
 
-            BoolEmpSuc = Getter.Get_Empresa_Sucursal(ObjUsuario);
+            BoolEmpSuc = Mgr_Empresa.Get_Empresa_Sucursal(ObjUsuario);
 
             phSucursal.Visible = BoolEmpSuc.Item2;
 
@@ -35,12 +35,12 @@ namespace SGSSTC.source.sistema.Hacer
 
         private void CargarListas()
         {
-            Listas.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+            Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
 
             if (!BoolEmpSuc.Item2)
             {
                 IdSucursal = Convert.ToInt32(ObjUsuario.Id_sucursal);
-                Listas.Trabajadores_Sucursal(ddlTrabajador, IdSucursal);
+                Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabajador, IdSucursal);
             }
         }
 
@@ -151,7 +151,7 @@ namespace SGSSTC.source.sistema.Hacer
             if (ddlSucursal.SelectedValue != string.Empty)
             {
                 IdSucursal = Convert.ToInt32(ddlSucursal.SelectedValue);
-                Listas.Trabajadores_Sucursal(ddlTrabajador, IdSucursal);
+                Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabajador, IdSucursal);
             }
         }
     }

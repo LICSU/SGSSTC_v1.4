@@ -1,4 +1,8 @@
 ﻿using Capa_Datos;
+using Capa_Datos.Manager.Trabajador;
+using Capa_Datos.Manager.Area;
+using Capa_Datos.Manager.Sucursal;
+using Capa_Datos.Manager.Empresa;
 using System;
 using System.Collections.Generic;
 using System.Web;
@@ -27,7 +31,7 @@ namespace SGSSTC.source.sistema.Hacer
             IdSucursal = objUtilidades.descifrarCadena(Request.QueryString["suc"]);
 
             List<sucursal> ListaSucursal = new List<sucursal>();
-            ListaSucursal = Getter.Sucursal(Convert.ToInt32(IdSucursal),0,"");
+            ListaSucursal = Mgr_Sucursal.Sucursal(Convert.ToInt32(IdSucursal),0,"");
             foreach (var item in ListaSucursal)
             {
                 IdEmpresa = Convert.ToInt32(item.id_empresa);

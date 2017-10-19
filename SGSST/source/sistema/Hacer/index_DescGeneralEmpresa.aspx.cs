@@ -1,4 +1,4 @@
-﻿using Capa_Datos;
+﻿using Capa_Datos;using Capa_Datos.Manager.Trabajador;using Capa_Datos.Manager.Area;using Capa_Datos.Manager.Sucursal;using Capa_Datos.Manager.Empresa;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +17,7 @@ namespace SGSSTC.source.sistema.Hacer
         {
             ObjUsuario = Utilidades.ValidarSesion(HttpContext.Current.User.Identity as FormsIdentity, this);phAlerta.Visible = false;
 
-            BoolEmpSuc = Getter.Get_Empresa_Sucursal(ObjUsuario);
+            BoolEmpSuc = Mgr_Empresa.Get_Empresa_Sucursal(ObjUsuario);
 
             if (!IsPostBack)
             {
@@ -47,7 +47,7 @@ namespace SGSSTC.source.sistema.Hacer
 
 
             List<sucursal> ListaSucursal = new List<sucursal>();
-            ListaSucursal = Getter.Sucursal(0, ObjUsuario.Id_empresa);
+            ListaSucursal = Mgr_Sucursal.Sucursal(0, ObjUsuario.Id_empresa);
 
             if (ListaSucursal.Count == 0)
             {
@@ -70,14 +70,14 @@ namespace SGSSTC.source.sistema.Hacer
 
                     foreach (var item2 in ListaPuestoTrabajo)
                     {
-                        ControlesDinamicos.CrearLiteral("<div class='col-md-6 '><label>" + GetterCantidad.TrabPuesto(Convert.ToInt32(item2.id_puesto_trabajo)) + "</label></div>", pAreaAdm);
+                        ControlesDinamicos.CrearLiteral("<div class='col-md-6 '><label>" + Mgr_Trabajador.TrabPuesto(Convert.ToInt32(item2.id_puesto_trabajo)) + "</label></div>", pAreaAdm);
                         ControlesDinamicos.CrearLiteral("<div class='col-md-6 '><label>" + item2.nombre + "</label></div>", pAreaAdm);
                     }
 
                     ListaPuestoTrabajo = Getter.PuestoTrabajo(0, ObjUsuario.Id_empresa, "Operativa");
                     foreach (var item3 in ListaPuestoTrabajo)
                     {
-                        ControlesDinamicos.CrearLiteral("<div class='col-md-6 '><label>" + GetterCantidad.TrabPuesto(Convert.ToInt32(item3.id_puesto_trabajo)) + "</label></div>", pAreaOpe);
+                        ControlesDinamicos.CrearLiteral("<div class='col-md-6 '><label>" + Mgr_Trabajador.TrabPuesto(Convert.ToInt32(item3.id_puesto_trabajo)) + "</label></div>", pAreaOpe);
                         ControlesDinamicos.CrearLiteral("<div class='col-md-6 '><label>" + item3.nombre + "</label></div>", pAreaOpe);
                     }
 
@@ -110,7 +110,7 @@ namespace SGSSTC.source.sistema.Hacer
                         ControlesDinamicos.CrearLiteral("<div class='col-md-6 '><label>" + item5.nombre + "</label></div>", pHorario);
                     }
 
-                    label19.Text = string.Empty + GetterCantidad.Trabajadores_Empresa(ObjUsuario.Id_empresa);
+                    label19.Text = string.Empty + Mgr_Trabajador.Trabajadores_Empresa(ObjUsuario.Id_empresa);
 
                     Textbox8.Text = item.empresa.tipo_material;
                     Textbox9.Text = item.empresa.dependencias_adm;

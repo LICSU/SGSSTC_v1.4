@@ -1,4 +1,6 @@
 ﻿using Capa_Datos;
+using Capa_Datos.Manager.Sucursal;
+using Capa_Datos.Manager.Empresa;
 using System;
 using System.Web;
 using System.Web.Security;
@@ -15,7 +17,7 @@ namespace SGSST.source.sistema.Planear
         {
             ObjUsuario = Utilidades.ValidarSesion(HttpContext.Current.User.Identity as FormsIdentity, this);
 
-            BoolEmpSuc = Getter.Get_Empresa_Sucursal(ObjUsuario);
+            BoolEmpSuc = Mgr_Empresa.Get_Empresa_Sucursal(ObjUsuario);
             phEmpresa.Visible = BoolEmpSuc.Item1;
             phSucursal.Visible = BoolEmpSuc.Item2;
 
@@ -29,18 +31,18 @@ namespace SGSST.source.sistema.Planear
         {
             if (BoolEmpSuc.Item1)
             {
-                Listas.Empresa(ddlEmpresa);
+                Mgr_Empresa.Lista_Empresa(ddlEmpresa);
             }
             if (BoolEmpSuc.Item2)
             {
-                Listas.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
             }
         }
 
         protected void GenerarDocumento(object sender, EventArgs e)
         {
 
-            Tuple<int, int> IdEmpSuc = Getter.Get_IdEmpresa_IdSucursal(ObjUsuario, ddlEmpresa, ddlSucursal);
+            Tuple<int, int> IdEmpSuc = Mgr_Empresa.Get_IdEmpresa_IdSucursal(ObjUsuario, ddlEmpresa, ddlSucursal);
             String[] valores = {
                 string.Empty + IdEmpSuc.Item2,
                 txtValProvCont.Text
@@ -54,7 +56,7 @@ namespace SGSST.source.sistema.Planear
         {
             if (ddlEmpresa.SelectedValue != string.Empty)
             {
-                Listas.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
+                Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
             }
         }
     }

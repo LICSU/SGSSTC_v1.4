@@ -1,5 +1,7 @@
 ﻿using System;
 using Capa_Datos;
+using Capa_Datos.Manager.Sucursal;
+using Capa_Datos.Manager.Empresa;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -14,9 +16,9 @@ namespace SGSSTC.source.sistema.Hacer
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            ObjUsuario = Utilidades.ValidarSesion(HttpContext.Current.User.Identity as FormsIdentity, this);phAlerta.Visible = false;
+            ObjUsuario = Utilidades.ValidarSesion(HttpContext.Current.User.Identity as FormsIdentity, this); phAlerta.Visible = false;
 
-            BoolEmpSuc = Getter.Get_Empresa_Sucursal(ObjUsuario);
+            BoolEmpSuc = Mgr_Empresa.Get_Empresa_Sucursal(ObjUsuario);
             phEmpresa.Visible = BoolEmpSuc.Item1;
             phSucursal.Visible = BoolEmpSuc.Item2;
 
@@ -30,17 +32,17 @@ namespace SGSSTC.source.sistema.Hacer
         {
             if (BoolEmpSuc.Item1)
             {
-                Listas.Empresa(ddlEmpresa);
+                Mgr_Empresa.Lista_Empresa(ddlEmpresa);
             }
             if (BoolEmpSuc.Item2)
             {
-                Listas.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
             }
         }
 
         protected void GenerarDocumento(object sender, EventArgs e)
         {
-            Tuple<int, int> IdEmpSuc = Getter.Get_IdEmpresa_IdSucursal(ObjUsuario, ddlEmpresa, ddlSucursal);
+            Tuple<int, int> IdEmpSuc = Mgr_Empresa.Get_IdEmpresa_IdSucursal(ObjUsuario, ddlEmpresa, ddlSucursal);
             String[] valores = {
                 string.Empty + IdEmpSuc.Item2,
                 PrintFile.GetRadioValue(RadioButtonList1),
@@ -188,7 +190,7 @@ namespace SGSSTC.source.sistema.Hacer
 
             PrintFile.PrintAnalisisVulnerabilidad(valores, valoresText, this, txtArea, txtObjetivo, txtAlcance, puntajeABC.Text, txtConclusiones.InnerText,
                 txtFortalezas.InnerText, txtDebilidades.InnerText);
-            
+
         }
 
         protected void Riesgos_SelectedIndexChanged(object sender, EventArgs e)
@@ -445,7 +447,7 @@ namespace SGSSTC.source.sistema.Hacer
         {
             if (ddlEmpresa.SelectedValue != string.Empty)
             {
-                Listas.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
+                Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
             }
         }
     }

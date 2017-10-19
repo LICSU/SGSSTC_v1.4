@@ -1,5 +1,9 @@
 ﻿using System;
 using Capa_Datos;
+using Capa_Datos.Manager.Trabajador;
+using Capa_Datos.Manager.Area;
+using Capa_Datos.Manager.Sucursal;
+using Capa_Datos.Manager.Empresa;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
@@ -20,7 +24,7 @@ namespace SGSSTC.source.sistema.Hacer
             Page.Form.Attributes.Add("enctype", "multipart/form-data");
             ObjUsuario = Utilidades.ValidarSesion(HttpContext.Current.User.Identity as FormsIdentity, this);
 
-            BoolEmpSuc = Getter.Get_Empresa_Sucursal(ObjUsuario);
+            BoolEmpSuc = Mgr_Empresa.Get_Empresa_Sucursal(ObjUsuario);
             phEmpresa.Visible = BoolEmpSuc.Item1;
             phSucursal.Visible = BoolEmpSuc.Item2;
 
@@ -37,8 +41,8 @@ namespace SGSSTC.source.sistema.Hacer
         }
         private void LlenarGridView()
         {
-            int IdEmpresa = Getter.Set_IdEmpresa(ObjUsuario, Convert.ToInt32(ViewState["empresa"]));
-            int IdSucursal = Getter.Set_IdSucursal(ObjUsuario, Convert.ToInt32(ViewState["sucursal"]));
+            int IdEmpresa = Mgr_Empresa.Set_IdEmpresa(ObjUsuario, Convert.ToInt32(ViewState["empresa"]));
+            int IdSucursal = Mgr_Sucursal.Set_IdSucursal(ObjUsuario, Convert.ToInt32(ViewState["sucursal"]));
 
             Tabla.MatrizLegal(
                 GridView1,
@@ -52,11 +56,11 @@ namespace SGSSTC.source.sistema.Hacer
         {
             if (BoolEmpSuc.Item1)
             {
-                Listas.Empresa(ddlEmpresa);
+                Mgr_Empresa.Lista_Empresa(ddlEmpresa);
             }
             else
             {
-                Listas.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
             }
 
             if (!BoolEmpSuc.Item2)
@@ -111,7 +115,7 @@ namespace SGSSTC.source.sistema.Hacer
             if (ddlEmpresa.SelectedValue != string.Empty)
             {
                 ViewState["empresa"] = ddlEmpresa.SelectedValue;
-                Listas.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
+                Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
                 estatus = Convert.ToString(Getter.AvgEstNorEmp(Convert.ToInt32(ddlEmpresa.SelectedValue)));
             }
             else

@@ -1,11 +1,11 @@
 ﻿using Capa_Datos;
+using Capa_Datos.Manager.Trabajador;
+using Capa_Datos.Manager.Sucursal;
+using Capa_Datos.Manager.Empresa;
 using System;
-using System.Collections.Generic;
 using System.Text;
 using System.Web;
-using System.Web.Script.Services;
 using System.Web.Security;
-using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
@@ -17,15 +17,15 @@ namespace SGSSTC.source.sistema.Hacer
 		protected static Model_UsuarioSistema ObjUsuario;
 		static GridView grid = new GridView();
 		Tuple<bool, bool> BoolEmpSuc;
-        private static int IdSucursal = 0;
-        private static int IdTrabajador = 0;
-        private static int IdPuesto = 0;
+		private static int IdSucursal = 0;
+		private static int IdTrabajador = 0;
+		private static int IdPuesto = 0;
 
-        protected void Page_Load(object sender, EventArgs e)
+		protected void Page_Load(object sender, EventArgs e)
 		{
 			ObjUsuario = Utilidades.ValidarSesion(HttpContext.Current.User.Identity as FormsIdentity, this);
 
-			BoolEmpSuc = Getter.Get_Empresa_Sucursal(ObjUsuario);
+			BoolEmpSuc = Mgr_Empresa.Get_Empresa_Sucursal(ObjUsuario);
 
 			phSucursal.Visible = BoolEmpSuc.Item2;
 
@@ -37,12 +37,12 @@ namespace SGSSTC.source.sistema.Hacer
 		}
 		protected void CargarListas()
 		{
-			Listas.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+			Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
 
 			if (!BoolEmpSuc.Item2)
 			{
-                IdSucursal = Convert.ToInt32(ObjUsuario.Id_sucursal);
-                Listas.Trabajadores_Sucursal(ddlTrabajador, IdSucursal);
+				IdSucursal = Convert.ToInt32(ObjUsuario.Id_sucursal);
+				Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabajador, IdSucursal);
 			}
 		}
 		protected void btnGenerar_Onclick(object sender, EventArgs e)
@@ -154,10 +154,10 @@ namespace SGSSTC.source.sistema.Hacer
 		{
 			if (ddlSucursal.SelectedValue != string.Empty)
 			{
-                IdSucursal = Convert.ToInt32(ddlSucursal.SelectedValue);
-                Listas.Trabajadores_Sucursal(ddlTrabajador, IdSucursal);
-            }
+				IdSucursal = Convert.ToInt32(ddlSucursal.SelectedValue);
+				Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabajador, IdSucursal);
+			}
 		}
 
-    }
+	}
 }

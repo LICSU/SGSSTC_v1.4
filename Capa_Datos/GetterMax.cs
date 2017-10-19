@@ -15,13 +15,6 @@ namespace Capa_Datos
             //
         }
 
-        public static int Areas()
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            var consulta = new area();
-            int id = contexto.area.Max(x => x.id_area);
-            return id;
-        }
         public static int Accidentes()
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
@@ -41,12 +34,6 @@ namespace Capa_Datos
             }
 
             return id;
-        }
-        public static int Empresas()
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            var consulta = new empresa();
-            return contexto.empresa.Max(x => x.id_empresa);
         }
 
         public static int Roles()
@@ -137,13 +124,6 @@ namespace Capa_Datos
                 return 0;
             }              
         }
-        public static int Sucursal()
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            var consulta = new sucursal();
-            int id = contexto.sucursal.Max(x => x.id_sucursal);
-            return id;
-        }
         public static int RecursosEconmicos(int _id_sucursal)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
@@ -157,13 +137,6 @@ namespace Capa_Datos
                     .Max(x => x.id_documento);
             }
 
-            return id;
-        }
-        public static int Trabajador()
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            var consulta = new trabajador();
-            int id = contexto.trabajador.Max(x => x.id_trabajador);
             return id;
         }
         public static int Usuario()

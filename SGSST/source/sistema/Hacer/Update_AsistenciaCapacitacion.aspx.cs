@@ -1,4 +1,4 @@
-﻿using Capa_Datos;
+﻿using Capa_Datos;using Capa_Datos.Manager.Trabajador;using Capa_Datos.Manager.Area;using Capa_Datos.Manager.Sucursal;using Capa_Datos.Manager.Empresa;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -59,7 +59,7 @@ namespace SGSSTC.source.sistema.Hacer
 
             List<trabajador_gestion> ListaTrabajadorGest = new List<trabajador_gestion>();
 
-            ListaTrabajadorGest = Getter.TrabajadorInGestion(0, Convert.ToInt32(string.Empty + ViewState["Id_gestion"]));
+            ListaTrabajadorGest = Mgr_Trabajador.TrabajadorInGestion(0, Convert.ToInt32(string.Empty + ViewState["Id_gestion"]));
 
             chkAsistencia.Items.Clear();
 
@@ -129,7 +129,7 @@ namespace SGSSTC.source.sistema.Hacer
             RadioButtonList miRadio;
 
             List<trabajador_gestion> ListaTrabajadorGest = new List<trabajador_gestion>();
-            ListaTrabajadorGest = Getter.TrabajadorInGestion(0, Convert.ToInt32(string.Empty + ViewState["Id_gestion"]));
+            ListaTrabajadorGest = Mgr_Trabajador.TrabajadorInGestion(0, Convert.ToInt32(string.Empty + ViewState["Id_gestion"]));
 
             foreach (Control micontrol in panelAsistencia.Controls)
             {

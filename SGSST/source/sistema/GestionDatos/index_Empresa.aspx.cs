@@ -1,4 +1,8 @@
 ﻿using Capa_Datos;
+using Capa_Datos.Manager.Trabajador;
+using Capa_Datos.Manager.Area;
+using Capa_Datos.Manager.Sucursal;
+using Capa_Datos.Manager.Empresa;
 using System;
 using System.Collections.Generic;
 using System.Web;
@@ -18,7 +22,7 @@ namespace SGSSTC.source.sistema.GestionDatos
         {
             ObjUsuario = Utilidades.ValidarSesion(HttpContext.Current.User.Identity as FormsIdentity, this);
 
-            BoolEmpSuc = Getter.Get_Empresa_Sucursal(ObjUsuario);
+            BoolEmpSuc = Mgr_Empresa.Get_Empresa_Sucursal(ObjUsuario);
 
             if (!IsPostBack)
             {
@@ -40,7 +44,7 @@ namespace SGSSTC.source.sistema.GestionDatos
         {
             List<empresa> ListaEmpresa = new List<empresa>();
             int IdEmpresa = Convert.ToInt32(id_empresa);
-            ListaEmpresa = Getter.Empresa(IdEmpresa);
+            ListaEmpresa = Mgr_Empresa.Empresa(IdEmpresa);
 
             foreach (var item in ListaEmpresa)
             {
@@ -64,7 +68,7 @@ namespace SGSSTC.source.sistema.GestionDatos
 
         private void LlenarGridView()
         {
-            Tabla.Empresa(GridView1);
+            Mgr_Empresa.tabla_Empresa(GridView1);
         }
         #endregion
 

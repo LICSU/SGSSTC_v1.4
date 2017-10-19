@@ -1,4 +1,8 @@
 ﻿using Capa_Datos;
+using Capa_Datos.Manager.Trabajador;
+using Capa_Datos.Manager.Area;
+using Capa_Datos.Manager.Empresa;
+using Capa_Datos.Manager.Sucursal;
 using System;
 using System.Collections.Generic;
 using System.Web;
@@ -119,11 +123,11 @@ namespace SGSST
                 ""
             };
 
-            if (CRUD.AddEmpresaSimple(valores))
+            if (Mgr_Empresa.AddEmpresaSimple(valores))
             {
                 nombreEmpresa = Utilidades.FormatearPalabra(valores[0]);
                 nombreEmpresa = nombreEmpresa.Replace(" ", "");
-                IdEmpresa = GetterMax.Empresas();
+                IdEmpresa = Mgr_Empresa.get_max_Empresas();
                 add_CodigoCiiu();
 
                 string mensaje = "Se agregó la empresa exitosamente a las " + DateTime.Now.ToString("HH:mm:ss") +" se enviará al correo ingresado, el usuario y la contraseña de acceso al sistema";
@@ -155,7 +159,7 @@ namespace SGSST
             }
             else
             {
-                CRUD.DeleteEmpresa(IdEmpresa);
+                Mgr_Empresa.DeleteEmpresa(IdEmpresa);
                 Modal.MostrarMsjModal(MensajeError.Error_Add_Default_Ciiu.Value, "ERR", this);
             }
         }
@@ -170,7 +174,7 @@ namespace SGSST
             }
             else
             {
-                CRUD.DeleteEmpresa(IdEmpresa);
+                Mgr_Empresa.DeleteEmpresa(IdEmpresa);
                 Modal.MostrarMsjModal(MensajeError.Error_Add_Default_Categoria.Value, "ERR", this);
             }
         }
@@ -185,7 +189,7 @@ namespace SGSST
             }
             else
             {
-                CRUD.DeleteEmpresa(IdEmpresa);
+                Mgr_Empresa.DeleteEmpresa(IdEmpresa);
                 Modal.MostrarMsjModal(MensajeError.Error_Add_Default_Estatus.Value, "ERR", this);
             }
         }
@@ -205,13 +209,13 @@ namespace SGSST
                 ddlClase3.SelectedValue
             };
 
-            if (CRUD.Add_Sucursal_Empresa_2(valores))
+            if (Mgr_Sucursal.Add_Sucursal_Empresa_2(valores))
             {
-                add_Area_Default(GetterMax.Sucursal());
+                add_Area_Default(Mgr_Sucursal.Sucursal());
             }
             else
             {
-                CRUD.DeleteEmpresa(IdEmpresa);
+                Mgr_Empresa.DeleteEmpresa(IdEmpresa);
                 Modal.MostrarMsjModal(MensajeError.Error_Add_Default_Sucursal.Value, "ERR", this);
             }
 
@@ -226,13 +230,13 @@ namespace SGSST
                 ""+id_sucursal
             };
 
-            if (CRUD.Add_Area_Sucursal(valores))
+            if (Mgr_Area.Add_Area_Sucursal(valores))
             {
                 add_PuestoTrabajo_Default(id_sucursal);
             }
             else
             {
-                CRUD.DeleteEmpresa(IdEmpresa);
+                Mgr_Empresa.DeleteEmpresa(IdEmpresa);
                 Modal.MostrarMsjModal(MensajeError.Error_Add_Default_Area.Value, "ERR", this);
             }
         }
@@ -249,7 +253,7 @@ namespace SGSST
             }
             else
             {
-                CRUD.DeleteEmpresa(IdEmpresa);
+                Mgr_Empresa.DeleteEmpresa(IdEmpresa);
                 Modal.MostrarMsjModal(MensajeError.Error_Add_Default_PuestoTrabajo.Value, "ERR", this);
             }
         }
@@ -266,7 +270,7 @@ namespace SGSST
             }
             else
             {
-                CRUD.DeleteEmpresa( IdEmpresa);
+                Mgr_Empresa.DeleteEmpresa(IdEmpresa);
                 Modal.MostrarMsjModal(MensajeError.Error_Add_Default_Horario.Value, "ERR", this);
             }
         }
@@ -277,13 +281,13 @@ namespace SGSST
                 nombreEmpresa
             };
 
-            if (CRUD.Add_Trabajador_Sucursal( valores))
+            if (Mgr_Trabajador.Add_Trabajador_Sucursal( valores))
             {
                 add_Usuario_Default(id_sucursal);
             }
             else
             {
-                CRUD.DeleteEmpresa( IdEmpresa);
+                Mgr_Empresa.DeleteEmpresa(IdEmpresa);
                 Modal.MostrarMsjModal(MensajeError.Error_Add_Default_Trabajador.Value, "ERR", this);
             }
         }
@@ -308,7 +312,7 @@ namespace SGSST
             }
             else
             {
-                CRUD.DeleteEmpresa( IdEmpresa);
+                Mgr_Empresa.DeleteEmpresa(IdEmpresa);
                 Modal.MostrarMsjModal(MensajeError.Error_Add_Default_Usuario.Value, "ERR", this);
             }
         }
@@ -329,7 +333,7 @@ namespace SGSST
             }
             else
             {
-                CRUD.DeleteEmpresa( IdEmpresa);
+                Mgr_Empresa.DeleteEmpresa(IdEmpresa);
                 Modal.MostrarMsjModal(MensajeError.Error_Add_Default_TipoDocumento.Value, "ERR", this);
             }
 

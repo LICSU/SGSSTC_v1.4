@@ -1,4 +1,8 @@
 ﻿using Capa_Datos;
+using Capa_Datos.Manager.Trabajador;
+using Capa_Datos.Manager.Area;
+using Capa_Datos.Manager.Sucursal;
+using Capa_Datos.Manager.Empresa;
 using System;
 using System.Collections.Generic;
 using System.Web;
@@ -21,7 +25,7 @@ namespace SGSSTC.source.sistema.Hacer
         {
             ObjUsuario = Utilidades.ValidarSesion(HttpContext.Current.User.Identity as FormsIdentity, this);
 
-            BoolEmpSuc = Getter.Get_Empresa_Sucursal(ObjUsuario);
+            BoolEmpSuc = Mgr_Empresa.Get_Empresa_Sucursal(ObjUsuario);
 
             phEmpresa.Visible = BoolEmpSuc.Item1;
             phSucursal.Visible = BoolEmpSuc.Item2;
@@ -36,21 +40,21 @@ namespace SGSSTC.source.sistema.Hacer
         {
             if (BoolEmpSuc.Item1)
             {
-                Listas.Empresa(ddlEmpresa);
+                Mgr_Empresa.Lista_Empresa(ddlEmpresa);
             }
             else
             {
-                Listas.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
             }
             if (!BoolEmpSuc.Item2)
             {
-                Listas.Trabajadores_Sucursal(ddlTrabajador, Convert.ToInt32(ObjUsuario.Id_sucursal));
+                Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabajador, Convert.ToInt32(ObjUsuario.Id_sucursal));
             }
         }
 
         protected void GenerarDocumento(object sender, EventArgs e)
         {
-            Tuple<int, int> IdEmpSuc = Getter.Get_IdEmpresa_IdSucursal(ObjUsuario, ddlEmpresa, ddlSucursal);
+            Tuple<int, int> IdEmpSuc = Mgr_Empresa.Get_IdEmpresa_IdSucursal(ObjUsuario, ddlEmpresa, ddlSucursal);
 
             String texto =  " <p class='text-justify' style='padding-bottom:50px;'>" +
                            "     La gerencia de la empresa " + lblEmpresa.Text + ", en cumplimiento " +
@@ -83,7 +87,7 @@ namespace SGSSTC.source.sistema.Hacer
         {
             if (ddlEmpresa.SelectedValue != string.Empty)
             {
-                Listas.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
+                Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
             }
         }
         protected void ddlSucursal_SelectedIndexChanged(object sender, EventArgs e)
@@ -91,7 +95,7 @@ namespace SGSSTC.source.sistema.Hacer
             if (ddlSucursal.SelectedValue != string.Empty)
             {
                 IdSucursal = Convert.ToInt32(ddlSucursal.SelectedValue);
-                Listas.Trabajadores_Sucursal(ddlTrabajador, IdSucursal);
+                Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabajador, IdSucursal);
             }
         }
         protected void btnGenerarActa_OnClick(object sender, EventArgs e)
@@ -101,7 +105,7 @@ namespace SGSSTC.source.sistema.Hacer
             lblEmpresaSel.Text = ddlSucursal.SelectedItem.Text;
             lblEmpleado.Text = ddlTrabajador.SelectedItem.Text;
             IdTrabajador = Convert.ToInt32(ddlTrabajador.SelectedValue);
-            List<trabajador> listTrabajadores = Getter.Trabajador(IdTrabajador);
+            List<trabajador> listTrabajadores = Mgr_Trabajador.Trabajador(IdTrabajador);
             lblCedula.Text = listTrabajadores.ElementAt(0).cedula;
             phActa.Visible = true;
         }

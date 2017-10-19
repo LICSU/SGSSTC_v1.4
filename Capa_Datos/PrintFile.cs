@@ -1,4 +1,7 @@
-﻿using iTextSharp.text;
+﻿using Capa_Datos.Manager.Empresa;
+using Capa_Datos.Manager.Sucursal;
+using Capa_Datos.Manager.Trabajador;
+using iTextSharp.text;
 using iTextSharp.text.pdf;
 using System;
 using System.Collections.Generic;
@@ -1338,7 +1341,7 @@ namespace Capa_Datos
                     DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, miCelda86));
                 }
 
-                List<trabajador_gestion> ListaTrabajadorGestion = Getter.TrabajadorInGestion(0, Convert.ToInt32(valores[0]));
+                List<trabajador_gestion> ListaTrabajadorGestion = Mgr_Trabajador.TrabajadorInGestion(0, Convert.ToInt32(valores[0]));
                 miCelda12.Texto = "TRABAJADORES QUE ASISTIRAN";
                 DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, miCelda12));
 
@@ -3499,7 +3502,7 @@ namespace Capa_Datos
                 DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, miCelda12));
 
                 List<trabajador> ListaTrabajador = new List<trabajador>();
-                ListaTrabajador = Getter.Trabajador(0, 0, IdSucursal);
+                ListaTrabajador = Mgr_Trabajador.Trabajador(0, 0, IdSucursal);
 
                 foreach (var item1 in ListaTrabajador)
                 {
@@ -5423,7 +5426,7 @@ namespace Capa_Datos
             DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, miCelda56));
 
             List<trabajador> LisTrabajador = new List<trabajador>();
-            LisTrabajador = Getter.Trabajador(0, 0, Convert.ToInt32(valores[1]));
+            LisTrabajador = Mgr_Trabajador.Trabajador(0, 0, Convert.ToInt32(valores[1]));
             int contTrabajadortes = 0;
 
             foreach (var item in LisTrabajador)
@@ -6903,7 +6906,7 @@ namespace Capa_Datos
                 DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, miCelda12));
 
                 List<trabajador> ListaTrabajador = new List<trabajador>();
-                ListaTrabajador = Getter.Trabajador(0, 0, IdSucursal);
+                ListaTrabajador = Mgr_Trabajador.Trabajador(0, 0, IdSucursal);
 
                 foreach (var item1 in ListaTrabajador)
                 {
@@ -7118,7 +7121,7 @@ namespace Capa_Datos
 
             #region contenido
             List<empresa> ListaEmpresa = new List<empresa>();
-            ListaEmpresa = Getter.Empresa(Convert.ToInt32(valores[1]));
+            ListaEmpresa = Mgr_Empresa.Empresa(Convert.ToInt32(valores[1]));
 
             string nomEmpresa = string.Empty;
             foreach (var item in ListaEmpresa)
@@ -7236,14 +7239,14 @@ namespace Capa_Datos
 
             #region contenido
             List<empresa> ListaEmpresa = new List<empresa>();
-            ListaEmpresa = Getter.Empresa(Convert.ToInt32(valores[1]));
+            ListaEmpresa = Mgr_Empresa.Empresa(Convert.ToInt32(valores[1]));
             string nomEmpresa = string.Empty;
             foreach (var item in ListaEmpresa)
             {
                 nomEmpresa = item.nombre;
             }
-            List<trabajador> trabajador = Getter.Trabajador(Convert.ToInt32(valores[2]));
-            List<sucursal> sucursal = Getter.Sucursal(Convert.ToInt32(valores[3]), 0, string.Empty);
+            List<trabajador> trabajador = Mgr_Trabajador.Trabajador(Convert.ToInt32(valores[2]));
+            List<sucursal> sucursal = Mgr_Sucursal.Sucursal(Convert.ToInt32(valores[3]), 0, string.Empty);
             string direccion = string.Empty;
             foreach (var item in sucursal)
             {

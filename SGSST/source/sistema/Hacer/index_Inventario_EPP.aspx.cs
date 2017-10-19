@@ -1,4 +1,8 @@
 ﻿using Capa_Datos;
+using Capa_Datos.Manager.Trabajador;
+using Capa_Datos.Manager.Area;
+using Capa_Datos.Manager.Sucursal;
+using Capa_Datos.Manager.Empresa;
 using System;
 using System.Collections.Generic;
 using System.Web;
@@ -22,7 +26,7 @@ namespace SGSSTC.source.sistema.Hacer
 
 			ObjUsuario = Utilidades.ValidarSesion(HttpContext.Current.User.Identity as FormsIdentity, this);phAlerta.Visible = false;
 
-			BoolEmpSuc = Getter.Get_Empresa_Sucursal(ObjUsuario);
+			BoolEmpSuc = Mgr_Empresa.Get_Empresa_Sucursal(ObjUsuario);
 
 			phEmpresa.Visible = BoolEmpSuc.Item1;
 			phSucursal.Visible = BoolEmpSuc.Item2;
@@ -63,11 +67,11 @@ namespace SGSSTC.source.sistema.Hacer
 		}
 		private void CargarListas()
 		{
-			Listas.Empresa(ddlEmpresa);
+			Mgr_Empresa.Lista_Empresa(ddlEmpresa);
 
 			if (!BoolEmpSuc.Item1)
 			{
-				Listas.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+				Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
 			}
 
 		}
@@ -79,7 +83,7 @@ namespace SGSSTC.source.sistema.Hacer
 			if (ddlEmpresa.SelectedValue != string.Empty)
 			{
 				ViewState["empresa"] = ddlEmpresa.SelectedValue;
-				Listas.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
+				Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
 				ViewState["sucursal"] = "0";
 			}
 			else
@@ -127,7 +131,7 @@ namespace SGSSTC.source.sistema.Hacer
 		}
 		protected void genereDocumento()
 		{
-			Tuple<int, int> IdEmpSuc = Getter.Get_IdEmpresa_IdSucursal(ObjUsuario, ddlEmpresa, ddlSucursal);
+			Tuple<int, int> IdEmpSuc = Mgr_Empresa.Get_IdEmpresa_IdSucursal(ObjUsuario, ddlEmpresa, ddlSucursal);
 			String[] valores = {
 				string.Empty + IdEmpSuc.Item2,
 				string.Empty + IdEmpSuc.Item1,

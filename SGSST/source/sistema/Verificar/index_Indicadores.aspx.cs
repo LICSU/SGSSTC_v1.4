@@ -1,4 +1,8 @@
 ﻿using Capa_Datos;
+using Capa_Datos.Manager.Trabajador;
+using Capa_Datos.Manager.Area;
+using Capa_Datos.Manager.Sucursal;
+using Capa_Datos.Manager.Empresa;
 using System;
 using System.Collections.Generic;
 using System.Web;
@@ -19,7 +23,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
         {
             ObjUsuario = Utilidades.ValidarSesion(HttpContext.Current.User.Identity as FormsIdentity, this);phAlerta.Visible = false;
 
-            BoolEmpSuc = Getter.Get_Empresa_Sucursal(ObjUsuario);
+            BoolEmpSuc = Mgr_Empresa.Get_Empresa_Sucursal(ObjUsuario);
             phEmpresa.Visible = BoolEmpSuc.Item1;
             phSucursal.Visible = BoolEmpSuc.Item2;
 
@@ -35,7 +39,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
             List<trabajador> ListaTrabajador = new List<trabajador>();
             if (!BoolEmpSuc.Item2)
             {
-                ListaTrabajador = Getter.Trabajador(0, 0, ObjUsuario.Id_sucursal);
+                ListaTrabajador = Mgr_Trabajador.Trabajador(0, 0, ObjUsuario.Id_sucursal);
 
                 Label1.Text = string.Empty + ListaTrabajador.Count;
                 Label2.Text = string.Empty + ListaTrabajador.Count;
@@ -43,12 +47,12 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
                 Label5.Text = string.Empty + ListaTrabajador.Count;
 
                 List<area> ListaArea = new List<area>();
-                ListaArea = Getter.Area(ObjUsuario.Id_empresa, 0, "");
+                ListaArea = Mgr_Area.Area(ObjUsuario.Id_empresa, 0, "");
                 Label4.Text = string.Empty + ListaArea.Count;
             }
             else
             {
-                ListaTrabajador = Getter.Trabajador(0, ObjUsuario.Id_empresa);
+                ListaTrabajador = Mgr_Trabajador.Trabajador(0, ObjUsuario.Id_empresa);
 
                 Label1.Text = string.Empty + ListaTrabajador.Count;
                 Label2.Text = string.Empty + ListaTrabajador.Count;
@@ -56,7 +60,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
                 Label5.Text = string.Empty + ListaTrabajador.Count;
 
                 List<area> ListaArea = new List<area>();
-                ListaArea = Getter.Area(ObjUsuario.Id_empresa, 0, "");
+                ListaArea = Mgr_Area.Area(ObjUsuario.Id_empresa, 0, "");
                 Label4.Text = string.Empty + ListaArea.Count;
             }
         }
@@ -64,13 +68,13 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
         {
             if (BoolEmpSuc.Item1)
             {
-                Listas.Empresa(ddlEmpresa);
-                Listas.Empresa(ddlEmpresaAdd);
+                Mgr_Empresa.Lista_Empresa(ddlEmpresa);
+                Mgr_Empresa.Lista_Empresa(ddlEmpresaAdd);
             }
             if (BoolEmpSuc.Item2)
             {
-                Listas.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
-                Listas.Sucursal(ddlSucursalAdd, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Sucursal(ddlSucursalAdd, ObjUsuario.Id_empresa);
             }
         }
         #endregion
@@ -79,7 +83,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
 
         protected void Guardar(object sender, EventArgs e)
         {
-            Tuple<int, int> IdEmpSuc = Getter.Get_IdEmpresa_IdSucursal(ObjUsuario, ddlEmpresaAdd, ddlSucursalAdd);
+            Tuple<int, int> IdEmpSuc = Mgr_Empresa.Get_IdEmpresa_IdSucursal(ObjUsuario, ddlEmpresaAdd, ddlSucursalAdd);
 
             String[] valores = {
                 txtNombre.Text,
@@ -97,13 +101,13 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
         {
             if (ddlEmpresaAdd.SelectedValue != string.Empty)
             {
-                Listas.Sucursal(ddlSucursalAdd, Convert.ToInt32(ddlEmpresaAdd.SelectedValue));
+                Mgr_Sucursal.Sucursal(ddlSucursalAdd, Convert.ToInt32(ddlEmpresaAdd.SelectedValue));
             }
         }
 
         protected void GenerarDocumento(object sender, EventArgs e)
         {
-            Tuple<int, int> IdEmpSuc = Getter.Get_IdEmpresa_IdSucursal(ObjUsuario, ddlEmpresa, ddlSucursal);
+            Tuple<int, int> IdEmpSuc = Mgr_Empresa.Get_IdEmpresa_IdSucursal(ObjUsuario, ddlEmpresa, ddlSucursal);
             String[] valores = {
                 string.Empty + IdEmpSuc.Item2
             };
@@ -562,7 +566,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
         {
             if (ddlEmpresa.SelectedValue != string.Empty)
             {
-                Listas.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
+                Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
             }
         }
 

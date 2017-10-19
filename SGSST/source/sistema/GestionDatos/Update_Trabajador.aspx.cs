@@ -1,4 +1,4 @@
-﻿using Capa_Datos;
+﻿using Capa_Datos;using Capa_Datos.Manager.Trabajador;using Capa_Datos.Manager.Area;using Capa_Datos.Manager.Sucursal;using Capa_Datos.Manager.Empresa;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +18,7 @@ namespace SGSSTC.source.sistema.GestionDatos
         {
             ObjUsuario = Utilidades.ValidarSesion(HttpContext.Current.User.Identity as FormsIdentity, this);phAlerta.Visible = false;
 
-            BoolEmpSuc = Getter.Get_Empresa_Sucursal(ObjUsuario);
+            BoolEmpSuc = Mgr_Empresa.Get_Empresa_Sucursal(ObjUsuario);
 
             ViewState["TrabajadorID"] = objUtilidades.descifrarCadena(Request.QueryString["id"]);
 
@@ -36,11 +36,11 @@ namespace SGSSTC.source.sistema.GestionDatos
         {
             int idTrabajador = Convert.ToInt32(ViewState["TrabajadorID"]);
             List<trabajador> ListaTrabajador = new List<trabajador>();
-            ListaTrabajador = Getter.Trabajador(idTrabajador);
+            ListaTrabajador = Mgr_Trabajador.Trabajador(idTrabajador);
 
             foreach (var itemTrabajador in ListaTrabajador)
             {
-                Listas.Empresa(ddlEmpresas);
+                Mgr_Empresa.Lista_Empresa(ddlEmpresas);
                 ddlEmpresas.SelectedValue = Convert.ToString(itemTrabajador.puesto_trabajo.area.sucursal.id_empresa);
 
                 txtCedula.Text = itemTrabajador.cedula;
@@ -68,7 +68,7 @@ namespace SGSSTC.source.sistema.GestionDatos
                 Listas.Estatus_Empresa(ddlEstatus, Convert.ToInt32(itemTrabajador.puesto_trabajo.area.sucursal.id_empresa));
                 ddlEstatus.SelectedValue = Convert.ToString(itemTrabajador.id_estatus_actual);
 
-                Listas.Sucursal(ddlSucursal, Convert.ToInt32(itemTrabajador.puesto_trabajo.area.sucursal.id_empresa));
+                Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(itemTrabajador.puesto_trabajo.area.sucursal.id_empresa));
                 ddlSucursal.SelectedValue = Convert.ToString(itemTrabajador.puesto_trabajo.area.id_sucursal);
 
                 Listas.PuestoTrabajo(ddlPuestoTrabajo, "Sucursal", itemTrabajador.puesto_trabajo.area.id_sucursal);
@@ -157,7 +157,7 @@ namespace SGSSTC.source.sistema.GestionDatos
             int _id = 0;
             if (ddlEmpresas.SelectedValue != string.Empty)
                 _id = Convert.ToInt32(ddlEmpresas.SelectedValue);
-            Listas.Sucursal(ddlSucursal, _id);
+            Mgr_Sucursal.Sucursal(ddlSucursal, _id);
             Listas.Estatus_Empresa(ddlEstatus, _id);
             Listas.Horario_Empresa(ddlHorario, _id);
         }

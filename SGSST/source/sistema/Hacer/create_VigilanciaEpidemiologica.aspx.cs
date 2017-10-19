@@ -1,5 +1,9 @@
 ﻿using System;
 using Capa_Datos;
+using Capa_Datos.Manager.Trabajador;
+using Capa_Datos.Manager.Area;
+using Capa_Datos.Manager.Sucursal;
+using Capa_Datos.Manager.Empresa;
 using System.Collections.Generic;
 using System.Web;
 using System.Web.Security;
@@ -34,7 +38,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
         {
             ObjUsuario = Utilidades.ValidarSesion(HttpContext.Current.User.Identity as FormsIdentity, this);phAlerta.Visible = false;
 
-            BoolEmpSuc = Getter.Get_Empresa_Sucursal(ObjUsuario);
+            BoolEmpSuc = Mgr_Empresa.Get_Empresa_Sucursal(ObjUsuario);
 
             phEmpresa.Visible = BoolEmpSuc.Item1;
             phSucursal.Visible = BoolEmpSuc.Item2;
@@ -68,11 +72,11 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
         {
             if (BoolEmpSuc.Item1)
             {
-                Listas.Empresa(ddlEmpresa);
+                Mgr_Empresa.Lista_Empresa(ddlEmpresa);
             }
             else
             {
-                Listas.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
             }
 
         }
@@ -230,7 +234,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
                     ViewState["sucursal"] = id_empresa.ToString();
                 }
 
-                cantTrab = GetterCantidad.Trabajadores(id_empresa, id_sucursal);
+                cantTrab = Mgr_Trabajador.Trabajadores(id_empresa, id_sucursal);
 
                 if (cantTrab > 0)
                 {
@@ -261,7 +265,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
                         cantResEvaCli = GetterCantidad.EvaluacionesCli(Convert.ToInt32(ViewState["anho"].ToString()), id_empresa, id_sucursal);
                         nroResEvaCli.Text = cantResEvaCli.ToString();
 
-                        cantTrabDis = GetterCantidad.TrabajadoresDiscapacitados(Convert.ToInt32(ViewState["anho"].ToString()), id_empresa, id_sucursal);
+                        cantTrabDis = Mgr_Trabajador.TrabajadoresDiscapacitados(Convert.ToInt32(ViewState["anho"].ToString()), id_empresa, id_sucursal);
                         nroTrabDis.Text = cantTrabDis.ToString();
 
                         monRepMed.Text = cantRep.ToString();
@@ -383,7 +387,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
                 _tablecell.Text = diagnostico.nombre;
                 _tablerow.Controls.Add(_tablecell);
                 xCadenas[i] = diagnostico.nombre;
-                int cantTrab = GetterCantidad.TrabEnfermedad(Convert.ToInt32(ViewState["anho"].ToString()), diagnostico.nombre, Convert.ToInt32(ViewState["empresa"].ToString()), Convert.ToInt32(ViewState["sucursal"].ToString()));
+                int cantTrab = Mgr_Trabajador.TrabEnfermedad(Convert.ToInt32(ViewState["anho"].ToString()), diagnostico.nombre, Convert.ToInt32(ViewState["empresa"].ToString()), Convert.ToInt32(ViewState["sucursal"].ToString()));
 
                 _tablecell = new TableCell();
                 _tablecell.Text = diagnostico.cantidad.ToString();
@@ -454,7 +458,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
                 _tablecell.Text = diagnostico.cantidad.ToString();
                 _tablerow.Controls.Add(_tablecell);
 
-                int cantTrab = GetterCantidad.TrabSistemas(Convert.ToInt32(ViewState["anho"].ToString()), diagnostico.nombre, Convert.ToInt32(ViewState["empresa"].ToString()), Convert.ToInt32(ViewState["sucursal"].ToString()));
+                int cantTrab = Mgr_Trabajador.TrabSistemas(Convert.ToInt32(ViewState["anho"].ToString()), diagnostico.nombre, Convert.ToInt32(ViewState["empresa"].ToString()), Convert.ToInt32(ViewState["sucursal"].ToString()));
                 yAsistencias1[i] = Convert.ToDouble(cantTrab);
                 _tablecell = new TableCell();
                 _tablecell.Text = cantTrab.ToString();
@@ -498,7 +502,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
             if (ddlEmpresa.SelectedValue != string.Empty)
             {
                 ViewState["empresa"] = ddlEmpresa.SelectedValue;
-                Listas.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
+                Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
                 ViewState["sucursal"] = "0";
                 phInformacion.Visible = false;
             }
@@ -564,7 +568,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
             graficaSistema.SaveImage(HttpContext.Current.Server.MapPath("~/archivos/images_graf/graficaSistema.jpg"));
 
 
-            Tuple<int, int> IdEmpSuc = Getter.Get_IdEmpresa_IdSucursal(ObjUsuario, ddlEmpresa, ddlSucursal);
+            Tuple<int, int> IdEmpSuc = Mgr_Empresa.Get_IdEmpresa_IdSucursal(ObjUsuario, ddlEmpresa, ddlSucursal);
             String[] valores = {
                 string.Empty + IdEmpSuc.Item2,
                 nroAccTrab.Text,

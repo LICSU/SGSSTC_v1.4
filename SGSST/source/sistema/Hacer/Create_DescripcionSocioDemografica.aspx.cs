@@ -1,10 +1,10 @@
 ﻿using Capa_Datos;
+using Capa_Datos.Manager.Trabajador;
+using Capa_Datos.Manager.Sucursal;
+using Capa_Datos.Manager.Empresa;
 using System;
-using System.Collections.Generic;
 using System.Web;
-using System.Web.Script.Services;
 using System.Web.Security;
-using System.Web.Services;
 
 namespace SGSSTC.source.sistema.Hacer
 {
@@ -22,9 +22,9 @@ namespace SGSSTC.source.sistema.Hacer
         #region acciones index
         protected void Page_Load(object sender, EventArgs e)
         {
-            ObjUsuario = Utilidades.ValidarSesion(HttpContext.Current.User.Identity as FormsIdentity, this);phAlerta.Visible = false;
+            ObjUsuario = Utilidades.ValidarSesion(HttpContext.Current.User.Identity as FormsIdentity, this); phAlerta.Visible = false;
 
-            BoolEmpSuc = Getter.Get_Empresa_Sucursal(ObjUsuario);
+            BoolEmpSuc = Mgr_Empresa.Get_Empresa_Sucursal(ObjUsuario);
 
             phEmpresa.Visible = BoolEmpSuc.Item1;
             phSucursal.Visible = BoolEmpSuc.Item2;
@@ -40,16 +40,16 @@ namespace SGSSTC.source.sistema.Hacer
         {
             if (!BoolEmpSuc.Item1)
             {
-                Listas.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
             }
 
             if (!BoolEmpSuc.Item2)
             {
                 IdSucursal = ObjUsuario.Id_sucursal;
-                Listas.Trabajadores_Sucursal(ddlTrabajador, IdSucursal);
+                Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabajador, IdSucursal);
             }
 
-            Listas.Empresa(ddlEmpresa);
+            Mgr_Empresa.Lista_Empresa(ddlEmpresa);
             Listas.EPS(ddlEps);
             Listas.AFP(ddlFondo);
         }
@@ -252,7 +252,7 @@ namespace SGSSTC.source.sistema.Hacer
             if (ddlEmpresa.SelectedValue != string.Empty)
             {
                 id = Convert.ToInt32(ddlEmpresa.SelectedValue);
-                Listas.Sucursal(ddlSucursal, id);
+                Mgr_Sucursal.Sucursal(ddlSucursal, id);
             }
 
         }
@@ -261,7 +261,7 @@ namespace SGSSTC.source.sistema.Hacer
             if (ddlSucursal.SelectedValue != string.Empty)
             {
                 IdSucursal = Convert.ToInt32(ddlSucursal.SelectedValue);
-                Listas.Trabajadores_Sucursal(ddlTrabajador, IdSucursal);
+                Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabajador, IdSucursal);
             }
         }
         protected void rblNivel_SelectedIndexChanged(object sender, EventArgs e)

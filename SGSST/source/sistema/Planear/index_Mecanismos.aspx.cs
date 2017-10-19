@@ -1,4 +1,8 @@
 ﻿using Capa_Datos;
+using Capa_Datos.Manager.Trabajador;
+using Capa_Datos.Manager.Area;
+using Capa_Datos.Manager.Sucursal;
+using Capa_Datos.Manager.Empresa;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +26,7 @@ namespace SGSSTC.source.sistema.Hacer
             ObjUsuario = Utilidades.ValidarSesion(HttpContext.Current.User.Identity as FormsIdentity, this);
             phAlerta.Visible = false;
 
-            BoolEmpSuc = Getter.Get_Empresa_Sucursal(ObjUsuario);
+            BoolEmpSuc = Mgr_Empresa.Get_Empresa_Sucursal(ObjUsuario);
 
             phSucursal.Visible = BoolEmpSuc.Item2;
             phSucursalAdd.Visible = BoolEmpSuc.Item2;
@@ -34,15 +38,15 @@ namespace SGSSTC.source.sistema.Hacer
             {
                 ViewState["buscar"] = "";
                 LlenarGridView();
-                Listas.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
-                Listas.Sucursal(ddlSucursalAdd, ObjUsuario.Id_empresa);
-                Listas.Sucursal(ddlSucursalEdit, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Sucursal(ddlSucursalAdd, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Sucursal(ddlSucursalEdit, ObjUsuario.Id_empresa);
             }
         }
         private void LlenarGridView()
         {
-            int IdEmpresa = Getter.Set_IdEmpresa(ObjUsuario, Convert.ToInt32(ViewState["empresa"]));
-            int IdSucursal = Getter.Set_IdSucursal(ObjUsuario, Convert.ToInt32(ViewState["sucursal"]));
+            int IdEmpresa = Mgr_Empresa.Set_IdEmpresa(ObjUsuario, Convert.ToInt32(ViewState["empresa"]));
+            int IdSucursal = Mgr_Sucursal.Set_IdSucursal(ObjUsuario, Convert.ToInt32(ViewState["sucursal"]));
             Tabla.TipoDocumento(GridView1, IdSucursal, IdEmpresa, string.Empty + ViewState["buscar"]);
         }
         #endregion
@@ -50,7 +54,7 @@ namespace SGSSTC.source.sistema.Hacer
         #region  aciones de editar insertar y eliminar
         protected void Guardar(object sender, EventArgs e)
         {
-            int IdSucursal = Getter.Set_IdSucursalDDl(ObjUsuario, ddlSucursalAdd);
+            int IdSucursal = Mgr_Sucursal.Set_IdSucursalDDl(ObjUsuario, ddlSucursalAdd);
 
             tipo_documento nuevo = new tipo_documento()
             {
@@ -75,7 +79,7 @@ namespace SGSSTC.source.sistema.Hacer
             int idDocumento = Convert.ToInt32(hdfEditID.Value);
 
             tipo_documento Edit = contexto.tipo_documento.SingleOrDefault(b => b.id_tipo_documento == idDocumento);
-            int IdSucursal = Getter.Set_IdSucursalDDl(ObjUsuario, ddlSucursalEdit);
+            int IdSucursal = Mgr_Sucursal.Set_IdSucursalDDl(ObjUsuario, ddlSucursalEdit);
 
             if (Edit != null)
             {
@@ -122,7 +126,7 @@ namespace SGSSTC.source.sistema.Hacer
                 List<tipo_documento> ListaTipoDocumento = new List<tipo_documento>();
                 ListaTipoDocumento = Getter.TipoDocumento(Convert.ToInt32(hdfEditID.Value));
 
-                Listas.Sucursal(ddlSucursalEdit, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Sucursal(ddlSucursalEdit, ObjUsuario.Id_empresa);
 
                 foreach (var item in ListaTipoDocumento)
                 {

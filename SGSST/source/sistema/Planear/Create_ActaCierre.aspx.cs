@@ -1,4 +1,6 @@
 ﻿using Capa_Datos;
+using Capa_Datos.Manager.Sucursal;
+using Capa_Datos.Manager.Empresa;
 using System;
 using System.Collections.Generic;
 using System.Web;
@@ -13,15 +15,15 @@ namespace SGSSTC.source.sistema.Hacer
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            ObjUsuario = Utilidades.ValidarSesion(HttpContext.Current.User.Identity as FormsIdentity, this);phAlerta.Visible = false;
+            ObjUsuario = Utilidades.ValidarSesion(HttpContext.Current.User.Identity as FormsIdentity, this); phAlerta.Visible = false;
 
-            BoolEmpSuc = Getter.Get_Empresa_Sucursal(ObjUsuario);
+            BoolEmpSuc = Mgr_Empresa.Get_Empresa_Sucursal(ObjUsuario);
 
             phEmpresa.Visible = BoolEmpSuc.Item1;
             phSucursal.Visible = BoolEmpSuc.Item2;
 
             List<empresa> ListaEmpresa = new List<empresa>();
-            ListaEmpresa = Getter.Empresa(ObjUsuario.Id_empresa);
+            ListaEmpresa = Mgr_Empresa.Empresa(ObjUsuario.Id_empresa);
 
             foreach (var item in ListaEmpresa)
             {
@@ -38,17 +40,17 @@ namespace SGSSTC.source.sistema.Hacer
         {
             if (BoolEmpSuc.Item1)
             {
-                Listas.Empresa(ddlEmpresa);
+                Mgr_Empresa.Lista_Empresa(ddlEmpresa);
             }
             else
             {
-                Listas.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
             }
         }
 
         protected void GenerarDocumento(object sender, EventArgs e)
         {
-            int IdSucursal = Getter.Set_IdSucursalDDl(ObjUsuario, ddlSucursal);
+            int IdSucursal = Mgr_Sucursal.Set_IdSucursalDDl(ObjUsuario, ddlSucursal);
             String[] valores = {
                 string.Empty + IdSucursal,
                 txtEmpresa.Text,
@@ -70,7 +72,7 @@ namespace SGSSTC.source.sistema.Hacer
         {
             if (ddlEmpresa.SelectedValue != string.Empty)
             {
-                Listas.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
+                Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
             }
         }
     }

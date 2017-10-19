@@ -1,4 +1,8 @@
 ﻿using Capa_Datos;
+using Capa_Datos.Manager.Trabajador;
+using Capa_Datos.Manager.Area;
+using Capa_Datos.Manager.Sucursal;
+using Capa_Datos.Manager.Empresa;
 using System;
 using System.Collections.Generic;
 using System.Web;
@@ -27,7 +31,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
 
             ObjUsuario = Utilidades.ValidarSesion(HttpContext.Current.User.Identity as FormsIdentity, this);
 
-            BoolEmpSuc = Getter.Get_Empresa_Sucursal(ObjUsuario);
+            BoolEmpSuc = Mgr_Empresa.Get_Empresa_Sucursal(ObjUsuario);
 
             phEmpresa.Visible = BoolEmpSuc.Item1;
             phSucursal.Visible = BoolEmpSuc.Item2;
@@ -53,7 +57,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
                                 int nroTrabajadores = 0;
                                 int cantGestiones = 0;
                                 //Buscar cantidad de trabajadores para la empresa seleccionada.(Cantidad de filas)
-                                nroTrabajadores = GetterCantidad.Trabajadores_CantidadesByCapacidad(Convert.ToInt32(ddlSucursal.SelectedValue), fechaInicial, fechaFinal);
+                                nroTrabajadores = Mgr_Trabajador.Trabajadores_CantidadesByCapacidad(Convert.ToInt32(ddlSucursal.SelectedValue), fechaInicial, fechaFinal);
                                 //Cantidad de gestiones laborales de tipo capacitacion para el trimestre seleccionado (Cantidad de Columnas)
 
                                 cantGestiones = GetterCantidad.GestionLaboralByFecha(fechaInicial, fechaFinal);
@@ -90,11 +94,11 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
         {
             if (BoolEmpSuc.Item1)
             {
-                Listas.Empresa(ddlEmpresa);
+                Mgr_Empresa.Lista_Empresa(ddlEmpresa);
             }
             else
             {
-                Listas.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
             }
 
 
@@ -107,7 +111,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
 
                 //Buscar cantidad de trabajadores para la empresa seleccionada.(Cantidad de filas)
 
-                nroTrabajadores = GetterCantidad.Trabajadores_CantidadesByCapacidad(ObjUsuario.Id_sucursal, fechaInicial, fechaFinal);
+                nroTrabajadores = Mgr_Trabajador.Trabajadores_CantidadesByCapacidad(ObjUsuario.Id_sucursal, fechaInicial, fechaFinal);
                 //Cantidad de gestiones laborales de tipo capacitacion para el trimestre seleccionado (Cantidad de Columnas)
 
                 cantGestiones = GetterCantidad.GestionLaboralByFecha(fechaInicial, fechaFinal);
@@ -142,7 +146,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
             if (ddlEmpresa.SelectedValue != string.Empty)
             {
                 ViewState["empresa"] = ddlEmpresa.SelectedValue;
-                Listas.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
+                Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
             }
             else
             {
@@ -163,13 +167,13 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
         #region CargarDatos
         private void cargarDatos()
         {
-            Tuple<int, int> IdEmpSuc = Getter.Get_IdEmpresa_IdSucursal(ObjUsuario, ddlEmpresa, ddlSucursal);
+            Tuple<int, int> IdEmpSuc = Mgr_Empresa.Get_IdEmpresa_IdSucursal(ObjUsuario, ddlEmpresa, ddlSucursal);
 
             IdEmpresa = IdEmpSuc.Item1;
             IdSucursal = IdEmpSuc.Item2;
 
-            List<empresa> empresa_list = Getter.Empresa(Convert.ToInt32(IdEmpresa));
-            List<sucursal> sucursal_list = Getter.Sucursal(Convert.ToInt32(IdSucursal), 0, "");
+            List<empresa> empresa_list = Mgr_Empresa.Empresa(Convert.ToInt32(IdEmpresa));
+            List<sucursal> sucursal_list = Mgr_Sucursal.Sucursal(Convert.ToInt32(IdSucursal), 0, "");
 
             phEncabezado.Visible = true;
         }
@@ -217,7 +221,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
             _table.Rows.Add(_header_fila);
             #endregion
 
-            Tuple<int, int> IdEmpSuc = Getter.Get_IdEmpresa_IdSucursal(ObjUsuario, ddlEmpresa, ddlSucursal);
+            Tuple<int, int> IdEmpSuc = Mgr_Empresa.Get_IdEmpresa_IdSucursal(ObjUsuario, ddlEmpresa, ddlSucursal);
             IdEmpresa = IdEmpSuc.Item1;
             IdSucursal = IdEmpSuc.Item2;
 
@@ -244,14 +248,14 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
             int NumTrab = 1, gestion = 1, HorasAsistio = 0, inaJust = 0, InaInjust = 0, Asistencias = 0;
             bool CantHoras = false;
 
-            List<trabajador> List_Trab = Getter.Trabajador(0, 0, Convert.ToInt32(IdSucursal), 0);
+            List<trabajador> List_Trab = Mgr_Trabajador.Trabajador(0, 0, Convert.ToInt32(IdSucursal), 0);
 
             foreach (var item1 in List_Trab)
             {
                 HorasAsistio = 0;
                 CantHoras = false;
 
-                List<trabajador_gestion> trab_lista = Getter.Trabajadores_Capacitacion(item1.id_trabajador, fechaInicial, fechaFinal);
+                List<trabajador_gestion> trab_lista = Mgr_Trabajador.Trabajadores_Capacitacion(item1.id_trabajador, fechaInicial, fechaFinal);
 
                 foreach (var item2 in trab_lista)
                 {

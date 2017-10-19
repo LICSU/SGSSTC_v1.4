@@ -1,4 +1,8 @@
 ﻿using Capa_Datos;
+using Capa_Datos.Manager.Trabajador;
+using Capa_Datos.Manager.Area;
+using Capa_Datos.Manager.Sucursal;
+using Capa_Datos.Manager.Empresa;
 using System;
 using System.Linq;
 using System.Web;
@@ -18,7 +22,7 @@ namespace SGSSTC.source.sistema.GestionDatos
             Page.Form.Attributes.Add("enctype", "multipart/form-data");
             ObjUsuario = Utilidades.ValidarSesion(HttpContext.Current.User.Identity as FormsIdentity, this);phAlerta.Visible = false;
 
-            BoolEmpSuc = Getter.Get_Empresa_Sucursal(ObjUsuario);
+            BoolEmpSuc = Mgr_Empresa.Get_Empresa_Sucursal(ObjUsuario);
             
             phEmpresa.Visible = BoolEmpSuc.Item1;
             phEmpresaAdd.Visible = BoolEmpSuc.Item1;
@@ -37,14 +41,14 @@ namespace SGSSTC.source.sistema.GestionDatos
         {
             if (BoolEmpSuc.Item1)
             {
-                Listas.Empresa(ddlEmpresa);
-                Listas.Empresa(ddlEmpresaAdd);
-                Listas.Empresa(ddlEmpresaEdit);
+                Mgr_Empresa.Lista_Empresa(ddlEmpresa);
+                Mgr_Empresa.Lista_Empresa(ddlEmpresaAdd);
+                Mgr_Empresa.Lista_Empresa(ddlEmpresaEdit);
             }
         }
         private void LlenarGridView()
         {
-            int IdEmpresa = Getter.Set_IdEmpresa(ObjUsuario, Convert.ToInt32(ViewState["empresa"]));
+            int IdEmpresa = Mgr_Empresa.Set_IdEmpresa(ObjUsuario, Convert.ToInt32(ViewState["empresa"]));
             Tabla.TipoEpp(GridView1, string.Empty + ViewState["sWhere"]);
         }
 
@@ -58,7 +62,7 @@ namespace SGSSTC.source.sistema.GestionDatos
         protected void AgregarRegistro(object sender, EventArgs e)
         {
             string ruta = Utilidades.GuardarArchivo(flpArchivo, txtNombreEdit.Text, "~/archivos/ico_tipo_epp/");
-            int IdEmpresa = Getter.Set_IdEmpresaDDl(ObjUsuario, ddlEmpresaAdd);
+            int IdEmpresa = Mgr_Empresa.Set_IdEmpresaDDl(ObjUsuario, ddlEmpresaAdd);
 
             tipo_epp nuevo = new tipo_epp()
             {
@@ -83,7 +87,7 @@ namespace SGSSTC.source.sistema.GestionDatos
             int idTipoEpp = Convert.ToInt32(hdfIdEppEdit.Value);
             tipo_epp Edit = contexto.tipo_epp.SingleOrDefault(b => b.id_tipo_epp == idTipoEpp);
 
-            int IdEmpresa = Getter.Set_IdEmpresaDDl(ObjUsuario, ddlEmpresaEdit);
+            int IdEmpresa = Mgr_Empresa.Set_IdEmpresaDDl(ObjUsuario, ddlEmpresaEdit);
 
             if (Edit != null)
             {

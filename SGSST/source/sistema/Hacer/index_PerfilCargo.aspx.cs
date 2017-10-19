@@ -1,4 +1,8 @@
 ﻿using Capa_Datos;
+using Capa_Datos.Manager.Trabajador;
+using Capa_Datos.Manager.Area;
+using Capa_Datos.Manager.Sucursal;
+using Capa_Datos.Manager.Empresa;
 using System;
 using System.Web;
 using System.Web.Security;
@@ -19,7 +23,7 @@ namespace SGSSTC.source.sistema.Hacer
             Page.Form.Attributes.Add("enctype", "multipart/form-data");
             ObjUsuario = Utilidades.ValidarSesion(HttpContext.Current.User.Identity as FormsIdentity, this);phAlerta.Visible = false;
 
-            BoolEmpSuc = Getter.Get_Empresa_Sucursal(ObjUsuario);
+            BoolEmpSuc = Mgr_Empresa.Get_Empresa_Sucursal(ObjUsuario);
 
             phAgregarPerfil.Visible = BoolEmpSuc.Item2;
             phEmpresa.Visible = BoolEmpSuc.Item1;
@@ -32,7 +36,7 @@ namespace SGSSTC.source.sistema.Hacer
 
         private void LlenarGridView()
         {
-            int IdEmpresa = Getter.Set_IdEmpresa(ObjUsuario, Convert.ToInt32(ViewState["empresa"]));
+            int IdEmpresa = Mgr_Empresa.Set_IdEmpresa(ObjUsuario, Convert.ToInt32(ViewState["empresa"]));
 
             Tabla.PerfilCargo(GridView1, IdEmpresa, string.Empty + ViewState["sWhere"]);
         }

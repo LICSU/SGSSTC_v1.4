@@ -1,4 +1,8 @@
 ﻿using Capa_Datos;
+using Capa_Datos.Manager.Trabajador;
+using Capa_Datos.Manager.Area;
+using Capa_Datos.Manager.Sucursal;
+using Capa_Datos.Manager.Empresa;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -25,7 +29,7 @@ namespace SGSSTC.source.sistema.GestionDatos
         {
             ObjUsuario = Utilidades.ValidarSesion(HttpContext.Current.User.Identity as FormsIdentity, this);
 
-            BoolEmpSuc = Getter.Get_Empresa_Sucursal(ObjUsuario);
+            BoolEmpSuc = Mgr_Empresa.Get_Empresa_Sucursal(ObjUsuario);
 
             if (!IsPostBack)
             {
@@ -38,7 +42,7 @@ namespace SGSSTC.source.sistema.GestionDatos
         {
             if (BoolEmpSuc.Item1)
             {
-                Listas.Empresa(ddlEmpresaAdd);
+                Mgr_Empresa.Lista_Empresa(ddlEmpresaAdd);
             }
             else
             {
@@ -66,14 +70,14 @@ namespace SGSSTC.source.sistema.GestionDatos
                 IdEmpresa = ObjUsuario.Id_empresa;
             }
 
-            int idSucursal = Getter.SucursalByNombre(txtNombreAdd.Text, IdEmpresa);
+            int idSucursal = Mgr_Sucursal.SucursalByNombre(txtNombreAdd.Text, IdEmpresa);
 
             if (idSucursal == 0)
             {
                 act1 = Convert.ToInt32(ddlItemDivision1.SelectedValue);
                 act2 = ddlItemDivision2.SelectedValue == string.Empty ? 0 : Convert.ToInt32(ddlItemDivision2.SelectedValue);
                 act3 = ddlItemDivision3.SelectedValue == string.Empty ? 0 : Convert.ToInt32(ddlItemDivision3.SelectedValue);
-                IdEmpresa = Getter.Set_IdEmpresaDDl(ObjUsuario, ddlEmpresaAdd);
+                IdEmpresa = Mgr_Empresa.Set_IdEmpresaDDl(ObjUsuario, ddlEmpresaAdd);
                 string strIdEmpresa = objUtilidades.cifrarCadena(Convert.ToString(IdEmpresa));
 
                 String[] valores =
@@ -90,9 +94,9 @@ namespace SGSSTC.source.sistema.GestionDatos
                     ""+act3
                 };
 
-                if (CRUD.Add_Sucursal( valores))
+                if (Mgr_Sucursal.Add_Sucursal( valores))
                 {
-                    id_sucursal = GetterMax.Sucursal();
+                    id_sucursal = Mgr_Sucursal.Sucursal();
                     strAct1 = Convert.ToString(act1);
                     strAct2 = Convert.ToString(act2);
                     strAct3 = Convert.ToString(act3);
@@ -135,13 +139,13 @@ namespace SGSSTC.source.sistema.GestionDatos
                 ""+id_sucursal
             };
 
-            if (CRUD.Add_Area_Sucursal( valores))
+            if (Mgr_Area.Add_Area_Sucursal( valores))
             {
                 return add_PuestoTrabajo_Default();
             }
             else
             {
-                CRUD.DeleteSucursal( id_sucursal);
+                Mgr_Sucursal.DeleteSucursal( id_sucursal);
                 return false;
             }
 
@@ -159,7 +163,7 @@ namespace SGSSTC.source.sistema.GestionDatos
             }
             else
             {
-                CRUD.DeleteSucursal( id_sucursal);
+                Mgr_Sucursal.DeleteSucursal( id_sucursal);
                 return false;
             }
         }
@@ -176,7 +180,7 @@ namespace SGSSTC.source.sistema.GestionDatos
             }
             else
             {
-                CRUD.DeleteSucursal( id_sucursal);
+                Mgr_Sucursal.DeleteSucursal( id_sucursal);
                 return false;
             }
         }
@@ -187,13 +191,13 @@ namespace SGSSTC.source.sistema.GestionDatos
                 nombreSucursal
             };
 
-            if (CRUD.Add_Trabajador_Sucursal( valores))
+            if (Mgr_Trabajador.Add_Trabajador_Sucursal( valores))
             {
                 return add_Usuario_Default();
             }
             else
             {
-                CRUD.DeleteSucursal( id_sucursal);
+                Mgr_Sucursal.DeleteSucursal( id_sucursal);
                 return false;
             }
         }
@@ -216,7 +220,7 @@ namespace SGSSTC.source.sistema.GestionDatos
             }
             else
             {
-                CRUD.DeleteSucursal( id_sucursal);
+                Mgr_Sucursal.DeleteSucursal( id_sucursal);
                 return false;
             }
         }
@@ -233,7 +237,7 @@ namespace SGSSTC.source.sistema.GestionDatos
             }
             else
             {
-                CRUD.DeleteSucursal( id_sucursal);
+                Mgr_Sucursal.DeleteSucursal( id_sucursal);
                 return false;
             }
 
@@ -244,7 +248,7 @@ namespace SGSSTC.source.sistema.GestionDatos
             if (CRUD.Add_Lista_Actividad( id_sucursal))
             {
                 string empresa = "", correo = "";
-                List<empresa> data_empresa = Getter.EmpresaEmail(IdEmpresa);
+                List<empresa> data_empresa = Mgr_Empresa.EmpresaEmail(IdEmpresa);
                 foreach (var datos in data_empresa)
                 {
                     empresa = datos.nombre;
@@ -257,7 +261,7 @@ namespace SGSSTC.source.sistema.GestionDatos
             }
             else
             {
-                CRUD.DeleteSucursal( id_sucursal);
+                Mgr_Sucursal.DeleteSucursal( id_sucursal);
                 return false;
             }
         }

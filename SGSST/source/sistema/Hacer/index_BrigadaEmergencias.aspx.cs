@@ -1,4 +1,8 @@
 ﻿using Capa_Datos;
+using Capa_Datos.Manager.Trabajador;
+using Capa_Datos.Manager.Area;
+using Capa_Datos.Manager.Sucursal;
+using Capa_Datos.Manager.Empresa;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +25,7 @@ namespace SGSSTC.source.sistema.Hacer
         {
             ObjUsuario = Utilidades.ValidarSesion(HttpContext.Current.User.Identity as FormsIdentity, this);phAlerta.Visible = false;
 
-            BoolEmpSuc = Getter.Get_Empresa_Sucursal(ObjUsuario);
+            BoolEmpSuc = Mgr_Empresa.Get_Empresa_Sucursal(ObjUsuario);
 
             phEmpresa.Visible = BoolEmpSuc.Item1;
             phSucursal.Visible = BoolEmpSuc.Item2;
@@ -71,7 +75,7 @@ namespace SGSSTC.source.sistema.Hacer
         }
         private void cargarBigrada()
         {
-            int IdSucursal = Getter.Set_IdSucursalDDl(ObjUsuario, ddlSucursal);
+            int IdSucursal = Mgr_Sucursal.Set_IdSucursalDDl(ObjUsuario, ddlSucursal);
             int idBrigada = GetterMax.BrigadaEmergencias(IdSucursal);
 
             if (idBrigada != 0)
@@ -222,17 +226,17 @@ namespace SGSSTC.source.sistema.Hacer
         {
             if (BoolEmpSuc.Item1)
             {
-                Listas.Empresa(ddlEmpresa);
+                Mgr_Empresa.Lista_Empresa(ddlEmpresa);
             }
             if (BoolEmpSuc.Item2)
             {
-                Listas.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
             }
 
             if (!BoolEmpSuc.Item2)
             {
-                Listas.Trabajadores_Sucursal(ddlTrabjador1, ObjUsuario.Id_sucursal);
-                Listas.Trabajadores_Sucursal(ddlTrabjador2, ObjUsuario.Id_sucursal);
+                Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabjador1, ObjUsuario.Id_sucursal);
+                Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabjador2, ObjUsuario.Id_sucursal);
             }
         }
         #endregion
@@ -278,7 +282,7 @@ namespace SGSSTC.source.sistema.Hacer
             miDropDownList = new DropDownList();
             miDropDownList.ID = id;
             miDropDownList.CssClass = "form-control";
-            Listas.Trabajadores_Sucursal(miDropDownList, ObjUsuario.Id_sucursal);
+            Mgr_Trabajador.Trabajadores_Sucursal(miDropDownList, ObjUsuario.Id_sucursal);
             _panel.Controls.Add(miDropDownList);
         }
         #endregion
@@ -286,7 +290,7 @@ namespace SGSSTC.source.sistema.Hacer
         #region acciones
         protected void GenerarDocumento(object sender, EventArgs e)
         {
-            Tuple<int, int> IdEmpSuc = Getter.Get_IdEmpresa_IdSucursal(ObjUsuario, ddlEmpresa, ddlSucursal);
+            Tuple<int, int> IdEmpSuc = Mgr_Empresa.Get_IdEmpresa_IdSucursal(ObjUsuario, ddlEmpresa, ddlSucursal);
             String[] valores = {
                 string.Empty + IdEmpSuc.Item2,
                 txtPerfiles.Text,
@@ -302,7 +306,7 @@ namespace SGSSTC.source.sistema.Hacer
         }
         protected void GuardarRegistro(object sender, EventArgs e)
         {
-            int IdSucursal = Getter.Set_IdSucursalDDl(ObjUsuario, ddlSucursal);
+            int IdSucursal = Mgr_Sucursal.Set_IdSucursalDDl(ObjUsuario, ddlSucursal);
 
             brigada_emergencia nuevo = new brigada_emergencia()
             {
@@ -498,15 +502,15 @@ namespace SGSSTC.source.sistema.Hacer
         {
             if (ddlEmpresa.SelectedValue != string.Empty)
             {
-                Listas.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
+                Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
             }
         }
         protected void ddlSucursal_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ddlSucursal.SelectedValue != string.Empty)
             {
-                Listas.Trabajadores_Sucursal(ddlTrabjador1, Convert.ToInt32(ddlSucursal.SelectedValue));
-                Listas.Trabajadores_Sucursal(ddlTrabjador2, Convert.ToInt32(ddlSucursal.SelectedValue));
+                Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabjador1, Convert.ToInt32(ddlSucursal.SelectedValue));
+                Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabjador2, Convert.ToInt32(ddlSucursal.SelectedValue));
                 chEditor.Visible = true;
                 chEditorNo.Visible = false;
                 cargarBigrada();

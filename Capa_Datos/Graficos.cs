@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Capa_Datos
 {
-    public class Graficos
-    {
-        public static String AddGraficoTorta_ReporteTrabajadores_A_B(Double TotalSi, Double TotalNo)
-        {
-            StringBuilder str = new StringBuilder();
-            str.Append(@"<script type = *text/javascript* >
+	public class Graficos
+	{
+		public static String AddGraficoTorta_ReporteTrabajadores_A_B(Double TotalSi, Double TotalNo)
+		{
+			StringBuilder str = new StringBuilder();
+			str.Append(@"<script type = *text/javascript* >
 					   google.load( *visualization*, *1*, {packages:[*corechart*]});
 					   google.setOnLoadCallback(drawChart);
 						function drawChart()
@@ -21,9 +21,9 @@ namespace Capa_Datos
 							  ['Task', 'Hours per Day'],
 	
 							  ['SI', " + TotalSi + "],");
-            str.Append(@"['NO'," + TotalNo + "]]); ");
+			str.Append(@"['NO'," + TotalNo + "]]); ");
 
-            str.Append(@"var options = {
+			str.Append(@"var options = {
 						  title: 'Porcentaje de riesgo',
 						  is3D: true,
 						  width: 1000, 
@@ -39,9 +39,9 @@ namespace Capa_Datos
 					}
 					</script>");
 
-            return str.ToString().Replace('*', '"');
-        }
+			return str.ToString().Replace('*', '"');
+		}
 
-        
-    }
+		
+	}
 }

@@ -1,4 +1,8 @@
 ﻿using Capa_Datos;
+using Capa_Datos.Manager.Trabajador;
+using Capa_Datos.Manager.Area;
+using Capa_Datos.Manager.Sucursal;
+using Capa_Datos.Manager.Empresa;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +23,7 @@ namespace SGSSTC.source.sistema.GestionDatos
         {
             ObjUsuario = Utilidades.ValidarSesion(HttpContext.Current.User.Identity as FormsIdentity, this); phAlerta.Visible = false;
 
-            BoolEmpSuc = Getter.Get_Empresa_Sucursal(ObjUsuario);
+            BoolEmpSuc = Mgr_Empresa.Get_Empresa_Sucursal(ObjUsuario);
 
 
             if (!IsPostBack)
@@ -53,30 +57,30 @@ namespace SGSSTC.source.sistema.GestionDatos
         {
             if (BoolEmpSuc.Item1)
             {
-                Listas.Empresa(ddlEmpresa);
-                Listas.Empresa(ddlEmpresaAdd);
-                Listas.Empresa(ddlEmpresaEdit);
+                Mgr_Empresa.Lista_Empresa(ddlEmpresa);
+                Mgr_Empresa.Lista_Empresa(ddlEmpresaAdd);
+                Mgr_Empresa.Lista_Empresa(ddlEmpresaEdit);
             }
             else
             {
-                Listas.Sucursal(ddlSucursalAdd, ObjUsuario.Id_empresa);
-                Listas.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
-                Listas.Sucursal(ddlSucursalEdit, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Sucursal(ddlSucursalAdd, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Sucursal(ddlSucursalEdit, ObjUsuario.Id_empresa);
             }
 
 
             if (!BoolEmpSuc.Item2)
             {
-                Listas.Area_Sucursal(ddlArea, ObjUsuario.Id_sucursal);
-                Listas.Area_Sucursal(ddlAreaAdd, ObjUsuario.Id_sucursal);
-                Listas.Area_Sucursal(ddlAreasEdit, ObjUsuario.Id_sucursal);
+                Mgr_Area.Area_Sucursal(ddlArea, ObjUsuario.Id_sucursal);
+                Mgr_Area.Area_Sucursal(ddlAreaAdd, ObjUsuario.Id_sucursal);
+                Mgr_Area.Area_Sucursal(ddlAreasEdit, ObjUsuario.Id_sucursal);
             }
         }
 
         private void LlenarGridView()
         {
-            int IdEmpresa = Getter.Set_IdEmpresa(ObjUsuario, Convert.ToInt32(ViewState["empresa"]));
-            int IdSucursal = Getter.Set_IdSucursal(ObjUsuario, Convert.ToInt32(ViewState["sucursal"]));
+            int IdEmpresa = Mgr_Empresa.Set_IdEmpresa(ObjUsuario, Convert.ToInt32(ViewState["empresa"]));
+            int IdSucursal = Mgr_Sucursal.Set_IdSucursal(ObjUsuario, Convert.ToInt32(ViewState["sucursal"]));
             string IdArea = string.Empty + ViewState["area"];
 
             Tabla.Extintores(GridView1, IdEmpresa, IdSucursal, IdArea, string.Empty + ViewState["sWhere"]);
@@ -208,13 +212,13 @@ namespace SGSSTC.source.sistema.GestionDatos
                     int IdEmpresa = Convert.ToInt32(item.area.sucursal.id_empresa);
                     int IdSucursal = Convert.ToInt32(item.area.sucursal.id_sucursal);
 
-                    Listas.Empresa(ddlEmpresaEdit);
+                    Mgr_Empresa.Lista_Empresa(ddlEmpresaEdit);
                     ddlEmpresaEdit.SelectedValue = string.Empty + IdEmpresa;
 
-                    Listas.Sucursal(ddlSucursalEdit, IdEmpresa);
+                    Mgr_Sucursal.Sucursal(ddlSucursalEdit, IdEmpresa);
                     ddlSucursalEdit.SelectedValue = string.Empty + IdSucursal;
 
-                    Listas.Area_Sucursal(ddlAreasEdit, IdSucursal);
+                    Mgr_Area.Area_Sucursal(ddlAreasEdit, IdSucursal);
                     ddlAreasEdit.SelectedValue = string.Empty + item.id_area;
 
                     txtSerialEdit.Text = item.serial_extintor.ToString();
@@ -265,7 +269,7 @@ namespace SGSSTC.source.sistema.GestionDatos
         {
             if (ddlEmpresaEdit.SelectedValue != string.Empty)
             {
-                Listas.Sucursal(ddlSucursalEdit, Convert.ToInt32(ddlEmpresaEdit.SelectedValue));
+                Mgr_Sucursal.Sucursal(ddlSucursalEdit, Convert.ToInt32(ddlEmpresaEdit.SelectedValue));
             }
             LlenarGridView();
         }
@@ -273,14 +277,14 @@ namespace SGSSTC.source.sistema.GestionDatos
         {
             if (ddlSucursalEdit.SelectedValue != string.Empty)
             {
-                Listas.Area_Sucursal(ddlAreasEdit, Convert.ToInt32(ddlSucursalEdit.SelectedValue));
+                Mgr_Area.Area_Sucursal(ddlAreasEdit, Convert.ToInt32(ddlSucursalEdit.SelectedValue));
             }
         }
         protected void ddlEmpresaAdd_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ddlEmpresaAdd.SelectedValue != string.Empty)
             {
-                Listas.Sucursal(ddlSucursalAdd, Convert.ToInt32(ddlEmpresaAdd.SelectedValue));
+                Mgr_Sucursal.Sucursal(ddlSucursalAdd, Convert.ToInt32(ddlEmpresaAdd.SelectedValue));
             }
             LlenarGridView();
         }
@@ -288,7 +292,7 @@ namespace SGSSTC.source.sistema.GestionDatos
         {
             if (ddlSucursalAdd.SelectedValue != string.Empty)
             {
-                Listas.Area_Sucursal(ddlAreaAdd, Convert.ToInt32(ddlSucursalAdd.SelectedValue));
+                Mgr_Area.Area_Sucursal(ddlAreaAdd, Convert.ToInt32(ddlSucursalAdd.SelectedValue));
             }
         }
         protected void ddlEmpresa_SelectedIndexChanged(object sender, EventArgs e)
@@ -296,7 +300,7 @@ namespace SGSSTC.source.sistema.GestionDatos
             if (ddlEmpresa.SelectedValue != string.Empty)
             {
                 ViewState["empresa"] = ddlEmpresa.SelectedValue;
-                Listas.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
+                Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
             }
             else
             {
@@ -309,7 +313,7 @@ namespace SGSSTC.source.sistema.GestionDatos
             if (ddlSucursal.SelectedValue != string.Empty)
             {
                 ViewState["sucursal"] = ddlSucursal.SelectedValue;
-                Listas.Area_Sucursal(ddlArea, Convert.ToInt32(ddlSucursal.SelectedValue));
+                Mgr_Area.Area_Sucursal(ddlArea, Convert.ToInt32(ddlSucursal.SelectedValue));
             }
             else
             {

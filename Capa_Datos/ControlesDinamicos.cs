@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Capa_Datos.Manager.Empresa;
+using Capa_Datos.Manager.Trabajador;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
@@ -1226,8 +1228,8 @@ namespace Capa_Datos
             List<trabajador> ListaTrabajador = new List<trabajador>();
             DataTable dtMensual = new DataTable();
 
-            ListaEmpresa = Getter.Empresa(IdEmpresa);
-            ListaTrabajador = Getter.Trabajador(0, 0, IdSucursal);
+            ListaEmpresa = Mgr_Empresa.Empresa(IdEmpresa);
+            ListaTrabajador = Mgr_Trabajador.Trabajador(0, 0, IdSucursal);
 
             //encabezado grid
             if (dtMensual.Columns.Count == 0)
@@ -1283,7 +1285,7 @@ namespace Capa_Datos
                         }
 
                         List<trabajador_estatus> ListaTrabajadorEstatus = new List<trabajador_estatus>();
-                        ListaTrabajadorEstatus = Getter.TrabajadorReposo(item.id_trabajador, fechaIngreso, fechaConsultar);
+                        ListaTrabajadorEstatus = Mgr_Trabajador.TrabajadorReposo(item.id_trabajador, fechaIngreso, fechaConsultar);
 
                         foreach (var itemTrabEst in ListaTrabajadorEstatus)
                         {
@@ -1458,8 +1460,8 @@ namespace Capa_Datos
             int[] vc_TCDP = { 0, 0, 0, 0 };
             int posicion = 0;
 
-            ListaEmpresa = Getter.Empresa(IdEmpresa);
-            ListaTrabajador = Getter.Trabajador(0, 0, IdSucursal);
+            ListaEmpresa = Mgr_Empresa.Empresa(IdEmpresa);
+            ListaTrabajador = Mgr_Trabajador.Trabajador(0, 0, IdSucursal);
 
             for (int i = 0; i < MesActual; i++)
             {
@@ -1489,7 +1491,7 @@ namespace Capa_Datos
                         }
 
                         List<trabajador_estatus> ListaTrabajadorEstatus = new List<trabajador_estatus>();
-                        ListaTrabajadorEstatus = Getter.TrabajadorReposo(item.id_trabajador, fechaIngreso, fechaConsultar);
+                        ListaTrabajadorEstatus = Mgr_Trabajador.TrabajadorReposo(item.id_trabajador, fechaIngreso, fechaConsultar);
 
                         foreach (var itemTrabEst in ListaTrabajadorEstatus)
                         {
@@ -1824,8 +1826,8 @@ namespace Capa_Datos
             int[] vc_TCDP = { 0, 0 };
             int posicion = 0;
 
-            ListaEmpresa = Getter.Empresa(IdEmpresa);
-            ListaTrabajador = Getter.Trabajador(0, 0, IdSucursal);
+            ListaEmpresa = Mgr_Empresa.Empresa(IdEmpresa);
+            ListaTrabajador = Mgr_Trabajador.Trabajador(0, 0, IdSucursal);
 
             for (int y = 0; y < MesActual; y++)
             {
@@ -1855,7 +1857,7 @@ namespace Capa_Datos
                         }
 
                         List<trabajador_estatus> ListaTrabajadorEstatus = new List<trabajador_estatus>();
-                        ListaTrabajadorEstatus = Getter.TrabajadorReposo(item.id_trabajador, fechaIngreso, fechaConsultar);
+                        ListaTrabajadorEstatus = Mgr_Trabajador.TrabajadorReposo(item.id_trabajador, fechaIngreso, fechaConsultar);
 
                         foreach (var itemTrabEst in ListaTrabajadorEstatus)
                         {
@@ -2098,8 +2100,8 @@ namespace Capa_Datos
 
             List<empresa> ListaEmpresa = new List<empresa>();
             List<trabajador> ListaTrabajador = new List<trabajador>();
-            ListaEmpresa = Getter.Empresa(IdEmpresa);
-            ListaTrabajador = Getter.Trabajador(0, 0, IdSucursal);
+            ListaEmpresa = Mgr_Empresa.Empresa(IdEmpresa);
+            ListaTrabajador = Mgr_Trabajador.Trabajador(0, 0, IdSucursal);
 
             if (dtAnual.Columns.Count == 0)
             {
@@ -2169,7 +2171,7 @@ namespace Capa_Datos
                             }
 
                             List<trabajador_estatus> ListaTrabajadorEstatus = new List<trabajador_estatus>();
-                            ListaTrabajadorEstatus = Getter.TrabajadorReposo(item.id_trabajador, fechaIngreso, fechaConsultar);
+                            ListaTrabajadorEstatus = Mgr_Trabajador.TrabajadorReposo(item.id_trabajador, fechaIngreso, fechaConsultar);
 
                             foreach (var itemTrabEst in ListaTrabajadorEstatus)
                             {

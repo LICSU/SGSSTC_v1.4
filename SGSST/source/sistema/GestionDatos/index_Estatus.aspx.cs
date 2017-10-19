@@ -1,4 +1,8 @@
 ﻿using Capa_Datos;
+using Capa_Datos.Manager.Trabajador;
+using Capa_Datos.Manager.Area;
+using Capa_Datos.Manager.Sucursal;
+using Capa_Datos.Manager.Empresa;
 using System;
 using System.Linq;
 using System.Web;
@@ -20,7 +24,7 @@ namespace SGSSTC.source.sistema.GestionDatos
 
             ObjUsuario = Utilidades.ValidarSesion(HttpContext.Current.User.Identity as FormsIdentity, this);phAlerta.Visible = false;
 
-            BoolEmpSuc = Getter.Get_Empresa_Sucursal(ObjUsuario);
+            BoolEmpSuc = Mgr_Empresa.Get_Empresa_Sucursal(ObjUsuario);
 
 
             if (!IsPostBack)
@@ -36,9 +40,9 @@ namespace SGSSTC.source.sistema.GestionDatos
         {
             if (BoolEmpSuc.Item1)
             {
-                Listas.Empresa(ddlEmpresa);
-                Listas.Empresa(ddlEmpresaAdd);
-                Listas.Empresa(ddlEmpresaEdit);
+                Mgr_Empresa.Lista_Empresa(ddlEmpresa);
+                Mgr_Empresa.Lista_Empresa(ddlEmpresaAdd);
+                Mgr_Empresa.Lista_Empresa(ddlEmpresaEdit);
             }
         }
 
@@ -53,7 +57,7 @@ namespace SGSSTC.source.sistema.GestionDatos
 
         private void LlenarGridView()
         {
-            int Idempresa = Getter.Set_IdEmpresa(ObjUsuario, Convert.ToInt32(ViewState["empresa"]));
+            int Idempresa = Mgr_Empresa.Set_IdEmpresa(ObjUsuario, Convert.ToInt32(ViewState["empresa"]));
 
             Tabla.Estatus(GridView1, Idempresa, string.Empty + ViewState["sWhere"]);
 
@@ -127,7 +131,7 @@ namespace SGSSTC.source.sistema.GestionDatos
         #region acciones
         protected void GuardarRegistro(object sender, EventArgs e)
         {
-            int IdEmpresa = Getter.Set_IdEmpresaDDl(ObjUsuario, ddlEmpresaAdd);
+            int IdEmpresa = Mgr_Empresa.Set_IdEmpresaDDl(ObjUsuario, ddlEmpresaAdd);
 
             estatus nuevo = new estatus()
             {
@@ -144,7 +148,7 @@ namespace SGSSTC.source.sistema.GestionDatos
         }
         protected void EditarRegistro(object sender, EventArgs e)
         {
-            int IdEmpresa = Getter.Set_IdEmpresaDDl(ObjUsuario, ddlEmpresaEdit);
+            int IdEmpresa = Mgr_Empresa.Set_IdEmpresaDDl(ObjUsuario, ddlEmpresaEdit);
 
             GrupoLiEntities contexto = new GrupoLiEntities();
             int idEstatus = Convert.ToInt32(hdfEstatusID.Value);

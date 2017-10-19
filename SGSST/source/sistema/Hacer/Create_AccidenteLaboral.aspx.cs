@@ -1,10 +1,11 @@
 ﻿using Capa_Datos;
+using Capa_Datos.Manager.Trabajador;
+using Capa_Datos.Manager.Area;
+using Capa_Datos.Manager.Sucursal;
+using Capa_Datos.Manager.Empresa;
 using System;
-using System.Collections.Generic;
 using System.Web;
-using System.Web.Script.Services;
 using System.Web.Security;
-using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -22,9 +23,9 @@ namespace SGSSTC.source.sistema.Verificar
         {
             Page.Form.Attributes.Add("enctype", "multipart/form-data");
 
-            ObjUsuario = Utilidades.ValidarSesion(HttpContext.Current.User.Identity as FormsIdentity, this);phAlerta.Visible = false;
+            ObjUsuario = Utilidades.ValidarSesion(HttpContext.Current.User.Identity as FormsIdentity, this); phAlerta.Visible = false;
 
-            BoolEmpSuc = Getter.Get_Empresa_Sucursal(ObjUsuario);
+            BoolEmpSuc = Mgr_Empresa.Get_Empresa_Sucursal(ObjUsuario);
 
             phEmpresa.Visible = BoolEmpSuc.Item1;
             phSucursal.Visible = BoolEmpSuc.Item2;
@@ -38,20 +39,20 @@ namespace SGSSTC.source.sistema.Verificar
         {
             if (BoolEmpSuc.Item1)
             {
-                Listas.Empresa(ddlEmpresa);
+                Mgr_Empresa.Lista_Empresa(ddlEmpresa);
             }
             else
             {
-                Listas.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
             }
 
 
             if (!BoolEmpSuc.Item2)
             {
                 IdSucursal = Convert.ToInt32(ObjUsuario.Id_sucursal);
-                Listas.Area_Sucursal(ddlArea, ObjUsuario.Id_sucursal);
+                Mgr_Area.Area_Sucursal(ddlArea, ObjUsuario.Id_sucursal);
                 Listas.PuestoTrabajo(ddlProcesoTrabajo, "Sucursal", ObjUsuario.Id_sucursal);
-                Listas.Trabajadores_Sucursal(ddlTrabajador, ObjUsuario.Id_sucursal);
+                Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabajador, ObjUsuario.Id_sucursal);
             }
 
         }
@@ -122,7 +123,7 @@ namespace SGSSTC.source.sistema.Verificar
         {
             if (ddlEmpresa.SelectedValue != string.Empty)
             {
-                Listas.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
+                Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
             }
 
         }
@@ -131,9 +132,9 @@ namespace SGSSTC.source.sistema.Verificar
             if (ddlSucursal.SelectedValue != string.Empty)
             {
                 IdSucursal = Convert.ToInt32(ddlSucursal.SelectedValue);
-                Listas.Area_Sucursal(ddlArea, Convert.ToInt32(ddlSucursal.SelectedValue), "Ninguna");
+                Mgr_Area.Area_Sucursal(ddlArea, Convert.ToInt32(ddlSucursal.SelectedValue), "Ninguna");
                 Listas.PuestoTrabajo(ddlProcesoTrabajo, "Sucursal", Convert.ToInt32(ddlSucursal.SelectedValue), "Ninguno");
-                Listas.Trabajadores_Sucursal(ddlTrabajador, Convert.ToInt32(ddlSucursal.SelectedValue));
+                Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabajador, Convert.ToInt32(ddlSucursal.SelectedValue));
             }
 
         }
@@ -286,7 +287,7 @@ namespace SGSSTC.source.sistema.Verificar
             phFacTrab2.Visible = false; phFacTrab7.Visible = false;
             phFacTrab3.Visible = false; phFacTrab8.Visible = false;
             phFacTrab4.Visible = false;
-            phFacTrab5.Visible = false; 
+            phFacTrab5.Visible = false;
 
             if (ddlFactorTrabajo.SelectedValue == "FacTrab1") { phFacTrab1.Visible = true; }
             else if (ddlFactorTrabajo.SelectedValue == "FacTrab2") { phFacTrab2.Visible = true; }

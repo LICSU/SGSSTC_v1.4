@@ -21,89 +21,8 @@ namespace Capa_Datos
             //
         }
 
-        public static Tuple<int, int> Get_IdEmpresa_IdSucursal(Model_UsuarioSistema ObjUsuario, DropDownList ddlEmpresa, DropDownList ddlSucursal)
-        {
-            int IdSucursal = 0;
-            int IdEmpresa = 0;
 
-            if (ObjUsuario.isAdm_Grupoli())
-            {
-                IdEmpresa = Convert.ToInt32(ddlEmpresa.SelectedValue);
-                IdSucursal = Convert.ToInt32(ddlSucursal.SelectedValue);
-            }
-            else if (ObjUsuario.isAdm_Empresa() || ObjUsuario.isAdmEmp_DptoSeg() || ObjUsuario.isAdmEmp_DptoSalud())
-            {
-                IdEmpresa = ObjUsuario.Id_empresa;
-                IdSucursal = Convert.ToInt32(ddlSucursal.SelectedValue);
-            }
-            else
-            {
-                IdEmpresa = ObjUsuario.Id_empresa;
-                IdSucursal = ObjUsuario.Id_sucursal;
-            }
 
-            return Tuple.Create(IdEmpresa, IdSucursal);
-        }
-
-        public static Tuple<bool, bool> Get_Empresa_Sucursal(Model_UsuarioSistema ObjUsuario)
-        {
-            bool Sucursal = true;
-            bool Empresa = true;
-
-            if (ObjUsuario.isAdm_Grupoli())
-            {
-                Sucursal = true;
-                Empresa = true;
-            }
-            else if (ObjUsuario.isAdm_Empresa() || ObjUsuario.isAdmEmp_DptoSeg() || ObjUsuario.isAdmEmp_DptoSalud())
-            {
-                Sucursal = true;
-                Empresa = false;
-            }
-            else
-            {
-                Sucursal = false;
-                Empresa = false;
-            }
-
-            return Tuple.Create(Empresa, Sucursal);
-        }
-
-        public static int Set_IdEmpresaDDl(Model_UsuarioSistema ObjUsuario, DropDownList ddlEmpresa)
-        {
-            int IdEmpresa = 0;
-
-            if (ObjUsuario.isAdm_Grupoli())
-            {
-                IdEmpresa = Convert.ToInt32(ddlEmpresa.SelectedValue);
-            }
-            else
-            {
-                IdEmpresa = ObjUsuario.Id_empresa;
-            }
-
-            return IdEmpresa;
-        }
-
-        public static int Set_IdSucursalDDl(Model_UsuarioSistema ObjUsuario, DropDownList ddlSucursal)
-        {
-            int IdSucursal = 0;
-
-            if (ObjUsuario.isAdm_Grupoli())
-            {
-                IdSucursal = Convert.ToInt32(ddlSucursal.SelectedValue);
-            }
-            else if (ObjUsuario.isAdm_Empresa() || ObjUsuario.isAdmEmp_DptoSeg() || ObjUsuario.isAdmEmp_DptoSalud())
-            {
-                IdSucursal = Convert.ToInt32(ddlSucursal.SelectedValue);
-            }
-            else
-            {
-                IdSucursal = ObjUsuario.Id_sucursal;
-            }
-
-            return IdSucursal;
-        }
 
         public static int Set_IdUsuarioDDl(Model_UsuarioSistema ObjUsuario, DropDownList ddlUsuario)
         {
@@ -119,38 +38,6 @@ namespace Capa_Datos
             }
 
             return IdUsuario;
-        }
-
-        public static int Set_IdEmpresa(Model_UsuarioSistema ObjUsuario, int valor)
-        {
-            int IdEmpresa = 0;
-
-            if (ObjUsuario.isAdm_Grupoli())
-            {
-                IdEmpresa = valor;
-            }
-            else
-            {
-                IdEmpresa = ObjUsuario.Id_empresa;
-            }
-
-            return IdEmpresa;
-        }
-
-        public static int Set_IdSucursal(Model_UsuarioSistema ObjUsuario, int valor)
-        {
-            int IdSucursal = 0;
-
-            if (ObjUsuario.isAdm_Sucursal() || ObjUsuario.isAdm_SucSeg() || ObjUsuario.isAdm_SucSalud() || ObjUsuario.isResponsable())
-            {
-                IdSucursal = ObjUsuario.Id_sucursal;
-            }
-            else
-            {
-                IdSucursal = valor;
-            }
-
-            return IdSucursal;
         }
 
         #region Avg
@@ -230,37 +117,7 @@ namespace Capa_Datos
             return Math.Round(promedio, 3);
         }
         #endregion
-
-        #region Area
-        public static List<area> Area(int _id_empresa = 0, int _id_area = 0, string _nombre = "")
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            var consulta = new List<area>();
-
-            if (_id_empresa != 0) { consulta = contexto.area.Where(x => x.sucursal.id_empresa == _id_empresa).ToList(); }
-            else if (_id_area != 0) { consulta = contexto.area.Where(x => x.id_area == _id_area).ToList(); }
-            else if (_nombre != string.Empty) { consulta = contexto.area.Where(x => x.nombre == _nombre).ToList(); }
-
-            return consulta;
-        }
-
-        public static int AreaByNombre(string nombre, int id_sucursal)
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            var consulta = contexto.area.Where(x => x.nombre.ToUpper().Equals(nombre.ToUpper()) && x.id_sucursal == id_sucursal).ToList();
-            if (consulta.Count == 0)
-                return 0;
-            else
-                return 1;
-        }
-
-        public static List<usuario> AreaByUsuario(int _id_usuario)
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            var consulta = contexto.usuario.Where(x => x.id_usuario == _id_usuario).ToList();
-            return consulta;
-        }
-        #endregion
+        
 
         #region Alarmas
 
@@ -448,18 +305,6 @@ namespace Capa_Datos
         }
         #endregion
 
-        #region Empresa
-        public static List<empresa> Empresa(int _id_empresa = 0, string _nombre = "")
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            List<empresa> consulta = new List<empresa>();
-
-            if (_id_empresa != 0) { consulta = contexto.empresa.Where(x => x.id_empresa == _id_empresa).ToList(); }
-            else if (_nombre != string.Empty) { consulta = contexto.empresa.Where(x => x.nombre == _nombre).ToList(); }
-
-            return consulta;
-        }
-        #endregion
 
         #region empresa_itemdivision
         public static List<empresa_itemdivision> CodigoCiiu_Empresa(int _id_empresa)
@@ -880,49 +725,6 @@ namespace Capa_Datos
         }
         #endregion
 
-        #region Sucursal
-        public static List<sucursal> Sucursal(int _id_sucursal = 0, int _id_empresa = 0, string _nombre = "")
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            List<sucursal> consulta = new List<sucursal>();
-
-            if (_id_sucursal != 0) {
-                consulta = contexto.sucursal.Where(x => x.id_sucursal == _id_sucursal).ToList();
-            }
-            else if (_id_empresa != 0) { consulta = contexto.sucursal.Where(x => x.id_empresa == _id_empresa).ToList(); }
-            else if (_nombre != "") { consulta = contexto.sucursal.Where(x => x.nombre == _nombre).ToList(); }
-
-            return consulta;
-        }
-
-        public static sucursal Sucursal(int _id_sucursal)
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            sucursal consulta = new sucursal();
-
-            consulta = contexto.sucursal.Where(x => x.id_sucursal == _id_sucursal).SingleOrDefault(); 
-
-            return consulta;
-        }
-
-        public static int SucursalByNombre(string nombre, int id_empresa)
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            var consulta = contexto.sucursal.Where(x => x.nombre.ToUpper().Equals(nombre.ToUpper()) && x.id_empresa == id_empresa).ToList();
-            if (consulta.Count == 0)
-                return 0;
-            else
-                return 1;
-        }
-
-        public static List<empresa> EmpresaEmail(int id_empresa)
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            //List<empresa> consulta = from US in contexto.empresa where (US.id_empresa == id_empresa) select new { correo = US.email, empresa = US.nombre };
-            List<empresa> consulta = contexto.empresa.Where(x => x.id_empresa == id_empresa).ToList();
-            return consulta;
-        }
-        #endregion
 
         #region Soporte
         public static List<soporte> Soporte(int _id_rec_eco, string tipo)
@@ -937,96 +739,8 @@ namespace Capa_Datos
         }
         #endregion
 
-        #region Trabajador
 
-        public static List<trabajador> Trabajador(
-            int _id_trabajador = 0,
-            int _id_empresa = 0,
-            int _id_sucursal = 0,
-            int _id_puesto_trabajo = 0
-            )
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            List<trabajador> consulta = new List<trabajador>();
-
-            if (_id_trabajador != 0)
-            {
-                consulta = contexto.trabajador.Where(x => x.id_trabajador == _id_trabajador).OrderBy(y => y.primer_nombre).ToList();
-            }
-            else if (_id_empresa != 0)
-            {
-                consulta = contexto.trabajador.Where(x => x.puesto_trabajo.area.sucursal.id_empresa == _id_empresa).OrderBy(y => y.primer_nombre).ToList();
-            }
-            else if (_id_sucursal != 0)
-            {
-                consulta = contexto.trabajador.Where(x => x.puesto_trabajo.area.id_sucursal == _id_sucursal).OrderBy(y => y.primer_nombre).ToList();
-            }
-            else if (_id_puesto_trabajo != 0)
-            {
-                consulta = contexto.trabajador.Where(x => x.id_puesto_trabajo == _id_puesto_trabajo).OrderBy(y => y.primer_nombre).ToList();
-            }
-
-            return consulta;
-        }
-
-        public static List<trabajador_gestion> Trabajadores_Capacitacion(int _id_trabajador, DateTime fechaIni, DateTime fechaFin)
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-
-            List<trabajador_gestion> consulta = new List<trabajador_gestion>();
-            consulta = contexto.trabajador_gestion.Where(x =>
-            x.id_trabajador == _id_trabajador &&
-            x.gestion_laboral.fecha >= fechaIni &&
-            x.gestion_laboral.fecha <= fechaFin &&
-            x.gestion_laboral.tipo_gestion == 2
-            ).ToList();
-
-            return consulta;
-        }
-
-        public static int TrabajadorByCedula(string cedula)
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            var consulta = contexto.trabajador.Where(x => x.cedula == cedula).ToList();
-            if (consulta.Count == 0)
-                return 0;
-            else
-                return 1;
-        }
-
-        public static int TrabajadorAutocomplete(string valor)
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            var consulta = contexto.trabajador.Where(c => c.primer_nombre + " " + c.primer_apellido + " " + c.cedula == valor).SingleOrDefault();
-            return consulta.id_trabajador;
-        }
-
-        #endregion
-
-        #region trabajador_gestion
-
-        public static List<trabajador_gestion> TrabajadorInGestion(int id_trabajador = 0, int _id_ges_lab = 0)
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            var consulta = new List<trabajador_gestion>();
-
-            if (_id_ges_lab != 0)
-            {
-                consulta = contexto.trabajador_gestion.Where(x => x.id_ges_lab == _id_ges_lab).ToList();
-            }
-            else if (id_trabajador != 0 && _id_ges_lab != 0)
-            {
-                consulta = contexto.trabajador_gestion.
-                    Where(x => x.id_trabajador == id_trabajador && x.id_ges_lab == _id_ges_lab)
-                    .ToList();
-            }
-
-            return consulta;
-        }
-
-        #endregion
-
-        #region trabajador_estatus
+        #region estatus
         public static estatus Estatus(int _idEstatus)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
@@ -1034,24 +748,6 @@ namespace Capa_Datos
 
             consulta = contexto.estatus.Where(x => x.id_estatus == _idEstatus).SingleOrDefault();
 
-            return consulta;
-        }
-
-        public static List<trabajador_estatus> HistorialTrabajador(int _id_trabajador)
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            List<trabajador_estatus> consulta = new List<trabajador_estatus>();
-            consulta = contexto.trabajador_estatus.Where(x => x.id_trabajador == _id_trabajador).ToList();
-            return consulta;
-        }
-        public static List<trabajador_estatus> TrabajadorReposo(int _id_trabajador, DateTime fechaInicio, DateTime fechaFin)
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            List<trabajador_estatus> consulta = new List<trabajador_estatus>();
-            consulta = contexto.trabajador_estatus.Where(
-                x => x.id_trabajador == _id_trabajador &&
-                (x.fecha_constancia >= fechaInicio && x.fecha_constancia <= fechaFin)
-            ).ToList();
             return consulta;
         }
 

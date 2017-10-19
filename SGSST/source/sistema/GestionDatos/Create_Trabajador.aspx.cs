@@ -1,4 +1,8 @@
 ﻿using Capa_Datos;
+using Capa_Datos.Manager.Trabajador;
+using Capa_Datos.Manager.Area;
+using Capa_Datos.Manager.Sucursal;
+using Capa_Datos.Manager.Empresa;
 using System;
 using System.Web;
 using System.Web.Security;
@@ -15,7 +19,7 @@ namespace SGSSTC.source.sistema.GestionDatos
         {
             ObjUsuario = Utilidades.ValidarSesion(HttpContext.Current.User.Identity as FormsIdentity, this);phAlerta.Visible = false;
 
-            BoolEmpSuc = Getter.Get_Empresa_Sucursal(ObjUsuario);
+            BoolEmpSuc = Mgr_Empresa.Get_Empresa_Sucursal(ObjUsuario);
             phEmpresa1.Visible = BoolEmpSuc.Item1;
             phSucursal1.Visible = BoolEmpSuc.Item2;
             if (!IsPostBack)
@@ -29,11 +33,11 @@ namespace SGSSTC.source.sistema.GestionDatos
         {
             if (BoolEmpSuc.Item1)
             {
-                Listas.Empresa(ddlEmpresas);
+                Mgr_Empresa.Lista_Empresa(ddlEmpresas);
             }
             else
             {
-                Listas.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
                 Listas.PuestoTrabajo(ddlPuestoTrabajo, "Empresa", ObjUsuario.Id_empresa);
                 Listas.Estatus_Empresa(ddlEstatus, ObjUsuario.Id_empresa);
                 Listas.Horario_Empresa(ddlHorario, ObjUsuario.Id_empresa);
@@ -66,7 +70,7 @@ namespace SGSSTC.source.sistema.GestionDatos
 
             String NombreArchivo = string.Empty;
 
-            int id_trab = Getter.TrabajadorByCedula(txtCedula.Text);
+            int id_trab = Mgr_Trabajador.TrabajadorByCedula(txtCedula.Text);
             if (id_trab == 0)
             {
                 String[] valores = {
@@ -98,7 +102,7 @@ namespace SGSSTC.source.sistema.GestionDatos
 
                  };
 
-                ObjUsuario.Error = CRUD.Add_Trabajador( valores, fuFoto);
+                ObjUsuario.Error = Mgr_Trabajador.Add_Trabajador( valores, fuFoto);
 
                 Modal.MostrarAlertaAdd(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error, txtNombre1);
 
@@ -117,7 +121,7 @@ namespace SGSSTC.source.sistema.GestionDatos
         {
             if (ddlEmpresas.SelectedValue != string.Empty)
             {
-                Listas.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresas.SelectedValue));
+                Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresas.SelectedValue));
                 Listas.Horario_Empresa(ddlHorario, Convert.ToInt32(ddlEmpresas.SelectedValue));
                 Listas.Estatus_Empresa(ddlEstatus, Convert.ToInt32(ddlEmpresas.SelectedValue));
             }

@@ -1,4 +1,8 @@
 ﻿using Capa_Datos;
+using Capa_Datos.Manager.Trabajador;
+using Capa_Datos.Manager.Area;
+using Capa_Datos.Manager.Sucursal;
+using Capa_Datos.Manager.Empresa;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -16,7 +20,7 @@ namespace SGSSTC.source.sistema.GestionDatos
         {
             ObjUsuario = Utilidades.ValidarSesion(HttpContext.Current.User.Identity as FormsIdentity, this);
 
-            BoolEmpSuc = Getter.Get_Empresa_Sucursal(ObjUsuario);
+            BoolEmpSuc = Mgr_Empresa.Get_Empresa_Sucursal(ObjUsuario);
             phEmpresa1.Visible = BoolEmpSuc.Item1;
             phSucursal1.Visible = BoolEmpSuc.Item2;
 
@@ -30,18 +34,18 @@ namespace SGSSTC.source.sistema.GestionDatos
         {
             if (BoolEmpSuc.Item1)
             {
-                Listas.Empresa(ddlEmpresa);
+                Mgr_Empresa.Lista_Empresa(ddlEmpresa);
             }
             else
             {
-                Listas.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
                 Listas.Epp(ddlEpp);
             }
 
             if (!BoolEmpSuc.Item2)
             {
                 Listas.Epp(ddlEpp);
-                Listas.Area_Sucursal(ddlArea, ObjUsuario.Id_sucursal);
+                Mgr_Area.Area_Sucursal(ddlArea, ObjUsuario.Id_sucursal);
             }
         }
 
@@ -62,7 +66,7 @@ namespace SGSSTC.source.sistema.GestionDatos
 
             if (puesto.Count == 0)
             {
-                IdSucursal = Getter.Set_IdSucursalDDl(ObjUsuario, ddlSucursal);
+                IdSucursal = Mgr_Sucursal.Set_IdSucursalDDl(ObjUsuario, ddlSucursal);
 
                 String[] valores = {
                     txtNombre.Text,
@@ -95,7 +99,7 @@ namespace SGSSTC.source.sistema.GestionDatos
         {
             if (ddlEmpresa.SelectedValue != string.Empty)
             {
-                Listas.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
+                Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
                 Listas.Epp(ddlEpp);
             }
         }
@@ -104,7 +108,7 @@ namespace SGSSTC.source.sistema.GestionDatos
         {
             if (ddlSucursal.SelectedValue != string.Empty)
             {
-                Listas.Area_Sucursal(ddlArea, Convert.ToInt32(ddlSucursal.SelectedValue));
+                Mgr_Area.Area_Sucursal(ddlArea, Convert.ToInt32(ddlSucursal.SelectedValue));
             }
         }
     }

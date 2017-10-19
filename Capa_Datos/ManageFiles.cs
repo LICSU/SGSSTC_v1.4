@@ -7,6 +7,8 @@ using iTextSharp.text;
 using iTextSharp.text.html.simpleparser;
 using iTextSharp.text.pdf;
 using System.Collections.Generic;
+using Capa_Datos.Manager.Sucursal;
+using Capa_Datos.Manager.Trabajador;
 
 namespace Capa_Datos
 {
@@ -593,8 +595,8 @@ namespace Capa_Datos
             List<sucursal> objSucursal = new List<sucursal>();
             List<trabajador> objTrabajador = new List<trabajador>();
 
-            objSucursal = Getter.Sucursal(IdSucursal,0,"");
-            objTrabajador = Getter.Trabajador(0, 0, IdSucursal);
+            objSucursal = Mgr_Sucursal.Sucursal(IdSucursal,0,"");
+            objTrabajador = Mgr_Trabajador.Trabajador(0, 0, IdSucursal);
 
             Document pdfDoc = InicializarPDF(objSucursal, _page, Titulo1, _Horizontal);
             pdfDoc.Open();
@@ -616,7 +618,7 @@ namespace Capa_Datos
         public static void PdfPart2(Document pdfDoc, PdfPTable tablaPDF, int IdSucursal, Page _page, iTextSharp.text.Image[] arrayChart = null)
         {
             List<trabajador> objTrabajador = new List<trabajador>();
-            objTrabajador = Getter.Trabajador(0, 0, IdSucursal);
+            objTrabajador = Mgr_Trabajador.Trabajador(0, 0, IdSucursal);
             tablaPDF = Footer(tablaPDF, objTrabajador.Count);
             pdfDoc.Add(tablaPDF);
 

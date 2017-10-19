@@ -1,0 +1,3 @@
+C:\Users\Jezuz\Desktop\Repository\SGSSTCV1.4\CapaServ\obj\Release\CapaServ.csprojResolveAssemblyReference.cache
+C:\Users\Jezuz\Desktop\Repository\SGSSTCV1.4\CapaServ\obj\Release\CapaServ.Properties.Resources.resources
+C:\Users\Jezuz\Desktop\Repository\SGSSTCV1.4\CapaServ\obj\Release\CapaServ.csproj.GenerateResource.Cache

@@ -1,4 +1,8 @@
 ﻿using Capa_Datos;
+using Capa_Datos.Manager.Trabajador;
+using Capa_Datos.Manager.Area;
+using Capa_Datos.Manager.Sucursal;
+using Capa_Datos.Manager.Empresa;
 using System;
 using System.Collections.Generic;
 using System.Web;
@@ -16,13 +20,13 @@ namespace SGSSTC.source.sistema.Hacer
 		{
 			ObjUsuario = Utilidades.ValidarSesion(HttpContext.Current.User.Identity as FormsIdentity, this);phAlerta.Visible = false;
 
-			BoolEmpSuc = Getter.Get_Empresa_Sucursal(ObjUsuario);
+			BoolEmpSuc = Mgr_Empresa.Get_Empresa_Sucursal(ObjUsuario);
 
 			phEmpresa.Visible = BoolEmpSuc.Item1;
 			phSucursal.Visible = BoolEmpSuc.Item2;
 
 			List<empresa> ListaEmpresa = new List<empresa>();
-			ListaEmpresa = Getter.Empresa(ObjUsuario.Id_empresa);
+			ListaEmpresa = Mgr_Empresa.Empresa(ObjUsuario.Id_empresa);
 
 			foreach (var item in ListaEmpresa)
 			{
@@ -39,36 +43,36 @@ namespace SGSSTC.source.sistema.Hacer
 		{
 			if (BoolEmpSuc.Item1)
 			{
-				Listas.Empresa(ddlEmpresa);
+				Mgr_Empresa.Lista_Empresa(ddlEmpresa);
 			}
 			else
 			{
-				Listas.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+				Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
 			}
-            if (!BoolEmpSuc.Item2)
-            {
-                List<trabajador> LisTrabajador = new List<trabajador>();
-                LisTrabajador = Getter.Trabajador(0, 0, Convert.ToInt32(ObjUsuario.Id_sucursal));
-                int contTrabajadortes = 0;
+			if (!BoolEmpSuc.Item2)
+			{
+				List<trabajador> LisTrabajador = new List<trabajador>();
+				LisTrabajador = Mgr_Trabajador.Trabajador(0, 0, Convert.ToInt32(ObjUsuario.Id_sucursal));
+				int contTrabajadortes = 0;
 
-                foreach (var item in LisTrabajador)
-                {
-                    contTrabajadortes++;
+				foreach (var item in LisTrabajador)
+				{
+					contTrabajadortes++;
 
-                    ControlesDinamicos.CrearLiteral("" +
-                       "<tr>" +
-                           "<td>" + contTrabajadortes + "</td>" +
-                           "<td>" + item.primer_nombre + " " + item.primer_apellido + "</td>" +
-                           "<td>" + item.cedula + "</td>" +
-                           "<td> </td>" +
-                       "</tr> ", pDatos);
-                }
-            }
+					ControlesDinamicos.CrearLiteral("" +
+					   "<tr>" +
+						   "<td>" + contTrabajadortes + "</td>" +
+						   "<td>" + item.primer_nombre + " " + item.primer_apellido + "</td>" +
+						   "<td>" + item.cedula + "</td>" +
+						   "<td> </td>" +
+					   "</tr> ", pDatos);
+				}
+			}
 		}
 
 		protected void GenerarDocumento(object sender, EventArgs e)
 		{
-			int IdSucursal = Getter.Set_IdSucursalDDl(ObjUsuario, ddlSucursal);
+			int IdSucursal = Mgr_Sucursal.Set_IdSucursalDDl(ObjUsuario, ddlSucursal);
 			String[] valores = {
 				string.Empty + IdSucursal,
 				ddlSucursal.SelectedValue
@@ -80,7 +84,7 @@ namespace SGSSTC.source.sistema.Hacer
 		{
 			if (ddlEmpresa.SelectedValue != string.Empty)
 			{
-				Listas.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
+				Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
 			}
 		}
 
@@ -89,7 +93,7 @@ namespace SGSSTC.source.sistema.Hacer
 			if (ddlSucursal.SelectedValue != string.Empty)
 			{
 				List<trabajador> LisTrabajador = new List<trabajador>();
-				LisTrabajador = Getter.Trabajador(0, 0, Convert.ToInt32(ddlSucursal.SelectedValue));
+				LisTrabajador = Mgr_Trabajador.Trabajador(0, 0, Convert.ToInt32(ddlSucursal.SelectedValue));
 				int contTrabajadortes = 0;
 
 				foreach (var item in LisTrabajador)

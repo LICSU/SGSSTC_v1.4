@@ -1,4 +1,6 @@
 ﻿using Capa_Datos;
+using Capa_Datos.Manager.Trabajador;
+using Capa_Datos.Manager.Area;
 using System;
 using System.Collections.Generic;
 

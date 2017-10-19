@@ -1,11 +1,10 @@
 ﻿using Capa_Datos;
+using Capa_Datos.Manager.Sucursal;
+using Capa_Datos.Manager.Empresa;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.Security;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace SGSST.source.sistema.Planear
 {
@@ -18,7 +17,7 @@ namespace SGSST.source.sistema.Planear
         {
             ObjUsuario = Utilidades.ValidarSesion(HttpContext.Current.User.Identity as FormsIdentity, this); phAlerta.Visible = false;
 
-            BoolEmpSuc = Getter.Get_Empresa_Sucursal(ObjUsuario);
+            BoolEmpSuc = Mgr_Empresa.Get_Empresa_Sucursal(ObjUsuario);
 
             phEmpresa.Visible = BoolEmpSuc.Item1;
             phSucursal.Visible = BoolEmpSuc.Item2;
@@ -33,11 +32,11 @@ namespace SGSST.source.sistema.Planear
         {
             if (BoolEmpSuc.Item1)
             {
-                Listas.Empresa(ddlEmpresa);
+                Mgr_Empresa.Lista_Empresa(ddlEmpresa);
             }
             else
             {
-                Listas.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
                 Listas.PerfilCargo(ddlCargo, ObjUsuario.Id_empresa);
             }
 
@@ -52,7 +51,7 @@ namespace SGSST.source.sistema.Planear
             if (ddlEmpresa.SelectedValue != string.Empty)
             {
                 ViewState["empresa"] = ddlEmpresa.SelectedValue;
-                Listas.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
+                Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
                 Listas.PerfilCargo(ddlCargo, Convert.ToInt32(ddlEmpresa.SelectedValue));
                 ViewState["sucursal"] = "0";
                 ViewState["cargo"] = "0";
@@ -70,7 +69,7 @@ namespace SGSST.source.sistema.Planear
 
         protected void GenerarDocumento(object sender, EventArgs e)
         {
-            Tuple<int, int> IdEmpSuc = Getter.Get_IdEmpresa_IdSucursal(ObjUsuario, ddlEmpresa, ddlSucursal);
+            Tuple<int, int> IdEmpSuc = Mgr_Empresa.Get_IdEmpresa_IdSucursal(ObjUsuario, ddlEmpresa, ddlSucursal);
             string Empresa = string.Empty, Sucursal = string.Empty;
             if (BoolEmpSuc.Item1)
             {
@@ -79,7 +78,7 @@ namespace SGSST.source.sistema.Planear
             }
             else
             {
-                List<sucursal> lista = Getter.Sucursal(0, ObjUsuario.Id_empresa);
+                List<sucursal> lista = Mgr_Sucursal.Sucursal(0, ObjUsuario.Id_empresa);
                 foreach (var item in lista) {
                     Empresa = item.empresa.nombre;
                     Sucursal = item.nombre;

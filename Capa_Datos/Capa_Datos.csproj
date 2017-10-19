@@ -208,6 +208,10 @@
     <Compile Include="lista_actividad.cs">
       <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
     </Compile>
+    <Compile Include="Manager\Area\Mgr_Area.cs" />
+    <Compile Include="Manager\Empresa\Mgr_Empresa.cs" />
+    <Compile Include="Manager\Sucursal\Mgr_Sucursal.cs" />
+    <Compile Include="Manager\Trabajador\Mgr_Trabajador.cs" />
     <Compile Include="matriz_responsabilidad.cs">
       <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
     </Compile>
@@ -387,6 +391,7 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\Debug\AjaxControlToolkit.dll" />
     <Content Include="bin\Debug\Capa_Datos.dll" />
     <Content Include="bin\Debug\Capa_Datos.pdb" />
     <Content Include="bin\Debug\EntityFramework.dll" />
@@ -395,6 +400,7 @@
     <Content Include="bin\Debug\EntityFramework.xml" />
     <Content Include="bin\Debug\itextsharp.dll" />
     <Content Include="bin\Debug\itextsharp.xml" />
+    <Content Include="bin\Debug\LinqToExcel.dll" />
     <Content Include="bin\Release\AjaxControlToolkit.dll" />
     <Content Include="bin\Release\Capa_Datos.dll" />
     <Content Include="bin\Release\Capa_Datos.pdb" />

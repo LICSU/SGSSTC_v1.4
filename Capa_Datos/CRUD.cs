@@ -1,7 +1,10 @@
-﻿using System;
+﻿using Capa_Datos.Manager.Area;
+using Capa_Datos.Manager.Empresa;
+using Capa_Datos.Manager.Sucursal;
+using Capa_Datos.Manager.Trabajador;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.UI.WebControls;
 
 namespace Capa_Datos
@@ -347,6 +350,7 @@ namespace Capa_Datos
         }
 
 
+
         public static bool AddAutoEvaluacion(Tuple<int, int> IdEmpSuc, String[] valores, FileUpload flpArchivo)
         {
             int IdEmpresa = IdEmpSuc.Item1;
@@ -469,60 +473,9 @@ namespace Capa_Datos
             return Add_Fila(nuevo);
         }
 
-        public static bool AddEmpresa(String[] valores, FileUpload fuLogoEmpresa)
-        {
-            string ruta = Utilidades.GuardarImagen(fuLogoEmpresa, valores[0], Paginas.Archivos_LogosEmpresas.Value);
-
-            if (!ruta.Contains("ERR-"))
-            {
-                empresa nuevo = new empresa()
-                {
-                    nombre = valores[0],
-                    CodEmpresa = valores[1],
-                    nit = valores[2],
-                    email = valores[3],
-                    representante = valores[4],
-                    movil = valores[5],
-                    fijo = valores[6],
-                    logo_url = ruta,
-                    id_arl = Convert.ToInt32(valores[7]),
-                    jornada = Convert.ToInt32(valores[8])
-                };
-
-                return Add_Fila(nuevo);
-            }
-            else
-            {
-                return false;
-            }
-        }
-        public static bool AddEmpresaSimple(String[] valores)
-        {
-
-            empresa nuevo = new empresa()
-            {
-                nombre = valores[0],
-                CodEmpresa = valores[1],
-                nit = valores[2],
-                email = valores[3],
-                representante = valores[4],
-                movil = valores[5],
-                fijo = valores[6],
-                logo_url = ""
-                //id_arl = Convert.ToInt32(valores[7]),
-                //jornada = Convert.ToInt32(valores[8])
-            };
-
-            return Add_Fila(nuevo);
-
-        }
 
 
-        public static bool DeleteEmpresa(int IdEmpresa)
-        {
-            empresa tabla = new empresa();
-            return Delete_Fila(tabla, IdEmpresa);
-        }
+
 
         public static bool AddCodigoCiiu_Empresa(String[] valores)
         {
@@ -619,68 +572,14 @@ namespace Capa_Datos
 
             return berror;
         }
-        public static bool Add_Sucursal_Empresa(String[] valores)
-        {
-            string _id_municipio = null;
-            if (valores[1] != "0")
-                _id_municipio = valores[1]; 
-            sucursal nuevo = new sucursal()
-            {
-                nombre = valores[0],
-                id_municpio = Convert.ToInt32(_id_municipio),
-                id_empresa = Convert.ToInt32(valores[2]),
-                direccion = valores[3],
-                sede_principal = 1,
-                representante = valores[4],
-                movil = valores[5],
-                fijo = valores[6],
-                actividad_ppal = Convert.ToInt32(valores[7]),
-                actividad_sec = Convert.ToInt32(valores[8]),
-                actividad_otra = Convert.ToInt32(valores[9]),
-            };
 
-            return Add_Fila(nuevo);
-        }
-
-        public static bool Add_Sucursal_Empresa_2(String[] valores)
-        {
-            sucursal nuevo = new sucursal()
-            {
-                nombre = valores[0],
-                id_empresa = Convert.ToInt32(valores[1]),
-                direccion = valores[2],
-                sede_principal = 1,
-                representante = valores[3],
-                movil = valores[4],
-                fijo = valores[5],
-                actividad_ppal = Convert.ToInt32(valores[6]),
-                actividad_sec = Convert.ToInt32(valores[7]),
-                actividad_otra = Convert.ToInt32(valores[8]),
-            };
-
-            return Add_Fila(nuevo);
-        }
-
-        public static bool Add_Area_Sucursal(String[] valores)
-        {
-            area nuevo = new area()
-            {
-                nombre = valores[0],
-                id_sucursal = Convert.ToInt32(valores[1]),
-                id_area_padre = 0,
-                nivel = 1,
-                tipo = "Administrativa"
-            };
-
-            return Add_Fila(nuevo);
-        }
         public static bool Add_PuestoTrabajo_Sucursal(String[] valores)
         {
             puesto_trabajo nuevo = new puesto_trabajo()
             {
                 nombre = "Puesto de Trabajo Default " + valores[0],
                 descripcion = "Descripcion del Puesto Default",
-                id_area = GetterMax.Areas()
+                id_area = Mgr_Area.Areas()
             };
             return Add_Fila(nuevo);
         }
@@ -689,39 +588,10 @@ namespace Capa_Datos
             horario nuevo = new horario()
             {
                 nombre = "Horario Default " + valores[0],
-                id_empresa = GetterMax.Empresas(),
+                id_empresa = Mgr_Empresa.get_max_Empresas(),
                 fecha_inicio = "12:00",
                 fecha_fin = "01:00",
                 fecha_creacion = DateTime.Today
-            };
-            return Add_Fila(nuevo);
-        }
-        public static bool Add_Trabajador_Sucursal(String[] valores)
-        {
-            trabajador nuevo = new trabajador()
-            {
-                cedula = "0",
-                primer_nombre = " Trabajador Default " + valores[0],
-                segundo_nombre = "---",
-                primer_apellido = "---",
-                segundo_apellido = "---",
-                email = "---",
-                fecha_nacimiento = Convert.ToDateTime("1900-01-01"),
-                edo_civil = "Soltero(a)",
-                sexo = "Masculino",
-                foto = "~/source/archivos/foto_perfil/usuario.png",
-                telefono_casa = "---",
-                telefono_movil = "---",
-                activo = 1,
-                id_ccf = 0,
-                direccion = "---",
-                id_municipio = 1,
-                id_puesto_trabajo = GetterMax.PuestoTrabajo(),
-                es_discapacitado = "No",
-                desc_discapacidad = "---",
-                id_horario = GetterMax.Horario(),
-                id_estatus_actual = 1,
-                fecha_ingreso = DateTime.Now
             };
             return Add_Fila(nuevo);
         }
@@ -731,7 +601,7 @@ namespace Capa_Datos
             {
                 login = valores[0],
                 clave = valores[1],
-                id_trabajador = GetterMax.Trabajador(),
+                id_trabajador = Mgr_Trabajador.Trabajador(),
                 id_rol = Convert.ToInt32(valores[2])
             };
 
@@ -819,88 +689,8 @@ namespace Capa_Datos
 
 
         }
-        public static bool Add_Sucursal(String[] valores)
-        {
-            sucursal nuevo = new sucursal()
-            {
-                nombre = valores[0],
-                id_municpio = Convert.ToInt32(valores[1]),
-                id_empresa = Convert.ToInt32(valores[2]),
-                direccion = valores[3],
-                sede_principal = 0,
-                representante = valores[4],
-                movil = valores[5],
-                fijo = valores[6],
-                actividad_ppal = Convert.ToInt32(valores[7]),
-                actividad_sec = Convert.ToInt32(valores[8]),
-                actividad_otra = Convert.ToInt32(valores[9]),
-            };
 
-            return Add_Fila(nuevo);
-        }
-        public static bool DeleteSucursal(int id_sucursal)
-        {
-            sucursal tabla = new sucursal();
-            return Delete_Fila(tabla, id_sucursal);
-        }
-        public static bool Add_Trabajador(String[] valores, FileUpload fuFoto)
-        {
-            string ruta = Utilidades.GuardarImagen(fuFoto, valores[0] + "_foto", Paginas.Archivos_Foto_Perfil.Value);
-            trabajador nuevo = new trabajador()
-            {
-                cedula = valores[0],
-                primer_nombre = valores[1],
-                segundo_nombre = valores[2],
-                primer_apellido = valores[3],
-                segundo_apellido = valores[4],
-                email = valores[5],
-                fecha_nacimiento = Convert.ToDateTime(valores[6]),
-                edo_civil = valores[7],
-                sexo = valores[8],
-                foto = ruta,
-                telefono_casa = valores[9],
-                telefono_movil = valores[10],
-                activo = 1,
-                id_ccf = Convert.ToInt32(valores[11]),
-                direccion = valores[12],
-                id_municipio = Convert.ToInt32(valores[13]),
-                id_puesto_trabajo = Convert.ToInt32(valores[14]),
-                es_discapacitado = valores[15],
-                desc_discapacidad = valores[16] == string.Empty ? "---" : valores[16],
-                id_horario = Convert.ToInt32(valores[17]),
-                id_estatus_actual = Convert.ToInt32(valores[18]),
-                fecha_ingreso = Convert.ToDateTime(valores[19]),
-                tipo_vinculacion = valores[20],
-                tipo_horario = valores[21],
-                id_perfil_cargo = Convert.ToInt32(valores[22]),
-                salario = Convert.ToInt32(valores[23]),
-                mano_dominante = valores[24]
-            };
-            Boolean berror = false;
-
-            if (Add_Fila(nuevo))
-            {
-                int idTrabajador = GetterMax.Trabajador();
-                trabajador_estatus nuevoTE = new trabajador_estatus()
-                {
-                    id_estatus = Convert.ToInt32(valores[18]),
-                    id_trabajador = idTrabajador,
-                    fecha_registro = DateTime.Now,
-                    motivo = "Registro de Trabajador",
-                    id_enfermedad = 0,
-                    id_sistema = 0,
-                    url_constancia = "",
-                    fecha_constancia = DateTime.Now,
-                    dias_reposo = 0,
-                    tpo_enfermedad = ""
-                };
-                berror = Add_Fila(nuevoTE);
-
-            }
-
-
-            return berror;
-        }
+   
 
         public static bool Add_Riesgos_Sucursal(String[] valores)
         {
@@ -942,7 +732,7 @@ namespace Capa_Datos
                 }
                 catch
                 {
-                    DeleteSucursal(Convert.ToInt32(valores[3]));
+                    Mgr_Sucursal.DeleteSucursal(Convert.ToInt32(valores[3]));
                     return false;
                 }
 
@@ -963,7 +753,7 @@ namespace Capa_Datos
                 }
                 catch
                 {
-                    DeleteSucursal(Convert.ToInt32(valores[3]));
+                    Mgr_Sucursal.DeleteSucursal(Convert.ToInt32(valores[3]));
                     return false;
                 }
 
@@ -985,7 +775,7 @@ namespace Capa_Datos
                 }
                 catch
                 {
-                    DeleteSucursal(Convert.ToInt32(valores[3]));
+                    Mgr_Sucursal.DeleteSucursal(Convert.ToInt32(valores[3]));
                     return false;
                 }
 
@@ -1051,7 +841,7 @@ namespace Capa_Datos
             }
             catch
             {
-                DeleteSucursal(Convert.ToInt32(valores[3]));
+                Mgr_Sucursal.DeleteSucursal(Convert.ToInt32(valores[3]));
                 return false;
             }
 
@@ -1084,7 +874,7 @@ namespace Capa_Datos
             }
             catch
             {
-                DeleteSucursal(id_sucursal);
+                Mgr_Sucursal.DeleteSucursal(id_sucursal);
                 return false;
             }
             return true;
@@ -1105,43 +895,6 @@ namespace Capa_Datos
             return Add_Fila(nuevo);
         }
 
-        public static bool Add_Area(CheckBox chkAreaPadre, String[] valores)
-        {
-            int id_area_padre = 0;
-
-            if (!chkAreaPadre.Checked || (valores[0] == string.Empty))
-            {
-                valores[1] = "1";
-            }
-            else
-            {
-                id_area_padre = Convert.ToInt32(valores[0]);
-
-                List<area> ListaArea = new List<area>();
-                ListaArea = Getter.Area(0, Convert.ToInt32(valores[0]), "");
-
-                foreach (var item in ListaArea)
-                {
-                    valores[1] = item.nivel.ToString();
-                }
-
-                if (valores[1] == "1") { valores[1] = "2"; }
-                else if (valores[1] == "2") { valores[1] = "3"; }
-                else if (valores[1] == "3") { valores[1] = "4"; }
-            }
-
-            area nuevo = new area()
-            {
-                nombre = valores[2],
-                id_sucursal = Convert.ToInt32(valores[3]),
-                id_area_padre = id_area_padre,
-                nivel = Convert.ToInt32(valores[1]),
-                tipo = valores[4]
-            };
-
-            return Add_Fila(nuevo);
-
-        }
 
         public static bool Add_Pregunta(Model_UsuarioSistema ObjUsuario, String[] valores)
         {

@@ -1,4 +1,8 @@
 ﻿using Capa_Datos;
+using Capa_Datos.Manager.Trabajador;
+using Capa_Datos.Manager.Area;
+using Capa_Datos.Manager.Sucursal;
+using Capa_Datos.Manager.Empresa;
 using System;
 using System.Collections.Generic;
 using System.Web;
@@ -24,7 +28,7 @@ namespace SGSSTC.source.sistema.Verificar
 
 			ObjUsuario = Utilidades.ValidarSesion(HttpContext.Current.User.Identity as FormsIdentity, this);phAlerta.Visible = false;
 
-			BoolEmpSuc = Getter.Get_Empresa_Sucursal(ObjUsuario);
+			BoolEmpSuc = Mgr_Empresa.Get_Empresa_Sucursal(ObjUsuario);
 
 			phEmpresa.Visible = BoolEmpSuc.Item1;
 			phSucursal.Visible = BoolEmpSuc.Item2;
@@ -38,26 +42,26 @@ namespace SGSSTC.source.sistema.Verificar
 		{
 			if (BoolEmpSuc.Item1)
 			{
-				Listas.Empresa(ddlEmpresa);
+				Mgr_Empresa.Lista_Empresa(ddlEmpresa);
 			}
 			else
 			{
-				Listas.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+				Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
 			}
 
 
 			if (!BoolEmpSuc.Item2)
 			{
 				IdSucursal = Convert.ToInt32(ddlSucursal.SelectedValue);
-				Listas.Area_Sucursal(ddlArea, ObjUsuario.Id_sucursal);
-				Listas.Trabajadores_Sucursal(ddlTrabajador, ObjUsuario.Id_sucursal);
-                Listas.PuestoTrabajo(ddlProcesoTrabajo, "Sucursal", ObjUsuario.Id_sucursal);
+				Mgr_Area.Area_Sucursal(ddlArea, ObjUsuario.Id_sucursal);
+				Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabajador, ObjUsuario.Id_sucursal);
+				Listas.PuestoTrabajo(ddlProcesoTrabajo, "Sucursal", ObjUsuario.Id_sucursal);
 			}
 
 		}
 		protected void btPrintSave_Click(object sender, EventArgs e)
 		{
-            IdTrabajador = Convert.ToInt32(ddlTrabajador.SelectedValue);
+			IdTrabajador = Convert.ToInt32(ddlTrabajador.SelectedValue);
 
 			at_it_el_pa nuevo = new at_it_el_pa()
 			{
@@ -81,7 +85,7 @@ namespace SGSSTC.source.sistema.Verificar
 				tipo_enfermedad = ddlTipoEnfermedad.SelectedValue
 			};
 
-			int IdEmpresa = Getter.Set_IdEmpresaDDl(ObjUsuario, ddlEmpresa);
+			int IdEmpresa = Mgr_Empresa.Set_IdEmpresaDDl(ObjUsuario, ddlEmpresa);
 
 			ObjUsuario.Error = CRUD.Add_Fila(nuevo);
 
@@ -121,7 +125,7 @@ namespace SGSSTC.source.sistema.Verificar
 		{
 			if (ddlEmpresa.SelectedValue != string.Empty)
 			{
-				Listas.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
+				Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
 			}
 
 		}
@@ -130,10 +134,10 @@ namespace SGSSTC.source.sistema.Verificar
 			if (ddlSucursal.SelectedValue != string.Empty)
 			{
 				IdSucursal = Convert.ToInt32(ddlSucursal.SelectedValue);
-				Listas.Area_Sucursal(ddlArea, Convert.ToInt32(ddlSucursal.SelectedValue), "Ninguna");
+				Mgr_Area.Area_Sucursal(ddlArea, Convert.ToInt32(ddlSucursal.SelectedValue), "Ninguna");
 				Listas.PuestoTrabajo(ddlProcesoTrabajo, "Sucursal", Convert.ToInt32(ddlSucursal.SelectedValue), "Ninguno");
-                Listas.Trabajadores_Sucursal(ddlTrabajador, Convert.ToInt32(ddlSucursal.SelectedValue));
-            }
+				Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabajador, Convert.ToInt32(ddlSucursal.SelectedValue));
+			}
 
 		}
 		protected void btnReset_Click(object sender, EventArgs e)

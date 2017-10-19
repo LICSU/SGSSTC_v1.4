@@ -1,4 +1,4 @@
-﻿using Capa_Datos;
+﻿using Capa_Datos;using Capa_Datos.Manager.Trabajador;using Capa_Datos.Manager.Area;using Capa_Datos.Manager.Sucursal;using Capa_Datos.Manager.Empresa;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +27,7 @@ namespace SGSSTC.source.sistema.Verificar
 
 			ObjUsuario = Utilidades.ValidarSesion(HttpContext.Current.User.Identity as FormsIdentity, this);phAlerta.Visible = false;
 
-			BoolEmpSuc = Getter.Get_Empresa_Sucursal(ObjUsuario);
+			BoolEmpSuc = Mgr_Empresa.Get_Empresa_Sucursal(ObjUsuario);
 
 			phEmpresa.Visible = BoolEmpSuc.Item1;
 			phSucursal.Visible = BoolEmpSuc.Item2;
@@ -42,17 +42,17 @@ namespace SGSSTC.source.sistema.Verificar
 		{
 			if (BoolEmpSuc.Item1)
 			{
-				Listas.Empresa(ddlEmpresa);
+				Mgr_Empresa.Lista_Empresa(ddlEmpresa);
 			}
 			else
 			{
-				Listas.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+				Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
 			}
 
 
 			if (!BoolEmpSuc.Item2)
 			{
-				Listas.Area_Sucursal(ddlArea, ObjUsuario.Id_sucursal);
+				Mgr_Area.Area_Sucursal(ddlArea, ObjUsuario.Id_sucursal);
 				Listas.PuestoTrabajo(ddlProcesoTrabajo, "Sucursal", ObjUsuario.Id_sucursal);
 			}
 		}
@@ -68,7 +68,7 @@ namespace SGSSTC.source.sistema.Verificar
 				IdSucursal = Convert.ToInt32(item.trabajador.puesto_trabajo.area.id_sucursal);
 
                 ddlEmpresa.SelectedValue = IdEmpresa.ToString();
-                Listas.Sucursal(ddlSucursal, IdEmpresa);
+                Mgr_Sucursal.Sucursal(ddlSucursal, IdEmpresa);
                 ddlSucursal.SelectedValue = string.Empty + IdSucursal;
 
 				txtFechaAcc.Text = item.fecha_accidente.Value.ToString("yyyy-MM-dd");
@@ -77,7 +77,7 @@ namespace SGSSTC.source.sistema.Verificar
                 txtTrabajador.Text = item.trabajador.primer_nombre + ' ' + item.trabajador.primer_apellido + ' ' + item.trabajador.cedula;
                 IdTrabajador = Convert.ToInt32(item.id_trabajador);
 
-				Listas.Area_Sucursal(ddlArea, IdSucursal, "Ninguna");
+				Mgr_Area.Area_Sucursal(ddlArea, IdSucursal, "Ninguna");
 				ddlArea.SelectedValue = Convert.ToString(item.id_area);
 
 				Listas.PuestoTrabajo(ddlProcesoTrabajo, "Sucursal", IdSucursal, "Ninguno");
@@ -155,7 +155,7 @@ namespace SGSSTC.source.sistema.Verificar
 		{
 			if (ddlEmpresa.SelectedValue != string.Empty)
 			{
-				Listas.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
+				Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
 			}
 
 		}
@@ -164,7 +164,7 @@ namespace SGSSTC.source.sistema.Verificar
 			if (ddlSucursal.SelectedValue != string.Empty)
 			{
                 IdSucursal = Convert.ToInt32(ddlSucursal.SelectedValue);
-                Listas.Area_Sucursal(ddlArea, Convert.ToInt32(ddlSucursal.SelectedValue), "Ninguna");
+                Mgr_Area.Area_Sucursal(ddlArea, Convert.ToInt32(ddlSucursal.SelectedValue), "Ninguna");
 				Listas.PuestoTrabajo(ddlProcesoTrabajo, "Sucursal", Convert.ToInt32(ddlSucursal.SelectedValue), "Ninguno");
 			}
 

@@ -1,4 +1,8 @@
 ﻿using Capa_Datos;
+using Capa_Datos.Manager.Trabajador;
+using Capa_Datos.Manager.Area;
+using Capa_Datos.Manager.Sucursal;
+using Capa_Datos.Manager.Empresa;
 using System;
 using System.Collections.Generic;
 using System.Web;
@@ -21,7 +25,7 @@ namespace SGSSTC.source.sistema.Hacer
 
             ObjUsuario = Utilidades.ValidarSesion(HttpContext.Current.User.Identity as FormsIdentity, this);phAlerta.Visible = false;
 
-            BoolEmpSuc = Getter.Get_Empresa_Sucursal(ObjUsuario);
+            BoolEmpSuc = Mgr_Empresa.Get_Empresa_Sucursal(ObjUsuario);
 
             phEmpresa.Visible = BoolEmpSuc.Item1;
             phSucursal.Visible = BoolEmpSuc.Item2;
@@ -38,16 +42,16 @@ namespace SGSSTC.source.sistema.Hacer
         }
         private void CargarListas()
         {
-            Listas.Empresa(ddlEmpresa);
+            Mgr_Empresa.Lista_Empresa(ddlEmpresa);
             Listas.TipoExamen(ddlTipoExamen);
 
             if (BoolEmpSuc.Item1)
             {
-                Listas.Empresa(ddlEmpresa);
+                Mgr_Empresa.Lista_Empresa(ddlEmpresa);
             }
             else
             {
-                Listas.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
             }
 
             if (!BoolEmpSuc.Item2)
@@ -466,7 +470,7 @@ namespace SGSSTC.source.sistema.Hacer
         protected void ddlSucursal_SelectedIndexChanged(object sender, EventArgs e)
         {
             List<sucursal> ListaSucursal = new List<sucursal>();
-            ListaSucursal = Getter.Sucursal(Convert.ToInt32(ddlSucursal.SelectedValue), 0, "");
+            ListaSucursal = Mgr_Sucursal.Sucursal(Convert.ToInt32(ddlSucursal.SelectedValue), 0, "");
 
             foreach (var item in ListaSucursal)
             {
@@ -474,11 +478,11 @@ namespace SGSSTC.source.sistema.Hacer
             }
 
             lbNumHistoria.Text = string.Empty + (GetterMax.HistoriaClinica() + 1);
-            Listas.Trabajadores_Sucursal(ddlTrabajador, Convert.ToInt32(ddlSucursal.SelectedValue));
+            Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabajador, Convert.ToInt32(ddlSucursal.SelectedValue));
         }
         protected void ddlEmpresa_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Listas.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
+            Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
         }
         protected void ddlTrabajador_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -501,7 +505,7 @@ namespace SGSSTC.source.sistema.Hacer
         #region cargar datos
         private void cargarEquiposLaborales()
         {
-            Tabla.TrabajadorGestion(GridView3, ddlTrabajador.SelectedValue);
+            Mgr_Trabajador.TrabajadorGestion(GridView3, ddlTrabajador.SelectedValue);
         }
         private void cargarHistoriasClinicas()
         {
@@ -515,7 +519,7 @@ namespace SGSSTC.source.sistema.Hacer
         {
             #region Puesto de Trabajo
             List<trabajador> ListaTrabajador = new List<trabajador>();
-            ListaTrabajador = Getter.Trabajador(0, 0, 0, Convert.ToInt32(ViewState["id_puesto_trabajo"]));
+            ListaTrabajador = Mgr_Trabajador.Trabajador(0, 0, 0, Convert.ToInt32(ViewState["id_puesto_trabajo"]));
 
             foreach (var item in ListaTrabajador)
             {
@@ -645,7 +649,7 @@ namespace SGSSTC.source.sistema.Hacer
         {
             #region Datos Trabajador
             List<trabajador> ListaTrabajador = new List<trabajador>();
-            ListaTrabajador = Getter.Trabajador(Convert.ToInt32(ddlTrabajador.SelectedValue));
+            ListaTrabajador = Mgr_Trabajador.Trabajador(Convert.ToInt32(ddlTrabajador.SelectedValue));
 
             foreach (var item in ListaTrabajador)
             {

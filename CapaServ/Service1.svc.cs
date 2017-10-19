@@ -2,6 +2,8 @@
 using Capa_Datos;
 using System.Threading;
 using System.Collections.Generic;
+using Capa_Datos.Manager.Empresa;
+using Capa_Datos.Manager.Sucursal;
 
 namespace CapaServ
 {
@@ -78,9 +80,9 @@ namespace CapaServ
             if (CRUD.Add_Medidas_Sucursal(Convert.ToInt32(id_sucursal)))
             {
                 string empresa = "", correo = "";
-                var _sucursal = Getter.Sucursal(Convert.ToInt32(id_sucursal));
+                var _sucursal = Mgr_Sucursal.Sucursal(Convert.ToInt32(id_sucursal));
 
-                List<empresa> data_empresa = Getter.EmpresaEmail(Convert.ToInt32(_sucursal.id_empresa));
+                List<empresa> data_empresa = Mgr_Empresa.EmpresaEmail(Convert.ToInt32(_sucursal.id_empresa));
                 foreach (var datos in data_empresa)
                 {
                     empresa = datos.nombre;

@@ -1,4 +1,8 @@
 ﻿using Capa_Datos;
+using Capa_Datos.Manager.Trabajador;
+using Capa_Datos.Manager.Area;
+using Capa_Datos.Manager.Sucursal;
+using Capa_Datos.Manager.Empresa;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +28,7 @@ namespace SGSSTC.source.sistema.Hacer
         {
             ObjUsuario = Utilidades.ValidarSesion(HttpContext.Current.User.Identity as FormsIdentity, this);phAlerta.Visible = false;
 
-            BoolEmpSuc = Getter.Get_Empresa_Sucursal(ObjUsuario);
+            BoolEmpSuc = Mgr_Empresa.Get_Empresa_Sucursal(ObjUsuario);
 
             phSucursal.Visible = BoolEmpSuc.Item2;
 
@@ -38,12 +42,12 @@ namespace SGSSTC.source.sistema.Hacer
         }
         private void CargarListas()
         {
-            Listas.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+            Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
 
             if (!BoolEmpSuc.Item1)
             {
-                Listas.Sucursal(ddlSucursalAdd, ObjUsuario.Id_empresa);
-                Listas.Sucursal(ddlSucursalGral, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Sucursal(ddlSucursalAdd, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Sucursal(ddlSucursalGral, ObjUsuario.Id_empresa);
             }
 
             if (!BoolEmpSuc.Item2)
@@ -55,8 +59,8 @@ namespace SGSSTC.source.sistema.Hacer
         }
         private void LlenarGridView()
         {
-            int IdEmpresa = Getter.Set_IdEmpresa(ObjUsuario, Convert.ToInt32(ViewState["empresa"]));
-            int IdSucursal = Getter.Set_IdSucursal(ObjUsuario, Convert.ToInt32(ViewState["sucursal"]));
+            int IdEmpresa = Mgr_Empresa.Set_IdEmpresa(ObjUsuario, Convert.ToInt32(ViewState["empresa"]));
+            int IdSucursal = Mgr_Sucursal.Set_IdSucursal(ObjUsuario, Convert.ToInt32(ViewState["sucursal"]));
             string valor = string.Empty + ViewState["trabajador"];
             int id_trabajador = 0;
             if (!valor.Equals(string.Empty)) {
@@ -77,13 +81,13 @@ namespace SGSSTC.source.sistema.Hacer
         #region acciones
         protected void crearlistaGral(object sender, EventArgs e)
         {
-            int IdSucursal = Getter.Set_IdSucursalDDl(ObjUsuario, ddlSucursalGral);
+            int IdSucursal = Mgr_Sucursal.Set_IdSucursalDDl(ObjUsuario, ddlSucursalGral);
 
             List<sucursal> ListaSucursal = new List<sucursal>();
             List<trabajador> ListaTrabajador = new List<trabajador>();
 
-            ListaSucursal = Getter.Sucursal(ObjUsuario.Id_sucursal, 0, "");
-            ListaTrabajador = Getter.Trabajador(0, 0, ObjUsuario.Id_sucursal);
+            ListaSucursal = Mgr_Sucursal.Sucursal(ObjUsuario.Id_sucursal, 0, "");
+            ListaTrabajador = Mgr_Trabajador.Trabajador(0, 0, ObjUsuario.Id_sucursal);
 
             string[] valores = {
             "¿Es de su Conocimiento la Política de Seguridad y Salud en el Trabajo de la Organización?",
@@ -116,7 +120,7 @@ namespace SGSSTC.source.sistema.Hacer
 
         protected void Guardar(object sender, EventArgs e)
         {
-            int IdSucursal = Getter.Set_IdSucursalDDl(ObjUsuario, ddlSucursalAdd);
+            int IdSucursal = Mgr_Sucursal.Set_IdSucursalDDl(ObjUsuario, ddlSucursalAdd);
 
             string[] valores2 = {
                 string.Empty + ObjUsuario.Id_sucursal,
@@ -237,7 +241,7 @@ namespace SGSSTC.source.sistema.Hacer
             {
                 ViewState["sucursal"] = ddlSucursal.SelectedValue;
                 IdSucursal = Convert.ToInt32(ddlSucursal.SelectedValue);
-                Listas.Trabajadores_Sucursal(ddlTrabajador, IdSucursal);
+                Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabajador, IdSucursal);
             }
             else
             {
@@ -267,7 +271,7 @@ namespace SGSSTC.source.sistema.Hacer
             if (ddlSucursalAdd.SelectedValue != string.Empty)
             {
                 IdSucursalEsp = Convert.ToInt32(ddlSucursalAdd.SelectedValue);
-                Listas.Trabajadores_Sucursal(ddlTrabajadorEsp, IdSucursalEsp);
+                Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabajadorEsp, IdSucursalEsp);
             }
         }
         

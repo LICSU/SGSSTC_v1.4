@@ -1,4 +1,8 @@
 ﻿using Capa_Datos;
+using Capa_Datos.Manager.Trabajador;
+using Capa_Datos.Manager.Area;
+using Capa_Datos.Manager.Sucursal;
+using Capa_Datos.Manager.Empresa;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +23,7 @@ namespace SGSSTC.source.sistema.MenuPrincipal
         {
             ObjUsuario = Utilidades.ValidarSesion(HttpContext.Current.User.Identity as FormsIdentity, this);
 
-            BoolEmpSuc = Getter.Get_Empresa_Sucursal(ObjUsuario);
+            BoolEmpSuc = Mgr_Empresa.Get_Empresa_Sucursal(ObjUsuario);
 
             List<documento> ListaDocumento = new List<documento>();
             List<trabajador> ListTrabajador = new List<trabajador>();
@@ -37,7 +41,7 @@ namespace SGSSTC.source.sistema.MenuPrincipal
                 var groupedList = ListaDocumento.GroupBy(x => new { x.id_tabla, x.fecha_subida.Value.Year }).Select(grp => grp.ToList()).ToList();
 
                 List<sucursal> ListSucursal = new List<sucursal>();
-                ListSucursal = Getter.Sucursal(0, ObjUsuario.Id_empresa);
+                ListSucursal = Mgr_Sucursal.Sucursal(0, ObjUsuario.Id_empresa);
 
                 Double CantSucursales = ListSucursal.Count;
                 Double CantAutoEvaluacion = groupedList.Count;

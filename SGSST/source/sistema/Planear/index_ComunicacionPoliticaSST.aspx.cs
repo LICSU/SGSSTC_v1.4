@@ -1,4 +1,8 @@
 ﻿using Capa_Datos;
+using Capa_Datos.Manager.Trabajador;
+using Capa_Datos.Manager.Area;
+using Capa_Datos.Manager.Sucursal;
+using Capa_Datos.Manager.Empresa;
 using System;
 using System.Collections.Generic;
 using System.Web;
@@ -25,7 +29,7 @@ namespace SGSSTC.source.sistema.Hacer
 
             ObjUsuario = Utilidades.ValidarSesion(HttpContext.Current.User.Identity as FormsIdentity, this);phAlerta.Visible = false;
 
-            BoolEmpSuc = Getter.Get_Empresa_Sucursal(ObjUsuario);
+            BoolEmpSuc = Mgr_Empresa.Get_Empresa_Sucursal(ObjUsuario);
 
             phSucursal.Visible = BoolEmpSuc.Item2;
             phSucursalAdd.Visible = BoolEmpSuc.Item2;
@@ -43,10 +47,10 @@ namespace SGSSTC.source.sistema.Hacer
 
             if (!BoolEmpSuc.Item1)
             {
-                Listas.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
-                Listas.Sucursal(ddlSucursalAdd, ObjUsuario.Id_empresa);
-                Listas.Sucursal(ddlSucursalGral, ObjUsuario.Id_empresa);
-                Listas.Sucursal(ddlSucursalSubir, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Sucursal(ddlSucursalAdd, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Sucursal(ddlSucursalGral, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Sucursal(ddlSucursalSubir, ObjUsuario.Id_empresa);
             }
 
             if (!BoolEmpSuc.Item2)
@@ -57,8 +61,8 @@ namespace SGSSTC.source.sistema.Hacer
         }
         private void LlenarGridView()
         {
-            int IdEmpresa = Getter.Set_IdEmpresa(ObjUsuario, Convert.ToInt32(ViewState["empresa"]));
-            int IdSucursal = Getter.Set_IdSucursal(ObjUsuario, Convert.ToInt32(ViewState["sucursal"]));
+            int IdEmpresa = Mgr_Empresa.Set_IdEmpresa(ObjUsuario, Convert.ToInt32(ViewState["empresa"]));
+            int IdSucursal = Mgr_Sucursal.Set_IdSucursal(ObjUsuario, Convert.ToInt32(ViewState["sucursal"]));
 
             Tabla.Comunicado_PoliticaSST(
                 GridView1,
@@ -116,7 +120,7 @@ namespace SGSSTC.source.sistema.Hacer
 
         protected void crearlistaGral(object sender, EventArgs e)
         {
-            int IdSucursal = Getter.Set_IdSucursalDDl(ObjUsuario, ddlSucursalGral);
+            int IdSucursal = Mgr_Sucursal.Set_IdSucursalDDl(ObjUsuario, ddlSucursalGral);
             int idPolitica = GetterMax.PoliticaSST(ObjUsuario.Id_empresa);
 
             List<politica_sst> ListaPolitica = new List<politica_sst>();
@@ -150,8 +154,8 @@ namespace SGSSTC.source.sistema.Hacer
             List<sucursal> ListaSucursal = new List<sucursal>();
             List<trabajador> ListaTrabajador = new List<trabajador>();
 
-            ListaSucursal = Getter.Sucursal(ObjUsuario.Id_sucursal, 0, "");
-            ListaTrabajador = Getter.Trabajador(0, 0, ObjUsuario.Id_sucursal);
+            ListaSucursal = Mgr_Sucursal.Sucursal(ObjUsuario.Id_sucursal, 0, "");
+            ListaTrabajador = Mgr_Trabajador.Trabajador(0, 0, ObjUsuario.Id_sucursal);
 
             string[] valores = {
                 string.Empty + IdSucursal,
@@ -165,7 +169,7 @@ namespace SGSSTC.source.sistema.Hacer
 
         protected void Guardar(object sender, EventArgs e)
         {
-            int IdSucursal = Getter.Set_IdSucursalDDl(ObjUsuario, ddlSucursalAdd);
+            int IdSucursal = Mgr_Sucursal.Set_IdSucursalDDl(ObjUsuario, ddlSucursalAdd);
             int idPolitica = GetterMax.PoliticaSST(ObjUsuario.Id_empresa);
             List<politica_sst> ListaPolitica = new List<politica_sst>();
             ListaPolitica = Getter.PoliticaSST(idPolitica);
@@ -208,7 +212,7 @@ namespace SGSSTC.source.sistema.Hacer
         protected void btnSubirComunicado_OnClick(object sender, EventArgs e)
         {
             int IdEmpresa = ObjUsuario.Id_empresa;
-            int IdSucursal = Getter.Set_IdSucursalDDl(ObjUsuario, ddlSucursalSubir);
+            int IdSucursal = Mgr_Sucursal.Set_IdSucursalDDl(ObjUsuario, ddlSucursalSubir);
 
             string _ruta = Utilidades.GuardarArchivo(
                 flpArchivo,
@@ -246,7 +250,7 @@ namespace SGSSTC.source.sistema.Hacer
             {
                 ViewState["sucursal"] = ddlSucursal.SelectedValue;
                 IdSucursal = Convert.ToInt32(ddlSucursal.SelectedValue);
-                Listas.Trabajadores_Sucursal(ddlTrabajador, IdSucursal);
+                Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabajador, IdSucursal);
                 ViewState["trabajador"] = "0";
             }
             else
@@ -273,7 +277,7 @@ namespace SGSSTC.source.sistema.Hacer
             if (ddlSucursalAdd.SelectedValue != string.Empty)
             {
                 IdSucursalEsp = Convert.ToInt32(ddlSucursalAdd.SelectedValue);
-                Listas.Trabajadores_Sucursal(ddlTrabajadorEsp, IdSucursalEsp);
+                Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabajadorEsp, IdSucursalEsp);
             }
         }
         protected void ddlSucursalSubir_SelectedIndexChanged(object sender, EventArgs e)
@@ -281,7 +285,7 @@ namespace SGSSTC.source.sistema.Hacer
             if (ddlSucursalSubir.SelectedValue != string.Empty)
             {
                 IdSucursalSub = Convert.ToInt32(ddlSucursalSubir.SelectedValue);
-                Listas.Trabajadores_Sucursal(ddlTrabajadorSub, IdSucursalSub);
+                Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabajadorSub, IdSucursalSub);
             }
         }
         protected void BuscarRegistro(object sender, EventArgs e)
