@@ -122,6 +122,119 @@ namespace Capa_Datos
         public static Model_Celda miCelda83 = new Model_Celda(1, "H4", "C", "1|1|1|1", 1, 26, "", "");
         public static Model_Celda miCelda84 = new Model_Celda(1, "H4", "C", "1|1|1|1", 1, 11, "", "");
 
+        #region Evaluacion de Riesgos
+        public static void PrintEvaluacionNRiesgos(String[] valores, Page _page)
+        {
+            Tuple<Document, PdfPTable> DocumentoPDF = ManageFiles.PdfParte1(
+                Convert.ToInt32(valores[0]),
+                "EvaluacionRiesgos",
+                "Nivel de Riesgos",
+                _page,
+                true);
+
+            miCelda41.Texto =valores[1];
+            DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCeldaHTML(DocumentoPDF.Item2, miCelda41));
+
+            ManageFiles.PdfPart2(DocumentoPDF.Item1, DocumentoPDF.Item2, Convert.ToInt32(valores[0]), _page);
+        }
+
+        public static void PrintEvaluacionConsecuencias(String[] valores, Page _page)
+        {
+            Tuple<Document, PdfPTable> DocumentoPDF = ManageFiles.PdfParte1(
+                Convert.ToInt32(valores[0]),
+                "EvaluacionRiesgos",
+                "Nivel de Consecuencias",
+                _page,
+                true);
+
+            miCelda41.Texto = valores[1];
+            DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCeldaHTML(DocumentoPDF.Item2, miCelda41));
+
+            ManageFiles.PdfPart2(DocumentoPDF.Item1, DocumentoPDF.Item2, Convert.ToInt32(valores[0]), _page);
+        }
+
+        public static void PrintEvaluacionProbabilidad(String[] valores, Page _page)
+        {
+            Tuple<Document, PdfPTable> DocumentoPDF = ManageFiles.PdfParte1(
+                Convert.ToInt32(valores[0]),
+                "EvaluacionRiesgos",
+                "Nivel de Probabilidad",
+                _page,
+                true);
+
+            miCelda41.Texto = valores[1];
+            DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCeldaHTML(DocumentoPDF.Item2, miCelda41));
+
+            ManageFiles.PdfPart2(DocumentoPDF.Item1, DocumentoPDF.Item2, Convert.ToInt32(valores[0]), _page);
+        }
+
+        public static void PrintEvaluacionDeficiencia(String[] valores, Page _page)
+        {
+            Tuple<Document, PdfPTable> DocumentoPDF = ManageFiles.PdfParte1(
+                Convert.ToInt32(valores[0]),
+                "EvaluacionRiesgos",
+                "Nivel de Deficiencia",
+                _page,
+                true);
+
+            miCelda41.Texto = valores[1];
+            DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCeldaHTML(DocumentoPDF.Item2, miCelda41));
+
+            ManageFiles.PdfPart2(DocumentoPDF.Item1, DocumentoPDF.Item2, Convert.ToInt32(valores[0]), _page);
+        }
+
+        public static void PrintEvaluacionPeligros(String[] valores, Page _page)
+        {
+            Tuple<Document, PdfPTable> DocumentoPDF = ManageFiles.PdfParte1(
+                Convert.ToInt32(valores[0]),
+                "EvaluacionRiesgos",
+                "Clasificación de Peligros",
+                _page,
+                true);
+
+            miCelda41.Texto = valores[1];
+            DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCeldaHTML(DocumentoPDF.Item2, miCelda41));
+
+            ManageFiles.PdfPart2(DocumentoPDF.Item1, DocumentoPDF.Item2, Convert.ToInt32(valores[0]), _page);
+        }
+
+        public static void PrintEvaluacionModelo(String[] valores, Page _page)
+        {
+            Tuple<Document, PdfPTable> DocumentoPDF = ManageFiles.PdfParte1(
+                Convert.ToInt32(valores[0]),
+                "EvaluacionRiesgos",
+                "Descripción del proceso de trabajo",
+                _page,
+                true);
+
+            miCelda49.Texto = "Puesto de Trabajo: "+valores[1];
+            DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCeldaHTML(DocumentoPDF.Item2, miCelda49));
+            miCelda49.Texto = "Área de Trabajo: "+valores[2];
+            DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCeldaHTML(DocumentoPDF.Item2, miCelda49));
+
+            miCelda41.Texto = valores[3];
+            DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCeldaHTML(DocumentoPDF.Item2, miCelda41));
+
+            ManageFiles.PdfPart2(DocumentoPDF.Item1, DocumentoPDF.Item2, Convert.ToInt32(valores[0]), _page);
+        }
+
+        public static void PrintEvaluacionExposicion(String[] valores, Page _page)
+        {
+            Tuple<Document, PdfPTable> DocumentoPDF = ManageFiles.PdfParte1(
+                Convert.ToInt32(valores[0]),
+                "EvaluacionRiesgos",
+                "Nivel de Exposición",
+                _page,
+                true);
+
+            miCelda41.Texto = valores[1];
+            DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCeldaHTML(DocumentoPDF.Item2, miCelda41));
+
+            ManageFiles.PdfPart2(DocumentoPDF.Item1, DocumentoPDF.Item2, Convert.ToInt32(valores[0]), _page);
+        }
+        #endregion
+
+
         public static void PrintDocCorrespondencia(String[] valores, String[] encabezados1, 
                                                    String[] valores1, String[] tabla1, 
                                                    String[] encabezados2, String[] tabla2,

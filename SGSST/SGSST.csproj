@@ -1029,6 +1029,13 @@
     <Content Include="source\sistema\Planear\Create_ActaCierre.aspx" />
     <Content Include="source\sistema\Planear\Create_AperturaElecciones.aspx" />
     <Content Include="source\sistema\Planear\create_DocumentoCorrespondencia.aspx" />
+    <Content Include="source\sistema\Planear\Create_EvaluacionModelo.aspx" />
+    <Content Include="source\sistema\Planear\Create_EvaluacionPeligros.aspx" />
+    <Content Include="source\sistema\Planear\Create_EvaluacionDeficiencia.aspx" />
+    <Content Include="source\sistema\Planear\Create_EvaluacionExposicion.aspx" />
+    <Content Include="source\sistema\Planear\Create_EvaluacionProbabilidad.aspx" />
+    <Content Include="source\sistema\Planear\Create_EvaluacionConsecuencias.aspx" />
+    <Content Include="source\sistema\Planear\Create_EvaluacionNRiesgos.aspx" />
     <Content Include="source\sistema\Planear\create_ObjetivosSGSST.aspx" />
     <Content Include="source\sistema\Planear\Create_ComunicadoElecciones.aspx" />
     <Content Include="source\sistema\Planear\Create_ConformacionCopasst.aspx" />
@@ -1041,6 +1048,7 @@
     <Content Include="source\sistema\Planear\Create_RegistroVotantes.aspx" />
     <Content Include="source\sistema\Planear\Create_ResultadoVotos.aspx" />
     <Content Include="source\sistema\Planear\Create_ReunionCopasst.aspx" />
+    <Content Include="source\sistema\Planear\index_EvaluacionRiesgos.aspx" />
     <Content Include="source\sistema\Planear\index_EstructuraRiesgos.aspx" />
     <Content Include="source\sistema\Planear\index_DocumentoCorrespondencia.aspx" />
     <Content Include="source\sistema\Planear\index_ObjetivosSGSST.aspx" />
@@ -2064,6 +2072,55 @@
     <Compile Include="source\sistema\Planear\create_DocumentoCorrespondencia.aspx.designer.cs">
       <DependentUpon>create_DocumentoCorrespondencia.aspx</DependentUpon>
     </Compile>
+    <Compile Include="source\sistema\Planear\Create_EvaluacionModelo.aspx.cs">
+      <DependentUpon>Create_EvaluacionModelo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="source\sistema\Planear\Create_EvaluacionModelo.aspx.designer.cs">
+      <DependentUpon>Create_EvaluacionModelo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="source\sistema\Planear\Create_EvaluacionPeligros.aspx.cs">
+      <DependentUpon>Create_EvaluacionPeligros.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="source\sistema\Planear\Create_EvaluacionPeligros.aspx.designer.cs">
+      <DependentUpon>Create_EvaluacionPeligros.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="source\sistema\Planear\Create_EvaluacionDeficiencia.aspx.cs">
+      <DependentUpon>Create_EvaluacionDeficiencia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="source\sistema\Planear\Create_EvaluacionDeficiencia.aspx.designer.cs">
+      <DependentUpon>Create_EvaluacionDeficiencia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="source\sistema\Planear\Create_EvaluacionExposicion.aspx.cs">
+      <DependentUpon>Create_EvaluacionExposicion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="source\sistema\Planear\Create_EvaluacionExposicion.aspx.designer.cs">
+      <DependentUpon>Create_EvaluacionExposicion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="source\sistema\Planear\Create_EvaluacionProbabilidad.aspx.cs">
+      <DependentUpon>Create_EvaluacionProbabilidad.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="source\sistema\Planear\Create_EvaluacionProbabilidad.aspx.designer.cs">
+      <DependentUpon>Create_EvaluacionProbabilidad.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="source\sistema\Planear\Create_EvaluacionConsecuencias.aspx.cs">
+      <DependentUpon>Create_EvaluacionConsecuencias.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="source\sistema\Planear\Create_EvaluacionConsecuencias.aspx.designer.cs">
+      <DependentUpon>Create_EvaluacionConsecuencias.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="source\sistema\Planear\Create_EvaluacionNRiesgos.aspx.cs">
+      <DependentUpon>Create_EvaluacionNRiesgos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="source\sistema\Planear\Create_EvaluacionNRiesgos.aspx.designer.cs">
+      <DependentUpon>Create_EvaluacionNRiesgos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="source\sistema\Planear\create_ObjetivosSGSST.aspx.cs">
       <DependentUpon>create_ObjetivosSGSST.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2147,6 +2204,13 @@
     </Compile>
     <Compile Include="source\sistema\Planear\Create_ReunionCopasst.aspx.designer.cs">
       <DependentUpon>Create_ReunionCopasst.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="source\sistema\Planear\index_EvaluacionRiesgos.aspx.cs">
+      <DependentUpon>index_EvaluacionRiesgos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="source\sistema\Planear\index_EvaluacionRiesgos.aspx.designer.cs">
+      <DependentUpon>index_EvaluacionRiesgos.aspx</DependentUpon>
     </Compile>
     <Compile Include="source\sistema\Planear\index_EstructuraRiesgos.aspx.cs">
       <DependentUpon>index_EstructuraRiesgos.aspx</DependentUpon>
@@ -2361,6 +2425,7 @@
     <Folder Include="archivos\encuesta_politicasst\" />
     <Folder Include="archivos\entregasepp\" />
     <Folder Include="archivos\estructura_riesgos\" />
+    <Folder Include="archivos\evaluacion_riesgos\" />
     <Folder Include="archivos\gestiones\" />
     <Folder Include="archivos\ico_tipo_epp\" />
     <Folder Include="archivos\incidentes\" />

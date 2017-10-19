@@ -96,6 +96,15 @@
         public static Paginas Create_EstructuraElectricos { get { return new Paginas("Create_EstructuraElectricos.aspx"); } }
         public static Paginas Create_EstructuraLocativos { get { return new Paginas("Create_EstructuraLocativos.aspx"); } }
 
+        public static Paginas Create_EvaluacionModelo{ get { return new Paginas("Create_EvaluacionModelo.aspx"); } }
+        public static Paginas Create_EvaluacionMatriz { get { return new Paginas("Create_EvaluacionMatriz.aspx"); } }
+        public static Paginas Create_EvaluacionPeligros { get { return new Paginas("Create_EvaluacionPeligros.aspx"); } }
+        public static Paginas Create_EvaluacionDeficiencia { get { return new Paginas("Create_EvaluacionDeficiencia.aspx"); } }
+        public static Paginas Create_EvaluacionExposicion { get { return new Paginas("Create_EvaluacionExposicion.aspx"); } }
+        public static Paginas Create_EvaluacionProbabilidad { get { return new Paginas("Create_EvaluacionProbabilidad.aspx"); } }
+        public static Paginas Create_EvaluacionConsecuencias { get { return new Paginas("Create_EvaluacionConsecuencias.aspx"); } }
+        public static Paginas Create_EvaluacionNRiesgos { get { return new Paginas("Create_EvaluacionNRiesgos.aspx"); } }
+
 
         public static Paginas Update_Empresa { get { return new Paginas("Update_Empresa.aspx"); } }
         public static Paginas Update_Accidentes { get { return new Paginas("Update_Accidentes.aspx"); } }
