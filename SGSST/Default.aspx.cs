@@ -181,7 +181,7 @@ namespace SGSST
 
             if (CRUD.Add_Estatus_Empresa(valores))
             {
-                add_TipoEpp();
+                add_SucursalPrincipal();
             }
             else
             {
@@ -189,32 +189,7 @@ namespace SGSST
                 Modal.MostrarMsjModal(MensajeError.Error_Add_Default_Estatus.Value, "ERR", this);
             }
         }
-
-        private void add_TipoEpp()
-        {
-            if (CRUD.Add_TipoEpp_Empresa(ObjUsuario))
-            {
-                addEpp();
-            }
-            else
-            {
-                CRUD.DeleteEmpresa(IdEmpresa);
-                Modal.MostrarMsjModal(MensajeError.Error_Add_Default_TipoEpp.Value, "ERR", this);
-            }
-        }
-
-        private void addEpp()
-        {
-            if (CRUD.Add_Epp_Empresa(ObjUsuario))
-            {
-                add_SucursalPrincipal();
-            }
-            else
-            {
-                CRUD.DeleteEmpresa(IdEmpresa);
-                Modal.MostrarMsjModal(MensajeError.Error_Add_Default_Epp.Value, "ERR", this);
-            }
-        }
+        
 
         private void add_SucursalPrincipal()
         {

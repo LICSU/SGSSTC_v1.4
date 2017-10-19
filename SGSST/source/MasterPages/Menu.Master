@@ -23,60 +23,7 @@
 </head>
 
 <body>
-	<style>
-	 
-		.table table > tbody > tr > td > span {
-			background-color: transparent !important;
-			border-color: transparent !important;
-			color: #337ab7 !important;
-		}
-		
-
-		.dropdown-submenu {
-			position: relative;
-		}
-
-			.dropdown-submenu > .dropdown-menu {
-				top: 0;
-				left: 100%;
-				margin-top: -6px;
-				margin-left: -1px;
-				border-radius: 0 6px 6px 6px;
-			}
-
-			.dropdown-submenu:hover > .dropdown-menu {
-				display: block;
-			}
-
-			.dropdown-submenu > a:after {
-				display: block;
-				content: " ";
-				float: right;
-				width: 0;
-				height: 0;
-				border-color: transparent;
-				border-style: solid;
-				border-width: 5px 0 5px 5px;
-				border-left-color: #cccccc;
-				margin-top: 5px;
-				margin-right: -10px;
-			}
-
-			.dropdown-submenu:hover > a:after {
-				border-left-color: #ffffff;
-			}
-
-			.dropdown-submenu.pull-left {
-				float: none;
-			}
-
-				.dropdown-submenu.pull-left > .dropdown-menu {
-					left: -100%;
-					margin-left: 10px;
-					border-radius: 6px 0 6px 6px;
-				}
-	</style>
-
+	
 	<!-- barra superior-->
 	<header>
 		<nav class="navbar navbar-fixed-top" style="margin-left: 0px;">
@@ -191,6 +138,7 @@
 									<a href="#"><i class="fa fa-circle-o"></i><span>Proveedores y Contratistas</span></a>
 									<ul class="dropdown-menu">
 										<li><a href="../Planear/ValidacionProvCont.aspx"><i class="fa fa-circle-o"></i><span>Validación para seleccionar Proveedores y/o Contratistas</span></a></li>
+										<li><a href="../Planear/MatrizEPP.aspx"><i class="fa fa-circle-o"></i><span>Matriz EPP</span></a></li>
 									</ul>
 								</li>
 
@@ -205,9 +153,9 @@
 									</ul>
 								</li>
 
-                                <li class="dropdown-submenu">
+								<li class="dropdown-submenu">
 									<a href="../Planear/index_EstructuraRiesgos.aspx"><i class="fa fa-circle-o"></i><span>Estructura de Riesgos</span></a>
-                                </li>
+								</li>
 
                                 <li class="dropdown-submenu">
 									<a href="../Planear/index_EvaluacionRiesgos.aspx"><i class="fa fa-circle-o"></i><span>Evaluación de Riesgos</span></a>
@@ -377,6 +325,14 @@
 										<li><a href="../Hacer/index_Senalizacion.aspx"><i class="fa fa-map-o"></i><span>Señalización</span></a></li>
 									</ul>
 								</li>
+								<li class="dropdown-submenu">
+									<a href="#"><i class="fa fa-circle-o"></i><span>vigilancia epidemiológica</span></a>
+																		
+									<ul class="dropdown-menu">
+										<li><a href="../Hacer/PlanVigilancia.aspx"><i class="fa fa-map-o"></i><span>Plan de Vigilancia Epidemiológica</span></a></li>
+										<li><a href="../Hacer/MorbilidadGeneral.aspx"><i class="fa fa-map-o"></i><span>Morbilidad General</span></a></li>
+									</ul>
+								</li>
 							</ul>
 						</li>
 
@@ -486,9 +442,7 @@
 	<!-- Pagination -->
 	<ucpag:pagination runat="server" ID="pagination" />
 	
-	
 	<%: Scripts.Render("~/bundles/SGSSTJs") %>
-
 
 </body>
 

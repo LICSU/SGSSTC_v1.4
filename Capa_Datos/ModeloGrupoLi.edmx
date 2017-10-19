@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="GrupoLiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="GrupoLiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="afp">
           <Key>
             <PropertyRef Name="id_afp" />
@@ -286,6 +286,9 @@
           <Property Name="id_epp" Type="int" Nullable="false" />
           <Property Name="nombre" Type="varchar" MaxLength="100" />
           <Property Name="id_tipo_epp" Type="int" />
+          <Property Name="url_imagen" Type="varchar" MaxLength="100" />
+          <Property Name="marca_modelo" Type="varchar" MaxLength="100" />
+          <Property Name="uso" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="eps">
           <Key>
@@ -664,11 +667,11 @@
             <PropertyRef Name="id_perfil_medico" />
           </Key>
           <Property Name="id_perfil_medico" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="descripcion" Type="varchar" MaxLength="200" />
+          <Property Name="nombre" Type="varchar" MaxLength="100" />
+          <Property Name="descripcion" Type="varchar" MaxLength="100" />
           <Property Name="id_empresa" Type="int" />
           <Property Name="id_cargo" Type="int" />
-          <Property Name="ruta" Type="varchar" MaxLength="200" />
+          <Property Name="ruta" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="plan">
           <Key>
@@ -796,14 +799,16 @@
           <Property Name="nombre" Type="varchar" MaxLength="50" />
           <Property Name="descripcion" Type="varchar" MaxLength="500" />
         </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'GrupoLi.dbo.senalizacion' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="senalizacion">
           <Key>
             <PropertyRef Name="id_senalizacion" />
           </Key>
           <Property Name="id_senalizacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="descripcion" Type="varchar" MaxLength="200" />
-          <Property Name="url_imagen" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="100" />
+          <Property Name="descripcion" Type="varchar" MaxLength="100" />
+          <Property Name="url_imagen" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="sistema">
           <Key>
@@ -837,6 +842,16 @@
           <Property Name="actividad_ppal" Type="int" />
           <Property Name="actividad_sec" Type="int" />
           <Property Name="actividad_otra" Type="int" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="tipo_documento">
           <Key>
@@ -967,18 +982,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__perfil_me__id_ca__65370702">
-          <End Role="perfil_cargo" Type="Self.perfil_cargo" Multiplicity="0..1" />
-          <End Role="perfil_medico" Type="Self.perfil_medico" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="perfil_cargo">
-              <PropertyRef Name="id_perfil_cargo" />
-            </Principal>
-            <Dependent Role="perfil_medico">
-              <PropertyRef Name="id_cargo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__puesto_tr__id_ep__6ABAD62E">
           <End Role="epp" Type="Self.epp" Multiplicity="0..1" />
           <End Role="puesto_trabajo_epp" Type="Self.puesto_trabajo_epp" Multiplicity="*" />
@@ -1002,18 +1005,6 @@
             </Principal>
             <Dependent Role="puesto_trabajo_epp">
               <PropertyRef Name="id_puesto_trabajo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__rol__id_empresa__5AB9788F">
-          <End Role="empresa" Type="Self.empresa" Multiplicity="0..1" />
-          <End Role="rol" Type="Self.rol" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="empresa">
-              <PropertyRef Name="id_empresa" />
-            </Principal>
-            <Dependent Role="rol">
-              <PropertyRef Name="id_empresa" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1216,7 +1207,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_documentos_sucursal">
-          <End Role="sucursal" Type="Self.sucursal" Multiplicity="0..1" />
+          <End Role="sucursal" Type="Self.sucursal" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="documento" Type="Self.documento" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="sucursal">
@@ -1745,6 +1738,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_perfil_medico_perfil_cargo">
+          <End Role="perfil_cargo" Type="Self.perfil_cargo" Multiplicity="0..1" />
+          <End Role="perfil_medico" Type="Self.perfil_medico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="perfil_cargo">
+              <PropertyRef Name="id_perfil_cargo" />
+            </Principal>
+            <Dependent Role="perfil_medico">
+              <PropertyRef Name="id_cargo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_plan_trabajo_usuario">
           <End Role="usuario" Type="Self.usuario" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -1760,7 +1765,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_planes_sucursal">
-          <End Role="sucursal" Type="Self.sucursal" Multiplicity="0..1" />
+          <End Role="sucursal" Type="Self.sucursal" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="plan" Type="Self.plan" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="sucursal">
@@ -1874,6 +1881,20 @@
             </Principal>
             <Dependent Role="riesgos_item">
               <PropertyRef Name="id_enfermedad_laboral" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_rol_empresa">
+          <End Role="empresa" Type="Self.empresa" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="rol" Type="Self.rol" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="empresa">
+              <PropertyRef Name="id_empresa" />
+            </Principal>
+            <Dependent Role="rol">
+              <PropertyRef Name="id_empresa" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2084,9 +2105,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_usuario_rol">
-          <End Role="rol" Type="Self.rol" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
+          <End Role="rol" Type="Self.rol" Multiplicity="0..1" />
           <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="rol">
@@ -2173,10 +2192,10 @@
           <EntitySet Name="riesgos_item" EntityType="Self.riesgos_item" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="rol" EntityType="Self.rol" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="seccionCiiu" EntityType="Self.seccionCiiu" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="senalizacion" EntityType="Self.senalizacion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sistema" EntityType="Self.sistema" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="soporte" EntityType="Self.soporte" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sucursal" EntityType="Self.sucursal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tipo_documento" EntityType="Self.tipo_documento" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tipo_epp" EntityType="Self.tipo_epp" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tipo_evento" EntityType="Self.tipo_evento" Schema="dbo" store:Type="Tables" />
@@ -2186,13 +2205,17 @@
           <EntitySet Name="trabajador_estatus" EntityType="Self.trabajador_estatus" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="trabajador_gestion" EntityType="Self.trabajador_gestion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="usuario" EntityType="Self.usuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="senalizacion" EntityType="Self.senalizacion" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [senalizacion].[id_senalizacion] AS [id_senalizacion], 
+    [senalizacion].[nombre] AS [nombre], 
+    [senalizacion].[descripcion] AS [descripcion], 
+    [senalizacion].[url_imagen] AS [url_imagen]
+    FROM [dbo].[senalizacion] AS [senalizacion]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK__epp__id_tipo_epp__6D9742D9" Association="Self.FK__epp__id_tipo_epp__6D9742D9">
             <End Role="tipo_epp" EntitySet="tipo_epp" />
             <End Role="epp" EntitySet="epp" />
-          </AssociationSet>
-          <AssociationSet Name="FK__perfil_me__id_ca__65370702" Association="Self.FK__perfil_me__id_ca__65370702">
-            <End Role="perfil_cargo" EntitySet="perfil_cargo" />
-            <End Role="perfil_medico" EntitySet="perfil_medico" />
           </AssociationSet>
           <AssociationSet Name="FK__puesto_tr__id_ep__6ABAD62E" Association="Self.FK__puesto_tr__id_ep__6ABAD62E">
             <End Role="epp" EntitySet="epp" />
@@ -2201,10 +2224,6 @@
           <AssociationSet Name="FK__puesto_tr__id_pu__69C6B1F5" Association="Self.FK__puesto_tr__id_pu__69C6B1F5">
             <End Role="puesto_trabajo" EntitySet="puesto_trabajo" />
             <End Role="puesto_trabajo_epp" EntitySet="puesto_trabajo_epp" />
-          </AssociationSet>
-          <AssociationSet Name="FK__rol__id_empresa__5AB9788F" Association="Self.FK__rol__id_empresa__5AB9788F">
-            <End Role="empresa" EntitySet="empresa" />
-            <End Role="rol" EntitySet="rol" />
           </AssociationSet>
           <AssociationSet Name="FK_alarmas_categorias" Association="Self.FK_alarmas_categorias">
             <End Role="categoria" EntitySet="categoria" />
@@ -2426,6 +2445,10 @@
             <End Role="empresa" EntitySet="empresa" />
             <End Role="perfil_cargo" EntitySet="perfil_cargo" />
           </AssociationSet>
+          <AssociationSet Name="FK_perfil_medico_perfil_cargo" Association="Self.FK_perfil_medico_perfil_cargo">
+            <End Role="perfil_cargo" EntitySet="perfil_cargo" />
+            <End Role="perfil_medico" EntitySet="perfil_medico" />
+          </AssociationSet>
           <AssociationSet Name="FK_plan_trabajo_usuario" Association="Self.FK_plan_trabajo_usuario">
             <End Role="usuario" EntitySet="usuario" />
             <End Role="plan_trabajo" EntitySet="plan_trabajo" />
@@ -2465,6 +2488,10 @@
           <AssociationSet Name="FK_riesgos_item_matrizRiesgo_enfermedadLaboral" Association="Self.FK_riesgos_item_matrizRiesgo_enfermedadLaboral">
             <End Role="enfermedadLaboral" EntitySet="enfermedadLaboral" />
             <End Role="riesgos_item" EntitySet="riesgos_item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_rol_empresa" Association="Self.FK_rol_empresa">
+            <End Role="empresa" EntitySet="empresa" />
+            <End Role="rol" EntitySet="rol" />
           </AssociationSet>
           <AssociationSet Name="FK_soporte_at_it_el_pa" Association="Self.FK_soporte_at_it_el_pa">
             <End Role="at_it_el_pa" EntitySet="at_it_el_pa" />
@@ -2539,7 +2566,8 @@
             <End Role="usuario" EntitySet="usuario" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="GrupoLiModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -2876,6 +2904,9 @@
           <Property Name="id_epp" Type="Int32" Nullable="false" />
           <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="id_tipo_epp" Type="Int32" />
+          <Property Name="url_imagen" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="marca_modelo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="uso" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="tipo_epp" Relationship="Self.FK__epp__id_tipo_epp__6D9742D9" FromRole="epp" ToRole="tipo_epp" />
           <NavigationProperty Name="puesto_trabajo_epp" Relationship="Self.FK__puesto_tr__id_ep__6ABAD62E" FromRole="epp" ToRole="puesto_trabajo_epp" />
         </EntityType>
@@ -3302,8 +3333,20 @@
           <Property Name="id_empresa" Type="Int32" />
           <NavigationProperty Name="cno" Relationship="Self.FK_perfil_cargo_cno" FromRole="perfil_cargo" ToRole="cno" />
           <NavigationProperty Name="empresa" Relationship="Self.FK_perfil_cargo_empresa" FromRole="perfil_cargo" ToRole="empresa" />
+          <NavigationProperty Name="perfil_medico" Relationship="Self.FK_perfil_medico_perfil_cargo" FromRole="perfil_cargo" ToRole="perfil_medico" />
           <NavigationProperty Name="trabajador" Relationship="Self.FK_trabajador_perfil_cargo" FromRole="perfil_cargo" ToRole="trabajador" />
-          <NavigationProperty Name="perfil_medico" Relationship="GrupoLiModel.FK__perfil_me__id_ca__65370702" FromRole="perfil_cargo" ToRole="perfil_medico" />
+        </EntityType>
+        <EntityType Name="perfil_medico">
+          <Key>
+            <PropertyRef Name="id_perfil_medico" />
+          </Key>
+          <Property Name="id_perfil_medico" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="id_empresa" Type="Int32" />
+          <Property Name="id_cargo" Type="Int32" />
+          <Property Name="ruta" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="perfil_cargo" Relationship="Self.FK_perfil_medico_perfil_cargo" FromRole="perfil_medico" ToRole="perfil_cargo" />
         </EntityType>
         <EntityType Name="plan">
           <Key>
@@ -3500,6 +3543,16 @@
           <NavigationProperty Name="plan" Relationship="Self.FK_planes_sucursal" FromRole="sucursal" ToRole="plan" />
           <NavigationProperty Name="tipo_documento" Relationship="Self.FK_tipo_documento_sucursal" FromRole="sucursal" ToRole="tipo_documento" />
         </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
         <EntityType Name="tipo_documento">
           <Key>
             <PropertyRef Name="id_tipo_documento" />
@@ -3645,6 +3698,15 @@
           <NavigationProperty Name="Pregunta" Relationship="Self.FK_Pregunta_usuario" FromRole="usuario" ToRole="Pregunta" />
           <NavigationProperty Name="rol" Relationship="Self.FK_usuario_rol" FromRole="usuario" ToRole="rol" />
           <NavigationProperty Name="trabajador" Relationship="Self.FK_usuario_trabajador" FromRole="usuario" ToRole="trabajador" />
+        </EntityType>
+        <EntityType Name="senalizacion">
+          <Key>
+            <PropertyRef Name="id_senalizacion" />
+          </Key>
+          <Property Name="id_senalizacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="url_imagen" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_desc_socio_afp">
           <End Role="afp" Type="Self.afp" Multiplicity="0..1">
@@ -4622,6 +4684,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_perfil_medico_perfil_cargo">
+          <End Role="perfil_cargo" Type="Self.perfil_cargo" Multiplicity="0..1" />
+          <End Role="perfil_medico" Type="Self.perfil_medico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="perfil_cargo">
+              <PropertyRef Name="id_perfil_cargo" />
+            </Principal>
+            <Dependent Role="perfil_medico">
+              <PropertyRef Name="id_cargo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_trabajador_perfil_cargo">
           <End Role="perfil_cargo" Type="Self.perfil_cargo" Multiplicity="0..1" />
           <End Role="trabajador" Type="Self.trabajador" Multiplicity="*" />
@@ -4845,6 +4919,7 @@
           <EntitySet Name="norma_sucursal" EntityType="Self.norma_sucursal" />
           <EntitySet Name="obligacion" EntityType="Self.obligacion" />
           <EntitySet Name="perfil_cargo" EntityType="Self.perfil_cargo" />
+          <EntitySet Name="perfil_medico" EntityType="Self.perfil_medico" />
           <EntitySet Name="plan" EntityType="Self.plan" />
           <EntitySet Name="plan_trabajo" EntityType="Self.plan_trabajo" />
           <EntitySet Name="politica_sst" EntityType="Self.politica_sst" />
@@ -4860,6 +4935,7 @@
           <EntitySet Name="sistema" EntityType="Self.sistema" />
           <EntitySet Name="soporte" EntityType="Self.soporte" />
           <EntitySet Name="sucursal" EntityType="Self.sucursal" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="tipo_documento" EntityType="Self.tipo_documento" />
           <EntitySet Name="tipo_epp" EntityType="Self.tipo_epp" />
           <EntitySet Name="tipo_evento" EntityType="Self.tipo_evento" />
@@ -4869,6 +4945,7 @@
           <EntitySet Name="trabajador_estatus" EntityType="Self.trabajador_estatus" />
           <EntitySet Name="trabajador_gestion" EntityType="Self.trabajador_gestion" />
           <EntitySet Name="usuario" EntityType="Self.usuario" />
+          <EntitySet Name="senalizacion" EntityType="Self.senalizacion" />
           <AssociationSet Name="FK_desc_socio_afp" Association="Self.FK_desc_socio_afp">
             <End Role="afp" EntitySet="afp" />
             <End Role="desc_socio" EntitySet="desc_socio" />
@@ -5165,6 +5242,10 @@
             <End Role="obligacion" EntitySet="obligacion" />
             <End Role="soporte" EntitySet="soporte" />
           </AssociationSet>
+          <AssociationSet Name="FK_perfil_medico_perfil_cargo" Association="Self.FK_perfil_medico_perfil_cargo">
+            <End Role="perfil_cargo" EntitySet="perfil_cargo" />
+            <End Role="perfil_medico" EntitySet="perfil_medico" />
+          </AssociationSet>
           <AssociationSet Name="FK_trabajador_perfil_cargo" Association="Self.FK_trabajador_perfil_cargo">
             <End Role="perfil_cargo" EntitySet="perfil_cargo" />
             <End Role="trabajador" EntitySet="trabajador" />
@@ -5217,46 +5298,7 @@
             <End Role="trabajador" EntitySet="trabajador" />
             <End Role="usuario" EntitySet="usuario" />
           </AssociationSet>
-          <EntitySet Name="senalizacion" EntityType="GrupoLiModel.senalizacion" />
-          <EntitySet Name="perfil_medico" EntityType="GrupoLiModel.perfil_medico" />
-          <AssociationSet Name="FK__perfil_me__id_ca__65370702" Association="GrupoLiModel.FK__perfil_me__id_ca__65370702">
-            <End Role="perfil_cargo" EntitySet="perfil_cargo" />
-            <End Role="perfil_medico" EntitySet="perfil_medico" />
-          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="senalizacion">
-          <Key>
-            <PropertyRef Name="id_senalizacion" />
-          </Key>
-          <Property Name="id_senalizacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="url_imagen" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="perfil_medico">
-          <Key>
-            <PropertyRef Name="id_perfil_medico" />
-          </Key>
-          <Property Name="id_perfil_medico" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="id_empresa" Type="Int32" />
-          <Property Name="id_cargo" Type="Int32" />
-          <Property Name="ruta" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="perfil_cargo" Relationship="GrupoLiModel.FK__perfil_me__id_ca__65370702" FromRole="perfil_medico" ToRole="perfil_cargo" />
-        </EntityType>
-        <Association Name="FK__perfil_me__id_ca__65370702">
-          <End Type="GrupoLiModel.perfil_cargo" Role="perfil_cargo" Multiplicity="0..1" />
-          <End Type="GrupoLiModel.perfil_medico" Role="perfil_medico" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="perfil_cargo">
-              <PropertyRef Name="id_perfil_cargo" />
-            </Principal>
-            <Dependent Role="perfil_medico">
-              <PropertyRef Name="id_cargo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -5564,6 +5606,9 @@
                 <ScalarProperty Name="id_epp" ColumnName="id_epp" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="id_tipo_epp" ColumnName="id_tipo_epp" />
+                <ScalarProperty Name="url_imagen" ColumnName="url_imagen" />
+                <ScalarProperty Name="marca_modelo" ColumnName="marca_modelo" />
+                <ScalarProperty Name="uso" ColumnName="uso" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -5965,6 +6010,18 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="perfil_medico">
+            <EntityTypeMapping TypeName="GrupoLiModel.perfil_medico">
+              <MappingFragment StoreEntitySet="perfil_medico">
+                <ScalarProperty Name="id_perfil_medico" ColumnName="id_perfil_medico" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="id_empresa" ColumnName="id_empresa" />
+                <ScalarProperty Name="id_cargo" ColumnName="id_cargo" />
+                <ScalarProperty Name="ruta" ColumnName="ruta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="plan">
             <EntityTypeMapping TypeName="GrupoLiModel.plan">
               <MappingFragment StoreEntitySet="plan">
@@ -6139,6 +6196,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="GrupoLiModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="tipo_documento">
             <EntityTypeMapping TypeName="GrupoLiModel.tipo_documento">
               <MappingFragment StoreEntitySet="tipo_documento">
@@ -6266,22 +6334,10 @@
           <EntitySetMapping Name="senalizacion">
             <EntityTypeMapping TypeName="GrupoLiModel.senalizacion">
               <MappingFragment StoreEntitySet="senalizacion">
-                <ScalarProperty Name="url_imagen" ColumnName="url_imagen" />
-                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="id_senalizacion" ColumnName="id_senalizacion" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="perfil_medico">
-            <EntityTypeMapping TypeName="GrupoLiModel.perfil_medico">
-              <MappingFragment StoreEntitySet="perfil_medico">
-                <ScalarProperty Name="ruta" ColumnName="ruta" />
-                <ScalarProperty Name="id_cargo" ColumnName="id_cargo" />
-                <ScalarProperty Name="id_empresa" ColumnName="id_empresa" />
-                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
-                <ScalarProperty Name="id_perfil_medico" ColumnName="id_perfil_medico" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="url_imagen" ColumnName="url_imagen" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

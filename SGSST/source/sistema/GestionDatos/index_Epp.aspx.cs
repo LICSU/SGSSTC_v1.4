@@ -59,11 +59,7 @@ namespace SGSSTC.source.sistema.GestionDatos
         {
             int Idempresa = Getter.Set_IdEmpresa(ObjUsuario, Convert.ToInt32(ViewState["empresa"]));
 
-            Tabla.Epp(GridView1,
-                string.Empty + ViewState["tipo_epp"],
-                string.Empty + ViewState["area"],
-                string.Empty + ViewState["puesto"],
-                string.Empty + ViewState["sWhere"]);
+            Tabla.Epp(GridView1,string.Empty + ViewState["tipo_epp"],string.Empty + ViewState["sWhere"]);
         }
 
         protected void AgregarRegistro(object sender, EventArgs e)

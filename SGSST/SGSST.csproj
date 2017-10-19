@@ -391,6 +391,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\MenuPrincipal.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
@@ -439,6 +440,8 @@
     <Content Include="ico\just.png" />
     <Content Include="ico\logo.jpg" />
     <Content Include="ico\logo.png" />
+    <Content Include="ico\MatrizEpp\lente1.jpg" />
+    <Content Include="ico\MatrizEpp\lente2.jpg" />
     <Content Include="ico\play.png" />
     <Content Include="ico\print.png" />
     <Content Include="ico\save.png" />
@@ -994,6 +997,8 @@
     <Content Include="source\sistema\Hacer\index_ProgramaInspecciones.aspx" />
     <Content Include="source\sistema\Hacer\index_ReporteTrabajadores.aspx" />
     <Content Include="source\sistema\Hacer\index_VigilanciaEpidemiologica.aspx" />
+    <Content Include="source\sistema\Hacer\MorbilidadGeneral.aspx" />
+    <Content Include="source\sistema\Hacer\PlanVigilancia.aspx" />
     <Content Include="source\sistema\Hacer\Update_Accidentes.aspx" />
     <Content Include="source\sistema\Hacer\Update_AsistenciaCapacitacion.aspx" />
     <Content Include="source\sistema\Hacer\Update_DescripcionSocioDemografica.aspx" />
@@ -1017,6 +1022,9 @@
     <Content Include="source\sistema\MenuPrincipal\ViewMisPreguntas.aspx" />
     <Content Include="source\sistema\MenuPrincipal\ViewPreguntasPares.aspx" />
     <Content Include="source\sistema\Planear\ComiteConvivencia.aspx" />
+    <Content Include="source\sistema\Planear\ConstanciaInducción.aspx" />
+    <Content Include="source\sistema\Planear\ConstanciaReinduccionAdm.aspx" />
+    <Content Include="source\sistema\Planear\ConstanciaReinduccionOpe.aspx" />
     <Content Include="source\sistema\Planear\Create_EstructuraLocativos.aspx" />
     <Content Include="source\sistema\Planear\Create_EstructuraElectricos.aspx" />
     <Content Include="source\sistema\Planear\Create_EstructuraPsicosociales.aspx" />
@@ -1071,6 +1079,8 @@
     <Content Include="source\sistema\Planear\index_Quejas.aspx" />
     <Content Include="source\sistema\Planear\index_RecursosEconomicos.aspx" />
     <Content Include="source\sistema\Planear\ManualConvivencia.aspx" />
+    <Content Include="source\sistema\Planear\MatrizEPP.aspx" />
+    <Content Include="source\sistema\Planear\ReunionComite.aspx" />
     <Content Include="source\sistema\Planear\Update_MedidasMatrizLegal.aspx" />
     <Content Include="source\sistema\Planear\Update_MedidasMatrizRiesgos.aspx" />
     <Content Include="source\sistema\Planear\ValidacionProvCont.aspx" />
@@ -1833,6 +1843,20 @@
     <Compile Include="source\sistema\Hacer\index_VigilanciaEpidemiologica.aspx.designer.cs">
       <DependentUpon>index_VigilanciaEpidemiologica.aspx</DependentUpon>
     </Compile>
+    <Compile Include="source\sistema\Hacer\MorbilidadGeneral.aspx.cs">
+      <DependentUpon>MorbilidadGeneral.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="source\sistema\Hacer\MorbilidadGeneral.aspx.designer.cs">
+      <DependentUpon>MorbilidadGeneral.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="source\sistema\Hacer\PlanVigilancia.aspx.cs">
+      <DependentUpon>PlanVigilancia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="source\sistema\Hacer\PlanVigilancia.aspx.designer.cs">
+      <DependentUpon>PlanVigilancia.aspx</DependentUpon>
+    </Compile>
     <Compile Include="source\sistema\Hacer\Update_Accidentes.aspx.cs">
       <DependentUpon>Update_Accidentes.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1987,6 +2011,27 @@
     </Compile>
     <Compile Include="source\sistema\Planear\ComiteConvivencia.aspx.designer.cs">
       <DependentUpon>ComiteConvivencia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="source\sistema\Planear\ConstanciaInducción.aspx.cs">
+      <DependentUpon>ConstanciaInducción.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="source\sistema\Planear\ConstanciaInducción.aspx.designer.cs">
+      <DependentUpon>ConstanciaInducción.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="source\sistema\Planear\ConstanciaReinduccionAdm.aspx.cs">
+      <DependentUpon>ConstanciaReinduccionAdm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="source\sistema\Planear\ConstanciaReinduccionAdm.aspx.designer.cs">
+      <DependentUpon>ConstanciaReinduccionAdm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="source\sistema\Planear\ConstanciaReinduccionOpe.aspx.cs">
+      <DependentUpon>ConstanciaReinduccionOpe.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="source\sistema\Planear\ConstanciaReinduccionOpe.aspx.designer.cs">
+      <DependentUpon>ConstanciaReinduccionOpe.aspx</DependentUpon>
     </Compile>
     <Compile Include="source\sistema\Planear\Create_EstructuraLocativos.aspx.cs">
       <DependentUpon>Create_EstructuraLocativos.aspx</DependentUpon>
@@ -2365,6 +2410,20 @@
     </Compile>
     <Compile Include="source\sistema\Planear\ManualConvivencia.aspx.designer.cs">
       <DependentUpon>ManualConvivencia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="source\sistema\Planear\MatrizEPP.aspx.cs">
+      <DependentUpon>MatrizEPP.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="source\sistema\Planear\MatrizEPP.aspx.designer.cs">
+      <DependentUpon>MatrizEPP.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="source\sistema\Planear\ReunionComite.aspx.cs">
+      <DependentUpon>ReunionComite.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="source\sistema\Planear\ReunionComite.aspx.designer.cs">
+      <DependentUpon>ReunionComite.aspx</DependentUpon>
     </Compile>
     <Compile Include="source\sistema\Planear\Update_MedidasMatrizLegal.aspx.cs">
       <DependentUpon>Update_MedidasMatrizLegal.aspx</DependentUpon>

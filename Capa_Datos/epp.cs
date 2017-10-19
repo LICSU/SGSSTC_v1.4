@@ -23,6 +23,9 @@ namespace Capa_Datos
         public int id_epp { get; set; }
         public string nombre { get; set; }
         public Nullable<int> id_tipo_epp { get; set; }
+        public string url_imagen { get; set; }
+        public string marca_modelo { get; set; }
+        public string uso { get; set; }
     
         public virtual tipo_epp tipo_epp { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
