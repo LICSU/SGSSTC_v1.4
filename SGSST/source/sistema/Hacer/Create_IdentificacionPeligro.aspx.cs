@@ -1,4 +1,5 @@
 ﻿using Capa_Datos;
+using Capa_Datos.Manager.PuestoTrabajo;
 using Capa_Datos.Manager.Trabajador;
 using Capa_Datos.Manager.Area;
 using Capa_Datos.Manager.Sucursal;
@@ -48,7 +49,7 @@ namespace SGSSTC.source.sistema.Hacer
 
 			if (!BoolEmpSuc.Item2)
 			{
-				Listas.PuestoTrabajo(ddlPuestos, "Sucursal", ObjUsuario.Id_sucursal);
+				Mgr_PuestoTrabajo.PuestoTrabajo(ddlPuestos, "Sucursal", ObjUsuario.Id_sucursal);
 			}
 
 			Listas.Riesgos(ddlTipoRiesgo1, "TipoRiesgo");
@@ -185,7 +186,7 @@ namespace SGSSTC.source.sistema.Hacer
 				"Puesto de Trabajo:" + ddlPuestos.SelectedItem + "\n" +
 				"-----------------------------------------------------------\n";
 
-            ddlPuestos.Items.RemoveAt(ddlPuestos.SelectedIndex);
+			ddlPuestos.Items.RemoveAt(ddlPuestos.SelectedIndex);
 			txtPuestos.Rows = txtPuestos.Rows + 3;
 			contadorPuestos++;
 			ViewState["puestos"] = string.Empty + Convert.ToString(contadorPuestos);
@@ -205,7 +206,7 @@ namespace SGSSTC.source.sistema.Hacer
 		{
 			if (ddlSucursal.SelectedValue != string.Empty)
 			{
-				Listas.PuestoTrabajo(ddlPuestos, "Sucursal", Convert.ToInt32(ddlSucursal.SelectedValue));
+				Mgr_PuestoTrabajo.PuestoTrabajo(ddlPuestos, "Sucursal", Convert.ToInt32(ddlSucursal.SelectedValue));
 			}
 		}
 		protected void ddlTipoRiesgo_SelectedIndexChanged(object sender, EventArgs e)

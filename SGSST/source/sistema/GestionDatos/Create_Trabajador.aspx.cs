@@ -1,4 +1,5 @@
 ﻿using Capa_Datos;
+using Capa_Datos.Manager.PuestoTrabajo;
 using Capa_Datos.Manager.Trabajador;
 using Capa_Datos.Manager.Area;
 using Capa_Datos.Manager.Sucursal;
@@ -38,14 +39,14 @@ namespace SGSSTC.source.sistema.GestionDatos
             else
             {
                 Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
-                Listas.PuestoTrabajo(ddlPuestoTrabajo, "Empresa", ObjUsuario.Id_empresa);
+                Mgr_PuestoTrabajo.PuestoTrabajo(ddlPuestoTrabajo, "Empresa", ObjUsuario.Id_empresa);
                 Listas.Estatus_Empresa(ddlEstatus, ObjUsuario.Id_empresa);
                 Listas.Horario_Empresa(ddlHorario, ObjUsuario.Id_empresa);
             }
 
             if (!BoolEmpSuc.Item2)
             {
-                Listas.PuestoTrabajo(ddlPuestoTrabajo, "Sucursal", ObjUsuario.Id_sucursal);
+                Mgr_PuestoTrabajo.PuestoTrabajo(ddlPuestoTrabajo, "Sucursal", ObjUsuario.Id_sucursal);
                 Listas.Estatus_Empresa(ddlEstatus, ObjUsuario.Id_empresa);
                 Listas.Horario_Empresa(ddlHorario, ObjUsuario.Id_empresa);
             }
@@ -132,7 +133,7 @@ namespace SGSSTC.source.sistema.GestionDatos
         {
             if (ddlSucursal.SelectedValue != string.Empty)
             {
-                Listas.PuestoTrabajo(ddlPuestoTrabajo, "Sucursal", Convert.ToInt32(ddlSucursal.SelectedValue));
+                Mgr_PuestoTrabajo.PuestoTrabajo(ddlPuestoTrabajo, "Sucursal", Convert.ToInt32(ddlSucursal.SelectedValue));
             }
         }
 

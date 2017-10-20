@@ -1,4 +1,4 @@
-﻿using Capa_Datos;using Capa_Datos.Manager.Trabajador;using Capa_Datos.Manager.Area;using Capa_Datos.Manager.Sucursal;using Capa_Datos.Manager.Empresa;
+﻿using Capa_Datos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +9,7 @@ using System.Web.UI.WebControls;
 
 namespace SGSSTC.source.sistema.Hacer
 {
-	public partial class Update_MedidasMatrizLegal : Page
+    public partial class Update_MedidasMatrizLegal : Page
 	{
 		private  Utilidades objUtilidades = new Utilidades();
 		private Model_UsuarioSistema ObjUsuario;

@@ -1,4 +1,4 @@
-﻿using Capa_Datos;
+﻿using Capa_Datos;using Capa_Datos.Manager.PuestoTrabajo;
 using Capa_Datos.Manager.Trabajador;
 using Capa_Datos.Manager.Area;
 using Capa_Datos.Manager.Sucursal;
@@ -279,7 +279,7 @@ namespace SGSSTC.source.sistema.Hacer
 				hdfEditID.Value = Utilidades_GridView.DevolverIdRow(e, GridView1);
 				
 				List<plan_trabajo> ListaPlanTrabajo = new List<plan_trabajo>();
-				ListaPlanTrabajo = Getter.Plan_Trabajo(0, 0, Convert.ToInt32(hdfEditID.Value));
+				ListaPlanTrabajo = Mgr_PuestoTrabajo.Plan_Trabajo(0, 0, Convert.ToInt32(hdfEditID.Value));
 
 				foreach (var item in ListaPlanTrabajo)
 				{
@@ -341,7 +341,7 @@ namespace SGSSTC.source.sistema.Hacer
 				string idPlanTrabajo = (e.Row.FindControl("id") as Label).Text;
 
 				List<plan_trabajo> ListaPlanTrabajo = new List<plan_trabajo>();
-				ListaPlanTrabajo = Getter.Plan_Trabajo(0, 0, Convert.ToInt32(idPlanTrabajo));
+				ListaPlanTrabajo = Mgr_PuestoTrabajo.Plan_Trabajo(0, 0, Convert.ToInt32(idPlanTrabajo));
 
 				foreach (var itemPlanTrab in ListaPlanTrabajo)
 				{

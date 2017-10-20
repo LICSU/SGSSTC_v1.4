@@ -1,4 +1,4 @@
-﻿using Capa_Datos;using Capa_Datos.Manager.Trabajador;using Capa_Datos.Manager.Area;using Capa_Datos.Manager.Sucursal;using Capa_Datos.Manager.Empresa;
+﻿using Capa_Datos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,8 +13,8 @@ namespace SGSSTC.source.sistema.Hacer
 	{
 		private Utilidades objUtilidades = new Utilidades();
 		private Model_UsuarioSistema ObjUsuario;
-        private int idRiesgo;
-        private int IdSucursal;
+		private int idRiesgo;
+		private int IdSucursal;
 
 		#region metodos index
 		protected void Page_Load(object sender, EventArgs e)
@@ -31,7 +31,7 @@ namespace SGSSTC.source.sistema.Hacer
 			}
 		}
 
-        private void CargarDatos()
+		private void CargarDatos()
 		{
 			List<identificacion_peligro> ListaRiesgos = new List<identificacion_peligro>();
 			ListaRiesgos = Getter.IdentificacionPeligro(Convert.ToInt32(idRiesgo));
@@ -48,7 +48,7 @@ namespace SGSSTC.source.sistema.Hacer
 			CargarMedidas();
 		}
 
-        private void CargarMedidas()
+		private void CargarMedidas()
 		{
 			List<identificacion_peligro> ListaRiesgos = new List<identificacion_peligro>();
 			ListaRiesgos = Getter.IdentificacionPeligro(Convert.ToInt32(idRiesgo));

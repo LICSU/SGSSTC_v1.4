@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Capa_Datos.Manager.PuestoTrabajo;
 
 namespace SGSST
 {
@@ -247,7 +248,7 @@ namespace SGSST
                 nombreEmpresa
             };
 
-            if (CRUD.Add_PuestoTrabajo_Sucursal(valores))
+            if (Mgr_PuestoTrabajo.Add_PuestoTrabajo_Sucursal(valores))
             {
                 add_Horario_Default(id_sucursal);
             }

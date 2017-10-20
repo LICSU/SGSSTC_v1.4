@@ -439,38 +439,6 @@ namespace Capa_Datos
             GridView1.DataBind();
         }
 
-        public static void PuestoTrabajo(GridView GridView1,int empresa = 0,int sucursal = 0,string area = "0",string num1 = "",string num2 = "",string sWhere = "")
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            var query = (
-                    from CT in contexto.puesto_trabajo
-                    orderby CT.area.id_sucursal, CT.id_puesto_trabajo
-                    select new
-                    {
-                        CT.id_puesto_trabajo,
-                        CT.nombre,
-                        CT.descripcion,
-                        id_sucursal = CT.area.sucursal.id_sucursal,
-                        id_area = CT.id_area,
-                        Empresa = CT.area.sucursal.empresa.nombre,
-                        id_empresa = CT.area.sucursal.empresa.id_empresa,
-                        Area = CT.area.nombre,
-                        Num = (from TB in contexto.trabajador
-                               where TB.id_puesto_trabajo == CT.id_puesto_trabajo
-                               && TB.id_estatus_actual == 1
-                               select TB.id_trabajador).Count(),
-                        Sucursal = CT.area.sucursal.nombre
-                    }).ToList();
-
-            if (empresa != 0) { query = query.Where(x => x.id_empresa == empresa).ToList(); }
-            if (sucursal != 0) { query = query.Where(x => x.id_sucursal == sucursal).ToList(); }
-            if (area != "0") { query = query.Where(x => x.id_area == Convert.ToInt32(area)).ToList(); }
-            if (num1 != string.Empty) { query = query.Where(x => x.Num >= Convert.ToInt32(num1) && x.Num < Convert.ToInt32(num2)).ToList(); }
-            if (sWhere != string.Empty) { query = query.Where(x => x.nombre.ToLower().Contains(sWhere.ToLower())).ToList(); }
-
-            GridView1.DataSource = query;
-            GridView1.DataBind();
-        }
 
 
 

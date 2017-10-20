@@ -1,6 +1,4 @@
 ﻿using Capa_Datos;
-using Capa_Datos.Manager.Trabajador;
-using Capa_Datos.Manager.Area;
 using Capa_Datos.Manager.Sucursal;
 using Capa_Datos.Manager.Empresa;
 using System;

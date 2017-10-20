@@ -1,5 +1,5 @@
 ﻿using System;
-using Capa_Datos;
+using Capa_Datos;using Capa_Datos.Manager.PuestoTrabajo;
 using Capa_Datos.Manager.Trabajador;
 using Capa_Datos.Manager.Area;
 using Capa_Datos.Manager.Sucursal;

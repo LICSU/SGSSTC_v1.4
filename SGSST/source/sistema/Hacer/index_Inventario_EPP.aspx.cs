@@ -1,4 +1,4 @@
-﻿using Capa_Datos;
+﻿using Capa_Datos;using Capa_Datos.Manager.PuestoTrabajo;
 using Capa_Datos.Manager.Trabajador;
 using Capa_Datos.Manager.Area;
 using Capa_Datos.Manager.Sucursal;
@@ -17,7 +17,7 @@ namespace SGSSTC.source.sistema.Hacer
 		private Model_UsuarioSistema ObjUsuario;
 		private Tuple<bool, bool> BoolEmpSuc;
 		private int cantiEpp = 0;
-        private List<Model_CEPP> epps;
+		private List<Model_CEPP> epps;
 
 		#region Index
 		protected void Page_Load(object sender, EventArgs e)

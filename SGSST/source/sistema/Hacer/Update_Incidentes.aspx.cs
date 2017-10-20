@@ -1,4 +1,9 @@
-﻿using Capa_Datos;using Capa_Datos.Manager.Trabajador;using Capa_Datos.Manager.Area;using Capa_Datos.Manager.Sucursal;using Capa_Datos.Manager.Empresa;
+﻿using Capa_Datos;
+using Capa_Datos.Manager.PuestoTrabajo;
+using Capa_Datos.Manager.Trabajador;
+using Capa_Datos.Manager.Area;
+using Capa_Datos.Manager.Sucursal;
+using Capa_Datos.Manager.Empresa;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -53,7 +58,7 @@ namespace SGSSTC.source.sistema.Verificar
 			if (!BoolEmpSuc.Item2)
 			{
 				Mgr_Area.Area_Sucursal(ddlArea, ObjUsuario.Id_sucursal);
-				Listas.PuestoTrabajo(ddlProcesoTrabajo, "Sucursal", ObjUsuario.Id_sucursal);
+				Mgr_PuestoTrabajo.PuestoTrabajo(ddlProcesoTrabajo, "Sucursal", ObjUsuario.Id_sucursal);
 			}
 		}
 		private void CargarAccidente()
@@ -80,7 +85,7 @@ namespace SGSSTC.source.sistema.Verificar
 				Mgr_Area.Area_Sucursal(ddlArea, IdSucursal, "Ninguna");
 				ddlArea.SelectedValue = Convert.ToString(item.id_area);
 
-				Listas.PuestoTrabajo(ddlProcesoTrabajo, "Sucursal", IdSucursal, "Ninguno");
+				Mgr_PuestoTrabajo.PuestoTrabajo(ddlProcesoTrabajo, "Sucursal", IdSucursal, "Ninguno");
 				ddlProcesoTrabajo.SelectedValue = Convert.ToString(item.id_puesto);
 
 				txtSitioIncidente.Text = Convert.ToString(item.sitio);
@@ -165,7 +170,7 @@ namespace SGSSTC.source.sistema.Verificar
 			{
                 IdSucursal = Convert.ToInt32(ddlSucursal.SelectedValue);
                 Mgr_Area.Area_Sucursal(ddlArea, Convert.ToInt32(ddlSucursal.SelectedValue), "Ninguna");
-				Listas.PuestoTrabajo(ddlProcesoTrabajo, "Sucursal", Convert.ToInt32(ddlSucursal.SelectedValue), "Ninguno");
+				Mgr_PuestoTrabajo.PuestoTrabajo(ddlProcesoTrabajo, "Sucursal", Convert.ToInt32(ddlSucursal.SelectedValue), "Ninguno");
 			}
 
 		}

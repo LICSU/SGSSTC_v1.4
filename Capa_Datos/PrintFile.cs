@@ -1,4 +1,5 @@
 ﻿using Capa_Datos.Manager.Empresa;
+using Capa_Datos.Manager.PuestoTrabajo;
 using Capa_Datos.Manager.Sucursal;
 using Capa_Datos.Manager.Trabajador;
 using iTextSharp.text;
@@ -4975,7 +4976,7 @@ namespace Capa_Datos
                                         "PlanTrabajo(Vista General)_", "PLAN DE TRABAJO ANUAL", _page);
             #region contenido
             List<plan_trabajo> ListaPlanTrabajo = new List<plan_trabajo>();
-            ListaPlanTrabajo = Getter.Plan_Trabajo(Convert.ToInt32(valores[0]), Convert.ToInt32(valores[1]));
+            ListaPlanTrabajo = Mgr_PuestoTrabajo.Plan_Trabajo(Convert.ToInt32(valores[0]), Convert.ToInt32(valores[1]));
             int contActividad = 0;
 
             miCelda12.Texto = "ACTIVIDADES";
@@ -5023,7 +5024,7 @@ namespace Capa_Datos
                                         "PlanTrabajo(Vista Especifico)_", "PLAN DE TRABAJO ANUAL", _page);
             #region contenido
             List<plan_trabajo> ListaPlanTrabajo = new List<plan_trabajo>();
-            ListaPlanTrabajo = Getter.Plan_Trabajo(Convert.ToInt32(valores[0]), Convert.ToInt32(valores[1]));
+            ListaPlanTrabajo = Mgr_PuestoTrabajo.Plan_Trabajo(Convert.ToInt32(valores[0]), Convert.ToInt32(valores[1]));
             int contActividad = 0;
 
             foreach (var item in ListaPlanTrabajo)
@@ -7287,7 +7288,7 @@ namespace Capa_Datos
             miCelda13.Texto = "FIRMA DE RECIBIDO";
             DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, miCelda13));
 
-            int id_puesto_trabajo = Getter.idPuestoTrabajador(Convert.ToInt32(valores[2]));
+            int id_puesto_trabajo = Mgr_PuestoTrabajo.idPuestoTrabajador(Convert.ToInt32(valores[2]));
             List<Model_CEPP> epps = Getter.Epp(id_puesto_trabajo);
             int cont = 0;
             TextBox _textbox;

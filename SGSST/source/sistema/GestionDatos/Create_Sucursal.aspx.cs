@@ -1,4 +1,5 @@
 ﻿using Capa_Datos;
+using Capa_Datos.Manager.PuestoTrabajo;
 using Capa_Datos.Manager.Trabajador;
 using Capa_Datos.Manager.Area;
 using Capa_Datos.Manager.Sucursal;
@@ -157,7 +158,7 @@ namespace SGSSTC.source.sistema.GestionDatos
                 nombreSucursal
             };
 
-            if (CRUD.Add_PuestoTrabajo_Sucursal( valores))
+            if (Mgr_PuestoTrabajo.Add_PuestoTrabajo_Sucursal( valores))
             {
                 return add_Horario_Default();
             }

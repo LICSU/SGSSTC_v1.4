@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Capa_Datos.Manager.PuestoTrabajo;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.UI.WebControls;
@@ -86,7 +87,7 @@ namespace Capa_Datos.Manager.Trabajador
                 id_ccf = 0,
                 direccion = "---",
                 id_municipio = 1,
-                id_puesto_trabajo = GetterMax.PuestoTrabajo(),
+                id_puesto_trabajo = Mgr_PuestoTrabajo.PuestoTrabajo(),
                 es_discapacitado = "No",
                 desc_discapacidad = "---",
                 id_horario = GetterMax.Horario(),

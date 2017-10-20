@@ -1,4 +1,4 @@
-﻿using Capa_Datos;
+﻿using Capa_Datos;using Capa_Datos.Manager.PuestoTrabajo;
 using Capa_Datos.Manager.Area;
 using Capa_Datos.Manager.Sucursal;
 using Capa_Datos.Manager.Empresa;
@@ -74,7 +74,7 @@ namespace SGSST.source.sistema.Planear
         {
             if (ddlArea.SelectedValue != string.Empty)
             {
-                Listas.PuestoTrabajo(ddlPuesto, "idArea", Convert.ToInt32(ddlArea.SelectedValue));
+                Mgr_PuestoTrabajo.PuestoTrabajo(ddlPuesto, "idArea", Convert.ToInt32(ddlArea.SelectedValue));
             }
         }
     }

@@ -41,8 +41,6 @@ namespace Capa_Datos
             DropDownList1.Items.Insert(0, new ListItem("Seleccione el Fondo", ""));
             #endregion
         }
-
-
         public static void AnhoNorma(DropDownList DropDownList1, int _id_sucursal)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
@@ -66,8 +64,7 @@ namespace Capa_Datos
 
             DropDownList1.DataBind();
             DropDownList1.Items.Insert(0, new ListItem("Seleccione ...", ""));
-        }
- 
+        } 
         public static void Arl(DropDownList DropDownList1)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
@@ -210,7 +207,6 @@ namespace Capa_Datos
                 }
             }
         }
-
         public static void EnfermedadComun(DropDownList DropDownList1)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
@@ -308,63 +304,6 @@ namespace Capa_Datos
             DropDownList1.Items.Insert(0, new ListItem("Seleccione la Ips", ""));
             #endregion
         }
-        public static void PuestoTrabajo(DropDownList DropDownList1, string filtro, int _id = 0, string valor = "")
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            if (filtro == "idArea")
-            {
-                var Consulta = (
-                    from c in contexto.puesto_trabajo.Where(x => x.id_area == _id)
-                    select new { c.id_puesto_trabajo, c.nombre }).ToList();
-
-                DropDownList1.DataValueField = "id_puesto_trabajo";
-                DropDownList1.DataTextField = "nombre";
-                DropDownList1.DataSource = Consulta;
-                DropDownList1.DataBind();
-                if (valor != string.Empty)
-                {
-                    DropDownList1.Items.Insert(0, new ListItem("Seleccione el Puesto", ""));
-                    DropDownList1.Items.Insert(1, new ListItem("Ninguno", "0"));
-                }
-                else
-                {
-                    DropDownList1.Items.Insert(0, new ListItem("Seleccione el Puesto", ""));
-                }
-
-            }
-            else if (filtro == "Sucursal")
-            {
-                var Consulta = (
-                    from c in contexto.puesto_trabajo.Where(x => x.area.id_sucursal == _id)
-                    select new { c.id_puesto_trabajo, c.nombre }).ToList();
-
-                DropDownList1.DataValueField = "id_puesto_trabajo";
-                DropDownList1.DataTextField = "nombre";
-                DropDownList1.DataSource = Consulta;
-                DropDownList1.DataBind();
-                if (valor != string.Empty)
-                {
-                    DropDownList1.Items.Insert(0, new ListItem("Seleccione el Puesto", ""));
-                    DropDownList1.Items.Insert(1, new ListItem("Ninguno", "0"));
-                }
-                else
-                {
-                    DropDownList1.Items.Insert(0, new ListItem("Seleccione el Puesto", ""));
-                }
-            }
-            else if (filtro == "Empresa")
-            {
-                var Consulta = (
-                    from c in contexto.puesto_trabajo.Where(x => x.area.sucursal.id_empresa == _id)
-                    select new { c.id_puesto_trabajo, c.nombre }).ToList();
-
-                DropDownList1.DataValueField = "id_puesto_trabajo";
-                DropDownList1.DataTextField = "nombre";
-                DropDownList1.DataSource = Consulta;
-                DropDownList1.DataBind();
-                DropDownList1.Items.Insert(0, new ListItem("Seleccione el Puesto", ""));
-            }
-        }
         public static void Reg_Dpto_Mcpio(DropDownList DropDownList1, string tabla, int id = 0)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
@@ -450,7 +389,6 @@ namespace Capa_Datos
             DropDownList1.DataBind();
             DropDownList1.Items.Insert(0, new ListItem("Seleccione el Riesgo", "0"));*/
         }
-
         public static void Rol(DropDownList DropDownList1, int _id_rol = 0)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
@@ -479,7 +417,6 @@ namespace Capa_Datos
             DropDownList1.DataBind();
             DropDownList1.Items.Insert(0, new ListItem("Seleccione ...", ""));
         }
-
         public static void Rol_AdmSucursal(DropDownList DropDownList1)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
@@ -507,7 +444,6 @@ namespace Capa_Datos
             DropDownList1.Items.Insert(0, new ListItem("Seleccione el Sistema", ""));
             #endregion
         }
-
         public static void TipoExamen(DropDownList DropDownList1)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
@@ -522,7 +458,6 @@ namespace Capa_Datos
             DropDownList1.Items.Insert(0, new ListItem("Seleccione el Tipo de Examen", ""));
             #endregion
         }
-
         public static void Usuario_Empresa(DropDownList DropDownList1, int _id_empresa)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
@@ -565,7 +500,6 @@ namespace Capa_Datos
             DropDownList1.Items.Insert(0, new ListItem("Seleccione el Extintor", ""));
             #endregion
         }
-
         public static void TipoEpp(DropDownList DropDownList1)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
@@ -612,8 +546,6 @@ namespace Capa_Datos
             DropDownList1.DataSource = Consulta;
             DropDownList1.DataBind();
         }
-
-
         public static void Codciiu_Usuario(DropDownList DropDownList1, int id = 0)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
@@ -651,7 +583,6 @@ namespace Capa_Datos
                 }
             }
         }
-
         public static void Division_Usuario(DropDownList DropDownList1, int id = 0)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
@@ -689,7 +620,6 @@ namespace Capa_Datos
                 }
             }
         }
-
         public static void Seccion_Usuario(DropDownList DropDownList1, int id = 0)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();

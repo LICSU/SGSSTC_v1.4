@@ -1,5 +1,6 @@
 ﻿using System;
 using Capa_Datos;
+using Capa_Datos.Manager.PuestoTrabajo;
 using System.Web;
 using System.Web.Security;
 

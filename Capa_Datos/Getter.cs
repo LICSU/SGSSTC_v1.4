@@ -592,61 +592,10 @@ namespace Capa_Datos
             return consulta;
         }
 
-        #endregion
-
-        #region Plan_Trabajo
-        public static List<plan_trabajo> Plan_Trabajo(int _id_sucursal = 0, int _anho = 0, int id_plan = 0)
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            List<plan_trabajo> consulta = new List<plan_trabajo>();
-
-            if (id_plan != 0) { consulta = contexto.plan_trabajo.Where(x => x.id_plan_trabajo == id_plan).ToList(); }
-            else if (_id_sucursal != 0 && _anho != 0)
-            {
-                consulta = contexto.plan_trabajo.Where(x =>
-                x.usuario.trabajador.puesto_trabajo.area.id_sucursal == _id_sucursal &&
-                x.anho == _anho).OrderBy(x => x.semana_ini).ToList();
-            }
-
-            return consulta;
-        }
-        #endregion
+        #endregion 
 
         #region puesto_trabajo_epp
 
-        public static int idPuestoTrabajador(int _id_trabajador)
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            var query = (
-                    from e in contexto.trabajador
-                    where (e.id_trabajador == _id_trabajador)
-                    select new
-                    {
-                        e.id_puesto_trabajo
-                    }
-                ).ToList();
-
-            return query.ElementAt(0).id_puesto_trabajo;
-        }
-        public static int PuestoEppValue(int id_puesto, int id_epp)
-        {
-            int valor = 0;
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            var query = (
-                    from e in contexto.puesto_trabajo_epp
-                    where (e.id_puesto_trabajo == id_puesto && e.id_epp == id_epp)
-                    select new
-                    {
-                        e.id_puesto_trabajo_epp
-                    }
-                ).ToList();
-
-            if (query.Count > 0)
-                valor = 1;
-            else if (query.Count == 0)
-                valor = 0;
-            return valor;
-        }
         public static int Trae_ID_PEPP(int id_puesto, int id_epp)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
@@ -662,13 +611,6 @@ namespace Capa_Datos
             return query.ElementAt(0).id_puesto_trabajo_epp;
         }
 
-        public static List<puesto_trabajo_epp> PuestoEpp(int id_puesto)
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            var consulta = new List<puesto_trabajo_epp>();
-            consulta = contexto.puesto_trabajo_epp.Where(x => x.id_puesto_trabajo == id_puesto).ToList();
-            return consulta;
-        }
         #endregion
 
         #region politica_sst

@@ -15,7 +15,6 @@ namespace Capa_Datos
             //
         }
 
-
         public static int AccidentesLaboral(int _anho, int _id_empresa = 0, int _id_sucursal = 0)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
@@ -35,7 +34,6 @@ namespace Capa_Datos
 
             return query.Count();
         }
-
         public static int Constancias(int _anho, int id_empresa = 0, int id_sucursal = 0)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
@@ -56,7 +54,6 @@ namespace Capa_Datos
 
             return query.Count();
         }
-
         public static int EvaluacionesCli(int _anho, int id_empresa = 0, int id_sucursal = 0)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
@@ -134,7 +131,6 @@ namespace Capa_Datos
 
             return query.Count();
         }
-
         public static int DiasReposo(int _anho, int id_empresa = 0, int id_sucursal = 0)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
@@ -157,7 +153,6 @@ namespace Capa_Datos
             int suma = Convert.ToInt32(query.Sum(x => x.dias_reposo));
             return suma;
         }
-
         public static int GestionLaboralByFecha(DateTime fechaInicial, DateTime fechaFinal)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
@@ -166,7 +161,6 @@ namespace Capa_Datos
                          select GL).Count();
             return query;
         }
-
         public static int UsuarioTrabajador(int _id_usuario)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
@@ -181,9 +175,6 @@ namespace Capa_Datos
 
             return Convert.ToInt32(query.ElementAt(0).id_trabajador);
         }
-
-
-
         public static int Reposos(int _anho, int id_empresa = 0, int id_sucursal = 0)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
@@ -224,7 +215,6 @@ namespace Capa_Datos
 
             return query.Count();
         }
-
         public static int Inspecciones(int _id_empresa)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();

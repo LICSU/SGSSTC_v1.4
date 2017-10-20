@@ -1,4 +1,5 @@
 ﻿using Capa_Datos;
+using Capa_Datos.Manager.PuestoTrabajo;
 using Capa_Datos.Manager.Trabajador;
 using Capa_Datos.Manager.Area;
 using Capa_Datos.Manager.Sucursal;
@@ -28,8 +29,8 @@ namespace SGSSTC.source.sistema.Hacer
 
 			if (!IsPostBack)
 			{
-                ViewState["sWhere"] = string.Empty;
-                LlenarGridView();
+				ViewState["sWhere"] = string.Empty;
+				LlenarGridView();
 			}
 		} 
 
@@ -53,11 +54,11 @@ namespace SGSSTC.source.sistema.Hacer
 				"",
 				ViewState["Imprimir"].ToString(),
 			};
-           
-            PrintFile.PrintEvaluacionPuestos(valores, this);
-            Modal.CerrarModal("printModal", "printModalScript", this);
-            LlenarGridView();
-        }
+		   
+			PrintFile.PrintEvaluacionPuestos(valores, this);
+			Modal.CerrarModal("printModal", "printModalScript", this);
+			LlenarGridView();
+		}
 
 		protected void EliminarRegistro(object sender, EventArgs e)
 		{
@@ -65,8 +66,8 @@ namespace SGSSTC.source.sistema.Hacer
 			ObjUsuario.Error = CRUD.Delete_Fila(tabla, Convert.ToInt32(hdfIDDel.Value));
 			LlenarGridView();
 			Modal.MostrarAlertaDelete(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error, txtBuscar);
-            Modal.CerrarModal("deleteModal", "DeleteModalScript", this);
-        }
+			Modal.CerrarModal("deleteModal", "DeleteModalScript", this);
+		}
 		
 		#endregion
 
@@ -107,19 +108,19 @@ namespace SGSSTC.source.sistema.Hacer
 			}
 
 		}
-        #endregion
+		#endregion
 
-        protected void BuscarRegistro(object sender, EventArgs e)
-        {
-            if (txtBuscar.Text != string.Empty)
-            {
-                ViewState["sWhere"] = txtBuscar.Text;
-            }
-            else
-            {
-                ViewState["sWhere"] = string.Empty;
-            }
-            LlenarGridView();
-        }
-    }
+		protected void BuscarRegistro(object sender, EventArgs e)
+		{
+			if (txtBuscar.Text != string.Empty)
+			{
+				ViewState["sWhere"] = txtBuscar.Text;
+			}
+			else
+			{
+				ViewState["sWhere"] = string.Empty;
+			}
+			LlenarGridView();
+		}
+	}
 }

@@ -104,13 +104,6 @@ namespace Capa_Datos
 
             return id;
         }
-        public static int PuestoTrabajo()
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            var consulta = new puesto_trabajo();
-            int id = contexto.puesto_trabajo.Max(x => x.id_puesto_trabajo);
-            return id;
-        }
         public static int PoliticaSST(int _id_empresa)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();

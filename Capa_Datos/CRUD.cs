@@ -1,5 +1,6 @@
 ﻿using Capa_Datos.Manager.Area;
 using Capa_Datos.Manager.Empresa;
+using Capa_Datos.Manager.PuestoTrabajo;
 using Capa_Datos.Manager.Sucursal;
 using Capa_Datos.Manager.Trabajador;
 using System;
@@ -385,7 +386,6 @@ namespace Capa_Datos
 
             return berror;
         }
-
         public static bool DeleteAutoEvaluacion(String idAutoEvaluacion, Model_UsuarioSistema ObjUsuario)
         {
             int idAuto = Convert.ToInt32(idAutoEvaluacion);
@@ -417,7 +417,6 @@ namespace Capa_Datos
 
             return ObjUsuario.Error;
         }
-
         public static bool AddInspeccion(Tuple<int, int> IdEmpSuc, String[] valores, FileUpload flpArchivo)
         {
             int IdEmpresa = IdEmpSuc.Item1;
@@ -436,7 +435,6 @@ namespace Capa_Datos
 
             return Add_Fila(nuevo);
         }
-
         public static bool AddReporteTrabajadores(Tuple<int, int> IdEmpSuc, String[] valores, FileUpload flpArchivo)
         {
             int IdEmpresa = IdEmpSuc.Item1;
@@ -454,7 +452,6 @@ namespace Capa_Datos
             };
             return Add_Fila(nuevo);
         }
-
         public static bool AddIndicadores(Tuple<int, int> IdEmpSuc, String[] valores, FileUpload flpArchivo)
         {
             int IdEmpresa = IdEmpSuc.Item1;
@@ -472,11 +469,6 @@ namespace Capa_Datos
             };
             return Add_Fila(nuevo);
         }
-
-
-
-
-
         public static bool AddCodigoCiiu_Empresa(String[] valores)
         {
             empresa_itemdivision nuevo;
@@ -572,17 +564,6 @@ namespace Capa_Datos
 
             return berror;
         }
-
-        public static bool Add_PuestoTrabajo_Sucursal(String[] valores)
-        {
-            puesto_trabajo nuevo = new puesto_trabajo()
-            {
-                nombre = "Puesto de Trabajo Default " + valores[0],
-                descripcion = "Descripcion del Puesto Default",
-                id_area = Mgr_Area.Areas()
-            };
-            return Add_Fila(nuevo);
-        }
         public static bool Add_Horario_Sucursal(String[] valores)
         {
             horario nuevo = new horario()
@@ -635,63 +616,6 @@ namespace Capa_Datos
 
             return berror;
         }
-
-        public static bool Add_PuestoTrabajo(Model_UsuarioSistema ObjUsuario, String[] valores, FileUpload fuAnexo, ListBox ddlEpp)
-        {
-            string ruta = Utilidades.GuardarImagen(fuAnexo, valores[0] + "PuestoTrabajo", Paginas.Archivos_PuestoTrabajo.Value);
-
-            puesto_trabajo nuevo = new puesto_trabajo()
-            {
-                nombre = valores[0],
-                descripcion = valores[1],
-                recurso_humano = valores[2],
-                objeto_trabajo = valores[3],
-                insumos = valores[4],
-                maquinas = valores[5],
-                herramientas = valores[6],
-                emisiones = valores[7],
-                productos = valores[8],
-                desechos = valores[9],
-                foto = ruta,
-                id_area = Convert.ToInt32(valores[10])
-            };
-
-
-            int IdUsuario = ObjUsuario.Id_usuario;
-            DateTime fechaActual = DateTime.Now;
-            Boolean bError = false;
-
-            if (Add_Fila(nuevo))
-            {
-                if (ddlEpp.SelectedValue != string.Empty)
-                {
-                    foreach (ListItem li in ddlEpp.Items)
-                    {
-                        if (li.Selected)
-                        {
-                            puesto_trabajo_epp nuevopuestoEpp = new puesto_trabajo_epp()
-                            {
-                                id_puesto_trabajo = Convert.ToInt32(GetterMax.PuestoTrabajo()),
-                                id_epp = Convert.ToInt32(li.Value)
-                            };
-                            bError = Add_Fila(nuevopuestoEpp);
-
-                            if (!bError)
-                            {
-                                return bError;
-                            }
-                        }
-                    }
-                }
-            }
-
-            return bError;
-
-
-        }
-
-   
-
         public static bool Add_Riesgos_Sucursal(String[] valores)
         {
             DateTime fechaActual = DateTime.Now;
@@ -743,7 +667,7 @@ namespace Capa_Datos
                 int id_IdentificacionPeligro = Convert.ToInt32(GetterMax.IdentificacionPeligro());
                 identificacion_puesto nuevoIde_Puesto = new identificacion_puesto()
                 {
-                    id_puesto = Convert.ToInt32(GetterMax.PuestoTrabajo()),
+                    id_puesto = Convert.ToInt32(Mgr_PuestoTrabajo.PuestoTrabajo()),
                     id_identificacion = id_IdentificacionPeligro
                 };
                 contexto.identificacion_puesto.Add(nuevoIde_Puesto);
@@ -879,7 +803,6 @@ namespace Capa_Datos
             }
             return true;
         }
-
         public static bool Add_Lista_Actividad(int id_sucursal)
         {
             lista_actividad nuevo = new lista_actividad()
@@ -894,8 +817,6 @@ namespace Capa_Datos
 
             return Add_Fila(nuevo);
         }
-
-
         public static bool Add_Pregunta(Model_UsuarioSistema ObjUsuario, String[] valores)
         {
             Pregunta nuevo = new Pregunta()
@@ -909,7 +830,6 @@ namespace Capa_Datos
 
             return Add_Fila(nuevo);
         }
-
         public static bool Add_Respuesta(String[] valores)
         {
             Respuesta nuevo = new Respuesta()
@@ -923,8 +843,6 @@ namespace Capa_Datos
 
             return Add_Fila(nuevo);
         }
-
-        //Senalizacion
         public static bool AddSenalizacion(String[] valores, FileUpload fuImagen)
         {
             string ruta = Utilidades.GuardarImagen(fuImagen, valores[0], Paginas.Archivos_Senalizacion.Value);

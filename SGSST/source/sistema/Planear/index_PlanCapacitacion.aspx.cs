@@ -1,5 +1,6 @@
 ﻿using System;
 using Capa_Datos;
+using Capa_Datos.Manager.PuestoTrabajo;
 using Capa_Datos.Manager.Trabajador;
 using Capa_Datos.Manager.Area;
 using Capa_Datos.Manager.Sucursal;
@@ -81,14 +82,14 @@ namespace SGSSTC.source.sistema.Hacer
 		}
 		protected void genereDocumento()
 		{
-            Tuple<int, int> IdEmpSuc = Mgr_Empresa.Get_IdEmpresa_IdSucursal(ObjUsuario, ddlEmpresa, ddlSucursal);
+			Tuple<int, int> IdEmpSuc = Mgr_Empresa.Get_IdEmpresa_IdSucursal(ObjUsuario, ddlEmpresa, ddlSucursal);
 
-            String[] valores = {
-                string.Empty + IdEmpSuc.Item2
-            };
+			String[] valores = {
+				string.Empty + IdEmpSuc.Item2
+			};
 
-            PrintFile.PrintPlanCapacitacion(valores, pnDatos, this);
-        }		
+			PrintFile.PrintPlanCapacitacion(valores, pnDatos, this);
+		}		
 		#endregion
 	}
 }

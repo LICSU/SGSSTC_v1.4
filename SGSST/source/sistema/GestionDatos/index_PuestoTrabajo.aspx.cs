@@ -1,4 +1,5 @@
 ﻿using Capa_Datos;
+using Capa_Datos.Manager.PuestoTrabajo;
 using Capa_Datos.Manager.Trabajador;
 using Capa_Datos.Manager.Area;
 using Capa_Datos.Manager.Sucursal;
@@ -62,7 +63,7 @@ namespace SGSSTC.source.sistema.GestionDatos
             int IdEmpresa = Mgr_Empresa.Set_IdEmpresa(ObjUsuario, Convert.ToInt32(ViewState["empresa"]));
             int IdSucursal = Mgr_Sucursal.Set_IdSucursal(ObjUsuario, Convert.ToInt32(ViewState["sucursal"]));
 
-            Tabla.PuestoTrabajo(GridView1,
+            Mgr_PuestoTrabajo.PuestoTrabajo(GridView1,
                 IdEmpresa, IdSucursal,
                 string.Empty + ViewState["area"],
                 string.Empty + ViewState["Num1"],

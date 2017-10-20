@@ -1,4 +1,5 @@
 ﻿using Capa_Datos;
+using Capa_Datos.Manager.PuestoTrabajo;
 using Capa_Datos.Manager.Trabajador;
 using Capa_Datos.Manager.Area;
 using Capa_Datos.Manager.Sucursal;
@@ -955,7 +956,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
 			if (ddlArea.SelectedValue != string.Empty)
 			{
 				ViewState["area"] = ddlArea.SelectedValue;
-				Listas.PuestoTrabajo(ddlPuesto, "idArea", Convert.ToInt32(ddlArea.SelectedValue));
+				Mgr_PuestoTrabajo.PuestoTrabajo(ddlPuesto, "idArea", Convert.ToInt32(ddlArea.SelectedValue));
 			}
 			else
 			{

@@ -1,4 +1,5 @@
 ﻿using Capa_Datos;
+using Capa_Datos.Manager.PuestoTrabajo;
 using Capa_Datos.Manager.Trabajador;
 using Capa_Datos.Manager.Area;
 using Capa_Datos.Manager.Sucursal;
@@ -51,7 +52,7 @@ namespace SGSSTC.source.sistema.Verificar
             {
                 IdSucursal = Convert.ToInt32(ObjUsuario.Id_sucursal);
                 Mgr_Area.Area_Sucursal(ddlArea, ObjUsuario.Id_sucursal);
-                Listas.PuestoTrabajo(ddlProcesoTrabajo, "Sucursal", ObjUsuario.Id_sucursal);
+                Mgr_PuestoTrabajo.PuestoTrabajo(ddlProcesoTrabajo, "Sucursal", ObjUsuario.Id_sucursal);
                 Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabajador, ObjUsuario.Id_sucursal);
             }
 
@@ -133,7 +134,7 @@ namespace SGSSTC.source.sistema.Verificar
             {
                 IdSucursal = Convert.ToInt32(ddlSucursal.SelectedValue);
                 Mgr_Area.Area_Sucursal(ddlArea, Convert.ToInt32(ddlSucursal.SelectedValue), "Ninguna");
-                Listas.PuestoTrabajo(ddlProcesoTrabajo, "Sucursal", Convert.ToInt32(ddlSucursal.SelectedValue), "Ninguno");
+                Mgr_PuestoTrabajo.PuestoTrabajo(ddlProcesoTrabajo, "Sucursal", Convert.ToInt32(ddlSucursal.SelectedValue), "Ninguno");
                 Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabajador, Convert.ToInt32(ddlSucursal.SelectedValue));
             }
 

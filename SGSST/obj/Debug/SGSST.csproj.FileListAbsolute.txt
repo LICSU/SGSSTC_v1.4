@@ -7,6 +7,7 @@ C:\Users\Jezuz\Desktop\Repository\SGSSTCV1.4\SGSST\bin\CapaServ.dll
 C:\Users\Jezuz\Desktop\Repository\SGSSTCV1.4\SGSST\bin\Capa_Datos.dll
 C:\Users\Jezuz\Desktop\Repository\SGSSTCV1.4\SGSST\bin\Microsoft.AspNet.TelemetryCorrelation.dll
 C:\Users\Jezuz\Desktop\Repository\SGSSTCV1.4\SGSST\bin\System.Diagnostics.DiagnosticSource.dll
+C:\Users\Jezuz\Desktop\Repository\SGSSTCV1.4\SGSST\bin\Remotion.Data.Linq.dll
 C:\Users\Jezuz\Desktop\Repository\SGSSTCV1.4\SGSST\bin\CapaServ.pdb
 C:\Users\Jezuz\Desktop\Repository\SGSSTCV1.4\SGSST\bin\CapaServ.dll.config
 C:\Users\Jezuz\Desktop\Repository\SGSSTCV1.4\SGSST\bin\Capa_Datos.pdb

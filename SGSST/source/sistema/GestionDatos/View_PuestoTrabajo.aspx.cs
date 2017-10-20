@@ -1,7 +1,5 @@
 ﻿using Capa_Datos;
-using Capa_Datos.Manager.Trabajador;
-using Capa_Datos.Manager.Area;
-using Capa_Datos.Manager.Sucursal;
+using Capa_Datos.Manager.PuestoTrabajo;
 using Capa_Datos.Manager.Empresa;
 using System;
 using System.Collections.Generic;
@@ -59,7 +57,7 @@ namespace SGSSTC.source.sistema.GestionDatos
 
                 List<puesto_trabajo_epp> ListaPuestoTrabajo_Epp = new List<puesto_trabajo_epp>();
                 ListaPuestoTrabajo_Epp = new List<puesto_trabajo_epp>();
-                ListaPuestoTrabajo_Epp = Getter.PuestoEpp(idPuestos);
+                ListaPuestoTrabajo_Epp = Mgr_PuestoTrabajo.PuestoEpp(idPuestos);
                 string items = string.Empty;
                 foreach (var li in ListaPuestoTrabajo_Epp)
                 {

@@ -1,4 +1,9 @@
-﻿using Capa_Datos;using Capa_Datos.Manager.Trabajador;using Capa_Datos.Manager.Area;using Capa_Datos.Manager.Sucursal;using Capa_Datos.Manager.Empresa;
+﻿using Capa_Datos;
+using Capa_Datos.Manager.PuestoTrabajo;
+using Capa_Datos.Manager.Trabajador;
+using Capa_Datos.Manager.Area;
+using Capa_Datos.Manager.Sucursal;
+using Capa_Datos.Manager.Empresa;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -71,7 +76,7 @@ namespace SGSSTC.source.sistema.GestionDatos
                 Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(itemTrabajador.puesto_trabajo.area.sucursal.id_empresa));
                 ddlSucursal.SelectedValue = Convert.ToString(itemTrabajador.puesto_trabajo.area.id_sucursal);
 
-                Listas.PuestoTrabajo(ddlPuestoTrabajo, "Sucursal", itemTrabajador.puesto_trabajo.area.id_sucursal);
+                Mgr_PuestoTrabajo.PuestoTrabajo(ddlPuestoTrabajo, "Sucursal", itemTrabajador.puesto_trabajo.area.id_sucursal);
                 ddlPuestoTrabajo.SelectedValue = Convert.ToString(itemTrabajador.id_puesto_trabajo);
 
                 Listas.Reg_Dpto_Mcpio(ddlRegion, "Region");

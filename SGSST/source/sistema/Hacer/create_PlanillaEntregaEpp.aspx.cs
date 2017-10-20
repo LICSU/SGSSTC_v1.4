@@ -1,4 +1,5 @@
 ﻿using Capa_Datos;
+using Capa_Datos.Manager.PuestoTrabajo;
 using Capa_Datos.Manager.Trabajador;
 using Capa_Datos.Manager.Sucursal;
 using Capa_Datos.Manager.Empresa;
@@ -136,7 +137,7 @@ namespace SGSSTC.source.sistema.Hacer
 			TableRow _row;
 			Label _label;
 			TextBox _textbox;
-			int id_puesto_trabajo = Getter.idPuestoTrabajador(Convert.ToInt32(ddlTrabajador.SelectedValue));
+			int id_puesto_trabajo = Mgr_PuestoTrabajo.idPuestoTrabajador(Convert.ToInt32(ddlTrabajador.SelectedValue));
 			List<Model_CEPP> epps = Getter.Epp(id_puesto_trabajo);
 			int cont = 0;
 

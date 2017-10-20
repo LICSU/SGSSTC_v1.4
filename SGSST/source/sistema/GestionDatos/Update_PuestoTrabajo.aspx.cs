@@ -1,4 +1,9 @@
-﻿using Capa_Datos;using Capa_Datos.Manager.Trabajador;using Capa_Datos.Manager.Area;using Capa_Datos.Manager.Sucursal;using Capa_Datos.Manager.Empresa;
+﻿using Capa_Datos;
+using Capa_Datos.Manager.PuestoTrabajo;
+using Capa_Datos.Manager.Trabajador;
+using Capa_Datos.Manager.Area;
+using Capa_Datos.Manager.Sucursal;
+using Capa_Datos.Manager.Empresa;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -65,7 +70,7 @@ namespace SGSSTC.source.sistema.GestionDatos
 
                 List<puesto_trabajo_epp> ListaPuestoTrabajo_Epp = new List<puesto_trabajo_epp>();
                 ListaPuestoTrabajo_Epp = new List<puesto_trabajo_epp>();
-                ListaPuestoTrabajo_Epp = Getter.PuestoEpp(idPuestos);
+                ListaPuestoTrabajo_Epp = Mgr_PuestoTrabajo.PuestoEpp(idPuestos);
 
                 foreach (ListItem li in ddlEpp.Items)
                 {
@@ -140,7 +145,7 @@ namespace SGSSTC.source.sistema.GestionDatos
 
                         if (li.Selected)
                         {
-                            int existe = Getter.PuestoEppValue(idPuestos, idEpp);
+                            int existe = Mgr_PuestoTrabajo.PuestoEppValue(idPuestos, idEpp);
                             if (existe == 0)
                             {
                                 puesto_trabajo_epp nuevopuestoEpp = new puesto_trabajo_epp()
@@ -153,7 +158,7 @@ namespace SGSSTC.source.sistema.GestionDatos
                         }
                         else
                         {
-                            int existe = Getter.PuestoEppValue(idPuestos, idEpp);
+                            int existe = Mgr_PuestoTrabajo.PuestoEppValue(idPuestos, idEpp);
                             if (existe == 1)
                             {
                                 int idPEpp = Getter.Trae_ID_PEPP(idPuestos, idEpp);

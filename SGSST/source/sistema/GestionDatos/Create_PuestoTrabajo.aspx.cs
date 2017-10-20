@@ -1,4 +1,5 @@
 ﻿using Capa_Datos;
+using Capa_Datos.Manager.PuestoTrabajo;
 using Capa_Datos.Manager.Trabajador;
 using Capa_Datos.Manager.Area;
 using Capa_Datos.Manager.Sucursal;
@@ -83,7 +84,7 @@ namespace SGSSTC.source.sistema.GestionDatos
 
                 };
 
-                ObjUsuario.Error = CRUD.Add_PuestoTrabajo(ObjUsuario , valores, fuAnexo, ddlEpp);
+                ObjUsuario.Error = Mgr_PuestoTrabajo.Add_PuestoTrabajo(ObjUsuario , valores, fuAnexo, ddlEpp);
 
             }
             else
