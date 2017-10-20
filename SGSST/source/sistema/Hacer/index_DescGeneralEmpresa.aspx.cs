@@ -1,7 +1,5 @@
 ﻿using Capa_Datos;
-using Capa_Datos.Manager.PuestoTrabajo;
 using Capa_Datos.Manager.Trabajador;
-using Capa_Datos.Manager.Area;
 using Capa_Datos.Manager.Sucursal;
 using Capa_Datos.Manager.Empresa;
 using System;
@@ -10,6 +8,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
+using Capa_Datos.Manager.CodigoCiiu;
+using Capa_Datos.Manager.PuestoTrabajo;
 
 namespace SGSSTC.source.sistema.Hacer
 {
@@ -71,7 +71,7 @@ namespace SGSSTC.source.sistema.Hacer
                     Textbox5.Text = item.empresa.email;
 
                     List<puesto_trabajo> ListaPuestoTrabajo = new List<puesto_trabajo>();
-                    ListaPuestoTrabajo = Getter.PuestoTrabajo(0, ObjUsuario.Id_empresa, "Administrativa");
+                    ListaPuestoTrabajo = Mgr_PuestoTrabajo.PuestoTrabajo(0, ObjUsuario.Id_empresa, "Administrativa");
 
                     foreach (var item2 in ListaPuestoTrabajo)
                     {
@@ -79,7 +79,7 @@ namespace SGSSTC.source.sistema.Hacer
                         ControlesDinamicos.CrearLiteral("<div class='col-md-6 '><label>" + item2.nombre + "</label></div>", pAreaAdm);
                     }
 
-                    ListaPuestoTrabajo = Getter.PuestoTrabajo(0, ObjUsuario.Id_empresa, "Operativa");
+                    ListaPuestoTrabajo = Mgr_PuestoTrabajo.PuestoTrabajo(0, ObjUsuario.Id_empresa, "Operativa");
                     foreach (var item3 in ListaPuestoTrabajo)
                     {
                         ControlesDinamicos.CrearLiteral("<div class='col-md-6 '><label>" + Mgr_Trabajador.TrabPuesto(Convert.ToInt32(item3.id_puesto_trabajo)) + "</label></div>", pAreaOpe);
@@ -89,7 +89,7 @@ namespace SGSSTC.source.sistema.Hacer
                     ddlNivelClase.SelectedValue = item.empresa.clase_riesgo;
 
                     List<empresa_itemdivision> ListaEmpresaItem = new List<empresa_itemdivision>();
-                    ListaEmpresaItem = Getter.CodigoCiiu_Empresa(ObjUsuario.Id_empresa);
+                    ListaEmpresaItem = Mgr_CodigoCiiu.CodigoCiiu_Empresa(ObjUsuario.Id_empresa);
 
                     int Actividad = 0;
                     string tituloAct = string.Empty;

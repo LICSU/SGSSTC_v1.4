@@ -1,7 +1,5 @@
 ﻿using Capa_Datos;
-using Capa_Datos.Manager.PuestoTrabajo;
 using Capa_Datos.Manager.Trabajador;
-using Capa_Datos.Manager.Area;
 using Capa_Datos.Manager.Sucursal;
 using Capa_Datos.Manager.Empresa;
 using System;
@@ -72,7 +70,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
                 ddlTipoReporteAdd.SelectedValue
             };
 
-            CRUD.AddReporteTrabajadores(IdEmpSuc,  valores, flpArchivo);
+            Mgr_Trabajador.AddReporteTrabajadores(IdEmpSuc,  valores, flpArchivo);
 
             Modal.MostrarAlertaAdd(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error,txtBuscar);
             LlenarGridView();

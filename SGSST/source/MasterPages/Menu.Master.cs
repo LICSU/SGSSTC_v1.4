@@ -1,4 +1,5 @@
 ﻿using Capa_Datos;
+using Capa_Datos.Manager.Usuario;
 using System;
 using System.Collections.Generic;
 using System.Web;
@@ -25,7 +26,7 @@ namespace SGSSTC.source.MasterPages
             ObjUsuario = Model_UsuarioAutenticado.ValidarObjUsuario(_autenticado);
 
             List<usuario> objUsuario = new List<usuario>();
-            objUsuario = Getter.Usuario(ObjUsuario.Id_usuario);
+            objUsuario = Mgr_Usuario.Usuario(ObjUsuario.Id_usuario);
             foreach (var itemUsuario in objUsuario)
             {
                 lbNombreUsuario.Text = itemUsuario.login;

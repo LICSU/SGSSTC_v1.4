@@ -12,6 +12,7 @@ using System.Web.Security;
 using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Capa_Datos.Manager.Acc_Inc;
 
 namespace SGSSTC.source.sistema.Verificar
 {
@@ -92,7 +93,7 @@ namespace SGSSTC.source.sistema.Verificar
 
 			if (ObjUsuario.Error)
 			{
-				int id_at_it_el_pa = GetterMax.Accidentes();
+				int id_at_it_el_pa = Mgr_Acc_Inc.Accidentes();
 
 				#region insertar anexos
 				if (fuAnexo.HasFile)

@@ -1,18 +1,15 @@
 ﻿using Capa_Datos;
-using Capa_Datos.Manager.PuestoTrabajo;
-using Capa_Datos.Manager.Trabajador;
-using Capa_Datos.Manager.Area;
-using Capa_Datos.Manager.Sucursal;
 using Capa_Datos.Manager.Empresa;
 using System;
 using System.Collections.Generic;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
+using Capa_Datos.Manager.Acc_Inc;
 
 namespace SGSSTC.source.sistema.Verificar
 {
-	public partial class Create_InvestigacionAccidente : Page
+    public partial class Create_InvestigacionAccidente : Page
 	{
 		private  Utilidades objUtilidades = new Utilidades();
 		private Model_UsuarioSistema ObjUsuario;
@@ -37,7 +34,7 @@ namespace SGSSTC.source.sistema.Verificar
 			int idAccidente = objUtilidades.descifrarCadena(Request.QueryString["id"]);
 
 			List<at_it_el_pa> ListaAccidente = new List<at_it_el_pa>();
-			ListaAccidente = Getter.Accidente(idAccidente);
+			ListaAccidente = Mgr_Acc_Inc.Accidente(idAccidente);
 
 			foreach (var item in ListaAccidente)
 			{
@@ -62,7 +59,7 @@ namespace SGSSTC.source.sistema.Verificar
 			#region delete investigacion existente
 			investigacion_ac_in tabla = new investigacion_ac_in();
 			List<investigacion_ac_in> consulta = new List<investigacion_ac_in>();
-			consulta = Getter.InvestigacionAccidente(idAccidente);
+			consulta = Mgr_Acc_Inc.InvestigacionAccidente(idAccidente);
 
 			foreach (var item in consulta)
 			{
@@ -173,9 +170,9 @@ namespace SGSSTC.source.sistema.Verificar
 
 		}
 
-        protected void Volver_Click(object sender, EventArgs e)
-        {
+		protected void Volver_Click(object sender, EventArgs e)
+		{
 
-        }
-    }
+		}
+	}
 }

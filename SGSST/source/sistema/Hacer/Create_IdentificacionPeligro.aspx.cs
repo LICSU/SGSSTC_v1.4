@@ -1,7 +1,5 @@
 ﻿using Capa_Datos;
 using Capa_Datos.Manager.PuestoTrabajo;
-using Capa_Datos.Manager.Trabajador;
-using Capa_Datos.Manager.Area;
 using Capa_Datos.Manager.Sucursal;
 using Capa_Datos.Manager.Empresa;
 using System;
@@ -9,6 +7,7 @@ using System.Collections.Generic;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
+using Capa_Datos.Manager.Riesgos;
 
 namespace SGSSTC.source.sistema.Hacer
 {
@@ -52,7 +51,7 @@ namespace SGSSTC.source.sistema.Hacer
 				Mgr_PuestoTrabajo.PuestoTrabajo(ddlPuestos, "Sucursal", ObjUsuario.Id_sucursal);
 			}
 
-			Listas.Riesgos(ddlTipoRiesgo1, "TipoRiesgo");
+			Mgr_Riesgos.Riesgos(ddlTipoRiesgo1, "TipoRiesgo");
 		}
 		#endregion
 
@@ -90,7 +89,7 @@ namespace SGSSTC.source.sistema.Hacer
 				if (puestos[i].Contains("Puesto de Trabajo:"))
 				{
 					ListaPuesto = new List<puesto_trabajo>();
-					ListaPuesto = Getter.PuestoTrabajo_Nom_Suc(puestos[i].Replace("Puesto de Trabajo:", ""), IdSucursal);
+					ListaPuesto = Mgr_PuestoTrabajo.PuestoTrabajo_Nom_Suc(puestos[i].Replace("Puesto de Trabajo:", ""), IdSucursal);
 
 					foreach (var item in ListaPuesto)
 					{
@@ -105,7 +104,7 @@ namespace SGSSTC.source.sistema.Hacer
 				if (factores[i].Contains("Factor de Riesgo:"))
 				{
 					ListaFactorRiesgo = new List<factor_riesgo>();
-					ListaFactorRiesgo = Getter.FactorRiesgo(0, factores[i].Replace("Factor de Riesgo:", ""));
+					ListaFactorRiesgo = Mgr_Riesgos.FactorRiesgo(0, factores[i].Replace("Factor de Riesgo:", ""));
 
 					foreach (var item in ListaFactorRiesgo)
 					{
@@ -199,7 +198,7 @@ namespace SGSSTC.source.sistema.Hacer
 			if (ddlEmpresa.SelectedValue != string.Empty)
 			{
 				Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
-				Listas.Riesgos(ddlTipoRiesgo1, "TipoRiesgo");
+				Mgr_Riesgos.Riesgos(ddlTipoRiesgo1, "TipoRiesgo");
 			}
 		}
 		protected void ddlSucursal_SelectedIndexChanged(object sender, EventArgs e)
@@ -213,11 +212,11 @@ namespace SGSSTC.source.sistema.Hacer
 		{
 			if (BoolEmpSuc.Item1)
 			{
-				Listas.Riesgos(ddlFactorRiesgo1, "FactorRiesgo", ddlTipoRiesgo1.SelectedValue);
+				Mgr_Riesgos.Riesgos(ddlFactorRiesgo1, "FactorRiesgo", ddlTipoRiesgo1.SelectedValue);
 			}
 			else
 			{
-				Listas.Riesgos(ddlFactorRiesgo1, "FactorRiesgo", ddlTipoRiesgo1.SelectedValue);
+				Mgr_Riesgos.Riesgos(ddlFactorRiesgo1, "FactorRiesgo", ddlTipoRiesgo1.SelectedValue);
 			}
 
 		}

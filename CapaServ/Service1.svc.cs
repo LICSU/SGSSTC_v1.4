@@ -4,6 +4,9 @@ using System.Threading;
 using System.Collections.Generic;
 using Capa_Datos.Manager.Empresa;
 using Capa_Datos.Manager.Sucursal;
+using Capa_Datos.Manager.Norma;
+using Capa_Datos.Manager.Medidas;
+using Capa_Datos.Manager.Riesgos;
 
 namespace CapaServ
 {
@@ -45,7 +48,7 @@ namespace CapaServ
                 ""+id_sucursal
             };
 
-            if (CRUD.Add_Riesgos_Sucursal(valores))
+            if (Mgr_Riesgos.Add_Riesgos_Sucursal(valores))
             {
                 return add_NormasSucursal( act1, act2, act3, id_sucursal);
             }
@@ -65,7 +68,7 @@ namespace CapaServ
                 ""+id_sucursal
             };
 
-            if (CRUD.Add_Normas_Sucursal(valores))
+            if (Mgr_Norma.Add_Normas_Sucursal(valores))
             {
                 return add_MedidasSucursal( id_sucursal);
             }
@@ -77,7 +80,7 @@ namespace CapaServ
 
         public Boolean add_MedidasSucursal(string id_sucursal)
         {
-            if (CRUD.Add_Medidas_Sucursal(Convert.ToInt32(id_sucursal)))
+            if (Mgr_Medidas.Add_Medidas_Sucursal(Convert.ToInt32(id_sucursal)))
             {
                 string empresa = "", correo = "";
                 var _sucursal = Mgr_Sucursal.Sucursal(Convert.ToInt32(id_sucursal));

@@ -10,6 +10,7 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Capa_Datos.Manager.Usuario;
 
 namespace SGSSTC.source.sistema.GestionDatos
 {
@@ -55,7 +56,7 @@ namespace SGSSTC.source.sistema.GestionDatos
             int IdEmpresa = Mgr_Empresa.Set_IdEmpresa(ObjUsuario, Convert.ToInt32(ViewState["empresa"]));
             int IdSucursal = Mgr_Sucursal.Set_IdSucursal(ObjUsuario, Convert.ToInt32(ViewState["sucursal"]));
 
-            Tabla.Usuario(GridView1, IdEmpresa, string.Empty + ViewState["rol"], IdSucursal, string.Empty + ViewState["sWhere"],
+            Mgr_Usuario.Usuario(GridView1, IdEmpresa, string.Empty + ViewState["rol"], IdSucursal, string.Empty + ViewState["sWhere"],
                 ObjUsuario.Id_usuario);
         }
         private void CargarListas()
@@ -63,9 +64,9 @@ namespace SGSSTC.source.sistema.GestionDatos
             Mgr_Empresa.Lista_Empresa(ddlEmpresa);
             Mgr_Empresa.Lista_Empresa(ddlEmpresaAdd);
             Mgr_Empresa.Lista_Empresa(ddlEmpresaEdit);
-            Listas.Rol(ddlRol1);
-            Listas.Rol(ddlRolAdd);
-            Listas.Rol(ddlRolEdit);
+            Mgr_Usuario.Rol(ddlRol1);
+            Mgr_Usuario.Rol(ddlRolAdd);
+            Mgr_Usuario.Rol(ddlRolEdit);
 
             if (!BoolEmpSuc.Item1)
             {
@@ -77,9 +78,9 @@ namespace SGSSTC.source.sistema.GestionDatos
             if (!BoolEmpSuc.Item2)
             {
                 IdSucursal = Convert.ToInt32(ObjUsuario.Id_sucursal);
-                Listas.Rol_AdmSucursal(ddlRolAdd);
-                Listas.Rol_AdmSucursal(ddlRolEdit);
-                Listas.Rol(ddlRol1);
+                Capa_Datos.Manager.Usuario.Mgr_Usuario.Rol_AdmSucursal(ddlRolAdd);
+                Capa_Datos.Manager.Usuario.Mgr_Usuario.Rol_AdmSucursal(ddlRolEdit);
+                Capa_Datos.Manager.Usuario.Mgr_Usuario.Rol(ddlRol1);
                 Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabajadorAdd, Convert.ToInt32(ObjUsuario.Id_sucursal));
             }
 
@@ -115,7 +116,7 @@ namespace SGSSTC.source.sistema.GestionDatos
                     id_rol = Convert.ToInt32(ddlRolAdd.SelectedValue)
                 };
 
-                ObjUsuario.Error = CRUD.Add_Fila(nuevo);
+                ObjUsuario.Error = Capa_Datos.CRUD.Add_Fila(nuevo);
                 List<trabajador> trab = Mgr_Trabajador.Trabajador(Convert.ToInt32(IdTrabajador));
                 string destino = string.Empty;
                 string empresa = string.Empty;
@@ -140,7 +141,7 @@ namespace SGSSTC.source.sistema.GestionDatos
 
         protected void EditarRegistro(object sender, EventArgs e)
         {
-            string ResUsuario = Getter.ValidarUsuario(string.Empty + ViewState["txtLogin"], txtClaveActual.Text);
+            string ResUsuario = Mgr_Usuario.ValidarUsuario(string.Empty + ViewState["txtLogin"], txtClaveActual.Text);
 
             if (ResUsuario != string.Empty)
             {
@@ -158,7 +159,7 @@ namespace SGSSTC.source.sistema.GestionDatos
                         Edit.id_trabajador = Convert.ToInt32(ddlTrabajadorEsp.SelectedValue);
                         Edit.id_rol = Convert.ToInt32(ddlRolEdit.SelectedValue);
                     }
-                    ObjUsuario.Error = CRUD.Edit_Fila(contexto);
+                    ObjUsuario.Error = Capa_Datos.CRUD.Edit_Fila(contexto);
 
                 }
                 Modal.CerrarModal("editModal", "EditModalScript", this);
@@ -180,7 +181,7 @@ namespace SGSSTC.source.sistema.GestionDatos
             usuario tabla = new usuario();
             if (ObjUsuario.Id_usuario != Convert.ToInt32(hdfUsuarioIDDel.Value))
             {
-                ObjUsuario.Error = CRUD.Delete_Fila(tabla, Convert.ToInt32(hdfUsuarioIDDel.Value));
+                ObjUsuario.Error = Capa_Datos.CRUD.Delete_Fila(tabla, Convert.ToInt32(hdfUsuarioIDDel.Value));
                 Modal.CerrarModal("deleteModal", "DeleteModalScript", this);
                 Modal.MostrarAlertaDelete(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error, txtBuscar);
                 LlenarGridView();
@@ -219,7 +220,7 @@ namespace SGSSTC.source.sistema.GestionDatos
             if (clave1 == clave2)
             {
                 List<usuario> ListaUsuario = new List<usuario>();
-                ListaUsuario = Getter.Usuario(0, 0, "", usuario, clave1);
+                ListaUsuario = Mgr_Usuario.Usuario(0, 0, "", usuario, clave1);
                 if (ListaUsuario.Count > 0)
                 {
                     Modal.MostrarMsjModal("Usuario y clave ya Existen!", "ERR", this);
@@ -240,7 +241,7 @@ namespace SGSSTC.source.sistema.GestionDatos
                 hdfUsuarioID.Value = Utilidades_GridView.DevolverIdRow(e, GridView1);
 
                 List<usuario> ListaUsuarios = new List<usuario>();
-                ListaUsuarios = Getter.Usuario(Convert.ToInt32(hdfUsuarioID.Value));
+                ListaUsuarios = Mgr_Usuario.Usuario(Convert.ToInt32(hdfUsuarioID.Value));
 
                 foreach (var itemUsuarios in ListaUsuarios)
                 {

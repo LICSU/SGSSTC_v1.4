@@ -1,4 +1,6 @@
 ﻿using Capa_Datos;
+using Capa_Datos.Manager.Medidas;
+using Capa_Datos.Manager.Norma;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +11,7 @@ using System.Web.UI.WebControls;
 
 namespace SGSSTC.source.sistema.Hacer
 {
-    public partial class Update_MedidasMatrizLegal : Page
+	public partial class Update_MedidasMatrizLegal : Page
 	{
 		private  Utilidades objUtilidades = new Utilidades();
 		private Model_UsuarioSistema ObjUsuario;
@@ -35,7 +37,7 @@ namespace SGSSTC.source.sistema.Hacer
 		{
 			//recibo el id de la norma y obtengo el tema especifico
 			List<norma> ListaNormas = new List<norma>();
-			ListaNormas = Getter.Norma(Convert.ToInt32(idNorma));
+			ListaNormas = Mgr_Norma.Norma(Convert.ToInt32(idNorma));
 
 			foreach (var item in ListaNormas)
 			{
@@ -53,7 +55,7 @@ namespace SGSSTC.source.sistema.Hacer
 			listSeg.Items.Clear();
 
 			List<norma_sucursal> ListaNormasSucursal = new List<norma_sucursal>();
-			ListaNormasSucursal = Getter.Normas_Sucursal(Convert.ToInt32(IdSucursal), Convert.ToInt32(idNorma));
+			ListaNormasSucursal = Mgr_Norma.Normas_Sucursal(Convert.ToInt32(IdSucursal), Convert.ToInt32(idNorma));
 
 			foreach (var itemNormasSucursal in ListaNormasSucursal)
 			{
@@ -63,7 +65,7 @@ namespace SGSSTC.source.sistema.Hacer
 				foreach (var item1 in itemNormasSucursal.medida_sucursal)
 				{
 					List<medida_sucursal> ListaMedidasSucursal = new List<medida_sucursal>();
-					ListaMedidasSucursal = Getter.Medidas_Sucursal(item1.id_medidas_sucursal);
+					ListaMedidasSucursal = Mgr_Medidas.Medidas_Sucursal(item1.id_medidas_sucursal);
 
 					foreach (var item2 in ListaMedidasSucursal)
 					{
@@ -112,7 +114,7 @@ namespace SGSSTC.source.sistema.Hacer
 		{
 			bool bAplica = false;
 			List<medida_sucursal> ListaMedidasSucursal = new List<medida_sucursal>();
-			ListaMedidasSucursal = Getter.Medidas_Sucursal(_idMedida);
+			ListaMedidasSucursal = Mgr_Medidas.Medidas_Sucursal(_idMedida);
 
 			foreach (var item in ListaMedidasSucursal)
 			{
@@ -136,7 +138,7 @@ namespace SGSSTC.source.sistema.Hacer
 			bool bAplica = false;
 
 			List<medida_sucursal> ListaMedidasSucursal = new List<medida_sucursal>();
-			ListaMedidasSucursal = Getter.Medidas_Sucursal(_idMedida);
+			ListaMedidasSucursal = Mgr_Medidas.Medidas_Sucursal(_idMedida);
 
 			foreach (var item in ListaMedidasSucursal)
 			{

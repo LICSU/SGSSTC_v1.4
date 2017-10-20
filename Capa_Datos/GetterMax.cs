@@ -15,13 +15,6 @@ namespace Capa_Datos
             //
         }
 
-        public static int Accidentes()
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            var consulta = new Respuesta();
-            int id = contexto.at_it_el_pa.Max(x => x.id_at_it_el_pa);
-            return id;
-        }
         public static int BrigadaEmergencias(int _id_sucursal)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
@@ -36,12 +29,6 @@ namespace Capa_Datos
             return id;
         }
 
-        public static int Roles()
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            var consulta = new rol();
-            return contexto.rol.Max(x => x.id_rol);
-        }
 
         public static int DescripcionSociodemografica()
         {
@@ -55,13 +42,6 @@ namespace Capa_Datos
             GrupoLiEntities contexto = new GrupoLiEntities();
             var consulta = new gestion_laboral();
             int id = contexto.gestion_laboral.Max(x => x.id_ges_lab);
-            return id;
-        }
-        public static int Horario()
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            var consulta = new horario();
-            int id = contexto.horario.Max(x => x.id_horario);
             return id;
         }
         public static int HistoriaClinica()
@@ -130,13 +110,6 @@ namespace Capa_Datos
                     .Max(x => x.id_documento);
             }
 
-            return id;
-        }
-        public static int Usuario()
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            var consulta = new usuario();
-            int id = contexto.usuario.Max(x => x.id_usuario);
             return id;
         }
         public static int IdentificacionPeligro()

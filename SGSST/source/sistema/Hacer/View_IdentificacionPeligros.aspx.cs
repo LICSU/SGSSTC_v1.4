@@ -1,18 +1,15 @@
 ﻿using Capa_Datos;
-using Capa_Datos.Manager.PuestoTrabajo;
-using Capa_Datos.Manager.Trabajador;
-using Capa_Datos.Manager.Area;
-using Capa_Datos.Manager.Sucursal;
 using Capa_Datos.Manager.Empresa;
 using System;
 using System.Collections.Generic;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
+using Capa_Datos.Manager.Riesgos;
 
 namespace SGSSTC.source.sistema.Hacer
 {
-	public partial class View_IdentificacionPeligros : Page
+    public partial class View_IdentificacionPeligros : Page
 	{
 		private Model_UsuarioSistema ObjUsuario;
 		private Tuple<bool, bool> BoolEmpSuc;
@@ -38,7 +35,7 @@ namespace SGSSTC.source.sistema.Hacer
 
 			List<identificacion_peligro> List_IdePel = new List<identificacion_peligro>();
 
-			List_IdePel = Getter.IdentificacionPeligro(id_IdentificacionPeligro);
+			List_IdePel = Mgr_Riesgos.IdentificacionPeligro(id_IdentificacionPeligro);
 
 			foreach (var item_IdePel in List_IdePel)
 			{

@@ -1,4 +1,5 @@
-﻿using Capa_Datos.Manager.PuestoTrabajo;
+﻿using Capa_Datos.Manager.Horario;
+using Capa_Datos.Manager.PuestoTrabajo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -90,13 +91,30 @@ namespace Capa_Datos.Manager.Trabajador
                 id_puesto_trabajo = Mgr_PuestoTrabajo.PuestoTrabajo(),
                 es_discapacitado = "No",
                 desc_discapacidad = "---",
-                id_horario = GetterMax.Horario(),
+                id_horario = Mgr_Horario.Horario(),
                 id_estatus_actual = 1,
                 fecha_ingreso = DateTime.Now
             };
             return CRUD.Add_Fila(nuevo);
         }
 
+        public static bool AddReporteTrabajadores(Tuple<int, int> IdEmpSuc, String[] valores, FileUpload flpArchivo)
+        {
+            int IdEmpresa = IdEmpSuc.Item1;
+            int IdSucursal = IdEmpSuc.Item2;
+
+            string ruta = Utilidades.GuardarArchivo(flpArchivo, IdEmpresa + valores[0], Paginas.Archivos_ReporteTrabajadores.Value);
+
+            documento nuevo = new documento()
+            {
+                nombre = valores[0],
+                fecha_subida = DateTime.Today.Date,
+                id_tabla = IdSucursal,
+                tipo = valores[1],
+                ruta = ruta
+            };
+            return CRUD.Add_Fila(nuevo);
+        }
 
         //-----------------------getter
         public static List<trabajador> Trabajador(int _id_trabajador = 0,int _id_empresa = 0,int _id_sucursal = 0,int _id_puesto_trabajo = 0)

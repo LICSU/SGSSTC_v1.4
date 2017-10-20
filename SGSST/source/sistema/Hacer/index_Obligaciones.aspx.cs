@@ -1,7 +1,4 @@
 ﻿using Capa_Datos;
-using Capa_Datos.Manager.PuestoTrabajo;
-using Capa_Datos.Manager.Trabajador;
-using Capa_Datos.Manager.Area;
 using Capa_Datos.Manager.Sucursal;
 using Capa_Datos.Manager.Empresa;
 using System;
@@ -11,10 +8,12 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Capa_Datos.Manager.Usuario;
+using Capa_Datos.Manager.Categoria;
 
 namespace SGSSTC.source.sistema.Hacer
 {
-	public partial class index_Obligaciones : Page
+    public partial class index_Obligaciones : Page
 	{
 		private Model_UsuarioSistema ObjUsuario;
 		private Tuple<bool, bool> BoolEmpSuc;
@@ -56,17 +55,17 @@ namespace SGSSTC.source.sistema.Hacer
 			else
 			{
 				Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
-				Listas.Usuario_Empresa(ddlResponsable, ObjUsuario.Id_empresa);
-				Listas.Usuario_Empresa(ddlResponsableEdit, ObjUsuario.Id_empresa);
+				Mgr_Usuario.Usuario_Empresa(ddlResponsable, ObjUsuario.Id_empresa);
+				Mgr_Usuario.Usuario_Empresa(ddlResponsableEdit, ObjUsuario.Id_empresa);
 
-				Listas.Categorias(ddlCategoria, ObjUsuario.Id_empresa);
-				Listas.Categorias(ddlCategoriaEdit, ObjUsuario.Id_empresa);
+				Mgr_Categoria.Categorias(ddlCategoria, ObjUsuario.Id_empresa);
+				Mgr_Categoria.Categorias(ddlCategoriaEdit, ObjUsuario.Id_empresa);
 			}
 
 			if (!BoolEmpSuc.Item2)
 			{
-				Listas.Usuario_Sucursal(ddlResponsable, ObjUsuario.Id_sucursal);
-				Listas.Usuario_Sucursal(ddlResponsableEdit, ObjUsuario.Id_sucursal);
+				Mgr_Usuario.Usuario_Sucursal(ddlResponsable, ObjUsuario.Id_sucursal);
+				Mgr_Usuario.Usuario_Sucursal(ddlResponsableEdit, ObjUsuario.Id_sucursal);
 			}
 
 			Listas.Frecuencia(ddlFrecuenciaEdit);
@@ -147,10 +146,10 @@ namespace SGSSTC.source.sistema.Hacer
 					DateTime fechaEva = Convert.ToDateTime(Convert.ToString(item.fecha_creacion));
 					txtFechaEdit.Text = fechaEva.ToString("yyyy-MM-dd");
 
-					Listas.Usuario_Sucursal(ddlResponsableEdit, Convert.ToInt32(item.usuario.trabajador.puesto_trabajo.area.id_sucursal));
+					Mgr_Usuario.Usuario_Sucursal(ddlResponsableEdit, Convert.ToInt32(item.usuario.trabajador.puesto_trabajo.area.id_sucursal));
 					ddlResponsableEdit.SelectedValue = Convert.ToString(item.id_responsable);
 
-					Listas.Categorias(ddlCategoriaEdit, Convert.ToInt32(item.usuario.trabajador.puesto_trabajo.area.sucursal.id_empresa));
+					Mgr_Categoria.Categorias(ddlCategoriaEdit, Convert.ToInt32(item.usuario.trabajador.puesto_trabajo.area.sucursal.id_empresa));
 					ddlCategoriaEdit.SelectedValue = Convert.ToString(item.id_categorias);
 
 					ddlPrioridadEdit.SelectedValue = item.prioridad;
@@ -192,7 +191,7 @@ namespace SGSSTC.source.sistema.Hacer
 
 					txtViewResp.Text = Convert.ToString(item.usuario.login);
 
-					Listas.Categorias(ddlCategoriaEdit, Convert.ToInt32(item.usuario.trabajador.puesto_trabajo.area.sucursal.id_empresa));
+					Mgr_Categoria.Categorias(ddlCategoriaEdit, Convert.ToInt32(item.usuario.trabajador.puesto_trabajo.area.sucursal.id_empresa));
 					ddlCategoriaEdit.SelectedValue = Convert.ToString(item.id_categorias);
 					txtViewCategoria.Text = ddlCategoriaEdit.SelectedItem.ToString();
 
@@ -234,10 +233,10 @@ namespace SGSSTC.source.sistema.Hacer
 				ViewState["empresa"] = ddlEmpresa.SelectedValue;
 				Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
 
-				Listas.Usuario_Empresa(ddlResponsable, Convert.ToInt32(ddlEmpresa.SelectedValue));
-				Listas.Usuario_Empresa(ddlResponsableEdit, Convert.ToInt32(ddlEmpresa.SelectedValue));
-				Listas.Categorias(ddlCategoria, Convert.ToInt32(ddlEmpresa.SelectedValue));
-				Listas.Categorias(ddlCategoriaEdit, Convert.ToInt32(ddlEmpresa.SelectedValue));
+				Mgr_Usuario.Usuario_Empresa(ddlResponsable, Convert.ToInt32(ddlEmpresa.SelectedValue));
+				Mgr_Usuario.Usuario_Empresa(ddlResponsableEdit, Convert.ToInt32(ddlEmpresa.SelectedValue));
+				Mgr_Categoria.Categorias(ddlCategoria, Convert.ToInt32(ddlEmpresa.SelectedValue));
+				Mgr_Categoria.Categorias(ddlCategoriaEdit, Convert.ToInt32(ddlEmpresa.SelectedValue));
 			}
 			else
 			{
@@ -250,8 +249,8 @@ namespace SGSSTC.source.sistema.Hacer
 			if (ddlSucursal.SelectedValue != string.Empty)
 			{
 				ViewState["sucursal"] = ddlSucursal.SelectedValue;
-				Listas.Usuario_Sucursal(ddlResponsable, Convert.ToInt32(ddlSucursal.SelectedValue));
-				Listas.Usuario_Sucursal(ddlResponsableEdit, Convert.ToInt32(ddlSucursal.SelectedValue));
+				Mgr_Usuario.Usuario_Sucursal(ddlResponsable, Convert.ToInt32(ddlSucursal.SelectedValue));
+				Mgr_Usuario.Usuario_Sucursal(ddlResponsableEdit, Convert.ToInt32(ddlSucursal.SelectedValue));
 			}
 			else
 			{

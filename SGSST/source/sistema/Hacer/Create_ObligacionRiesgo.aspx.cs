@@ -1,14 +1,12 @@
 ﻿using Capa_Datos;
-using Capa_Datos.Manager.PuestoTrabajo;
-using Capa_Datos.Manager.Trabajador;
-using Capa_Datos.Manager.Area;
 using Capa_Datos.Manager.Sucursal;
-using Capa_Datos.Manager.Empresa;
 using System;
 using System.Collections.Generic;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
+using Capa_Datos.Manager.Categoria;
+using Capa_Datos.Manager.Riesgos;
 
 namespace SGSSTC.source.sistema.Hacer
 {
@@ -52,7 +50,7 @@ namespace SGSSTC.source.sistema.Hacer
         private void CargarDatos()
         {
             List<identificacion_peligro> ListaRiesgos = new List<identificacion_peligro>();
-            ListaRiesgos = Getter.IdentificacionPeligro(Convert.ToInt32(idRiesgo));
+            ListaRiesgos = Mgr_Riesgos.IdentificacionPeligro(Convert.ToInt32(idRiesgo));
 
             foreach (var itemRiesgos in ListaRiesgos)
             {
@@ -80,8 +78,8 @@ namespace SGSSTC.source.sistema.Hacer
         private void CargarListas()
         {
             Listas.Frecuencia(ddlFrecuencia);
-            Listas.Categorias(ddlCategoria, IdEmpresa);
-            Listas.Usuario_Sucursal(ddlResponsable, Convert.ToInt32(IdSucursal));
+            Mgr_Categoria.Categorias(ddlCategoria, IdEmpresa);
+            Capa_Datos.Manager.Usuario.Mgr_Usuario.Usuario_Sucursal(ddlResponsable, Convert.ToInt32(IdSucursal));
             Listas.Actividades_Sucursal(ddlActividad, Convert.ToInt32(IdSucursal), DateTime.Now.Year);
         }
 
@@ -104,7 +102,7 @@ namespace SGSSTC.source.sistema.Hacer
                 id_actividad = Convert.ToInt32(ddlActividad.SelectedValue)
             };
 
-            ObjUsuario.Error = CRUD.Add_Fila(nuevo);
+            ObjUsuario.Error = Capa_Datos.CRUD.Add_Fila(nuevo);
 
             Modal.MostrarAlertaAdd(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error, txtFechaFin);
 
@@ -121,7 +119,7 @@ namespace SGSSTC.source.sistema.Hacer
                     id_usuario = IdUsuario
                 };
 
-                ObjUsuario.Error = CRUD.Add_Fila(nuevoalarma);
+                ObjUsuario.Error = Capa_Datos.CRUD.Add_Fila(nuevoalarma);
             }
         }
 

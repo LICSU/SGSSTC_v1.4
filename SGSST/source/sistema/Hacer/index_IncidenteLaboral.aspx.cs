@@ -1,6 +1,4 @@
 ﻿using Capa_Datos;
-using Capa_Datos.Manager.PuestoTrabajo;
-using Capa_Datos.Manager.Trabajador;
 using Capa_Datos.Manager.Area;
 using Capa_Datos.Manager.Sucursal;
 using Capa_Datos.Manager.Empresa;
@@ -10,6 +8,7 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Capa_Datos.Manager.Acc_Inc;
 
 namespace SGSSTC.source.sistema.Verificar
 {
@@ -68,7 +67,7 @@ namespace SGSSTC.source.sistema.Verificar
             int IdEmpresa = Mgr_Empresa.Set_IdEmpresa(ObjUsuario, Convert.ToInt32(ViewState["empresa"]));
             int IdSucursal = Mgr_Sucursal.Set_IdSucursal(ObjUsuario, Convert.ToInt32(ViewState["sucursal"]));
 
-            Tabla.Incidente_General(
+            Mgr_Acc_Inc.Incidente_General(
                 GridView1,
                 IdEmpresa,
                 IdSucursal,

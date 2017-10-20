@@ -15,6 +15,7 @@ using System.Web.Services;
 using System.Web.Script.Services;
 using System.IO;
 using System.Linq;
+using Capa_Datos.Manager.Usuario;
 
 namespace Capa_Datos
 {
@@ -140,7 +141,7 @@ namespace Capa_Datos
         {
             Model_UsuarioSistema ObjUsuario = null;
 
-            if (Getter.ExisteUsuario(UsuarioActual))
+            if (Mgr_Usuario.ExisteUsuario(UsuarioActual))
             {
                 ObjUsuario = Model_UsuarioAutenticado.ValidarObjUsuario(new Model_UsuarioAutenticado(UsuarioActual));
             }

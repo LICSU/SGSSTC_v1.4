@@ -1,5 +1,4 @@
 ﻿using Capa_Datos;
-using Capa_Datos.Manager.PuestoTrabajo;
 using Capa_Datos.Manager.Trabajador;
 using Capa_Datos.Manager.Area;
 using Capa_Datos.Manager.Sucursal;
@@ -10,6 +9,7 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Capa_Datos.Manager.Indicadores;
 
 namespace SGSSTC.source.sistema.EvaluacionInicial
 {
@@ -91,7 +91,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
                 "Indicadores"
             };
 
-            ObjUsuario.Error = CRUD.AddIndicadores(IdEmpSuc,  valores, flpArchivo);
+            ObjUsuario.Error = Mgr_Indicadores.AddIndicadores(IdEmpSuc,  valores, flpArchivo);
 
             Modal.CerrarModal("printModal", "printModalScript", this);
             TextBox txtBuscar = new TextBox();

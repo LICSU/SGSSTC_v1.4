@@ -1,5 +1,7 @@
-﻿using Capa_Datos.Manager.Empresa;
+﻿using Capa_Datos.Manager.Acc_Inc;
+using Capa_Datos.Manager.Empresa;
 using Capa_Datos.Manager.PuestoTrabajo;
+using Capa_Datos.Manager.Riesgos;
 using Capa_Datos.Manager.Sucursal;
 using Capa_Datos.Manager.Trabajador;
 using iTextSharp.text;
@@ -2973,12 +2975,12 @@ namespace Capa_Datos
         {
             #region cuerpo
             List<investigacion_ac_in> ListaInvestigacionAccidente = new List<investigacion_ac_in>();
-            ListaInvestigacionAccidente = Getter.InvestigacionAccidente(Convert.ToInt32(valores[0]));
+            ListaInvestigacionAccidente = Mgr_Acc_Inc.InvestigacionAccidente(Convert.ToInt32(valores[0]));
 
             foreach (var itemInvestigacionAccidente in ListaInvestigacionAccidente)
             {
                 List<at_it_el_pa> ListaAccidente = new List<at_it_el_pa>();
-                ListaAccidente = Getter.Accidente(Convert.ToInt32(itemInvestigacionAccidente.id_at_it_el_pa));
+                ListaAccidente = Mgr_Acc_Inc.Accidente(Convert.ToInt32(itemInvestigacionAccidente.id_at_it_el_pa));
 
                 foreach (var itemAccidente in ListaAccidente)
                 {
@@ -3356,7 +3358,7 @@ namespace Capa_Datos
         public static void PrintAccidenteLaboral(String[] valores, Page _page)
         {
             List<at_it_el_pa> ListAccidentes = new List<at_it_el_pa>();
-            ListAccidentes = Getter.Accidente(Convert.ToInt32(valores[0]));
+            ListAccidentes = Mgr_Acc_Inc.Accidente(Convert.ToInt32(valores[0]));
 
             #region contenido
             foreach (var item in ListAccidentes)
@@ -3819,7 +3821,7 @@ namespace Capa_Datos
 
             #region contenido
             List<evaluacion_riesgo> Lista_EvaRiesgo = new List<evaluacion_riesgo>();
-            Lista_EvaRiesgo = Getter.EvaluacionRiesgo(Convert.ToInt32(valores[1]));
+            Lista_EvaRiesgo = Mgr_Riesgos.EvaluacionRiesgo(Convert.ToInt32(valores[1]));
 
             foreach (var itemEvaRiesgo in Lista_EvaRiesgo)
             {
@@ -4976,7 +4978,7 @@ namespace Capa_Datos
                                         "PlanTrabajo(Vista General)_", "PLAN DE TRABAJO ANUAL", _page);
             #region contenido
             List<plan_trabajo> ListaPlanTrabajo = new List<plan_trabajo>();
-            ListaPlanTrabajo = Mgr_PuestoTrabajo.Plan_Trabajo(Convert.ToInt32(valores[0]), Convert.ToInt32(valores[1]));
+            ListaPlanTrabajo = Getter.Plan_Trabajo(Convert.ToInt32(valores[0]), Convert.ToInt32(valores[1]));
             int contActividad = 0;
 
             miCelda12.Texto = "ACTIVIDADES";
@@ -5024,7 +5026,7 @@ namespace Capa_Datos
                                         "PlanTrabajo(Vista Especifico)_", "PLAN DE TRABAJO ANUAL", _page);
             #region contenido
             List<plan_trabajo> ListaPlanTrabajo = new List<plan_trabajo>();
-            ListaPlanTrabajo = Mgr_PuestoTrabajo.Plan_Trabajo(Convert.ToInt32(valores[0]), Convert.ToInt32(valores[1]));
+            ListaPlanTrabajo = Getter.Plan_Trabajo(Convert.ToInt32(valores[0]), Convert.ToInt32(valores[1]));
             int contActividad = 0;
 
             foreach (var item in ListaPlanTrabajo)
@@ -6534,7 +6536,7 @@ namespace Capa_Datos
             Tuple<Document, PdfPTable> DocumentoPDF = ManageFiles.PdfParte1(Convert.ToInt32(valores[0]),
                                         "IdentificacionPeligro_", "IDENTIFICACIÓN DE PELIGRO", _page);
 
-            List<identificacion_peligro> listta = Getter.IdentificacionPeligro(Convert.ToInt32(valores[1]));
+            List<identificacion_peligro> listta = Mgr_Riesgos.IdentificacionPeligro(Convert.ToInt32(valores[1]));
             #region contenido
             foreach (var item in listta)
             {
@@ -6771,7 +6773,7 @@ namespace Capa_Datos
         {
             #region contenido 
             List<at_it_el_pa> ListAccidentes = new List<at_it_el_pa>();
-            ListAccidentes = Getter.Accidente(Convert.ToInt32(valores[0]));
+            ListAccidentes = Mgr_Acc_Inc.Accidente(Convert.ToInt32(valores[0]));
 
             foreach (var item in ListAccidentes)
             {
@@ -6971,7 +6973,7 @@ namespace Capa_Datos
             DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, miCelda12));
 
             List<identificacion_peligro> List_IdePel = new List<identificacion_peligro>();
-            List_IdePel = Getter.IdentificacionPeligro(Convert.ToInt32(valores[1]));
+            List_IdePel = Mgr_Riesgos.IdentificacionPeligro(Convert.ToInt32(valores[1]));
 
             foreach (var item_IdePel in List_IdePel)
             {

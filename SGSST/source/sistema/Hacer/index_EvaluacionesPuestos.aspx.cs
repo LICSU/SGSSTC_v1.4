@@ -1,18 +1,15 @@
 ﻿using Capa_Datos;
-using Capa_Datos.Manager.PuestoTrabajo;
-using Capa_Datos.Manager.Trabajador;
-using Capa_Datos.Manager.Area;
-using Capa_Datos.Manager.Sucursal;
 using Capa_Datos.Manager.Empresa;
 using System;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Capa_Datos.Manager.Riesgos;
 
 namespace SGSSTC.source.sistema.Hacer
 {
-	public partial class index_EvaluacionesPuestos : Page
+    public partial class index_EvaluacionesPuestos : Page
 	{
 		private Utilidades objUtilidades = new Utilidades();
 		private Model_UsuarioSistema ObjUsuario;
@@ -38,7 +35,7 @@ namespace SGSSTC.source.sistema.Hacer
 		{
 			int id_Puesto = objUtilidades.descifrarCadena(Request.QueryString["id"]);
 
-			Tabla.EvaluacionPuesto(GridView1, id_Puesto, string.Empty + ViewState["sWhere"]);
+			Mgr_Riesgos.EvaluacionPuesto(GridView1, id_Puesto, string.Empty + ViewState["sWhere"]);
 		}
 		#endregion
 

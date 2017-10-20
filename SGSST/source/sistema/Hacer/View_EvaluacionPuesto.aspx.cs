@@ -1,14 +1,11 @@
 ﻿using Capa_Datos;
-using Capa_Datos.Manager.PuestoTrabajo;
-using Capa_Datos.Manager.Trabajador;
-using Capa_Datos.Manager.Area;
-using Capa_Datos.Manager.Sucursal;
 using Capa_Datos.Manager.Empresa;
 using System;
 using System.Collections.Generic;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
+using Capa_Datos.Manager.Riesgos;
 
 namespace SGSSTC.source.sistema.Hacer
 {
@@ -36,7 +33,7 @@ namespace SGSSTC.source.sistema.Hacer
         {
             int id_EvaRiesgo = objUtilidades.descifrarCadena(Request.QueryString["id"]);
             List<evaluacion_riesgo> Lista_EvaRiesgo = new List<evaluacion_riesgo>();
-            Lista_EvaRiesgo = Getter.EvaluacionRiesgo(id_EvaRiesgo);
+            Lista_EvaRiesgo = Mgr_Riesgos.EvaluacionRiesgo(id_EvaRiesgo);
 
             foreach (var itemEvaRiesgo in Lista_EvaRiesgo)
             {

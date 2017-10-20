@@ -1,4 +1,5 @@
-﻿using Capa_Datos.Manager.Empresa;
+﻿using Capa_Datos.Manager.Acc_Inc;
+using Capa_Datos.Manager.Empresa;
 using Capa_Datos.Manager.Trabajador;
 using System;
 using System.Collections.Generic;
@@ -1369,7 +1370,7 @@ namespace Capa_Datos
                 DateTime fechaInicio = new DateTime(anhoActual, (i + 1), 01);
                 DateTime fechaFin = fechaInicio.AddMonths(1).AddDays(-1);
                 List<at_it_el_pa> ListaAccidentes = new List<at_it_el_pa>();
-                ListaAccidentes = Getter.Accidente_Empresa_Reportes(IdEmpresa, fechaInicio, fechaFin);
+                ListaAccidentes = Mgr_Acc_Inc.Accidente_Empresa_Reportes(IdEmpresa, fechaInicio, fechaFin);
 
                 foreach (var itemListaAccidentes in ListaAccidentes)
                 {
@@ -1575,7 +1576,7 @@ namespace Capa_Datos
                 DateTime fechaInicio = new DateTime(anhoActual, (i + 1), 01);
                 DateTime fechaFin = fechaInicio.AddMonths(1).AddDays(-1);
                 List<at_it_el_pa> ListaAccidentes = new List<at_it_el_pa>();
-                ListaAccidentes = Getter.Accidente_Empresa_Reportes(IdEmpresa, fechaInicio, fechaFin);
+                ListaAccidentes = Mgr_Acc_Inc.Accidente_Empresa_Reportes(IdEmpresa, fechaInicio, fechaFin);
 
                 foreach (var itemListaAccidentes in ListaAccidentes)
                 {
@@ -1941,7 +1942,7 @@ namespace Capa_Datos
                 DateTime fechaInicio = new DateTime(anhoActual, (y + 1), 01);
                 DateTime fechaFin = fechaInicio.AddMonths(1).AddDays(-1);
                 List<at_it_el_pa> ListaAccidentes = new List<at_it_el_pa>();
-                ListaAccidentes = Getter.Accidente_Empresa_Reportes(IdEmpresa, fechaInicio, fechaFin);
+                ListaAccidentes = Mgr_Acc_Inc.Accidente_Empresa_Reportes(IdEmpresa, fechaInicio, fechaFin);
 
                 foreach (var itemListaAccidentes in ListaAccidentes)
                 {
@@ -2255,7 +2256,7 @@ namespace Capa_Datos
                     DateTime fechaInicio = new DateTime(i, (y + 1), 01);
                     DateTime fechaFin = fechaInicio.AddMonths(1).AddDays(-1);
                     List<at_it_el_pa> ListaAccidentes = new List<at_it_el_pa>();
-                    ListaAccidentes = Getter.Accidente_Empresa_Reportes(IdEmpresa, fechaInicio, fechaFin);
+                    ListaAccidentes = Mgr_Acc_Inc.Accidente_Empresa_Reportes(IdEmpresa, fechaInicio, fechaFin);
 
                     foreach (var itemListaAccidentes in ListaAccidentes)
                     {

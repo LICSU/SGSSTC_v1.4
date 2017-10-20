@@ -1,4 +1,5 @@
 ﻿using Capa_Datos;
+using Capa_Datos.Manager.Usuario;
 using System;
 using System.Collections.Generic;
 
@@ -14,7 +15,7 @@ namespace SGSSTC
         {
             Utilidades objUtilidades = new Utilidades();
             List<usuario> objUsuario = new List<usuario>();
-            objUsuario = Getter.Usuario(0, 0, emailUsuario);
+            objUsuario = Mgr_Usuario.Usuario(0, 0, emailUsuario);
 
             foreach (var itemUsuario in objUsuario)
             {

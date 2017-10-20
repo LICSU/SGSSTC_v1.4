@@ -74,21 +74,6 @@ namespace Capa_Datos.Manager.PuestoTrabajo
         }
 
         //------------GETTER
-        public static List<plan_trabajo> Plan_Trabajo(int _id_sucursal = 0, int _anho = 0, int id_plan = 0)
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            List<plan_trabajo> consulta = new List<plan_trabajo>();
-
-            if (id_plan != 0) { consulta = contexto.plan_trabajo.Where(x => x.id_plan_trabajo == id_plan).ToList(); }
-            else if (_id_sucursal != 0 && _anho != 0)
-            {
-                consulta = contexto.plan_trabajo.Where(x =>
-                x.usuario.trabajador.puesto_trabajo.area.id_sucursal == _id_sucursal &&
-                x.anho == _anho).OrderBy(x => x.semana_ini).ToList();
-            }
-
-            return consulta;
-        }
         public static List<puesto_trabajo_epp> PuestoEpp(int id_puesto)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
@@ -136,7 +121,34 @@ namespace Capa_Datos.Manager.PuestoTrabajo
             int id = contexto.puesto_trabajo.Max(x => x.id_puesto_trabajo);
             return id;
         }
+        public static List<puesto_trabajo> PuestoTrabajo(int _id_puesto = 0, int _id_empresa = 0, string tipoArea = "")
+        {
+            GrupoLiEntities contexto = new GrupoLiEntities();
+            List<puesto_trabajo> consulta = new List<puesto_trabajo>();
 
+            if (_id_empresa != 0 && tipoArea != "")
+            {
+                consulta = contexto.puesto_trabajo.Where(x => x.area.tipo == tipoArea &&
+                x.area.sucursal.id_empresa == _id_empresa).ToList();
+            }
+            else if (_id_puesto != 0)
+            {
+                consulta = contexto.puesto_trabajo.Where(x => x.id_puesto_trabajo == _id_puesto).ToList();
+            }
+
+            return consulta;
+        }
+        public static List<puesto_trabajo> PuestoTrabajo_Nom_Suc(string _nombre, int _sucursal)
+        {
+            GrupoLiEntities contexto = new GrupoLiEntities();
+            List<puesto_trabajo> consulta = new List<puesto_trabajo>();
+
+            consulta = contexto.puesto_trabajo.Where(
+                x => x.nombre.ToUpper().Equals(_nombre.ToUpper()) &&
+                x.area.id_sucursal == _sucursal).ToList();
+
+            return consulta;
+        }
         //-----------DropddownList
         public static void PuestoTrabajo(DropDownList DropDownList1, string filtro, int _id = 0, string valor = "")
         {

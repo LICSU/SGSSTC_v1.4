@@ -15,25 +15,6 @@ namespace Capa_Datos
             //
         }
 
-        public static int AccidentesLaboral(int _anho, int _id_empresa = 0, int _id_sucursal = 0)
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            var query = (
-                from TE in contexto.at_it_el_pa
-                where TE.fecha_accidente.Value.Year == _anho
-                select new
-                {
-                    TE.id_trabajador,
-                    TE.trabajador.puesto_trabajo.area.sucursal.id_sucursal,
-                    TE.trabajador.puesto_trabajo.area.sucursal.empresa.id_empresa
-                }
-            ).ToList();
-
-            if (_id_empresa > 0) { query = query.Where(x => x.id_empresa == _id_empresa).ToList(); }
-            if (_id_sucursal > 0) { query = query.Where(x => x.id_sucursal == _id_sucursal).ToList(); }
-
-            return query.Count();
-        }
         public static int Constancias(int _anho, int id_empresa = 0, int id_sucursal = 0)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
@@ -161,20 +142,6 @@ namespace Capa_Datos
                          select GL).Count();
             return query;
         }
-        public static int UsuarioTrabajador(int _id_usuario)
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            var query = (
-                    from e in contexto.usuario
-                    where (e.id_usuario == _id_usuario)
-                    select new
-                    {
-                        e.id_trabajador
-                    }
-                ).ToList();
-
-            return Convert.ToInt32(query.ElementAt(0).id_trabajador);
-        }
         public static int Reposos(int _anho, int id_empresa = 0, int id_sucursal = 0)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
@@ -212,23 +179,6 @@ namespace Capa_Datos
 
             if (id_empresa > 0) { query = query.Where(x => x.id_empresa == id_empresa).ToList(); }
             if (id_sucursal > 0) { query = query.Where(x => x.id_sucursal == Convert.ToInt32(id_sucursal)).ToList(); }
-
-            return query.Count();
-        }
-        public static int Inspecciones(int _id_empresa)
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            var query = (
-                from IN in contexto.documento
-                where IN.sucursal.id_empresa== _id_empresa &&
-                (IN.tipo == "Insp_Ext" || IN.tipo == "Insp_Areas" || IN.tipo == "Insp_MedEsc" || IN.tipo == "Insp_PuesOpe" || 
-                IN.tipo == "Insp_PuesAdmin" || IN.tipo == "Insp_Epp" || IN.tipo == "Insp_UsoEpp" || IN.tipo == "Insp_PrimAux" || 
-                IN.tipo == "Insp_CronInsp")
-                select new
-                {
-                    IN.tipo
-                }
-            ).ToList();
 
             return query.Count();
         }

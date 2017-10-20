@@ -1,10 +1,7 @@
 ﻿using Capa_Datos;
-using Capa_Datos.Manager.Trabajador;
-using Capa_Datos.Manager.Area;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Services;
 
 namespace SGSST.Services

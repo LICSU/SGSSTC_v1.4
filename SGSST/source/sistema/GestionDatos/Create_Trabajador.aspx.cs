@@ -1,12 +1,13 @@
 ﻿using Capa_Datos;
 using Capa_Datos.Manager.PuestoTrabajo;
 using Capa_Datos.Manager.Trabajador;
-using Capa_Datos.Manager.Area;
 using Capa_Datos.Manager.Sucursal;
 using Capa_Datos.Manager.Empresa;
 using System;
 using System.Web;
 using System.Web.Security;
+using Capa_Datos.Manager.Estatus;
+using Capa_Datos.Manager.Horario;
 
 namespace SGSSTC.source.sistema.GestionDatos
 {
@@ -40,15 +41,15 @@ namespace SGSSTC.source.sistema.GestionDatos
             {
                 Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
                 Mgr_PuestoTrabajo.PuestoTrabajo(ddlPuestoTrabajo, "Empresa", ObjUsuario.Id_empresa);
-                Listas.Estatus_Empresa(ddlEstatus, ObjUsuario.Id_empresa);
-                Listas.Horario_Empresa(ddlHorario, ObjUsuario.Id_empresa);
+                Mgr_Estatus.Estatus_Empresa(ddlEstatus, ObjUsuario.Id_empresa);
+                Mgr_Horario.Horario_Empresa(ddlHorario, ObjUsuario.Id_empresa);
             }
 
             if (!BoolEmpSuc.Item2)
             {
                 Mgr_PuestoTrabajo.PuestoTrabajo(ddlPuestoTrabajo, "Sucursal", ObjUsuario.Id_sucursal);
-                Listas.Estatus_Empresa(ddlEstatus, ObjUsuario.Id_empresa);
-                Listas.Horario_Empresa(ddlHorario, ObjUsuario.Id_empresa);
+                Mgr_Estatus.Estatus_Empresa(ddlEstatus, ObjUsuario.Id_empresa);
+                Mgr_Horario.Horario_Empresa(ddlHorario, ObjUsuario.Id_empresa);
             }
 
             Listas.Reg_Dpto_Mcpio(ddlRegion, "Region");
@@ -123,8 +124,8 @@ namespace SGSSTC.source.sistema.GestionDatos
             if (ddlEmpresas.SelectedValue != string.Empty)
             {
                 Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresas.SelectedValue));
-                Listas.Horario_Empresa(ddlHorario, Convert.ToInt32(ddlEmpresas.SelectedValue));
-                Listas.Estatus_Empresa(ddlEstatus, Convert.ToInt32(ddlEmpresas.SelectedValue));
+                Mgr_Horario.Horario_Empresa(ddlHorario, Convert.ToInt32(ddlEmpresas.SelectedValue));
+                Mgr_Estatus.Estatus_Empresa(ddlEstatus, Convert.ToInt32(ddlEmpresas.SelectedValue));
             }
 
         }

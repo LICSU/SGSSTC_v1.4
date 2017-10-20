@@ -1,7 +1,4 @@
 ﻿using Capa_Datos;
-using Capa_Datos.Manager.PuestoTrabajo;
-using Capa_Datos.Manager.Trabajador;
-using Capa_Datos.Manager.Area;
 using Capa_Datos.Manager.Sucursal;
 using Capa_Datos.Manager.Empresa;
 using System;
@@ -9,6 +6,7 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Capa_Datos.Manager.AutoEvaluacion;
 
 namespace SGSSTC.source.sistema.EvaluacionInicial
 {
@@ -60,7 +58,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
             int IdEmpresa = Mgr_Empresa.Set_IdEmpresa(ObjUsuario, Convert.ToInt32(ViewState["empresa"]));
             int IdSucursal = Mgr_Sucursal.Set_IdSucursal(ObjUsuario, Convert.ToInt32(ViewState["sucursal"]));
 
-            Tabla.autoevaluacion(GridView1, IdSucursal, IdEmpresa, ViewState["sWhere"].ToString());
+            Mgr_Autoevaluacion.autoevaluacion(GridView1, IdSucursal, IdEmpresa, ViewState["sWhere"].ToString());
         }
         #endregion
 
@@ -82,7 +80,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
                 txtNombre.Text
             };
 
-            ObjUsuario.Error = CRUD.AddAutoEvaluacion(IdEmpSuc, valores, flpArchivo);
+            ObjUsuario.Error = Mgr_Autoevaluacion.AddAutoEvaluacion(IdEmpSuc, valores, flpArchivo);
 
             Modal.MostrarAlertaAdd(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error,txtBuscar);
 
@@ -91,7 +89,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
 
         protected void EliminarRegistro(object sender, EventArgs e)
         {
-            Boolean Operacion = CRUD.DeleteAutoEvaluacion(hdfIDDel.Value, ObjUsuario);
+            Boolean Operacion = Mgr_Autoevaluacion.DeleteAutoEvaluacion(hdfIDDel.Value, ObjUsuario);
 
             Modal.CerrarModal("deleteModal", "DeleteModalScript", this);
             Modal.MostrarAlertaDelete(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error, txtBuscar);

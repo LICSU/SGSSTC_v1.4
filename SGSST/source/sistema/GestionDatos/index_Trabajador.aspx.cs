@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Capa_Datos.Manager.Estatus;
 
 namespace SGSSTC.source.sistema.GestionDatos
 {
@@ -57,13 +58,13 @@ namespace SGSSTC.source.sistema.GestionDatos
             {
                 Mgr_Sucursal.Sucursal(ddlSucursalFiltro, ObjUsuario.Id_empresa);
                 Mgr_Area.Area_Sucursal(ddlAreaFiltro, ObjUsuario.Id_empresa);
-                Listas.Estatus_Empresa(ddlEstatusFiltro, ObjUsuario.Id_empresa);
+                Mgr_Estatus.Estatus_Empresa(ddlEstatusFiltro, ObjUsuario.Id_empresa);
             }
 
             if (!BoolEmpSuc.Item2)
             {
                 Mgr_Area.Area_Sucursal(ddlAreaFiltro, ObjUsuario.Id_sucursal);
-                Listas.Estatus_Empresa(ddlEstatusFiltro, ObjUsuario.Id_empresa);
+                Mgr_Estatus.Estatus_Empresa(ddlEstatusFiltro, ObjUsuario.Id_empresa);
             }
         }
         private void LlenarGridView()
@@ -71,8 +72,8 @@ namespace SGSSTC.source.sistema.GestionDatos
             int IdEmpresa = Mgr_Empresa.Set_IdEmpresa(ObjUsuario, Convert.ToInt32(ViewState["empresa"]));
             int IdSucursal = Mgr_Sucursal.Set_IdSucursal(ObjUsuario, Convert.ToInt32(ViewState["sucursal"]));
 
-            Mgr_Trabajador.Trabajador(GridView1, GetterCantidad.UsuarioTrabajador(ObjUsuario.Id_usuario), IdEmpresa, string.Empty + ViewState["area"],
-                string.Empty + ViewState["estatus"], string.Empty + ViewState["sWhere"], IdSucursal);
+            Mgr_Trabajador.Trabajador(GridView1, Capa_Datos.Manager.Usuario.Mgr_Usuario.UsuarioTrabajador(ObjUsuario.Id_usuario), IdEmpresa, string.Empty + base.ViewState["area"],
+                string.Empty + base.ViewState["estatus"], string.Empty + base.ViewState["sWhere"], IdSucursal);
         }
         #endregion
 
@@ -155,7 +156,7 @@ namespace SGSSTC.source.sistema.GestionDatos
         protected void EliminarRegistro(object sender, EventArgs e)
         {
             trabajador tabla = new trabajador();
-            ObjUsuario.Error = CRUD.Delete_Fila(tabla, Convert.ToInt32(hdfTrabajadorIDDel.Value));
+            ObjUsuario.Error = Capa_Datos.CRUD.Delete_Fila(tabla, Convert.ToInt32(hdfTrabajadorIDDel.Value));
             Modal.CerrarModal("deleteModal", "DeleteModalScript", this);
             Modal.MostrarAlertaDelete(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error, txtBuscar);
             LlenarGridView();
@@ -260,7 +261,7 @@ namespace SGSSTC.source.sistema.GestionDatos
                 tpo_enfermedad = tpo_enfermedad
             };
 
-            ObjUsuario.Error = CRUD.Add_Fila(nuevo);
+            ObjUsuario.Error = Capa_Datos.CRUD.Add_Fila(nuevo);
 
             Modal.MostrarAlertaAdd(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error, txtBuscar);
             LlenarGridView();
@@ -307,7 +308,7 @@ namespace SGSSTC.source.sistema.GestionDatos
             {
                 Mgr_Sucursal.Sucursal(ddlSucursalFiltro, Convert.ToInt32(ddlEmpresasFiltro.SelectedValue));
                 Mgr_Area.Area_Sucursal(ddlAreaFiltro, Convert.ToInt32(ddlEmpresasFiltro.SelectedValue));
-                Listas.Estatus_Empresa(ddlEstatusFiltro, Convert.ToInt32(ddlEmpresasFiltro.SelectedValue));
+                Mgr_Estatus.Estatus_Empresa(ddlEstatusFiltro, Convert.ToInt32(ddlEmpresasFiltro.SelectedValue));
                 ViewState["empresa"] = ddlEmpresasFiltro.SelectedValue;
             }
             else

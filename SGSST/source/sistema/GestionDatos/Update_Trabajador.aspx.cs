@@ -1,7 +1,6 @@
 ﻿using Capa_Datos;
 using Capa_Datos.Manager.PuestoTrabajo;
 using Capa_Datos.Manager.Trabajador;
-using Capa_Datos.Manager.Area;
 using Capa_Datos.Manager.Sucursal;
 using Capa_Datos.Manager.Empresa;
 using System;
@@ -9,6 +8,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Security;
+using Capa_Datos.Manager.Estatus;
+using Capa_Datos.Manager.Horario;
 
 namespace SGSSTC.source.sistema.GestionDatos
 {
@@ -67,10 +68,10 @@ namespace SGSSTC.source.sistema.GestionDatos
                 ddlManodominante.SelectedValue = Convert.ToString(itemTrabajador.mano_dominante);
                 txtSalario.Text = Convert.ToString(itemTrabajador.salario);
 
-                Listas.Horario_Empresa(ddlHorario, Convert.ToInt32(itemTrabajador.puesto_trabajo.area.sucursal.id_empresa));
+                Mgr_Horario.Horario_Empresa(ddlHorario, Convert.ToInt32(itemTrabajador.puesto_trabajo.area.sucursal.id_empresa));
                 ddlHorario.SelectedValue = Convert.ToString(itemTrabajador.id_horario);
 
-                Listas.Estatus_Empresa(ddlEstatus, Convert.ToInt32(itemTrabajador.puesto_trabajo.area.sucursal.id_empresa));
+                Mgr_Estatus.Estatus_Empresa(ddlEstatus, Convert.ToInt32(itemTrabajador.puesto_trabajo.area.sucursal.id_empresa));
                 ddlEstatus.SelectedValue = Convert.ToString(itemTrabajador.id_estatus_actual);
 
                 Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(itemTrabajador.puesto_trabajo.area.sucursal.id_empresa));
@@ -163,8 +164,8 @@ namespace SGSSTC.source.sistema.GestionDatos
             if (ddlEmpresas.SelectedValue != string.Empty)
                 _id = Convert.ToInt32(ddlEmpresas.SelectedValue);
             Mgr_Sucursal.Sucursal(ddlSucursal, _id);
-            Listas.Estatus_Empresa(ddlEstatus, _id);
-            Listas.Horario_Empresa(ddlHorario, _id);
+            Mgr_Estatus.Estatus_Empresa(ddlEstatus, _id);
+            Mgr_Horario.Horario_Empresa(ddlHorario, _id);
         }
 
         protected void ddlRegion_SelectedIndexChanged(object sender, EventArgs e)

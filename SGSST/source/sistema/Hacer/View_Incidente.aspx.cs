@@ -1,4 +1,5 @@
 ﻿using Capa_Datos;
+using Capa_Datos.Manager.Acc_Inc;
 using System;
 using System.Collections.Generic;
 using System.Web;
@@ -30,7 +31,7 @@ namespace SGSSTC.source.sistema.Verificar
 		{
 			idAccidente = objUtilidades.descifrarCadena(Request.QueryString["id"]);
 			List<at_it_el_pa> ListAccidentes = new List<at_it_el_pa>();
-			ListAccidentes = Getter.Accidente(idAccidente);
+			ListAccidentes = Mgr_Acc_Inc.Accidente(idAccidente);
 
 			foreach (var item in ListAccidentes)
 			{

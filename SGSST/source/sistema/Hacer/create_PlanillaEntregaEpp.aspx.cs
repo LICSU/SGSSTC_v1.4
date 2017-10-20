@@ -12,7 +12,7 @@ using System.Web.UI.WebControls;
 
 namespace SGSSTC.source.sistema.Hacer
 {
-    public partial class create_PlanillaEntregaEpp : Page
+	public partial class create_PlanillaEntregaEpp : Page
 	{
 		private Model_UsuarioSistema ObjUsuario;
 		private Tuple<bool, bool> BoolEmpSuc;

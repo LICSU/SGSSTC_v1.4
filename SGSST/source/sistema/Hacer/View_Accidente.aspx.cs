@@ -1,19 +1,15 @@
 ﻿using Capa_Datos;
-using Capa_Datos.Manager.PuestoTrabajo;
-using Capa_Datos.Manager.Trabajador;
-using Capa_Datos.Manager.Area;
-using Capa_Datos.Manager.Sucursal;
-using Capa_Datos.Manager.Empresa;
 using System;
 using System.Collections.Generic;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Capa_Datos.Manager.Acc_Inc;
 
 namespace SGSSTC.source.sistema.Verificar
 {
-	public partial class View_Accidente : Page
+    public partial class View_Accidente : Page
 	{
 		private  Utilidades objUtilidades = new Utilidades();
 		private Model_UsuarioSistema ObjUsuario;
@@ -35,7 +31,7 @@ namespace SGSSTC.source.sistema.Verificar
 		{
 			idAccidente = objUtilidades.descifrarCadena(Request.QueryString["id"]);
 			List<at_it_el_pa> ListAccidentes = new List<at_it_el_pa>();
-			ListAccidentes = Getter.Accidente(idAccidente);
+			ListAccidentes = Mgr_Acc_Inc.Accidente(idAccidente);
 
 			foreach (var item in ListAccidentes)
 			{

@@ -1,8 +1,6 @@
 ﻿using System;
 using Capa_Datos;
-using Capa_Datos.Manager.PuestoTrabajo;
 using Capa_Datos.Manager.Trabajador;
-using Capa_Datos.Manager.Area;
 using Capa_Datos.Manager.Sucursal;
 using Capa_Datos.Manager.Empresa;
 using System.Collections.Generic;
@@ -11,6 +9,7 @@ using System.Web.Security;
 using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Capa_Datos.Manager.Acc_Inc;
 
 namespace SGSSTC.source.sistema.EvaluacionInicial
 {
@@ -246,7 +245,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
                     {
                         lblTotalTrab.Text = "<strong>Fuerza Laboral: " + cantTrab.ToString() + " </strong>";
 
-                        cantAccTrab = GetterCantidad.AccidentesLaboral(Convert.ToInt32(ViewState["anho"].ToString()), id_empresa, id_sucursal);
+                        cantAccTrab = Mgr_Acc_Inc.AccidentesLaboral(Convert.ToInt32(ViewState["anho"].ToString()), id_empresa, id_sucursal);
                         nroAccTrab.Text = cantAccTrab.ToString();
 
                         nroAccCom.Text = GetterCantidad.Enfermedades(Convert.ToInt32(ViewState["anho"].ToString()), "ACCIDENTE COMUN", id_empresa, id_sucursal).ToString();

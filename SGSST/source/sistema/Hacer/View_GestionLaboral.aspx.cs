@@ -1,9 +1,5 @@
 ﻿using Capa_Datos;
-using Capa_Datos.Manager.PuestoTrabajo;
 using Capa_Datos.Manager.Trabajador;
-using Capa_Datos.Manager.Area;
-using Capa_Datos.Manager.Sucursal;
-using Capa_Datos.Manager.Empresa;
 using System;
 using System.Collections.Generic;
 using System.Web;
@@ -11,7 +7,7 @@ using System.Web.Security;
 
 namespace SGSSTC.source.sistema.Hacer
 {
-	public partial class View_GestionLaboral : System.Web.UI.Page
+    public partial class View_GestionLaboral : System.Web.UI.Page
 	{
 		private  Utilidades objUtilidades = new Utilidades();
 		private Model_UsuarioSistema ObjUsuario;

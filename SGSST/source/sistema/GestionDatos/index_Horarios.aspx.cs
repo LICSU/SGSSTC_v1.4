@@ -1,9 +1,7 @@
 ﻿using Capa_Datos;
-using Capa_Datos.Manager.PuestoTrabajo;
-using Capa_Datos.Manager.Trabajador;
 using Capa_Datos.Manager.Area;
-using Capa_Datos.Manager.Sucursal;
 using Capa_Datos.Manager.Empresa;
+using Capa_Datos.Manager.Horario;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -56,7 +54,7 @@ namespace SGSSTC.source.sistema.GestionDatos
         private void LlenarGridView()
         {
             int IdEmpresa = Mgr_Empresa.Set_IdEmpresa(ObjUsuario, Convert.ToInt32(ViewState["empresa"]));
-            Tabla.Horario(GridView1, IdEmpresa, string.Empty + ViewState["sWhere"]);
+            Mgr_Horario.Horario(GridView1, IdEmpresa, string.Empty + ViewState["sWhere"]);
         }
         #endregion
 

@@ -1,9 +1,4 @@
 ﻿using Capa_Datos;
-using Capa_Datos.Manager.PuestoTrabajo;
-using Capa_Datos.Manager.Trabajador;
-using Capa_Datos.Manager.Area;
-using Capa_Datos.Manager.Sucursal;
-using Capa_Datos.Manager.Empresa;
 using System;
 using System.Collections.Generic;
 using System.Web;
@@ -12,7 +7,7 @@ using System.Web.Security;
 
 namespace SGSSTC.source.sistema.Hacer
 {
-	public partial class View_DescripcionSocioDemografica : System.Web.UI.Page
+    public partial class View_DescripcionSocioDemografica : System.Web.UI.Page
 	{
 		#region variables
 		private  Utilidades objUtilidades = new Utilidades();

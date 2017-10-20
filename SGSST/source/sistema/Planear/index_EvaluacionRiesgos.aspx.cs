@@ -1,6 +1,4 @@
-﻿using Capa_Datos;using Capa_Datos.Manager.PuestoTrabajo;
-using Capa_Datos.Manager.Trabajador;
-using Capa_Datos.Manager.Area;
+﻿using Capa_Datos;
 using Capa_Datos.Manager.Sucursal;
 using Capa_Datos.Manager.Empresa;
 using System;
@@ -8,6 +6,7 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Capa_Datos.Manager.Riesgos;
 
 namespace SGSSTC.source.sistema.Hacer
 {
@@ -34,7 +33,7 @@ namespace SGSSTC.source.sistema.Hacer
         {
             int IdEmpresa = Mgr_Empresa.Set_IdEmpresa(ObjUsuario, Convert.ToInt32(ViewState["empresa"]));
             int IdSucursal = Mgr_Sucursal.Set_IdSucursal(ObjUsuario, Convert.ToInt32(ViewState["sucursal"]));
-            Tabla.EvaluacionRiesgos(GridView1, IdEmpresa, IdSucursal);
+            Mgr_Riesgos.EvaluacionRiesgos(GridView1, IdEmpresa, IdSucursal);
         }
 
         private void CargarListas()

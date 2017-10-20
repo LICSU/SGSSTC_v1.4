@@ -21,143 +21,6 @@ namespace Capa_Datos
             //
         }
 
-
-
-
-        public static int Set_IdUsuarioDDl(Model_UsuarioSistema ObjUsuario, DropDownList ddlUsuario)
-        {
-            int IdUsuario = 0;
-
-            if (ObjUsuario.isAdm_Grupoli())
-            {
-                IdUsuario = Convert.ToInt32(ddlUsuario.SelectedValue);
-            }
-            else
-            {
-                IdUsuario = ObjUsuario.Id_usuario;
-            }
-
-            return IdUsuario;
-        }
-
-        #region Avg
-        public static Double AvgEstatusNorma(int _idSucursal)
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            var objeto = contexto.norma_sucursal.Where(x => x.id_sucursal == _idSucursal);
-
-            var querySelect = new
-            {
-                promedio = objeto.Average(x => x.estatus_norma)
-            };
-
-            return Math.Round(Convert.ToDouble(querySelect.promedio), 3);
-        }
-        public static Double AvgEstNorEmp(int _id_empresa)
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            var objeto = contexto.norma_sucursal.Where(x => x.sucursal.id_empresa == _id_empresa);
-
-            var querySelect = new
-            {
-                promedio = objeto.Average(x => x.estatus_norma)
-            };
-
-            return Math.Round(Convert.ToDouble(querySelect.promedio), 3);
-        }
-
-        public static Double AvgPorcEstRieSuc(int _idSucursal)
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-
-            List<puesto_trabajo> puestos = contexto.puesto_trabajo.Where(x => x.area.id_sucursal == _idSucursal).ToList();
-            List<evaluacion_riesgo> evaluaciones = new List<evaluacion_riesgo>();
-
-            double total = 0;
-            double acumulado = 0;
-            foreach (var itemPuestos in puestos)
-            {
-                foreach (var itemIdePuesto in itemPuestos.identificacion_puesto)
-                {
-                    total++;
-                    foreach (var itemEvaRiesgo in itemIdePuesto.evaluacion_riesgo)
-                    {
-                        acumulado = acumulado + Convert.ToDouble(itemEvaRiesgo.porc_estatus);
-                    }
-                }
-            }
-
-            double promedio = acumulado / total;
-
-            return Math.Round(promedio, 3);
-        }
-        public static Double AvgPorcEstRieEmp(int _idEmpresa)
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-
-            List<puesto_trabajo> puestos = contexto.puesto_trabajo.Where(x => x.area.sucursal.id_empresa == _idEmpresa).ToList();
-            List<evaluacion_riesgo> evaluaciones = new List<evaluacion_riesgo>();
-
-            double total = 0;
-            double acumulado = 0;
-            foreach (var itemPuestos in puestos)
-            {
-                foreach (var itemIdePuesto in itemPuestos.identificacion_puesto)
-                {
-                    total++;
-                    foreach (var itemEvaRiesgo in itemIdePuesto.evaluacion_riesgo)
-                    {
-                        acumulado = acumulado + Convert.ToDouble(itemEvaRiesgo.porc_estatus);
-                    }
-                }
-            }
-
-            double promedio = acumulado / total;
-
-            return Math.Round(promedio, 3);
-        }
-        #endregion
-        
-
-        #region Alarmas
-
-        public static List<alarma> Alarma(int _id_alarma)
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            var consulta = new List<alarma>();
-            consulta = contexto.alarma.Where(x => x.id_alarmas == _id_alarma).ToList();
-            return consulta;
-        }
-        #endregion
-
-        #region Accidentes
-        public static List<at_it_el_pa> Accidente(int _id_accidente)
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            var consulta = new List<at_it_el_pa>();
-            consulta = contexto.at_it_el_pa.Where(x => x.id_at_it_el_pa == _id_accidente).ToList();
-            return consulta;
-        }
-        public static List<investigacion_ac_in> InvestigacionAccidente(int _id_accidente)
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            List<investigacion_ac_in> consulta = new List<investigacion_ac_in>();
-            consulta = contexto.investigacion_ac_in.Where(x => x.id_at_it_el_pa == _id_accidente).ToList();
-            return consulta;
-        }
-
-        public static List<at_it_el_pa> Accidente_Empresa_Reportes(int _id_empresa, DateTime fechainicio, DateTime fechafin)
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            var consulta = new List<at_it_el_pa>();
-            consulta = contexto.at_it_el_pa.Where(x =>
-                x.trabajador.puesto_trabajo.area.sucursal.id_empresa == _id_empresa &&
-                x.fecha_accidente >= fechainicio && x.fecha_accidente <= fechafin).ToList();
-            return consulta;
-        }
-
-        #endregion
-
         #region brigada_emergencia
 
         public static List<brigada_emergencia> BrigadaEmergencia(int _id_brigada)
@@ -165,32 +28,6 @@ namespace Capa_Datos
             GrupoLiEntities contexto = new GrupoLiEntities();
             List<brigada_emergencia> consulta = new List<brigada_emergencia>();
             consulta = contexto.brigada_emergencia.Where(x => x.id_brigada == _id_brigada).ToList();
-            return consulta;
-        }
-        #endregion
-
-        #region Categorias
-        public static List<categoria> Categoria(string nombre)
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            List<categoria> consulta = new List<categoria>();
-            consulta = contexto.categoria.Where(x => x.nombre == nombre).ToList();
-            return consulta;
-        }
-
-        public static categoria Categoria(int _idCategoria)
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            categoria consulta = new categoria();
-            consulta = contexto.categoria.Where(x => x.id_categorias == _idCategoria).SingleOrDefault();
-            return consulta;
-        }
-
-        public static rol Rol(int _idRol)
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            rol consulta = new rol();
-            consulta = contexto.rol.Where(x => x.id_rol == _idRol).SingleOrDefault();
             return consulta;
         }
         #endregion
@@ -266,33 +103,6 @@ namespace Capa_Datos
         }
         #endregion
 
-        #region documentos
-
-        public static List<documento> Documentos(int _anho, string _tipo, int _id_empresa = 0, int _id_sucursal = 0)
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            List<documento> consulta = new List<documento>();
-
-            if (_id_sucursal != 0)
-            {
-                consulta = contexto.documento.Where(x =>
-               x.id_tabla == _id_sucursal &&
-               x.tipo == _tipo &&
-               x.fecha_subida.Value.Year == _anho).ToList();
-            }
-            else if (_id_empresa != 0)
-            {
-                consulta = contexto.documento.Where(x =>
-                x.sucursal.id_empresa == _id_empresa &&
-                x.tipo == _tipo &&
-                x.fecha_subida.Value.Year == _anho).ToList();
-            }
-
-
-            return consulta;
-        }
-        #endregion
-
         #region extintor
 
         public static List<extintor> Extintor(int _idExtintor)
@@ -304,30 +114,7 @@ namespace Capa_Datos
             return consulta;
         }
         #endregion
-
-
-        #region empresa_itemdivision
-        public static List<empresa_itemdivision> CodigoCiiu_Empresa(int _id_empresa)
-        {
-            GrupoLiEntities contextoCod = new GrupoLiEntities();
-
-            List<empresa_itemdivision> consulta = new List<empresa_itemdivision>();
-            consulta = contextoCod.empresa_itemdivision.Where(x => x.id_empresa == _id_empresa).ToList();
-            return consulta;
-        }
-        public static List<empresa_itemdivision> EmpresaItemDivison(int _id_empresa, int act1, int act2, int act3 = 0)
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-
-            List<empresa_itemdivision> consulta = contexto
-                .empresa_itemdivision
-                .Where(
-                    x => x.id_empresa == _id_empresa &&
-                    (x.id_clase_ciiu == act1 || x.id_clase_ciiu == act2 || x.id_clase_ciiu == act3)
-                ).ToList();
-            return consulta;
-        }
-        #endregion
+        
 
         #region encuesta_politica
 
@@ -338,27 +125,7 @@ namespace Capa_Datos
             consulta = contexto.encuesta_politica.Where(x => x.id_encuesta == _id_encuesta).ToList();
             return consulta;
         }
-        #endregion
-
-        #region factor_riesgo
-        public static List<factor_riesgo> FactorRiesgo(int id_factor_riesgo = 0, string _nombre = "")
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            List<factor_riesgo> consulta = new List<factor_riesgo>();
-
-            if (_nombre != string.Empty)
-            {
-                consulta = contexto.factor_riesgo.Where(x => x.nombre.Contains(_nombre)).ToList();
-            }
-
-            if (id_factor_riesgo != 0)
-            {
-                consulta = contexto.factor_riesgo.Where(x => x.id_factor_riesgo == id_factor_riesgo).ToList();
-            }
-
-            return consulta;
-        }
-        #endregion
+        #endregion        
 
         #region gestion_laboral
         public static List<gestion_laboral> GestionLaboral(int _id_ges_lab)
@@ -404,16 +171,6 @@ namespace Capa_Datos
         }
         #endregion
 
-        #region items_division
-        public static List<claseCiiu> CodigoCiiu(int _id_item_division)
-        {
-            GrupoLiEntities contextoCod = new GrupoLiEntities();
-
-            List<claseCiiu> consulta = new List<claseCiiu>();
-            consulta = contextoCod.claseCiiu.Where(x => x.id_clase_ciiu == _id_item_division).ToList();
-            return consulta;
-        }
-        #endregion
 
         #region ListEnfSis
 
@@ -515,62 +272,7 @@ namespace Capa_Datos
                 x => x.id_enfermedadLaboral == _id_EnfLab).ToList();
             return consulta;
         }
-        #endregion
-
-        #region medidas
-        public static List<medida> Medidas(int idNorma)
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            List<medida> consulta = contexto.medida.Where(x => x.id_normas == idNorma).ToList();
-            return consulta;
-        }
-        #endregion
-
-        #region medidas_sucursal
-        public static List<medida_sucursal> Medidas_Sucursal(int _id_medidas_sucursal)
-        {
-            GrupoLiEntities contexto2 = new GrupoLiEntities();
-
-            List<medida_sucursal> consulta = new List<medida_sucursal>();
-            consulta = contexto2.medida_sucursal.Where(
-                x => x.id_medidas_sucursal == _id_medidas_sucursal
-                ).ToList();
-            return consulta;
-        }
-        #endregion
-
-        #region normas
-        public static List<norma> Norma(int _id_norma = 0, string _tipo = "")
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            List<norma> consulta = new List<norma>();
-
-            if (_id_norma != 0) { consulta = contexto.norma.Where(x => x.id_normas == _id_norma).ToList(); }
-            if (_tipo == "General") { consulta = contexto.norma.Where(x => x.tipo_matriz.Contains("General")).ToList(); }
-
-            return consulta;
-        }
-        #endregion
-
-        #region normas_sucursal
-        public static List<norma_sucursal> Normas_Sucursal(int idSucursal, int _id_normas = 0)
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            List<norma_sucursal> consulta = new List<norma_sucursal>();
-
-            if (_id_normas != 0)
-            {
-                consulta = contexto.norma_sucursal.Where(x => x.id_normas == _id_normas && x.id_sucursal == idSucursal).ToList();
-            }
-            else
-            {
-                consulta = contexto.norma_sucursal.Where(x => x.id_sucursal == idSucursal).ToList();
-            }
-
-
-            return consulta;
-        }
-        #endregion
+        #endregion    
 
         #region Obligacion
         public static List<obligacion> Obligacion(int _id_obligacion)
@@ -624,37 +326,22 @@ namespace Capa_Datos
         }
         #endregion
 
-        #region puesto_trabajo
-        public static List<puesto_trabajo> PuestoTrabajo(int _id_puesto = 0, int _id_empresa = 0, string tipoArea = "")
+
+        public static List<plan_trabajo> Plan_Trabajo(int _id_sucursal = 0, int _anho = 0, int id_plan = 0)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
-            List<puesto_trabajo> consulta = new List<puesto_trabajo>();
+            List<plan_trabajo> consulta = new List<plan_trabajo>();
 
-            if (_id_empresa != 0 && tipoArea != "")
+            if (id_plan != 0) { consulta = contexto.plan_trabajo.Where(x => x.id_plan_trabajo == id_plan).ToList(); }
+            else if (_id_sucursal != 0 && _anho != 0)
             {
-                consulta = contexto.puesto_trabajo.Where(x => x.area.tipo == tipoArea &&
-                x.area.sucursal.id_empresa == _id_empresa).ToList();
-            }
-            else if (_id_puesto != 0)
-            {
-                consulta = contexto.puesto_trabajo.Where(x => x.id_puesto_trabajo == _id_puesto).ToList();
+                consulta = contexto.plan_trabajo.Where(x =>
+                x.usuario.trabajador.puesto_trabajo.area.id_sucursal == _id_sucursal &&
+                x.anho == _anho).OrderBy(x => x.semana_ini).ToList();
             }
 
             return consulta;
         }
-
-        public static List<puesto_trabajo> PuestoTrabajo_Nom_Suc(string _nombre, int _sucursal)
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            List<puesto_trabajo> consulta = new List<puesto_trabajo>();
-
-            consulta = contexto.puesto_trabajo.Where(
-                x => x.nombre.ToUpper().Equals(_nombre.ToUpper()) &&
-                x.area.id_sucursal == _sucursal).ToList();
-
-            return consulta;
-        }
-        #endregion
 
         #region procedimiento_comunicacion
 
@@ -667,7 +354,6 @@ namespace Capa_Datos
         }
         #endregion
 
-
         #region Soporte
         public static List<soporte> Soporte(int _id_rec_eco, string tipo)
         {
@@ -679,21 +365,7 @@ namespace Capa_Datos
                 ).ToList();
             return consulta;
         }
-        #endregion
-
-
-        #region estatus
-        public static estatus Estatus(int _idEstatus)
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            estatus consulta = new estatus();
-
-            consulta = contexto.estatus.Where(x => x.id_estatus == _idEstatus).SingleOrDefault();
-
-            return consulta;
-        }
-
-        #endregion
+        #endregion        
 
         #region tipo_documento
 
@@ -704,130 +376,7 @@ namespace Capa_Datos
             consulta = contexto.tipo_documento.Where(x => x.id_tipo_documento == _id_tipoDocumento).ToList();
             return consulta;
         }
-        #endregion
-
-        #region Usuario
-        public static List<usuario> Usuario(int _id_usuario = 0, int _idSucursal = 0,
-            string email = "", string _login = "", string _clave = "")
-        {
-            Utilidades objUtilidades = new Utilidades();
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            List<usuario> consulta = new List<usuario>();
-
-            if (_id_usuario != 0)
-            {
-                consulta = contexto.usuario.Where(x => x.id_usuario == _id_usuario).ToList();
-            }
-            else if (_idSucursal != 0)
-            {
-                consulta = contexto.usuario.Where(x => x.trabajador.puesto_trabajo.area.id_sucursal == _idSucursal && x.id_rol == 3).ToList();
-            }
-            else if (email != "")
-            {
-                consulta = contexto.usuario.Where(x => x.trabajador.email.ToLower() == email.ToLower()).ToList();
-            }
-            else if (_login != "" && _clave != "")
-            {
-                _clave = objUtilidades.cifrarCadena(Convert.ToString(_clave));
-                consulta = contexto.usuario.Where(x => x.login.ToLower() == _login.ToLower() && x.clave == _clave).ToList();
-            }
-
-
-            return consulta;
-        }
-
-        public static string ValidarUsuario(string login, string clave)
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            Utilidades objUtilidades = new Utilidades();
-            clave = objUtilidades.cifrarCadena(Convert.ToString(clave));
-
-            var resultado = "";
-            var consulta = from US in contexto.usuario where (US.login == login && US.clave == clave) select new { _id_rol = US.id_rol };
-
-            foreach (var datos in consulta)
-            {
-                if (datos._id_rol == 1)
-                {
-                    var consulta1 = from US in contexto.usuario
-                                    where (US.login == login && US.clave == clave)
-                                    select new
-                                    {
-                                        _id_usuario = US.id_usuario,
-                                        _id_rol = US.id_rol
-                                    };
-
-                    foreach (var datos1 in consulta1)
-                    {
-                        resultado = string.Concat(datos1._id_usuario, "|", datos1._id_rol);
-                    }
-                }
-                else
-                {
-                    var consulta1 = from US in contexto.usuario
-                                    where (US.login == login && US.clave == clave)
-                                    select new
-                                    {
-                                        _id_usuario = US.id_usuario,
-                                        _id_empresa = US.trabajador.puesto_trabajo.area.sucursal.id_empresa,
-                                        _id_sucursal = US.trabajador.puesto_trabajo.area.id_sucursal,
-                                        _id_rol = US.id_rol
-                                    };
-                    foreach (var datos1 in consulta1) { resultado = string.Concat(datos1._id_usuario, "|", datos1._id_rol, "|", datos1._id_empresa, "|", datos1._id_sucursal); }
-                }
-            }
-            return resultado;
-        }
-
-        public static bool ExisteUsuario(FormsIdentity _fIdentity)
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            bool error = false;
-
-            if (_fIdentity != null)
-            {
-                string[] aUsuario = _fIdentity.Name.Split('|');
-                int _id_usuario = Convert.ToInt32(aUsuario[0]);
-
-                var consulta = new usuario();
-                int cantidad = contexto.usuario.Where(x => x.id_usuario == _id_usuario).Count();
-
-                if (cantidad > 0)
-                {
-                    error = true;
-                }
-            }
-
-            return error;
-        }
-        #endregion
-
-        #region riesgos
-        public static List<identificacion_peligro> IdentificacionPeligro(int _id_identificacion_peligro)
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            List<identificacion_peligro> consulta = new List<identificacion_peligro>();
-            consulta = contexto.identificacion_peligro.Where(x => x.id_identificacion_peligro == _id_identificacion_peligro).ToList();
-
-            return consulta;
-        }
-        public static List<identificacion_puesto> IdentificacionPuesto(int _id_ide_puesto)
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            List<identificacion_puesto> consulta = new List<identificacion_puesto>();
-            consulta = contexto.identificacion_puesto.Where(x => x.id_ide_puesto == _id_ide_puesto).ToList();
-
-            return consulta;
-        }
-        public static List<evaluacion_riesgo> EvaluacionRiesgo(int _id_eva_riesgo)
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            List<evaluacion_riesgo> consulta = new List<evaluacion_riesgo>();
-            consulta = contexto.evaluacion_riesgo.Where(x => x.id_evaluacion_riesgo == _id_eva_riesgo).ToList();
-
-            return consulta;
-        }
-        #endregion
+        #endregion              
 
         #region respuestas y preguntas
 

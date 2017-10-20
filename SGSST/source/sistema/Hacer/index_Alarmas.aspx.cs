@@ -1,8 +1,5 @@
 ﻿
 using Capa_Datos;
-using Capa_Datos.Manager.PuestoTrabajo;
-using Capa_Datos.Manager.Trabajador;
-using Capa_Datos.Manager.Area;
 using Capa_Datos.Manager.Sucursal;
 using Capa_Datos.Manager.Empresa;
 using System;
@@ -12,6 +9,8 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Capa_Datos.Manager.Categoria;
+using Capa_Datos.Manager.Alarma;
 
 namespace SGSSTC.source.sistema.Hacer
 {
@@ -65,15 +64,15 @@ namespace SGSSTC.source.sistema.Hacer
                 Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
                 Mgr_Sucursal.Sucursal(ddlSucAdd, ObjUsuario.Id_empresa);
                 Mgr_Sucursal.Sucursal(ddlSucEdit, ObjUsuario.Id_empresa);
-                Listas.Categorias(ddlCategoriaIndex, ObjUsuario.Id_empresa);
-                Listas.Categorias(ddlCategoriaAdd, ObjUsuario.Id_empresa);
-                Listas.Categorias(ddlCategoriaEdit, ObjUsuario.Id_empresa);
+                Mgr_Categoria.Categorias(ddlCategoriaIndex, ObjUsuario.Id_empresa);
+                Mgr_Categoria.Categorias(ddlCategoriaAdd, ObjUsuario.Id_empresa);
+                Mgr_Categoria.Categorias(ddlCategoriaEdit, ObjUsuario.Id_empresa);
             }
 
             if (!BoolEmpSuc.Item2)
             {
-                Listas.Usuario_Sucursal(ddlUsuAdd, ObjUsuario.Id_sucursal);
-                Listas.Usuario_Sucursal(ddlUsuEdit, ObjUsuario.Id_sucursal);
+                Capa_Datos.Manager.Usuario.Mgr_Usuario.Usuario_Sucursal(ddlUsuAdd, ObjUsuario.Id_sucursal);
+                Capa_Datos.Manager.Usuario.Mgr_Usuario.Usuario_Sucursal(ddlUsuEdit, ObjUsuario.Id_sucursal);
             }
         }
         private void LlenarGridView()
@@ -81,7 +80,7 @@ namespace SGSSTC.source.sistema.Hacer
             int IdEmpresa = Mgr_Empresa.Set_IdEmpresa(ObjUsuario, Convert.ToInt32(ViewState["empresa"]));
             int IdSucursal = Mgr_Sucursal.Set_IdSucursal(ObjUsuario, Convert.ToInt32(ViewState["sucursal"]));
 
-            Tabla.Alarma(
+            Mgr_Alarma.Alarma(
                 GridView1,
                 string.Empty + ViewState["prioridad"],
                 string.Empty + ViewState["categorias"],
@@ -126,10 +125,10 @@ namespace SGSSTC.source.sistema.Hacer
                     id_empresa = ObjUsuario.Id_empresa
                 };
 
-                CRUD.Add_Fila(nuevo);
+                Capa_Datos.CRUD.Add_Fila(nuevo);
 
                 List<categoria> ListaCategoria = new List<categoria>();
-                ListaCategoria = Getter.Categoria(txtCatAddOtro.Text);
+                ListaCategoria = Mgr_Categoria.Categoria(txtCatAddOtro.Text);
 
                 foreach (var item in ListaCategoria)
                 {
@@ -159,7 +158,7 @@ namespace SGSSTC.source.sistema.Hacer
                 id_categorias = idCategoria,
                 id_usuario = IdUsuario
             };
-            ObjUsuario.Error = CRUD.Add_Fila(nuevoAlarma);
+            ObjUsuario.Error = Capa_Datos.CRUD.Add_Fila(nuevoAlarma);
 
             Modal.MostrarAlertaAdd(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error,txtBuscar);
             CargarListas();
@@ -190,7 +189,7 @@ namespace SGSSTC.source.sistema.Hacer
                 Edit.id_categorias = Convert.ToInt32(ddlCategoriaEdit.SelectedValue);
                 Edit.id_usuario = IdUsuario;
             }
-            ObjUsuario.Error = CRUD.Edit_Fila(contexto);
+            ObjUsuario.Error = Capa_Datos.CRUD.Edit_Fila(contexto);
 
             Modal.MostrarAlertaEdit(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error, txtBuscar);
             CargarListas();
@@ -200,7 +199,7 @@ namespace SGSSTC.source.sistema.Hacer
         protected void EliminarRegistro(object sender, EventArgs e)
         {
             alarma tabla = new alarma();
-            ObjUsuario.Error = CRUD.Delete_Fila(tabla, Convert.ToInt32(hdfIDDel.Value));
+            ObjUsuario.Error = Capa_Datos.CRUD.Delete_Fila(tabla, Convert.ToInt32(hdfIDDel.Value));
             Modal.CerrarModal("deleteModal", "DeleteModalScript", this);
             Modal.MostrarAlertaDelete(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error, txtBuscar);
             LlenarGridView();
@@ -248,7 +247,7 @@ namespace SGSSTC.source.sistema.Hacer
                 hdfEditID.Value = Utilidades_GridView.DevolverIdRow(e, GridView1);
 
                 List<alarma> ListaAlarma = new List<alarma>();
-                ListaAlarma = Getter.Alarma(Convert.ToInt32(hdfEditID.Value));
+                ListaAlarma = Mgr_Alarma.Alarma(Convert.ToInt32(hdfEditID.Value));
                 int IDUsuario = 0;
                 int IDEmpresa = 0;
                 int IDSucursal = 0;
@@ -264,8 +263,8 @@ namespace SGSSTC.source.sistema.Hacer
                     ddlPrioridadEdit.SelectedValue = item.prioridad;
                     txtFechaEdit.Text = item.fecha.Value.ToString("yyyy-MM-dd"); 
                 }
-                Listas.Usuario_Sucursal(ddlUsuEdit, IDSucursal);
-                Listas.Categorias(ddlCategoriaEdit, IDEmpresa);
+                Capa_Datos.Manager.Usuario.Mgr_Usuario.Usuario_Sucursal(ddlUsuEdit, IDSucursal);
+                Mgr_Categoria.Categorias(ddlCategoriaEdit, IDEmpresa);
                 ddlEmpEdit.SelectedValue = IDEmpresa.ToString();
                 ddlSucEdit.SelectedValue = IDSucursal.ToString();
                 ddlCategoriaEdit.SelectedValue = IDCategoria.ToString();
@@ -290,7 +289,7 @@ namespace SGSSTC.source.sistema.Hacer
             {
                 ViewState["empresa"] = ddlEmpresa.SelectedValue;
                 Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
-                Listas.Categorias(ddlCategoriaIndex, Convert.ToInt32(ddlEmpresa.SelectedValue));
+                Mgr_Categoria.Categorias(ddlCategoriaIndex, Convert.ToInt32(ddlEmpresa.SelectedValue));
             }
             else
             {
@@ -317,14 +316,14 @@ namespace SGSSTC.source.sistema.Hacer
             if (ddlEmpAdd.SelectedValue != string.Empty)
             {
                 Mgr_Sucursal.Sucursal(ddlSucAdd, Convert.ToInt32(ddlEmpAdd.SelectedValue));
-                Listas.Categorias(ddlCategoriaAdd, Convert.ToInt32(ddlEmpAdd.SelectedValue));
+                Mgr_Categoria.Categorias(ddlCategoriaAdd, Convert.ToInt32(ddlEmpAdd.SelectedValue));
             }
         }
         protected void ddlSucAdd_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ddlSucAdd.SelectedValue != string.Empty)
             {
-                Listas.Usuario_Sucursal(ddlUsuAdd, Convert.ToInt32(ddlSucAdd.SelectedValue));
+                Capa_Datos.Manager.Usuario.Mgr_Usuario.Usuario_Sucursal(ddlUsuAdd, Convert.ToInt32(ddlSucAdd.SelectedValue));
             }
         }
 
@@ -333,14 +332,14 @@ namespace SGSSTC.source.sistema.Hacer
             if (ddlEmpEdit.SelectedValue != string.Empty)
             {
                 Mgr_Sucursal.Sucursal(ddlSucEdit, Convert.ToInt32(ddlEmpEdit.SelectedValue));
-                Listas.Categorias(ddlCategoriaEdit, Convert.ToInt32(ddlEmpEdit.SelectedValue));
+                Mgr_Categoria.Categorias(ddlCategoriaEdit, Convert.ToInt32(ddlEmpEdit.SelectedValue));
             }
         }
         protected void ddlSucEdit_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ddlSucEdit.SelectedValue != string.Empty)
             {
-                Listas.Usuario_Sucursal(ddlUsuEdit, Convert.ToInt32(ddlSucEdit.SelectedValue));
+                Capa_Datos.Manager.Usuario.Mgr_Usuario.Usuario_Sucursal(ddlUsuEdit, Convert.ToInt32(ddlSucEdit.SelectedValue));
             }
         }
 

@@ -208,11 +208,25 @@
     <Compile Include="lista_actividad.cs">
       <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
     </Compile>
+    <Compile Include="Manager\Acc_Inc\Mgr_Acc_Inc.cs" />
+    <Compile Include="Manager\Alarma\Mgr_Alarma.cs" />
     <Compile Include="Manager\Area\Mgr_Area.cs" />
+    <Compile Include="Manager\AutoEvaluacion\Mgr_Autoevaluacion.cs" />
+    <Compile Include="Manager\Categoria\Mgr_Categoria.cs" />
+    <Compile Include="Manager\CodigoCiiu\Mgr_CodigoCiiu.cs" />
+    <Compile Include="Manager\Documento\Mgr_Documento.cs" />
     <Compile Include="Manager\Empresa\Mgr_Empresa.cs" />
+    <Compile Include="Manager\Estatus\Mgr_Estatus.cs" />
+    <Compile Include="Manager\Horario\Mgr_Horario.cs" />
+    <Compile Include="Manager\Indicadores\Mgr_Indicadores.cs" />
+    <Compile Include="Manager\Inspeccion\Mgr_Inspeccion.cs" />
+    <Compile Include="Manager\Medidas\Mgr_Medidas.cs" />
+    <Compile Include="Manager\Norma\Mgr_Norma.cs" />
     <Compile Include="Manager\PuestoTrabajo\Mgr_PuestoTrabajo.cs" />
+    <Compile Include="Manager\Riesgos\Mgr_Riesgos.cs" />
     <Compile Include="Manager\Sucursal\Mgr_Sucursal.cs" />
     <Compile Include="Manager\Trabajador\Mgr_Trabajador.cs" />
+    <Compile Include="Manager\Usuario\Mgr_Usuario.cs" />
     <Compile Include="matriz_responsabilidad.cs">
       <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
     </Compile>
@@ -438,5 +452,6 @@
     <Content Include="obj\Release\TempPE\ModeloGrupoLi.cs.dll" />
     <Content Include="obj\Release\TempPE\ModeloGrupoLi.Designer.cs.dll" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -9,6 +9,9 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Web;
 using System.Web.Security;
+using Capa_Datos.Manager.CodigoCiiu;
+using Capa_Datos.Manager.Horario;
+using Capa_Datos.Manager.Documento;
 
 namespace SGSSTC.source.sistema.GestionDatos
 {
@@ -47,9 +50,9 @@ namespace SGSSTC.source.sistema.GestionDatos
             }
             else
             {
-                Listas.Codciiu_Div_item(ddlItemDivision1, "claseCiiu_Empresa", ObjUsuario.Id_empresa);
-                Listas.Codciiu_Div_item(ddlItemDivision2, "claseCiiu_Empresa", ObjUsuario.Id_empresa);
-                Listas.Codciiu_Div_item(ddlItemDivision3, "claseCiiu_Empresa", ObjUsuario.Id_empresa);
+                Mgr_CodigoCiiu.Codciiu_Div_item(ddlItemDivision1, "claseCiiu_Empresa", ObjUsuario.Id_empresa);
+                Mgr_CodigoCiiu.Codciiu_Div_item(ddlItemDivision2, "claseCiiu_Empresa", ObjUsuario.Id_empresa);
+                Mgr_CodigoCiiu.Codciiu_Div_item(ddlItemDivision3, "claseCiiu_Empresa", ObjUsuario.Id_empresa);
             }
             Listas.Reg_Dpto_Mcpio(ddlRegionAdd, "Region");
         }
@@ -175,13 +178,13 @@ namespace SGSSTC.source.sistema.GestionDatos
                 nombreSucursal
             };
 
-            if (CRUD.Add_Horario_Sucursal( valores))
+            if (Mgr_Horario.Add_Horario_Sucursal( valores))
             {
                 return add_Trabajador_Default();
             }
             else
             {
-                Mgr_Sucursal.DeleteSucursal( id_sucursal);
+                Mgr_Sucursal.DeleteSucursal(id_sucursal);
                 return false;
             }
         }
@@ -215,13 +218,13 @@ namespace SGSSTC.source.sistema.GestionDatos
                 "3"
             };
 
-            if (CRUD.Add_Usuario_Sucursal( valores))
+            if (Capa_Datos.Manager.Usuario.Mgr_Usuario.Add_Usuario_Sucursal( valores))
             {
                 return add_Tipo_Documento_Default();
             }
             else
             {
-                Mgr_Sucursal.DeleteSucursal( id_sucursal);
+                Mgr_Sucursal.DeleteSucursal(id_sucursal);
                 return false;
             }
         }
@@ -232,13 +235,13 @@ namespace SGSSTC.source.sistema.GestionDatos
                 ""+id_sucursal
             };
 
-            if (CRUD.Add_TipoDocumento_Sucursal( valores))
+            if (Mgr_Documento.Add_TipoDocumento_Sucursal( valores))
             {
                 return add_Lista_Actividad_Default();
             }
             else
             {
-                Mgr_Sucursal.DeleteSucursal( id_sucursal);
+                Mgr_Sucursal.DeleteSucursal(id_sucursal);
                 return false;
             }
 
@@ -246,7 +249,7 @@ namespace SGSSTC.source.sistema.GestionDatos
 
         private Boolean add_Lista_Actividad_Default()
         {
-            if (CRUD.Add_Lista_Actividad( id_sucursal))
+            if (Capa_Datos.CRUD.Add_Lista_Actividad(id_sucursal))
             {
                 string empresa = "", correo = "";
                 List<empresa> data_empresa = Mgr_Empresa.EmpresaEmail(IdEmpresa);
@@ -262,7 +265,7 @@ namespace SGSSTC.source.sistema.GestionDatos
             }
             else
             {
-                Mgr_Sucursal.DeleteSucursal( id_sucursal);
+                Mgr_Sucursal.DeleteSucursal(id_sucursal);
                 return false;
             }
         }
@@ -272,9 +275,9 @@ namespace SGSSTC.source.sistema.GestionDatos
         {
             if (ddlEmpresaAdd.SelectedValue != string.Empty)
             {
-                Listas.Codciiu_Div_item(ddlItemDivision1, "claseCiiu_Empresa", Convert.ToInt32(ddlEmpresaAdd.SelectedValue));
-                Listas.Codciiu_Div_item(ddlItemDivision2, "claseCiiu_Empresa", Convert.ToInt32(ddlEmpresaAdd.SelectedValue));
-                Listas.Codciiu_Div_item(ddlItemDivision3, "claseCiiu_Empresa", Convert.ToInt32(ddlEmpresaAdd.SelectedValue));
+                Mgr_CodigoCiiu.Codciiu_Div_item(ddlItemDivision1, "claseCiiu_Empresa", Convert.ToInt32(ddlEmpresaAdd.SelectedValue));
+                Mgr_CodigoCiiu.Codciiu_Div_item(ddlItemDivision2, "claseCiiu_Empresa", Convert.ToInt32(ddlEmpresaAdd.SelectedValue));
+                Mgr_CodigoCiiu.Codciiu_Div_item(ddlItemDivision3, "claseCiiu_Empresa", Convert.ToInt32(ddlEmpresaAdd.SelectedValue));
             }
         }
 

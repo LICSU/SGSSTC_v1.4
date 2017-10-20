@@ -1,13 +1,12 @@
 ﻿using System;
-using Capa_Datos;using Capa_Datos.Manager.PuestoTrabajo;
-using Capa_Datos.Manager.Trabajador;
-using Capa_Datos.Manager.Area;
+using Capa_Datos;
 using Capa_Datos.Manager.Sucursal;
 using Capa_Datos.Manager.Empresa;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Capa_Datos.Manager.Norma;
 
 namespace SGSSTC.source.sistema.Hacer
 {
@@ -30,7 +29,7 @@ namespace SGSSTC.source.sistema.Hacer
 
             if (!BoolEmpSuc.Item1 && BoolEmpSuc.Item2)
             {
-                estatus = Convert.ToString(Getter.AvgEstNorEmp(ObjUsuario.Id_empresa));
+                estatus = Convert.ToString(Mgr_Norma.AvgEstNorEmp(ObjUsuario.Id_empresa));
             }
 
             if (!IsPostBack)
@@ -44,7 +43,7 @@ namespace SGSSTC.source.sistema.Hacer
             int IdEmpresa = Mgr_Empresa.Set_IdEmpresa(ObjUsuario, Convert.ToInt32(ViewState["empresa"]));
             int IdSucursal = Mgr_Sucursal.Set_IdSucursal(ObjUsuario, Convert.ToInt32(ViewState["sucursal"]));
 
-            Tabla.MatrizLegal(
+            Mgr_Norma.MatrizLegal(
                 GridView1,
                 IdSucursal,
                 string.Empty + ViewState["TipoNorma"],
@@ -73,7 +72,7 @@ namespace SGSSTC.source.sistema.Hacer
         {
             if (!BoolEmpSuc.Item2)
             {
-                estatus = Convert.ToString(Getter.AvgEstatusNorma(ObjUsuario.Id_sucursal));
+                estatus = Convert.ToString(Mgr_Norma.AvgEstatusNorma(ObjUsuario.Id_sucursal));
             }
             return estatus;
         }
@@ -116,7 +115,7 @@ namespace SGSSTC.source.sistema.Hacer
             {
                 ViewState["empresa"] = ddlEmpresa.SelectedValue;
                 Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
-                estatus = Convert.ToString(Getter.AvgEstNorEmp(Convert.ToInt32(ddlEmpresa.SelectedValue)));
+                estatus = Convert.ToString(Mgr_Norma.AvgEstNorEmp(Convert.ToInt32(ddlEmpresa.SelectedValue)));
             }
             else
             {
@@ -130,18 +129,18 @@ namespace SGSSTC.source.sistema.Hacer
             {
                 ViewState["sucursal"] = ddlSucursal.SelectedValue;
                 Listas.AnhoNorma(ddlAñoNorma, Convert.ToInt32(ddlSucursal.SelectedValue));
-                estatus = Convert.ToString(Getter.AvgEstatusNorma(Convert.ToInt32(ddlSucursal.SelectedValue)));
+                estatus = Convert.ToString(Mgr_Norma.AvgEstatusNorma(Convert.ToInt32(ddlSucursal.SelectedValue)));
             }
             else
             {
                 ViewState["sucursal"] = "0";
                 if (BoolEmpSuc.Item1)
                 {
-                    estatus = Convert.ToString(Getter.AvgEstNorEmp(Convert.ToInt32(ddlEmpresa.SelectedValue)));
+                    estatus = Convert.ToString(Mgr_Norma.AvgEstNorEmp(Convert.ToInt32(ddlEmpresa.SelectedValue)));
                 }
                 else
                 {
-                    estatus = Convert.ToString(Getter.AvgEstNorEmp(ObjUsuario.Id_empresa));
+                    estatus = Convert.ToString(Mgr_Norma.AvgEstNorEmp(ObjUsuario.Id_empresa));
                 }
             }
             LlenarGridView();

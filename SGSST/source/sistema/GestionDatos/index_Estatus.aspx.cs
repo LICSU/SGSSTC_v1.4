@@ -1,8 +1,4 @@
 ﻿using Capa_Datos;
-using Capa_Datos.Manager.PuestoTrabajo;
-using Capa_Datos.Manager.Trabajador;
-using Capa_Datos.Manager.Area;
-using Capa_Datos.Manager.Sucursal;
 using Capa_Datos.Manager.Empresa;
 using System;
 using System.Linq;
@@ -10,6 +6,7 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Capa_Datos.Manager.Estatus;
 
 namespace SGSSTC.source.sistema.GestionDatos
 {
@@ -60,7 +57,7 @@ namespace SGSSTC.source.sistema.GestionDatos
         {
             int Idempresa = Mgr_Empresa.Set_IdEmpresa(ObjUsuario, Convert.ToInt32(ViewState["empresa"]));
 
-            Tabla.Estatus(GridView1, Idempresa, string.Empty + ViewState["sWhere"]);
+            Mgr_Estatus.Estatus(GridView1, Idempresa, string.Empty + ViewState["sWhere"]);
 
         }
         #endregion
@@ -74,7 +71,7 @@ namespace SGSSTC.source.sistema.GestionDatos
                 GridViewRow gvrow = GridView1.Rows[RowIndex];
                 hdfEstatusID.Value = Utilidades_GridView.DevolverIdRow(e, GridView1);
 
-                var _Estatus = Getter.Estatus(Convert.ToInt32(hdfEstatusID.Value));
+                var _Estatus = Mgr_Estatus.Estatus(Convert.ToInt32(hdfEstatusID.Value));
 
                 txtNombreEdit.Text = _Estatus.nombre;
                 txtDescripcionEdit.Text = _Estatus.descripcion;

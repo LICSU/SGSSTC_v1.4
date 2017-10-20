@@ -34,7 +34,7 @@ namespace SGSSTC.source.sistema.GestionDatos
             idPuestos = objUtilidades.descifrarCadena(Request.QueryString["id"]);
 
             List<puesto_trabajo> ListaPuestos = new List<puesto_trabajo>();
-            ListaPuestos = Getter.PuestoTrabajo(idPuestos, 0, "");
+            ListaPuestos = Mgr_PuestoTrabajo.PuestoTrabajo(idPuestos, 0, "");
 
             foreach (var itemPuestos in ListaPuestos)
             {

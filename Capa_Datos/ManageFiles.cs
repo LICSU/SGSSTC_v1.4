@@ -9,6 +9,7 @@ using iTextSharp.text.pdf;
 using System.Collections.Generic;
 using Capa_Datos.Manager.Sucursal;
 using Capa_Datos.Manager.Trabajador;
+using Capa_Datos.Manager.CodigoCiiu;
 
 namespace Capa_Datos
 {
@@ -493,7 +494,7 @@ namespace Capa_Datos
             foreach (var item in objSucursal)
             {
                 List<claseCiiu> objCodCiiu = new List<claseCiiu>();
-                objCodCiiu = Getter.CodigoCiiu(Convert.ToInt32(item.actividad_ppal));
+                objCodCiiu = Mgr_CodigoCiiu.CodigoCiiu(Convert.ToInt32(item.actividad_ppal));
 
                 nomEmpresa = item.empresa.nombre;
                 nomSucursal = item.nombre;

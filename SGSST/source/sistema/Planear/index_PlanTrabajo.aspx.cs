@@ -1,6 +1,4 @@
-﻿using Capa_Datos;using Capa_Datos.Manager.PuestoTrabajo;
-using Capa_Datos.Manager.Trabajador;
-using Capa_Datos.Manager.Area;
+﻿using Capa_Datos;
 using Capa_Datos.Manager.Sucursal;
 using Capa_Datos.Manager.Empresa;
 using System;
@@ -12,6 +10,7 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Capa_Datos.Manager.Usuario;
 
 namespace SGSSTC.source.sistema.Hacer
 {
@@ -64,8 +63,8 @@ namespace SGSSTC.source.sistema.Hacer
 
 			if (!BoolEmpSuc.Item2)
 			{
-				Listas.Usuario_Sucursal(ddlResponsable, ObjUsuario.Id_sucursal);
-				Listas.Usuario_Sucursal(ddlResponsableEdit, ObjUsuario.Id_sucursal);
+				Mgr_Usuario.Usuario_Sucursal(ddlResponsable, ObjUsuario.Id_sucursal);
+				Mgr_Usuario.Usuario_Sucursal(ddlResponsableEdit, ObjUsuario.Id_sucursal);
 			}
 
 		}
@@ -279,7 +278,7 @@ namespace SGSSTC.source.sistema.Hacer
 				hdfEditID.Value = Utilidades_GridView.DevolverIdRow(e, GridView1);
 				
 				List<plan_trabajo> ListaPlanTrabajo = new List<plan_trabajo>();
-				ListaPlanTrabajo = Mgr_PuestoTrabajo.Plan_Trabajo(0, 0, Convert.ToInt32(hdfEditID.Value));
+				ListaPlanTrabajo = Getter.Plan_Trabajo(0, 0, Convert.ToInt32(hdfEditID.Value));
 
 				foreach (var item in ListaPlanTrabajo)
 				{
@@ -303,7 +302,7 @@ namespace SGSSTC.source.sistema.Hacer
 
 					txtRecursosEdit.Text = Convert.ToString(item.recursos_aprobados);
 
-					Listas.Usuario_Sucursal(ddlResponsableEdit, Convert.ToInt32(item.usuario.trabajador.puesto_trabajo.area.id_sucursal));
+					Mgr_Usuario.Usuario_Sucursal(ddlResponsableEdit, Convert.ToInt32(item.usuario.trabajador.puesto_trabajo.area.id_sucursal));
 					ddlResponsableEdit.SelectedValue = Convert.ToString(item.id_responsable);
 				}
 
@@ -341,7 +340,7 @@ namespace SGSSTC.source.sistema.Hacer
 				string idPlanTrabajo = (e.Row.FindControl("id") as Label).Text;
 
 				List<plan_trabajo> ListaPlanTrabajo = new List<plan_trabajo>();
-				ListaPlanTrabajo = Mgr_PuestoTrabajo.Plan_Trabajo(0, 0, Convert.ToInt32(idPlanTrabajo));
+				ListaPlanTrabajo = Getter.Plan_Trabajo(0, 0, Convert.ToInt32(idPlanTrabajo));
 
 				foreach (var itemPlanTrab in ListaPlanTrabajo)
 				{
@@ -458,7 +457,7 @@ namespace SGSSTC.source.sistema.Hacer
 		{
 			if (ddlSucursalAdd.SelectedValue != string.Empty)
 			{
-				Listas.Usuario_Sucursal(ddlResponsable, Convert.ToInt32(ddlSucursalAdd.SelectedValue));
+				Mgr_Usuario.Usuario_Sucursal(ddlResponsable, Convert.ToInt32(ddlSucursalAdd.SelectedValue));
 			}
 		}
 
@@ -473,7 +472,7 @@ namespace SGSSTC.source.sistema.Hacer
 		{
 			if (ddlSucursalEdit.SelectedValue != string.Empty)
 			{
-				Listas.Usuario_Sucursal(ddlResponsableEdit, Convert.ToInt32(ddlSucursalEdit.SelectedValue));
+				Mgr_Usuario.Usuario_Sucursal(ddlResponsableEdit, Convert.ToInt32(ddlSucursalEdit.SelectedValue));
 			}
 		}
 

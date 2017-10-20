@@ -1,4 +1,5 @@
-﻿using Capa_Datos;using Capa_Datos.Manager.PuestoTrabajo;
+﻿using Capa_Datos;
+using Capa_Datos.Manager.PuestoTrabajo;
 using Capa_Datos.Manager.Sucursal;
 using Capa_Datos.Manager.Empresa;
 using Capa_Datos.Manager.Trabajador;
@@ -8,6 +9,12 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Capa_Datos.Manager.Estatus;
+using Capa_Datos.Manager.Categoria;
+using Capa_Datos.Manager.Usuario;
+using Capa_Datos.Manager.CodigoCiiu;
+using Capa_Datos.Manager.Horario;
+using Capa_Datos.Manager.Documento;
 
 namespace SGSSTC.source.sistema.GestionDatos
 {
@@ -26,7 +33,7 @@ namespace SGSSTC.source.sistema.GestionDatos
 
             if (!IsPostBack)
             {
-                Listas.Codciiu_Div_item(ddlSeccion1, "SeccionCiiu");
+                Mgr_CodigoCiiu.Codciiu_Div_item(ddlSeccion1, "SeccionCiiu");
                 Listas.Reg_Dpto_Mcpio(ddlRegion, "Region");
                 Listas.Arl(ddlArp);
             }
@@ -73,7 +80,7 @@ namespace SGSSTC.source.sistema.GestionDatos
                 ddlClase3.SelectedValue
             };
 
-            if (CRUD.AddCodigoCiiu_Empresa( valores))
+            if (Mgr_CodigoCiiu.AddCodigoCiiu_Empresa( valores))
             {
                 add_Categorias();
             }
@@ -88,7 +95,7 @@ namespace SGSSTC.source.sistema.GestionDatos
         {
             String[] valores = { "" + IdEmpresa };
 
-            if (CRUD.Add_Categoria_Empresa( valores))
+            if (Mgr_Categoria.Add_Categoria_Empresa( valores))
             {
                 add_Estatus();
             }
@@ -103,7 +110,7 @@ namespace SGSSTC.source.sistema.GestionDatos
         {
             String[] valores = { "" + IdEmpresa };
 
-            if (CRUD.Add_Estatus_Empresa( valores))
+            if (Mgr_Estatus.Add_Estatus_Empresa( valores))
             {
                 add_SucursalPrincipal();
             }
@@ -184,7 +191,7 @@ namespace SGSSTC.source.sistema.GestionDatos
                 nombreEmpresa
             };
 
-            if (CRUD.Add_Horario_Sucursal( valores))
+            if (Mgr_Horario.Add_Horario_Sucursal( valores))
             {
                 add_Trabajador_Default(id_sucursal);
             }
@@ -226,7 +233,7 @@ namespace SGSSTC.source.sistema.GestionDatos
                 "2"
             };
 
-            if (CRUD.Add_Usuario_Sucursal( valores))
+            if (Mgr_Usuario.Add_Usuario_Sucursal(valores))
             {
                 add_Tipo_Documento_Default(id_sucursal);
             }
@@ -243,7 +250,7 @@ namespace SGSSTC.source.sistema.GestionDatos
                 ""+id_sucursal
             };
 
-            if (CRUD.Add_TipoDocumento_Sucursal( valores))
+            if (Mgr_Documento.Add_TipoDocumento_Sucursal( valores))
             {
                 //Si llega aqui enviar el email.....
                 string clave = objUtilidades.descifrarCadena2(Convert.ToString(ViewState["clave"].ToString()));
@@ -288,19 +295,19 @@ namespace SGSSTC.source.sistema.GestionDatos
                 #region actividad prinicipal
                 if (miDDl.ClientID.Contains("ddlSeccion1"))
                 {
-                    Listas.Codciiu_Div_item(ddlDivision1, "DivisionCiiu", Convert.ToInt32(ddlSeccion1.SelectedValue));
+                    Mgr_CodigoCiiu.Codciiu_Div_item(ddlDivision1, "DivisionCiiu", Convert.ToInt32(ddlSeccion1.SelectedValue));
                 }
                 else if (miDDl.ClientID.Contains("ddlDivision1"))
                 {
-                    Listas.Codciiu_Div_item(ddlGrupo1, "GrupoCiiu", Convert.ToInt32(ddlDivision1.SelectedValue));
+                    Mgr_CodigoCiiu.Codciiu_Div_item(ddlGrupo1, "GrupoCiiu", Convert.ToInt32(ddlDivision1.SelectedValue));
                 }
                 else if (miDDl.ClientID.Contains("ddlGrupo1"))
                 {
-                    Listas.Codciiu_Div_item(ddlClase1, "ClaseCiiu", Convert.ToInt32(ddlGrupo1.SelectedValue));
+                    Mgr_CodigoCiiu.Codciiu_Div_item(ddlClase1, "ClaseCiiu", Convert.ToInt32(ddlGrupo1.SelectedValue));
                 }
                 else if (miDDl.ClientID.Contains("ddlClase1"))
                 {
-                    Listas.Codciiu_Div_item(ddlSeccion2, "SeccionCiiu");
+                    Mgr_CodigoCiiu.Codciiu_Div_item(ddlSeccion2, "SeccionCiiu");
                     phActividad2.Visible = true;
                 }
                 #endregion
@@ -308,19 +315,19 @@ namespace SGSSTC.source.sistema.GestionDatos
                 #region actividad secundaria
                 if (miDDl.ClientID.Contains("ddlSeccion2"))
                 {
-                    Listas.Codciiu_Div_item(ddlDivision2, "DivisionCiiu", Convert.ToInt32(ddlSeccion2.SelectedValue));
+                    Mgr_CodigoCiiu.Codciiu_Div_item(ddlDivision2, "DivisionCiiu", Convert.ToInt32(ddlSeccion2.SelectedValue));
                 }
                 else if (miDDl.ClientID.Contains("ddlDivision2"))
                 {
-                    Listas.Codciiu_Div_item(ddlGrupo2, "GrupoCiiu", Convert.ToInt32(ddlDivision2.SelectedValue));
+                    Mgr_CodigoCiiu.Codciiu_Div_item(ddlGrupo2, "GrupoCiiu", Convert.ToInt32(ddlDivision2.SelectedValue));
                 }
                 else if (miDDl.ClientID.Contains("ddlGrupo2"))
                 {
-                    Listas.Codciiu_Div_item(ddlClase2, "ClaseCiiu", Convert.ToInt32(ddlGrupo2.SelectedValue));
+                    Mgr_CodigoCiiu.Codciiu_Div_item(ddlClase2, "ClaseCiiu", Convert.ToInt32(ddlGrupo2.SelectedValue));
                 }
                 else if (miDDl.ClientID.Contains("ddlClase2"))
                 {
-                    Listas.Codciiu_Div_item(ddlSeccion3, "SeccionCiiu");
+                    Mgr_CodigoCiiu.Codciiu_Div_item(ddlSeccion3, "SeccionCiiu");
                     phActividad3.Visible = true;
                 }
                 #endregion
@@ -328,15 +335,15 @@ namespace SGSSTC.source.sistema.GestionDatos
                 #region otras actividades
                 if (miDDl.ClientID.Contains("ddlSeccion3"))
                 {
-                    Listas.Codciiu_Div_item(ddlDivision3, "DivisionCiiu", Convert.ToInt32(ddlSeccion3.SelectedValue));
+                    Mgr_CodigoCiiu.Codciiu_Div_item(ddlDivision3, "DivisionCiiu", Convert.ToInt32(ddlSeccion3.SelectedValue));
                 }
                 else if (miDDl.ClientID.Contains("ddlDivision3"))
                 {
-                    Listas.Codciiu_Div_item(ddlGrupo3, "GrupoCiiu", Convert.ToInt32(ddlDivision3.SelectedValue));
+                    Mgr_CodigoCiiu.Codciiu_Div_item(ddlGrupo3, "GrupoCiiu", Convert.ToInt32(ddlDivision3.SelectedValue));
                 }
                 else if (miDDl.ClientID.Contains("ddlGrupo3"))
                 {
-                    Listas.Codciiu_Div_item(ddlClase3, "ClaseCiiu", Convert.ToInt32(ddlGrupo3.SelectedValue));
+                    Mgr_CodigoCiiu.Codciiu_Div_item(ddlClase3, "ClaseCiiu", Convert.ToInt32(ddlGrupo3.SelectedValue));
                 }
                 #endregion
             }

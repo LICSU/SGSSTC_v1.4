@@ -1,8 +1,4 @@
 ﻿using Capa_Datos;
-using Capa_Datos.Manager.PuestoTrabajo;
-using Capa_Datos.Manager.Trabajador;
-using Capa_Datos.Manager.Area;
-using Capa_Datos.Manager.Sucursal;
 using Capa_Datos.Manager.Empresa;
 using System;
 using System.Collections.Generic;
@@ -10,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI.WebControls;
+using Capa_Datos.Manager.Usuario;
 
 namespace SGSSTC.source.sistema.MenuPrincipal
 {
@@ -36,7 +33,7 @@ namespace SGSSTC.source.sistema.MenuPrincipal
         {
             IdRespuesta = objUtilidades.descifrarCadena(Request.QueryString["rs"]);
             List<usuario> ListUsuario = new List<usuario>();
-            ListUsuario = Getter.Usuario(ObjUsuario.Id_usuario);
+            ListUsuario = Mgr_Usuario.Usuario(ObjUsuario.Id_usuario);
             string nomUsuario = string.Empty;
             foreach (var item in ListUsuario)
             {

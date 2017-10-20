@@ -1,8 +1,4 @@
 ﻿using Capa_Datos;
-using Capa_Datos.Manager.PuestoTrabajo;
-using Capa_Datos.Manager.Trabajador;
-using Capa_Datos.Manager.Area;
-using Capa_Datos.Manager.Sucursal;
 using Capa_Datos.Manager.Empresa;
 using System;
 using System.Collections.Generic;
@@ -10,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI.WebControls;
+using Capa_Datos.Manager.CodigoCiiu;
 
 namespace SGSSTC.source.sistema.MenuPrincipal
 {
@@ -47,17 +44,17 @@ namespace SGSSTC.source.sistema.MenuPrincipal
         {
             if (ObjUsuario.isAdm_Empresa() || ObjUsuario.isAdm_Grupoli())
             {
-                Listas.Rol(ddlRol);
+                Capa_Datos.Manager.Usuario.Mgr_Usuario.Rol(ddlRol);
             }
             else
             {
-                Listas.Rol(ddlRol, ObjUsuario.Rol);
+                Capa_Datos.Manager.Usuario.Mgr_Usuario.Rol(ddlRol, ObjUsuario.Rol);
             }
 
 
-            Listas.Codciiu_Usuario(ddlClase, ObjUsuario.Id_empresa);
-            Listas.Division_Usuario(ddlDivision, ObjUsuario.Id_empresa);
-            Listas.Seccion_Usuario(ddlSeccion, ObjUsuario.Id_empresa);
+            Mgr_CodigoCiiu.Codciiu_Usuario(ddlClase, ObjUsuario.Id_empresa);
+            Mgr_CodigoCiiu.Division_Usuario(ddlDivision, ObjUsuario.Id_empresa);
+            Mgr_CodigoCiiu.Seccion_Usuario(ddlSeccion, ObjUsuario.Id_empresa);
         }
 
         private void LlenarGridView()
@@ -101,7 +98,7 @@ namespace SGSSTC.source.sistema.MenuPrincipal
                 Convert.ToString(idPregunta)
                 };
 
-            ObjUsuario.Error = CRUD.Add_Respuesta( valores);
+            ObjUsuario.Error = Capa_Datos.CRUD.Add_Respuesta( valores);
 
             Modal.CerrarModal("RespuestaModal", "RespuestaModalScript", this);
 

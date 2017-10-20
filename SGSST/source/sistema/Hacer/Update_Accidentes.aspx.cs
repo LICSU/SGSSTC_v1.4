@@ -1,6 +1,5 @@
 ﻿using Capa_Datos;
 using Capa_Datos.Manager.PuestoTrabajo;
-using Capa_Datos.Manager.Trabajador;
 using Capa_Datos.Manager.Area;
 using Capa_Datos.Manager.Sucursal;
 using Capa_Datos.Manager.Empresa;
@@ -13,10 +12,11 @@ using System.Web.Security;
 using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Capa_Datos.Manager.Acc_Inc;
 
 namespace SGSSTC.source.sistema.Verificar
 {
-	public partial class Update_Accidentes : Page
+    public partial class Update_Accidentes : Page
 	{
 		private Model_UsuarioSistema ObjUsuario;
 		private Tuple<bool, bool> BoolEmpSuc;
@@ -65,7 +65,7 @@ namespace SGSSTC.source.sistema.Verificar
 		{
 			int idAccidente = objUtilidades.descifrarCadena(Request.QueryString["id"]);
 			List<at_it_el_pa> ListAccidentes = new List<at_it_el_pa>();
-			ListAccidentes = Getter.Accidente(idAccidente);
+			ListAccidentes = Mgr_Acc_Inc.Accidente(idAccidente);
 
 			foreach (var item in ListAccidentes)
 			{

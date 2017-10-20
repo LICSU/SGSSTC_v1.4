@@ -1,7 +1,4 @@
 ﻿using Capa_Datos;
-using Capa_Datos.Manager.PuestoTrabajo;
-using Capa_Datos.Manager.Trabajador;
-using Capa_Datos.Manager.Area;
 using Capa_Datos.Manager.Sucursal;
 using Capa_Datos.Manager.Empresa;
 using System;
@@ -9,6 +6,7 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Capa_Datos.Manager.Inspeccion;
 
 namespace SGSSTC.source.sistema.EvaluacionInicial
 {
@@ -63,7 +61,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
             int IdSucursal = Mgr_Sucursal.Set_IdSucursal(ObjUsuario, Convert.ToInt32(ViewState["sucursal"]));
             string tipo = string.Empty + ViewState["tipo"];
 
-            Tabla.inspecciones(GridView1, tipo, IdSucursal, IdEmpresa, string.Empty + ViewState["buscar"]);
+            Mgr_Inspeccion.inspecciones(GridView1, tipo, IdSucursal, IdEmpresa, string.Empty + ViewState["buscar"]);
         }
         #endregion
 
@@ -128,7 +126,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
                 ddlTipoInspeccionAdd.SelectedValue
             };
 
-            ObjUsuario.Error = CRUD.AddInspeccion(IdEmpSuc,  valores, flpArchivo);
+            ObjUsuario.Error = Mgr_Inspeccion.AddInspeccion(IdEmpSuc,  valores, flpArchivo);
 
             Modal.MostrarAlertaAdd(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error,txtBuscar);
             LlenarGridView();

@@ -1,6 +1,5 @@
 ﻿using Capa_Datos;
 using Capa_Datos.Manager.PuestoTrabajo;
-using Capa_Datos.Manager.Trabajador;
 using Capa_Datos.Manager.Area;
 using Capa_Datos.Manager.Sucursal;
 using Capa_Datos.Manager.Empresa;
@@ -13,20 +12,21 @@ using System.Web.Security;
 using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Capa_Datos.Manager.Acc_Inc;
 
 namespace SGSSTC.source.sistema.Verificar
 {
-	public partial class Update_Incidentes : Page
+    public partial class Update_Incidentes : Page
 	{
 		private Model_UsuarioSistema ObjUsuario;
 		private Tuple<bool, bool> BoolEmpSuc;
 		private  Utilidades objUtilidades = new Utilidades();
-        private static int IdSucursal = 0;
-        private static int IdTrabajador = 0;
-        private static int IdPuesto = 0;
+		private static int IdSucursal = 0;
+		private static int IdTrabajador = 0;
+		private static int IdPuesto = 0;
 
-        #region acciones index
-        protected void Page_Load(object sender, EventArgs e)
+		#region acciones index
+		protected void Page_Load(object sender, EventArgs e)
 		{
 			Page.Form.Attributes.Add("enctype", "multipart/form-data");
 
@@ -65,22 +65,22 @@ namespace SGSSTC.source.sistema.Verificar
 		{
 			int idAccidente = objUtilidades.descifrarCadena(Request.QueryString["id"]);
 			List<at_it_el_pa> ListAccidentes = new List<at_it_el_pa>();
-			ListAccidentes = Getter.Accidente(idAccidente);
+			ListAccidentes = Mgr_Acc_Inc.Accidente(idAccidente);
 
 			foreach (var item in ListAccidentes)
 			{
 				int IdEmpresa = Convert.ToInt32(item.trabajador.puesto_trabajo.area.sucursal.empresa.id_empresa);
 				IdSucursal = Convert.ToInt32(item.trabajador.puesto_trabajo.area.id_sucursal);
 
-                ddlEmpresa.SelectedValue = IdEmpresa.ToString();
-                Mgr_Sucursal.Sucursal(ddlSucursal, IdEmpresa);
-                ddlSucursal.SelectedValue = string.Empty + IdSucursal;
+				ddlEmpresa.SelectedValue = IdEmpresa.ToString();
+				Mgr_Sucursal.Sucursal(ddlSucursal, IdEmpresa);
+				ddlSucursal.SelectedValue = string.Empty + IdSucursal;
 
 				txtFechaAcc.Text = item.fecha_accidente.Value.ToString("yyyy-MM-dd");
 				txtHoraAcc.Text = item.hora_accidente.Value.ToString("hh:mm:ss");
 
-                txtTrabajador.Text = item.trabajador.primer_nombre + ' ' + item.trabajador.primer_apellido + ' ' + item.trabajador.cedula;
-                IdTrabajador = Convert.ToInt32(item.id_trabajador);
+				txtTrabajador.Text = item.trabajador.primer_nombre + ' ' + item.trabajador.primer_apellido + ' ' + item.trabajador.cedula;
+				IdTrabajador = Convert.ToInt32(item.id_trabajador);
 
 				Mgr_Area.Area_Sucursal(ddlArea, IdSucursal, "Ninguna");
 				ddlArea.SelectedValue = Convert.ToString(item.id_area);
@@ -148,7 +148,7 @@ namespace SGSSTC.source.sistema.Verificar
 			}
 
 			ObjUsuario.Error = CRUD.Edit_Fila(contexto);
-            
+			
 			Modal.MostrarAlertaAdd(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error, txtFechaAcc);
 			
 		}
@@ -168,8 +168,8 @@ namespace SGSSTC.source.sistema.Verificar
 		{
 			if (ddlSucursal.SelectedValue != string.Empty)
 			{
-                IdSucursal = Convert.ToInt32(ddlSucursal.SelectedValue);
-                Mgr_Area.Area_Sucursal(ddlArea, Convert.ToInt32(ddlSucursal.SelectedValue), "Ninguna");
+				IdSucursal = Convert.ToInt32(ddlSucursal.SelectedValue);
+				Mgr_Area.Area_Sucursal(ddlArea, Convert.ToInt32(ddlSucursal.SelectedValue), "Ninguna");
 				Mgr_PuestoTrabajo.PuestoTrabajo(ddlProcesoTrabajo, "Sucursal", Convert.ToInt32(ddlSucursal.SelectedValue), "Ninguno");
 			}
 
@@ -273,16 +273,16 @@ namespace SGSSTC.source.sistema.Verificar
 			miDDl.SelectedValue = string.Empty;
 
 		}
-        #endregion
+		#endregion
 
-        #region AutoCompletar
-        [ScriptMethod()]
-        [WebMethod]
-        public static List<string> SearchTrabajador(string prefixText, int count)
-        {
-            List<string> listTrabajadores = Utilidades.SearchTrabajador(prefixText, count, IdSucursal, ref IdTrabajador, IdPuesto);
-            return listTrabajadores;
-        }
-        #endregion
-    }
+		#region AutoCompletar
+		[ScriptMethod()]
+		[WebMethod]
+		public static List<string> SearchTrabajador(string prefixText, int count)
+		{
+			List<string> listTrabajadores = Utilidades.SearchTrabajador(prefixText, count, IdSucursal, ref IdTrabajador, IdPuesto);
+			return listTrabajadores;
+		}
+		#endregion
+	}
 }

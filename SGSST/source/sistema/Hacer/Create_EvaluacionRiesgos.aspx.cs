@@ -1,14 +1,11 @@
 ﻿using Capa_Datos;
-using Capa_Datos.Manager.PuestoTrabajo;
-using Capa_Datos.Manager.Trabajador;
-using Capa_Datos.Manager.Area;
-using Capa_Datos.Manager.Sucursal;
 using Capa_Datos.Manager.Empresa;
 using System;
 using System.Collections.Generic;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
+using Capa_Datos.Manager.Riesgos;
 
 namespace SGSSTC.source.sistema.Hacer
 {
@@ -38,7 +35,7 @@ namespace SGSSTC.source.sistema.Hacer
 			int id_Ide_Puesto;
 			id_Ide_Puesto = objUtilidades.descifrarCadena(Request.QueryString["id"]);
 			List<identificacion_puesto> Lista_Ide_Puesto = new List<identificacion_puesto>();
-			Lista_Ide_Puesto = Getter.IdentificacionPuesto(id_Ide_Puesto);
+			Lista_Ide_Puesto = Mgr_Riesgos.IdentificacionPuesto(id_Ide_Puesto);
 
 			foreach (var item in Lista_Ide_Puesto)
 			{

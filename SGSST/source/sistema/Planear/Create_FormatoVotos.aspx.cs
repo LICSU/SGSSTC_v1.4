@@ -1,4 +1,4 @@
-﻿using Capa_Datos;using Capa_Datos.Manager.PuestoTrabajo;
+﻿using Capa_Datos;
 using Capa_Datos.Manager.Trabajador;
 using Capa_Datos.Manager.Sucursal;
 using Capa_Datos.Manager.Empresa;
@@ -10,13 +10,13 @@ using System.Web.UI;
 
 namespace SGSSTC.source.sistema.Hacer
 {
-    public partial class Create_FormatoVotos : Page
+	public partial class Create_FormatoVotos : Page
 	{
 		private Model_UsuarioSistema ObjUsuario;
 		private Tuple<bool, bool> BoolEmpSuc;
-        private static int IdSucursal = 0;
+		private static int IdSucursal = 0;
 
-        protected void Page_Load(object sender, EventArgs e)
+		protected void Page_Load(object sender, EventArgs e)
 		{
 			ObjUsuario = Utilidades.ValidarSesion(HttpContext.Current.User.Identity as FormsIdentity, this);phAlerta.Visible = false;
 
@@ -47,12 +47,12 @@ namespace SGSSTC.source.sistema.Hacer
 
 			if (!BoolEmpSuc.Item2)
 			{
-                IdSucursal = Convert.ToInt32(ObjUsuario.Id_sucursal);
-                Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabajador, IdSucursal);
-                Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabajador2, IdSucursal);
-                Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabajador3, IdSucursal);
-                Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabajador4, IdSucursal);
-            }
+				IdSucursal = Convert.ToInt32(ObjUsuario.Id_sucursal);
+				Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabajador, IdSucursal);
+				Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabajador2, IdSucursal);
+				Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabajador3, IdSucursal);
+				Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabajador4, IdSucursal);
+			}
 		}
 
 		protected void GenerarDocumento(object sender, EventArgs e)
@@ -60,11 +60,11 @@ namespace SGSSTC.source.sistema.Hacer
 			int IdSucursal = Mgr_Sucursal.Set_IdSucursalDDl(ObjUsuario, ddlSucursal);
 			String[] valores = {
 				string.Empty + IdSucursal,
-                ddlTrabajador.SelectedValue.ToString(),
-                ddlTrabajador2.SelectedValue.ToString(),
-                ddlTrabajador3.SelectedValue.ToString(),
-                ddlTrabajador4.SelectedValue.ToString(),
-                Image1.ImageUrl,
+				ddlTrabajador.SelectedValue.ToString(),
+				ddlTrabajador2.SelectedValue.ToString(),
+				ddlTrabajador3.SelectedValue.ToString(),
+				ddlTrabajador4.SelectedValue.ToString(),
+				Image1.ImageUrl,
 				Image2.ImageUrl,
 				Image3.ImageUrl,
 				Image4.ImageUrl,
@@ -72,7 +72,7 @@ namespace SGSSTC.source.sistema.Hacer
 				ddlTrabajador2.SelectedItem.Text,
 				ddlTrabajador3.SelectedItem.Text,
 				ddlTrabajador4.SelectedItem.Text
-            };
+			};
 			PrintFile.PrintFormatoVotos(valores, this);
 		   
 		}
@@ -93,12 +93,12 @@ namespace SGSSTC.source.sistema.Hacer
 			{
 				IdSucursal = Convert.ToInt32(ddlSucursal.SelectedValue);
 
-                Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabajador, IdSucursal);
-                Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabajador2, IdSucursal);
-                Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabajador3, IdSucursal);
-                Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabajador4, IdSucursal);
+				Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabajador, IdSucursal);
+				Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabajador2, IdSucursal);
+				Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabajador3, IdSucursal);
+				Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabajador4, IdSucursal);
 
-                Image1.ImageUrl = "";
+				Image1.ImageUrl = "";
 				Image2.ImageUrl = "";
 				Image3.ImageUrl = "";
 				Image4.ImageUrl = "";
@@ -125,27 +125,27 @@ namespace SGSSTC.source.sistema.Hacer
 
 			return foto;
 		}
-        #endregion
+		#endregion
 
-        protected void ddlTrabajador_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Image1.ImageUrl = TraerFoto(Convert.ToInt32(ddlTrabajador.SelectedValue));
-        }
+		protected void ddlTrabajador_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			Image1.ImageUrl = TraerFoto(Convert.ToInt32(ddlTrabajador.SelectedValue));
+		}
 
-        protected void ddlTrabajador2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Image2.ImageUrl = TraerFoto(Convert.ToInt32(ddlTrabajador2.SelectedValue));
-        }
+		protected void ddlTrabajador2_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			Image2.ImageUrl = TraerFoto(Convert.ToInt32(ddlTrabajador2.SelectedValue));
+		}
 
-        protected void ddlTrabajador3_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Image3.ImageUrl = TraerFoto(Convert.ToInt32(ddlTrabajador3.SelectedValue));
-        }
+		protected void ddlTrabajador3_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			Image3.ImageUrl = TraerFoto(Convert.ToInt32(ddlTrabajador3.SelectedValue));
+		}
 
-        protected void ddlTrabajador4_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Image4.ImageUrl = TraerFoto(Convert.ToInt32(ddlTrabajador4.SelectedValue));
+		protected void ddlTrabajador4_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			Image4.ImageUrl = TraerFoto(Convert.ToInt32(ddlTrabajador4.SelectedValue));
 
-        }
-    }
+		}
+	}
 }

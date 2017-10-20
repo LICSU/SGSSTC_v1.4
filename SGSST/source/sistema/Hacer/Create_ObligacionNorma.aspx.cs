@@ -1,14 +1,12 @@
 ﻿using Capa_Datos;
-using Capa_Datos.Manager.PuestoTrabajo;
-using Capa_Datos.Manager.Trabajador;
-using Capa_Datos.Manager.Area;
 using Capa_Datos.Manager.Sucursal;
-using Capa_Datos.Manager.Empresa;
 using System;
 using System.Collections.Generic;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
+using Capa_Datos.Manager.Medidas;
+using Capa_Datos.Manager.Categoria;
 
 namespace SGSSTC.source.sistema.Hacer
 {
@@ -50,7 +48,7 @@ namespace SGSSTC.source.sistema.Hacer
         private void CargarDatos()
         {
             List<medida_sucursal> ListaMedidasSucursal = new List<medida_sucursal>();
-            ListaMedidasSucursal = Getter.Medidas_Sucursal(Convert.ToInt32(idMedidasSucursal));
+            ListaMedidasSucursal = Mgr_Medidas.Medidas_Sucursal(Convert.ToInt32(idMedidasSucursal));
 
             foreach (var item in ListaMedidasSucursal)
             {
@@ -61,9 +59,9 @@ namespace SGSSTC.source.sistema.Hacer
 
         private void CargarListas()
         {
-            Listas.Categorias(ddlCategoria, IdEmpresa);
+            Mgr_Categoria.Categorias(ddlCategoria, IdEmpresa);
             Listas.Frecuencia(ddlFrecuencia);
-            Listas.Usuario_Sucursal(ddlResponsable, Convert.ToInt32(IdSucursal));
+            Capa_Datos.Manager.Usuario.Mgr_Usuario.Usuario_Sucursal(ddlResponsable, Convert.ToInt32(IdSucursal));
             Listas.Actividades_Sucursal(ddlActividad, Convert.ToInt32(IdSucursal), DateTime.Now.Year);
         }
 
@@ -95,7 +93,7 @@ namespace SGSSTC.source.sistema.Hacer
                 id_actividad = Convert.ToInt32(ddlActividad.SelectedValue)
             };
 
-            ObjUsuario.Error = CRUD.Add_Fila(nuevoObli);
+            ObjUsuario.Error = Capa_Datos.CRUD.Add_Fila(nuevoObli);
 
             if (ObjUsuario.Error)
             {
@@ -108,7 +106,7 @@ namespace SGSSTC.source.sistema.Hacer
                     id_usuario = IdUsuario
                 };
 
-                ObjUsuario.Error = CRUD.Add_Fila(nuevo);
+                ObjUsuario.Error = Capa_Datos.CRUD.Add_Fila(nuevo);
             }
 
             Modal.MostrarAlertaAdd(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error, txtFechaFin);

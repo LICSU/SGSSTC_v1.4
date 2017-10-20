@@ -1,6 +1,5 @@
 ﻿using Capa_Datos;
 using Capa_Datos.Manager.PuestoTrabajo;
-using Capa_Datos.Manager.Trabajador;
 using Capa_Datos.Manager.Area;
 using Capa_Datos.Manager.Sucursal;
 using Capa_Datos.Manager.Empresa;
@@ -63,7 +62,7 @@ namespace SGSSTC.source.sistema.GestionDatos
                 IdSucursal = ObjUsuario.Id_sucursal;
             }
 
-            List<puesto_trabajo> puesto = Getter.PuestoTrabajo_Nom_Suc(txtNombre.Text, IdSucursal);
+            List<puesto_trabajo> puesto = Mgr_PuestoTrabajo.PuestoTrabajo_Nom_Suc(txtNombre.Text, IdSucursal);
 
             if (puesto.Count == 0)
             {

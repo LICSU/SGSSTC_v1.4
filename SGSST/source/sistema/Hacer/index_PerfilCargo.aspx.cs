@@ -1,8 +1,4 @@
 ﻿using Capa_Datos;
-using Capa_Datos.Manager.PuestoTrabajo;
-using Capa_Datos.Manager.Trabajador;
-using Capa_Datos.Manager.Area;
-using Capa_Datos.Manager.Sucursal;
 using Capa_Datos.Manager.Empresa;
 using System;
 using System.Web;
@@ -12,7 +8,7 @@ using System.Web.UI.WebControls;
 
 namespace SGSSTC.source.sistema.Hacer
 {
-	public partial class index_PerfilCargo : Page
+    public partial class index_PerfilCargo : Page
 	{
 		private Model_UsuarioSistema ObjUsuario;
 		private  Utilidades objUtilidades = new Utilidades();
