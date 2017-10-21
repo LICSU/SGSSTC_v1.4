@@ -47,14 +47,14 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
             }
             else
             {
-                Mgr_Sucursal.Sucursal(ddlSucursalAdd, ObjUsuario.Id_empresa);
-                Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursalAdd, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
             }
         }
 
         private void LlenarGridView()
         {
-            Mgr_Documento.analisis_vulnerabilidad(GridView1, IdEmpresa, IdSucursal, ViewState["sWhere"].ToString());
+            Mgr_Documento.Grid_Analisis_Vulnerabilidad(GridView1, IdEmpresa, IdSucursal, ViewState["sWhere"].ToString());
         }
         #endregion
 
@@ -132,7 +132,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
             if (ddlEmpresa.SelectedValue != string.Empty)
             {
                 IdEmpresa = Mgr_Empresa.Set_IdEmpresa(ObjUsuario, Convert.ToInt32(ddlEmpresa.SelectedValue));
-                Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
             }
         }
 
@@ -140,7 +140,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
         {
             if (ddlEmpresaAdd.SelectedValue != string.Empty)
             {
-                Mgr_Sucursal.Sucursal(ddlSucursalAdd, Convert.ToInt32(ddlEmpresaAdd.SelectedValue));
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursalAdd, Convert.ToInt32(ddlEmpresaAdd.SelectedValue));
             }
         }
 

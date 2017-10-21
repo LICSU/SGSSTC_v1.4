@@ -36,7 +36,7 @@ namespace SGSSTC.source.sistema.Hacer
 		{
 			int IdEmpresa = Mgr_Empresa.Set_IdEmpresa(ObjUsuario, Convert.ToInt32(ViewState["empresa"]));
 
-			Mgr_Trabajador.PerfilCargo(GridView1, IdEmpresa, string.Empty + ViewState["sWhere"]);
+			Mgr_Trabajador.Grid_PerfilCargo(GridView1, IdEmpresa, string.Empty + ViewState["sWhere"]);
 		}
 
 		protected void AgregarRegistro(object sender, EventArgs e)

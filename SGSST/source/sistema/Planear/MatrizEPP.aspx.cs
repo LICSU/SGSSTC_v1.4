@@ -26,7 +26,7 @@ namespace SGSST.source.sistema.Planear
 
         private void LlenarGridView()
         {
-            Mgr_Epp.Epp(GridView1,"","");
+            Mgr_Epp.Grid_Epp(GridView1,"","");
         }
 
         #region  eventos del grid

@@ -1,17 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.UI.WebControls;
 
 namespace Capa_Datos.Manager.Alarma
 {
     public class Mgr_Alarma
     {
-        //------------getter
-
-        public static List<alarma> Alarma(int _id_alarma)
+        //------------FUNCIONES DE CONSULTAR
+        public static List<alarma> Get_Alarma(int _id_alarma)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             var consulta = new List<alarma>();
@@ -19,8 +16,8 @@ namespace Capa_Datos.Manager.Alarma
             return consulta;
         }
 
-        //------------grid
-        public static void Alarma(GridView GridView1, string _prioridad = "", string _id_categorias = "", string _fechaIni = "", string _fechaFin = "", string _descripcion = "", int _id_empresa = 0, int _id_sucursal = 0)
+        //------------FUNCIONES DE LLENAR GRID
+        public static void Grid_Alarma(GridView GridView1, string _prioridad = "", string _id_categorias = "", string _fechaIni = "", string _fechaFin = "", string _descripcion = "", int _id_empresa = 0, int _id_sucursal = 0)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             var query = (
@@ -51,6 +48,5 @@ namespace Capa_Datos.Manager.Alarma
             GridView1.DataSource = query;
             GridView1.DataBind();
         }
-
     }
 }

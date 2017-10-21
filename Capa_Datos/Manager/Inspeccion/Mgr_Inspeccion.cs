@@ -1,16 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.UI.WebControls;
 
 namespace Capa_Datos.Manager.Inspeccion
 {
     public class Mgr_Inspeccion
     {
-        //-------------crud
-        public static bool AddInspeccion(Tuple<int, int> IdEmpSuc, String[] valores, FileUpload flpArchivo)
+        //-------------FUNCIONES DE CREAR, EDITAR Y ELIMINAR
+        public static bool Add_Inspeccion(Tuple<int, int> IdEmpSuc, String[] valores, FileUpload flpArchivo)
         {
             int IdEmpresa = IdEmpSuc.Item1;
             int IdSucursal = IdEmpSuc.Item2;
@@ -29,8 +26,8 @@ namespace Capa_Datos.Manager.Inspeccion
             return CRUD.Add_Fila(nuevo);
         }
 
-        //---------getter
-        public static int Inspecciones(int _id_empresa)
+        //---------FUNCIONES DE CONSULTAR
+        public static int Get_Inspecciones(int _id_empresa)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             var query = (
@@ -48,8 +45,8 @@ namespace Capa_Datos.Manager.Inspeccion
             return query.Count();
         }
 
-        //---------grid
-        public static void inspecciones(GridView GridView1, string _tipo, int _id_sucursal = 0, int _id_empresa = 0, string nombre = "")
+        //---------FUNCIONES DE LLENAR GRID
+        public static void Grid_Inspecciones(GridView GridView1, string _tipo, int _id_sucursal = 0, int _id_empresa = 0, string nombre = "")
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             var query = (
@@ -76,11 +73,6 @@ namespace Capa_Datos.Manager.Inspeccion
             GridView1.DataSource = query;
             GridView1.DataBind();
         }
-
-
-
-
-
-
+        
     }
 }

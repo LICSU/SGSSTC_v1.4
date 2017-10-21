@@ -35,7 +35,7 @@ namespace SGSSTC.source.sistema.Hacer
 		private void CargarDatos()
 		{
 			List<identificacion_peligro> ListaRiesgos = new List<identificacion_peligro>();
-			ListaRiesgos = Mgr_Riesgos.IdentificacionPeligro(Convert.ToInt32(idRiesgo));
+			ListaRiesgos = Mgr_Riesgos.Get_IdentificacionPeligro(Convert.ToInt32(idRiesgo));
 
 			foreach (var itemRiesgos in ListaRiesgos)
 			{
@@ -52,7 +52,7 @@ namespace SGSSTC.source.sistema.Hacer
 		private void CargarMedidas()
 		{
 			List<identificacion_peligro> ListaRiesgos = new List<identificacion_peligro>();
-			ListaRiesgos = Mgr_Riesgos.IdentificacionPeligro(Convert.ToInt32(idRiesgo));
+			ListaRiesgos = Mgr_Riesgos.Get_IdentificacionPeligro(Convert.ToInt32(idRiesgo));
 
 			foreach (var itemRiesgos in ListaRiesgos)
 			{

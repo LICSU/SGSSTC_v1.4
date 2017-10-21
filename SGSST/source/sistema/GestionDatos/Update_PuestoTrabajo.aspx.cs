@@ -40,7 +40,7 @@ namespace SGSSTC.source.sistema.GestionDatos
             idPuestos = objUtilidades.descifrarCadena(Request.QueryString["id"]);
 
             List<puesto_trabajo> ListaPuestos = new List<puesto_trabajo>();
-            ListaPuestos = Mgr_PuestoTrabajo.PuestoTrabajo(idPuestos, 0, "");
+            ListaPuestos = Mgr_PuestoTrabajo.Get_PuestoTrabajo(idPuestos, 0, "");
 
             foreach (var itemPuestos in ListaPuestos)
             {
@@ -61,16 +61,16 @@ namespace SGSSTC.source.sistema.GestionDatos
                 Mgr_Empresa.Lista_Empresa(ddlEmpresa);
                 ddlEmpresa.SelectedValue = Convert.ToString(itemPuestos.area.sucursal.id_empresa);
 
-                Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
                 ddlSucursal.SelectedValue = Convert.ToString(itemPuestos.area.id_sucursal);
 
-                Mgr_Area.Area_Sucursal(ddlArea, Convert.ToInt32(ddlSucursal.SelectedValue));
+                Mgr_Area.List_Area_Sucursal(ddlArea, Convert.ToInt32(ddlSucursal.SelectedValue));
                 ddlArea.SelectedValue = Convert.ToString(itemPuestos.id_area);
-                Mgr_Epp.Epp(ddlEpp);
+                Mgr_Epp.List_Epp(ddlEpp);
 
                 List<puesto_trabajo_epp> ListaPuestoTrabajo_Epp = new List<puesto_trabajo_epp>();
                 ListaPuestoTrabajo_Epp = new List<puesto_trabajo_epp>();
-                ListaPuestoTrabajo_Epp = Mgr_PuestoTrabajo.PuestoEpp(idPuestos);
+                ListaPuestoTrabajo_Epp = Mgr_PuestoTrabajo.Get_PuestoEpp(idPuestos);
 
                 foreach (ListItem li in ddlEpp.Items)
                 {
@@ -87,19 +87,19 @@ namespace SGSSTC.source.sistema.GestionDatos
 
         private void CargarListas()
         {
-            Mgr_Epp.Epp(ddlEpp);
+            Mgr_Epp.List_Epp(ddlEpp);
             if (BoolEmpSuc.Item1)
             {
                 Mgr_Empresa.Lista_Empresa(ddlEmpresa);
             }
             else
             {
-                Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
             }
 
             if (!BoolEmpSuc.Item2)
             {
-                Mgr_Area.Area_Sucursal(ddlArea, ObjUsuario.Id_sucursal);
+                Mgr_Area.List_Area_Sucursal(ddlArea, ObjUsuario.Id_sucursal);
             }
         }
 
@@ -145,7 +145,7 @@ namespace SGSSTC.source.sistema.GestionDatos
 
                         if (li.Selected)
                         {
-                            int existe = Mgr_PuestoTrabajo.PuestoEppValue(idPuestos, idEpp);
+                            int existe = Mgr_PuestoTrabajo.Get_PuestoEppValue(idPuestos, idEpp);
                             if (existe == 0)
                             {
                                 puesto_trabajo_epp nuevopuestoEpp = new puesto_trabajo_epp()
@@ -158,10 +158,10 @@ namespace SGSSTC.source.sistema.GestionDatos
                         }
                         else
                         {
-                            int existe = Mgr_PuestoTrabajo.PuestoEppValue(idPuestos, idEpp);
+                            int existe = Mgr_PuestoTrabajo.Get_PuestoEppValue(idPuestos, idEpp);
                             if (existe == 1)
                             {
-                                int idPEpp = Mgr_Epp.Trae_ID_PEPP(idPuestos, idEpp);
+                                int idPEpp = Mgr_Epp.Get_Trae_ID_PEPP(idPuestos, idEpp);
                                 puesto_trabajo_epp tabla = new puesto_trabajo_epp();
                                 ObjUsuario.Error = CRUD.Delete_Fila(tabla, idPEpp);
                             }
@@ -179,8 +179,8 @@ namespace SGSSTC.source.sistema.GestionDatos
         {
             if (ddlEmpresa.SelectedValue != string.Empty)
             {
-                Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
-                Mgr_Epp.Epp(ddlEpp);
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
+                Mgr_Epp.List_Epp(ddlEpp);
             }
         }
 
@@ -188,7 +188,7 @@ namespace SGSSTC.source.sistema.GestionDatos
         {
             if (ddlSucursal.SelectedValue != string.Empty)
             {
-                Mgr_Area.Area_Sucursal(ddlArea, Convert.ToInt32(ddlSucursal.SelectedValue));
+                Mgr_Area.List_Area_Sucursal(ddlArea, Convert.ToInt32(ddlSucursal.SelectedValue));
             }
         }
     }

@@ -56,7 +56,7 @@ namespace SGSSTC.source.sistema.GestionDatos
             int IdEmpresa = Mgr_Empresa.Set_IdEmpresa(ObjUsuario, Convert.ToInt32(ViewState["empresa"]));
             int IdSucursal = Mgr_Sucursal.Set_IdSucursal(ObjUsuario, Convert.ToInt32(ViewState["sucursal"]));
 
-            Mgr_Usuario.Usuario(GridView1, IdEmpresa, string.Empty + ViewState["rol"], IdSucursal, string.Empty + ViewState["sWhere"],
+            Mgr_Usuario.Grid_Usuario(GridView1, IdEmpresa, string.Empty + ViewState["rol"], IdSucursal, string.Empty + ViewState["sWhere"],
                 ObjUsuario.Id_usuario);
         }
         private void CargarListas()
@@ -64,24 +64,24 @@ namespace SGSSTC.source.sistema.GestionDatos
             Mgr_Empresa.Lista_Empresa(ddlEmpresa);
             Mgr_Empresa.Lista_Empresa(ddlEmpresaAdd);
             Mgr_Empresa.Lista_Empresa(ddlEmpresaEdit);
-            Mgr_Usuario.Rol(ddlRol1);
-            Mgr_Usuario.Rol(ddlRolAdd);
-            Mgr_Usuario.Rol(ddlRolEdit);
+            Mgr_Usuario.Lista_Rol(ddlRol1);
+            Mgr_Usuario.Lista_Rol(ddlRolAdd);
+            Mgr_Usuario.Lista_Rol(ddlRolEdit);
 
             if (!BoolEmpSuc.Item1)
             {
-                Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(ObjUsuario.Id_empresa));
-                Mgr_Sucursal.Sucursal(ddlSucursalAdd, Convert.ToInt32(ObjUsuario.Id_empresa));
-                Mgr_Sucursal.Sucursal(ddlSucursalEdit, Convert.ToInt32(ObjUsuario.Id_empresa));
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursal, Convert.ToInt32(ObjUsuario.Id_empresa));
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursalAdd, Convert.ToInt32(ObjUsuario.Id_empresa));
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursalEdit, Convert.ToInt32(ObjUsuario.Id_empresa));
             }
 
             if (!BoolEmpSuc.Item2)
             {
                 IdSucursal = Convert.ToInt32(ObjUsuario.Id_sucursal);
-                Capa_Datos.Manager.Usuario.Mgr_Usuario.Rol_AdmSucursal(ddlRolAdd);
-                Capa_Datos.Manager.Usuario.Mgr_Usuario.Rol_AdmSucursal(ddlRolEdit);
-                Capa_Datos.Manager.Usuario.Mgr_Usuario.Rol(ddlRol1);
-                Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabajadorAdd, Convert.ToInt32(ObjUsuario.Id_sucursal));
+                Capa_Datos.Manager.Usuario.Mgr_Usuario.Lista_Rol_AdmSucursal(ddlRolAdd);
+                Capa_Datos.Manager.Usuario.Mgr_Usuario.Lista_Rol_AdmSucursal(ddlRolEdit);
+                Capa_Datos.Manager.Usuario.Mgr_Usuario.Lista_Rol(ddlRol1);
+                Mgr_Trabajador.Lista_Trabajadores_Sucursal(ddlTrabajadorAdd, Convert.ToInt32(ObjUsuario.Id_sucursal));
             }
 
         }
@@ -117,7 +117,7 @@ namespace SGSSTC.source.sistema.GestionDatos
                 };
 
                 ObjUsuario.Error = Capa_Datos.CRUD.Add_Fila(nuevo);
-                List<trabajador> trab = Mgr_Trabajador.Trabajador(Convert.ToInt32(IdTrabajador));
+                List<trabajador> trab = Mgr_Trabajador.Get_Trabajador(Convert.ToInt32(IdTrabajador));
                 string destino = string.Empty;
                 string empresa = string.Empty;
                 foreach (var _trabajador in trab)
@@ -141,7 +141,7 @@ namespace SGSSTC.source.sistema.GestionDatos
 
         protected void EditarRegistro(object sender, EventArgs e)
         {
-            string ResUsuario = Mgr_Usuario.ValidarUsuario(string.Empty + ViewState["txtLogin"], txtClaveActual.Text);
+            string ResUsuario = Mgr_Usuario.Get_ValidarUsuario(string.Empty + ViewState["txtLogin"], txtClaveActual.Text);
 
             if (ResUsuario != string.Empty)
             {
@@ -220,7 +220,7 @@ namespace SGSSTC.source.sistema.GestionDatos
             if (clave1 == clave2)
             {
                 List<usuario> ListaUsuario = new List<usuario>();
-                ListaUsuario = Mgr_Usuario.Usuario(0, 0, "", usuario, clave1);
+                ListaUsuario = Mgr_Usuario.Get_Usuario(0, 0, "", usuario, clave1);
                 if (ListaUsuario.Count > 0)
                 {
                     Modal.MostrarMsjModal("Usuario y clave ya Existen!", "ERR", this);
@@ -241,7 +241,7 @@ namespace SGSSTC.source.sistema.GestionDatos
                 hdfUsuarioID.Value = Utilidades_GridView.DevolverIdRow(e, GridView1);
 
                 List<usuario> ListaUsuarios = new List<usuario>();
-                ListaUsuarios = Mgr_Usuario.Usuario(Convert.ToInt32(hdfUsuarioID.Value));
+                ListaUsuarios = Mgr_Usuario.Get_Usuario(Convert.ToInt32(hdfUsuarioID.Value));
 
                 foreach (var itemUsuarios in ListaUsuarios)
                 {
@@ -253,11 +253,11 @@ namespace SGSSTC.source.sistema.GestionDatos
 
                     txtClaveActual.Attributes["value"] = claveA;
                     txtClaveConf.Attributes["value"] = claveA;
-                    Mgr_Sucursal.Sucursal(ddlSucursalEdit, Convert.ToInt32(ddlEmpresaEdit.SelectedValue));
+                    Mgr_Sucursal.Lista_Sucursal(ddlSucursalEdit, Convert.ToInt32(ddlEmpresaEdit.SelectedValue));
                     ddlSucursalEdit.SelectedValue = Convert.ToString(itemUsuarios.trabajador.puesto_trabajo.area.id_sucursal);
 
                     IdSucursalEsp = Convert.ToInt32(ddlSucursalEdit.SelectedValue);
-                    Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabajadorEsp, IdSucursalEsp);
+                    Mgr_Trabajador.Lista_Trabajadores_Sucursal(ddlTrabajadorEsp, IdSucursalEsp);
                     IdTrabajadorEsp = Convert.ToInt32(itemUsuarios.id_trabajador);
                     ddlTrabajadorEsp.SelectedValue = IdTrabajadorEsp.ToString();
                 }
@@ -296,18 +296,18 @@ namespace SGSSTC.source.sistema.GestionDatos
         protected void ddlEmpresaAdd_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ddlEmpresaAdd.SelectedValue != string.Empty)
-                Mgr_Sucursal.Sucursal(ddlSucursalAdd, Convert.ToInt32(ddlEmpresaAdd.SelectedValue));
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursalAdd, Convert.ToInt32(ddlEmpresaAdd.SelectedValue));
         }
         protected void ddlSucursalAdd_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ddlSucursalAdd.SelectedValue != string.Empty)
-                Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabajadorAdd, Convert.ToInt32(ddlSucursalAdd.SelectedValue));
+                Mgr_Trabajador.Lista_Trabajadores_Sucursal(ddlTrabajadorAdd, Convert.ToInt32(ddlSucursalAdd.SelectedValue));
         }
 
         protected void ddlEmpresaEdit_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ddlEmpresaEdit.SelectedValue != string.Empty)
-                Mgr_Sucursal.Sucursal(ddlSucursalEdit, Convert.ToInt32(ddlEmpresaEdit.SelectedValue));
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursalEdit, Convert.ToInt32(ddlEmpresaEdit.SelectedValue));
         }
         protected void ddlSucursalEdit_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -315,7 +315,7 @@ namespace SGSSTC.source.sistema.GestionDatos
             {                
                 IdSucursalEsp = Convert.ToInt32(ddlSucursalEdit.SelectedValue);
                 hdfSucursal.Value = "" + IdSucursalEsp;
-                Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabajadorAdd, IdSucursalEsp);
+                Mgr_Trabajador.Lista_Trabajadores_Sucursal(ddlTrabajadorAdd, IdSucursalEsp);
             }
                 
         }
@@ -326,7 +326,7 @@ namespace SGSSTC.source.sistema.GestionDatos
         {
             if (ddlEmpresa.SelectedValue != string.Empty)
             {
-                Mgr_Sucursal.SucursalGeneral(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
+                Mgr_Sucursal.Lista_SucursalGeneral(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
                 ViewState["empresa"] = ddlEmpresa.SelectedValue;
             }
             else

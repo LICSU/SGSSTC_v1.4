@@ -37,16 +37,16 @@ namespace SGSSTC.source.sistema.Hacer
             {
                 ViewState["buscar"] = "";
                 LlenarGridView();
-                Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
-                Mgr_Sucursal.Sucursal(ddlSucursalAdd, ObjUsuario.Id_empresa);
-                Mgr_Sucursal.Sucursal(ddlSucursalEdit, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursalAdd, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursalEdit, ObjUsuario.Id_empresa);
             }
         }
         private void LlenarGridView()
         {
             int IdEmpresa = Mgr_Empresa.Set_IdEmpresa(ObjUsuario, Convert.ToInt32(ViewState["empresa"]));
             int IdSucursal = Mgr_Sucursal.Set_IdSucursal(ObjUsuario, Convert.ToInt32(ViewState["sucursal"]));
-            Mgr_Documento.TipoDocumento(GridView1, IdSucursal, IdEmpresa, string.Empty + ViewState["buscar"]);
+            Mgr_Documento.Grid_TipoDocumento(GridView1, IdSucursal, IdEmpresa, string.Empty + ViewState["buscar"]);
         }
         #endregion
 
@@ -123,9 +123,9 @@ namespace SGSSTC.source.sistema.Hacer
                 hdfEditID.Value = (GridView1.Rows[RowIndex].FindControl("id") as Label).Text;
 
                 List<tipo_documento> ListaTipoDocumento = new List<tipo_documento>();
-                ListaTipoDocumento = Mgr_Documento.TipoDocumento(Convert.ToInt32(hdfEditID.Value));
+                ListaTipoDocumento = Mgr_Documento.Get_TipoDocumento(Convert.ToInt32(hdfEditID.Value));
 
-                Mgr_Sucursal.Sucursal(ddlSucursalEdit, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursalEdit, ObjUsuario.Id_empresa);
 
                 foreach (var item in ListaTipoDocumento)
                 {

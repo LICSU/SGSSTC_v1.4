@@ -45,22 +45,22 @@ namespace SGSSTC.source.sistema.MenuPrincipal
         {
             if (ObjUsuario.isAdm_Empresa() || ObjUsuario.isAdm_Grupoli())
             {
-                Capa_Datos.Manager.Usuario.Mgr_Usuario.Rol(ddlRol);
+                Capa_Datos.Manager.Usuario.Mgr_Usuario.Lista_Rol(ddlRol);
             }
             else
             {
-                Capa_Datos.Manager.Usuario.Mgr_Usuario.Rol(ddlRol, ObjUsuario.Rol);
+                Capa_Datos.Manager.Usuario.Mgr_Usuario.Lista_Rol(ddlRol, ObjUsuario.Rol);
             }
 
 
-            Mgr_CodigoCiiu.Codciiu_Usuario(ddlClase, ObjUsuario.Id_empresa);
-            Mgr_CodigoCiiu.Division_Usuario(ddlDivision, ObjUsuario.Id_empresa);
-            Mgr_CodigoCiiu.Seccion_Usuario(ddlSeccion, ObjUsuario.Id_empresa);
+            Mgr_CodigoCiiu.List_Codciiu_Usuario(ddlClase, ObjUsuario.Id_empresa);
+            Mgr_CodigoCiiu.List_Division_Usuario(ddlDivision, ObjUsuario.Id_empresa);
+            Mgr_CodigoCiiu.List_Seccion_Usuario(ddlSeccion, ObjUsuario.Id_empresa);
         }
 
         private void LlenarGridView()
         {
-            Mgr_Comunicacion.SusPreguntas(GridView1,
+            Mgr_Comunicacion.Grid_SusPreguntas(GridView1,
                 ObjUsuario.Id_empresa,
                 string.Empty + ViewState["FechaInicio"],
                 string.Empty + ViewState["FechaFin"],
@@ -122,7 +122,7 @@ namespace SGSSTC.source.sistema.MenuPrincipal
                 hdfPreguntaID.Value = (gvrow.FindControl("id_pregunta") as Label).Text;
 
                 List<Pregunta> ListaPregunta = new List<Pregunta>();
-                ListaPregunta = Mgr_Comunicacion.Pregunta(Convert.ToInt32(hdfPreguntaID.Value));
+                ListaPregunta = Mgr_Comunicacion.Get_Pregunta(Convert.ToInt32(hdfPreguntaID.Value));
 
                 foreach (var item in ListaPregunta)
                 {

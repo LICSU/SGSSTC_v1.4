@@ -10,7 +10,7 @@ using System.Web.UI;
 
 namespace SGSSTC.source.sistema.Hacer
 {
-    public partial class Create_RegistroVotantes : Page
+	public partial class Create_RegistroVotantes : Page
 	{
 		private Model_UsuarioSistema ObjUsuario;
 		private Tuple<bool, bool> BoolEmpSuc;
@@ -25,7 +25,7 @@ namespace SGSSTC.source.sistema.Hacer
 			phSucursal.Visible = BoolEmpSuc.Item2;
 
 			List<empresa> ListaEmpresa = new List<empresa>();
-			ListaEmpresa = Mgr_Empresa.Empresa(ObjUsuario.Id_empresa);
+			ListaEmpresa = Mgr_Empresa.Get_Empresa(ObjUsuario.Id_empresa);
 
 			foreach (var item in ListaEmpresa)
 			{
@@ -46,12 +46,12 @@ namespace SGSSTC.source.sistema.Hacer
 			}
 			else
 			{
-				Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+				Mgr_Sucursal.Lista_Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
 			}
 			if (!BoolEmpSuc.Item2)
 			{
 				List<trabajador> LisTrabajador = new List<trabajador>();
-				LisTrabajador = Mgr_Trabajador.Trabajador(0, 0, Convert.ToInt32(ObjUsuario.Id_sucursal));
+				LisTrabajador = Mgr_Trabajador.Get_Trabajador(0, 0, Convert.ToInt32(ObjUsuario.Id_sucursal));
 				int contTrabajadortes = 0;
 
 				foreach (var item in LisTrabajador)
@@ -83,7 +83,7 @@ namespace SGSSTC.source.sistema.Hacer
 		{
 			if (ddlEmpresa.SelectedValue != string.Empty)
 			{
-				Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
+				Mgr_Sucursal.Lista_Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
 			}
 		}
 
@@ -92,7 +92,7 @@ namespace SGSSTC.source.sistema.Hacer
 			if (ddlSucursal.SelectedValue != string.Empty)
 			{
 				List<trabajador> LisTrabajador = new List<trabajador>();
-				LisTrabajador = Mgr_Trabajador.Trabajador(0, 0, Convert.ToInt32(ddlSucursal.SelectedValue));
+				LisTrabajador = Mgr_Trabajador.Get_Trabajador(0, 0, Convert.ToInt32(ddlSucursal.SelectedValue));
 				int contTrabajadortes = 0;
 
 				foreach (var item in LisTrabajador)

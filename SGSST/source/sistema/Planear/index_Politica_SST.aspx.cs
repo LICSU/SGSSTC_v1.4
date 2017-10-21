@@ -42,10 +42,10 @@ namespace SGSSTC.source.sistema.Hacer
 
         private void cargarPolitica()
         {
-            int idPolitica = Mgr_PoliticaSST.Politica_SST(ObjUsuario.Id_empresa);
+            int idPolitica = Mgr_PoliticaSST.Get_Politica_SST(ObjUsuario.Id_empresa);
 
             List<politica_sst> ListaPolitica = new List<politica_sst>();
-            ListaPolitica = Mgr_PoliticaSST.PoliticaSST(idPolitica);
+            ListaPolitica = Mgr_PoliticaSST.Get_PoliticaSST(idPolitica);
 
             if (ListaPolitica.Count == 0)
             {

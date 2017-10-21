@@ -16,7 +16,7 @@ namespace SGSSTC.source.sistema.Hacer
 
             if (!IsPostBack)
             {
-                Mgr_Gobierno.Cno(ddlCargo);
+                Mgr_Gobierno.Get_CNO(ddlCargo);
 
             }
         }

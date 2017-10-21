@@ -8,38 +8,13 @@ namespace Capa_Datos.Manager.Norma
 {
     public class Mgr_Norma
     {
-        public static Double AvgEstatusNorma(int _idSucursal)
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            var objeto = contexto.norma_sucursal.Where(x => x.id_sucursal == _idSucursal);
-
-            var querySelect = new
-            {
-                promedio = objeto.Average(x => x.estatus_norma)
-            };
-
-            return Math.Round(Convert.ToDouble(querySelect.promedio), 3);
-        }
-
-        public static Double AvgEstNorEmp(int _id_empresa)
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            var objeto = contexto.norma_sucursal.Where(x => x.sucursal.id_empresa == _id_empresa);
-
-            var querySelect = new
-            {
-                promedio = objeto.Average(x => x.estatus_norma)
-            };
-
-            return Math.Round(Convert.ToDouble(querySelect.promedio), 3);
-        }
-
+        //------------FUNCIONES DE CREAR
         public static bool Add_Normas_Sucursal(String[] valores)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
 
             #region insertar normas generales
-            List<norma> normasGeneral = Norma(0, "General");
+            List<norma> normasGeneral = Get_Norma(0, "General");
 
             foreach (var item in normasGeneral)
             {
@@ -90,14 +65,15 @@ namespace Capa_Datos.Manager.Norma
             }
             catch
             {
-                Mgr_Sucursal.DeleteSucursal(Convert.ToInt32(valores[3]));
+                Mgr_Sucursal.Delete_Sucursal(Convert.ToInt32(valores[3]));
                 return false;
             }
 
             return true;
         }
 
-        public static void MatrizLegal(GridView GridView1,int _id_sucursal = 0,string _tipoMatriz = "",string _anho = "",string _buscar = "",int _id_empresa = 0)
+        //------------FUNCIONES DE LLENAR GRID
+        public static void Grid_MatrizLegal(GridView GridView1,int _id_sucursal = 0,string _tipoMatriz = "",string _anho = "",string _buscar = "",int _id_empresa = 0)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             var query = (
@@ -135,9 +111,32 @@ namespace Capa_Datos.Manager.Norma
             GridView1.DataBind();
         }
 
-        //------------getter
+        //------------FUNCIONES DE CONSULTAR
+        public static Double Get_Avg_Estatus_NormaByEmpresa(int _id_empresa)
+        {
+            GrupoLiEntities contexto = new GrupoLiEntities();
+            var objeto = contexto.norma_sucursal.Where(x => x.sucursal.id_empresa == _id_empresa);
 
-        public static List<norma> Norma(int _id_norma = 0, string _tipo = "")
+            var querySelect = new
+            {
+                promedio = objeto.Average(x => x.estatus_norma)
+            };
+
+            return Math.Round(Convert.ToDouble(querySelect.promedio), 3);
+        }
+        public static Double Get_Avg_Estatus_Norma(int _idSucursal)
+        {
+            GrupoLiEntities contexto = new GrupoLiEntities();
+            var objeto = contexto.norma_sucursal.Where(x => x.id_sucursal == _idSucursal);
+
+            var querySelect = new
+            {
+                promedio = objeto.Average(x => x.estatus_norma)
+            };
+
+            return Math.Round(Convert.ToDouble(querySelect.promedio), 3);
+        }
+        public static List<norma> Get_Norma(int _id_norma = 0, string _tipo = "")
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             List<norma> consulta = new List<norma>();
@@ -147,8 +146,7 @@ namespace Capa_Datos.Manager.Norma
 
             return consulta;
         }
-
-        public static List<norma_sucursal> Normas_Sucursal(int idSucursal, int _id_normas = 0)
+        public static List<norma_sucursal> Get_Normas_Sucursal(int idSucursal, int _id_normas = 0)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             List<norma_sucursal> consulta = new List<norma_sucursal>();
@@ -166,9 +164,8 @@ namespace Capa_Datos.Manager.Norma
             return consulta;
         }
 
-        //--------------listas
-
-        public static void AnhoNorma(DropDownList DropDownList1, int _id_sucursal)
+        //--------------FUNCIONES DE LLENAR LISTAS
+        public static void Lista_AnhoNorma(DropDownList DropDownList1, int _id_sucursal)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             var Consulta = (

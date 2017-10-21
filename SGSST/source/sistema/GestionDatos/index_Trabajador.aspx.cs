@@ -57,15 +57,15 @@ namespace SGSSTC.source.sistema.GestionDatos
             }
             else
             {
-                Mgr_Sucursal.Sucursal(ddlSucursalFiltro, ObjUsuario.Id_empresa);
-                Mgr_Area.Area_Sucursal(ddlAreaFiltro, ObjUsuario.Id_empresa);
-                Mgr_Estatus.Estatus_Empresa(ddlEstatusFiltro, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursalFiltro, ObjUsuario.Id_empresa);
+                Mgr_Area.List_Area_Sucursal(ddlAreaFiltro, ObjUsuario.Id_empresa);
+                Mgr_Estatus.List_Estatus_Empresa(ddlEstatusFiltro, ObjUsuario.Id_empresa);
             }
 
             if (!BoolEmpSuc.Item2)
             {
-                Mgr_Area.Area_Sucursal(ddlAreaFiltro, ObjUsuario.Id_sucursal);
-                Mgr_Estatus.Estatus_Empresa(ddlEstatusFiltro, ObjUsuario.Id_empresa);
+                Mgr_Area.List_Area_Sucursal(ddlAreaFiltro, ObjUsuario.Id_sucursal);
+                Mgr_Estatus.List_Estatus_Empresa(ddlEstatusFiltro, ObjUsuario.Id_empresa);
             }
         }
         private void LlenarGridView()
@@ -73,7 +73,7 @@ namespace SGSSTC.source.sistema.GestionDatos
             int IdEmpresa = Mgr_Empresa.Set_IdEmpresa(ObjUsuario, Convert.ToInt32(ViewState["empresa"]));
             int IdSucursal = Mgr_Sucursal.Set_IdSucursal(ObjUsuario, Convert.ToInt32(ViewState["sucursal"]));
 
-            Mgr_Trabajador.Trabajador(GridView1, Capa_Datos.Manager.Usuario.Mgr_Usuario.UsuarioTrabajador(ObjUsuario.Id_usuario), IdEmpresa, string.Empty + base.ViewState["area"],
+            Mgr_Trabajador.Grid_Trabajador(GridView1, Capa_Datos.Manager.Usuario.Mgr_Usuario.Get_UsuarioTrabajador(ObjUsuario.Id_usuario), IdEmpresa, string.Empty + base.ViewState["area"],
                 string.Empty + base.ViewState["estatus"], string.Empty + base.ViewState["sWhere"], IdSucursal);
         }
         #endregion
@@ -170,7 +170,7 @@ namespace SGSSTC.source.sistema.GestionDatos
         {
             List<trabajador> ListaTrabajador = new List<trabajador>();
             int idTrabajador = Convert.ToInt32(ID);
-            ListaTrabajador = Mgr_Trabajador.Trabajador(idTrabajador);
+            ListaTrabajador = Mgr_Trabajador.Get_Trabajador(idTrabajador);
 
             foreach (var itemTrabajador in ListaTrabajador)
             {
@@ -307,9 +307,9 @@ namespace SGSSTC.source.sistema.GestionDatos
         {
             if (ddlEmpresasFiltro.SelectedValue != string.Empty)
             {
-                Mgr_Sucursal.Sucursal(ddlSucursalFiltro, Convert.ToInt32(ddlEmpresasFiltro.SelectedValue));
-                Mgr_Area.Area_Sucursal(ddlAreaFiltro, Convert.ToInt32(ddlEmpresasFiltro.SelectedValue));
-                Mgr_Estatus.Estatus_Empresa(ddlEstatusFiltro, Convert.ToInt32(ddlEmpresasFiltro.SelectedValue));
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursalFiltro, Convert.ToInt32(ddlEmpresasFiltro.SelectedValue));
+                Mgr_Area.List_Area_Sucursal(ddlAreaFiltro, Convert.ToInt32(ddlEmpresasFiltro.SelectedValue));
+                Mgr_Estatus.List_Estatus_Empresa(ddlEstatusFiltro, Convert.ToInt32(ddlEmpresasFiltro.SelectedValue));
                 ViewState["empresa"] = ddlEmpresasFiltro.SelectedValue;
             }
             else
@@ -323,7 +323,7 @@ namespace SGSSTC.source.sistema.GestionDatos
             if (ddlSucursalFiltro.SelectedValue != string.Empty)
             {
                 ViewState["sucursal"] = ddlSucursalFiltro.SelectedValue;
-                Mgr_Area.Area_Sucursal(ddlAreaFiltro, Convert.ToInt32(ddlSucursalFiltro.SelectedValue));
+                Mgr_Area.List_Area_Sucursal(ddlAreaFiltro, Convert.ToInt32(ddlSucursalFiltro.SelectedValue));
             }
             else
             {
@@ -395,8 +395,8 @@ namespace SGSSTC.source.sistema.GestionDatos
                 if (rblDiagnostico.SelectedValue.Equals("EL"))
                 {
                     lblEnfermedad.Text = "Enfermedad Laboral";
-                    Mgr_Salud.EnfermedadLaboral(ddlEnfermedadReposo);
-                    Mgr_Salud.Sistema(ddlSistemaReposo);
+                    Mgr_Salud.Lista_EnfermedadLaboral(ddlEnfermedadReposo);
+                    Mgr_Salud.Lista_Sistema(ddlSistemaReposo);
                     ViewState["tpo_enfermedad"] = "ENFERMEDAD LABORAL";
                     phEnfermedadLaboral.Visible = true;
                     phAccidenteComun.Visible = false;
@@ -405,8 +405,8 @@ namespace SGSSTC.source.sistema.GestionDatos
                 else if (rblDiagnostico.SelectedValue.Equals("EC"))
                 {
                     lblEnfermedad.Text = "Enfermedad Común";
-                    Mgr_Salud.EnfermedadComun(ddlEnfermedadReposo);
-                    Mgr_Salud.Sistema(ddlSistemaReposo);
+                    Mgr_Salud.Lista_EnfermedadComun(ddlEnfermedadReposo);
+                    Mgr_Salud.Lista_Sistema(ddlSistemaReposo);
                     ViewState["tpo_enfermedad"] = "ENFERMEDAD COMUN";
                     phEnfermedadLaboral.Visible = true;
                     phAccidenteComun.Visible = false;
@@ -430,7 +430,7 @@ namespace SGSSTC.source.sistema.GestionDatos
                 }
                 else if (rblDiagnostico.SelectedValue.Equals("PEL"))
                 {
-                    Mgr_Salud.EnfermedadComun(ddlEnfermedadLaboral);
+                    Mgr_Salud.Lista_EnfermedadComun(ddlEnfermedadLaboral);
                     ViewState["tpo_enfermedad"] = "POSIBLE ENFERMEDAD LABORAL";
                     phAccidenteComun.Visible = false;
                     phEnfermedadLaboral.Visible = false;

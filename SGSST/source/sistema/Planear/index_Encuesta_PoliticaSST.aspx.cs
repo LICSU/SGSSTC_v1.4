@@ -40,12 +40,12 @@ namespace SGSSTC.source.sistema.Hacer
         }
         private void CargarListas()
         {
-            Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+            Mgr_Sucursal.Lista_Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
 
             if (!BoolEmpSuc.Item1)
             {
-                Mgr_Sucursal.Sucursal(ddlSucursalAdd, ObjUsuario.Id_empresa);
-                Mgr_Sucursal.Sucursal(ddlSucursalGral, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursalAdd, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursalGral, ObjUsuario.Id_empresa);
             }
 
             if (!BoolEmpSuc.Item2)
@@ -64,7 +64,7 @@ namespace SGSSTC.source.sistema.Hacer
             if (!valor.Equals(string.Empty)) {
                 id_trabajador = Convert.ToInt32(string.Empty + ViewState["trabajador"]);
             }
-            Mgr_PoliticaSST.Encuesta_PoliticaSST(
+            Mgr_PoliticaSST.Grid_Encuesta_PoliticaSST(
                 GridView1,
                 IdEmpresa,
                 IdSucursal,
@@ -83,8 +83,8 @@ namespace SGSSTC.source.sistema.Hacer
             List<sucursal> ListaSucursal = new List<sucursal>();
             List<trabajador> ListaTrabajador = new List<trabajador>();
 
-            ListaSucursal = Mgr_Sucursal.Sucursal(ObjUsuario.Id_sucursal, 0, "");
-            ListaTrabajador = Mgr_Trabajador.Trabajador(0, 0, ObjUsuario.Id_sucursal);
+            ListaSucursal = Mgr_Sucursal.Get_Sucursal(ObjUsuario.Id_sucursal, 0, "");
+            ListaTrabajador = Mgr_Trabajador.Get_Trabajador(0, 0, ObjUsuario.Id_sucursal);
 
             string[] valores = {
             "¿Es de su Conocimiento la Política de Seguridad y Salud en el Trabajo de la Organización?",
@@ -238,7 +238,7 @@ namespace SGSSTC.source.sistema.Hacer
             {
                 ViewState["sucursal"] = ddlSucursal.SelectedValue;
                 IdSucursal = Convert.ToInt32(ddlSucursal.SelectedValue);
-                Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabajador, IdSucursal);
+                Mgr_Trabajador.Lista_Trabajadores_Sucursal(ddlTrabajador, IdSucursal);
             }
             else
             {
@@ -268,7 +268,7 @@ namespace SGSSTC.source.sistema.Hacer
             if (ddlSucursalAdd.SelectedValue != string.Empty)
             {
                 IdSucursalEsp = Convert.ToInt32(ddlSucursalAdd.SelectedValue);
-                Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabajadorEsp, IdSucursalEsp);
+                Mgr_Trabajador.Lista_Trabajadores_Sucursal(ddlTrabajadorEsp, IdSucursalEsp);
             }
         }
         

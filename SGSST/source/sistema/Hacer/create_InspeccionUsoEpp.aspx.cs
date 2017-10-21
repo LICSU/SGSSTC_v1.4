@@ -71,12 +71,12 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
             }
             else
             {
-                Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
             }
 
             if (!BoolEmpSuc.Item2)
             {
-                Mgr_Area.Area_Sucursal(ddlArea, ObjUsuario.Id_sucursal);
+                Mgr_Area.List_Area_Sucursal(ddlArea, ObjUsuario.Id_sucursal);
             }
         }
         #endregion
@@ -110,7 +110,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
         {
             int intContInspecciones = 0;
             intContInspecciones = Convert.ToInt32(cantInspecciones.Value);
-            eppTrab = Mgr_Epp.Epp(Convert.ToInt32(ddlPuesto.SelectedValue));
+            eppTrab = Mgr_Epp.Get_Epp(Convert.ToInt32(ddlPuesto.SelectedValue));
             ControlesDinamicos.Add_Fila_InspeccionUsoEpp(pnDatos, intContInspecciones, eppTrab);
         }
 
@@ -123,7 +123,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
             if (ddlTrabajador.SelectedValue != string.Empty)
             {
                 ViewState["trabajador"] = ddlTrabajador.SelectedValue;
-                eppTrab = Mgr_Epp.Epp(Convert.ToInt32(ddlPuesto.SelectedValue));
+                eppTrab = Mgr_Epp.Get_Epp(Convert.ToInt32(ddlPuesto.SelectedValue));
                 if (eppTrab.Count > 0)
                 {
                     phInformacion.Visible = true;
@@ -148,7 +148,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
             if (ddlEmpresa.SelectedValue != string.Empty)
             {
                 ViewState["empresa"] = ddlEmpresa.SelectedValue;
-                Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
                 ViewState["sucursal"] = "0";
             }
             else
@@ -162,7 +162,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
             if (ddlSucursal.SelectedValue != string.Empty)
             {
                 ViewState["sucursal"] = ddlSucursal.SelectedValue;
-                Mgr_Area.Area_Sucursal(ddlArea, Convert.ToInt32(ddlSucursal.SelectedValue));
+                Mgr_Area.List_Area_Sucursal(ddlArea, Convert.ToInt32(ddlSucursal.SelectedValue));
             }
             else
             {
@@ -175,7 +175,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
             if (ddlArea.SelectedValue != string.Empty)
             {
                 ViewState["area"] = ddlArea.SelectedValue;
-                Mgr_PuestoTrabajo.PuestoTrabajo(ddlPuesto, "idArea", Convert.ToInt32(ddlArea.SelectedValue));
+                Mgr_PuestoTrabajo.Lista_PuestoTrabajo(ddlPuesto, "idArea", Convert.ToInt32(ddlArea.SelectedValue));
             }
             else
             {
@@ -191,7 +191,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
                 if (!BoolEmpSuc.Item2) IdSucursal = ObjUsuario.Id_sucursal;
                 else IdSucursal = Convert.ToInt32(ddlSucursal.SelectedValue);
                 IdPuesto = Convert.ToInt32(ddlPuesto.SelectedValue);
-                Mgr_Trabajador.Trabajadores_Puestos(ddlTrabajador, IdPuesto);
+                Mgr_Trabajador.Lista_Trabajadores_Puestos(ddlTrabajador, IdPuesto);
             }
             else
             {

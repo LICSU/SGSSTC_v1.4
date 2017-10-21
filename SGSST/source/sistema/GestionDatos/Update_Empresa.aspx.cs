@@ -30,7 +30,7 @@ namespace SGSSTC.source.sistema.GestionDatos
                 if (Request.QueryString["id"] != string.Empty)
                 {
                     cargarDatos();
-                    Mgr_Gobierno.Arl(ddlArp);
+                    Mgr_Gobierno.Get_ARL(ddlArp);
                 }
             }
         }
@@ -41,7 +41,7 @@ namespace SGSSTC.source.sistema.GestionDatos
             IdEmpresa = objUtilidades.descifrarCadena(Request.QueryString["id"]);
 
             List<empresa> ListaEmpresa = new List<empresa>();
-            ListaEmpresa = Mgr_Empresa.Empresa(IdEmpresa);
+            ListaEmpresa = Mgr_Empresa.Get_Empresa(IdEmpresa);
 
             foreach (var item in ListaEmpresa)
             {

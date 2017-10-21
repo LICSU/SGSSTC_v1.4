@@ -7,7 +7,7 @@ namespace Capa_Datos.Manager.PlanTrabajo
 {
     public class Mgr_PlanTrabajo
     {
-        //----------crud
+        //----------FUNCIONES DE CREAR, EDITAR Y ELIMINAR
         public static bool Add_Lista_Actividad(int id_sucursal)
         {
             lista_actividad nuevo = new lista_actividad()
@@ -23,8 +23,8 @@ namespace Capa_Datos.Manager.PlanTrabajo
             return CRUD.Add_Fila(nuevo);
         }
 
-        //----------getter
-        public static List<plan_trabajo> Plan_Trabajo(int _id_sucursal = 0, int _anho = 0, int id_plan = 0)
+        //----------FUNCIONES DE CONSULTAR
+        public static List<plan_trabajo> Get_Plan_Trabajo(int _id_sucursal = 0, int _anho = 0, int id_plan = 0)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             List<plan_trabajo> consulta = new List<plan_trabajo>();
@@ -40,8 +40,8 @@ namespace Capa_Datos.Manager.PlanTrabajo
             return consulta;
         }
 
-        //----------grid
-        public static void PlanTrabajo(GridView GridView1, int _id_sucursal, int _anho = 0)
+        //----------FUNCIONES DE LLENAR GRID
+        public static void Grid_PlanTrabajo(GridView GridView1, int _id_sucursal, int _anho = 0)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             var query = (
@@ -118,9 +118,8 @@ namespace Capa_Datos.Manager.PlanTrabajo
             GridView1.DataBind();
         }
 
-
-        //----------listas
-        public static void Actividades_Sucursal(DropDownList DropDownList1, int idSucursal, int _anho)
+        //----------FUNCIONES DE LLENAR LISTAS
+        public static void Lista_ActividadesBySucursal(DropDownList DropDownList1, int idSucursal, int _anho)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             var Consulta = (

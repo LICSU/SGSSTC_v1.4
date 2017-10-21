@@ -5,9 +5,8 @@ namespace Capa_Datos.Manager.Gobierno
 {
     public class Mgr_Gobierno
     {
-        //------------getter
-
-        public static void EPS(DropDownList DropDownList1)
+        //------------FUNCIONES DE CONSULTAR
+        public static void Get_EPS(DropDownList DropDownList1)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             #region codigo
@@ -21,7 +20,7 @@ namespace Capa_Datos.Manager.Gobierno
             DropDownList1.Items.Insert(0, new ListItem("Seleccione el EPS", ""));
             #endregion
         }
-        public static void AFP(DropDownList DropDownList1)
+        public static void Get_AFP(DropDownList DropDownList1)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             #region codigo
@@ -35,7 +34,7 @@ namespace Capa_Datos.Manager.Gobierno
             DropDownList1.Items.Insert(0, new ListItem("Seleccione el Fondo", ""));
             #endregion
         }
-        public static void Arl(DropDownList DropDownList1)
+        public static void Get_ARL(DropDownList DropDownList1)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             var Consulta = (from c in contexto.arl
@@ -47,7 +46,7 @@ namespace Capa_Datos.Manager.Gobierno
             DropDownList1.DataBind();
             DropDownList1.Items.Insert(0, new ListItem("Seleccione la Arl", ""));
         }
-        public static void Ccf(DropDownList DropDownList1)
+        public static void Get_CCF(DropDownList DropDownList1)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             var Consulta = (from c in contexto.ccf
@@ -59,7 +58,7 @@ namespace Capa_Datos.Manager.Gobierno
             DropDownList1.DataBind();
             DropDownList1.Items.Insert(0, new ListItem("Seleccione el CCF", ""));
         }
-        public static void Cno(DropDownList DropDownList1)
+        public static void Get_CNO(DropDownList DropDownList1)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             var Consulta = (from c in contexto.cno
@@ -71,7 +70,7 @@ namespace Capa_Datos.Manager.Gobierno
             DropDownList1.DataBind();
             DropDownList1.Items.Insert(0, new ListItem("Seleccione el Cargo", ""));
         }
-        public static void IPS(DropDownList DropDownList1)
+        public static void Get_IPS(DropDownList DropDownList1)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             #region codigo
@@ -86,7 +85,7 @@ namespace Capa_Datos.Manager.Gobierno
             DropDownList1.Items.Insert(0, new ListItem("Seleccione la Ips", ""));
             #endregion
         }
-        public static void Reg_Dpto_Mcpio(DropDownList DropDownList1, string tabla, int id = 0)
+        public static void Get_Reg_Dpto_Mcpio(DropDownList DropDownList1, string tabla, int id = 0)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             if (tabla == "Region")

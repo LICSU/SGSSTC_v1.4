@@ -57,10 +57,10 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
                                 int nroTrabajadores = 0;
                                 int cantGestiones = 0;
                                 //Buscar cantidad de trabajadores para la empresa seleccionada.(Cantidad de filas)
-                                nroTrabajadores = Mgr_Trabajador.Trabajadores_CantidadesByCapacidad(Convert.ToInt32(ddlSucursal.SelectedValue), fechaInicial, fechaFinal);
+                                nroTrabajadores = Mgr_Trabajador.Get_Trabajadores_ByCapacidad(Convert.ToInt32(ddlSucursal.SelectedValue), fechaInicial, fechaFinal);
                                 //Cantidad de gestiones laborales de tipo capacitacion para el trimestre seleccionado (Cantidad de Columnas)
 
-                                cantGestiones = Mgr_GestionLaboral.GestionLaboralByFecha(fechaInicial, fechaFinal);
+                                cantGestiones = Mgr_GestionLaboral.Get_GestionLaboralByFecha(fechaInicial, fechaFinal);
                                 if (nroTrabajadores > 0)
                                 {
                                     crearTabla(nroTrabajadores, cantGestiones);
@@ -98,7 +98,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
             }
             else
             {
-                Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
             }
 
 
@@ -111,10 +111,10 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
 
                 //Buscar cantidad de trabajadores para la empresa seleccionada.(Cantidad de filas)
 
-                nroTrabajadores = Mgr_Trabajador.Trabajadores_CantidadesByCapacidad(ObjUsuario.Id_sucursal, fechaInicial, fechaFinal);
+                nroTrabajadores = Mgr_Trabajador.Get_Trabajadores_ByCapacidad(ObjUsuario.Id_sucursal, fechaInicial, fechaFinal);
                 //Cantidad de gestiones laborales de tipo capacitacion para el trimestre seleccionado (Cantidad de Columnas)
 
-                cantGestiones = Mgr_GestionLaboral.GestionLaboralByFecha(fechaInicial, fechaFinal);
+                cantGestiones = Mgr_GestionLaboral.Get_GestionLaboralByFecha(fechaInicial, fechaFinal);
                 if (nroTrabajadores > 0)
                 {
                     crearTabla(nroTrabajadores, cantGestiones);
@@ -146,7 +146,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
             if (ddlEmpresa.SelectedValue != string.Empty)
             {
                 ViewState["empresa"] = ddlEmpresa.SelectedValue;
-                Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
             }
             else
             {
@@ -172,8 +172,8 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
             IdEmpresa = IdEmpSuc.Item1;
             IdSucursal = IdEmpSuc.Item2;
 
-            List<empresa> empresa_list = Mgr_Empresa.Empresa(Convert.ToInt32(IdEmpresa));
-            List<sucursal> sucursal_list = Mgr_Sucursal.Sucursal(Convert.ToInt32(IdSucursal), 0, "");
+            List<empresa> empresa_list = Mgr_Empresa.Get_Empresa(Convert.ToInt32(IdEmpresa));
+            List<sucursal> sucursal_list = Mgr_Sucursal.Get_Sucursal(Convert.ToInt32(IdSucursal), 0, "");
 
             phEncabezado.Visible = true;
         }
@@ -226,7 +226,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
             IdSucursal = IdEmpSuc.Item2;
 
             List<gestion_laboral> gestion_lista = new List<gestion_laboral>();
-            gestion_lista = Mgr_GestionLaboral.GesLabCap(fechaInicial, fechaFinal, IdEmpresa, IdSucursal);
+            gestion_lista = Mgr_GestionLaboral.Get_GestionLaboralByCapacitacion(fechaInicial, fechaFinal, IdEmpresa, IdSucursal);
 
             foreach (gestion_laboral gl in gestion_lista)
             {
@@ -248,14 +248,14 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
             int NumTrab = 1, gestion = 1, HorasAsistio = 0, inaJust = 0, InaInjust = 0, Asistencias = 0;
             bool CantHoras = false;
 
-            List<trabajador> List_Trab = Mgr_Trabajador.Trabajador(0, 0, Convert.ToInt32(IdSucursal), 0);
+            List<trabajador> List_Trab = Mgr_Trabajador.Get_Trabajador(0, 0, Convert.ToInt32(IdSucursal), 0);
 
             foreach (var item1 in List_Trab)
             {
                 HorasAsistio = 0;
                 CantHoras = false;
 
-                List<trabajador_gestion> trab_lista = Mgr_Trabajador.Trabajadores_Capacitacion(item1.id_trabajador, fechaInicial, fechaFinal);
+                List<trabajador_gestion> trab_lista = Mgr_Trabajador.Get_TrabajadoresByCapacitacion(item1.id_trabajador, fechaInicial, fechaFinal);
 
                 foreach (var item2 in trab_lista)
                 {

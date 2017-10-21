@@ -34,7 +34,7 @@ namespace SGSSTC.source.sistema.GestionDatos
         
         private void LlenarGridView()
         {
-            Mgr_Epp.Senalizacion(GridView1);
+            Mgr_Epp.Grid_Senalizacion(GridView1);
         }
         #endregion
 
@@ -56,7 +56,7 @@ namespace SGSSTC.source.sistema.GestionDatos
 
                 hdfVerID.Value = (gvrow.FindControl("id") as Label).Text;
                 List<senalizacion> senal = new List<senalizacion>();
-                senal = Mgr_Epp.Senalizacion(Convert.ToInt32(hdfVerID.Value));
+                senal = Mgr_Epp.Get_Senalizacion(Convert.ToInt32(hdfVerID.Value));
 
                 foreach (var item in senal)
                 {
@@ -73,7 +73,7 @@ namespace SGSSTC.source.sistema.GestionDatos
 
                 hdfEditID.Value = (gvrow.FindControl("id") as Label).Text;
                 List<senalizacion> senal = new List<senalizacion>();
-                senal = Mgr_Epp.Senalizacion(Convert.ToInt32(hdfEditID.Value));
+                senal = Mgr_Epp.Get_Senalizacion(Convert.ToInt32(hdfEditID.Value));
 
                 foreach (var item in senal)
                 {
@@ -119,7 +119,7 @@ namespace SGSSTC.source.sistema.GestionDatos
                 txtDescripcionAdd.Text
             };
             
-            ObjUsuario.Error = Mgr_Epp.AddSenalizacion(valores, fuImagenAdd);            
+            ObjUsuario.Error = Mgr_Epp.Add_Senalizacion(valores, fuImagenAdd);            
             Modal.CerrarModal("addModal", "AddModalScript", this);
             Modal.MostrarAlertaAdd(phAlerta, divAlerta, lbAlerta, ObjUsuario.Error, txtBuscar);
             limpiarCampos();

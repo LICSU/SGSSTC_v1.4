@@ -1,16 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.UI.WebControls;
 
 namespace Capa_Datos.Manager.Acc_Inc
 {
     public class Mgr_Acc_Inc
     {
-        //----Grid
-        public static void Accidente_General(GridView GridView1, int _id_empresa = 0, int _id_sucursal = 0, string _id_area = "0", string _search = "", string _fecha_ini = "", string _fecha_fin = "")
+        //-------------FUNCIONES DE LLENAR GRID
+        public static void Grid_Accidente(GridView GridView1, int _id_empresa = 0, int _id_sucursal = 0, string _id_area = "0", string _search = "", string _fecha_ini = "", string _fecha_fin = "")
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             var query = (
@@ -41,8 +39,7 @@ namespace Capa_Datos.Manager.Acc_Inc
             GridView1.DataSource = query;
             GridView1.DataBind();
         }
-
-        public static void Incidente_General(GridView GridView1, int _id_empresa = 0, int _id_sucursal = 0, string _id_area = "0", string _search = "", string _fecha_ini = "", string _fecha_fin = "")
+        public static void Grid_Incidente(GridView GridView1, int _id_empresa = 0, int _id_sucursal = 0, string _id_area = "0", string _search = "", string _fecha_ini = "", string _fecha_fin = "")
         {
 
             GrupoLiEntities contexto = new GrupoLiEntities();
@@ -75,16 +72,15 @@ namespace Capa_Datos.Manager.Acc_Inc
             GridView1.DataBind();
         }
 
-        //-------------Getter
-        public static int Accidentes()
+        //-------------FUNCIONES DE CONSULTAR
+        public static int Get_Accidente()
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             var consulta = new Respuesta();
             int id = contexto.at_it_el_pa.Max(x => x.id_at_it_el_pa);
             return id;
         }
-
-        public static int AccidentesLaboral(int _anho, int _id_empresa = 0, int _id_sucursal = 0)
+        public static int Get_Accidente(int _anho, int _id_empresa = 0, int _id_sucursal = 0)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             var query = (
@@ -103,23 +99,21 @@ namespace Capa_Datos.Manager.Acc_Inc
 
             return query.Count();
         }
-
-        public static List<at_it_el_pa> Accidente(int _id_accidente)
+        public static List<at_it_el_pa> Get_Accidente(int _id_accidente)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             var consulta = new List<at_it_el_pa>();
             consulta = contexto.at_it_el_pa.Where(x => x.id_at_it_el_pa == _id_accidente).ToList();
             return consulta;
         }
-        public static List<investigacion_ac_in> InvestigacionAccidente(int _id_accidente)
+        public static List<investigacion_ac_in> Get_Investigacion_Accidente(int _id_accidente)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             List<investigacion_ac_in> consulta = new List<investigacion_ac_in>();
             consulta = contexto.investigacion_ac_in.Where(x => x.id_at_it_el_pa == _id_accidente).ToList();
             return consulta;
         }
-
-        public static List<at_it_el_pa> Accidente_Empresa_Reportes(int _id_empresa, DateTime fechainicio, DateTime fechafin)
+        public static List<at_it_el_pa> Get_Accidente_Empresa_Reportes(int _id_empresa, DateTime fechainicio, DateTime fechafin)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             var consulta = new List<at_it_el_pa>();

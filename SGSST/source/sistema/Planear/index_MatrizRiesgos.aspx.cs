@@ -31,7 +31,7 @@ namespace SGSSTC.source.sistema.Hacer
 
             if (!BoolEmpSuc.Item1 && BoolEmpSuc.Item2)
             {
-                estatus = Convert.ToString(Mgr_Riesgos.AvgPorcEstRieEmp(ObjUsuario.Id_empresa));
+                estatus = Convert.ToString(Mgr_Riesgos.Get_Avg_Porcentaje_EstatusRiesgosByEmpresa(ObjUsuario.Id_empresa));
             }
 
             if (!IsPostBack)
@@ -47,7 +47,7 @@ namespace SGSSTC.source.sistema.Hacer
             int IdSucursal = Mgr_Sucursal.Set_IdSucursal(ObjUsuario, Convert.ToInt32(ViewState["sucursal"]));
             string tipoRiesgo = string.Empty + ViewState["tipoRiesgo"];
 
-            Mgr_Riesgos.MatrizRiesgo(GridView1, IdSucursal, IdEmpresa, tipoRiesgo, string.Empty + ViewState["buscar"]);
+            Mgr_Riesgos.Grid_MatrizRiesgo(GridView1, IdSucursal, IdEmpresa, tipoRiesgo, string.Empty + ViewState["buscar"]);
 
         }
         private void CargarListas()
@@ -58,17 +58,17 @@ namespace SGSSTC.source.sistema.Hacer
             }
             else
             {
-                Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
             }
 
-            Mgr_Riesgos.Riesgos(ddlTipoRiesgo, "TipoRiesgo");
+            Mgr_Riesgos.Lista_Riesgos(ddlTipoRiesgo, "TipoRiesgo");
 
         }
         protected string CalcularEstatus()
         {
             if (!BoolEmpSuc.Item2)
             {
-                estatus = Convert.ToString(Mgr_Riesgos.AvgPorcEstRieSuc(ObjUsuario.Id_sucursal));
+                estatus = Convert.ToString(Mgr_Riesgos.Get_Avg_Porcentaje_EstatusRiesgosBySucursal(ObjUsuario.Id_sucursal));
             }
             return estatus;
         }
@@ -136,8 +136,8 @@ namespace SGSSTC.source.sistema.Hacer
             if (ddlEmpresa.SelectedValue != string.Empty)
             {
                 ViewState["empresa"] = ddlEmpresa.SelectedValue;
-                Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
-                estatus = Convert.ToString(Mgr_Riesgos.AvgPorcEstRieEmp(Convert.ToInt32(ddlEmpresa.SelectedValue)));
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
+                estatus = Convert.ToString(Mgr_Riesgos.Get_Avg_Porcentaje_EstatusRiesgosByEmpresa(Convert.ToInt32(ddlEmpresa.SelectedValue)));
             }
             else
             {
@@ -150,18 +150,18 @@ namespace SGSSTC.source.sistema.Hacer
             if (ddlSucursal.SelectedValue != string.Empty)
             {
                 ViewState["sucursal"] = ddlSucursal.SelectedValue;
-                estatus = Convert.ToString(Mgr_Riesgos.AvgPorcEstRieSuc(Convert.ToInt32(ddlSucursal.SelectedValue)));
+                estatus = Convert.ToString(Mgr_Riesgos.Get_Avg_Porcentaje_EstatusRiesgosBySucursal(Convert.ToInt32(ddlSucursal.SelectedValue)));
             }
             else
             {
                 ViewState["sucursal"] = "0";
                 if (BoolEmpSuc.Item1)
                 {
-                    estatus = Convert.ToString(Mgr_Riesgos.AvgPorcEstRieEmp(Convert.ToInt32(ddlEmpresa.SelectedValue)));
+                    estatus = Convert.ToString(Mgr_Riesgos.Get_Avg_Porcentaje_EstatusRiesgosByEmpresa(Convert.ToInt32(ddlEmpresa.SelectedValue)));
                 }
                 else
                 {
-                    estatus = Convert.ToString(Mgr_Riesgos.AvgPorcEstRieEmp(ObjUsuario.Id_empresa));
+                    estatus = Convert.ToString(Mgr_Riesgos.Get_Avg_Porcentaje_EstatusRiesgosByEmpresa(ObjUsuario.Id_empresa));
                 }
             }
             LlenarGridView();

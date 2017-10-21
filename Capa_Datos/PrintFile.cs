@@ -1299,7 +1299,7 @@ namespace Capa_Datos
         public static void PrintGestionLaboral(String[] valores, Page _page)
         {
             List<gestion_laboral> ListaGestionLaboral = new List<gestion_laboral>();
-            ListaGestionLaboral = Mgr_GestionLaboral.GestionLaboral(Convert.ToInt32(valores[0]));
+            ListaGestionLaboral = Mgr_GestionLaboral.Get_GestionLaboral(Convert.ToInt32(valores[0]));
 
             foreach (var itemGestionLaboral in ListaGestionLaboral)
             {
@@ -1347,7 +1347,7 @@ namespace Capa_Datos
                     DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, miCelda86));
                 }
 
-                List<trabajador_gestion> ListaTrabajadorGestion = Mgr_Trabajador.TrabajadorInGestion(0, Convert.ToInt32(valores[0]));
+                List<trabajador_gestion> ListaTrabajadorGestion = Mgr_Trabajador.Get_TrabajadorInGestion(0, Convert.ToInt32(valores[0]));
                 miCelda12.Texto = "TRABAJADORES QUE ASISTIRAN";
                 DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, miCelda12));
 
@@ -1491,7 +1491,7 @@ namespace Capa_Datos
             row.Visible = false;
             int i = 0;
             _table = (Table)_Panel.FindControl("tblEPP");
-            List<Model_CEPP> epp_datos = Mgr_Epp.Epp(Convert.ToInt32(ddlPuesto.SelectedValue));
+            List<Model_CEPP> epp_datos = Mgr_Epp.Get_Epp(Convert.ToInt32(ddlPuesto.SelectedValue));
             foreach (var dato in epp_datos)
             {
                 _radio = (RadioButton)_Panel.FindControl("eppNo" + i);
@@ -1509,7 +1509,7 @@ namespace Capa_Datos
             }
 
 
-            List<Model_CEPP> tipo_epp_datos = Mgr_Epp.TipoEpp(Convert.ToInt32(ddlPuesto.SelectedValue));
+            List<Model_CEPP> tipo_epp_datos = Mgr_Epp.Get_TipoEpp(Convert.ToInt32(ddlPuesto.SelectedValue));
             i = 0;
             _table = (Table)_Panel.FindControl("tblSenal");
             foreach (var dato in tipo_epp_datos)
@@ -2978,12 +2978,12 @@ namespace Capa_Datos
         {
             #region cuerpo
             List<investigacion_ac_in> ListaInvestigacionAccidente = new List<investigacion_ac_in>();
-            ListaInvestigacionAccidente = Mgr_Acc_Inc.InvestigacionAccidente(Convert.ToInt32(valores[0]));
+            ListaInvestigacionAccidente = Mgr_Acc_Inc.Get_Investigacion_Accidente(Convert.ToInt32(valores[0]));
 
             foreach (var itemInvestigacionAccidente in ListaInvestigacionAccidente)
             {
                 List<at_it_el_pa> ListaAccidente = new List<at_it_el_pa>();
-                ListaAccidente = Mgr_Acc_Inc.Accidente(Convert.ToInt32(itemInvestigacionAccidente.id_at_it_el_pa));
+                ListaAccidente = Mgr_Acc_Inc.Get_Accidente(Convert.ToInt32(itemInvestigacionAccidente.id_at_it_el_pa));
 
                 foreach (var itemAccidente in ListaAccidente)
                 {
@@ -3361,7 +3361,7 @@ namespace Capa_Datos
         public static void PrintAccidenteLaboral(String[] valores, Page _page)
         {
             List<at_it_el_pa> ListAccidentes = new List<at_it_el_pa>();
-            ListAccidentes = Mgr_Acc_Inc.Accidente(Convert.ToInt32(valores[0]));
+            ListAccidentes = Mgr_Acc_Inc.Get_Accidente(Convert.ToInt32(valores[0]));
 
             #region contenido
             foreach (var item in ListAccidentes)
@@ -3508,7 +3508,7 @@ namespace Capa_Datos
                 DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, miCelda12));
 
                 List<trabajador> ListaTrabajador = new List<trabajador>();
-                ListaTrabajador = Mgr_Trabajador.Trabajador(0, 0, IdSucursal);
+                ListaTrabajador = Mgr_Trabajador.Get_Trabajador(0, 0, IdSucursal);
 
                 foreach (var item1 in ListaTrabajador)
                 {
@@ -3713,7 +3713,7 @@ namespace Capa_Datos
             miCelda1.Texto = "No Apto";
             DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, miCelda1));
 
-            List<Model_CEPP> epp_datos = Mgr_Epp.Epp(Convert.ToInt32(valores[2]));
+            List<Model_CEPP> epp_datos = Mgr_Epp.Get_Epp(Convert.ToInt32(valores[2]));
             Model_Celda miCelda161 = new Model_Celda(0, "H4", "C", "1|1|1|1", 4, epp_datos.Count, "", "EQUIPO DE PROTECCIÓN PERSONAL E.P.P");
             DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, miCelda161));
             int i = 0;
@@ -3741,7 +3741,7 @@ namespace Capa_Datos
                 DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, miCelda1));
                 i++;
             }
-            List<Model_CEPP> epp_tipo_datos = Mgr_Epp.TipoEpp(Convert.ToInt32(Convert.ToInt32(valores[2])));
+            List<Model_CEPP> epp_tipo_datos = Mgr_Epp.Get_TipoEpp(Convert.ToInt32(Convert.ToInt32(valores[2])));
             miCelda161 = new Model_Celda(0, "H4", "C", "1|1|1|1", 4, epp_tipo_datos.Count, "", "SEÑALIZACIÓN O AVISOS DE LOS E.P.P");
             DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, miCelda161));
             i = 0;
@@ -3773,7 +3773,7 @@ namespace Capa_Datos
             i = 0;
             if (row.Visible)
             {
-                epp_datos = Mgr_Epp.Epp(Convert.ToInt32(valores[2]));
+                epp_datos = Mgr_Epp.Get_Epp(Convert.ToInt32(valores[2]));
                 miCelda161 = new Model_Celda(0, "H4", "C", "1|1|1|1", 4, Convert.ToInt32(valores[3]), "", "EQUIPO DE PROTECCIÓN PERSONAL FALTANTES");
                 DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, miCelda161));
                 foreach (var dato in epp_datos)
@@ -3793,7 +3793,7 @@ namespace Capa_Datos
             i = 0;
             if (row.Visible)
             {
-                epp_datos = Mgr_Epp.Epp(Convert.ToInt32(valores[2]));
+                epp_datos = Mgr_Epp.Get_Epp(Convert.ToInt32(valores[2]));
                 miCelda161 = new Model_Celda(0, "H4", "C", "1|1|1|1", 4, Convert.ToInt32(valores[4]), "", "SEÑALIZACIÓN DE EPP FALTANTE");
                 DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, miCelda161));
                 foreach (var dato in epp_datos)
@@ -3824,7 +3824,7 @@ namespace Capa_Datos
 
             #region contenido
             List<evaluacion_riesgo> Lista_EvaRiesgo = new List<evaluacion_riesgo>();
-            Lista_EvaRiesgo = Mgr_Riesgos.EvaluacionRiesgo(Convert.ToInt32(valores[1]));
+            Lista_EvaRiesgo = Mgr_Riesgos.Get_EvaluacionRiesgo(Convert.ToInt32(valores[1]));
 
             foreach (var itemEvaRiesgo in Lista_EvaRiesgo)
             {
@@ -4981,7 +4981,7 @@ namespace Capa_Datos
                                         "PlanTrabajo(Vista General)_", "PLAN DE TRABAJO ANUAL", _page);
             #region contenido
             List<plan_trabajo> ListaPlanTrabajo = new List<plan_trabajo>();
-            ListaPlanTrabajo = Mgr_PlanTrabajo.Plan_Trabajo(Convert.ToInt32(valores[0]), Convert.ToInt32(valores[1]));
+            ListaPlanTrabajo = Mgr_PlanTrabajo.Get_Plan_Trabajo(Convert.ToInt32(valores[0]), Convert.ToInt32(valores[1]));
             int contActividad = 0;
 
             miCelda12.Texto = "ACTIVIDADES";
@@ -5029,7 +5029,7 @@ namespace Capa_Datos
                                         "PlanTrabajo(Vista Especifico)_", "PLAN DE TRABAJO ANUAL", _page);
             #region contenido
             List<plan_trabajo> ListaPlanTrabajo = new List<plan_trabajo>();
-            ListaPlanTrabajo = Mgr_PlanTrabajo.Plan_Trabajo(Convert.ToInt32(valores[0]), Convert.ToInt32(valores[1]));
+            ListaPlanTrabajo = Mgr_PlanTrabajo.Get_Plan_Trabajo(Convert.ToInt32(valores[0]), Convert.ToInt32(valores[1]));
             int contActividad = 0;
 
             foreach (var item in ListaPlanTrabajo)
@@ -5432,7 +5432,7 @@ namespace Capa_Datos
             DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, miCelda56));
 
             List<trabajador> LisTrabajador = new List<trabajador>();
-            LisTrabajador = Mgr_Trabajador.Trabajador(0, 0, Convert.ToInt32(valores[1]));
+            LisTrabajador = Mgr_Trabajador.Get_Trabajador(0, 0, Convert.ToInt32(valores[1]));
             int contTrabajadortes = 0;
 
             foreach (var item in LisTrabajador)
@@ -6539,7 +6539,7 @@ namespace Capa_Datos
             Tuple<Document, PdfPTable> DocumentoPDF = ManageFiles.PdfParte1(Convert.ToInt32(valores[0]),
                                         "IdentificacionPeligro_", "IDENTIFICACIÓN DE PELIGRO", _page);
 
-            List<identificacion_peligro> listta = Mgr_Riesgos.IdentificacionPeligro(Convert.ToInt32(valores[1]));
+            List<identificacion_peligro> listta = Mgr_Riesgos.Get_IdentificacionPeligro(Convert.ToInt32(valores[1]));
             #region contenido
             foreach (var item in listta)
             {
@@ -6776,7 +6776,7 @@ namespace Capa_Datos
         {
             #region contenido 
             List<at_it_el_pa> ListAccidentes = new List<at_it_el_pa>();
-            ListAccidentes = Mgr_Acc_Inc.Accidente(Convert.ToInt32(valores[0]));
+            ListAccidentes = Mgr_Acc_Inc.Get_Accidente(Convert.ToInt32(valores[0]));
 
             foreach (var item in ListAccidentes)
             {
@@ -6912,7 +6912,7 @@ namespace Capa_Datos
                 DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, miCelda12));
 
                 List<trabajador> ListaTrabajador = new List<trabajador>();
-                ListaTrabajador = Mgr_Trabajador.Trabajador(0, 0, IdSucursal);
+                ListaTrabajador = Mgr_Trabajador.Get_Trabajador(0, 0, IdSucursal);
 
                 foreach (var item1 in ListaTrabajador)
                 {
@@ -6976,7 +6976,7 @@ namespace Capa_Datos
             DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, miCelda12));
 
             List<identificacion_peligro> List_IdePel = new List<identificacion_peligro>();
-            List_IdePel = Mgr_Riesgos.IdentificacionPeligro(Convert.ToInt32(valores[1]));
+            List_IdePel = Mgr_Riesgos.Get_IdentificacionPeligro(Convert.ToInt32(valores[1]));
 
             foreach (var item_IdePel in List_IdePel)
             {
@@ -7127,7 +7127,7 @@ namespace Capa_Datos
 
             #region contenido
             List<empresa> ListaEmpresa = new List<empresa>();
-            ListaEmpresa = Mgr_Empresa.Empresa(Convert.ToInt32(valores[1]));
+            ListaEmpresa = Mgr_Empresa.Get_Empresa(Convert.ToInt32(valores[1]));
 
             string nomEmpresa = string.Empty;
             foreach (var item in ListaEmpresa)
@@ -7245,14 +7245,14 @@ namespace Capa_Datos
 
             #region contenido
             List<empresa> ListaEmpresa = new List<empresa>();
-            ListaEmpresa = Mgr_Empresa.Empresa(Convert.ToInt32(valores[1]));
+            ListaEmpresa = Mgr_Empresa.Get_Empresa(Convert.ToInt32(valores[1]));
             string nomEmpresa = string.Empty;
             foreach (var item in ListaEmpresa)
             {
                 nomEmpresa = item.nombre;
             }
-            List<trabajador> trabajador = Mgr_Trabajador.Trabajador(Convert.ToInt32(valores[2]));
-            List<sucursal> sucursal = Mgr_Sucursal.Sucursal(Convert.ToInt32(valores[3]), 0, string.Empty);
+            List<trabajador> trabajador = Mgr_Trabajador.Get_Trabajador(Convert.ToInt32(valores[2]));
+            List<sucursal> sucursal = Mgr_Sucursal.Get_Sucursal(Convert.ToInt32(valores[3]), 0, string.Empty);
             string direccion = string.Empty;
             foreach (var item in sucursal)
             {
@@ -7293,8 +7293,8 @@ namespace Capa_Datos
             miCelda13.Texto = "FIRMA DE RECIBIDO";
             DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, miCelda13));
 
-            int id_puesto_trabajo = Mgr_PuestoTrabajo.idPuestoTrabajador(Convert.ToInt32(valores[2]));
-            List<Model_CEPP> epps = Mgr_Epp.Epp(id_puesto_trabajo);
+            int id_puesto_trabajo = Mgr_PuestoTrabajo.GetId_PuestoTrabajador(Convert.ToInt32(valores[2]));
+            List<Model_CEPP> epps = Mgr_Epp.Get_Epp(id_puesto_trabajo);
             int cont = 0;
             TextBox _textbox;
             foreach (var epp in epps)

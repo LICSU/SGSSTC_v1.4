@@ -34,9 +34,9 @@ namespace SGSSTC.source.sistema.GestionDatos
 
             if (!IsPostBack)
             {
-                Mgr_CodigoCiiu.Codciiu_Div_item(ddlSeccion1, "SeccionCiiu");
-                Mgr_Gobierno.Reg_Dpto_Mcpio(ddlRegion, "Region");
-                Mgr_Gobierno.Arl(ddlArp);
+                Mgr_CodigoCiiu.List_Codciiu_Div_item(ddlSeccion1, "SeccionCiiu");
+                Mgr_Gobierno.Get_Reg_Dpto_Mcpio(ddlRegion, "Region");
+                Mgr_Gobierno.Get_ARL(ddlArp);
             }
         }
 
@@ -56,11 +56,11 @@ namespace SGSSTC.source.sistema.GestionDatos
                 ddlJornada.SelectedValue
             };
 
-            if (Mgr_Empresa.AddEmpresa(valores, fuLogoEmpresa))
+            if (Mgr_Empresa.Add_Empresa(valores, fuLogoEmpresa))
             {
                 nombreEmpresa = Utilidades.FormatearPalabra(valores[0]);
                 nombreEmpresa = nombreEmpresa.Replace(" ", "");
-                IdEmpresa = Mgr_Empresa.get_max_Empresas();
+                IdEmpresa = Mgr_Empresa.Get_Max_Empresas();
                 add_CodigoCiiu();
             }
             else
@@ -81,13 +81,13 @@ namespace SGSSTC.source.sistema.GestionDatos
                 ddlClase3.SelectedValue
             };
 
-            if (Mgr_CodigoCiiu.AddCodigoCiiu_Empresa( valores))
+            if (Mgr_CodigoCiiu.Add_CodigoCiiu_Empresa( valores))
             {
                 add_Categorias();
             }
             else
             {
-                Mgr_Empresa.DeleteEmpresa(IdEmpresa);
+                Mgr_Empresa.Delete_Empresa(IdEmpresa);
                 Modal.MostrarMsjModal(MensajeError.Error_Add_Default_Ciiu.Value, "ERR", this);
             }
         }
@@ -102,7 +102,7 @@ namespace SGSSTC.source.sistema.GestionDatos
             }
             else
             {
-                Mgr_Empresa.DeleteEmpresa(IdEmpresa);
+                Mgr_Empresa.Delete_Empresa(IdEmpresa);
                 Modal.MostrarMsjModal(MensajeError.Error_Add_Default_Categoria.Value, "ERR", this);
             }
         }
@@ -117,7 +117,7 @@ namespace SGSSTC.source.sistema.GestionDatos
             }
             else
             {
-                Mgr_Empresa.DeleteEmpresa(IdEmpresa);
+                Mgr_Empresa.Delete_Empresa(IdEmpresa);
                 Modal.MostrarMsjModal(MensajeError.Error_Add_Default_Estatus.Value, "ERR", this);
             }
         }
@@ -139,11 +139,11 @@ namespace SGSSTC.source.sistema.GestionDatos
 
             if (Mgr_Sucursal.Add_Sucursal_Empresa( valores))
             {
-                add_Area_Default(Mgr_Sucursal.Sucursal());
+                add_Area_Default(Mgr_Sucursal.Get_Sucursal());
             }
             else
             {
-                Mgr_Empresa.DeleteEmpresa(IdEmpresa);
+                Mgr_Empresa.Delete_Empresa(IdEmpresa);
                 Modal.MostrarMsjModal(MensajeError.Error_Add_Default_Sucursal.Value, "ERR", this);
             }
 
@@ -164,7 +164,7 @@ namespace SGSSTC.source.sistema.GestionDatos
             }
             else
             {
-                Mgr_Empresa.DeleteEmpresa(IdEmpresa);
+                Mgr_Empresa.Delete_Empresa(IdEmpresa);
                 Modal.MostrarMsjModal(MensajeError.Error_Add_Default_Area.Value, "ERR", this);
             }
         }
@@ -181,7 +181,7 @@ namespace SGSSTC.source.sistema.GestionDatos
             }
             else
             {
-                Mgr_Empresa.DeleteEmpresa(IdEmpresa);
+                Mgr_Empresa.Delete_Empresa(IdEmpresa);
                 Modal.MostrarMsjModal(MensajeError.Error_Add_Default_PuestoTrabajo.Value, "ERR", this);
             }
         }
@@ -198,7 +198,7 @@ namespace SGSSTC.source.sistema.GestionDatos
             }
             else
             {
-                Mgr_Empresa.DeleteEmpresa(IdEmpresa);
+                Mgr_Empresa.Delete_Empresa(IdEmpresa);
                 Modal.MostrarMsjModal(MensajeError.Error_Add_Default_Horario.Value, "ERR", this);
             }
         }
@@ -215,7 +215,7 @@ namespace SGSSTC.source.sistema.GestionDatos
             }
             else
             {
-                Mgr_Empresa.DeleteEmpresa(IdEmpresa);
+                Mgr_Empresa.Delete_Empresa(IdEmpresa);
                 Modal.MostrarMsjModal(MensajeError.Error_Add_Default_Trabajador.Value, "ERR", this);
             }
         }
@@ -240,7 +240,7 @@ namespace SGSSTC.source.sistema.GestionDatos
             }
             else
             {
-                Mgr_Empresa.DeleteEmpresa(IdEmpresa);
+                Mgr_Empresa.Delete_Empresa(IdEmpresa);
                 Modal.MostrarMsjModal(MensajeError.Error_Add_Default_Usuario.Value, "ERR", this);
             }
         }
@@ -261,7 +261,7 @@ namespace SGSSTC.source.sistema.GestionDatos
             }
             else
             {
-                Mgr_Empresa.DeleteEmpresa(IdEmpresa);
+                Mgr_Empresa.Delete_Empresa(IdEmpresa);
                 Modal.MostrarMsjModal(MensajeError.Error_Add_Default_TipoDocumento.Value, "ERR", this);
             }
 
@@ -275,7 +275,7 @@ namespace SGSSTC.source.sistema.GestionDatos
         {
             if (ddlRegion.SelectedValue != string.Empty)
             {
-                Mgr_Gobierno.Reg_Dpto_Mcpio(ddlDepartamento, "RegionDpto", Convert.ToInt32(ddlRegion.SelectedValue));
+                Mgr_Gobierno.Get_Reg_Dpto_Mcpio(ddlDepartamento, "RegionDpto", Convert.ToInt32(ddlRegion.SelectedValue));
             }
         }
 
@@ -283,7 +283,7 @@ namespace SGSSTC.source.sistema.GestionDatos
         {
             if (ddlDepartamento.SelectedValue != string.Empty)
             {
-                Mgr_Gobierno.Reg_Dpto_Mcpio(ddlMunicipio, "McpioDpto", Convert.ToInt32(ddlDepartamento.SelectedValue));
+                Mgr_Gobierno.Get_Reg_Dpto_Mcpio(ddlMunicipio, "McpioDpto", Convert.ToInt32(ddlDepartamento.SelectedValue));
             }
         }
 
@@ -296,19 +296,19 @@ namespace SGSSTC.source.sistema.GestionDatos
                 #region actividad prinicipal
                 if (miDDl.ClientID.Contains("ddlSeccion1"))
                 {
-                    Mgr_CodigoCiiu.Codciiu_Div_item(ddlDivision1, "DivisionCiiu", Convert.ToInt32(ddlSeccion1.SelectedValue));
+                    Mgr_CodigoCiiu.List_Codciiu_Div_item(ddlDivision1, "DivisionCiiu", Convert.ToInt32(ddlSeccion1.SelectedValue));
                 }
                 else if (miDDl.ClientID.Contains("ddlDivision1"))
                 {
-                    Mgr_CodigoCiiu.Codciiu_Div_item(ddlGrupo1, "GrupoCiiu", Convert.ToInt32(ddlDivision1.SelectedValue));
+                    Mgr_CodigoCiiu.List_Codciiu_Div_item(ddlGrupo1, "GrupoCiiu", Convert.ToInt32(ddlDivision1.SelectedValue));
                 }
                 else if (miDDl.ClientID.Contains("ddlGrupo1"))
                 {
-                    Mgr_CodigoCiiu.Codciiu_Div_item(ddlClase1, "ClaseCiiu", Convert.ToInt32(ddlGrupo1.SelectedValue));
+                    Mgr_CodigoCiiu.List_Codciiu_Div_item(ddlClase1, "ClaseCiiu", Convert.ToInt32(ddlGrupo1.SelectedValue));
                 }
                 else if (miDDl.ClientID.Contains("ddlClase1"))
                 {
-                    Mgr_CodigoCiiu.Codciiu_Div_item(ddlSeccion2, "SeccionCiiu");
+                    Mgr_CodigoCiiu.List_Codciiu_Div_item(ddlSeccion2, "SeccionCiiu");
                     phActividad2.Visible = true;
                 }
                 #endregion
@@ -316,19 +316,19 @@ namespace SGSSTC.source.sistema.GestionDatos
                 #region actividad secundaria
                 if (miDDl.ClientID.Contains("ddlSeccion2"))
                 {
-                    Mgr_CodigoCiiu.Codciiu_Div_item(ddlDivision2, "DivisionCiiu", Convert.ToInt32(ddlSeccion2.SelectedValue));
+                    Mgr_CodigoCiiu.List_Codciiu_Div_item(ddlDivision2, "DivisionCiiu", Convert.ToInt32(ddlSeccion2.SelectedValue));
                 }
                 else if (miDDl.ClientID.Contains("ddlDivision2"))
                 {
-                    Mgr_CodigoCiiu.Codciiu_Div_item(ddlGrupo2, "GrupoCiiu", Convert.ToInt32(ddlDivision2.SelectedValue));
+                    Mgr_CodigoCiiu.List_Codciiu_Div_item(ddlGrupo2, "GrupoCiiu", Convert.ToInt32(ddlDivision2.SelectedValue));
                 }
                 else if (miDDl.ClientID.Contains("ddlGrupo2"))
                 {
-                    Mgr_CodigoCiiu.Codciiu_Div_item(ddlClase2, "ClaseCiiu", Convert.ToInt32(ddlGrupo2.SelectedValue));
+                    Mgr_CodigoCiiu.List_Codciiu_Div_item(ddlClase2, "ClaseCiiu", Convert.ToInt32(ddlGrupo2.SelectedValue));
                 }
                 else if (miDDl.ClientID.Contains("ddlClase2"))
                 {
-                    Mgr_CodigoCiiu.Codciiu_Div_item(ddlSeccion3, "SeccionCiiu");
+                    Mgr_CodigoCiiu.List_Codciiu_Div_item(ddlSeccion3, "SeccionCiiu");
                     phActividad3.Visible = true;
                 }
                 #endregion
@@ -336,15 +336,15 @@ namespace SGSSTC.source.sistema.GestionDatos
                 #region otras actividades
                 if (miDDl.ClientID.Contains("ddlSeccion3"))
                 {
-                    Mgr_CodigoCiiu.Codciiu_Div_item(ddlDivision3, "DivisionCiiu", Convert.ToInt32(ddlSeccion3.SelectedValue));
+                    Mgr_CodigoCiiu.List_Codciiu_Div_item(ddlDivision3, "DivisionCiiu", Convert.ToInt32(ddlSeccion3.SelectedValue));
                 }
                 else if (miDDl.ClientID.Contains("ddlDivision3"))
                 {
-                    Mgr_CodigoCiiu.Codciiu_Div_item(ddlGrupo3, "GrupoCiiu", Convert.ToInt32(ddlDivision3.SelectedValue));
+                    Mgr_CodigoCiiu.List_Codciiu_Div_item(ddlGrupo3, "GrupoCiiu", Convert.ToInt32(ddlDivision3.SelectedValue));
                 }
                 else if (miDDl.ClientID.Contains("ddlGrupo3"))
                 {
-                    Mgr_CodigoCiiu.Codciiu_Div_item(ddlClase3, "ClaseCiiu", Convert.ToInt32(ddlGrupo3.SelectedValue));
+                    Mgr_CodigoCiiu.List_Codciiu_Div_item(ddlClase3, "ClaseCiiu", Convert.ToInt32(ddlGrupo3.SelectedValue));
                 }
                 #endregion
             }

@@ -26,7 +26,7 @@ namespace SGSSTC.source.sistema.Hacer
 			phSucursal.Visible = BoolEmpSuc.Item2;
 
 			List<empresa> ListaEmpresa = new List<empresa>();
-			ListaEmpresa = Mgr_Empresa.Empresa(ObjUsuario.Id_empresa);
+			ListaEmpresa = Mgr_Empresa.Get_Empresa(ObjUsuario.Id_empresa);
 
 			if (!IsPostBack)
 			{
@@ -42,16 +42,16 @@ namespace SGSSTC.source.sistema.Hacer
 			}
 			else
 			{
-				Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+				Mgr_Sucursal.Lista_Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
 			}
 
 			if (!BoolEmpSuc.Item2)
 			{
 				IdSucursal = Convert.ToInt32(ObjUsuario.Id_sucursal);
-				Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabajador, IdSucursal);
-				Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabajador2, IdSucursal);
-				Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabajador3, IdSucursal);
-				Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabajador4, IdSucursal);
+				Mgr_Trabajador.Lista_Trabajadores_Sucursal(ddlTrabajador, IdSucursal);
+				Mgr_Trabajador.Lista_Trabajadores_Sucursal(ddlTrabajador2, IdSucursal);
+				Mgr_Trabajador.Lista_Trabajadores_Sucursal(ddlTrabajador3, IdSucursal);
+				Mgr_Trabajador.Lista_Trabajadores_Sucursal(ddlTrabajador4, IdSucursal);
 			}
 		}
 
@@ -84,7 +84,7 @@ namespace SGSSTC.source.sistema.Hacer
 		{
 			if (ddlEmpresa.SelectedValue != string.Empty)
 			{
-				Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
+				Mgr_Sucursal.Lista_Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
 			}
 		}
 		protected void ddlSucursal_SelectedIndexChanged(object sender, EventArgs e)
@@ -93,10 +93,10 @@ namespace SGSSTC.source.sistema.Hacer
 			{
 				IdSucursal = Convert.ToInt32(ddlSucursal.SelectedValue);
 
-				Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabajador, IdSucursal);
-				Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabajador2, IdSucursal);
-				Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabajador3, IdSucursal);
-				Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabajador4, IdSucursal);
+				Mgr_Trabajador.Lista_Trabajadores_Sucursal(ddlTrabajador, IdSucursal);
+				Mgr_Trabajador.Lista_Trabajadores_Sucursal(ddlTrabajador2, IdSucursal);
+				Mgr_Trabajador.Lista_Trabajadores_Sucursal(ddlTrabajador3, IdSucursal);
+				Mgr_Trabajador.Lista_Trabajadores_Sucursal(ddlTrabajador4, IdSucursal);
 
 				Image1.ImageUrl = "";
 				Image2.ImageUrl = "";
@@ -109,7 +109,7 @@ namespace SGSSTC.source.sistema.Hacer
 		{
 			string foto = "";
 			List<trabajador> ListTrab = new List<trabajador>();
-			ListTrab = Mgr_Trabajador.Trabajador(Id_trabajador);
+			ListTrab = Mgr_Trabajador.Get_Trabajador(Id_trabajador);
 
 			foreach (var item in ListTrab)
 			{

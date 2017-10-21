@@ -48,16 +48,16 @@ namespace SGSSTC.source.sistema.Verificar
 			}
 			else
 			{
-				Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+				Mgr_Sucursal.Lista_Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
 			}
 
 
 			if (!BoolEmpSuc.Item2)
 			{
 				IdSucursal = Convert.ToInt32(ddlSucursal.SelectedValue);
-				Mgr_Area.Area_Sucursal(ddlArea, ObjUsuario.Id_sucursal);
-				Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabajador, ObjUsuario.Id_sucursal);
-				Mgr_PuestoTrabajo.PuestoTrabajo(ddlProcesoTrabajo, "Sucursal", ObjUsuario.Id_sucursal);
+				Mgr_Area.List_Area_Sucursal(ddlArea, ObjUsuario.Id_sucursal);
+				Mgr_Trabajador.Lista_Trabajadores_Sucursal(ddlTrabajador, ObjUsuario.Id_sucursal);
+				Mgr_PuestoTrabajo.Lista_PuestoTrabajo(ddlProcesoTrabajo, "Sucursal", ObjUsuario.Id_sucursal);
 			}
 
 		}
@@ -93,7 +93,7 @@ namespace SGSSTC.source.sistema.Verificar
 
 			if (ObjUsuario.Error)
 			{
-				int id_at_it_el_pa = Mgr_Acc_Inc.Accidentes();
+				int id_at_it_el_pa = Mgr_Acc_Inc.Get_Accidente();
 
 				#region insertar anexos
 				if (fuAnexo.HasFile)
@@ -127,7 +127,7 @@ namespace SGSSTC.source.sistema.Verificar
 		{
 			if (ddlEmpresa.SelectedValue != string.Empty)
 			{
-				Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
+				Mgr_Sucursal.Lista_Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
 			}
 
 		}
@@ -136,9 +136,9 @@ namespace SGSSTC.source.sistema.Verificar
 			if (ddlSucursal.SelectedValue != string.Empty)
 			{
 				IdSucursal = Convert.ToInt32(ddlSucursal.SelectedValue);
-				Mgr_Area.Area_Sucursal(ddlArea, Convert.ToInt32(ddlSucursal.SelectedValue), "Ninguna");
-				Mgr_PuestoTrabajo.PuestoTrabajo(ddlProcesoTrabajo, "Sucursal", Convert.ToInt32(ddlSucursal.SelectedValue), "Ninguno");
-				Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabajador, Convert.ToInt32(ddlSucursal.SelectedValue));
+				Mgr_Area.List_Area_Sucursal(ddlArea, Convert.ToInt32(ddlSucursal.SelectedValue), "Ninguna");
+				Mgr_PuestoTrabajo.Lista_PuestoTrabajo(ddlProcesoTrabajo, "Sucursal", Convert.ToInt32(ddlSucursal.SelectedValue), "Ninguno");
+				Mgr_Trabajador.Lista_Trabajadores_Sucursal(ddlTrabajador, Convert.ToInt32(ddlSucursal.SelectedValue));
 			}
 
 		}

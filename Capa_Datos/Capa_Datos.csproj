@@ -223,7 +223,6 @@
     <Compile Include="Manager\GestionLaboral\Mgr_GestionLaboral.cs" />
     <Compile Include="Manager\Gobierno\Mgr_Gobierno.cs" />
     <Compile Include="Manager\Horario\Mgr_Horario.cs" />
-    <Compile Include="Manager\Indicadores\Mgr_Indicadores.cs" />
     <Compile Include="Manager\Inspeccion\Mgr_Inspeccion.cs" />
     <Compile Include="Manager\Medidas\Mgr_Medidas.cs" />
     <Compile Include="Manager\Norma\Mgr_Norma.cs" />

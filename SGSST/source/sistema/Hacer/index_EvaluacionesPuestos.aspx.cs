@@ -35,7 +35,7 @@ namespace SGSSTC.source.sistema.Hacer
 		{
 			int id_Puesto = objUtilidades.descifrarCadena(Request.QueryString["id"]);
 
-			Mgr_Riesgos.EvaluacionPuesto(GridView1, id_Puesto, string.Empty + ViewState["sWhere"]);
+			Mgr_Riesgos.Grid_EvaluacionPuesto(GridView1, id_Puesto, string.Empty + ViewState["sWhere"]);
 		}
 		#endregion
 

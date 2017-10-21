@@ -61,18 +61,18 @@ namespace SGSSTC.source.sistema.Hacer
             }
             else
             {
-                Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
-                Mgr_Sucursal.Sucursal(ddlSucAdd, ObjUsuario.Id_empresa);
-                Mgr_Sucursal.Sucursal(ddlSucEdit, ObjUsuario.Id_empresa);
-                Mgr_Categoria.Categorias(ddlCategoriaIndex, ObjUsuario.Id_empresa);
-                Mgr_Categoria.Categorias(ddlCategoriaAdd, ObjUsuario.Id_empresa);
-                Mgr_Categoria.Categorias(ddlCategoriaEdit, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Lista_Sucursal(ddlSucAdd, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Lista_Sucursal(ddlSucEdit, ObjUsuario.Id_empresa);
+                Mgr_Categoria.List_Categorias(ddlCategoriaIndex, ObjUsuario.Id_empresa);
+                Mgr_Categoria.List_Categorias(ddlCategoriaAdd, ObjUsuario.Id_empresa);
+                Mgr_Categoria.List_Categorias(ddlCategoriaEdit, ObjUsuario.Id_empresa);
             }
 
             if (!BoolEmpSuc.Item2)
             {
-                Capa_Datos.Manager.Usuario.Mgr_Usuario.Usuario_Sucursal(ddlUsuAdd, ObjUsuario.Id_sucursal);
-                Capa_Datos.Manager.Usuario.Mgr_Usuario.Usuario_Sucursal(ddlUsuEdit, ObjUsuario.Id_sucursal);
+                Capa_Datos.Manager.Usuario.Mgr_Usuario.Lista_UsuarioBySucursal(ddlUsuAdd, ObjUsuario.Id_sucursal);
+                Capa_Datos.Manager.Usuario.Mgr_Usuario.Lista_UsuarioBySucursal(ddlUsuEdit, ObjUsuario.Id_sucursal);
             }
         }
         private void LlenarGridView()
@@ -80,7 +80,7 @@ namespace SGSSTC.source.sistema.Hacer
             int IdEmpresa = Mgr_Empresa.Set_IdEmpresa(ObjUsuario, Convert.ToInt32(ViewState["empresa"]));
             int IdSucursal = Mgr_Sucursal.Set_IdSucursal(ObjUsuario, Convert.ToInt32(ViewState["sucursal"]));
 
-            Mgr_Alarma.Alarma(
+            Mgr_Alarma.Grid_Alarma(
                 GridView1,
                 string.Empty + ViewState["prioridad"],
                 string.Empty + ViewState["categorias"],
@@ -128,7 +128,7 @@ namespace SGSSTC.source.sistema.Hacer
                 Capa_Datos.CRUD.Add_Fila(nuevo);
 
                 List<categoria> ListaCategoria = new List<categoria>();
-                ListaCategoria = Mgr_Categoria.Categoria(txtCatAddOtro.Text);
+                ListaCategoria = Mgr_Categoria.Get_Categoria(txtCatAddOtro.Text);
 
                 foreach (var item in ListaCategoria)
                 {
@@ -247,7 +247,7 @@ namespace SGSSTC.source.sistema.Hacer
                 hdfEditID.Value = Utilidades_GridView.DevolverIdRow(e, GridView1);
 
                 List<alarma> ListaAlarma = new List<alarma>();
-                ListaAlarma = Mgr_Alarma.Alarma(Convert.ToInt32(hdfEditID.Value));
+                ListaAlarma = Mgr_Alarma.Get_Alarma(Convert.ToInt32(hdfEditID.Value));
                 int IDUsuario = 0;
                 int IDEmpresa = 0;
                 int IDSucursal = 0;
@@ -263,8 +263,8 @@ namespace SGSSTC.source.sistema.Hacer
                     ddlPrioridadEdit.SelectedValue = item.prioridad;
                     txtFechaEdit.Text = item.fecha.Value.ToString("yyyy-MM-dd"); 
                 }
-                Capa_Datos.Manager.Usuario.Mgr_Usuario.Usuario_Sucursal(ddlUsuEdit, IDSucursal);
-                Mgr_Categoria.Categorias(ddlCategoriaEdit, IDEmpresa);
+                Capa_Datos.Manager.Usuario.Mgr_Usuario.Lista_UsuarioBySucursal(ddlUsuEdit, IDSucursal);
+                Mgr_Categoria.List_Categorias(ddlCategoriaEdit, IDEmpresa);
                 ddlEmpEdit.SelectedValue = IDEmpresa.ToString();
                 ddlSucEdit.SelectedValue = IDSucursal.ToString();
                 ddlCategoriaEdit.SelectedValue = IDCategoria.ToString();
@@ -288,8 +288,8 @@ namespace SGSSTC.source.sistema.Hacer
             if (ddlEmpresa.SelectedValue != string.Empty)
             {
                 ViewState["empresa"] = ddlEmpresa.SelectedValue;
-                Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
-                Mgr_Categoria.Categorias(ddlCategoriaIndex, Convert.ToInt32(ddlEmpresa.SelectedValue));
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
+                Mgr_Categoria.List_Categorias(ddlCategoriaIndex, Convert.ToInt32(ddlEmpresa.SelectedValue));
             }
             else
             {
@@ -315,15 +315,15 @@ namespace SGSSTC.source.sistema.Hacer
         {
             if (ddlEmpAdd.SelectedValue != string.Empty)
             {
-                Mgr_Sucursal.Sucursal(ddlSucAdd, Convert.ToInt32(ddlEmpAdd.SelectedValue));
-                Mgr_Categoria.Categorias(ddlCategoriaAdd, Convert.ToInt32(ddlEmpAdd.SelectedValue));
+                Mgr_Sucursal.Lista_Sucursal(ddlSucAdd, Convert.ToInt32(ddlEmpAdd.SelectedValue));
+                Mgr_Categoria.List_Categorias(ddlCategoriaAdd, Convert.ToInt32(ddlEmpAdd.SelectedValue));
             }
         }
         protected void ddlSucAdd_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ddlSucAdd.SelectedValue != string.Empty)
             {
-                Capa_Datos.Manager.Usuario.Mgr_Usuario.Usuario_Sucursal(ddlUsuAdd, Convert.ToInt32(ddlSucAdd.SelectedValue));
+                Capa_Datos.Manager.Usuario.Mgr_Usuario.Lista_UsuarioBySucursal(ddlUsuAdd, Convert.ToInt32(ddlSucAdd.SelectedValue));
             }
         }
 
@@ -331,15 +331,15 @@ namespace SGSSTC.source.sistema.Hacer
         {
             if (ddlEmpEdit.SelectedValue != string.Empty)
             {
-                Mgr_Sucursal.Sucursal(ddlSucEdit, Convert.ToInt32(ddlEmpEdit.SelectedValue));
-                Mgr_Categoria.Categorias(ddlCategoriaEdit, Convert.ToInt32(ddlEmpEdit.SelectedValue));
+                Mgr_Sucursal.Lista_Sucursal(ddlSucEdit, Convert.ToInt32(ddlEmpEdit.SelectedValue));
+                Mgr_Categoria.List_Categorias(ddlCategoriaEdit, Convert.ToInt32(ddlEmpEdit.SelectedValue));
             }
         }
         protected void ddlSucEdit_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ddlSucEdit.SelectedValue != string.Empty)
             {
-                Capa_Datos.Manager.Usuario.Mgr_Usuario.Usuario_Sucursal(ddlUsuEdit, Convert.ToInt32(ddlSucEdit.SelectedValue));
+                Capa_Datos.Manager.Usuario.Mgr_Usuario.Lista_UsuarioBySucursal(ddlUsuEdit, Convert.ToInt32(ddlSucEdit.SelectedValue));
             }
         }
 

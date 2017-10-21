@@ -49,7 +49,7 @@ namespace SGSSTC.source.sistema.GestionDatos
         {
             int IdEmpresa = Mgr_Empresa.Set_IdEmpresa(ObjUsuario, Convert.ToInt32(ViewState["empresa"]));
 
-            Mgr_Categoria.Categorias(GridView1, IdEmpresa, string.Empty + ViewState["sWhere"]);
+            Mgr_Categoria.Grid_Categorias(GridView1, IdEmpresa, string.Empty + ViewState["sWhere"]);
         }
         #endregion
 
@@ -135,7 +135,7 @@ namespace SGSSTC.source.sistema.GestionDatos
                 GridViewRow gvrow = GridView1.Rows[RowIndex];
                 hdfEditID.Value = Utilidades_GridView.DevolverIdRow(e, GridView1);
 
-                var _Categoria = Mgr_Categoria.Categoria(Convert.ToInt32(hdfEditID.Value));
+                var _Categoria = Mgr_Categoria.Get_Categoria(Convert.ToInt32(hdfEditID.Value));
 
                 txtNombreEdit.Text = _Categoria.nombre;
                 txtDescripcionEdit.Text = _Categoria.descripcion;

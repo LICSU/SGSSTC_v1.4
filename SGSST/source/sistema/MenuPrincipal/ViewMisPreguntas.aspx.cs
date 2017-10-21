@@ -39,7 +39,7 @@ namespace SGSSTC.source.sistema.MenuPrincipal
         private void LlenarGridView()
         {
 
-            Mgr_Comunicacion.MisPreguntas(GridView1, ObjUsuario.Id_usuario, string.Empty + ViewState["FechaInicio"], string.Empty + ViewState["FechaFin"]);
+            Mgr_Comunicacion.Grid_MisPreguntas(GridView1, ObjUsuario.Id_usuario, string.Empty + ViewState["FechaInicio"], string.Empty + ViewState["FechaFin"]);
         }
         protected void EditarRegistro(object sender, EventArgs e)
         {
@@ -88,7 +88,7 @@ namespace SGSSTC.source.sistema.MenuPrincipal
                 hdfPreguntaEdit.Value = (gvrow.FindControl("id_pregunta") as Label).Text;
 
                 List<Pregunta> ListaPregunta = new List<Pregunta>();
-                ListaPregunta = Mgr_Comunicacion.Pregunta(Convert.ToInt32(hdfPreguntaEdit.Value));
+                ListaPregunta = Mgr_Comunicacion.Get_Pregunta(Convert.ToInt32(hdfPreguntaEdit.Value));
 
                 foreach (var item in ListaPregunta)
                 {
@@ -107,7 +107,7 @@ namespace SGSSTC.source.sistema.MenuPrincipal
                 hdfVerPregunta.Value = (gvrow.FindControl("id_pregunta") as Label).Text;
 
                 List<Pregunta> ListaPregunta = new List<Pregunta>();
-                ListaPregunta = Mgr_Comunicacion.Pregunta(Convert.ToInt32(hdfVerPregunta.Value));
+                ListaPregunta = Mgr_Comunicacion.Get_Pregunta(Convert.ToInt32(hdfVerPregunta.Value));
 
                 foreach (var item in ListaPregunta)
                 {

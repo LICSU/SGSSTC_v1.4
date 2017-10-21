@@ -1,23 +1,44 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.UI.WebControls;
 
 namespace Capa_Datos.Manager.Area
 {
     public class Mgr_Area
     {
-        //-------------getter
-        public static int Areas()
+        //-------------FUNCIONES DE CONSULTAR
+        public static int Get_Area()
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             var consulta = new area();
             int id = contexto.area.Max(x => x.id_area);
             return id;
         }
-        public static List<area> Area(int _id_empresa = 0, int _id_area = 0, string _nombre = "")
+        public static List<extintor> Get_Extintor(int _idExtintor)
+        {
+            GrupoLiEntities contexto = new GrupoLiEntities();
+            List<extintor> consulta = new List<extintor>();
+            consulta = contexto.extintor.Where(x => x.id_extintor == _idExtintor).ToList();
+
+            return consulta;
+        }
+        public static List<usuario> Get_AreaByUsuario(int _id_usuario)
+        {
+            GrupoLiEntities contexto = new GrupoLiEntities();
+            var consulta = contexto.usuario.Where(x => x.id_usuario == _id_usuario).ToList();
+            return consulta;
+        }
+        public static int Get_AreaByNombre(string nombre, int id_sucursal)
+        {
+            GrupoLiEntities contexto = new GrupoLiEntities();
+            var consulta = contexto.area.Where(x => x.nombre.ToUpper().Equals(nombre.ToUpper()) && x.id_sucursal == id_sucursal).ToList();
+            if (consulta.Count == 0)
+                return 0;
+            else
+                return 1;
+        }
+        public static List<area> Get_Area(int _id_empresa = 0, int _id_area = 0, string _nombre = "")
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             var consulta = new List<area>();
@@ -28,44 +49,8 @@ namespace Capa_Datos.Manager.Area
 
             return consulta;
         }
-        public static int AreaByNombre(string nombre, int id_sucursal)
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            var consulta = contexto.area.Where(x => x.nombre.ToUpper().Equals(nombre.ToUpper()) && x.id_sucursal == id_sucursal).ToList();
-            if (consulta.Count == 0)
-                return 0;
-            else
-                return 1;
-        }
-        public static List<usuario> AreaByUsuario(int _id_usuario)
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            var consulta = contexto.usuario.Where(x => x.id_usuario == _id_usuario).ToList();
-            return consulta;
-        }
-        public static bool Add_Area_Sucursal(String[] valores)
-        {
-            area nuevo = new area()
-            {
-                nombre = valores[0],
-                id_sucursal = Convert.ToInt32(valores[1]),
-                id_area_padre = 0,
-                nivel = 1,
-                tipo = "Administrativa"
-            };
 
-            return CRUD.Add_Fila(nuevo);
-        }
-        public static List<extintor> Extintor(int _idExtintor)
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            List<extintor> consulta = new List<extintor>();
-            consulta = contexto.extintor.Where(x => x.id_extintor == _idExtintor).ToList();
-
-            return consulta;
-        }
-
-        //---------------crud
+        //---------------FUNCIONES DE CREAR, EDITAR Y ELIMINAR
         public static bool Add_Area(CheckBox chkAreaPadre, String[] valores)
         {
             int id_area_padre = 0;
@@ -79,7 +64,7 @@ namespace Capa_Datos.Manager.Area
                 id_area_padre = Convert.ToInt32(valores[0]);
 
                 List<area> ListaArea = new List<area>();
-                ListaArea = Area(0, Convert.ToInt32(valores[0]), "");
+                ListaArea = Get_Area(0, Convert.ToInt32(valores[0]), "");
 
                 foreach (var item in ListaArea)
                 {
@@ -103,9 +88,22 @@ namespace Capa_Datos.Manager.Area
             return CRUD.Add_Fila(nuevo);
 
         }
+        public static bool Add_Area_Sucursal(String[] valores)
+        {
+            area nuevo = new area()
+            {
+                nombre = valores[0],
+                id_sucursal = Convert.ToInt32(valores[1]),
+                id_area_padre = 0,
+                nivel = 1,
+                tipo = "Administrativa"
+            };
 
-        //---------------listas
-        public static void Area_Sucursal(DropDownList DropDownList1, int _id_sucursal, string valor = "", string tipo = "")
+            return CRUD.Add_Fila(nuevo);
+        }
+
+        //---------------FUNCIONES DE LLENAR LISTAS
+        public static void List_Area_Sucursal(DropDownList DropDownList1, int _id_sucursal, string valor = "", string tipo = "")
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
 
@@ -138,7 +136,7 @@ namespace Capa_Datos.Manager.Area
             }
 
         }
-        public static void Extintor_Area(DropDownList DropDownList1, int _id_area)
+        public static void List_Extintor_Area(DropDownList DropDownList1, int _id_area)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             #region codigo
@@ -152,8 +150,9 @@ namespace Capa_Datos.Manager.Area
             DropDownList1.Items.Insert(0, new ListItem("Seleccione el Extintor", ""));
             #endregion
         }
-        //----------------grid
-        public static void Area_General(GridView GridView1, int _id_empresa = 0, int _id_sucursal = 0, string _nivel = "", string _NumTrab_ini = "", string _NumTrab_fin = "", string _nombre = "")
+
+        //----------------FUNCIONES DE LLENAR GRID
+        public static void Grid_Area_General(GridView GridView1, int _id_empresa = 0, int _id_sucursal = 0, string _nivel = "", string _NumTrab_ini = "", string _NumTrab_fin = "", string _nombre = "")
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             var query = (
@@ -187,7 +186,7 @@ namespace Capa_Datos.Manager.Area
             GridView1.DataSource = query;
             GridView1.DataBind();
         }
-        public static void Extintores(GridView GridView1, int id_empresa = 0, int id_sucursal = 0, string id_area = "0", string buscar = "")
+        public static void Grid_Extintores(GridView GridView1, int id_empresa = 0, int id_sucursal = 0, string id_area = "0", string buscar = "")
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
 
@@ -215,9 +214,6 @@ namespace Capa_Datos.Manager.Area
             GridView1.DataBind();
 
         }
-
-
-
-
+        
     }
 }

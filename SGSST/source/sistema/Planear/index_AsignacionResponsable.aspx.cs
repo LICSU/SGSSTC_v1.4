@@ -41,11 +41,11 @@ namespace SGSSTC.source.sistema.Hacer
             }
             else
             {
-                Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
             }
             if (!BoolEmpSuc.Item2)
             {
-                Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabajador, Convert.ToInt32(ObjUsuario.Id_sucursal));
+                Mgr_Trabajador.Lista_Trabajadores_Sucursal(ddlTrabajador, Convert.ToInt32(ObjUsuario.Id_sucursal));
             }
         }
 
@@ -84,7 +84,7 @@ namespace SGSSTC.source.sistema.Hacer
         {
             if (ddlEmpresa.SelectedValue != string.Empty)
             {
-                Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
             }
         }
         protected void ddlSucursal_SelectedIndexChanged(object sender, EventArgs e)
@@ -92,7 +92,7 @@ namespace SGSSTC.source.sistema.Hacer
             if (ddlSucursal.SelectedValue != string.Empty)
             {
                 IdSucursal = Convert.ToInt32(ddlSucursal.SelectedValue);
-                Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabajador, IdSucursal);
+                Mgr_Trabajador.Lista_Trabajadores_Sucursal(ddlTrabajador, IdSucursal);
             }
         }
         protected void btnGenerarActa_OnClick(object sender, EventArgs e)
@@ -102,7 +102,7 @@ namespace SGSSTC.source.sistema.Hacer
             lblEmpresaSel.Text = ddlSucursal.SelectedItem.Text;
             lblEmpleado.Text = ddlTrabajador.SelectedItem.Text;
             IdTrabajador = Convert.ToInt32(ddlTrabajador.SelectedValue);
-            List<trabajador> listTrabajadores = Mgr_Trabajador.Trabajador(IdTrabajador);
+            List<trabajador> listTrabajadores = Mgr_Trabajador.Get_Trabajador(IdTrabajador);
             lblCedula.Text = listTrabajadores.ElementAt(0).cedula;
             phActa.Visible = true;
         }

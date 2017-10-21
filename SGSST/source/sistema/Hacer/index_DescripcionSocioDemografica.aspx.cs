@@ -35,7 +35,7 @@ namespace SGSSTC.source.sistema.Hacer
         }
         private void LlenarGridView()
         {
-            Mgr_Trabajador.DescSocio(GridView1, string.Empty + ViewState["sWhere"]);
+            Mgr_Trabajador.Grid_DescripcionSociodemografica(GridView1, string.Empty + ViewState["sWhere"]);
         }
 
         #endregion
@@ -60,7 +60,7 @@ namespace SGSSTC.source.sistema.Hacer
         {
             string Hora = DateTime.Now.ToString("dd_MM_yyy_HH_mm");
             GridView grid = new GridView();
-            Mgr_Trabajador.DescSocio(grid, string.Empty + ViewState["sWhere"]);
+            Mgr_Trabajador.Grid_DescripcionSociodemografica(grid, string.Empty + ViewState["sWhere"]);
 
             System.Text.StringBuilder sb = new System.Text.StringBuilder();
             System.IO.StringWriter sw = new System.IO.StringWriter(sb);

@@ -36,7 +36,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
             }
             else
             {
-                Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
             }
         }
 
@@ -414,7 +414,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
         {
             if (ddlEmpresa.SelectedValue != string.Empty)
             {
-                Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
             }
         }
         

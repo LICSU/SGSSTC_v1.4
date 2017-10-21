@@ -46,11 +46,11 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
             }
             else
             {
-                Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
             }
             if (!BoolEmpSuc.Item2)
             {
-                Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabajador, ObjUsuario.Id_sucursal);
+                Mgr_Trabajador.Lista_Trabajadores_Sucursal(ddlTrabajador, ObjUsuario.Id_sucursal);
             }
         }
 
@@ -110,7 +110,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
         {
             if (ddlEmpresa.SelectedValue != string.Empty)
             {
-                Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
             }
         }
 
@@ -119,7 +119,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
             if (ddlSucursal.SelectedValue != string.Empty)
             {
                 IdSucursal = Convert.ToInt32(ddlSucursal.SelectedValue);
-                Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabajador, IdSucursal);
+                Mgr_Trabajador.Lista_Trabajadores_Sucursal(ddlTrabajador, IdSucursal);
             }
         }
 
@@ -127,7 +127,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
         {
             List<trabajador> ListaTrabajador = new List<trabajador>();
             int idTrabajador = Convert.ToInt32(ddlTrabajador.SelectedValue);
-            ListaTrabajador = Mgr_Trabajador.Trabajador(idTrabajador);
+            ListaTrabajador = Mgr_Trabajador.Get_Trabajador(idTrabajador);
 
             foreach (var itemTrabajador in ListaTrabajador)
             {

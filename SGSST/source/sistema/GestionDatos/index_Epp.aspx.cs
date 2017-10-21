@@ -51,17 +51,17 @@ namespace SGSSTC.source.sistema.GestionDatos
             }
             else
             {
-                Mgr_Epp.TipoEpp(ddlTipoEppAdd);
-                Mgr_Epp.TipoEpp(ddlTipoEppEdit);
+                Mgr_Epp.List_TipoEpp(ddlTipoEppAdd);
+                Mgr_Epp.List_TipoEpp(ddlTipoEppEdit);
             }
-            Mgr_Epp.TipoEpp(ddlTipoEpp);
+            Mgr_Epp.List_TipoEpp(ddlTipoEpp);
         }
 
         private void LlenarGridView()
         {
             int Idempresa = Mgr_Empresa.Set_IdEmpresa(ObjUsuario, Convert.ToInt32(ViewState["empresa"]));
 
-            Mgr_Epp.Epp(GridView1,string.Empty + ViewState["tipo_epp"],string.Empty + ViewState["sWhere"]);
+            Mgr_Epp.Grid_Epp(GridView1,string.Empty + ViewState["tipo_epp"],string.Empty + ViewState["sWhere"]);
         }
 
         protected void AgregarRegistro(object sender, EventArgs e)

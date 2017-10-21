@@ -1,16 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.UI.WebControls;
 
 namespace Capa_Datos.Manager.CodigoCiiu
 {
     public class Mgr_CodigoCiiu
     {
-        //-----------CRUD
-        public static bool AddCodigoCiiu_Empresa(String[] valores)
+        //-----------FUNCIONES DE CREAR, EDITAR Y ELIMINAR
+        public static bool Add_CodigoCiiu_Empresa(String[] valores)
         {
             empresa_itemdivision nuevo;
             Boolean berror = false;
@@ -54,8 +52,16 @@ namespace Capa_Datos.Manager.CodigoCiiu
             return berror;
         }
 
-        //-----------getter
-        public static List<empresa_itemdivision> CodigoCiiu_Empresa(int _id_empresa)
+        //-----------FUNCIONES DE CONSULTAR
+        public static List<claseCiiu> Get_CodigoCiiu(int _id_item_division)
+        {
+            GrupoLiEntities contextoCod = new GrupoLiEntities();
+
+            List<claseCiiu> consulta = new List<claseCiiu>();
+            consulta = contextoCod.claseCiiu.Where(x => x.id_clase_ciiu == _id_item_division).ToList();
+            return consulta;
+        }
+        public static List<empresa_itemdivision> Get_CodigoCiiuByEmpresa(int _id_empresa)
         {
             GrupoLiEntities contextoCod = new GrupoLiEntities();
 
@@ -63,7 +69,7 @@ namespace Capa_Datos.Manager.CodigoCiiu
             consulta = contextoCod.empresa_itemdivision.Where(x => x.id_empresa == _id_empresa).ToList();
             return consulta;
         }
-        public static List<empresa_itemdivision> EmpresaItemDivison(int _id_empresa, int act1, int act2, int act3 = 0)
+        public static List<empresa_itemdivision> Get_EmpresaItemDivison(int _id_empresa, int act1, int act2, int act3 = 0)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
 
@@ -75,17 +81,120 @@ namespace Capa_Datos.Manager.CodigoCiiu
                 ).ToList();
             return consulta;
         }
-        public static List<claseCiiu> CodigoCiiu(int _id_item_division)
+
+        //------------FUNCIONES DE LLENAR LISTAS
+        public static void List_Codciiu_Usuario(DropDownList DropDownList1, int id = 0)
         {
-            GrupoLiEntities contextoCod = new GrupoLiEntities();
+            GrupoLiEntities contexto = new GrupoLiEntities();
 
-            List<claseCiiu> consulta = new List<claseCiiu>();
-            consulta = contextoCod.claseCiiu.Where(x => x.id_clase_ciiu == _id_item_division).ToList();
-            return consulta;
+            var Consulta = (
+                from c in contexto.empresa_itemdivision
+                where c.id_empresa == id
+                select new
+                {
+                    c.id_clase_ciiu,
+                    nombre = c.claseCiiu.nombre + " " + c.claseCiiu.descripcion
+                }).ToList();
+
+            var Distinto = Consulta.Distinct().ToList();
+
+            DropDownList1.DataValueField = "id_clase_ciiu";
+            DropDownList1.DataTextField = "nombre";
+            DropDownList1.DataSource = Distinto;
+
+
+            DropDownList1.DataBind();
+            DropDownList1.Items.Insert(0, new ListItem("Seleccionar..", ""));
+
+            foreach (ListItem myItem in DropDownList1.Items)
+            {
+                try
+                {
+                    if (myItem.Text.Length > 80)
+                        myItem.Text = myItem.Text.Substring(0, 80) + "...";
+                }
+                catch (ArgumentOutOfRangeException ex)
+                {
+
+                    Utilidades.LogMessage("Execpción: " + ex);
+                }
+            }
         }
+        public static void List_Seccion_Usuario(DropDownList DropDownList1, int id = 0)
+        {
+            GrupoLiEntities contexto = new GrupoLiEntities();
 
-        //------------listas
-        public static void Codciiu_Div_item(DropDownList DropDownList1, string tabla, int id = 0)
+            var Consulta = (
+                from c in contexto.empresa_itemdivision
+                where c.id_empresa == id
+                select new
+                {
+                    c.claseCiiu.grupoCiiu.divisionCiiu.id_seccion,
+                    nombre = c.claseCiiu.grupoCiiu.divisionCiiu.seccionCiiu.nombre + " " + c.claseCiiu.grupoCiiu.divisionCiiu.seccionCiiu.descripcion
+                }).ToList();
+
+            var Distinto = Consulta.Distinct().ToList();
+
+            DropDownList1.DataValueField = "id_seccion";
+            DropDownList1.DataTextField = "nombre";
+            DropDownList1.DataSource = Distinto;
+
+
+            DropDownList1.DataBind();
+            DropDownList1.Items.Insert(0, new ListItem("Seleccionar..", ""));
+
+            foreach (ListItem myItem in DropDownList1.Items)
+            {
+                try
+                {
+                    if (myItem.Text.Length > 80)
+                        myItem.Text = myItem.Text.Substring(0, 80) + "...";
+                }
+                catch (ArgumentOutOfRangeException ex)
+                {
+
+                    Utilidades.LogMessage("Execpción: " + ex);
+                }
+            }
+        }
+        public static void List_Division_Usuario(DropDownList DropDownList1, int id = 0)
+        {
+            GrupoLiEntities contexto = new GrupoLiEntities();
+
+            var Consulta = (
+                from c in contexto.empresa_itemdivision
+                where c.id_empresa == id
+                select new
+                {
+                    c.claseCiiu.grupoCiiu.id_division,
+                    nombre = c.claseCiiu.grupoCiiu.divisionCiiu.nombre + " " + c.claseCiiu.grupoCiiu.divisionCiiu.descripcion
+                }).ToList();
+
+            var Distinto = Consulta.Distinct().ToList();
+
+            DropDownList1.DataValueField = "id_division";
+            DropDownList1.DataTextField = "nombre";
+            DropDownList1.DataSource = Distinto;
+
+
+            DropDownList1.DataBind();
+            DropDownList1.Items.Insert(0, new ListItem("Seleccionar..", ""));
+
+            foreach (ListItem myItem in DropDownList1.Items)
+            {
+                try
+                {
+                    if (myItem.Text.Length > 80)
+                        myItem.Text = myItem.Text.Substring(0, 80) + "...";
+                }
+                catch (ArgumentOutOfRangeException ex)
+                {
+
+                    Utilidades.LogMessage("Execpción: " + ex);
+                }
+            }
+        }
+        public static void List_Codciiu_Div_item(DropDownList DropDownList1, string tabla, int id = 0)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             if (tabla == "SeccionCiiu")
@@ -143,117 +252,6 @@ namespace Capa_Datos.Manager.CodigoCiiu
                 DropDownList1.DataTextField = "nombre";
                 DropDownList1.DataSource = Consulta;
             }
-
-            DropDownList1.DataBind();
-            DropDownList1.Items.Insert(0, new ListItem("Seleccionar..", ""));
-
-            foreach (ListItem myItem in DropDownList1.Items)
-            {
-                try
-                {
-                    if (myItem.Text.Length > 80)
-                        myItem.Text = myItem.Text.Substring(0, 80) + "...";
-                }
-                catch (ArgumentOutOfRangeException ex)
-                {
-
-                    Utilidades.LogMessage("Execpción: " + ex);
-                }
-            }
-        }
-        public static void Codciiu_Usuario(DropDownList DropDownList1, int id = 0)
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-
-            var Consulta = (
-                from c in contexto.empresa_itemdivision
-                where c.id_empresa == id
-                select new
-                {
-                    c.id_clase_ciiu,
-                    nombre = c.claseCiiu.nombre + " " + c.claseCiiu.descripcion
-                }).ToList();
-
-            var Distinto = Consulta.Distinct().ToList();
-
-            DropDownList1.DataValueField = "id_clase_ciiu";
-            DropDownList1.DataTextField = "nombre";
-            DropDownList1.DataSource = Distinto;
-
-
-            DropDownList1.DataBind();
-            DropDownList1.Items.Insert(0, new ListItem("Seleccionar..", ""));
-
-            foreach (ListItem myItem in DropDownList1.Items)
-            {
-                try
-                {
-                    if (myItem.Text.Length > 80)
-                        myItem.Text = myItem.Text.Substring(0, 80) + "...";
-                }
-                catch (ArgumentOutOfRangeException ex)
-                {
-
-                    Utilidades.LogMessage("Execpción: " + ex);
-                }
-            }
-        }
-        public static void Division_Usuario(DropDownList DropDownList1, int id = 0)
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-
-            var Consulta = (
-                from c in contexto.empresa_itemdivision
-                where c.id_empresa == id
-                select new
-                {
-                    c.claseCiiu.grupoCiiu.id_division,
-                    nombre = c.claseCiiu.grupoCiiu.divisionCiiu.nombre + " " + c.claseCiiu.grupoCiiu.divisionCiiu.descripcion
-                }).ToList();
-
-            var Distinto = Consulta.Distinct().ToList();
-
-            DropDownList1.DataValueField = "id_division";
-            DropDownList1.DataTextField = "nombre";
-            DropDownList1.DataSource = Distinto;
-
-
-            DropDownList1.DataBind();
-            DropDownList1.Items.Insert(0, new ListItem("Seleccionar..", ""));
-
-            foreach (ListItem myItem in DropDownList1.Items)
-            {
-                try
-                {
-                    if (myItem.Text.Length > 80)
-                        myItem.Text = myItem.Text.Substring(0, 80) + "...";
-                }
-                catch (ArgumentOutOfRangeException ex)
-                {
-
-                    Utilidades.LogMessage("Execpción: " + ex);
-                }
-            }
-        }
-        public static void Seccion_Usuario(DropDownList DropDownList1, int id = 0)
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-
-            var Consulta = (
-                from c in contexto.empresa_itemdivision
-                where c.id_empresa == id
-                select new
-                {
-                    c.claseCiiu.grupoCiiu.divisionCiiu.id_seccion,
-                    nombre = c.claseCiiu.grupoCiiu.divisionCiiu.seccionCiiu.nombre + " " + c.claseCiiu.grupoCiiu.divisionCiiu.seccionCiiu.descripcion
-                }).ToList();
-
-            var Distinto = Consulta.Distinct().ToList();
-
-            DropDownList1.DataValueField = "id_seccion";
-            DropDownList1.DataTextField = "nombre";
-            DropDownList1.DataSource = Distinto;
-
 
             DropDownList1.DataBind();
             DropDownList1.Items.Insert(0, new ListItem("Seleccionar..", ""));

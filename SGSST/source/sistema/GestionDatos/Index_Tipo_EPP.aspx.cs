@@ -47,7 +47,7 @@ namespace SGSSTC.source.sistema.GestionDatos
         private void LlenarGridView()
         {
             int IdEmpresa = Mgr_Empresa.Set_IdEmpresa(ObjUsuario, Convert.ToInt32(ViewState["empresa"]));
-            Mgr_Epp.TipoEpp(GridView1, string.Empty + ViewState["sWhere"]);
+            Mgr_Epp.Grid_TipoEpp(GridView1, string.Empty + ViewState["sWhere"]);
         }
 
         #region acciones

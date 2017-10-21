@@ -48,8 +48,8 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
             }
             else
             {
-                Mgr_Sucursal.Sucursal(ddlSucursalAdd, ObjUsuario.Id_empresa);
-                Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursalAdd, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
             }
         }
 
@@ -57,7 +57,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
         {
             int IdEmpresa = Mgr_Empresa.Set_IdEmpresa(ObjUsuario, Convert.ToInt32(ViewState["empresa"]));
             int IdSucursal = Mgr_Sucursal.Set_IdSucursal(ObjUsuario, Convert.ToInt32(ViewState["sucursal"]));
-            Mgr_Documento.vigilancia_epidemiologica(GridView1, IdEmpresa, IdSucursal, string.Empty + ViewState["sWhere"]);
+            Mgr_Documento.Grid_vigilancia_Epidemiologica(GridView1, IdEmpresa, IdSucursal, string.Empty + ViewState["sWhere"]);
         }
         #endregion
 
@@ -127,7 +127,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
         {
             if (ddlEmpresa.SelectedValue != string.Empty)
             {
-                Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
             }
         }
 
@@ -135,7 +135,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
         {
             if (ddlEmpresaAdd.SelectedValue != string.Empty)
             {
-                Mgr_Sucursal.Sucursal(ddlSucursalAdd, Convert.ToInt32(ddlEmpresaAdd.SelectedValue));
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursalAdd, Convert.ToInt32(ddlEmpresaAdd.SelectedValue));
             }
         }
 

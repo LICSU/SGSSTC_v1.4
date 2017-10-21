@@ -34,7 +34,7 @@ namespace SGSSTC.source.sistema.Verificar
 			int idAccidente = objUtilidades.descifrarCadena(Request.QueryString["id"]);
 
 			List<at_it_el_pa> ListaAccidente = new List<at_it_el_pa>();
-			ListaAccidente = Mgr_Acc_Inc.Accidente(idAccidente);
+			ListaAccidente = Mgr_Acc_Inc.Get_Accidente(idAccidente);
 
 			foreach (var item in ListaAccidente)
 			{
@@ -59,7 +59,7 @@ namespace SGSSTC.source.sistema.Verificar
 			#region delete investigacion existente
 			investigacion_ac_in tabla = new investigacion_ac_in();
 			List<investigacion_ac_in> consulta = new List<investigacion_ac_in>();
-			consulta = Mgr_Acc_Inc.InvestigacionAccidente(idAccidente);
+			consulta = Mgr_Acc_Inc.Get_Investigacion_Accidente(idAccidente);
 
 			foreach (var item in consulta)
 			{

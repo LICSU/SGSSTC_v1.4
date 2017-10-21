@@ -9,7 +9,7 @@ namespace Capa_Datos.Manager.Riesgos
 {
     public class Mgr_Riesgos
     {
-        //---------------crud
+        //---------------FUNCIONES DE CREAR, EDITAR Y ELIMINAR
         public static bool Add_Riesgos_Sucursal(String[] valores)
         {
             DateTime fechaActual = DateTime.Now;
@@ -50,7 +50,7 @@ namespace Capa_Datos.Manager.Riesgos
                 }
                 catch
                 {
-                    Mgr_Sucursal.DeleteSucursal(Convert.ToInt32(valores[3]));
+                    Mgr_Sucursal.Delete_Sucursal(Convert.ToInt32(valores[3]));
                     return false;
                 }
 
@@ -58,10 +58,10 @@ namespace Capa_Datos.Manager.Riesgos
 
                 #region se guarda la identificacion del puesto
 
-                int id_IdentificacionPeligro = Convert.ToInt32(IdentificacionPeligro());
+                int id_IdentificacionPeligro = Convert.ToInt32(Get_IdentificacionPeligro());
                 identificacion_puesto nuevoIde_Puesto = new identificacion_puesto()
                 {
-                    id_puesto = Convert.ToInt32(Mgr_PuestoTrabajo.PuestoTrabajo()),
+                    id_puesto = Convert.ToInt32(Mgr_PuestoTrabajo.Get_PuestoTrabajo()),
                     id_identificacion = id_IdentificacionPeligro
                 };
                 contexto.identificacion_puesto.Add(nuevoIde_Puesto);
@@ -71,7 +71,7 @@ namespace Capa_Datos.Manager.Riesgos
                 }
                 catch
                 {
-                    Mgr_Sucursal.DeleteSucursal(Convert.ToInt32(valores[3]));
+                    Mgr_Sucursal.Delete_Sucursal(Convert.ToInt32(valores[3]));
                     return false;
                 }
 
@@ -93,7 +93,7 @@ namespace Capa_Datos.Manager.Riesgos
                 }
                 catch
                 {
-                    Mgr_Sucursal.DeleteSucursal(Convert.ToInt32(valores[3]));
+                    Mgr_Sucursal.Delete_Sucursal(Convert.ToInt32(valores[3]));
                     return false;
                 }
 
@@ -104,8 +104,14 @@ namespace Capa_Datos.Manager.Riesgos
 
         }
         
-        //---------------getter
-        public static Double AvgPorcEstRieSuc(int _idSucursal)
+        //---------------FUNCIONES DE CONSULTAR
+        public static int Get_IdentificacionPeligro()
+        {
+            GrupoLiEntities contexto = new GrupoLiEntities();
+            var consulta = new identificacion_peligro();
+            return contexto.identificacion_peligro.Max(x => x.id_identificacion_peligro);
+        }
+        public static Double Get_Avg_Porcentaje_EstatusRiesgosBySucursal(int _idSucursal)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
 
@@ -130,7 +136,7 @@ namespace Capa_Datos.Manager.Riesgos
 
             return Math.Round(promedio, 3);
         }
-        public static Double AvgPorcEstRieEmp(int _idEmpresa)
+        public static Double Get_Avg_Porcentaje_EstatusRiesgosByEmpresa(int _idEmpresa)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
 
@@ -155,7 +161,23 @@ namespace Capa_Datos.Manager.Riesgos
 
             return Math.Round(promedio, 3);
         }
-        public static List<factor_riesgo> FactorRiesgo(int id_factor_riesgo = 0, string _nombre = "")
+        public static List<evaluacion_riesgo> Get_EvaluacionRiesgo(int _id_eva_riesgo)
+        {
+            GrupoLiEntities contexto = new GrupoLiEntities();
+            List<evaluacion_riesgo> consulta = new List<evaluacion_riesgo>();
+            consulta = contexto.evaluacion_riesgo.Where(x => x.id_evaluacion_riesgo == _id_eva_riesgo).ToList();
+
+            return consulta;
+        }
+        public static List<identificacion_puesto> Get_IdentificacionPuesto(int _id_ide_puesto)
+        {
+            GrupoLiEntities contexto = new GrupoLiEntities();
+            List<identificacion_puesto> consulta = new List<identificacion_puesto>();
+            consulta = contexto.identificacion_puesto.Where(x => x.id_ide_puesto == _id_ide_puesto).ToList();
+
+            return consulta;
+        }
+        public static List<factor_riesgo> Get_FactorRiesgo(int id_factor_riesgo = 0, string _nombre = "")
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             List<factor_riesgo> consulta = new List<factor_riesgo>();
@@ -172,7 +194,7 @@ namespace Capa_Datos.Manager.Riesgos
 
             return consulta;
         }
-        public static List<identificacion_peligro> IdentificacionPeligro(int _id_identificacion_peligro)
+        public static List<identificacion_peligro> Get_IdentificacionPeligro(int _id_identificacion_peligro)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             List<identificacion_peligro> consulta = new List<identificacion_peligro>();
@@ -180,31 +202,9 @@ namespace Capa_Datos.Manager.Riesgos
 
             return consulta;
         }
-        public static List<identificacion_puesto> IdentificacionPuesto(int _id_ide_puesto)
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            List<identificacion_puesto> consulta = new List<identificacion_puesto>();
-            consulta = contexto.identificacion_puesto.Where(x => x.id_ide_puesto == _id_ide_puesto).ToList();
 
-            return consulta;
-        }
-        public static List<evaluacion_riesgo> EvaluacionRiesgo(int _id_eva_riesgo)
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            List<evaluacion_riesgo> consulta = new List<evaluacion_riesgo>();
-            consulta = contexto.evaluacion_riesgo.Where(x => x.id_evaluacion_riesgo == _id_eva_riesgo).ToList();
-
-            return consulta;
-        }
-        public static int IdentificacionPeligro()
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            var consulta = new identificacion_peligro();
-            return contexto.identificacion_peligro.Max(x => x.id_identificacion_peligro);
-        }
-
-        //----listas
-        public static void Riesgos(DropDownList DropDownList1, string tabla, string _id_tipo = "")
+        //----FUNCIONES DE LLENAR LISTAS
+        public static void Lista_Riesgos(DropDownList DropDownList1, string tabla, string _id_tipo = "")
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             if (tabla == "TipoRiesgo")
@@ -235,8 +235,159 @@ namespace Capa_Datos.Manager.Riesgos
             DropDownList1.Items.Insert(0, new ListItem("Seleccione", ""));
         }
 
-        //----grid
-        public static void MatrizRiesgo(GridView GridView1, int _id_sucursal = 0, int _id_empresa = 0, string _tipo_riesgo = "", string nombre = "")
+        //----FUNCIONES DE LLENAR GRID
+        public static void Grid_FactorRiesgo(GridView GridView1, string nombre = "")
+        {
+            GrupoLiEntities contexto = new GrupoLiEntities();
+            var query = (
+                from FR in contexto.factor_riesgo
+                select new
+                {
+                    FR.id_factor_riesgo,
+                    FR.nombre,
+                    tipoRiesgo = FR.tipo_riesgo.nombre
+                }).ToList();
+
+            if (nombre != string.Empty) { query = query.Where(x => x.nombre.ToLower().Contains(nombre.ToLower())).ToList(); }
+
+            GridView1.DataSource = query;
+            GridView1.DataBind();
+        }
+        public static void Grid_EvaluacionRiesgo(GridView GridView1, int _id_sucursal)
+        {
+            if (_id_sucursal != 0)
+            {
+                GrupoLiEntities contexto = new GrupoLiEntities();
+                var query = (
+                    from IPT in contexto.identificacion_puesto
+                    where IPT.puesto_trabajo.area.id_sucursal == _id_sucursal
+                    select new
+                    {
+                        IPT.id_ide_puesto,
+                        IPT.id_puesto,
+                        Puesto = IPT.puesto_trabajo.nombre,
+                        Evaluacion = IPT.evaluacion_riesgo.Count == 0 ? "Sin Evaluación" : "Con Evaluación",
+                        Num_Evaluacion = IPT.evaluacion_riesgo.Count
+                    }).ToList();
+
+                GridView1.DataSource = query;
+                GridView1.DataBind();
+            }
+        }
+        public static void Grid_EvaluacionPuesto(GridView GridView1, int _id_puesto, string _fecha = "")
+        {
+            GrupoLiEntities contexto = new GrupoLiEntities();
+
+            var query = (
+                from ER in contexto.evaluacion_riesgo
+                where ER.identificacion_puesto.id_puesto == _id_puesto
+                select new
+                {
+                    ER.id_evaluacion_riesgo,
+                    ER.fecha_evaluacion,
+                    ER.nivel_riesgo,
+                    ER.aceptabilidad_riesgo
+                }).ToList();
+
+            if (_fecha != string.Empty) { query = query.Where(x => x.fecha_evaluacion <= Convert.ToDateTime(_fecha)).ToList(); }
+            GridView1.DataSource = query;
+            GridView1.DataBind();
+        }
+        public static void Grid_MapaRiesgos(GridView GridView1, int _id_sucursal = 0, string _buscar = "")
+        {
+            GrupoLiEntities contexto = new GrupoLiEntities();
+            var query = (
+                    from PM in contexto.documento
+                    where PM.tipo == "MapaRiesgos"
+                    select new
+                    {
+                        PM.id_documento,
+                        PM.nombre,
+                        PM.ruta,
+                        PM.sucursal.id_empresa,
+                        PM.sucursal.id_sucursal,
+                        Empresa = PM.sucursal.empresa.nombre,
+                        Sucursal = PM.sucursal.nombre,
+                        PM.id_tabla,
+                        PM.fecha_subida
+                    }).ToList();
+
+            if (_id_sucursal != 0) { query = query.Where(x => x.id_tabla == _id_sucursal).ToList(); }
+            if (_buscar != string.Empty) { query = query.Where(x => x.nombre.ToLower().Contains(_buscar.ToLower())).ToList(); }
+
+            GridView1.DataSource = query;
+            GridView1.DataBind();
+        }
+        public static void Grid_EstructuraRiesgos(GridView GridView1, int _id_empresa, int _id_sucursal = 0)
+        {
+            GrupoLiEntities contexto = new GrupoLiEntities();
+            var query = (
+                from I in contexto.documento
+                where I.sucursal.id_empresa == _id_empresa && I.tipo == "EstructuraRiesgos"
+                select new
+                {
+                    I.id_documento,
+                    I.ruta,
+                    I.id_tabla,
+                    sucursal = I.sucursal.nombre,
+                    archivo = I.nombre == null ? "No se ha subido" : "" + I.nombre
+                }).ToList();
+
+            if (_id_sucursal != 0) { query = query.Where(x => x.id_tabla == _id_sucursal).ToList(); }
+
+            GridView1.DataSource = query;
+            GridView1.DataBind();
+        }
+        public static void Grid_EvaluacionRiesgos(GridView GridView1, int _id_empresa, int _id_sucursal = 0)
+        {
+            GrupoLiEntities contexto = new GrupoLiEntities();
+            var query = (
+                from I in contexto.documento
+                where I.sucursal.id_empresa == _id_empresa && I.tipo == "EvaluacionRiesgos"
+                select new
+                {
+                    I.id_documento,
+                    I.ruta,
+                    I.id_tabla,
+                    sucursal = I.sucursal.nombre,
+                    archivo = I.nombre == null ? "No se ha subido" : "" + I.nombre
+                }).ToList();
+
+            if (_id_sucursal != 0) { query = query.Where(x => x.id_tabla == _id_sucursal).ToList(); }
+
+            GridView1.DataSource = query;
+            GridView1.DataBind();
+        }
+        public static void Grid_IdentificacionPeligro(GridView GridView1, int _id_sucursal, string _fecha = "")
+        {
+            if (_id_sucursal != 0)
+            {
+                GrupoLiEntities contexto = new GrupoLiEntities();
+                var query = (
+                    from IPT in contexto.identificacion_peligro
+                    where (
+                        (from PT in contexto.puesto_trabajo
+                         where PT.area.id_sucursal == _id_sucursal
+                         select new
+                         {
+                             PT.area.id_sucursal
+                         }).FirstOrDefault().id_sucursal
+                        ) == _id_sucursal
+                    orderby IPT.fecha_identificacion descending
+                    select new
+                    {
+                        IPT.id_identificacion_peligro,
+                        IPT.fecha_identificacion,
+                        NumPuestos = IPT.identificacion_puesto.Count
+                    }).ToList();
+
+                if (_fecha != string.Empty) { query = query.Where(x => x.fecha_identificacion <= Convert.ToDateTime(_fecha)).ToList(); }
+
+                GridView1.DataSource = query;
+                GridView1.DataBind();
+            }
+        }
+        public static void Grid_MatrizRiesgo(GridView GridView1, int _id_sucursal = 0, int _id_empresa = 0, string _tipo_riesgo = "", string nombre = "")
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
 
@@ -274,157 +425,6 @@ namespace Capa_Datos.Manager.Riesgos
             if (_id_empresa != 0) { query = query.Where(x => x.id_empresa == _id_empresa).ToList(); }
             if (_tipo_riesgo != string.Empty) { query = query.Where(x => x.tipoRiesgo.ToLower().Contains(_tipo_riesgo.ToLower())).ToList(); }
             if (nombre != string.Empty) { query = query.Where(x => x.FactorRiesgo.ToLower().Contains(nombre.ToLower())).ToList(); }
-
-            GridView1.DataSource = query;
-            GridView1.DataBind();
-        }
-        public static void MapaRiesgos(GridView GridView1, int _id_sucursal = 0, string _buscar = "")
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            var query = (
-                    from PM in contexto.documento
-                    where PM.tipo == "MapaRiesgos"
-                    select new
-                    {
-                        PM.id_documento,
-                        PM.nombre,
-                        PM.ruta,
-                        PM.sucursal.id_empresa,
-                        PM.sucursal.id_sucursal,
-                        Empresa = PM.sucursal.empresa.nombre,
-                        Sucursal = PM.sucursal.nombre,
-                        PM.id_tabla,
-                        PM.fecha_subida
-                    }).ToList();
-
-            if (_id_sucursal != 0) { query = query.Where(x => x.id_tabla == _id_sucursal).ToList(); }
-            if (_buscar != string.Empty) { query = query.Where(x => x.nombre.ToLower().Contains(_buscar.ToLower())).ToList(); }
-
-            GridView1.DataSource = query;
-            GridView1.DataBind();
-        }
-        public static void FactorRiesgo(GridView GridView1, string nombre = "")
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            var query = (
-                from FR in contexto.factor_riesgo
-                select new
-                {
-                    FR.id_factor_riesgo,
-                    FR.nombre,
-                    tipoRiesgo = FR.tipo_riesgo.nombre
-                }).ToList();
-
-            if (nombre != string.Empty) { query = query.Where(x => x.nombre.ToLower().Contains(nombre.ToLower())).ToList(); }
-
-            GridView1.DataSource = query;
-            GridView1.DataBind();
-        }
-        public static void IdentificacionPeligro(GridView GridView1, int _id_sucursal, string _fecha = "")
-        {
-            if (_id_sucursal != 0)
-            {
-                GrupoLiEntities contexto = new GrupoLiEntities();
-                var query = (
-                    from IPT in contexto.identificacion_peligro
-                    where (
-                        (from PT in contexto.puesto_trabajo
-                         where PT.area.id_sucursal == _id_sucursal
-                         select new
-                         {
-                             PT.area.id_sucursal
-                         }).FirstOrDefault().id_sucursal
-                        ) == _id_sucursal
-                    orderby IPT.fecha_identificacion descending
-                    select new
-                    {
-                        IPT.id_identificacion_peligro,
-                        IPT.fecha_identificacion,
-                        NumPuestos = IPT.identificacion_puesto.Count
-                    }).ToList();
-
-                if (_fecha != string.Empty) { query = query.Where(x => x.fecha_identificacion <= Convert.ToDateTime(_fecha)).ToList(); }
-
-                GridView1.DataSource = query;
-                GridView1.DataBind();
-            }
-        }
-        public static void EvaluacionRiesgo(GridView GridView1, int _id_sucursal)
-        {
-            if (_id_sucursal != 0)
-            {
-                GrupoLiEntities contexto = new GrupoLiEntities();
-                var query = (
-                    from IPT in contexto.identificacion_puesto
-                    where IPT.puesto_trabajo.area.id_sucursal == _id_sucursal
-                    select new
-                    {
-                        IPT.id_ide_puesto,
-                        IPT.id_puesto,
-                        Puesto = IPT.puesto_trabajo.nombre,
-                        Evaluacion = IPT.evaluacion_riesgo.Count == 0 ? "Sin Evaluación" : "Con Evaluación",
-                        Num_Evaluacion = IPT.evaluacion_riesgo.Count
-                    }).ToList();
-
-                GridView1.DataSource = query;
-                GridView1.DataBind();
-            }
-        }
-        public static void EvaluacionPuesto(GridView GridView1, int _id_puesto, string _fecha = "")
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-
-            var query = (
-                from ER in contexto.evaluacion_riesgo
-                where ER.identificacion_puesto.id_puesto == _id_puesto
-                select new
-                {
-                    ER.id_evaluacion_riesgo,
-                    ER.fecha_evaluacion,
-                    ER.nivel_riesgo,
-                    ER.aceptabilidad_riesgo
-                }).ToList();
-
-            if (_fecha != string.Empty) { query = query.Where(x => x.fecha_evaluacion <= Convert.ToDateTime(_fecha)).ToList(); }
-            GridView1.DataSource = query;
-            GridView1.DataBind();
-        }
-        public static void EstructuraRiesgos(GridView GridView1, int _id_empresa, int _id_sucursal = 0)
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            var query = (
-                from I in contexto.documento
-                where I.sucursal.id_empresa == _id_empresa && I.tipo == "EstructuraRiesgos"
-                select new
-                {
-                    I.id_documento,
-                    I.ruta,
-                    I.id_tabla,
-                    sucursal = I.sucursal.nombre,
-                    archivo = I.nombre == null ? "No se ha subido" : "" + I.nombre
-                }).ToList();
-
-            if (_id_sucursal != 0) { query = query.Where(x => x.id_tabla == _id_sucursal).ToList(); }
-
-            GridView1.DataSource = query;
-            GridView1.DataBind();
-        }
-        public static void EvaluacionRiesgos(GridView GridView1, int _id_empresa, int _id_sucursal = 0)
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            var query = (
-                from I in contexto.documento
-                where I.sucursal.id_empresa == _id_empresa && I.tipo == "EvaluacionRiesgos"
-                select new
-                {
-                    I.id_documento,
-                    I.ruta,
-                    I.id_tabla,
-                    sucursal = I.sucursal.nombre,
-                    archivo = I.nombre == null ? "No se ha subido" : "" + I.nombre
-                }).ToList();
-
-            if (_id_sucursal != 0) { query = query.Where(x => x.id_tabla == _id_sucursal).ToList(); }
 
             GridView1.DataSource = query;
             GridView1.DataBind();

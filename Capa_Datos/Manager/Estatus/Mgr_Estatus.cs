@@ -1,16 +1,39 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.UI.WebControls;
 
 namespace Capa_Datos.Manager.Estatus
 {
     public class Mgr_Estatus
     {
-        //---------------GRID
-        public static void Estatus(GridView GridView1, int _id_sucursal = 0, string _id_area = "0", string _nombre = "")
+        //---------------FUNCIONES DE CREAR, EDITAR Y ELIMINAR
+        public static bool Add_Estatus_Empresa(String[] valores)
+        {
+            List<estatus> ListaEstatus = new List<estatus>();
+            Boolean berror = false;
+            for (int i = 0; i < ValoresDefault.Nombre_Estatus.Value.Length; i++)
+            {
+                estatus ObjEstatus = new estatus();
+                ObjEstatus.nombre = ValoresDefault.Nombre_Estatus.Value[i];
+                ObjEstatus.descripcion = ValoresDefault.Descripcion_Estatus.Value[i];
+                ObjEstatus.id_empresa = Convert.ToInt32(valores[0]);
+
+                ListaEstatus.Add(ObjEstatus);
+
+                berror = CRUD.Add_Fila(ObjEstatus);
+
+                if (!berror)
+                {
+                    i = valores.Length;
+                }
+            }
+
+            return berror;
+        }
+
+        //---------------FUNCIONES DE LLENAR GRID
+        public static void Grid_Estatus(GridView GridView1, int _id_sucursal = 0, string _id_area = "0", string _nombre = "")
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             var query = (
@@ -34,8 +57,7 @@ namespace Capa_Datos.Manager.Estatus
             GridView1.DataSource = query;
             GridView1.DataBind();
         }
-
-        public static void Estatus(GridView GridView1, int id_empresa = 0, string nombre = "")
+        public static void Grid_Estatus(GridView GridView1, int id_empresa = 0, string nombre = "")
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             var query = (
@@ -62,9 +84,8 @@ namespace Capa_Datos.Manager.Estatus
             GridView1.DataBind();
         }
 
-        //-------listas
-
-        public static void Estatus_Empresa(DropDownList DropDownList1, int _id_empresa)
+        //---------------FUNCIONES DE LLENAR LISTAS
+        public static void List_Estatus_Empresa(DropDownList DropDownList1, int _id_empresa)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             #region codigo
@@ -79,8 +100,8 @@ namespace Capa_Datos.Manager.Estatus
             #endregion
         }
 
-        //-------getter
-        public static estatus Estatus(int _idEstatus)
+        //---------------FUNCIONES DE CONSULTAR
+        public static estatus Get_Estatus(int _idEstatus)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             estatus consulta = new estatus();
@@ -89,34 +110,6 @@ namespace Capa_Datos.Manager.Estatus
 
             return consulta;
         }
-
-
-        //-------crud
-        public static bool Add_Estatus_Empresa(String[] valores)
-        {
-            List<estatus> ListaEstatus = new List<estatus>();
-            Boolean berror = false;
-            for (int i = 0; i < ValoresDefault.Nombre_Estatus.Value.Length; i++)
-            {
-                estatus ObjEstatus = new estatus();
-                ObjEstatus.nombre = ValoresDefault.Nombre_Estatus.Value[i];
-                ObjEstatus.descripcion = ValoresDefault.Descripcion_Estatus.Value[i];
-                ObjEstatus.id_empresa = Convert.ToInt32(valores[0]);
-
-                ListaEstatus.Add(ObjEstatus);
-
-                berror = CRUD.Add_Fila(ObjEstatus);
-
-                if (!berror)
-                {
-                    i = valores.Length;
-                }
-            }
-
-            return berror;
-        }
-
-
-
+        
     }
 }

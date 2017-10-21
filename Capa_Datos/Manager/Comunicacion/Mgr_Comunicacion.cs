@@ -8,7 +8,7 @@ namespace Capa_Datos.Manager.Comunicacion
 {
     public class Mgr_Comunicacion
     {
-        //----------crud
+        //----------FUNCIONES DE CREAR, EDITAR Y ELIMINAR
         public static bool Add_Pregunta(Model_UsuarioSistema ObjUsuario, String[] valores)
         {
             Pregunta nuevo = new Pregunta()
@@ -36,16 +36,15 @@ namespace Capa_Datos.Manager.Comunicacion
             return CRUD.Add_Fila(nuevo);
         }
 
-        //----------getter
-
-        public static List<Pregunta> Pregunta(int _id_pregunta)
+        //----------FUNCIONES DE CONSULTAR
+        public static List<Pregunta> Get_Pregunta(int _id_pregunta)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             var consulta = new List<Pregunta>();
             consulta = contexto.Pregunta.Where(x => x.id_pregunta == _id_pregunta).ToList();
             return consulta;
         }
-        public static List<Respuesta> Respuesta(int _id_respuesta)
+        public static List<Respuesta> Get_Respuesta(int _id_respuesta)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             var consulta = new List<Respuesta>();
@@ -53,8 +52,8 @@ namespace Capa_Datos.Manager.Comunicacion
             return consulta;
         }
 
-        //----------------grid
-        public static void MisPreguntas(GridView GridView1, int _id_usuario, string _fecha_ini = "", string _fecha_fin = "")
+        //----------------FUNCIONES DE LLENAR GRID
+        public static void Grid_MisPreguntas(GridView GridView1, int _id_usuario, string _fecha_ini = "", string _fecha_fin = "")
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             var query = (
@@ -77,12 +76,11 @@ namespace Capa_Datos.Manager.Comunicacion
 
             GridView1.DataBind();
         }
-        public static void SusPreguntas(GridView GridView1, int Id_empresa, string _fecha_ini = "", string _fecha_fin = "",
-            int _id_rol = 0, int _id_clase = 0, int _id_division = 0, int _id_seccion = 0)
+        public static void Grid_SusPreguntas(GridView GridView1, int Id_empresa, string _fecha_ini = "", string _fecha_fin = "",int _id_rol = 0, int _id_clase = 0, int _id_division = 0, int _id_seccion = 0)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             List<empresa_itemdivision> consulta = new List<empresa_itemdivision>();
-            consulta = Mgr_CodigoCiiu.CodigoCiiu_Empresa(Id_empresa);
+            consulta = Mgr_CodigoCiiu.Get_CodigoCiiuByEmpresa(Id_empresa);
 
             int act1 = 0, act2 = 0, act3 = 0, cont = 0;
             foreach (var item in consulta)
@@ -125,7 +123,6 @@ namespace Capa_Datos.Manager.Comunicacion
             GridView1.DataSource = Distinto;
             GridView1.DataBind();
         }
-
 
     }
 }

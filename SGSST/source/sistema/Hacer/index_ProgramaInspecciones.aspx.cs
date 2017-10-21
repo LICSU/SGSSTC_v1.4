@@ -29,7 +29,7 @@ namespace SGSSTC.source.sistema.Hacer
                 CargarListas();
                 if (BoolEmpSuc.Item2)
                 {
-                    Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+                    Mgr_Sucursal.Lista_Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
                 }
                 else
                 {
@@ -45,17 +45,17 @@ namespace SGSSTC.source.sistema.Hacer
             }
             else
             {
-                Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
             }
         }
         private void cargarPlan()
         {
-            int idPlan = Mgr_Documento.Plan(ObjUsuario.Id_sucursal);
+            int idPlan = Mgr_Documento.Get_Plan(ObjUsuario.Id_sucursal);
 
             if (idPlan != 0)
             {
                 List<plan> ListaPlanes = new List<plan>();
-                ListaPlanes = Mgr_Documento.Planes(idPlan);
+                ListaPlanes = Mgr_Documento.Get_Planes(idPlan);
 
                 if (ListaPlanes.Count > 0)
                 {
@@ -92,7 +92,7 @@ namespace SGSSTC.source.sistema.Hacer
         {
             if (ddlEmpresa.SelectedValue != string.Empty)
             {
-                Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
             }
         }
         protected void ddlSucursal_SelectedIndexChanged(object sender, EventArgs e)

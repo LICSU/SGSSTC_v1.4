@@ -9,7 +9,7 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Capa_Datos.Manager.Indicadores;
+using Capa_Datos.Manager.Documento;
 
 namespace SGSSTC.source.sistema.EvaluacionInicial
 {
@@ -40,7 +40,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
             List<trabajador> ListaTrabajador = new List<trabajador>();
             if (!BoolEmpSuc.Item2)
             {
-                ListaTrabajador = Mgr_Trabajador.Trabajador(0, 0, ObjUsuario.Id_sucursal);
+                ListaTrabajador = Mgr_Trabajador.Get_Trabajador(0, 0, ObjUsuario.Id_sucursal);
 
                 Label1.Text = string.Empty + ListaTrabajador.Count;
                 Label2.Text = string.Empty + ListaTrabajador.Count;
@@ -48,12 +48,12 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
                 Label5.Text = string.Empty + ListaTrabajador.Count;
 
                 List<area> ListaArea = new List<area>();
-                ListaArea = Mgr_Area.Area(ObjUsuario.Id_empresa, 0, "");
+                ListaArea = Mgr_Area.Get_Area(ObjUsuario.Id_empresa, 0, "");
                 Label4.Text = string.Empty + ListaArea.Count;
             }
             else
             {
-                ListaTrabajador = Mgr_Trabajador.Trabajador(0, ObjUsuario.Id_empresa);
+                ListaTrabajador = Mgr_Trabajador.Get_Trabajador(0, ObjUsuario.Id_empresa);
 
                 Label1.Text = string.Empty + ListaTrabajador.Count;
                 Label2.Text = string.Empty + ListaTrabajador.Count;
@@ -61,7 +61,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
                 Label5.Text = string.Empty + ListaTrabajador.Count;
 
                 List<area> ListaArea = new List<area>();
-                ListaArea = Mgr_Area.Area(ObjUsuario.Id_empresa, 0, "");
+                ListaArea = Mgr_Area.Get_Area(ObjUsuario.Id_empresa, 0, "");
                 Label4.Text = string.Empty + ListaArea.Count;
             }
         }
@@ -74,8 +74,8 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
             }
             if (BoolEmpSuc.Item2)
             {
-                Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
-                Mgr_Sucursal.Sucursal(ddlSucursalAdd, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursalAdd, ObjUsuario.Id_empresa);
             }
         }
         #endregion
@@ -91,7 +91,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
                 "Indicadores"
             };
 
-            ObjUsuario.Error = Mgr_Indicadores.AddIndicadores(IdEmpSuc,  valores, flpArchivo);
+            ObjUsuario.Error = Mgr_Documento.AddIndicadores(IdEmpSuc,  valores, flpArchivo);
 
             Modal.CerrarModal("printModal", "printModalScript", this);
             TextBox txtBuscar = new TextBox();
@@ -102,7 +102,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
         {
             if (ddlEmpresaAdd.SelectedValue != string.Empty)
             {
-                Mgr_Sucursal.Sucursal(ddlSucursalAdd, Convert.ToInt32(ddlEmpresaAdd.SelectedValue));
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursalAdd, Convert.ToInt32(ddlEmpresaAdd.SelectedValue));
             }
         }
 
@@ -567,7 +567,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
         {
             if (ddlEmpresa.SelectedValue != string.Empty)
             {
-                Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
             }
         }
 

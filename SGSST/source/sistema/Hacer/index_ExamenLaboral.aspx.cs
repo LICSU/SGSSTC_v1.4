@@ -45,12 +45,12 @@ namespace SGSSTC.source.sistema.Hacer
             if (BoolEmpSuc.Item1)
             {
                 Mgr_Empresa.Lista_Empresa(ddlEmpresa);
-                Mgr_Salud.TipoExamen(ddlTipoExamen);
+                Mgr_Salud.Lista_TipoExamen(ddlTipoExamen);
             }
             else
             {
                 Mgr_Empresa.Lista_Empresa(ddlEmpresa);
-                Mgr_Salud.TipoExamen(ddlTipoExamen);
+                Mgr_Salud.Lista_TipoExamen(ddlTipoExamen);
             }
 
         }
@@ -59,7 +59,7 @@ namespace SGSSTC.source.sistema.Hacer
         {
             int IdEmpresa = Mgr_Empresa.Set_IdEmpresa(ObjUsuario, Convert.ToInt32(ViewState["empresa"]));
 
-            Mgr_Salud.HC_Trabajador(GridView1,
+            Mgr_Salud.Grid_HC_Trabajador(GridView1,
                 string.Empty + ViewState["search"],
                 IdEmpresa,
                 string.Empty + ViewState["TipoExamen"],

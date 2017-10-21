@@ -51,17 +51,17 @@ namespace SGSSTC.source.sistema.Hacer
             }
             else
             {
-                Mgr_Sucursal.Sucursal(ddlSucursalAdd, ObjUsuario.Id_empresa);
-                Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursalAdd, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
             }
             if (!BoolEmpSuc.Item2)
             {
-                Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabajador, ObjUsuario.Id_sucursal);
+                Mgr_Trabajador.Lista_Trabajadores_Sucursal(ddlTrabajador, ObjUsuario.Id_sucursal);
             }
         }
         private void LlenarGridView()
         {
-            Mgr_Epp.entrega_epp(GridView1, string.Empty + ViewState["empresa"], string.Empty + ViewState["sucursal"], string.Empty + ViewState["sWhere"], IdTrabajador);
+            Mgr_Epp.Grid_EntregaEpp(GridView1, string.Empty + ViewState["empresa"], string.Empty + ViewState["sucursal"], string.Empty + ViewState["sWhere"], IdTrabajador);
         }
         #endregion
 
@@ -134,14 +134,14 @@ namespace SGSSTC.source.sistema.Hacer
         {
             if (ddlEmpresaAdd.SelectedValue != string.Empty)
             {
-                Mgr_Sucursal.Sucursal(ddlSucursalAdd, Convert.ToInt32(ddlEmpresaAdd.SelectedValue));
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursalAdd, Convert.ToInt32(ddlEmpresaAdd.SelectedValue));
             }
         }
         protected void ddlSucursalAdd_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ddlSucursalAdd.SelectedValue != string.Empty)
             {
-                Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabajadorAdd, Convert.ToInt32(ddlSucursalAdd.SelectedValue));
+                Mgr_Trabajador.Lista_Trabajadores_Sucursal(ddlTrabajadorAdd, Convert.ToInt32(ddlSucursalAdd.SelectedValue));
             }
         }
         protected void ddlEmpresa_SelectedIndexChanged(object sender, EventArgs e)
@@ -149,7 +149,7 @@ namespace SGSSTC.source.sistema.Hacer
             if (ddlEmpresa.SelectedValue != string.Empty)
             {
                 ViewState["empresa"] = ddlSucursal.SelectedValue;
-                Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
             }
             else
             {
@@ -162,7 +162,7 @@ namespace SGSSTC.source.sistema.Hacer
             {
                 ViewState["sucursal"] = ddlSucursal.SelectedValue;
                 IdSucursal = Convert.ToInt32(ddlSucursal.SelectedValue);
-                Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabajador, IdSucursal);
+                Mgr_Trabajador.Lista_Trabajadores_Sucursal(ddlTrabajador, IdSucursal);
             }
             else
             {

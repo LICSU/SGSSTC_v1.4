@@ -43,15 +43,15 @@ namespace SGSSTC.source.sistema.Hacer
 			}
 			else
 			{
-				Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+				Mgr_Sucursal.Lista_Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
 			}
 
 			if (!BoolEmpSuc.Item2)
 			{
-				Mgr_PuestoTrabajo.PuestoTrabajo(ddlPuestos, "Sucursal", ObjUsuario.Id_sucursal);
+				Mgr_PuestoTrabajo.Lista_PuestoTrabajo(ddlPuestos, "Sucursal", ObjUsuario.Id_sucursal);
 			}
 
-			Mgr_Riesgos.Riesgos(ddlTipoRiesgo1, "TipoRiesgo");
+			Mgr_Riesgos.Lista_Riesgos(ddlTipoRiesgo1, "TipoRiesgo");
 		}
 		#endregion
 
@@ -78,7 +78,7 @@ namespace SGSSTC.source.sistema.Hacer
 				if (puestos[i].Contains("Sucursal:"))
 				{
 					ListaSucursal = new List<sucursal>();
-					ListaSucursal = Mgr_Sucursal.Sucursal(0, IdEmpresa, puestos[i].Replace("Sucursal:", ""));
+					ListaSucursal = Mgr_Sucursal.Get_Sucursal(0, IdEmpresa, puestos[i].Replace("Sucursal:", ""));
 
 					foreach (var item in ListaSucursal)
 					{
@@ -89,7 +89,7 @@ namespace SGSSTC.source.sistema.Hacer
 				if (puestos[i].Contains("Puesto de Trabajo:"))
 				{
 					ListaPuesto = new List<puesto_trabajo>();
-					ListaPuesto = Mgr_PuestoTrabajo.PuestoTrabajo_Nom_Suc(puestos[i].Replace("Puesto de Trabajo:", ""), IdSucursal);
+					ListaPuesto = Mgr_PuestoTrabajo.Get_PuestoTrabajo_Nom_Suc(puestos[i].Replace("Puesto de Trabajo:", ""), IdSucursal);
 
 					foreach (var item in ListaPuesto)
 					{
@@ -104,7 +104,7 @@ namespace SGSSTC.source.sistema.Hacer
 				if (factores[i].Contains("Factor de Riesgo:"))
 				{
 					ListaFactorRiesgo = new List<factor_riesgo>();
-					ListaFactorRiesgo = Mgr_Riesgos.FactorRiesgo(0, factores[i].Replace("Factor de Riesgo:", ""));
+					ListaFactorRiesgo = Mgr_Riesgos.Get_FactorRiesgo(0, factores[i].Replace("Factor de Riesgo:", ""));
 
 					foreach (var item in ListaFactorRiesgo)
 					{
@@ -132,7 +132,7 @@ namespace SGSSTC.source.sistema.Hacer
 
 			if (ObjUsuario.Error)
 			{
-				int idIdentificacionRiesgo = Mgr_Riesgos.IdentificacionPeligro();
+				int idIdentificacionRiesgo = Mgr_Riesgos.Get_IdentificacionPeligro();
 
 				foreach (var IdPuestos in Lista_IdPuestos)
 				{
@@ -197,26 +197,26 @@ namespace SGSSTC.source.sistema.Hacer
 		{
 			if (ddlEmpresa.SelectedValue != string.Empty)
 			{
-				Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
-				Mgr_Riesgos.Riesgos(ddlTipoRiesgo1, "TipoRiesgo");
+				Mgr_Sucursal.Lista_Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
+				Mgr_Riesgos.Lista_Riesgos(ddlTipoRiesgo1, "TipoRiesgo");
 			}
 		}
 		protected void ddlSucursal_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (ddlSucursal.SelectedValue != string.Empty)
 			{
-				Mgr_PuestoTrabajo.PuestoTrabajo(ddlPuestos, "Sucursal", Convert.ToInt32(ddlSucursal.SelectedValue));
+				Mgr_PuestoTrabajo.Lista_PuestoTrabajo(ddlPuestos, "Sucursal", Convert.ToInt32(ddlSucursal.SelectedValue));
 			}
 		}
 		protected void ddlTipoRiesgo_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (BoolEmpSuc.Item1)
 			{
-				Mgr_Riesgos.Riesgos(ddlFactorRiesgo1, "FactorRiesgo", ddlTipoRiesgo1.SelectedValue);
+				Mgr_Riesgos.Lista_Riesgos(ddlFactorRiesgo1, "FactorRiesgo", ddlTipoRiesgo1.SelectedValue);
 			}
 			else
 			{
-				Mgr_Riesgos.Riesgos(ddlFactorRiesgo1, "FactorRiesgo", ddlTipoRiesgo1.SelectedValue);
+				Mgr_Riesgos.Lista_Riesgos(ddlFactorRiesgo1, "FactorRiesgo", ddlTipoRiesgo1.SelectedValue);
 			}
 
 		}

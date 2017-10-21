@@ -27,7 +27,7 @@ namespace SGSSTC.source.sistema.Hacer
 		private void CargarGestion()
 		{
 			List<gestion_laboral> ListaGestionLaboral = new List<gestion_laboral>();
-			ListaGestionLaboral = Mgr_GestionLaboral.GestionLaboral(Convert.ToInt32(idGestion));
+			ListaGestionLaboral = Mgr_GestionLaboral.Get_GestionLaboral(Convert.ToInt32(idGestion));
 
 			foreach (var itemGestionLaboral in ListaGestionLaboral)
 			{
@@ -54,7 +54,7 @@ namespace SGSSTC.source.sistema.Hacer
 				#endregion
 
 				#region 2do bloque consulta
-				List<trabajador_gestion> ListaTrabajadorGestion = Mgr_Trabajador.TrabajadorInGestion(0, Convert.ToInt32(idGestion));
+				List<trabajador_gestion> ListaTrabajadorGestion = Mgr_Trabajador.Get_TrabajadorInGestion(0, Convert.ToInt32(idGestion));
 
 				ControlesDinamicos.CrearLiteral("<div class='row'>", pListaTrab);
 				foreach (var item in ListaTrabajadorGestion)

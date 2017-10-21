@@ -48,12 +48,12 @@ namespace SGSSTC.source.sistema.GestionDatos
             }
             else
             {
-                Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
             }
 
             if (!BoolEmpSuc.Item2)
             {
-                Mgr_Area.Area_Sucursal(ddlArea, ObjUsuario.Id_sucursal);
+                Mgr_Area.List_Area_Sucursal(ddlArea, ObjUsuario.Id_sucursal);
             }
         }
 
@@ -62,7 +62,7 @@ namespace SGSSTC.source.sistema.GestionDatos
             int IdEmpresa = Mgr_Empresa.Set_IdEmpresa(ObjUsuario, Convert.ToInt32(ViewState["empresa"]));
             int IdSucursal = Mgr_Sucursal.Set_IdSucursal(ObjUsuario, Convert.ToInt32(ViewState["sucursal"]));
 
-            Mgr_PuestoTrabajo.PuestoTrabajo(GridView1,
+            Mgr_PuestoTrabajo.Grid_PuestoTrabajo(GridView1,
                 IdEmpresa, IdSucursal,
                 string.Empty + ViewState["area"],
                 string.Empty + ViewState["Num1"],
@@ -79,7 +79,7 @@ namespace SGSSTC.source.sistema.GestionDatos
         protected void EliminarRegistro(object sender, EventArgs e)
         {
             puesto_trabajo tabla = new puesto_trabajo();
-            List<usuario> usuarioData = Mgr_Area.AreaByUsuario(ObjUsuario.Id_usuario);
+            List<usuario> usuarioData = Mgr_Area.Get_AreaByUsuario(ObjUsuario.Id_usuario);
             int IdPuesto = 0;
             foreach (var user in usuarioData)
             {
@@ -235,7 +235,7 @@ namespace SGSSTC.source.sistema.GestionDatos
         {
             if (ddlEmpresa.SelectedValue != string.Empty)
             {
-                Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
                 ViewState["empresa"] = ddlEmpresa.SelectedValue;
             }
             else
@@ -248,7 +248,7 @@ namespace SGSSTC.source.sistema.GestionDatos
         {
             if (ddlSucursal.SelectedValue != string.Empty)
             {
-                Mgr_Area.Area_Sucursal(ddlArea, Convert.ToInt32(ddlSucursal.SelectedValue));
+                Mgr_Area.List_Area_Sucursal(ddlArea, Convert.ToInt32(ddlSucursal.SelectedValue));
 
                 ViewState["sucursal"] = ddlSucursal.SelectedValue;
             }

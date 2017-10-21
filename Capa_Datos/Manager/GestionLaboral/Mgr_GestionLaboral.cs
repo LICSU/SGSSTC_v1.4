@@ -7,15 +7,33 @@ namespace Capa_Datos.Manager.GestionLaboral
 {
     public class Mgr_GestionLaboral
     {
-        //------------getter
-        public static List<gestion_laboral> GestionLaboral(int _id_ges_lab)
+        //------------FUNCIONES DE CONSULTAR
+        public static List<gestion_laboral> Get_GestionLaboral(int _id_ges_lab)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             List<gestion_laboral> consulta = new List<gestion_laboral>();
             consulta = contexto.gestion_laboral.Where(x => x.id_ges_lab == _id_ges_lab).ToList();
             return consulta;
         }
-        public static List<gestion_laboral> GesLabCap(DateTime fechaInicial, DateTime fechaFinal, int _id_empresa = 0, int _id_sucursal = 0)
+        public static int GetId_GestionLaboral
+        {
+            get
+            {
+                GrupoLiEntities contexto = new GrupoLiEntities();
+                var consulta = new gestion_laboral();
+                int id = contexto.gestion_laboral.Max(x => x.id_ges_lab);
+                return id;
+            }
+        }
+        public static int Get_GestionLaboralByFecha(DateTime fechaInicial, DateTime fechaFinal)
+        {
+            GrupoLiEntities contexto = new GrupoLiEntities();
+            var query = (from GL in contexto.gestion_laboral
+                         where GL.fecha >= fechaInicial && GL.fecha <= fechaFinal && GL.tipo_gestion == 2
+                         select GL).Count();
+            return query;
+        }
+        public static List<gestion_laboral> Get_GestionLaboralByCapacitacion(DateTime fechaInicial, DateTime fechaFinal, int _id_empresa = 0, int _id_sucursal = 0)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             List<gestion_laboral> consulta = new List<gestion_laboral>();
@@ -29,24 +47,9 @@ namespace Capa_Datos.Manager.GestionLaboral
 
             return consulta;
         }
-        public static int GestionLaboralByFecha(DateTime fechaInicial, DateTime fechaFinal)
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            var query = (from GL in contexto.gestion_laboral
-                         where GL.fecha >= fechaInicial && GL.fecha <= fechaFinal && GL.tipo_gestion == 2
-                         select GL).Count();
-            return query;
-        }
-        public static int GestionLaboral()
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            var consulta = new gestion_laboral();
-            int id = contexto.gestion_laboral.Max(x => x.id_ges_lab);
-            return id;
-        }
 
-        //------------grid
-        public static void GestionLaboral(GridView GridView1, int _id_empresa = 0, int _id_sucursal = 0, int _tipo_gestion = 0, string _fecha_ini = "", string _fecha_fin = "", string _descripcion = "", int _id_usuario = 0)
+        //------------FUNCIONES DE LLENAR GRID
+        public static void Grid_GestionLaboral(GridView GridView1, int _id_empresa = 0, int _id_sucursal = 0, int _tipo_gestion = 0, string _fecha_ini = "", string _fecha_fin = "", string _descripcion = "", int _id_usuario = 0)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             var query = (

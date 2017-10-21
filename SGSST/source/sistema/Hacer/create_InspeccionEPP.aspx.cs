@@ -62,12 +62,12 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
             }
             else
             {
-                Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
             }
 
             if (!BoolEmpSuc.Item2)
             {
-                Mgr_Area.Area_Sucursal(ddlArea, ObjUsuario.Id_sucursal);
+                Mgr_Area.List_Area_Sucursal(ddlArea, ObjUsuario.Id_sucursal);
             }
         }
 
@@ -97,7 +97,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
             row.Visible = false;
             int i = 0;
             _table = (Table)pnEpp.FindControl("tblEPP");
-            List<Model_CEPP> epp_datos = Mgr_Epp.Epp(Convert.ToInt32(ddlPuesto.SelectedValue));
+            List<Model_CEPP> epp_datos = Mgr_Epp.Get_Epp(Convert.ToInt32(ddlPuesto.SelectedValue));
             foreach (var dato in epp_datos)
             {
                 _radio = (RadioButton)pnEpp.FindControl("eppNo" + i);
@@ -116,7 +116,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
             }
             ViewState["EppFalt"] = contFal;
             contFal = 0;
-            List<Model_CEPP> tipo_epp_datos = Mgr_Epp.TipoEpp(Convert.ToInt32(ddlPuesto.SelectedValue));
+            List<Model_CEPP> tipo_epp_datos = Mgr_Epp.Get_TipoEpp(Convert.ToInt32(ddlPuesto.SelectedValue));
             i = 0;
             Table _table2 = new Table();
             _table2 = (Table)pnEpp.FindControl("tblSenal");
@@ -171,7 +171,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
             {
                 ViewState["empresa"] = ddlEmpresa.SelectedValue;
 
-                Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
 
                 ViewState["sucursal"] = "0";
             }
@@ -186,7 +186,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
             if (ddlSucursal.SelectedValue != string.Empty)
             {
                 ViewState["sucursal"] = ddlSucursal.SelectedValue;
-                Mgr_Area.Area_Sucursal(ddlArea, Convert.ToInt32(ddlSucursal.SelectedValue));
+                Mgr_Area.List_Area_Sucursal(ddlArea, Convert.ToInt32(ddlSucursal.SelectedValue));
             }
             else
             {
@@ -199,7 +199,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
             if (ddlArea.SelectedValue != string.Empty)
             {
                 ViewState["area"] = ddlArea.SelectedValue;
-                Mgr_PuestoTrabajo.PuestoTrabajo(ddlPuesto, "idArea", Convert.ToInt32(ddlArea.SelectedValue));
+                Mgr_PuestoTrabajo.Lista_PuestoTrabajo(ddlPuesto, "idArea", Convert.ToInt32(ddlArea.SelectedValue));
             }
             else
             {
@@ -213,7 +213,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
             {
                 ViewState["puesto"] = ddlPuesto.SelectedValue;
 
-                List<Model_CEPP> epp = Mgr_Epp.Epp(Convert.ToInt32(ddlPuesto.SelectedValue));
+                List<Model_CEPP> epp = Mgr_Epp.Get_Epp(Convert.ToInt32(ddlPuesto.SelectedValue));
                 if (epp.Count > 0)
                 {
                     phInformacion.Visible = true;

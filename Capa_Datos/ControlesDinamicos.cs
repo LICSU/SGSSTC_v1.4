@@ -172,7 +172,7 @@ namespace Capa_Datos
             _table.Controls.Add(_header_row);
 
             //Empezar a agregar de forma dinamica...
-            List<Model_CEPP> epp_datos = Mgr_Epp.Epp(Convert.ToInt32(ddlPuesto.SelectedValue));
+            List<Model_CEPP> epp_datos = Mgr_Epp.Get_Epp(Convert.ToInt32(ddlPuesto.SelectedValue));
             int cant = epp_datos.Count;
             TableCell _cell;
             _header_row = new TableHeaderRow();
@@ -217,7 +217,7 @@ namespace Capa_Datos
 
             //Senalizaciones..
             i = 0;
-            List<Model_CEPP> tipo_epp_datos = Mgr_Epp.TipoEpp(Convert.ToInt32(ddlPuesto.SelectedValue));
+            List<Model_CEPP> tipo_epp_datos = Mgr_Epp.Get_TipoEpp(Convert.ToInt32(ddlPuesto.SelectedValue));
             int cant_tipo = tipo_epp_datos.Count;
             _header_row = new TableHeaderRow();
             _header_cell = new TableHeaderCell();
@@ -1230,8 +1230,8 @@ namespace Capa_Datos
             List<trabajador> ListaTrabajador = new List<trabajador>();
             DataTable dtMensual = new DataTable();
 
-            ListaEmpresa = Mgr_Empresa.Empresa(IdEmpresa);
-            ListaTrabajador = Mgr_Trabajador.Trabajador(0, 0, IdSucursal);
+            ListaEmpresa = Mgr_Empresa.Get_Empresa(IdEmpresa);
+            ListaTrabajador = Mgr_Trabajador.Get_Trabajador(0, 0, IdSucursal);
 
             //encabezado grid
             if (dtMensual.Columns.Count == 0)
@@ -1287,7 +1287,7 @@ namespace Capa_Datos
                         }
 
                         List<trabajador_estatus> ListaTrabajadorEstatus = new List<trabajador_estatus>();
-                        ListaTrabajadorEstatus = Mgr_Trabajador.TrabajadorReposo(item.id_trabajador, fechaIngreso, fechaConsultar);
+                        ListaTrabajadorEstatus = Mgr_Trabajador.Get_TrabajadorReposo(item.id_trabajador, fechaIngreso, fechaConsultar);
 
                         foreach (var itemTrabEst in ListaTrabajadorEstatus)
                         {
@@ -1371,7 +1371,7 @@ namespace Capa_Datos
                 DateTime fechaInicio = new DateTime(anhoActual, (i + 1), 01);
                 DateTime fechaFin = fechaInicio.AddMonths(1).AddDays(-1);
                 List<at_it_el_pa> ListaAccidentes = new List<at_it_el_pa>();
-                ListaAccidentes = Mgr_Acc_Inc.Accidente_Empresa_Reportes(IdEmpresa, fechaInicio, fechaFin);
+                ListaAccidentes = Mgr_Acc_Inc.Get_Accidente_Empresa_Reportes(IdEmpresa, fechaInicio, fechaFin);
 
                 foreach (var itemListaAccidentes in ListaAccidentes)
                 {
@@ -1462,8 +1462,8 @@ namespace Capa_Datos
             int[] vc_TCDP = { 0, 0, 0, 0 };
             int posicion = 0;
 
-            ListaEmpresa = Mgr_Empresa.Empresa(IdEmpresa);
-            ListaTrabajador = Mgr_Trabajador.Trabajador(0, 0, IdSucursal);
+            ListaEmpresa = Mgr_Empresa.Get_Empresa(IdEmpresa);
+            ListaTrabajador = Mgr_Trabajador.Get_Trabajador(0, 0, IdSucursal);
 
             for (int i = 0; i < MesActual; i++)
             {
@@ -1493,7 +1493,7 @@ namespace Capa_Datos
                         }
 
                         List<trabajador_estatus> ListaTrabajadorEstatus = new List<trabajador_estatus>();
-                        ListaTrabajadorEstatus = Mgr_Trabajador.TrabajadorReposo(item.id_trabajador, fechaIngreso, fechaConsultar);
+                        ListaTrabajadorEstatus = Mgr_Trabajador.Get_TrabajadorReposo(item.id_trabajador, fechaIngreso, fechaConsultar);
 
                         foreach (var itemTrabEst in ListaTrabajadorEstatus)
                         {
@@ -1577,7 +1577,7 @@ namespace Capa_Datos
                 DateTime fechaInicio = new DateTime(anhoActual, (i + 1), 01);
                 DateTime fechaFin = fechaInicio.AddMonths(1).AddDays(-1);
                 List<at_it_el_pa> ListaAccidentes = new List<at_it_el_pa>();
-                ListaAccidentes = Mgr_Acc_Inc.Accidente_Empresa_Reportes(IdEmpresa, fechaInicio, fechaFin);
+                ListaAccidentes = Mgr_Acc_Inc.Get_Accidente_Empresa_Reportes(IdEmpresa, fechaInicio, fechaFin);
 
                 foreach (var itemListaAccidentes in ListaAccidentes)
                 {
@@ -1828,8 +1828,8 @@ namespace Capa_Datos
             int[] vc_TCDP = { 0, 0 };
             int posicion = 0;
 
-            ListaEmpresa = Mgr_Empresa.Empresa(IdEmpresa);
-            ListaTrabajador = Mgr_Trabajador.Trabajador(0, 0, IdSucursal);
+            ListaEmpresa = Mgr_Empresa.Get_Empresa(IdEmpresa);
+            ListaTrabajador = Mgr_Trabajador.Get_Trabajador(0, 0, IdSucursal);
 
             for (int y = 0; y < MesActual; y++)
             {
@@ -1859,7 +1859,7 @@ namespace Capa_Datos
                         }
 
                         List<trabajador_estatus> ListaTrabajadorEstatus = new List<trabajador_estatus>();
-                        ListaTrabajadorEstatus = Mgr_Trabajador.TrabajadorReposo(item.id_trabajador, fechaIngreso, fechaConsultar);
+                        ListaTrabajadorEstatus = Mgr_Trabajador.Get_TrabajadorReposo(item.id_trabajador, fechaIngreso, fechaConsultar);
 
                         foreach (var itemTrabEst in ListaTrabajadorEstatus)
                         {
@@ -1943,7 +1943,7 @@ namespace Capa_Datos
                 DateTime fechaInicio = new DateTime(anhoActual, (y + 1), 01);
                 DateTime fechaFin = fechaInicio.AddMonths(1).AddDays(-1);
                 List<at_it_el_pa> ListaAccidentes = new List<at_it_el_pa>();
-                ListaAccidentes = Mgr_Acc_Inc.Accidente_Empresa_Reportes(IdEmpresa, fechaInicio, fechaFin);
+                ListaAccidentes = Mgr_Acc_Inc.Get_Accidente_Empresa_Reportes(IdEmpresa, fechaInicio, fechaFin);
 
                 foreach (var itemListaAccidentes in ListaAccidentes)
                 {
@@ -2102,8 +2102,8 @@ namespace Capa_Datos
 
             List<empresa> ListaEmpresa = new List<empresa>();
             List<trabajador> ListaTrabajador = new List<trabajador>();
-            ListaEmpresa = Mgr_Empresa.Empresa(IdEmpresa);
-            ListaTrabajador = Mgr_Trabajador.Trabajador(0, 0, IdSucursal);
+            ListaEmpresa = Mgr_Empresa.Get_Empresa(IdEmpresa);
+            ListaTrabajador = Mgr_Trabajador.Get_Trabajador(0, 0, IdSucursal);
 
             if (dtAnual.Columns.Count == 0)
             {
@@ -2173,7 +2173,7 @@ namespace Capa_Datos
                             }
 
                             List<trabajador_estatus> ListaTrabajadorEstatus = new List<trabajador_estatus>();
-                            ListaTrabajadorEstatus = Mgr_Trabajador.TrabajadorReposo(item.id_trabajador, fechaIngreso, fechaConsultar);
+                            ListaTrabajadorEstatus = Mgr_Trabajador.Get_TrabajadorReposo(item.id_trabajador, fechaIngreso, fechaConsultar);
 
                             foreach (var itemTrabEst in ListaTrabajadorEstatus)
                             {
@@ -2257,7 +2257,7 @@ namespace Capa_Datos
                     DateTime fechaInicio = new DateTime(i, (y + 1), 01);
                     DateTime fechaFin = fechaInicio.AddMonths(1).AddDays(-1);
                     List<at_it_el_pa> ListaAccidentes = new List<at_it_el_pa>();
-                    ListaAccidentes = Mgr_Acc_Inc.Accidente_Empresa_Reportes(IdEmpresa, fechaInicio, fechaFin);
+                    ListaAccidentes = Mgr_Acc_Inc.Get_Accidente_Empresa_Reportes(IdEmpresa, fechaInicio, fechaFin);
 
                     foreach (var itemListaAccidentes in ListaAccidentes)
                     {

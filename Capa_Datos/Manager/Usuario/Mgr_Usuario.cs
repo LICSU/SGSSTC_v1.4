@@ -9,22 +9,22 @@ namespace Capa_Datos.Manager.Usuario
 {
     public class Mgr_Usuario
     {
-        //-------crud
+        //-------FUNCIONES DE CREAR, EDITAR Y ELIMINAR
         public static bool Add_Usuario_Sucursal(String[] valores)
         {
             usuario nuevo = new usuario()
             {
                 login = valores[0],
                 clave = valores[1],
-                id_trabajador = Mgr_Trabajador.Trabajador(),
+                id_trabajador = Mgr_Trabajador.Get_Trabajador(),
                 id_rol = Convert.ToInt32(valores[2])
             };
 
             return Capa_Datos.CRUD.Add_Fila(nuevo);
         }
 
-        //----------Grid
-        public static void Rol(GridView GridView1, int id_empresa = 0, string _nombre = "")
+        //----------FUNCIONES DE LLENAR GRID
+        public static void Grid_Rol(GridView GridView1, int id_empresa = 0, string _nombre = "")
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             var query = (
@@ -44,7 +44,7 @@ namespace Capa_Datos.Manager.Usuario
 
             GridView1.DataBind();
         }
-        public static void Usuario(GridView GridView1, int _empresa = 0, string _rol = "", int _sucursal = 0, string _where = "", int miUsuario = 0)
+        public static void Grid_Usuario(GridView GridView1, int _empresa = 0, string _rol = "", int _sucursal = 0, string _where = "", int miUsuario = 0)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             var query = (
@@ -76,10 +76,9 @@ namespace Capa_Datos.Manager.Usuario
 
             GridView1.DataBind();
         }
-
-
-        //----------listas
-        public static void Rol(DropDownList DropDownList1, int _id_rol = 0)
+        
+        //----------FUNCIONES DE LLENAR LISTAS
+        public static void Lista_Rol(DropDownList DropDownList1, int _id_rol = 0)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
 
@@ -107,7 +106,7 @@ namespace Capa_Datos.Manager.Usuario
             DropDownList1.DataBind();
             DropDownList1.Items.Insert(0, new ListItem("Seleccione ...", ""));
         }
-        public static void Rol_AdmSucursal(DropDownList DropDownList1)
+        public static void Lista_Rol_AdmSucursal(DropDownList DropDownList1)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             var Consulta = (from c in contexto.rol
@@ -120,8 +119,7 @@ namespace Capa_Datos.Manager.Usuario
             DropDownList1.DataBind();
             DropDownList1.Items.Insert(0, new ListItem("Seleccione ...", ""));
         }
-
-        public static void Usuario_Empresa(DropDownList DropDownList1, int _id_empresa)
+        public static void Lista_UsuarioByEmpresa(DropDownList DropDownList1, int _id_empresa)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             var Consulta = (from c in contexto.usuario
@@ -135,7 +133,7 @@ namespace Capa_Datos.Manager.Usuario
             DropDownList1.DataBind();
             DropDownList1.Items.Insert(0, new ListItem("Seleccione el Usuario", ""));
         }
-        public static void Usuario_Sucursal(DropDownList DropDownList1, int _id_sucursal)
+        public static void Lista_UsuarioBySucursal(DropDownList DropDownList1, int _id_sucursal)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             var Consulta = (from c in contexto.usuario
@@ -150,21 +148,28 @@ namespace Capa_Datos.Manager.Usuario
             DropDownList1.Items.Insert(0, new ListItem("Seleccione el Usuario", ""));
         }
 
-        //---------- getter
-        public static int Usuario()
+        //----------FUNCIONES DE CONSULTAR
+        public static int Get_Usuario()
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             var consulta = new usuario();
             int id = contexto.usuario.Max(x => x.id_usuario);
             return id;
         }
-        public static int Roles()
+        public static int Get_Roles()
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             var consulta = new rol();
             return contexto.rol.Max(x => x.id_rol);
         }
-        public static int UsuarioTrabajador(int _id_usuario)
+        public static rol Get_Rol(int _idRol)
+        {
+            GrupoLiEntities contexto = new GrupoLiEntities();
+            rol consulta = new rol();
+            consulta = contexto.rol.Where(x => x.id_rol == _idRol).SingleOrDefault();
+            return consulta;
+        }
+        public static int Get_UsuarioTrabajador(int _id_usuario)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             var query = (
@@ -178,41 +183,28 @@ namespace Capa_Datos.Manager.Usuario
 
             return Convert.ToInt32(query.ElementAt(0).id_trabajador);
         }
-        public static rol Rol(int _idRol)
+        public static bool Get_ExisteUsuario(FormsIdentity _fIdentity)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
-            rol consulta = new rol();
-            consulta = contexto.rol.Where(x => x.id_rol == _idRol).SingleOrDefault();
-            return consulta;
+            bool error = false;
+
+            if (_fIdentity != null)
+            {
+                string[] aUsuario = _fIdentity.Name.Split('|');
+                int _id_usuario = Convert.ToInt32(aUsuario[0]);
+
+                var consulta = new usuario();
+                int cantidad = contexto.usuario.Where(x => x.id_usuario == _id_usuario).Count();
+
+                if (cantidad > 0)
+                {
+                    error = true;
+                }
+            }
+
+            return error;
         }
-        public static List<usuario> Usuario(int _id_usuario = 0, int _idSucursal = 0,string email = "", string _login = "", string _clave = "")
-        {
-            Utilidades objUtilidades = new Utilidades();
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            List<usuario> consulta = new List<usuario>();
-
-            if (_id_usuario != 0)
-            {
-                consulta = contexto.usuario.Where(x => x.id_usuario == _id_usuario).ToList();
-            }
-            else if (_idSucursal != 0)
-            {
-                consulta = contexto.usuario.Where(x => x.trabajador.puesto_trabajo.area.id_sucursal == _idSucursal && x.id_rol == 3).ToList();
-            }
-            else if (email != "")
-            {
-                consulta = contexto.usuario.Where(x => x.trabajador.email.ToLower() == email.ToLower()).ToList();
-            }
-            else if (_login != "" && _clave != "")
-            {
-                _clave = objUtilidades.cifrarCadena(Convert.ToString(_clave));
-                consulta = contexto.usuario.Where(x => x.login.ToLower() == _login.ToLower() && x.clave == _clave).ToList();
-            }
-
-
-            return consulta;
-        }
-        public static string ValidarUsuario(string login, string clave)
+        public static string Get_ValidarUsuario(string login, string clave)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             Utilidades objUtilidades = new Utilidades();
@@ -254,29 +246,35 @@ namespace Capa_Datos.Manager.Usuario
             }
             return resultado;
         }
-        public static bool ExisteUsuario(FormsIdentity _fIdentity)
+        public static List<usuario> Get_Usuario(int _id_usuario = 0, int _idSucursal = 0,string email = "", string _login = "", string _clave = "")
         {
+            Utilidades objUtilidades = new Utilidades();
             GrupoLiEntities contexto = new GrupoLiEntities();
-            bool error = false;
+            List<usuario> consulta = new List<usuario>();
 
-            if (_fIdentity != null)
+            if (_id_usuario != 0)
             {
-                string[] aUsuario = _fIdentity.Name.Split('|');
-                int _id_usuario = Convert.ToInt32(aUsuario[0]);
-
-                var consulta = new usuario();
-                int cantidad = contexto.usuario.Where(x => x.id_usuario == _id_usuario).Count();
-
-                if (cantidad > 0)
-                {
-                    error = true;
-                }
+                consulta = contexto.usuario.Where(x => x.id_usuario == _id_usuario).ToList();
+            }
+            else if (_idSucursal != 0)
+            {
+                consulta = contexto.usuario.Where(x => x.trabajador.puesto_trabajo.area.id_sucursal == _idSucursal && x.id_rol == 3).ToList();
+            }
+            else if (email != "")
+            {
+                consulta = contexto.usuario.Where(x => x.trabajador.email.ToLower() == email.ToLower()).ToList();
+            }
+            else if (_login != "" && _clave != "")
+            {
+                _clave = objUtilidades.cifrarCadena(Convert.ToString(_clave));
+                consulta = contexto.usuario.Where(x => x.login.ToLower() == _login.ToLower() && x.clave == _clave).ToList();
             }
 
-            return error;
+
+            return consulta;
         }
 
-        //---------- setter
+        //----------FUNCIONES DE SETTER
         public static int Set_IdUsuarioDDl(Model_UsuarioSistema ObjUsuario, DropDownList ddlUsuario)
         {
             int IdUsuario = 0;

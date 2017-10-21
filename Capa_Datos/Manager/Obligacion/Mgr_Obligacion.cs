@@ -7,8 +7,8 @@ namespace Capa_Datos.Manager.Obligacion
 {
     public class Mgr_Obligacion
     {
-        //----------getter
-        public static List<obligacion> Obligacion(int _id_obligacion)
+        //----------FUNCIONES DE CONSULTAR
+        public static List<obligacion> Get_Obligacion(int _id_obligacion)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             List<obligacion> consulta = new List<obligacion>();
@@ -16,9 +16,8 @@ namespace Capa_Datos.Manager.Obligacion
             return consulta;
         }
 
-
-        //----------listas
-        public static void Frecuencia(DropDownList DropDownList1)
+        //----------FUNCIONES DE LLENAR LISTAS
+        public static void Lista_Frecuencia(DropDownList DropDownList1)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             var Consulta = (from c in contexto.frecuencia_control
@@ -30,11 +29,9 @@ namespace Capa_Datos.Manager.Obligacion
             DropDownList1.DataBind();
             DropDownList1.Items.Insert(0, new ListItem("Seleccione la frecuencia", ""));
         }
-        
-        //----------grif
-        public static void Obligaciones(
-            GridView GridView1, int _id_empresa = 0, int _id_responsable = 0, int _id_categoria = 0, string _prioridad = "",
-            string _estatus = "", string _fecha_ini = "", string _fecha_fin = "", string _descripcion = "", int _id_sucursal = 0)
+
+        //----------FUNCIONES DE LLENAR GRID
+        public static void Grid_Obligaciones(GridView GridView1, int _id_empresa = 0, int _id_responsable = 0, int _id_categoria = 0, string _prioridad = "",string _estatus = "", string _fecha_ini = "", string _fecha_fin = "", string _descripcion = "", int _id_sucursal = 0)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
 
@@ -72,8 +69,6 @@ namespace Capa_Datos.Manager.Obligacion
             GridView1.DataSource = query;
             GridView1.DataBind();
         }
-
-
-
+        
     }
 }

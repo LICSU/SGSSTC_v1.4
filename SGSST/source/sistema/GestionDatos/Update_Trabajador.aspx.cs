@@ -34,7 +34,7 @@ namespace SGSSTC.source.sistema.GestionDatos
 
             if (!IsPostBack)
             {
-                Mgr_Gobierno.Ccf(ddlCcf);
+                Mgr_Gobierno.Get_CCF(ddlCcf);
                 CargarUsuario();
             }
         }
@@ -43,7 +43,7 @@ namespace SGSSTC.source.sistema.GestionDatos
         {
             int idTrabajador = Convert.ToInt32(ViewState["TrabajadorID"]);
             List<trabajador> ListaTrabajador = new List<trabajador>();
-            ListaTrabajador = Mgr_Trabajador.Trabajador(idTrabajador);
+            ListaTrabajador = Mgr_Trabajador.Get_Trabajador(idTrabajador);
 
             foreach (var itemTrabajador in ListaTrabajador)
             {
@@ -69,31 +69,31 @@ namespace SGSSTC.source.sistema.GestionDatos
                 ddlManodominante.SelectedValue = Convert.ToString(itemTrabajador.mano_dominante);
                 txtSalario.Text = Convert.ToString(itemTrabajador.salario);
 
-                Mgr_Horario.Horario_Empresa(ddlHorario, Convert.ToInt32(itemTrabajador.puesto_trabajo.area.sucursal.id_empresa));
+                Mgr_Horario.Lista_HorarioByEmpresa(ddlHorario, Convert.ToInt32(itemTrabajador.puesto_trabajo.area.sucursal.id_empresa));
                 ddlHorario.SelectedValue = Convert.ToString(itemTrabajador.id_horario);
 
-                Mgr_Estatus.Estatus_Empresa(ddlEstatus, Convert.ToInt32(itemTrabajador.puesto_trabajo.area.sucursal.id_empresa));
+                Mgr_Estatus.List_Estatus_Empresa(ddlEstatus, Convert.ToInt32(itemTrabajador.puesto_trabajo.area.sucursal.id_empresa));
                 ddlEstatus.SelectedValue = Convert.ToString(itemTrabajador.id_estatus_actual);
 
-                Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(itemTrabajador.puesto_trabajo.area.sucursal.id_empresa));
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursal, Convert.ToInt32(itemTrabajador.puesto_trabajo.area.sucursal.id_empresa));
                 ddlSucursal.SelectedValue = Convert.ToString(itemTrabajador.puesto_trabajo.area.id_sucursal);
 
-                Mgr_PuestoTrabajo.PuestoTrabajo(ddlPuestoTrabajo, "Sucursal", itemTrabajador.puesto_trabajo.area.id_sucursal);
+                Mgr_PuestoTrabajo.Lista_PuestoTrabajo(ddlPuestoTrabajo, "Sucursal", itemTrabajador.puesto_trabajo.area.id_sucursal);
                 ddlPuestoTrabajo.SelectedValue = Convert.ToString(itemTrabajador.id_puesto_trabajo);
 
-                Mgr_Gobierno.Reg_Dpto_Mcpio(ddlRegion, "Region");
+                Mgr_Gobierno.Get_Reg_Dpto_Mcpio(ddlRegion, "Region");
                 ddlRegion.SelectedValue = string.Empty + itemTrabajador.municipio.departamento.Region.id_region;
 
-                Mgr_Gobierno.Reg_Dpto_Mcpio(ddlDepartamento, "RegionDpto", itemTrabajador.municipio.departamento.Region.id_region);
+                Mgr_Gobierno.Get_Reg_Dpto_Mcpio(ddlDepartamento, "RegionDpto", itemTrabajador.municipio.departamento.Region.id_region);
                 ddlDepartamento.SelectedValue = string.Empty + itemTrabajador.municipio.id_departamento;
 
-                Mgr_Gobierno.Reg_Dpto_Mcpio(ddlMunicipio, "McpioDpto", itemTrabajador.municipio.id_departamento);
+                Mgr_Gobierno.Get_Reg_Dpto_Mcpio(ddlMunicipio, "McpioDpto", itemTrabajador.municipio.id_departamento);
                 ddlMunicipio.SelectedValue = string.Empty + itemTrabajador.id_municipio;
 
-                Mgr_Gobierno.Ccf(ddlCcf);
+                Mgr_Gobierno.Get_CCF(ddlCcf);
                 ddlCcf.SelectedValue = string.Empty + itemTrabajador.id_ccf;
 
-                Mgr_Trabajador.PerfilCargo(ddlCargo);
+                Mgr_Trabajador.Lista_PerfilCargo(ddlCargo);
                 //ddlCargo.SelectedValue = Convert.ToString(itemTrabajador.perfil_cargo.id_cno);
 
                 ImgFoto.ImageUrl = itemTrabajador.foto;
@@ -164,16 +164,16 @@ namespace SGSSTC.source.sistema.GestionDatos
             int _id = 0;
             if (ddlEmpresas.SelectedValue != string.Empty)
                 _id = Convert.ToInt32(ddlEmpresas.SelectedValue);
-            Mgr_Sucursal.Sucursal(ddlSucursal, _id);
-            Mgr_Estatus.Estatus_Empresa(ddlEstatus, _id);
-            Mgr_Horario.Horario_Empresa(ddlHorario, _id);
+            Mgr_Sucursal.Lista_Sucursal(ddlSucursal, _id);
+            Mgr_Estatus.List_Estatus_Empresa(ddlEstatus, _id);
+            Mgr_Horario.Lista_HorarioByEmpresa(ddlHorario, _id);
         }
 
         protected void ddlRegion_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ddlRegion.SelectedValue != string.Empty)
             {
-                Mgr_Gobierno.Reg_Dpto_Mcpio(ddlDepartamento, "RegionDpto", Convert.ToInt32(ddlRegion.SelectedValue));
+                Mgr_Gobierno.Get_Reg_Dpto_Mcpio(ddlDepartamento, "RegionDpto", Convert.ToInt32(ddlRegion.SelectedValue));
             }
         }
 
@@ -181,7 +181,7 @@ namespace SGSSTC.source.sistema.GestionDatos
         {
             if (ddlDepartamento.SelectedValue != string.Empty)
             {
-                Mgr_Gobierno.Reg_Dpto_Mcpio(ddlMunicipio, "McpioDpto", Convert.ToInt32(ddlDepartamento.SelectedValue));
+                Mgr_Gobierno.Get_Reg_Dpto_Mcpio(ddlMunicipio, "McpioDpto", Convert.ToInt32(ddlDepartamento.SelectedValue));
             }
         }
 

@@ -50,16 +50,16 @@ namespace SGSSTC.source.sistema.Hacer
             }
             else
             {
-                Mgr_Sucursal.Sucursal(ddlSucursalAdd, ObjUsuario.Id_empresa);
-                Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
-                Mgr_Sucursal.Sucursal(ddlSucursalEdit, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursalAdd, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursalEdit, ObjUsuario.Id_empresa);
             }
         }
         private void LlenarGridView()
         {
             int IdSucursal = Mgr_Sucursal.Set_IdSucursal(ObjUsuario, Convert.ToInt32(ViewState["sucursal"]));
 
-            Mgr_Riesgos.MapaRiesgos(GridView1, IdSucursal, string.Empty + ViewState["buscar"]);
+            Mgr_Riesgos.Grid_MapaRiesgos(GridView1, IdSucursal, string.Empty + ViewState["buscar"]);
         }
         #endregion
 
@@ -76,7 +76,7 @@ namespace SGSSTC.source.sistema.Hacer
                 int id_empresa = Convert.ToInt32((gvrow.FindControl("id_empresa") as Label).Text);
                 int id_sucursal = Convert.ToInt32((gvrow.FindControl("id_sucursal") as Label).Text);
                 ddlEmpresaEdit.SelectedValue = id_empresa.ToString();
-                Mgr_Sucursal.Sucursal(ddlSucursalEdit, id_empresa);
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursalEdit, id_empresa);
                 ddlSucursalEdit.SelectedValue = id_sucursal.ToString();
 
                 Modal.registrarModal("editModal", "EditModalScript", this);
@@ -218,21 +218,21 @@ namespace SGSSTC.source.sistema.Hacer
         {
             if (ddlEmpresa.SelectedValue != string.Empty)
             {
-                Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
             }
         }
         protected void ddlEmpresaAdd_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ddlEmpresaAdd.SelectedValue != string.Empty)
             {
-                Mgr_Sucursal.Sucursal(ddlSucursalAdd, Convert.ToInt32(ddlEmpresaAdd.SelectedValue));
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursalAdd, Convert.ToInt32(ddlEmpresaAdd.SelectedValue));
             }
         }
         protected void ddlEmpresaEdit_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ddlEmpresaEdit.SelectedValue != string.Empty)
             {
-                Mgr_Sucursal.Sucursal(ddlSucursalEdit, Convert.ToInt32(ddlEmpresaEdit.SelectedValue));
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursalEdit, Convert.ToInt32(ddlEmpresaEdit.SelectedValue));
             }
         }
         protected void ddlSucursal_SelectedIndexChanged(object sender, EventArgs e)

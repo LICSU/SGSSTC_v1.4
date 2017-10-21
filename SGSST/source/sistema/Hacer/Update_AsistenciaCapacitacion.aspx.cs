@@ -60,7 +60,7 @@ namespace SGSSTC.source.sistema.Hacer
 
             List<trabajador_gestion> ListaTrabajadorGest = new List<trabajador_gestion>();
 
-            ListaTrabajadorGest = Mgr_Trabajador.TrabajadorInGestion(0, Convert.ToInt32(string.Empty + ViewState["Id_gestion"]));
+            ListaTrabajadorGest = Mgr_Trabajador.Get_TrabajadorInGestion(0, Convert.ToInt32(string.Empty + ViewState["Id_gestion"]));
 
             chkAsistencia.Items.Clear();
 
@@ -130,7 +130,7 @@ namespace SGSSTC.source.sistema.Hacer
             RadioButtonList miRadio;
 
             List<trabajador_gestion> ListaTrabajadorGest = new List<trabajador_gestion>();
-            ListaTrabajadorGest = Mgr_Trabajador.TrabajadorInGestion(0, Convert.ToInt32(string.Empty + ViewState["Id_gestion"]));
+            ListaTrabajadorGest = Mgr_Trabajador.Get_TrabajadorInGestion(0, Convert.ToInt32(string.Empty + ViewState["Id_gestion"]));
 
             foreach (Control micontrol in panelAsistencia.Controls)
             {

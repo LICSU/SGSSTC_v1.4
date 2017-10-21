@@ -34,7 +34,7 @@ namespace SGSSTC.source.sistema.MenuPrincipal
         {
             IdRespuesta = objUtilidades.descifrarCadena(Request.QueryString["rs"]);
             List<usuario> ListUsuario = new List<usuario>();
-            ListUsuario = Mgr_Usuario.Usuario(ObjUsuario.Id_usuario);
+            ListUsuario = Mgr_Usuario.Get_Usuario(ObjUsuario.Id_usuario);
             string nomUsuario = string.Empty;
             foreach (var item in ListUsuario)
             {
@@ -42,7 +42,7 @@ namespace SGSSTC.source.sistema.MenuPrincipal
             }
             
             List<Respuesta> ListRespuesta = new List<Respuesta>();
-            ListRespuesta = Mgr_Comunicacion.Respuesta(IdRespuesta);
+            ListRespuesta = Mgr_Comunicacion.Get_Respuesta(IdRespuesta);
 
             foreach (var item in ListRespuesta)
             {

@@ -41,7 +41,7 @@ namespace SGSSTC.source.sistema.GestionDatos
         {
             List<empresa> ListaEmpresa = new List<empresa>();
             int IdEmpresa = Convert.ToInt32(id_empresa);
-            ListaEmpresa = Mgr_Empresa.Empresa(IdEmpresa);
+            ListaEmpresa = Mgr_Empresa.Get_Empresa(IdEmpresa);
 
             foreach (var item in ListaEmpresa)
             {
@@ -65,7 +65,7 @@ namespace SGSSTC.source.sistema.GestionDatos
 
         private void LlenarGridView()
         {
-            Mgr_Empresa.tabla_Empresa(GridView1);
+            Mgr_Empresa.Grid_Empresa(GridView1);
         }
         #endregion
 

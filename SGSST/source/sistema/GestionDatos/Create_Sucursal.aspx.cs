@@ -52,11 +52,11 @@ namespace SGSSTC.source.sistema.GestionDatos
             }
             else
             {
-                Mgr_CodigoCiiu.Codciiu_Div_item(ddlItemDivision1, "claseCiiu_Empresa", ObjUsuario.Id_empresa);
-                Mgr_CodigoCiiu.Codciiu_Div_item(ddlItemDivision2, "claseCiiu_Empresa", ObjUsuario.Id_empresa);
-                Mgr_CodigoCiiu.Codciiu_Div_item(ddlItemDivision3, "claseCiiu_Empresa", ObjUsuario.Id_empresa);
+                Mgr_CodigoCiiu.List_Codciiu_Div_item(ddlItemDivision1, "claseCiiu_Empresa", ObjUsuario.Id_empresa);
+                Mgr_CodigoCiiu.List_Codciiu_Div_item(ddlItemDivision2, "claseCiiu_Empresa", ObjUsuario.Id_empresa);
+                Mgr_CodigoCiiu.List_Codciiu_Div_item(ddlItemDivision3, "claseCiiu_Empresa", ObjUsuario.Id_empresa);
             }
-            Mgr_Gobierno.Reg_Dpto_Mcpio(ddlRegionAdd, "Region");
+            Mgr_Gobierno.Get_Reg_Dpto_Mcpio(ddlRegionAdd, "Region");
         }
 
         private void CargarControles()
@@ -76,7 +76,7 @@ namespace SGSSTC.source.sistema.GestionDatos
                 IdEmpresa = ObjUsuario.Id_empresa;
             }
 
-            int idSucursal = Mgr_Sucursal.SucursalByNombre(txtNombreAdd.Text, IdEmpresa);
+            int idSucursal = Mgr_Sucursal.Get_SucursalByNombre(txtNombreAdd.Text, IdEmpresa);
 
             if (idSucursal == 0)
             {
@@ -102,7 +102,7 @@ namespace SGSSTC.source.sistema.GestionDatos
 
                 if (Mgr_Sucursal.Add_Sucursal( valores))
                 {
-                    id_sucursal = Mgr_Sucursal.Sucursal();
+                    id_sucursal = Mgr_Sucursal.Get_Sucursal();
                     strAct1 = Convert.ToString(act1);
                     strAct2 = Convert.ToString(act2);
                     strAct3 = Convert.ToString(act3);
@@ -151,7 +151,7 @@ namespace SGSSTC.source.sistema.GestionDatos
             }
             else
             {
-                Mgr_Sucursal.DeleteSucursal( id_sucursal);
+                Mgr_Sucursal.Delete_Sucursal( id_sucursal);
                 return false;
             }
 
@@ -169,7 +169,7 @@ namespace SGSSTC.source.sistema.GestionDatos
             }
             else
             {
-                Mgr_Sucursal.DeleteSucursal( id_sucursal);
+                Mgr_Sucursal.Delete_Sucursal( id_sucursal);
                 return false;
             }
         }
@@ -186,7 +186,7 @@ namespace SGSSTC.source.sistema.GestionDatos
             }
             else
             {
-                Mgr_Sucursal.DeleteSucursal(id_sucursal);
+                Mgr_Sucursal.Delete_Sucursal(id_sucursal);
                 return false;
             }
         }
@@ -203,7 +203,7 @@ namespace SGSSTC.source.sistema.GestionDatos
             }
             else
             {
-                Mgr_Sucursal.DeleteSucursal( id_sucursal);
+                Mgr_Sucursal.Delete_Sucursal( id_sucursal);
                 return false;
             }
         }
@@ -226,7 +226,7 @@ namespace SGSSTC.source.sistema.GestionDatos
             }
             else
             {
-                Mgr_Sucursal.DeleteSucursal(id_sucursal);
+                Mgr_Sucursal.Delete_Sucursal(id_sucursal);
                 return false;
             }
         }
@@ -243,7 +243,7 @@ namespace SGSSTC.source.sistema.GestionDatos
             }
             else
             {
-                Mgr_Sucursal.DeleteSucursal(id_sucursal);
+                Mgr_Sucursal.Delete_Sucursal(id_sucursal);
                 return false;
             }
 
@@ -254,7 +254,7 @@ namespace SGSSTC.source.sistema.GestionDatos
             if (Mgr_PlanTrabajo.Add_Lista_Actividad(id_sucursal))
             {
                 string empresa = "", correo = "";
-                List<empresa> data_empresa = Mgr_Empresa.EmpresaEmail(IdEmpresa);
+                List<empresa> data_empresa = Mgr_Empresa.Get_EmpresaEmail(IdEmpresa);
                 foreach (var datos in data_empresa)
                 {
                     empresa = datos.nombre;
@@ -267,7 +267,7 @@ namespace SGSSTC.source.sistema.GestionDatos
             }
             else
             {
-                Mgr_Sucursal.DeleteSucursal(id_sucursal);
+                Mgr_Sucursal.Delete_Sucursal(id_sucursal);
                 return false;
             }
         }
@@ -277,20 +277,20 @@ namespace SGSSTC.source.sistema.GestionDatos
         {
             if (ddlEmpresaAdd.SelectedValue != string.Empty)
             {
-                Mgr_CodigoCiiu.Codciiu_Div_item(ddlItemDivision1, "claseCiiu_Empresa", Convert.ToInt32(ddlEmpresaAdd.SelectedValue));
-                Mgr_CodigoCiiu.Codciiu_Div_item(ddlItemDivision2, "claseCiiu_Empresa", Convert.ToInt32(ddlEmpresaAdd.SelectedValue));
-                Mgr_CodigoCiiu.Codciiu_Div_item(ddlItemDivision3, "claseCiiu_Empresa", Convert.ToInt32(ddlEmpresaAdd.SelectedValue));
+                Mgr_CodigoCiiu.List_Codciiu_Div_item(ddlItemDivision1, "claseCiiu_Empresa", Convert.ToInt32(ddlEmpresaAdd.SelectedValue));
+                Mgr_CodigoCiiu.List_Codciiu_Div_item(ddlItemDivision2, "claseCiiu_Empresa", Convert.ToInt32(ddlEmpresaAdd.SelectedValue));
+                Mgr_CodigoCiiu.List_Codciiu_Div_item(ddlItemDivision3, "claseCiiu_Empresa", Convert.ToInt32(ddlEmpresaAdd.SelectedValue));
             }
         }
 
         protected void ddlRegionAdd_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Mgr_Gobierno.Reg_Dpto_Mcpio(ddlDptoAdd, "RegionDpto", Convert.ToInt32(ddlRegionAdd.SelectedValue));
+            Mgr_Gobierno.Get_Reg_Dpto_Mcpio(ddlDptoAdd, "RegionDpto", Convert.ToInt32(ddlRegionAdd.SelectedValue));
         }
 
         protected void ddlDptoAdd_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Mgr_Gobierno.Reg_Dpto_Mcpio(ddlMcpioAdd, "McpioDpto", Convert.ToInt32(ddlDptoAdd.SelectedValue));
+            Mgr_Gobierno.Get_Reg_Dpto_Mcpio(ddlMcpioAdd, "McpioDpto", Convert.ToInt32(ddlDptoAdd.SelectedValue));
         }
 
         protected void ddlItemDivision1_SelectedIndexChanged(object sender, EventArgs e)

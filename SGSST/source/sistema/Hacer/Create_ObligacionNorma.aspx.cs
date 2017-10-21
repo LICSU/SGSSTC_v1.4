@@ -33,7 +33,7 @@ namespace SGSSTC.source.sistema.Hacer
             lbAnho.Text = DateTime.Now.Year.ToString();
 
             List<sucursal> ListaSucursal = new List<sucursal>();
-            ListaSucursal = Mgr_Sucursal.Sucursal(Convert.ToInt32(IdSucursal), 0, "");
+            ListaSucursal = Mgr_Sucursal.Get_Sucursal(Convert.ToInt32(IdSucursal), 0, "");
             foreach (var item in ListaSucursal)
             {
                 IdEmpresa = Convert.ToInt32(item.id_empresa);
@@ -50,7 +50,7 @@ namespace SGSSTC.source.sistema.Hacer
         private void CargarDatos()
         {
             List<medida_sucursal> ListaMedidasSucursal = new List<medida_sucursal>();
-            ListaMedidasSucursal = Mgr_Medidas.Medidas_Sucursal(Convert.ToInt32(idMedidasSucursal));
+            ListaMedidasSucursal = Mgr_Medidas.Get_MedidasBySucursal(Convert.ToInt32(idMedidasSucursal));
 
             foreach (var item in ListaMedidasSucursal)
             {
@@ -61,10 +61,10 @@ namespace SGSSTC.source.sistema.Hacer
 
         private void CargarListas()
         {
-            Mgr_Categoria.Categorias(ddlCategoria, IdEmpresa);
-            Mgr_Obligacion.Frecuencia(ddlFrecuencia);
-            Capa_Datos.Manager.Usuario.Mgr_Usuario.Usuario_Sucursal(ddlResponsable, Convert.ToInt32(IdSucursal));
-            Mgr_PlanTrabajo.Actividades_Sucursal(ddlActividad, Convert.ToInt32(IdSucursal), DateTime.Now.Year);
+            Mgr_Categoria.List_Categorias(ddlCategoria, IdEmpresa);
+            Mgr_Obligacion.Lista_Frecuencia(ddlFrecuencia);
+            Capa_Datos.Manager.Usuario.Mgr_Usuario.Lista_UsuarioBySucursal(ddlResponsable, Convert.ToInt32(IdSucursal));
+            Mgr_PlanTrabajo.Lista_ActividadesBySucursal(ddlActividad, Convert.ToInt32(IdSucursal), DateTime.Now.Year);
         }
 
         protected void Volver(object sender, EventArgs e)

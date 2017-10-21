@@ -43,7 +43,7 @@ namespace SGSSTC.source.sistema.Hacer
         private void CargarListas()
         {
             Mgr_Empresa.Lista_Empresa(ddlEmpresa);
-            Mgr_Salud.TipoExamen(ddlTipoExamen);
+            Mgr_Salud.Lista_TipoExamen(ddlTipoExamen);
 
             if (BoolEmpSuc.Item1)
             {
@@ -51,7 +51,7 @@ namespace SGSSTC.source.sistema.Hacer
             }
             else
             {
-                Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
             }
 
             if (!BoolEmpSuc.Item2)
@@ -470,19 +470,19 @@ namespace SGSSTC.source.sistema.Hacer
         protected void ddlSucursal_SelectedIndexChanged(object sender, EventArgs e)
         {
             List<sucursal> ListaSucursal = new List<sucursal>();
-            ListaSucursal = Mgr_Sucursal.Sucursal(Convert.ToInt32(ddlSucursal.SelectedValue), 0, "");
+            ListaSucursal = Mgr_Sucursal.Get_Sucursal(Convert.ToInt32(ddlSucursal.SelectedValue), 0, "");
 
             foreach (var item in ListaSucursal)
             {
                 lbUbicacion.Text = string.Empty + item.direccion;
             }
 
-            lbNumHistoria.Text = string.Empty + (Mgr_Salud.HistoriaClinica() + 1);
-            Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabajador, Convert.ToInt32(ddlSucursal.SelectedValue));
+            lbNumHistoria.Text = string.Empty + (Mgr_Salud.Get_HistoriaClinica() + 1);
+            Mgr_Trabajador.Lista_Trabajadores_Sucursal(ddlTrabajador, Convert.ToInt32(ddlSucursal.SelectedValue));
         }
         protected void ddlEmpresa_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
+            Mgr_Sucursal.Lista_Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
         }
         protected void ddlTrabajador_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -505,11 +505,11 @@ namespace SGSSTC.source.sistema.Hacer
         #region cargar datos
         private void cargarEquiposLaborales()
         {
-            Mgr_Trabajador.TrabajadorGestion(GridView3, ddlTrabajador.SelectedValue);
+            Mgr_Trabajador.Get_TrabajadorGestion(GridView3, ddlTrabajador.SelectedValue);
         }
         private void cargarHistoriasClinicas()
         {
-            Mgr_Salud.HC_Trabajador(GridView2, ddlTrabajador.SelectedValue);
+            Mgr_Salud.Grid_HC_Trabajador(GridView2, ddlTrabajador.SelectedValue);
         }
         private void cargarAccidentesLaborales()
         {
@@ -519,7 +519,7 @@ namespace SGSSTC.source.sistema.Hacer
         {
             #region Puesto de Trabajo
             List<trabajador> ListaTrabajador = new List<trabajador>();
-            ListaTrabajador = Mgr_Trabajador.Trabajador(0, 0, 0, Convert.ToInt32(ViewState["id_puesto_trabajo"]));
+            ListaTrabajador = Mgr_Trabajador.Get_Trabajador(0, 0, 0, Convert.ToInt32(ViewState["id_puesto_trabajo"]));
 
             foreach (var item in ListaTrabajador)
             {
@@ -540,7 +540,7 @@ namespace SGSSTC.source.sistema.Hacer
 
             if ("" + ViewState["id_desc_socio"] != string.Empty)
             {
-                ListaDescSocio = Mgr_Trabajador.DescripcionSociodemografica(Convert.ToInt32(ViewState["id_desc_socio"]));
+                ListaDescSocio = Mgr_Trabajador.Get_DescripcionSociodemografica(Convert.ToInt32(ViewState["id_desc_socio"]));
 
                 foreach (var itemDescSocio in ListaDescSocio)
                 {
@@ -603,7 +603,7 @@ namespace SGSSTC.source.sistema.Hacer
         {
             #region Socio Demografica
             List<desc_socio> ListaDescSocio = new List<desc_socio>();
-            ListaDescSocio = Mgr_Trabajador.DescripcionSociodemografica(0, Convert.ToInt32(ddlTrabajador.SelectedValue));
+            ListaDescSocio = Mgr_Trabajador.Get_DescripcionSociodemografica(0, Convert.ToInt32(ddlTrabajador.SelectedValue));
 
             foreach (var itemDescSocio in ListaDescSocio)
             {
@@ -649,7 +649,7 @@ namespace SGSSTC.source.sistema.Hacer
         {
             #region Datos Trabajador
             List<trabajador> ListaTrabajador = new List<trabajador>();
-            ListaTrabajador = Mgr_Trabajador.Trabajador(Convert.ToInt32(ddlTrabajador.SelectedValue));
+            ListaTrabajador = Mgr_Trabajador.Get_Trabajador(Convert.ToInt32(ddlTrabajador.SelectedValue));
 
             foreach (var item in ListaTrabajador)
             {

@@ -141,7 +141,7 @@ namespace Capa_Datos
         {
             Model_UsuarioSistema ObjUsuario = null;
 
-            if (Mgr_Usuario.ExisteUsuario(UsuarioActual))
+            if (Mgr_Usuario.Get_ExisteUsuario(UsuarioActual))
             {
                 ObjUsuario = Model_UsuarioAutenticado.ValidarObjUsuario(new Model_UsuarioAutenticado(UsuarioActual));
             }

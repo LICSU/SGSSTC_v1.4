@@ -54,7 +54,7 @@ namespace SGSSTC.source.sistema.GestionDatos
         private void LlenarGridView()
         {
             int IdEmpresa = Mgr_Empresa.Set_IdEmpresa(ObjUsuario, Convert.ToInt32(ViewState["empresa"]));
-            Mgr_Horario.Horario(GridView1, IdEmpresa, string.Empty + ViewState["sWhere"]);
+            Mgr_Horario.Grid_Horario(GridView1, IdEmpresa, string.Empty + ViewState["sWhere"]);
         }
         #endregion
 
@@ -107,7 +107,7 @@ namespace SGSSTC.source.sistema.GestionDatos
         protected void EliminarRegistro(object sender, EventArgs e)
         {
             horario tabla = new horario();
-            List<usuario> usuarioData = Mgr_Area.AreaByUsuario(ObjUsuario.Id_usuario);
+            List<usuario> usuarioData = Mgr_Area.Get_AreaByUsuario(ObjUsuario.Id_usuario);
             int IdHorario = 0;
             foreach (var user in usuarioData)
             {
@@ -145,7 +145,7 @@ namespace SGSSTC.source.sistema.GestionDatos
                 GridViewRow gvrow = GridView1.Rows[RowIndex];
                 hdfHorarioID.Value = Utilidades_GridView.DevolverIdRow(e, GridView1);
 
-                var _Horario = Mgr_Horario.Horario(Convert.ToInt32(hdfHorarioID.Value));
+                var _Horario = Mgr_Horario.Get_Horario(Convert.ToInt32(hdfHorarioID.Value));
 
                 txtNombreEdit.Text = _Horario.nombre;
                 txtFechaIniEdit.Text = _Horario.fecha_inicio;

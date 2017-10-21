@@ -26,7 +26,7 @@ namespace SGSSTC.source.MasterPages
             ObjUsuario = Model_UsuarioAutenticado.ValidarObjUsuario(_autenticado);
 
             List<usuario> objUsuario = new List<usuario>();
-            objUsuario = Mgr_Usuario.Usuario(ObjUsuario.Id_usuario);
+            objUsuario = Mgr_Usuario.Get_Usuario(ObjUsuario.Id_usuario);
             foreach (var itemUsuario in objUsuario)
             {
                 lbNombreUsuario.Text = itemUsuario.login;

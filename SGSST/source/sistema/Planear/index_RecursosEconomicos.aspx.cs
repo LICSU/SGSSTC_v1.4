@@ -34,15 +34,15 @@ namespace SGSSTC.source.sistema.Hacer
         }
         private void CargarListas()
         {
-            Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
-            Mgr_Sucursal.Sucursal(ddlSucursalSubir, ObjUsuario.Id_empresa);
+            Mgr_Sucursal.Lista_Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+            Mgr_Sucursal.Lista_Sucursal(ddlSucursalSubir, ObjUsuario.Id_empresa);
         }
         private void LlenarGridView()
         {
             int IdEmpresa = Mgr_Empresa.Set_IdEmpresa(ObjUsuario, Convert.ToInt32(ViewState["empresa"]));
             int IdSucursal = Mgr_Sucursal.Set_IdSucursal(ObjUsuario, Convert.ToInt32(ViewState["sucursal"]));
 
-            Mgr_Documento.RecursosEconomicos(GridView1, IdEmpresa, IdSucursal, string.Empty + ViewState["sWhere"]);
+            Mgr_Documento.Grid_RecursosEconomicos(GridView1, IdEmpresa, IdSucursal, string.Empty + ViewState["sWhere"]);
 
         }
         #endregion
@@ -74,7 +74,7 @@ namespace SGSSTC.source.sistema.Hacer
 
             if (ObjUsuario.Error)
             {
-                int idRec = Mgr_Documento.RecursosEconmicos(IdSucursal);
+                int idRec = Mgr_Documento.Get_RecursosEconmicos(IdSucursal);
 
                 if (fuSoporte.HasFile)
                 {
@@ -125,7 +125,7 @@ namespace SGSSTC.source.sistema.Hacer
                 int contadorArchivos = 0;
 
                 List<soporte> ListSopRec = new List<soporte>();
-                ListSopRec = Mgr_Documento.Soporte(Convert.ToInt32(hdSoporte.Value), "RecursosEconomicos");
+                ListSopRec = Mgr_Documento.Get_Soporte(Convert.ToInt32(hdSoporte.Value), "RecursosEconomicos");
 
                 ControlesDinamicos.CrearLiteral("<ul class='list-group'>", pAnexo);
 

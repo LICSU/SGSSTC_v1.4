@@ -33,7 +33,7 @@ namespace SGSSTC.source.sistema.Hacer
         {
             int id_EvaRiesgo = objUtilidades.descifrarCadena(Request.QueryString["id"]);
             List<evaluacion_riesgo> Lista_EvaRiesgo = new List<evaluacion_riesgo>();
-            Lista_EvaRiesgo = Mgr_Riesgos.EvaluacionRiesgo(id_EvaRiesgo);
+            Lista_EvaRiesgo = Mgr_Riesgos.Get_EvaluacionRiesgo(id_EvaRiesgo);
 
             foreach (var itemEvaRiesgo in Lista_EvaRiesgo)
             {

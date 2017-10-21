@@ -77,7 +77,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
             }
             else
             {
-                Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
             }
 
         }
@@ -235,38 +235,38 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
                     ViewState["sucursal"] = id_empresa.ToString();
                 }
 
-                cantTrab = Mgr_Trabajador.Trabajadores(id_empresa, id_sucursal);
+                cantTrab = Mgr_Trabajador.Get_Trabajadores(id_empresa, id_sucursal);
 
                 if (cantTrab > 0)
                 {
-                    cantRep = Mgr_Trabajador.Reposos(Convert.ToInt32(ViewState["anho"].ToString()), id_empresa, id_sucursal);
+                    cantRep = Mgr_Trabajador.Get_Reposos(Convert.ToInt32(ViewState["anho"].ToString()), id_empresa, id_sucursal);
                     ViewState["cantRep"] = cantRep;
 
                     if (cantRep > 0)
                     {
                         lblTotalTrab.Text = "<strong>Fuerza Laboral: " + cantTrab.ToString() + " </strong>";
 
-                        cantAccTrab = Mgr_Acc_Inc.AccidentesLaboral(Convert.ToInt32(ViewState["anho"].ToString()), id_empresa, id_sucursal);
+                        cantAccTrab = Mgr_Acc_Inc.Get_Accidente(Convert.ToInt32(ViewState["anho"].ToString()), id_empresa, id_sucursal);
                         nroAccTrab.Text = cantAccTrab.ToString();
 
-                        nroAccCom.Text = Mgr_Salud.Enfermedades(Convert.ToInt32(ViewState["anho"].ToString()), "ACCIDENTE COMUN", id_empresa, id_sucursal).ToString();
+                        nroAccCom.Text = Mgr_Salud.Get_Enfermedades(Convert.ToInt32(ViewState["anho"].ToString()), "ACCIDENTE COMUN", id_empresa, id_sucursal).ToString();
 
-                        cantEnfCom = Mgr_Salud.Enfermedades(Convert.ToInt32(ViewState["anho"].ToString()), "ENFERMEDAD COMUN", id_empresa, id_sucursal);
+                        cantEnfCom = Mgr_Salud.Get_Enfermedades(Convert.ToInt32(ViewState["anho"].ToString()), "ENFERMEDAD COMUN", id_empresa, id_sucursal);
                         nroEnfCom.Text = cantEnfCom.ToString();
 
-                        cantAccCom = Mgr_Salud.Enfermedades(Convert.ToInt32(ViewState["anho"].ToString()), "ACCIDENTE COMUN", id_empresa, id_sucursal);
+                        cantAccCom = Mgr_Salud.Get_Enfermedades(Convert.ToInt32(ViewState["anho"].ToString()), "ACCIDENTE COMUN", id_empresa, id_sucursal);
                         nroAccCom.Text = cantAccCom.ToString();
-                        cantEnfOcu = Mgr_Salud.Enfermedades(Convert.ToInt32(ViewState["anho"].ToString()), "ENFERMEDAD LABORAL", id_empresa, id_sucursal);
+                        cantEnfOcu = Mgr_Salud.Get_Enfermedades(Convert.ToInt32(ViewState["anho"].ToString()), "ENFERMEDAD LABORAL", id_empresa, id_sucursal);
                         nroEnfOcu.Text = cantEnfOcu.ToString();
-                        cantEnfPOO = Mgr_Salud.Enfermedades(Convert.ToInt32(ViewState["anho"].ToString()), "POSIBLE ENFERMEDAD LABORAL", id_empresa, id_sucursal);
+                        cantEnfPOO = Mgr_Salud.Get_Enfermedades(Convert.ToInt32(ViewState["anho"].ToString()), "POSIBLE ENFERMEDAD LABORAL", id_empresa, id_sucursal);
                         nroEnfPOO.Text = cantEnfPOO.ToString();
-                        cantTrabRef = Mgr_Trabajador.Constancias(Convert.ToInt32(ViewState["anho"].ToString()), id_empresa, id_sucursal);
+                        cantTrabRef = Mgr_Trabajador.Get_Constancias(Convert.ToInt32(ViewState["anho"].ToString()), id_empresa, id_sucursal);
                         nroTrabRef.Text = cantTrabRef.ToString();
 
-                        cantResEvaCli = Mgr_Salud.EvaluacionesCli(Convert.ToInt32(ViewState["anho"].ToString()), id_empresa, id_sucursal);
+                        cantResEvaCli = Mgr_Salud.Get_EvaluacionesClinicas(Convert.ToInt32(ViewState["anho"].ToString()), id_empresa, id_sucursal);
                         nroResEvaCli.Text = cantResEvaCli.ToString();
 
-                        cantTrabDis = Mgr_Trabajador.TrabajadoresDiscapacitados(Convert.ToInt32(ViewState["anho"].ToString()), id_empresa, id_sucursal);
+                        cantTrabDis = Mgr_Trabajador.Get_Trabajadores_Discapacitados(Convert.ToInt32(ViewState["anho"].ToString()), id_empresa, id_sucursal);
                         nroTrabDis.Text = cantTrabDis.ToString();
 
                         monRepMed.Text = cantRep.ToString();
@@ -274,31 +274,31 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
 
 
                         //Informacion grafica Evaluacion Clinica
-                        cantEvPreEm = Mgr_Salud.EvaluacionesPorTipo(Convert.ToInt32(ViewState["anho"].ToString()), "EVALUACIÓN PRE EMPLEO", id_empresa, id_sucursal);
+                        cantEvPreEm = Mgr_Salud.Get_EvaluacionesByTipo(Convert.ToInt32(ViewState["anho"].ToString()), "EVALUACIÓN PRE EMPLEO", id_empresa, id_sucursal);
                         cellEvaPreEmpV.Text = cantEvPreEm.ToString();
-                        cantEvaPreVac = Mgr_Salud.EvaluacionesPorTipo(Convert.ToInt32(ViewState["anho"].ToString()), "EVALUACIÓN PRE VACACIONAL", id_empresa, id_sucursal);
+                        cantEvaPreVac = Mgr_Salud.Get_EvaluacionesByTipo(Convert.ToInt32(ViewState["anho"].ToString()), "EVALUACIÓN PRE VACACIONAL", id_empresa, id_sucursal);
                         cellEvaPreVacV.Text = cantEvaPreVac.ToString();
-                        cantEvaPosVac = Mgr_Salud.EvaluacionesPorTipo(Convert.ToInt32(ViewState["anho"].ToString()), "EVALUACIÓN POST VACACIONAL", id_empresa, id_sucursal);
+                        cantEvaPosVac = Mgr_Salud.Get_EvaluacionesByTipo(Convert.ToInt32(ViewState["anho"].ToString()), "EVALUACIÓN POST VACACIONAL", id_empresa, id_sucursal);
                         cellEvaPosVacV.Text = cantEvaPosVac.ToString();
-                        cantEvaPer = Mgr_Salud.EvaluacionesPorTipo(Convert.ToInt32(ViewState["anho"].ToString()), "EVALUACIÓN PERIÓDICA", id_empresa, id_sucursal);
+                        cantEvaPer = Mgr_Salud.Get_EvaluacionesByTipo(Convert.ToInt32(ViewState["anho"].ToString()), "EVALUACIÓN PERIÓDICA", id_empresa, id_sucursal);
                         cellEvaPerV.Text = cantEvaPer.ToString();
-                        cantEvaEsp = Mgr_Salud.EvaluacionesPorTipo(Convert.ToInt32(ViewState["anho"].ToString()), "EVALUACIÓN ESPECIAL", id_empresa, id_sucursal);
+                        cantEvaEsp = Mgr_Salud.Get_EvaluacionesByTipo(Convert.ToInt32(ViewState["anho"].ToString()), "EVALUACIÓN ESPECIAL", id_empresa, id_sucursal);
                         cellEvaEspV.Text = cantEvaEsp.ToString();
-                        cantEvaPosEmp = Mgr_Salud.EvaluacionesPorTipo(Convert.ToInt32(ViewState["anho"].ToString()), "EVALUACIÓN POST EMPLEO", id_empresa, id_sucursal);
+                        cantEvaPosEmp = Mgr_Salud.Get_EvaluacionesByTipo(Convert.ToInt32(ViewState["anho"].ToString()), "EVALUACIÓN POST EMPLEO", id_empresa, id_sucursal);
                         cellEvaPosEmpV.Text = cantEvaPosEmp.ToString();
-                        cantEvaAsi = Mgr_Salud.EvaluacionesPorTipo(Convert.ToInt32(ViewState["anho"].ToString()), "EVALUACIÓN ASISTENCIAL O CURATIVA", id_empresa, id_sucursal);
+                        cantEvaAsi = Mgr_Salud.Get_EvaluacionesByTipo(Convert.ToInt32(ViewState["anho"].ToString()), "EVALUACIÓN ASISTENCIAL O CURATIVA", id_empresa, id_sucursal);
                         cellEvaAsiV.Text = cantEvaAsi.ToString();
                         cargarGraficaEvaClinica();
 
                         //Informacion grafica Monitoreo de Reposos Medicos..                
                         cellNroRepV.Text = cantRep.ToString();
-                        cantDiasRep = Mgr_Trabajador.DiasReposo(Convert.ToInt32(ViewState["anho"].ToString()), id_empresa, id_sucursal);
+                        cantDiasRep = Mgr_Trabajador.Get_DiasReposo(Convert.ToInt32(ViewState["anho"].ToString()), id_empresa, id_sucursal);
                         cellDiaRepV.Text = cantDiasRep.ToString();
-                        cantRepEnfCom = Mgr_Trabajador.RepososPorNombre(Convert.ToInt32(ViewState["anho"].ToString()), "ENFERMEDAD COMUN", id_empresa, id_sucursal);
+                        cantRepEnfCom = Mgr_Trabajador.Get_RepososByNombre(Convert.ToInt32(ViewState["anho"].ToString()), "ENFERMEDAD COMUN", id_empresa, id_sucursal);
                         cellNroRepEnfComV.Text = cantRepEnfCom.ToString();
-                        cantRepEnfOcu = Mgr_Trabajador.RepososPorNombre(Convert.ToInt32(ViewState["anho"].ToString()), "ENFERMEDAD LABORAL", id_empresa, id_sucursal);
+                        cantRepEnfOcu = Mgr_Trabajador.Get_RepososByNombre(Convert.ToInt32(ViewState["anho"].ToString()), "ENFERMEDAD LABORAL", id_empresa, id_sucursal);
                         cellRepEnfOcuV.Text = cantRepEnfOcu.ToString();
-                        cantRepAccCom = Mgr_Trabajador.RepososPorNombre(Convert.ToInt32(ViewState["anho"].ToString()), "ACCIDENTE COMUN", id_empresa, id_sucursal);
+                        cantRepAccCom = Mgr_Trabajador.Get_RepososByNombre(Convert.ToInt32(ViewState["anho"].ToString()), "ACCIDENTE COMUN", id_empresa, id_sucursal);
                         cellRepAccComV.Text = cantRepAccCom.ToString();
                         cargarGraficaMonReposos();
 
@@ -354,7 +354,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
             String[] xCadenas = null;
             int i = 0;
 
-            List<Model_Enfermedad_Sistema> diagnosticos = Mgr_Salud.CantDiagnosticos(Convert.ToInt32(ViewState["anho"].ToString()), Convert.ToInt32(ViewState["empresa"].ToString()), Convert.ToInt32(ViewState["sucursal"].ToString()));
+            List<Model_Enfermedad_Sistema> diagnosticos = Mgr_Salud.Get_CantDiagnosticos(Convert.ToInt32(ViewState["anho"].ToString()), Convert.ToInt32(ViewState["empresa"].ToString()), Convert.ToInt32(ViewState["sucursal"].ToString()));
             _table = new Table();
             _table.CssClass = "table";
             _table.ID = "tb_diagnostico";
@@ -388,7 +388,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
                 _tablecell.Text = diagnostico.nombre;
                 _tablerow.Controls.Add(_tablecell);
                 xCadenas[i] = diagnostico.nombre;
-                int cantTrab = Mgr_Trabajador.TrabEnfermedad(Convert.ToInt32(ViewState["anho"].ToString()), diagnostico.nombre, Convert.ToInt32(ViewState["empresa"].ToString()), Convert.ToInt32(ViewState["sucursal"].ToString()));
+                int cantTrab = Mgr_Trabajador.Get_Trabajador_Enfermedad(Convert.ToInt32(ViewState["anho"].ToString()), diagnostico.nombre, Convert.ToInt32(ViewState["empresa"].ToString()), Convert.ToInt32(ViewState["sucursal"].ToString()));
 
                 _tablecell = new TableCell();
                 _tablecell.Text = diagnostico.cantidad.ToString();
@@ -424,7 +424,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
             String[] xCadenas = null;
             int i = 0;
 
-            List<Model_Enfermedad_Sistema> diagnosticos = Mgr_Salud.CantSistemas(Convert.ToInt32(ViewState["anho"].ToString()), Convert.ToInt32(ViewState["empresa"].ToString()), Convert.ToInt32(ViewState["sucursal"].ToString()));
+            List<Model_Enfermedad_Sistema> diagnosticos = Mgr_Salud.Get_CantSistemas(Convert.ToInt32(ViewState["anho"].ToString()), Convert.ToInt32(ViewState["empresa"].ToString()), Convert.ToInt32(ViewState["sucursal"].ToString()));
             _table = new Table();
             _table.CssClass = "table";
             TableHeaderRow _tablerow1 = new TableHeaderRow();
@@ -459,7 +459,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
                 _tablecell.Text = diagnostico.cantidad.ToString();
                 _tablerow.Controls.Add(_tablecell);
 
-                int cantTrab = Mgr_Trabajador.TrabSistemas(Convert.ToInt32(ViewState["anho"].ToString()), diagnostico.nombre, Convert.ToInt32(ViewState["empresa"].ToString()), Convert.ToInt32(ViewState["sucursal"].ToString()));
+                int cantTrab = Mgr_Trabajador.Get_Trabajador_Sistemas(Convert.ToInt32(ViewState["anho"].ToString()), diagnostico.nombre, Convert.ToInt32(ViewState["empresa"].ToString()), Convert.ToInt32(ViewState["sucursal"].ToString()));
                 yAsistencias1[i] = Convert.ToDouble(cantTrab);
                 _tablecell = new TableCell();
                 _tablecell.Text = cantTrab.ToString();
@@ -503,7 +503,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
             if (ddlEmpresa.SelectedValue != string.Empty)
             {
                 ViewState["empresa"] = ddlEmpresa.SelectedValue;
-                Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
                 ViewState["sucursal"] = "0";
                 phInformacion.Visible = false;
             }

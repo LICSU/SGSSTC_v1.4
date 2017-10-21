@@ -37,12 +37,12 @@ namespace SGSSTC.source.sistema.Hacer
 		}
 		protected void CargarListas()
 		{
-			Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+			Mgr_Sucursal.Lista_Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
 
 			if (!BoolEmpSuc.Item2)
 			{
 				IdSucursal = Convert.ToInt32(ObjUsuario.Id_sucursal);
-				Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabajador, IdSucursal);
+				Mgr_Trabajador.Lista_Trabajadores_Sucursal(ddlTrabajador, IdSucursal);
 			}
 		}
 		protected void btnGenerar_Onclick(object sender, EventArgs e)
@@ -155,7 +155,7 @@ namespace SGSSTC.source.sistema.Hacer
 			if (ddlSucursal.SelectedValue != string.Empty)
 			{
 				IdSucursal = Convert.ToInt32(ddlSucursal.SelectedValue);
-				Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabajador, IdSucursal);
+				Mgr_Trabajador.Lista_Trabajadores_Sucursal(ddlTrabajador, IdSucursal);
 			}
 		}
 

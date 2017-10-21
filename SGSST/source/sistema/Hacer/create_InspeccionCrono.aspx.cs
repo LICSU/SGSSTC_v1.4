@@ -64,15 +64,15 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
             }
             else
             {
-                Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
             }
 
             if (!BoolEmpSuc.Item2)
             {
-                Mgr_Area.Area_Sucursal(ddlArea0, ObjUsuario.Id_sucursal);
+                Mgr_Area.List_Area_Sucursal(ddlArea0, ObjUsuario.Id_sucursal);
                 ViewState["sucursal"] = ObjUsuario.Id_sucursal;
                 phInformacion.Visible = true;
-                Mgr_Area.Area_Sucursal(ddlArea0, Convert.ToInt32(ObjUsuario.Id_sucursal));
+                Mgr_Area.List_Area_Sucursal(ddlArea0, Convert.ToInt32(ObjUsuario.Id_sucursal));
             }
         }
 
@@ -146,7 +146,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
 
             ControlesDinamicos.CrearDropDownList(id, _panel, miDropDownList);
 
-            Mgr_Area.Area_Sucursal(miDropDownList, IdSucursal);
+            Mgr_Area.List_Area_Sucursal(miDropDownList, IdSucursal);
 
             _panel.Controls.Add(miDropDownList);
         }
@@ -173,7 +173,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
             if (ddlEmpresa.SelectedValue != string.Empty)
             {
                 ViewState["empresa"] = ddlEmpresa.SelectedValue;
-                Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
                 ViewState["sucursal"] = "0";
             }
             else
@@ -188,7 +188,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
             {
                 ViewState["sucursal"] = ddlSucursal.SelectedValue;
                 phInformacion.Visible = true;
-                Mgr_Area.Area_Sucursal(ddlArea0, Convert.ToInt32(ddlSucursal.SelectedValue));
+                Mgr_Area.List_Area_Sucursal(ddlArea0, Convert.ToInt32(ddlSucursal.SelectedValue));
             }
             else
             {

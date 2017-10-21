@@ -51,21 +51,21 @@ namespace SGSSTC.source.sistema.Verificar
 			}
 			else
 			{
-				Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+				Mgr_Sucursal.Lista_Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
 			}
 
 
 			if (!BoolEmpSuc.Item2)
 			{
-				Mgr_Area.Area_Sucursal(ddlArea, ObjUsuario.Id_sucursal);
-				Mgr_PuestoTrabajo.PuestoTrabajo(ddlProcesoTrabajo, "Sucursal", ObjUsuario.Id_sucursal);
+				Mgr_Area.List_Area_Sucursal(ddlArea, ObjUsuario.Id_sucursal);
+				Mgr_PuestoTrabajo.Lista_PuestoTrabajo(ddlProcesoTrabajo, "Sucursal", ObjUsuario.Id_sucursal);
 			}
 		}
 		private void CargarAccidente()
 		{
 			int idAccidente = objUtilidades.descifrarCadena(Request.QueryString["id"]);
 			List<at_it_el_pa> ListAccidentes = new List<at_it_el_pa>();
-			ListAccidentes = Mgr_Acc_Inc.Accidente(idAccidente);
+			ListAccidentes = Mgr_Acc_Inc.Get_Accidente(idAccidente);
 
 			foreach (var item in ListAccidentes)
 			{
@@ -73,7 +73,7 @@ namespace SGSSTC.source.sistema.Verificar
 				IdSucursal = Convert.ToInt32(item.trabajador.puesto_trabajo.area.id_sucursal);
 
 				ddlEmpresa.SelectedValue = IdEmpresa.ToString();
-				Mgr_Sucursal.Sucursal(ddlSucursal, IdEmpresa);
+				Mgr_Sucursal.Lista_Sucursal(ddlSucursal, IdEmpresa);
 				ddlSucursal.SelectedValue = string.Empty + IdSucursal;
 
 				txtFechaAcc.Text = item.fecha_accidente.Value.ToString("yyyy-MM-dd");
@@ -82,10 +82,10 @@ namespace SGSSTC.source.sistema.Verificar
 				txtTrabajador.Text = item.trabajador.primer_nombre + ' ' + item.trabajador.primer_apellido + ' ' + item.trabajador.cedula;
 				IdTrabajador = Convert.ToInt32(item.id_trabajador);
 
-				Mgr_Area.Area_Sucursal(ddlArea, IdSucursal, "Ninguna");
+				Mgr_Area.List_Area_Sucursal(ddlArea, IdSucursal, "Ninguna");
 				ddlArea.SelectedValue = Convert.ToString(item.id_area);
 
-				Mgr_PuestoTrabajo.PuestoTrabajo(ddlProcesoTrabajo, "Sucursal", IdSucursal, "Ninguno");
+				Mgr_PuestoTrabajo.Lista_PuestoTrabajo(ddlProcesoTrabajo, "Sucursal", IdSucursal, "Ninguno");
 				ddlProcesoTrabajo.SelectedValue = Convert.ToString(item.id_puesto);
 
 				txtSitioIncidente.Text = Convert.ToString(item.sitio);
@@ -160,7 +160,7 @@ namespace SGSSTC.source.sistema.Verificar
 		{
 			if (ddlEmpresa.SelectedValue != string.Empty)
 			{
-				Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
+				Mgr_Sucursal.Lista_Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
 			}
 
 		}
@@ -169,8 +169,8 @@ namespace SGSSTC.source.sistema.Verificar
 			if (ddlSucursal.SelectedValue != string.Empty)
 			{
 				IdSucursal = Convert.ToInt32(ddlSucursal.SelectedValue);
-				Mgr_Area.Area_Sucursal(ddlArea, Convert.ToInt32(ddlSucursal.SelectedValue), "Ninguna");
-				Mgr_PuestoTrabajo.PuestoTrabajo(ddlProcesoTrabajo, "Sucursal", Convert.ToInt32(ddlSucursal.SelectedValue), "Ninguno");
+				Mgr_Area.List_Area_Sucursal(ddlArea, Convert.ToInt32(ddlSucursal.SelectedValue), "Ninguna");
+				Mgr_PuestoTrabajo.Lista_PuestoTrabajo(ddlProcesoTrabajo, "Sucursal", Convert.ToInt32(ddlSucursal.SelectedValue), "Ninguno");
 			}
 
 		}

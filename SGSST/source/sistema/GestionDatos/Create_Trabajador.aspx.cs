@@ -40,22 +40,22 @@ namespace SGSSTC.source.sistema.GestionDatos
             }
             else
             {
-                Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
-                Mgr_PuestoTrabajo.PuestoTrabajo(ddlPuestoTrabajo, "Empresa", ObjUsuario.Id_empresa);
-                Mgr_Estatus.Estatus_Empresa(ddlEstatus, ObjUsuario.Id_empresa);
-                Mgr_Horario.Horario_Empresa(ddlHorario, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+                Mgr_PuestoTrabajo.Lista_PuestoTrabajo(ddlPuestoTrabajo, "Empresa", ObjUsuario.Id_empresa);
+                Mgr_Estatus.List_Estatus_Empresa(ddlEstatus, ObjUsuario.Id_empresa);
+                Mgr_Horario.Lista_HorarioByEmpresa(ddlHorario, ObjUsuario.Id_empresa);
             }
 
             if (!BoolEmpSuc.Item2)
             {
-                Mgr_PuestoTrabajo.PuestoTrabajo(ddlPuestoTrabajo, "Sucursal", ObjUsuario.Id_sucursal);
-                Mgr_Estatus.Estatus_Empresa(ddlEstatus, ObjUsuario.Id_empresa);
-                Mgr_Horario.Horario_Empresa(ddlHorario, ObjUsuario.Id_empresa);
+                Mgr_PuestoTrabajo.Lista_PuestoTrabajo(ddlPuestoTrabajo, "Sucursal", ObjUsuario.Id_sucursal);
+                Mgr_Estatus.List_Estatus_Empresa(ddlEstatus, ObjUsuario.Id_empresa);
+                Mgr_Horario.Lista_HorarioByEmpresa(ddlHorario, ObjUsuario.Id_empresa);
             }
 
-            Mgr_Gobierno.Reg_Dpto_Mcpio(ddlRegion, "Region");
-            Mgr_Gobierno.Ccf(ddlCcf);
-            Mgr_Trabajador.PerfilCargo(ddlCargo);
+            Mgr_Gobierno.Get_Reg_Dpto_Mcpio(ddlRegion, "Region");
+            Mgr_Gobierno.Get_CCF(ddlCcf);
+            Mgr_Trabajador.Lista_PerfilCargo(ddlCargo);
         }
 
         protected void btnNuevo_Click(object sender, EventArgs e)
@@ -73,7 +73,7 @@ namespace SGSSTC.source.sistema.GestionDatos
 
             String NombreArchivo = string.Empty;
 
-            int id_trab = Mgr_Trabajador.TrabajadorByCedula(txtCedula.Text);
+            int id_trab = Mgr_Trabajador.Get_TrabajadorByCedula(txtCedula.Text);
             if (id_trab == 0)
             {
                 String[] valores = {
@@ -124,9 +124,9 @@ namespace SGSSTC.source.sistema.GestionDatos
         {
             if (ddlEmpresas.SelectedValue != string.Empty)
             {
-                Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresas.SelectedValue));
-                Mgr_Horario.Horario_Empresa(ddlHorario, Convert.ToInt32(ddlEmpresas.SelectedValue));
-                Mgr_Estatus.Estatus_Empresa(ddlEstatus, Convert.ToInt32(ddlEmpresas.SelectedValue));
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresas.SelectedValue));
+                Mgr_Horario.Lista_HorarioByEmpresa(ddlHorario, Convert.ToInt32(ddlEmpresas.SelectedValue));
+                Mgr_Estatus.List_Estatus_Empresa(ddlEstatus, Convert.ToInt32(ddlEmpresas.SelectedValue));
             }
 
         }
@@ -135,7 +135,7 @@ namespace SGSSTC.source.sistema.GestionDatos
         {
             if (ddlSucursal.SelectedValue != string.Empty)
             {
-                Mgr_PuestoTrabajo.PuestoTrabajo(ddlPuestoTrabajo, "Sucursal", Convert.ToInt32(ddlSucursal.SelectedValue));
+                Mgr_PuestoTrabajo.Lista_PuestoTrabajo(ddlPuestoTrabajo, "Sucursal", Convert.ToInt32(ddlSucursal.SelectedValue));
             }
         }
 
@@ -143,7 +143,7 @@ namespace SGSSTC.source.sistema.GestionDatos
         {
             if (ddlRegion.SelectedValue != string.Empty)
             {
-                Mgr_Gobierno.Reg_Dpto_Mcpio(ddlDepartamento, "RegionDpto", Convert.ToInt32(ddlRegion.SelectedValue));
+                Mgr_Gobierno.Get_Reg_Dpto_Mcpio(ddlDepartamento, "RegionDpto", Convert.ToInt32(ddlRegion.SelectedValue));
             }
         }
 
@@ -151,7 +151,7 @@ namespace SGSSTC.source.sistema.GestionDatos
         {
             if (ddlDepartamento.SelectedValue != string.Empty)
             {
-                Mgr_Gobierno.Reg_Dpto_Mcpio(ddlMunicipio, "McpioDpto", Convert.ToInt32(ddlDepartamento.SelectedValue));
+                Mgr_Gobierno.Get_Reg_Dpto_Mcpio(ddlMunicipio, "McpioDpto", Convert.ToInt32(ddlDepartamento.SelectedValue));
             }
         }
 

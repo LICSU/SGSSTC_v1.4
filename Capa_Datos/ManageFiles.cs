@@ -494,7 +494,7 @@ namespace Capa_Datos
             foreach (var item in objSucursal)
             {
                 List<claseCiiu> objCodCiiu = new List<claseCiiu>();
-                objCodCiiu = Mgr_CodigoCiiu.CodigoCiiu(Convert.ToInt32(item.actividad_ppal));
+                objCodCiiu = Mgr_CodigoCiiu.Get_CodigoCiiu(Convert.ToInt32(item.actividad_ppal));
 
                 nomEmpresa = item.empresa.nombre;
                 nomSucursal = item.nombre;
@@ -596,8 +596,8 @@ namespace Capa_Datos
             List<sucursal> objSucursal = new List<sucursal>();
             List<trabajador> objTrabajador = new List<trabajador>();
 
-            objSucursal = Mgr_Sucursal.Sucursal(IdSucursal,0,"");
-            objTrabajador = Mgr_Trabajador.Trabajador(0, 0, IdSucursal);
+            objSucursal = Mgr_Sucursal.Get_Sucursal(IdSucursal,0,"");
+            objTrabajador = Mgr_Trabajador.Get_Trabajador(0, 0, IdSucursal);
 
             Document pdfDoc = InicializarPDF(objSucursal, _page, Titulo1, _Horizontal);
             pdfDoc.Open();
@@ -619,7 +619,7 @@ namespace Capa_Datos
         public static void PdfPart2(Document pdfDoc, PdfPTable tablaPDF, int IdSucursal, Page _page, iTextSharp.text.Image[] arrayChart = null)
         {
             List<trabajador> objTrabajador = new List<trabajador>();
-            objTrabajador = Mgr_Trabajador.Trabajador(0, 0, IdSucursal);
+            objTrabajador = Mgr_Trabajador.Get_Trabajador(0, 0, IdSucursal);
             tablaPDF = Footer(tablaPDF, objTrabajador.Count);
             pdfDoc.Add(tablaPDF);
 

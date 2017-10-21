@@ -22,7 +22,7 @@ namespace SGSSTC.source.sistema.Hacer
 
             if (!IsPostBack)
             {
-                Mgr_Gobierno.Cno(ddlCargo);
+                Mgr_Gobierno.Get_CNO(ddlCargo);
                 CargarPerfil();
             }
         }
@@ -30,7 +30,7 @@ namespace SGSSTC.source.sistema.Hacer
         private void CargarPerfil()
         {
             var _PerfilCargo = new perfil_cargo();
-            _PerfilCargo = Mgr_Trabajador.PerfilCargo(IDPerfil);
+            _PerfilCargo = Mgr_Trabajador.Get_PerfilCargo(IDPerfil);
 
             txtNombre.Text = _PerfilCargo.nombre;
             txtDescripcion.Text = _PerfilCargo.descripcion;

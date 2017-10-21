@@ -37,13 +37,13 @@ namespace SGSST.source.sistema.Planear
             }
             else
             {
-                Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
-                Mgr_Trabajador.PerfilCargo(ddlCargo, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+                Mgr_Trabajador.Lista_PerfilCargo(ddlCargo, ObjUsuario.Id_empresa);
             }
 
             if (!BoolEmpSuc.Item2)
             {
-                Mgr_Trabajador.PerfilCargo(ddlCargo, ObjUsuario.Id_empresa);
+                Mgr_Trabajador.Lista_PerfilCargo(ddlCargo, ObjUsuario.Id_empresa);
             }
         }
 
@@ -52,8 +52,8 @@ namespace SGSST.source.sistema.Planear
             if (ddlEmpresa.SelectedValue != string.Empty)
             {
                 ViewState["empresa"] = ddlEmpresa.SelectedValue;
-                Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
-                Mgr_Trabajador.PerfilCargo(ddlCargo, Convert.ToInt32(ddlEmpresa.SelectedValue));
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
+                Mgr_Trabajador.Lista_PerfilCargo(ddlCargo, Convert.ToInt32(ddlEmpresa.SelectedValue));
                 ViewState["sucursal"] = "0";
                 ViewState["cargo"] = "0";
             }
@@ -79,7 +79,7 @@ namespace SGSST.source.sistema.Planear
             }
             else
             {
-                List<sucursal> lista = Mgr_Sucursal.Sucursal(0, ObjUsuario.Id_empresa);
+                List<sucursal> lista = Mgr_Sucursal.Get_Sucursal(0, ObjUsuario.Id_empresa);
                 foreach (var item in lista) {
                     Empresa = item.empresa.nombre;
                     Sucursal = item.nombre;

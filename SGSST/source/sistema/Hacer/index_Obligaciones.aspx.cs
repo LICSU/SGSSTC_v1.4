@@ -55,28 +55,28 @@ namespace SGSSTC.source.sistema.Hacer
 			}
 			else
 			{
-				Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
-				Mgr_Usuario.Usuario_Empresa(ddlResponsable, ObjUsuario.Id_empresa);
-				Mgr_Usuario.Usuario_Empresa(ddlResponsableEdit, ObjUsuario.Id_empresa);
+				Mgr_Sucursal.Lista_Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+				Mgr_Usuario.Lista_UsuarioByEmpresa(ddlResponsable, ObjUsuario.Id_empresa);
+				Mgr_Usuario.Lista_UsuarioByEmpresa(ddlResponsableEdit, ObjUsuario.Id_empresa);
 
-				Mgr_Categoria.Categorias(ddlCategoria, ObjUsuario.Id_empresa);
-				Mgr_Categoria.Categorias(ddlCategoriaEdit, ObjUsuario.Id_empresa);
+				Mgr_Categoria.List_Categorias(ddlCategoria, ObjUsuario.Id_empresa);
+				Mgr_Categoria.List_Categorias(ddlCategoriaEdit, ObjUsuario.Id_empresa);
 			}
 
 			if (!BoolEmpSuc.Item2)
 			{
-				Mgr_Usuario.Usuario_Sucursal(ddlResponsable, ObjUsuario.Id_sucursal);
-				Mgr_Usuario.Usuario_Sucursal(ddlResponsableEdit, ObjUsuario.Id_sucursal);
+				Mgr_Usuario.Lista_UsuarioBySucursal(ddlResponsable, ObjUsuario.Id_sucursal);
+				Mgr_Usuario.Lista_UsuarioBySucursal(ddlResponsableEdit, ObjUsuario.Id_sucursal);
 			}
 
-			Mgr_Obligacion.Frecuencia(ddlFrecuenciaEdit);
+			Mgr_Obligacion.Lista_Frecuencia(ddlFrecuenciaEdit);
 		}
 		private void LlenarGridView()
 		{
 			int IdEmpresa = Mgr_Empresa.Set_IdEmpresa(ObjUsuario, Convert.ToInt32(ViewState["empresa"]));
 			int IdSucursal = Mgr_Sucursal.Set_IdSucursal(ObjUsuario, Convert.ToInt32(ViewState["sucursal"]));
 
-			Mgr_Obligacion.Obligaciones(
+			Mgr_Obligacion.Grid_Obligaciones(
 				GridView1,
 				IdEmpresa,
 				Convert.ToInt32(string.Empty + ViewState["responsable"]),
@@ -141,16 +141,16 @@ namespace SGSSTC.source.sistema.Hacer
 				hdfObligacionID.Value = (gvrow.FindControl("id_obligacion") as Label).Text;
 
 				List<obligacion> ListaObligacion = new List<obligacion>();
-				ListaObligacion = Mgr_Obligacion.Obligacion(Convert.ToInt32(hdfObligacionID.Value));
+				ListaObligacion = Mgr_Obligacion.Get_Obligacion(Convert.ToInt32(hdfObligacionID.Value));
 				foreach (var item in ListaObligacion)
 				{
 					DateTime fechaEva = Convert.ToDateTime(Convert.ToString(item.fecha_creacion));
 					txtFechaEdit.Text = fechaEva.ToString("yyyy-MM-dd");
 
-					Mgr_Usuario.Usuario_Sucursal(ddlResponsableEdit, Convert.ToInt32(item.usuario.trabajador.puesto_trabajo.area.id_sucursal));
+					Mgr_Usuario.Lista_UsuarioBySucursal(ddlResponsableEdit, Convert.ToInt32(item.usuario.trabajador.puesto_trabajo.area.id_sucursal));
 					ddlResponsableEdit.SelectedValue = Convert.ToString(item.id_responsable);
 
-					Mgr_Categoria.Categorias(ddlCategoriaEdit, Convert.ToInt32(item.usuario.trabajador.puesto_trabajo.area.sucursal.id_empresa));
+					Mgr_Categoria.List_Categorias(ddlCategoriaEdit, Convert.ToInt32(item.usuario.trabajador.puesto_trabajo.area.sucursal.id_empresa));
 					ddlCategoriaEdit.SelectedValue = Convert.ToString(item.id_categorias);
 
 					ddlPrioridadEdit.SelectedValue = item.prioridad;
@@ -172,7 +172,7 @@ namespace SGSSTC.source.sistema.Hacer
 				hdfObligacionID.Value = (gvrow.FindControl("id_obligacion") as Label).Text;
 
 				List<obligacion> ListaObligacion = new List<obligacion>();
-				ListaObligacion = Mgr_Obligacion.Obligacion(Convert.ToInt32(hdfObligacionID.Value));
+				ListaObligacion = Mgr_Obligacion.Get_Obligacion(Convert.ToInt32(hdfObligacionID.Value));
 
 				foreach (var item in ListaObligacion)
 				{
@@ -192,7 +192,7 @@ namespace SGSSTC.source.sistema.Hacer
 
 					txtViewResp.Text = Convert.ToString(item.usuario.login);
 
-					Mgr_Categoria.Categorias(ddlCategoriaEdit, Convert.ToInt32(item.usuario.trabajador.puesto_trabajo.area.sucursal.id_empresa));
+					Mgr_Categoria.List_Categorias(ddlCategoriaEdit, Convert.ToInt32(item.usuario.trabajador.puesto_trabajo.area.sucursal.id_empresa));
 					ddlCategoriaEdit.SelectedValue = Convert.ToString(item.id_categorias);
 					txtViewCategoria.Text = ddlCategoriaEdit.SelectedItem.ToString();
 
@@ -232,12 +232,12 @@ namespace SGSSTC.source.sistema.Hacer
 			if (ddlEmpresa.SelectedValue != string.Empty)
 			{
 				ViewState["empresa"] = ddlEmpresa.SelectedValue;
-				Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
+				Mgr_Sucursal.Lista_Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
 
-				Mgr_Usuario.Usuario_Empresa(ddlResponsable, Convert.ToInt32(ddlEmpresa.SelectedValue));
-				Mgr_Usuario.Usuario_Empresa(ddlResponsableEdit, Convert.ToInt32(ddlEmpresa.SelectedValue));
-				Mgr_Categoria.Categorias(ddlCategoria, Convert.ToInt32(ddlEmpresa.SelectedValue));
-				Mgr_Categoria.Categorias(ddlCategoriaEdit, Convert.ToInt32(ddlEmpresa.SelectedValue));
+				Mgr_Usuario.Lista_UsuarioByEmpresa(ddlResponsable, Convert.ToInt32(ddlEmpresa.SelectedValue));
+				Mgr_Usuario.Lista_UsuarioByEmpresa(ddlResponsableEdit, Convert.ToInt32(ddlEmpresa.SelectedValue));
+				Mgr_Categoria.List_Categorias(ddlCategoria, Convert.ToInt32(ddlEmpresa.SelectedValue));
+				Mgr_Categoria.List_Categorias(ddlCategoriaEdit, Convert.ToInt32(ddlEmpresa.SelectedValue));
 			}
 			else
 			{
@@ -250,8 +250,8 @@ namespace SGSSTC.source.sistema.Hacer
 			if (ddlSucursal.SelectedValue != string.Empty)
 			{
 				ViewState["sucursal"] = ddlSucursal.SelectedValue;
-				Mgr_Usuario.Usuario_Sucursal(ddlResponsable, Convert.ToInt32(ddlSucursal.SelectedValue));
-				Mgr_Usuario.Usuario_Sucursal(ddlResponsableEdit, Convert.ToInt32(ddlSucursal.SelectedValue));
+				Mgr_Usuario.Lista_UsuarioBySucursal(ddlResponsable, Convert.ToInt32(ddlSucursal.SelectedValue));
+				Mgr_Usuario.Lista_UsuarioBySucursal(ddlResponsableEdit, Convert.ToInt32(ddlSucursal.SelectedValue));
 			}
 			else
 			{

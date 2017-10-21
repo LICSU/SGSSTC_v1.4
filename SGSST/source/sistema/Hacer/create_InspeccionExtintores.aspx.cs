@@ -39,12 +39,12 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
             }
             else
             {
-                Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
             }
 
             if (!BoolEmpSuc.Item2)
             {
-                Mgr_Area.Area_Sucursal(ddlArea, ObjUsuario.Id_sucursal);
+                Mgr_Area.List_Area_Sucursal(ddlArea, ObjUsuario.Id_sucursal);
             }
 
         }
@@ -53,7 +53,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
         #region acciones
         private void cargarInformacion()
         {
-            List<extintor> extintor = Mgr_Area.Extintor(Convert.ToInt32(ddlExtintor.SelectedValue));
+            List<extintor> extintor = Mgr_Area.Get_Extintor(Convert.ToInt32(ddlExtintor.SelectedValue));
             lblArea.Text = ddlArea.SelectedItem.Text;
             lblPeso.Text = extintor.ElementAt(0).peso;
             lblPresion.Text = extintor.ElementAt(0).presion;
@@ -227,7 +227,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
             if (ddlEmpresa.SelectedValue != string.Empty)
             {
                 ViewState["empresa"] = ddlEmpresa.SelectedValue;
-                Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
                 ViewState["sucursal"] = "0";
             }
             else
@@ -241,7 +241,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
             if (ddlSucursal.SelectedValue != string.Empty)
             {
                 ViewState["sucursal"] = ddlSucursal.SelectedValue;
-                Mgr_Area.Area_Sucursal(ddlArea, Convert.ToInt32(ddlSucursal.SelectedValue));
+                Mgr_Area.List_Area_Sucursal(ddlArea, Convert.ToInt32(ddlSucursal.SelectedValue));
                 ViewState["area"] = "";
             }
             else
@@ -255,7 +255,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
             if (ddlArea.SelectedValue != string.Empty)
             {
                 ViewState["area"] = ddlArea.SelectedValue;
-                Mgr_Area.Extintor_Area(ddlExtintor, Convert.ToInt32(ddlArea.SelectedValue));
+                Mgr_Area.List_Extintor_Area(ddlExtintor, Convert.ToInt32(ddlArea.SelectedValue));
                 ViewState["extintor"] = "";
             }
             else

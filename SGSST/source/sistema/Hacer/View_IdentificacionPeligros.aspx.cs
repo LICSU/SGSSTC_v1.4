@@ -35,7 +35,7 @@ namespace SGSSTC.source.sistema.Hacer
 
 			List<identificacion_peligro> List_IdePel = new List<identificacion_peligro>();
 
-			List_IdePel = Mgr_Riesgos.IdentificacionPeligro(id_IdentificacionPeligro);
+			List_IdePel = Mgr_Riesgos.Get_IdentificacionPeligro(id_IdentificacionPeligro);
 
 			foreach (var item_IdePel in List_IdePel)
 			{

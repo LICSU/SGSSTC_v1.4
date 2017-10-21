@@ -54,7 +54,7 @@ namespace SGSSTC.source.sistema.GestionDatos
         {
             List<sucursal> ListaSucursal = new List<sucursal>();
             int IdSucursal = Convert.ToInt32(id_sucursal);
-            ListaSucursal = Mgr_Sucursal.Sucursal(IdSucursal, 0, "");
+            ListaSucursal = Mgr_Sucursal.Get_Sucursal(IdSucursal, 0, "");
 
             foreach (var item in ListaSucursal)
             {
@@ -73,7 +73,7 @@ namespace SGSSTC.source.sistema.GestionDatos
                 Mgr_Empresa.Lista_Empresa(ddlEmpresa);
                 Mgr_Empresa.Lista_Empresa(ddlEmpresaEdit);
             }
-            Mgr_Gobierno.Reg_Dpto_Mcpio(ddlRegionEdit, "Region");
+            Mgr_Gobierno.Get_Reg_Dpto_Mcpio(ddlRegionEdit, "Region");
         }
 
         private void LlenarGridView()
@@ -81,7 +81,7 @@ namespace SGSSTC.source.sistema.GestionDatos
             int IdEmpresa = Mgr_Empresa.Set_IdEmpresa(ObjUsuario, Convert.ToInt32(ViewState["empresa"]));
             int IdSucursal = Mgr_Sucursal.Set_IdSucursal(ObjUsuario, Convert.ToInt32(ViewState["sucursal"]));
 
-            Mgr_Sucursal.Sucursal(GridView1, ObjUsuario.Id_sucursal, IdEmpresa, IdSucursal, string.Empty + ViewState["sWhere"]);
+            Mgr_Sucursal.Grid_Sucursal(GridView1, ObjUsuario.Id_sucursal, IdEmpresa, IdSucursal, string.Empty + ViewState["sWhere"]);
         }
         #endregion
 
@@ -96,7 +96,7 @@ namespace SGSSTC.source.sistema.GestionDatos
 
 
                 List<sucursal> ListaSucursal = new List<sucursal>();
-                ListaSucursal = Mgr_Sucursal.Sucursal(Convert.ToInt32(hdfSucursalEditID.Value), 0, "");
+                ListaSucursal = Mgr_Sucursal.Get_Sucursal(Convert.ToInt32(hdfSucursalEditID.Value), 0, "");
 
                 foreach (var item in ListaSucursal)
                 {
@@ -109,10 +109,10 @@ namespace SGSSTC.source.sistema.GestionDatos
 
                     ddlRegionEdit.SelectedValue = Convert.ToString(item.municipio.departamento.id_region);
 
-                    Mgr_Gobierno.Reg_Dpto_Mcpio(ddlDptoEdit, "RegionDpto", Convert.ToInt32(item.municipio.departamento.id_region));
+                    Mgr_Gobierno.Get_Reg_Dpto_Mcpio(ddlDptoEdit, "RegionDpto", Convert.ToInt32(item.municipio.departamento.id_region));
                     ddlDptoEdit.SelectedValue = Convert.ToString(item.municipio.id_departamento);
 
-                    Mgr_Gobierno.Reg_Dpto_Mcpio(ddlMcpioEdit, "McpioDpto", Convert.ToInt32(item.municipio.id_departamento));
+                    Mgr_Gobierno.Get_Reg_Dpto_Mcpio(ddlMcpioEdit, "McpioDpto", Convert.ToInt32(item.municipio.id_departamento));
                     ddlMcpioEdit.SelectedValue = Convert.ToString(item.id_municpio);
                 }
                 Modal.registrarModal("editModal", "EditModalScript", this);
@@ -134,7 +134,7 @@ namespace SGSSTC.source.sistema.GestionDatos
                 hdfSucursalID.Value = Utilidades_GridView.DevolverIdRow(e, GridView1);
 
                 List<sucursal> ListaSucursal = new List<sucursal>();
-                ListaSucursal = Mgr_Sucursal.Sucursal(Convert.ToInt32(hdfSucursalID.Value), 0, "");
+                ListaSucursal = Mgr_Sucursal.Get_Sucursal(Convert.ToInt32(hdfSucursalID.Value), 0, "");
                 foreach (var item in ListaSucursal)
                 {
                     lblNombreView.Text = item.nombre;
@@ -283,12 +283,12 @@ namespace SGSSTC.source.sistema.GestionDatos
 
         protected void ddlRegionEdit_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Mgr_Gobierno.Reg_Dpto_Mcpio(ddlDptoEdit, "RegionDpto", Convert.ToInt32(ddlRegionEdit.SelectedValue));
+            Mgr_Gobierno.Get_Reg_Dpto_Mcpio(ddlDptoEdit, "RegionDpto", Convert.ToInt32(ddlRegionEdit.SelectedValue));
         }
 
         protected void ddlDptoEdit_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Mgr_Gobierno.Reg_Dpto_Mcpio(ddlMcpioEdit, "McpioDpto", Convert.ToInt32(ddlDptoEdit.SelectedValue));
+            Mgr_Gobierno.Get_Reg_Dpto_Mcpio(ddlMcpioEdit, "McpioDpto", Convert.ToInt32(ddlDptoEdit.SelectedValue));
         }
         #endregion
     }

@@ -48,7 +48,7 @@ namespace SGSSTC.source.sistema.GestionDatos
         {
             int IdEmpresa = Mgr_Empresa.Set_IdEmpresa(ObjUsuario, Convert.ToInt32(ViewState["empresa"]));
 
-            Mgr_Usuario.Rol(GridView1, IdEmpresa, string.Empty + ViewState["sWhere"]);
+            Mgr_Usuario.Grid_Rol(GridView1, IdEmpresa, string.Empty + ViewState["sWhere"]);
         }
         #endregion
 
@@ -73,7 +73,7 @@ namespace SGSSTC.source.sistema.GestionDatos
         protected void Guardar(object sender, EventArgs e)
         {
             int IdEmpresa = Mgr_Empresa.Set_IdEmpresaDDl(ObjUsuario, ddlEmpresaAdd);
-            int _id_rol = Mgr_Usuario.Roles() + 1;
+            int _id_rol = Mgr_Usuario.Get_Roles() + 1;
 
             rol nuevo = new rol()
             {
@@ -134,7 +134,7 @@ namespace SGSSTC.source.sistema.GestionDatos
                 GridViewRow gvrow = GridView1.Rows[RowIndex];
                 hdfEditID.Value = Utilidades_GridView.DevolverIdRow(e, GridView1);
 
-                var _Rol = Mgr_Usuario.Rol(Convert.ToInt32(hdfEditID.Value));
+                var _Rol = Mgr_Usuario.Get_Rol(Convert.ToInt32(hdfEditID.Value));
 
                 txtNombreEdit.Text = _Rol.nombre;
                 ddlEmpresaEdit.SelectedValue = Convert.ToString(_Rol.id_empresa);

@@ -47,20 +47,20 @@ namespace SGSST.source.sistema.Planear
             
             if (!BoolEmpSuc.Item2)
             {
-                Mgr_Trabajador.PerfilCargo(ddlCargo, ObjUsuario.Id_empresa);
-                Mgr_Trabajador.PerfilCargo(ddlCargoAdd, ObjUsuario.Id_empresa);
+                Mgr_Trabajador.Lista_PerfilCargo(ddlCargo, ObjUsuario.Id_empresa);
+                Mgr_Trabajador.Lista_PerfilCargo(ddlCargoAdd, ObjUsuario.Id_empresa);
             }
         }
         private void LlenarGridView()
         {
-            Mgr_Trabajador.PerfilMedico(GridView1, Convert.ToInt32(ViewState["empresa"]), Convert.ToInt32(ViewState["cargo"]), string.Empty + ViewState["sWhere"]);
+            Mgr_Trabajador.Grid_PerfilMedico(GridView1, Convert.ToInt32(ViewState["empresa"]), Convert.ToInt32(ViewState["cargo"]), string.Empty + ViewState["sWhere"]);
         }
 
         protected void ddlEmpresa_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ddlEmpresa.SelectedValue != string.Empty)
             {
-                Mgr_Trabajador.PerfilCargo(ddlCargo, Convert.ToInt32(ddlEmpresa.SelectedValue));
+                Mgr_Trabajador.Lista_PerfilCargo(ddlCargo, Convert.ToInt32(ddlEmpresa.SelectedValue));
                 ViewState["empresa"] = ddlEmpresa.SelectedValue;
             }
             else
@@ -137,7 +137,7 @@ namespace SGSST.source.sistema.Planear
         {
             if (ddlEmpresaAdd.SelectedValue != string.Empty)
             {
-                Mgr_Trabajador.PerfilCargo(ddlCargoAdd, Convert.ToInt32(ddlEmpresaAdd.SelectedValue));
+                Mgr_Trabajador.Lista_PerfilCargo(ddlCargoAdd, Convert.ToInt32(ddlEmpresaAdd.SelectedValue));
             }
         }
 

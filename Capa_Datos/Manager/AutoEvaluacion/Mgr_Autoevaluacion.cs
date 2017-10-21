@@ -1,16 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.UI.WebControls;
-using Capa_Datos;
 
 namespace Capa_Datos.Manager.AutoEvaluacion
 {
     public class Mgr_Autoevaluacion
     {
-        public static bool AddAutoEvaluacion(Tuple<int, int> IdEmpSuc, String[] valores, FileUpload flpArchivo)
+        //---------------FUNCIONES DE CREAR, EDITAR Y ELIMINAR
+        public static bool Add_AutoEvaluacion(Tuple<int, int> IdEmpSuc, String[] valores, FileUpload flpArchivo)
         {
             int IdEmpresa = IdEmpSuc.Item1;
             int IdSucursal = IdEmpSuc.Item2;
@@ -44,7 +42,7 @@ namespace Capa_Datos.Manager.AutoEvaluacion
 
             return berror;
         }
-        public static bool DeleteAutoEvaluacion(String idAutoEvaluacion, Model_UsuarioSistema ObjUsuario)
+        public static bool Delete_AutoEvaluacion(String idAutoEvaluacion, Model_UsuarioSistema ObjUsuario)
         {
             int idAuto = Convert.ToInt32(idAutoEvaluacion);
             int idSucursal = 0;
@@ -76,7 +74,8 @@ namespace Capa_Datos.Manager.AutoEvaluacion
             return ObjUsuario.Error;
         }
 
-        public static void autoevaluacion(GridView GridView1, int _id_sucursal = 0, int _id_empresa = 0, string nombre = "")
+        //----------------FUNCIONES DE LLENAR GRID
+        public static void Grid_Autoevaluacion(GridView GridView1, int _id_sucursal = 0, int _id_empresa = 0, string nombre = "")
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             var query = (

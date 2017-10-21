@@ -41,7 +41,7 @@ namespace SGSSTC.source.sistema.Hacer
 
             if (!BoolEmpSuc.Item1)
             {
-                Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
             }
         }
 
@@ -49,7 +49,7 @@ namespace SGSSTC.source.sistema.Hacer
         {
             int IdSucursal = Mgr_Sucursal.Set_IdSucursal(ObjUsuario, Convert.ToInt32(ViewState["sucursal"]));
 
-            Mgr_Riesgos.EvaluacionRiesgo(GridView1, IdSucursal);
+            Mgr_Riesgos.Grid_EvaluacionRiesgo(GridView1, IdSucursal);
         }
         #endregion
 
@@ -92,7 +92,7 @@ namespace SGSSTC.source.sistema.Hacer
         {
             if (ddlEmpresa.SelectedValue != string.Empty)
             {
-                Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
             }
         }
         protected void ddlSucursal_SelectedIndexChanged(object sender, EventArgs e)

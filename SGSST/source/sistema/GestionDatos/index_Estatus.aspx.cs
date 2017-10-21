@@ -57,7 +57,7 @@ namespace SGSSTC.source.sistema.GestionDatos
         {
             int Idempresa = Mgr_Empresa.Set_IdEmpresa(ObjUsuario, Convert.ToInt32(ViewState["empresa"]));
 
-            Mgr_Estatus.Estatus(GridView1, Idempresa, string.Empty + ViewState["sWhere"]);
+            Mgr_Estatus.Grid_Estatus(GridView1, Idempresa, string.Empty + ViewState["sWhere"]);
 
         }
         #endregion
@@ -71,7 +71,7 @@ namespace SGSSTC.source.sistema.GestionDatos
                 GridViewRow gvrow = GridView1.Rows[RowIndex];
                 hdfEstatusID.Value = Utilidades_GridView.DevolverIdRow(e, GridView1);
 
-                var _Estatus = Mgr_Estatus.Estatus(Convert.ToInt32(hdfEstatusID.Value));
+                var _Estatus = Mgr_Estatus.Get_Estatus(Convert.ToInt32(hdfEstatusID.Value));
 
                 txtNombreEdit.Text = _Estatus.nombre;
                 txtDescripcionEdit.Text = _Estatus.descripcion;

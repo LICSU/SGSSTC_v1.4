@@ -37,7 +37,7 @@ namespace SGSSTC.source.sistema.Hacer
 		{
 			//recibo el id de la norma y obtengo el tema especifico
 			List<norma> ListaNormas = new List<norma>();
-			ListaNormas = Mgr_Norma.Norma(Convert.ToInt32(idNorma));
+			ListaNormas = Mgr_Norma.Get_Norma(Convert.ToInt32(idNorma));
 
 			foreach (var item in ListaNormas)
 			{
@@ -55,7 +55,7 @@ namespace SGSSTC.source.sistema.Hacer
 			listSeg.Items.Clear();
 
 			List<norma_sucursal> ListaNormasSucursal = new List<norma_sucursal>();
-			ListaNormasSucursal = Mgr_Norma.Normas_Sucursal(Convert.ToInt32(IdSucursal), Convert.ToInt32(idNorma));
+			ListaNormasSucursal = Mgr_Norma.Get_Normas_Sucursal(Convert.ToInt32(IdSucursal), Convert.ToInt32(idNorma));
 
 			foreach (var itemNormasSucursal in ListaNormasSucursal)
 			{
@@ -65,7 +65,7 @@ namespace SGSSTC.source.sistema.Hacer
 				foreach (var item1 in itemNormasSucursal.medida_sucursal)
 				{
 					List<medida_sucursal> ListaMedidasSucursal = new List<medida_sucursal>();
-					ListaMedidasSucursal = Mgr_Medidas.Medidas_Sucursal(item1.id_medidas_sucursal);
+					ListaMedidasSucursal = Mgr_Medidas.Get_MedidasBySucursal(item1.id_medidas_sucursal);
 
 					foreach (var item2 in ListaMedidasSucursal)
 					{
@@ -114,7 +114,7 @@ namespace SGSSTC.source.sistema.Hacer
 		{
 			bool bAplica = false;
 			List<medida_sucursal> ListaMedidasSucursal = new List<medida_sucursal>();
-			ListaMedidasSucursal = Mgr_Medidas.Medidas_Sucursal(_idMedida);
+			ListaMedidasSucursal = Mgr_Medidas.Get_MedidasBySucursal(_idMedida);
 
 			foreach (var item in ListaMedidasSucursal)
 			{
@@ -138,7 +138,7 @@ namespace SGSSTC.source.sistema.Hacer
 			bool bAplica = false;
 
 			List<medida_sucursal> ListaMedidasSucursal = new List<medida_sucursal>();
-			ListaMedidasSucursal = Mgr_Medidas.Medidas_Sucursal(_idMedida);
+			ListaMedidasSucursal = Mgr_Medidas.Get_MedidasBySucursal(_idMedida);
 
 			foreach (var item in ListaMedidasSucursal)
 			{

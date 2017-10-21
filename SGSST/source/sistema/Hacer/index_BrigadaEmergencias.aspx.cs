@@ -76,12 +76,12 @@ namespace SGSSTC.source.sistema.Hacer
         private void cargarBigrada()
         {
             int IdSucursal = Mgr_Sucursal.Set_IdSucursalDDl(ObjUsuario, ddlSucursal);
-            int idBrigada = Mgr_Documento.BrigadaEmergencias(IdSucursal);
+            int idBrigada = Mgr_Documento.Get_BrigadaEmergencias(IdSucursal);
 
             if (idBrigada != 0)
             {
                 List<brigada_emergencia> ListaBrigadaEmergencia = new List<brigada_emergencia>();
-                ListaBrigadaEmergencia = Mgr_Documento.BrigadaEmergencia(idBrigada);
+                ListaBrigadaEmergencia = Mgr_Documento.Get_BrigadaEmergencia(idBrigada);
 
                 if (ListaBrigadaEmergencia.Count > 0)
                 {
@@ -98,7 +98,7 @@ namespace SGSSTC.source.sistema.Hacer
                 }
 
                 List<procedimiento_comunicacion> ListaProcedimientoComunicacion = new List<procedimiento_comunicacion>();
-                ListaProcedimientoComunicacion = Mgr_Documento.ProcedimientoComunicacion(idBrigada);
+                ListaProcedimientoComunicacion = Mgr_Documento.Get_ProcedimientoComunicacion(idBrigada);
 
                 crearCampos((ListaProcedimientoComunicacion.Count));
 
@@ -230,13 +230,13 @@ namespace SGSSTC.source.sistema.Hacer
             }
             if (BoolEmpSuc.Item2)
             {
-                Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
             }
 
             if (!BoolEmpSuc.Item2)
             {
-                Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabjador1, ObjUsuario.Id_sucursal);
-                Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabjador2, ObjUsuario.Id_sucursal);
+                Mgr_Trabajador.Lista_Trabajadores_Sucursal(ddlTrabjador1, ObjUsuario.Id_sucursal);
+                Mgr_Trabajador.Lista_Trabajadores_Sucursal(ddlTrabjador2, ObjUsuario.Id_sucursal);
             }
         }
         #endregion
@@ -282,7 +282,7 @@ namespace SGSSTC.source.sistema.Hacer
             miDropDownList = new DropDownList();
             miDropDownList.ID = id;
             miDropDownList.CssClass = "form-control";
-            Mgr_Trabajador.Trabajadores_Sucursal(miDropDownList, ObjUsuario.Id_sucursal);
+            Mgr_Trabajador.Lista_Trabajadores_Sucursal(miDropDownList, ObjUsuario.Id_sucursal);
             _panel.Controls.Add(miDropDownList);
         }
         #endregion
@@ -323,7 +323,7 @@ namespace SGSSTC.source.sistema.Hacer
 
             if (ObjUsuario.Error)
             {
-                int IdBrigada = Mgr_Documento.BrigadaEmergencias(IdSucursal);
+                int IdBrigada = Mgr_Documento.Get_BrigadaEmergencias(IdSucursal);
 
                 int contador = 0;
                 string _nombre = string.Empty;
@@ -502,15 +502,15 @@ namespace SGSSTC.source.sistema.Hacer
         {
             if (ddlEmpresa.SelectedValue != string.Empty)
             {
-                Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
             }
         }
         protected void ddlSucursal_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ddlSucursal.SelectedValue != string.Empty)
             {
-                Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabjador1, Convert.ToInt32(ddlSucursal.SelectedValue));
-                Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabjador2, Convert.ToInt32(ddlSucursal.SelectedValue));
+                Mgr_Trabajador.Lista_Trabajadores_Sucursal(ddlTrabjador1, Convert.ToInt32(ddlSucursal.SelectedValue));
+                Mgr_Trabajador.Lista_Trabajadores_Sucursal(ddlTrabjador2, Convert.ToInt32(ddlSucursal.SelectedValue));
                 chEditor.Visible = true;
                 chEditorNo.Visible = false;
                 cargarBigrada();

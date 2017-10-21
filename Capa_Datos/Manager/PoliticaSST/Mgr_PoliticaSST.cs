@@ -7,24 +7,22 @@ namespace Capa_Datos.Manager.PoliticaSST
 {
     public class Mgr_PoliticaSST
     {
-        //-------------getter
-        public static List<encuesta_politica> EncuestaPoliticaSST(int _id_encuesta)
+        //-------------FUNCIONES DE CONSULTAR
+        public static List<encuesta_politica> Get_EncuestaPoliticaSST(int _id_encuesta)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             List<encuesta_politica> consulta = new List<encuesta_politica>();
             consulta = contexto.encuesta_politica.Where(x => x.id_encuesta == _id_encuesta).ToList();
             return consulta;
         }
-
-        public static List<politica_sst> PoliticaSST(int _id_politica_sst)
+        public static List<politica_sst> Get_PoliticaSST(int _id_politica_sst)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             List<politica_sst> consulta = new List<politica_sst>();
             consulta = contexto.politica_sst.Where(x => x.id_politica == _id_politica_sst).ToList();
             return consulta;
         }
-
-        public static int Politica_SST(int _id_empresa)
+        public static int Get_Politica_SST(int _id_empresa)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             var consulta = new usuario();
@@ -39,9 +37,8 @@ namespace Capa_Datos.Manager.PoliticaSST
             }
         }
 
-        //-------------grid
-
-        public static void objetivosSgsst(GridView GridView1, int _id_empresa, int _id_sucursal = 0)
+        //-------------FUNCIONES DE LLENAR GRID
+        public static void Grid_ObjetivosSgsst(GridView GridView1, int _id_empresa, int _id_sucursal = 0)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             var query = (
@@ -61,7 +58,7 @@ namespace Capa_Datos.Manager.PoliticaSST
             GridView1.DataSource = query;
             GridView1.DataBind();
         }
-        public static void PoliticaSST_empresa(GridView GridView1, int _id_empresa)
+        public static void Grid_PoliticaSST_empresa(GridView GridView1, int _id_empresa)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             var query = (
@@ -79,7 +76,7 @@ namespace Capa_Datos.Manager.PoliticaSST
             GridView1.DataSource = query;
             GridView1.DataBind();
         }
-        public static void PoliticaSST_todos(GridView GridView1)
+        public static void Grid_PoliticaSST(GridView GridView1)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             var query = (
@@ -96,7 +93,7 @@ namespace Capa_Datos.Manager.PoliticaSST
             GridView1.DataSource = query;
             GridView1.DataBind();
         }
-        public static void Encuesta_PoliticaSST(GridView GridView1, int _id_empresa, int _id_sucursal = 0, int _id_trabajador = 0, string tipo = "", string nombre = "")
+        public static void Grid_Encuesta_PoliticaSST(GridView GridView1, int _id_empresa, int _id_sucursal = 0, int _id_trabajador = 0, string tipo = "", string nombre = "")
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             var query = (
@@ -124,7 +121,7 @@ namespace Capa_Datos.Manager.PoliticaSST
             GridView1.DataSource = query;
             GridView1.DataBind();
         }
-        public static void Comunicado_PoliticaSST(GridView GridView1, int _id_empresa, int _id_sucursal = 0, int _id_trabajador = 0, string _nombre = "")
+        public static void Grid_Comunicado_PoliticaSST(GridView GridView1, int _id_empresa, int _id_sucursal = 0, int _id_trabajador = 0, string _nombre = "")
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             var query = (
@@ -149,7 +146,6 @@ namespace Capa_Datos.Manager.PoliticaSST
             GridView1.DataSource = query;
             GridView1.DataBind();
         }
-
-
+        
     }
 }

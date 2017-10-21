@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.UI.WebControls;
 
 namespace Capa_Datos.Manager.Categoria
 {
     public class Mgr_Categoria
     {
-        //-----------crud
+        //-----------FUNCIONES DE CREAR, EDITAR Y ELIMINAR
         public static bool Add_Categoria_Empresa(String[] valores)
         {
             List<categoria> Listacategoria = new List<categoria>();
@@ -40,9 +38,15 @@ namespace Capa_Datos.Manager.Categoria
             return berror;
         }
 
-        //---------getter
-
-        public static List<categoria> Categoria(string nombre)
+        //---------FUNCIONES DE CONSULTAR
+        public static categoria Get_Categoria(int _idCategoria)
+        {
+            GrupoLiEntities contexto = new GrupoLiEntities();
+            categoria consulta = new categoria();
+            consulta = contexto.categoria.Where(x => x.id_categorias == _idCategoria).SingleOrDefault();
+            return consulta;
+        }
+        public static List<categoria> Get_Categoria(string nombre)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             List<categoria> consulta = new List<categoria>();
@@ -50,16 +54,8 @@ namespace Capa_Datos.Manager.Categoria
             return consulta;
         }
 
-        public static categoria Categoria(int _idCategoria)
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            categoria consulta = new categoria();
-            consulta = contexto.categoria.Where(x => x.id_categorias == _idCategoria).SingleOrDefault();
-            return consulta;
-        }
-
-        //---------listas
-        public static void Categorias(DropDownList DropDownList1, int _id_empresa)
+        //---------FUNCIONES DE LLENAR LISTAS
+        public static void List_Categorias(DropDownList DropDownList1, int _id_empresa)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             var Consulta = (from c in contexto.categoria
@@ -73,8 +69,8 @@ namespace Capa_Datos.Manager.Categoria
             DropDownList1.Items.Insert(0, new ListItem("Seleccione la Categoria", ""));
         }
 
-        //---------grid
-        public static void Categorias(GridView GridView1, int id_empresa = 0, string _nombre = "")
+        //---------FUNCIONES DE LLENAR GRID
+        public static void Grid_Categorias(GridView GridView1, int id_empresa = 0, string _nombre = "")
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             var query = (

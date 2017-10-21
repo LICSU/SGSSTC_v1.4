@@ -26,7 +26,7 @@ namespace SGSSTC.source.sistema.Hacer
 		{
 			string valor = Request.QueryString["idO"];
 			List<obligacion> ListaObligacion = new List<obligacion>();
-			ListaObligacion = Mgr_Obligacion.Obligacion(Convert.ToInt32(objUtilidades.descifrarCadena(valor)));
+			ListaObligacion = Mgr_Obligacion.Get_Obligacion(Convert.ToInt32(objUtilidades.descifrarCadena(valor)));
 
 			foreach (var item in ListaObligacion)
 			{

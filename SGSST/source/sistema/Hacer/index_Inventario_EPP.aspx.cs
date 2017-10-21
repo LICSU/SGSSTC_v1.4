@@ -45,7 +45,7 @@ namespace SGSSTC.source.sistema.Hacer
 						{
 							if (c.ClientID.Contains("btnDocumento"))
 							{
-								epps = Mgr_Epp.Epp(0, Convert.ToInt32(ddlSucursal.SelectedValue));
+								epps = Mgr_Epp.Get_Epp(0, Convert.ToInt32(ddlSucursal.SelectedValue));
 								cantiEpp = epps.Count;
 								agregar_ingresos(epps);
 								agregar_egresos(epps);
@@ -53,7 +53,7 @@ namespace SGSSTC.source.sistema.Hacer
 							}
 							else if (c.ClientID.Contains("btnCalcular"))
 							{
-								epps = Mgr_Epp.Epp(0, Convert.ToInt32(ddlSucursal.SelectedValue));
+								epps = Mgr_Epp.Get_Epp(0, Convert.ToInt32(ddlSucursal.SelectedValue));
 								cantiEpp = epps.Count;
 								agregar_ingresos(epps);
 								agregar_egresos(epps);
@@ -70,7 +70,7 @@ namespace SGSSTC.source.sistema.Hacer
 
 			if (!BoolEmpSuc.Item1)
 			{
-				Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+				Mgr_Sucursal.Lista_Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
 			}
 
 		}
@@ -82,7 +82,7 @@ namespace SGSSTC.source.sistema.Hacer
 			if (ddlEmpresa.SelectedValue != string.Empty)
 			{
 				ViewState["empresa"] = ddlEmpresa.SelectedValue;
-				Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
+				Mgr_Sucursal.Lista_Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
 				ViewState["sucursal"] = "0";
 			}
 			else
@@ -95,7 +95,7 @@ namespace SGSSTC.source.sistema.Hacer
 			if (ddlSucursal.SelectedValue != string.Empty)
 			{
 				ViewState["sucursal"] = ddlSucursal.SelectedValue;
-				epps = Mgr_Epp.Epp(0, Convert.ToInt32(ddlSucursal.SelectedValue));
+				epps = Mgr_Epp.Get_Epp(0, Convert.ToInt32(ddlSucursal.SelectedValue));
 				cantiEpp = epps.Count;
 				if (cantiEpp > 0)
 				{

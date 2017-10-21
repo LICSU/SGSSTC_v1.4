@@ -31,7 +31,7 @@ namespace SGSSTC.source.sistema.Hacer
                 CargarListas();
                 if (BoolEmpSuc.Item2)
                 {
-                    Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+                    Mgr_Sucursal.Lista_Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
                 }
                 else
                 {
@@ -47,19 +47,19 @@ namespace SGSSTC.source.sistema.Hacer
             }
             if (BoolEmpSuc.Item2)
             {
-                Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
             }
         }
         private void cargarMatriz()
         {
             phTabla.Visible = true;
             int IdSucursal = Mgr_Sucursal.Set_IdSucursalDDl(ObjUsuario, ddlSucursal);
-            int idMatriz = Mgr_Documento.Matriz_Responsabilidad(IdSucursal);
+            int idMatriz = Mgr_Documento.Get_Matriz_Responsabilidad(IdSucursal);
 
             if (idMatriz != 0)
             {
                 List<matriz_responsabilidad> ListaMatrizResponsabilidad = new List<matriz_responsabilidad>();
-                ListaMatrizResponsabilidad = Mgr_Documento.MatrizResponsabilidad(idMatriz);
+                ListaMatrizResponsabilidad = Mgr_Documento.Get_MatrizResponsabilidad(idMatriz);
 
                 if (ListaMatrizResponsabilidad.Count > 0)
                 {
@@ -194,7 +194,7 @@ namespace SGSSTC.source.sistema.Hacer
             int IdSucursal = Mgr_Sucursal.Set_IdSucursalDDl(ObjUsuario, ddlSucursal);
 
             matriz_responsabilidad tabla = new matriz_responsabilidad();
-            ObjUsuario.Error = CRUD.Delete_Fila(tabla, Mgr_Documento.Matriz_Responsabilidad(IdSucursal));
+            ObjUsuario.Error = CRUD.Delete_Fila(tabla, Mgr_Documento.Get_Matriz_Responsabilidad(IdSucursal));
 
             matriz_responsabilidad nuevo = new matriz_responsabilidad()
             {
@@ -238,7 +238,7 @@ namespace SGSSTC.source.sistema.Hacer
         {
             if (ddlEmpresa.SelectedValue != string.Empty)
             {
-                Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
             }
         }
         protected void ddlSucursal_SelectedIndexChanged(object sender, EventArgs e)

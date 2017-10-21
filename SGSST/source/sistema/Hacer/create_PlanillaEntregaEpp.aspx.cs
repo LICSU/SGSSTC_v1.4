@@ -61,11 +61,11 @@ namespace SGSSTC.source.sistema.Hacer
 
 			if (!BoolEmpSuc.Item1)
 			{
-				Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+				Mgr_Sucursal.Lista_Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
 			}
 			if (!BoolEmpSuc.Item2)
 			{
-				Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabajador, ObjUsuario.Id_sucursal);
+				Mgr_Trabajador.Lista_Trabajadores_Sucursal(ddlTrabajador, ObjUsuario.Id_sucursal);
 			}
 		}
 		#endregion
@@ -76,7 +76,7 @@ namespace SGSSTC.source.sistema.Hacer
 			if (ddlEmpresa.SelectedValue != string.Empty)
 			{
 				ViewState["empresa"] = ddlEmpresa.SelectedValue;
-				Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
+				Mgr_Sucursal.Lista_Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
 				ViewState["sucursal"] = "0";
 			}
 			else
@@ -90,7 +90,7 @@ namespace SGSSTC.source.sistema.Hacer
 			{
 				ViewState["sucursal"] = ddlSucursal.SelectedValue;
 				IdSucursal = Convert.ToInt32(ddlSucursal.SelectedValue);
-				Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabajador, IdSucursal);
+				Mgr_Trabajador.Lista_Trabajadores_Sucursal(ddlTrabajador, IdSucursal);
 			}
 			else
 			{
@@ -138,8 +138,8 @@ namespace SGSSTC.source.sistema.Hacer
 			TableRow _row;
 			Label _label;
 			TextBox _textbox;
-			int id_puesto_trabajo = Mgr_PuestoTrabajo.idPuestoTrabajador(Convert.ToInt32(ddlTrabajador.SelectedValue));
-			List<Model_CEPP> epps = Mgr_Epp.Epp(id_puesto_trabajo);
+			int id_puesto_trabajo = Mgr_PuestoTrabajo.GetId_PuestoTrabajador(Convert.ToInt32(ddlTrabajador.SelectedValue));
+			List<Model_CEPP> epps = Mgr_Epp.Get_Epp(id_puesto_trabajo);
 			int cont = 0;
 
 			foreach (var epp in epps)

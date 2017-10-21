@@ -32,7 +32,7 @@ namespace SGSSTC.source.sistema.Hacer
 		private void CargarUsuario()
 		{
 			List<desc_socio> ListaDescSocio = new List<desc_socio>();
-			ListaDescSocio = Mgr_Trabajador.DescripcionSociodemografica(Convert.ToInt32(idPerfil));
+			ListaDescSocio = Mgr_Trabajador.Get_DescripcionSociodemografica(Convert.ToInt32(idPerfil));
 
 			foreach (var itemDescSocio in ListaDescSocio)
 			{

@@ -33,7 +33,7 @@ namespace SGSSTC.source.sistema.Verificar
 		{
 			int idAccidente = objUtilidades.descifrarCadena(Request.QueryString["id"]);
 			List<at_it_el_pa> ListaAccidente = new List<at_it_el_pa>();
-			ListaAccidente = Mgr_Acc_Inc.Accidente(idAccidente);
+			ListaAccidente = Mgr_Acc_Inc.Get_Accidente(idAccidente);
 
 			foreach (var item in ListaAccidente)
 			{

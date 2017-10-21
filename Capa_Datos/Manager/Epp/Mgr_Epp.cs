@@ -7,8 +7,8 @@ namespace Capa_Datos.Manager.Epp
 {
     public class Mgr_Epp
     {
-        //---------------crud
-        public static bool AddSenalizacion(String[] valores, FileUpload fuImagen)
+        //---------------FUNCIONES DE CREAR, EDITAR Y ELIMINAR
+        public static bool Add_Senalizacion(String[] valores, FileUpload fuImagen)
         {
             string ruta = Utilidades.GuardarImagen(fuImagen, valores[0], Paginas.Archivos_Senalizacion.Value);
 
@@ -29,14 +29,26 @@ namespace Capa_Datos.Manager.Epp
             }
         }
 
-        //---------------getter
-        public static List<senalizacion> Senalizacion(int _id_senal)
+        //---------------FUNCIONES DE CONSULTAR
+        public static List<Model_CEPP> Get_TipoEpp(int _id_puesto)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
-            List<senalizacion> consulta = contexto.senalizacion.Where(x => x.id_senalizacion == _id_senal).ToList();
+            List<Model_CEPP> consulta = new List<Model_CEPP>();
+
+            consulta = (
+                from E in contexto.epp
+                join PE in contexto.puesto_trabajo_epp on E.id_epp equals PE.id_epp
+                where (PE.id_puesto_trabajo == _id_puesto)
+                select new Model_CEPP
+                {
+                    id = E.tipo_epp.id_tipo_epp,
+                    nombre = E.tipo_epp.nombre_senal
+                }
+           ).ToList();
+
             return consulta;
         }
-        public static int Trae_ID_PEPP(int id_puesto, int id_epp)
+        public static int Get_Trae_ID_PEPP(int id_puesto, int id_epp)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             var query = (
@@ -50,7 +62,13 @@ namespace Capa_Datos.Manager.Epp
 
             return query.ElementAt(0).id_puesto_trabajo_epp;
         }
-        public static List<Model_CEPP> Epp(int _id_puesto = 0, int _id_sucursal = 0)
+        public static List<senalizacion> Get_Senalizacion(int _id_senal)
+        {
+            GrupoLiEntities contexto = new GrupoLiEntities();
+            List<senalizacion> consulta = contexto.senalizacion.Where(x => x.id_senalizacion == _id_senal).ToList();
+            return consulta;
+        }
+        public static List<Model_CEPP> Get_Epp(int _id_puesto = 0, int _id_sucursal = 0)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             List<Model_CEPP> consulta = new List<Model_CEPP>();
@@ -85,28 +103,9 @@ namespace Capa_Datos.Manager.Epp
 
             return consulta;
         }
-        public static List<Model_CEPP> TipoEpp(int _id_puesto)
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            List<Model_CEPP> consulta = new List<Model_CEPP>();
 
-            consulta = (
-                from E in contexto.epp
-                join PE in contexto.puesto_trabajo_epp on E.id_epp equals PE.id_epp
-                where (PE.id_puesto_trabajo == _id_puesto)
-                select new Model_CEPP
-                {
-                    id = E.tipo_epp.id_tipo_epp,
-                    nombre = E.tipo_epp.nombre_senal
-                }
-           ).ToList();
-
-            return consulta;
-        }
-
-
-        //---------------listas
-        public static void TipoEpp(DropDownList DropDownList1)
+        //---------------FUNCIONES DE LLENAR LISTAS
+        public static void List_TipoEpp(DropDownList DropDownList1)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
 
@@ -121,7 +120,7 @@ namespace Capa_Datos.Manager.Epp
             DropDownList1.DataBind();
             DropDownList1.Items.Insert(0, new ListItem("Seleccione el Tipo de EPP", ""));
         }
-        public static void Epp(ListBox DropDownList1)
+        public static void List_Epp(ListBox DropDownList1)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
 
@@ -131,7 +130,7 @@ namespace Capa_Datos.Manager.Epp
             DropDownList1.DataSource = Consulta;
             DropDownList1.DataBind();
         }
-        public static void Epp(DropDownList DropDownList1)
+        public static void List_Epp(DropDownList DropDownList1)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
 
@@ -141,7 +140,7 @@ namespace Capa_Datos.Manager.Epp
             DropDownList1.DataSource = Consulta;
             DropDownList1.DataBind();
         }
-        public static void EppPuesto(DropDownList DropDownList1, string _id_puesto)
+        public static void List_EppPuesto(DropDownList DropDownList1, string _id_puesto)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             int idPuesto = Convert.ToInt32(_id_puesto);
@@ -153,8 +152,8 @@ namespace Capa_Datos.Manager.Epp
             DropDownList1.DataBind();
         }
 
-        //---------------grid
-        public static void entrega_epp(GridView GridView1, string _id_empresa = "", string _id_sucursal = "", string _nombre = "", int _id_trabajador = 0)
+        //---------------FUNCIONES DE LLENAR GRID
+        public static void Grid_EntregaEpp(GridView GridView1, string _id_empresa = "", string _id_sucursal = "", string _nombre = "", int _id_trabajador = 0)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             var query = (
@@ -183,7 +182,7 @@ namespace Capa_Datos.Manager.Epp
             GridView1.DataSource = query;
             GridView1.DataBind();
         }
-        public static void TipoEpp(GridView GridView1, string _nombre = "")
+        public static void Grid_TipoEpp(GridView GridView1, string _nombre = "")
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             var query = (
@@ -201,7 +200,7 @@ namespace Capa_Datos.Manager.Epp
             GridView1.DataSource = query;
             GridView1.DataBind();
         }
-        public static void Epp(GridView GridView1, string _id_tipo = "", string _nombre = "")
+        public static void Grid_Epp(GridView GridView1, string _id_tipo = "", string _nombre = "")
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             var query = (
@@ -224,7 +223,7 @@ namespace Capa_Datos.Manager.Epp
             GridView1.DataSource = query;
             GridView1.DataBind();
         }
-        public static void Senalizacion(GridView GridView1)
+        public static void Grid_Senalizacion(GridView GridView1)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             GridView1.DataSource = contexto.senalizacion.ToList();

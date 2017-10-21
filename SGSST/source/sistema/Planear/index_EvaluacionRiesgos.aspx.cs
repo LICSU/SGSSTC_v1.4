@@ -33,16 +33,16 @@ namespace SGSSTC.source.sistema.Hacer
         {
             int IdEmpresa = Mgr_Empresa.Set_IdEmpresa(ObjUsuario, Convert.ToInt32(ViewState["empresa"]));
             int IdSucursal = Mgr_Sucursal.Set_IdSucursal(ObjUsuario, Convert.ToInt32(ViewState["sucursal"]));
-            Mgr_Riesgos.EvaluacionRiesgos(GridView1, IdEmpresa, IdSucursal);
+            Mgr_Riesgos.Grid_EvaluacionRiesgos(GridView1, IdEmpresa, IdSucursal);
         }
 
         private void CargarListas()
         {
-            Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+            Mgr_Sucursal.Lista_Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
 
             if (!BoolEmpSuc.Item1)
             {
-                Mgr_Sucursal.Sucursal(ddlSucursalSubir, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursalSubir, ObjUsuario.Id_empresa);
             }
         }
         #endregion

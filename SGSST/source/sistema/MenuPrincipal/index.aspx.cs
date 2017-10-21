@@ -37,12 +37,12 @@ namespace SGSSTC.source.sistema.MenuPrincipal
             {
                 #region porcentaje evaluacion incial
 
-                ListaDocumento = Mgr_Documento.Documentos(Anho, "AutoEvaluacion", 0, ObjUsuario.Id_empresa);
+                ListaDocumento = Mgr_Documento.Get_Documentos(Anho, "AutoEvaluacion", 0, ObjUsuario.Id_empresa);
 
                 var groupedList = ListaDocumento.GroupBy(x => new { x.id_tabla, x.fecha_subida.Value.Year }).Select(grp => grp.ToList()).ToList();
 
                 List<sucursal> ListSucursal = new List<sucursal>();
-                ListSucursal = Mgr_Sucursal.Sucursal(0, ObjUsuario.Id_empresa);
+                ListSucursal = Mgr_Sucursal.Get_Sucursal(0, ObjUsuario.Id_empresa);
 
                 Double CantSucursales = ListSucursal.Count;
                 Double CantAutoEvaluacion = groupedList.Count;
@@ -154,7 +154,7 @@ namespace SGSSTC.source.sistema.MenuPrincipal
             {
                 #region porcentaje evaluacion inicial
 
-                ListaDocumento = Mgr_Documento.Documentos(Anho, "AutoEvaluacion", ObjUsuario.Id_sucursal);
+                ListaDocumento = Mgr_Documento.Get_Documentos(Anho, "AutoEvaluacion", ObjUsuario.Id_sucursal);
 
                 if (ListaDocumento.Count > 0)
                 {
@@ -483,7 +483,7 @@ namespace SGSSTC.source.sistema.MenuPrincipal
         private void MostrarSusPreguntas()
         {
             List<empresa_itemdivision> consulta = new List<empresa_itemdivision>();
-            consulta = Mgr_CodigoCiiu.CodigoCiiu_Empresa(ObjUsuario.Id_empresa);
+            consulta = Mgr_CodigoCiiu.Get_CodigoCiiuByEmpresa(ObjUsuario.Id_empresa);
 
             int act1 = 0, act2 = 0, act3 = 0, cont = 0;
             foreach (var item in consulta)

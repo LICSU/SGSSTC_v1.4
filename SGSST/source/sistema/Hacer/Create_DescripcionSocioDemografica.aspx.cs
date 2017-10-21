@@ -42,18 +42,18 @@ namespace SGSSTC.source.sistema.Hacer
         {
             if (!BoolEmpSuc.Item1)
             {
-                Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
             }
 
             if (!BoolEmpSuc.Item2)
             {
                 IdSucursal = ObjUsuario.Id_sucursal;
-                Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabajador, IdSucursal);
+                Mgr_Trabajador.Lista_Trabajadores_Sucursal(ddlTrabajador, IdSucursal);
             }
 
             Mgr_Empresa.Lista_Empresa(ddlEmpresa);
-            Mgr_Gobierno.EPS(ddlEps);
-            Mgr_Gobierno.AFP(ddlFondo);
+            Mgr_Gobierno.Get_EPS(ddlEps);
+            Mgr_Gobierno.Get_AFP(ddlFondo);
         }
 
         private bool validarCampos()
@@ -205,7 +205,7 @@ namespace SGSSTC.source.sistema.Hacer
                             años = txtAños1.Text,
                             meses = txtMeses1.Text,
                             enfermedades = txtEnfermadades1.Text,
-                            id_desc_socio = Mgr_Trabajador.DescripcionSociodemografica()
+                            id_desc_socio = Mgr_Trabajador.Get_DescripcionSociodemografica()
                         };
                         ObjUsuario.Error = CRUD.Add_Fila(nuevo1);
                     }
@@ -219,7 +219,7 @@ namespace SGSSTC.source.sistema.Hacer
                             años = txtAños2.Text,
                             meses = txtMeses2.Text,
                             enfermedades = txtEnfermadades2.Text,
-                            id_desc_socio = Mgr_Trabajador.DescripcionSociodemografica()
+                            id_desc_socio = Mgr_Trabajador.Get_DescripcionSociodemografica()
                         };
                         ObjUsuario.Error = CRUD.Add_Fila(nuevo2);
                     }
@@ -233,7 +233,7 @@ namespace SGSSTC.source.sistema.Hacer
                             años = txtAños3.Text,
                             meses = txtMeses3.Text,
                             enfermedades = txtEnfermadades3.Text,
-                            id_desc_socio = Mgr_Trabajador.DescripcionSociodemografica()
+                            id_desc_socio = Mgr_Trabajador.Get_DescripcionSociodemografica()
                         };
                         ObjUsuario.Error = CRUD.Add_Fila(nuevo3);
                     }
@@ -254,7 +254,7 @@ namespace SGSSTC.source.sistema.Hacer
             if (ddlEmpresa.SelectedValue != string.Empty)
             {
                 id = Convert.ToInt32(ddlEmpresa.SelectedValue);
-                Mgr_Sucursal.Sucursal(ddlSucursal, id);
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursal, id);
             }
 
         }
@@ -263,7 +263,7 @@ namespace SGSSTC.source.sistema.Hacer
             if (ddlSucursal.SelectedValue != string.Empty)
             {
                 IdSucursal = Convert.ToInt32(ddlSucursal.SelectedValue);
-                Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabajador, IdSucursal);
+                Mgr_Trabajador.Lista_Trabajadores_Sucursal(ddlTrabajador, IdSucursal);
             }
         }
         protected void rblNivel_SelectedIndexChanged(object sender, EventArgs e)

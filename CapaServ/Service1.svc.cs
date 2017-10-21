@@ -83,9 +83,9 @@ namespace CapaServ
             if (Mgr_Medidas.Add_Medidas_Sucursal(Convert.ToInt32(id_sucursal)))
             {
                 string empresa = "", correo = "";
-                var _sucursal = Mgr_Sucursal.Sucursal(Convert.ToInt32(id_sucursal));
+                var _sucursal = Mgr_Sucursal.Get_Sucursal(Convert.ToInt32(id_sucursal));
 
-                List<empresa> data_empresa = Mgr_Empresa.EmpresaEmail(Convert.ToInt32(_sucursal.id_empresa));
+                List<empresa> data_empresa = Mgr_Empresa.Get_EmpresaEmail(Convert.ToInt32(_sucursal.id_empresa));
                 foreach (var datos in data_empresa)
                 {
                     empresa = datos.nombre;

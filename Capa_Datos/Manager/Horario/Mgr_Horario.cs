@@ -8,13 +8,13 @@ namespace Capa_Datos.Manager.Horario
 {
     public class Mgr_Horario
     {
-        //------------crud
+        //------------FUNCIONES DE CREAR, EDITAR Y ELIMINAR
         public static bool Add_Horario_Sucursal(String[] valores)
         {
             horario nuevo = new horario()
             {
                 nombre = "Horario Default " + valores[0],
-                id_empresa = Mgr_Empresa.get_max_Empresas(),
+                id_empresa = Mgr_Empresa.Get_Max_Empresas(),
                 fecha_inicio = "12:00",
                 fecha_fin = "01:00",
                 fecha_creacion = DateTime.Today
@@ -22,22 +22,22 @@ namespace Capa_Datos.Manager.Horario
             return CRUD.Add_Fila(nuevo);
         }
         
-        //--------------getter
-        public static int Horario()
+        //--------------FUNCIONES DE CONSULTAR
+        public static int Get_Horario()
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             var consulta = new horario();
             int id = contexto.horario.Max(x => x.id_horario);
             return id;
         }
-        public static horario Horario(int _id_horario)
+        public static horario Get_Horario(int _id_horario)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             horario consulta = new horario();
             consulta = contexto.horario.Where(x => x.id_horario == _id_horario).SingleOrDefault();
             return consulta;
         }
-        public static List<horario> ListHorario(int _id_empresa)
+        public static List<horario> GetList_Horario(int _id_empresa)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             List<horario> consulta = new List<horario>();
@@ -47,8 +47,8 @@ namespace Capa_Datos.Manager.Horario
             return consulta;
         }
 
-        //---------horario
-        public static void Horario_Empresa(DropDownList DropDownList1, int _id_empresa)
+        //--------------FUNCIONES DE LLENAR LISTA
+        public static void Lista_HorarioByEmpresa(DropDownList DropDownList1, int _id_empresa)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             #region codigo
@@ -63,9 +63,8 @@ namespace Capa_Datos.Manager.Horario
             #endregion
         }
 
-        //----------grid
-
-        public static void Horario(GridView GridView1, int _id_empresa = 0, string _nombre = "")
+        //----------FUNCIONES DE LLENAR GRID
+        public static void Grid_Horario(GridView GridView1, int _id_empresa = 0, string _nombre = "")
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
 

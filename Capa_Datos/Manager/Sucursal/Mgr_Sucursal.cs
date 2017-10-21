@@ -7,7 +7,48 @@ namespace Capa_Datos.Manager.Sucursal
 {
     public class Mgr_Sucursal
     {
-        //-----------------get
+        //------------FUNCIONES DE CONSULTAR
+        public static int Get_Sucursal()
+        {
+            GrupoLiEntities contexto = new GrupoLiEntities();
+            var consulta = new sucursal();
+            int id = contexto.sucursal.Max(x => x.id_sucursal);
+            return id;
+        }
+        public static sucursal Get_Sucursal(int _id_sucursal)
+        {
+            GrupoLiEntities contexto = new GrupoLiEntities();
+            sucursal consulta = new sucursal();
+
+            consulta = contexto.sucursal.Where(x => x.id_sucursal == _id_sucursal).SingleOrDefault();
+
+            return consulta;
+        }
+        public static int Get_SucursalByNombre(string nombre, int id_empresa)
+        {
+            GrupoLiEntities contexto = new GrupoLiEntities();
+            var consulta = contexto.sucursal.Where(x => x.nombre.ToUpper().Equals(nombre.ToUpper()) && x.id_empresa == id_empresa).ToList();
+            if (consulta.Count == 0)
+                return 0;
+            else
+                return 1;
+        }
+        public static List<sucursal> Get_Sucursal(int _id_sucursal = 0, int _id_empresa = 0, string _nombre = "")
+        {
+            GrupoLiEntities contexto = new GrupoLiEntities();
+            List<sucursal> consulta = new List<sucursal>();
+
+            if (_id_sucursal != 0)
+            {
+                consulta = contexto.sucursal.Where(x => x.id_sucursal == _id_sucursal).ToList();
+            }
+            else if (_id_empresa != 0) { consulta = contexto.sucursal.Where(x => x.id_empresa == _id_empresa).ToList(); }
+            else if (_nombre != "") { consulta = contexto.sucursal.Where(x => x.nombre == _nombre).ToList(); }
+
+            return consulta;
+        }
+
+        //------------FUNCIONES DE SETTER
         public static int Set_IdSucursalDDl(Model_UsuarioSistema ObjUsuario, DropDownList ddlSucursal)
         {
             int IdSucursal = 0;
@@ -27,7 +68,6 @@ namespace Capa_Datos.Manager.Sucursal
 
             return IdSucursal;
         }
-
         public static int Set_IdSucursal(Model_UsuarioSistema ObjUsuario, int valor)
         {
             int IdSucursal = 0;
@@ -44,51 +84,8 @@ namespace Capa_Datos.Manager.Sucursal
             return IdSucursal;
         }
 
-        public static int SucursalByNombre(string nombre, int id_empresa)
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            var consulta = contexto.sucursal.Where(x => x.nombre.ToUpper().Equals(nombre.ToUpper()) && x.id_empresa == id_empresa).ToList();
-            if (consulta.Count == 0)
-                return 0;
-            else
-                return 1;
-        }
-
-        public static sucursal Sucursal(int _id_sucursal)
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            sucursal consulta = new sucursal();
-
-            consulta = contexto.sucursal.Where(x => x.id_sucursal == _id_sucursal).SingleOrDefault();
-
-            return consulta;
-        }
-
-        public static List<sucursal> Sucursal(int _id_sucursal = 0, int _id_empresa = 0, string _nombre = "")
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            List<sucursal> consulta = new List<sucursal>();
-
-            if (_id_sucursal != 0)
-            {
-                consulta = contexto.sucursal.Where(x => x.id_sucursal == _id_sucursal).ToList();
-            }
-            else if (_id_empresa != 0) { consulta = contexto.sucursal.Where(x => x.id_empresa == _id_empresa).ToList(); }
-            else if (_nombre != "") { consulta = contexto.sucursal.Where(x => x.nombre == _nombre).ToList(); }
-
-            return consulta;
-        }
-        
-        public static int Sucursal()
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            var consulta = new sucursal();
-            int id = contexto.sucursal.Max(x => x.id_sucursal);
-            return id;
-        }
-
-        //-----------------listas
-        public static void Sucursal(DropDownList ddlSucursal, int _id_empresa)
+        //-----------------FUNCIONES DE LLENAR LISTAS
+        public static void Lista_Sucursal(DropDownList ddlSucursal, int _id_empresa)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             var Consulta = (from c in contexto.sucursal.Where(x => x.id_empresa == _id_empresa)
@@ -100,7 +97,7 @@ namespace Capa_Datos.Manager.Sucursal
             ddlSucursal.DataBind();
             ddlSucursal.Items.Insert(0, new ListItem("Seleccione la Sucursal", ""));
         }
-        public static void SucursalGeneral(DropDownList ddlSucursal, int _id_empresa)
+        public static void Lista_SucursalGeneral(DropDownList ddlSucursal, int _id_empresa)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             var Consulta = (from c in contexto.sucursal.Where(x => x.id_empresa == _id_empresa)
@@ -113,7 +110,7 @@ namespace Capa_Datos.Manager.Sucursal
             ddlSucursal.Items.Insert(0, new ListItem("Seleccione la Sucursal", ""));
         }
 
-        //-----------------crud
+        //-----------------FUNCIONES DE CREAR, EDITAR Y ELIMINAR
         public static bool Add_Sucursal_Empresa(String[] valores)
         {
             string _id_municipio = null;
@@ -173,15 +170,14 @@ namespace Capa_Datos.Manager.Sucursal
 
             return CRUD.Add_Fila(nuevo);
         }
-
-        public static bool DeleteSucursal(int id_sucursal)
+        public static bool Delete_Sucursal(int id_sucursal)
         {
             sucursal tabla = new sucursal();
             return CRUD.Delete_Fila(tabla, id_sucursal);
         }
 
-        //-----------------grid
-        public static void Sucursal(GridView GridView1, int miSucursal, int id_empresa = 0, int id_sucursal = 0, string nombre = "")
+        //-----------------FUNCIONES DE LLENAR GRID
+        public static void Grid_Sucursal(GridView GridView1, int miSucursal, int id_empresa = 0, int id_sucursal = 0, string nombre = "")
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
 

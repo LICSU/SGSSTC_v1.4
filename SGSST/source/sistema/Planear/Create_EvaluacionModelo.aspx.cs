@@ -37,7 +37,7 @@ namespace SGSST.source.sistema.Planear
             }
             else
             {
-                Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
             }
         }
 
@@ -59,7 +59,7 @@ namespace SGSST.source.sistema.Planear
         {
             if (ddlEmpresa.SelectedValue != string.Empty)
             {
-                Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
             }
         }
 
@@ -67,7 +67,7 @@ namespace SGSST.source.sistema.Planear
         {
             if (ddlSucursal.SelectedValue != string.Empty)
             {
-                Mgr_Area.Area_Sucursal(ddlArea, Convert.ToInt32(ddlSucursal.SelectedValue));
+                Mgr_Area.List_Area_Sucursal(ddlArea, Convert.ToInt32(ddlSucursal.SelectedValue));
             }
         }
 
@@ -75,7 +75,7 @@ namespace SGSST.source.sistema.Planear
         {
             if (ddlArea.SelectedValue != string.Empty)
             {
-                Mgr_PuestoTrabajo.PuestoTrabajo(ddlPuesto, "idArea", Convert.ToInt32(ddlArea.SelectedValue));
+                Mgr_PuestoTrabajo.Lista_PuestoTrabajo(ddlPuesto, "idArea", Convert.ToInt32(ddlArea.SelectedValue));
             }
         }
     }

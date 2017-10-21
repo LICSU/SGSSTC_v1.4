@@ -32,7 +32,7 @@ namespace SGSSTC.source.sistema.Hacer
             IdSucursal = objUtilidades.descifrarCadena(Request.QueryString["suc"]);
 
             List<sucursal> ListaSucursal = new List<sucursal>();
-            ListaSucursal = Mgr_Sucursal.Sucursal(Convert.ToInt32(IdSucursal),0,"");
+            ListaSucursal = Mgr_Sucursal.Get_Sucursal(Convert.ToInt32(IdSucursal),0,"");
             foreach (var item in ListaSucursal)
             {
                 IdEmpresa = Convert.ToInt32(item.id_empresa);
@@ -52,7 +52,7 @@ namespace SGSSTC.source.sistema.Hacer
         private void CargarDatos()
         {
             List<identificacion_peligro> ListaRiesgos = new List<identificacion_peligro>();
-            ListaRiesgos = Mgr_Riesgos.IdentificacionPeligro(Convert.ToInt32(idRiesgo));
+            ListaRiesgos = Mgr_Riesgos.Get_IdentificacionPeligro(Convert.ToInt32(idRiesgo));
 
             foreach (var itemRiesgos in ListaRiesgos)
             {
@@ -79,10 +79,10 @@ namespace SGSSTC.source.sistema.Hacer
 
         private void CargarListas()
         {
-            Mgr_Obligacion.Frecuencia(ddlFrecuencia);
-            Mgr_Categoria.Categorias(ddlCategoria, IdEmpresa);
-            Capa_Datos.Manager.Usuario.Mgr_Usuario.Usuario_Sucursal(ddlResponsable, Convert.ToInt32(IdSucursal));
-            Mgr_PlanTrabajo.Actividades_Sucursal(ddlActividad, Convert.ToInt32(IdSucursal), DateTime.Now.Year);
+            Mgr_Obligacion.Lista_Frecuencia(ddlFrecuencia);
+            Mgr_Categoria.List_Categorias(ddlCategoria, IdEmpresa);
+            Capa_Datos.Manager.Usuario.Mgr_Usuario.Lista_UsuarioBySucursal(ddlResponsable, Convert.ToInt32(IdSucursal));
+            Mgr_PlanTrabajo.Lista_ActividadesBySucursal(ddlActividad, Convert.ToInt32(IdSucursal), DateTime.Now.Year);
         }
 
         protected void AgregarRegistro(object sender, EventArgs e)

@@ -44,12 +44,12 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
 			}
 			else
 			{
-				Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+				Mgr_Sucursal.Lista_Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
 			}
 
 			if (!BoolEmpSuc.Item2)
 			{
-				Mgr_Area.Area_Sucursal(ddlArea, ObjUsuario.Id_sucursal);
+				Mgr_Area.List_Area_Sucursal(ddlArea, ObjUsuario.Id_sucursal);
 			}
 		}
 		#endregion
@@ -930,7 +930,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
 			if (ddlEmpresa.SelectedValue != string.Empty)
 			{
 				ViewState["empresa"] = ddlEmpresa.SelectedValue;
-				Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
+				Mgr_Sucursal.Lista_Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
 				ViewState["sucursal"] = "0";
 			}
 			else
@@ -943,7 +943,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
 			if (ddlSucursal.SelectedValue != string.Empty)
 			{
 				ViewState["sucursal"] = ddlSucursal.SelectedValue;
-				Mgr_Area.Area_Sucursal(ddlArea, Convert.ToInt32(ddlSucursal.SelectedValue), "", "Administrativa");
+				Mgr_Area.List_Area_Sucursal(ddlArea, Convert.ToInt32(ddlSucursal.SelectedValue), "", "Administrativa");
 			}
 			else
 			{
@@ -956,7 +956,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
 			if (ddlArea.SelectedValue != string.Empty)
 			{
 				ViewState["area"] = ddlArea.SelectedValue;
-				Mgr_PuestoTrabajo.PuestoTrabajo(ddlPuesto, "idArea", Convert.ToInt32(ddlArea.SelectedValue));
+				Mgr_PuestoTrabajo.Lista_PuestoTrabajo(ddlPuesto, "idArea", Convert.ToInt32(ddlArea.SelectedValue));
 			}
 			else
 			{
@@ -978,7 +978,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
 					IdSucursal = Convert.ToInt32(ddlSucursal.SelectedValue);
 				}
 
-				Mgr_Trabajador.Trabajadores_Puestos(ddlTrabajador, Convert.ToInt32(ddlPuesto.SelectedValue));
+				Mgr_Trabajador.Lista_Trabajadores_Puestos(ddlTrabajador, Convert.ToInt32(ddlPuesto.SelectedValue));
 				phInformacion.Visible = true;
 				phTrabajdor.Visible = true;
 			}

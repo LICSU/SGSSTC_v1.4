@@ -57,15 +57,15 @@ namespace SGSSTC.source.sistema.Hacer
 			}
 			else
 			{
-				Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
-				Mgr_Sucursal.Sucursal(ddlSucursalAdd, ObjUsuario.Id_empresa);
-				Mgr_Sucursal.Sucursal(ddlSucursalEdit, ObjUsuario.Id_empresa);
+				Mgr_Sucursal.Lista_Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+				Mgr_Sucursal.Lista_Sucursal(ddlSucursalAdd, ObjUsuario.Id_empresa);
+				Mgr_Sucursal.Lista_Sucursal(ddlSucursalEdit, ObjUsuario.Id_empresa);
 			}
 
 			if (!BoolEmpSuc.Item2)
 			{
-				Mgr_Usuario.Usuario_Sucursal(ddlResponsable, ObjUsuario.Id_sucursal);
-				Mgr_Usuario.Usuario_Sucursal(ddlResponsableEdit, ObjUsuario.Id_sucursal);
+				Mgr_Usuario.Lista_UsuarioBySucursal(ddlResponsable, ObjUsuario.Id_sucursal);
+				Mgr_Usuario.Lista_UsuarioBySucursal(ddlResponsableEdit, ObjUsuario.Id_sucursal);
 			}
 
 		}
@@ -76,13 +76,13 @@ namespace SGSSTC.source.sistema.Hacer
 			if (IdSucursal != 0)
 			{
 				
-				sucursal ListaSucursal = Mgr_Sucursal.Sucursal(IdSucursal);
+				sucursal ListaSucursal = Mgr_Sucursal.Get_Sucursal(IdSucursal);
 				lbSucursal.Text = ListaSucursal.nombre;
 
 				lbAnho.Text = string.Empty + ViewState["anho"];
 			}
 
-			Mgr_PlanTrabajo.PlanTrabajo(GridView1, IdSucursal, Convert.ToInt32(string.Empty + ViewState["anho"]));
+			Mgr_PlanTrabajo.Grid_PlanTrabajo(GridView1, IdSucursal, Convert.ToInt32(string.Empty + ViewState["anho"]));
 		}
 		#endregion
 
@@ -279,7 +279,7 @@ namespace SGSSTC.source.sistema.Hacer
 				hdfEditID.Value = Utilidades_GridView.DevolverIdRow(e, GridView1);
 				
 				List<plan_trabajo> ListaPlanTrabajo = new List<plan_trabajo>();
-				ListaPlanTrabajo = Mgr_PlanTrabajo.Plan_Trabajo(0, 0, Convert.ToInt32(hdfEditID.Value));
+				ListaPlanTrabajo = Mgr_PlanTrabajo.Get_Plan_Trabajo(0, 0, Convert.ToInt32(hdfEditID.Value));
 
 				foreach (var item in ListaPlanTrabajo)
 				{
@@ -289,7 +289,7 @@ namespace SGSSTC.source.sistema.Hacer
 
 					ddlEmpresaEdit.SelectedValue = Convert.ToString(item.usuario.trabajador.puesto_trabajo.area.sucursal.id_empresa);
 
-					Mgr_Sucursal.Sucursal(ddlSucursalEdit, Convert.ToInt32(item.usuario.trabajador.puesto_trabajo.area.sucursal.id_empresa));
+					Mgr_Sucursal.Lista_Sucursal(ddlSucursalEdit, Convert.ToInt32(item.usuario.trabajador.puesto_trabajo.area.sucursal.id_empresa));
 					ddlSucursalEdit.SelectedValue = Convert.ToString(item.usuario.trabajador.puesto_trabajo.area.id_sucursal);
 
 					string formatoIni = DateTime.Now.Year + "-W";
@@ -303,7 +303,7 @@ namespace SGSSTC.source.sistema.Hacer
 
 					txtRecursosEdit.Text = Convert.ToString(item.recursos_aprobados);
 
-					Mgr_Usuario.Usuario_Sucursal(ddlResponsableEdit, Convert.ToInt32(item.usuario.trabajador.puesto_trabajo.area.id_sucursal));
+					Mgr_Usuario.Lista_UsuarioBySucursal(ddlResponsableEdit, Convert.ToInt32(item.usuario.trabajador.puesto_trabajo.area.id_sucursal));
 					ddlResponsableEdit.SelectedValue = Convert.ToString(item.id_responsable);
 				}
 
@@ -341,7 +341,7 @@ namespace SGSSTC.source.sistema.Hacer
 				string idPlanTrabajo = (e.Row.FindControl("id") as Label).Text;
 
 				List<plan_trabajo> ListaPlanTrabajo = new List<plan_trabajo>();
-				ListaPlanTrabajo = Mgr_PlanTrabajo.Plan_Trabajo(0, 0, Convert.ToInt32(idPlanTrabajo));
+				ListaPlanTrabajo = Mgr_PlanTrabajo.Get_Plan_Trabajo(0, 0, Convert.ToInt32(idPlanTrabajo));
 
 				foreach (var itemPlanTrab in ListaPlanTrabajo)
 				{
@@ -431,7 +431,7 @@ namespace SGSSTC.source.sistema.Hacer
 		{
 			if (ddlEmpresa.SelectedValue != string.Empty)
 			{
-				Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
+				Mgr_Sucursal.Lista_Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
 			}
 		}
 		protected void ddlSucursal_SelectedIndexChanged(object sender, EventArgs e)
@@ -451,14 +451,14 @@ namespace SGSSTC.source.sistema.Hacer
 		{
 			if (ddlEmpresaAdd.SelectedValue != string.Empty)
 			{
-				Mgr_Sucursal.Sucursal(ddlSucursalAdd, Convert.ToInt32(ddlEmpresaAdd.SelectedValue));
+				Mgr_Sucursal.Lista_Sucursal(ddlSucursalAdd, Convert.ToInt32(ddlEmpresaAdd.SelectedValue));
 			}
 		}
 		protected void ddlSucursalAdd_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (ddlSucursalAdd.SelectedValue != string.Empty)
 			{
-				Mgr_Usuario.Usuario_Sucursal(ddlResponsable, Convert.ToInt32(ddlSucursalAdd.SelectedValue));
+				Mgr_Usuario.Lista_UsuarioBySucursal(ddlResponsable, Convert.ToInt32(ddlSucursalAdd.SelectedValue));
 			}
 		}
 
@@ -466,14 +466,14 @@ namespace SGSSTC.source.sistema.Hacer
 		{
 			if (ddlEmpresaEdit.SelectedValue != string.Empty)
 			{
-				Mgr_Sucursal.Sucursal(ddlSucursalEdit, Convert.ToInt32(ddlEmpresaEdit.SelectedValue));
+				Mgr_Sucursal.Lista_Sucursal(ddlSucursalEdit, Convert.ToInt32(ddlEmpresaEdit.SelectedValue));
 			}
 		}
 		protected void ddlSucursalEdit_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (ddlSucursalEdit.SelectedValue != string.Empty)
 			{
-				Mgr_Usuario.Usuario_Sucursal(ddlResponsableEdit, Convert.ToInt32(ddlSucursalEdit.SelectedValue));
+				Mgr_Usuario.Lista_UsuarioBySucursal(ddlResponsableEdit, Convert.ToInt32(ddlSucursalEdit.SelectedValue));
 			}
 		}
 

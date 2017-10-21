@@ -34,7 +34,7 @@ namespace SGSSTC.source.sistema.GestionDatos
             idPuestos = objUtilidades.descifrarCadena(Request.QueryString["id"]);
 
             List<puesto_trabajo> ListaPuestos = new List<puesto_trabajo>();
-            ListaPuestos = Mgr_PuestoTrabajo.PuestoTrabajo(idPuestos, 0, "");
+            ListaPuestos = Mgr_PuestoTrabajo.Get_PuestoTrabajo(idPuestos, 0, "");
 
             foreach (var itemPuestos in ListaPuestos)
             {
@@ -57,7 +57,7 @@ namespace SGSSTC.source.sistema.GestionDatos
 
                 List<puesto_trabajo_epp> ListaPuestoTrabajo_Epp = new List<puesto_trabajo_epp>();
                 ListaPuestoTrabajo_Epp = new List<puesto_trabajo_epp>();
-                ListaPuestoTrabajo_Epp = Mgr_PuestoTrabajo.PuestoEpp(idPuestos);
+                ListaPuestoTrabajo_Epp = Mgr_PuestoTrabajo.Get_PuestoEpp(idPuestos);
                 string items = string.Empty;
                 foreach (var li in ListaPuestoTrabajo_Epp)
                 {

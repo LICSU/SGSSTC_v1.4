@@ -39,14 +39,14 @@ namespace SGSSTC.source.sistema.GestionDatos
             }
             else
             {
-                Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
-                Mgr_Epp.Epp(ddlEpp);
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+                Mgr_Epp.List_Epp(ddlEpp);
             }
 
             if (!BoolEmpSuc.Item2)
             {
-                Mgr_Epp.Epp(ddlEpp);
-                Mgr_Area.Area_Sucursal(ddlArea, ObjUsuario.Id_sucursal);
+                Mgr_Epp.List_Epp(ddlEpp);
+                Mgr_Area.List_Area_Sucursal(ddlArea, ObjUsuario.Id_sucursal);
             }
         }
 
@@ -63,7 +63,7 @@ namespace SGSSTC.source.sistema.GestionDatos
                 IdSucursal = ObjUsuario.Id_sucursal;
             }
 
-            List<puesto_trabajo> puesto = Mgr_PuestoTrabajo.PuestoTrabajo_Nom_Suc(txtNombre.Text, IdSucursal);
+            List<puesto_trabajo> puesto = Mgr_PuestoTrabajo.Get_PuestoTrabajo_Nom_Suc(txtNombre.Text, IdSucursal);
 
             if (puesto.Count == 0)
             {
@@ -100,8 +100,8 @@ namespace SGSSTC.source.sistema.GestionDatos
         {
             if (ddlEmpresa.SelectedValue != string.Empty)
             {
-                Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
-                Mgr_Epp.Epp(ddlEpp);
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
+                Mgr_Epp.List_Epp(ddlEpp);
             }
         }
 
@@ -109,7 +109,7 @@ namespace SGSSTC.source.sistema.GestionDatos
         {
             if (ddlSucursal.SelectedValue != string.Empty)
             {
-                Mgr_Area.Area_Sucursal(ddlArea, Convert.ToInt32(ddlSucursal.SelectedValue));
+                Mgr_Area.List_Area_Sucursal(ddlArea, Convert.ToInt32(ddlSucursal.SelectedValue));
             }
         }
     }

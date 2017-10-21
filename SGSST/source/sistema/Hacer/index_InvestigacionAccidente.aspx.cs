@@ -51,12 +51,12 @@ namespace SGSSTC.source.sistema.Verificar
             }
             else
             {
-                Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
             }
 
             if (!BoolEmpSuc.Item2)
             {
-                Mgr_Area.Area_Sucursal(ddlArea, ObjUsuario.Id_sucursal);
+                Mgr_Area.List_Area_Sucursal(ddlArea, ObjUsuario.Id_sucursal);
             }
         }
         private void LlenarGridView()
@@ -64,7 +64,7 @@ namespace SGSSTC.source.sistema.Verificar
             int IdEmpresa = Mgr_Empresa.Set_IdEmpresa(ObjUsuario, Convert.ToInt32(ViewState["empresa"]));
             int IdSucursal = Mgr_Sucursal.Set_IdSucursal(ObjUsuario, Convert.ToInt32(ViewState["sucursal"]));
 
-            Mgr_Acc_Inc.Accidente_General(
+            Mgr_Acc_Inc.Grid_Accidente(
                 GridView1,
                 IdEmpresa,
                 IdSucursal,
@@ -79,7 +79,7 @@ namespace SGSSTC.source.sistema.Verificar
             investigacion_ac_in tabla = new investigacion_ac_in();
 
             List<investigacion_ac_in> consulta = new List<investigacion_ac_in>();
-            consulta = Mgr_Acc_Inc.InvestigacionAccidente(Convert.ToInt32(hdfIDDel.Value));
+            consulta = Mgr_Acc_Inc.Get_Investigacion_Accidente(Convert.ToInt32(hdfIDDel.Value));
 
             foreach (var item in consulta)
             {
@@ -156,7 +156,7 @@ namespace SGSSTC.source.sistema.Verificar
         {
             if (ddlEmpresa.SelectedValue != string.Empty)
             {
-                Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
+                Mgr_Sucursal.Lista_Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
                 ViewState["empresa"] = ddlEmpresa.SelectedValue;
             }
             else
@@ -172,7 +172,7 @@ namespace SGSSTC.source.sistema.Verificar
             {
                 _id = Convert.ToInt32(ddlSucursal.SelectedValue);
                 ViewState["sucursal"] = ddlSucursal.SelectedValue;
-                Mgr_Area.Area_Sucursal(ddlArea, _id);
+                Mgr_Area.List_Area_Sucursal(ddlArea, _id);
             }
             else
             {

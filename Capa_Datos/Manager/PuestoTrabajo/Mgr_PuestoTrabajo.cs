@@ -8,14 +8,14 @@ namespace Capa_Datos.Manager.PuestoTrabajo
 {
     public class Mgr_PuestoTrabajo
     {
-        //------------------CRUD
+        //------------------FUNCIONES DE CREAR, EDITAR Y ELIMINAR
         public static bool Add_PuestoTrabajo_Sucursal(String[] valores)
         {
             puesto_trabajo nuevo = new puesto_trabajo()
             {
                 nombre = "Puesto de Trabajo Default " + valores[0],
                 descripcion = "Descripcion del Puesto Default",
-                id_area = Mgr_Area.Areas()
+                id_area = Mgr_Area.Get_Area()
             };
             return CRUD.Add_Fila(nuevo);
         }
@@ -54,7 +54,7 @@ namespace Capa_Datos.Manager.PuestoTrabajo
                         {
                             puesto_trabajo_epp nuevopuestoEpp = new puesto_trabajo_epp()
                             {
-                                id_puesto_trabajo = Convert.ToInt32(PuestoTrabajo()),
+                                id_puesto_trabajo = Convert.ToInt32(Get_PuestoTrabajo()),
                                 id_epp = Convert.ToInt32(li.Value)
                             };
                             bError = CRUD.Add_Fila(nuevopuestoEpp);
@@ -73,15 +73,15 @@ namespace Capa_Datos.Manager.PuestoTrabajo
 
         }
 
-        //------------GETTER
-        public static List<puesto_trabajo_epp> PuestoEpp(int id_puesto)
+        //------------FUNCIONES DE CONSULTAR
+        public static int Get_PuestoTrabajo()
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
-            var consulta = new List<puesto_trabajo_epp>();
-            consulta = contexto.puesto_trabajo_epp.Where(x => x.id_puesto_trabajo == id_puesto).ToList();
-            return consulta;
+            var consulta = new puesto_trabajo();
+            int id = contexto.puesto_trabajo.Max(x => x.id_puesto_trabajo);
+            return id;
         }
-        public static int idPuestoTrabajador(int _id_trabajador)
+        public static int GetId_PuestoTrabajador(int _id_trabajador)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             var query = (
@@ -95,7 +95,7 @@ namespace Capa_Datos.Manager.PuestoTrabajo
 
             return query.ElementAt(0).id_puesto_trabajo;
         }
-        public static int PuestoEppValue(int id_puesto, int id_epp)
+        public static int Get_PuestoEppValue(int id_puesto, int id_epp)
         {
             int valor = 0;
             GrupoLiEntities contexto = new GrupoLiEntities();
@@ -114,14 +114,25 @@ namespace Capa_Datos.Manager.PuestoTrabajo
                 valor = 0;
             return valor;
         }
-        public static int PuestoTrabajo()
+        public static List<puesto_trabajo_epp> Get_PuestoEpp(int id_puesto)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
-            var consulta = new puesto_trabajo();
-            int id = contexto.puesto_trabajo.Max(x => x.id_puesto_trabajo);
-            return id;
+            var consulta = new List<puesto_trabajo_epp>();
+            consulta = contexto.puesto_trabajo_epp.Where(x => x.id_puesto_trabajo == id_puesto).ToList();
+            return consulta;
         }
-        public static List<puesto_trabajo> PuestoTrabajo(int _id_puesto = 0, int _id_empresa = 0, string tipoArea = "")
+        public static List<puesto_trabajo> Get_PuestoTrabajo_Nom_Suc(string _nombre, int _sucursal)
+        {
+            GrupoLiEntities contexto = new GrupoLiEntities();
+            List<puesto_trabajo> consulta = new List<puesto_trabajo>();
+
+            consulta = contexto.puesto_trabajo.Where(
+                x => x.nombre.ToUpper().Equals(_nombre.ToUpper()) &&
+                x.area.id_sucursal == _sucursal).ToList();
+
+            return consulta;
+        }
+        public static List<puesto_trabajo> Get_PuestoTrabajo(int _id_puesto = 0, int _id_empresa = 0, string tipoArea = "")
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             List<puesto_trabajo> consulta = new List<puesto_trabajo>();
@@ -138,19 +149,9 @@ namespace Capa_Datos.Manager.PuestoTrabajo
 
             return consulta;
         }
-        public static List<puesto_trabajo> PuestoTrabajo_Nom_Suc(string _nombre, int _sucursal)
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            List<puesto_trabajo> consulta = new List<puesto_trabajo>();
 
-            consulta = contexto.puesto_trabajo.Where(
-                x => x.nombre.ToUpper().Equals(_nombre.ToUpper()) &&
-                x.area.id_sucursal == _sucursal).ToList();
-
-            return consulta;
-        }
-        //-----------DropddownList
-        public static void PuestoTrabajo(DropDownList DropDownList1, string filtro, int _id = 0, string valor = "")
+        //-----------FUNCIONES DE LLENAR LISTA
+        public static void Lista_PuestoTrabajo(DropDownList DropDownList1, string filtro, int _id = 0, string valor = "")
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             if (filtro == "idArea")
@@ -208,8 +209,8 @@ namespace Capa_Datos.Manager.PuestoTrabajo
             }
         }
 
-        //-----------GRID
-        public static void PuestoTrabajo(GridView GridView1, int empresa = 0, int sucursal = 0, string area = "0", string num1 = "", string num2 = "", string sWhere = "")
+        //-----------FUNCIONES DE LLENAR GRID
+        public static void Grid_PuestoTrabajo(GridView GridView1, int empresa = 0, int sucursal = 0, string area = "0", string num1 = "", string num2 = "", string sWhere = "")
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             var query = (

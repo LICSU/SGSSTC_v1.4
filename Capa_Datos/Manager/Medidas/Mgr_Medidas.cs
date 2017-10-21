@@ -7,11 +7,11 @@ namespace Capa_Datos.Manager.Medidas
 {
     public class Mgr_Medidas
     {
-        //------------crud
+        //------------FUNCIONES DE CREAR, EDITAR Y ELIMINAR
         public static bool Add_Medidas_Sucursal(int id_sucursal)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
-            List<norma_sucursal> ListaNormasSucursal = Mgr_Norma.Normas_Sucursal(id_sucursal, 0);
+            List<norma_sucursal> ListaNormasSucursal = Mgr_Norma.Get_Normas_Sucursal(id_sucursal, 0);
 
             foreach (var item in ListaNormasSucursal)
             {
@@ -35,21 +35,20 @@ namespace Capa_Datos.Manager.Medidas
             }
             catch
             {
-                Mgr_Sucursal.DeleteSucursal(id_sucursal);
+                Mgr_Sucursal.Delete_Sucursal(id_sucursal);
                 return false;
             }
             return true;
         }
 
-        //------------getter
-
-        public static List<medida> Medidas(int idNorma)
+        //------------FUNCIONES DE CONSULTAR
+        public static List<medida> Get_Medidas(int idNorma)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             List<medida> consulta = contexto.medida.Where(x => x.id_normas == idNorma).ToList();
             return consulta;
         }
-        public static List<medida_sucursal> Medidas_Sucursal(int _id_medidas_sucursal)
+        public static List<medida_sucursal> Get_MedidasBySucursal(int _id_medidas_sucursal)
         {
             GrupoLiEntities contexto2 = new GrupoLiEntities();
 
@@ -59,7 +58,5 @@ namespace Capa_Datos.Manager.Medidas
                 ).ToList();
             return consulta;
         }
-
-
     }
 }

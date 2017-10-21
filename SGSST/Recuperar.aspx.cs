@@ -15,7 +15,7 @@ namespace SGSSTC
         {
             Utilidades objUtilidades = new Utilidades();
             List<usuario> objUsuario = new List<usuario>();
-            objUsuario = Mgr_Usuario.Usuario(0, 0, emailUsuario);
+            objUsuario = Mgr_Usuario.Get_Usuario(0, 0, emailUsuario);
 
             foreach (var itemUsuario in objUsuario)
             {

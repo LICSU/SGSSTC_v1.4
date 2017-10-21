@@ -35,7 +35,7 @@ namespace SGSSTC.source.sistema.Hacer
 			int id_Ide_Puesto;
 			id_Ide_Puesto = objUtilidades.descifrarCadena(Request.QueryString["id"]);
 			List<identificacion_puesto> Lista_Ide_Puesto = new List<identificacion_puesto>();
-			Lista_Ide_Puesto = Mgr_Riesgos.IdentificacionPuesto(id_Ide_Puesto);
+			Lista_Ide_Puesto = Mgr_Riesgos.Get_IdentificacionPuesto(id_Ide_Puesto);
 
 			foreach (var item in Lista_Ide_Puesto)
 			{
