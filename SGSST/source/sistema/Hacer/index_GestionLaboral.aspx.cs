@@ -10,6 +10,7 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Capa_Datos.Manager.GestionLaboral;
 
 namespace SGSSTC.source.sistema.Hacer
 {
@@ -165,8 +166,8 @@ namespace SGSSTC.source.sistema.Hacer
             {
                 IdUsuario = ObjUsuario.Id_usuario;
             }
-            
-            Tabla.GestionLaboral(GridView1,
+
+            Mgr_GestionLaboral.GestionLaboral(GridView1,
                 IdEmpresa,
                 IdSucursal,
                 Convert.ToInt32("0" +  ViewState["TipoGestion"]),
@@ -252,7 +253,7 @@ namespace SGSSTC.source.sistema.Hacer
 
             if (ObjUsuario.Error)
             {
-                string id_ges_lab = Convert.ToString(GetterMax.GestionLaboral());
+                string id_ges_lab = Convert.ToString(Mgr_GestionLaboral.GestionLaboral());
 
                 foreach (ListItem item in chkTrabajadores.Items)
                 {
@@ -359,7 +360,7 @@ namespace SGSSTC.source.sistema.Hacer
             if (ObjUsuario.Error)
             {
                 #region trabajador gestion
-                string id_ges_lab = Convert.ToString(GetterMax.GestionLaboral());
+                string id_ges_lab = Convert.ToString(Mgr_GestionLaboral.GestionLaboral());
 
                 foreach (ListItem item in chkTrabajadores.Items)
                 {
@@ -471,7 +472,7 @@ namespace SGSSTC.source.sistema.Hacer
             if (ObjUsuario.Error)
             {
                 #region trabajador gestion
-                string id_ges_lab = Convert.ToString(GetterMax.GestionLaboral());
+                string id_ges_lab = Convert.ToString(Mgr_GestionLaboral.GestionLaboral());
 
                 foreach (ListItem item in chkTrabajadores.Items)
                 {
@@ -581,7 +582,7 @@ namespace SGSSTC.source.sistema.Hacer
             if (ObjUsuario.Error)
             {
                 #region trabajador gestion
-                string id_ges_lab = Convert.ToString(GetterMax.GestionLaboral());
+                string id_ges_lab = Convert.ToString(Mgr_GestionLaboral.GestionLaboral());
 
                 foreach (ListItem item in chkTrabajadores.Items)
                 {
@@ -714,7 +715,7 @@ namespace SGSSTC.source.sistema.Hacer
                     hdfEditEntregaID.Value = Utilidades_GridView.DevolverIdRow(e, GridView1);
 
                     List<gestion_laboral> EditCapacitacion = new List<gestion_laboral>();
-                    EditCapacitacion = Getter.GestionLaboral(Convert.ToInt32(hdfEditEntregaID.Value));
+                    EditCapacitacion = Mgr_GestionLaboral.GestionLaboral(Convert.ToInt32(hdfEditEntregaID.Value));
 
                     foreach (var item in EditCapacitacion)
                     {
@@ -755,7 +756,7 @@ namespace SGSSTC.source.sistema.Hacer
                     hdfEditJornadaID.Value = Utilidades_GridView.DevolverIdRow(e, GridView1);
 
                     List<gestion_laboral> EditJornada = new List<gestion_laboral>();
-                    EditJornada = Getter.GestionLaboral(Convert.ToInt32(hdfEditJornadaID.Value));
+                    EditJornada = Mgr_GestionLaboral.GestionLaboral(Convert.ToInt32(hdfEditJornadaID.Value));
 
                     foreach (var item in EditJornada)
                     {
@@ -796,7 +797,7 @@ namespace SGSSTC.source.sistema.Hacer
                     hdfEditActividadID.Value = Utilidades_GridView.DevolverIdRow(e, GridView1);
 
                     List<gestion_laboral> EditActividad = new List<gestion_laboral>();
-                    EditActividad = Getter.GestionLaboral(Convert.ToInt32(hdfEditActividadID.Value));
+                    EditActividad = Mgr_GestionLaboral.GestionLaboral(Convert.ToInt32(hdfEditActividadID.Value));
 
                     foreach (var item in EditActividad)
                     {
@@ -839,7 +840,7 @@ namespace SGSSTC.source.sistema.Hacer
                     
 
                     List<gestion_laboral> EditCapacitacion = new List<gestion_laboral>();
-                    EditCapacitacion = Getter.GestionLaboral(Convert.ToInt32(hdfEditCapacitacionID.Value));
+                    EditCapacitacion = Mgr_GestionLaboral.GestionLaboral(Convert.ToInt32(hdfEditCapacitacionID.Value));
 
                     foreach (var item in EditCapacitacion)
                     {

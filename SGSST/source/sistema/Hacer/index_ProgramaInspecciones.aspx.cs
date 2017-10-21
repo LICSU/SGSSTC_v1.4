@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
+using Capa_Datos.Manager.Documento;
 
 namespace SGSSTC.source.sistema.Hacer
 {
@@ -49,12 +50,12 @@ namespace SGSSTC.source.sistema.Hacer
         }
         private void cargarPlan()
         {
-            int idPlan = GetterMax.Plan(ObjUsuario.Id_sucursal);
+            int idPlan = Mgr_Documento.Plan(ObjUsuario.Id_sucursal);
 
             if (idPlan != 0)
             {
                 List<plan> ListaPlanes = new List<plan>();
-                ListaPlanes = Getter.Planes(idPlan);
+                ListaPlanes = Mgr_Documento.Planes(idPlan);
 
                 if (ListaPlanes.Count > 0)
                 {

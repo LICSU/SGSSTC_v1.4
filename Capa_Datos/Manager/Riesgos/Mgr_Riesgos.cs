@@ -3,8 +3,6 @@ using Capa_Datos.Manager.Sucursal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.UI.WebControls;
 
 namespace Capa_Datos.Manager.Riesgos
@@ -60,7 +58,7 @@ namespace Capa_Datos.Manager.Riesgos
 
                 #region se guarda la identificacion del puesto
 
-                int id_IdentificacionPeligro = Convert.ToInt32(GetterMax.IdentificacionPeligro());
+                int id_IdentificacionPeligro = Convert.ToInt32(IdentificacionPeligro());
                 identificacion_puesto nuevoIde_Puesto = new identificacion_puesto()
                 {
                     id_puesto = Convert.ToInt32(Mgr_PuestoTrabajo.PuestoTrabajo()),
@@ -157,7 +155,6 @@ namespace Capa_Datos.Manager.Riesgos
 
             return Math.Round(promedio, 3);
         }
-
         public static List<factor_riesgo> FactorRiesgo(int id_factor_riesgo = 0, string _nombre = "")
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
@@ -175,7 +172,6 @@ namespace Capa_Datos.Manager.Riesgos
 
             return consulta;
         }
-
         public static List<identificacion_peligro> IdentificacionPeligro(int _id_identificacion_peligro)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
@@ -200,7 +196,12 @@ namespace Capa_Datos.Manager.Riesgos
 
             return consulta;
         }
-
+        public static int IdentificacionPeligro()
+        {
+            GrupoLiEntities contexto = new GrupoLiEntities();
+            var consulta = new identificacion_peligro();
+            return contexto.identificacion_peligro.Max(x => x.id_identificacion_peligro);
+        }
 
         //----listas
         public static void Riesgos(DropDownList DropDownList1, string tabla, string _id_tipo = "")

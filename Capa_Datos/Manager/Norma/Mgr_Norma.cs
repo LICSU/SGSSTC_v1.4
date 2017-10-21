@@ -166,6 +166,33 @@ namespace Capa_Datos.Manager.Norma
             return consulta;
         }
 
+        //--------------listas
+
+        public static void AnhoNorma(DropDownList DropDownList1, int _id_sucursal)
+        {
+            GrupoLiEntities contexto = new GrupoLiEntities();
+            var Consulta = (
+                from c in contexto.norma_sucursal
+                where c.id_sucursal == _id_sucursal
+                group c by c.norma.anho into g
+                select new
+                {
+                    name = g.Key,
+                    count = g.Count()
+
+                }).ToList();
+
+            Consulta = Consulta.OrderByDescending(x => x.name).ToList();
+
+
+            DropDownList1.DataValueField = "name";
+            DropDownList1.DataTextField = "name";
+            DropDownList1.DataSource = Consulta;
+
+            DropDownList1.DataBind();
+            DropDownList1.Items.Insert(0, new ListItem("Seleccione ...", ""));
+        }
+
 
     }
 }

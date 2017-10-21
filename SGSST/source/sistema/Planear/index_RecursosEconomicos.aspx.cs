@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Capa_Datos.Manager.Documento;
 
 namespace SGSSTC.source.sistema.Hacer
 {
@@ -41,7 +42,7 @@ namespace SGSSTC.source.sistema.Hacer
             int IdEmpresa = Mgr_Empresa.Set_IdEmpresa(ObjUsuario, Convert.ToInt32(ViewState["empresa"]));
             int IdSucursal = Mgr_Sucursal.Set_IdSucursal(ObjUsuario, Convert.ToInt32(ViewState["sucursal"]));
 
-            Tabla.RecursosEconomicos(GridView1, IdEmpresa, IdSucursal, string.Empty + ViewState["sWhere"]);
+            Mgr_Documento.RecursosEconomicos(GridView1, IdEmpresa, IdSucursal, string.Empty + ViewState["sWhere"]);
 
         }
         #endregion
@@ -73,7 +74,7 @@ namespace SGSSTC.source.sistema.Hacer
 
             if (ObjUsuario.Error)
             {
-                int idRec = GetterMax.RecursosEconmicos(IdSucursal);
+                int idRec = Mgr_Documento.RecursosEconmicos(IdSucursal);
 
                 if (fuSoporte.HasFile)
                 {
@@ -124,7 +125,7 @@ namespace SGSSTC.source.sistema.Hacer
                 int contadorArchivos = 0;
 
                 List<soporte> ListSopRec = new List<soporte>();
-                ListSopRec = Getter.Soporte(Convert.ToInt32(hdSoporte.Value), "RecursosEconomicos");
+                ListSopRec = Mgr_Documento.Soporte(Convert.ToInt32(hdSoporte.Value), "RecursosEconomicos");
 
                 ControlesDinamicos.CrearLiteral("<ul class='list-group'>", pAnexo);
 

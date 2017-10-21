@@ -15,6 +15,7 @@ using Capa_Datos.Manager.Usuario;
 using Capa_Datos.Manager.CodigoCiiu;
 using Capa_Datos.Manager.Horario;
 using Capa_Datos.Manager.Documento;
+using Capa_Datos.Manager.Gobierno;
 
 namespace SGSSTC.source.sistema.GestionDatos
 {
@@ -34,8 +35,8 @@ namespace SGSSTC.source.sistema.GestionDatos
             if (!IsPostBack)
             {
                 Mgr_CodigoCiiu.Codciiu_Div_item(ddlSeccion1, "SeccionCiiu");
-                Listas.Reg_Dpto_Mcpio(ddlRegion, "Region");
-                Listas.Arl(ddlArp);
+                Mgr_Gobierno.Reg_Dpto_Mcpio(ddlRegion, "Region");
+                Mgr_Gobierno.Arl(ddlArp);
             }
         }
 
@@ -274,7 +275,7 @@ namespace SGSSTC.source.sistema.GestionDatos
         {
             if (ddlRegion.SelectedValue != string.Empty)
             {
-                Listas.Reg_Dpto_Mcpio(ddlDepartamento, "RegionDpto", Convert.ToInt32(ddlRegion.SelectedValue));
+                Mgr_Gobierno.Reg_Dpto_Mcpio(ddlDepartamento, "RegionDpto", Convert.ToInt32(ddlRegion.SelectedValue));
             }
         }
 
@@ -282,7 +283,7 @@ namespace SGSSTC.source.sistema.GestionDatos
         {
             if (ddlDepartamento.SelectedValue != string.Empty)
             {
-                Listas.Reg_Dpto_Mcpio(ddlMunicipio, "McpioDpto", Convert.ToInt32(ddlDepartamento.SelectedValue));
+                Mgr_Gobierno.Reg_Dpto_Mcpio(ddlMunicipio, "McpioDpto", Convert.ToInt32(ddlDepartamento.SelectedValue));
             }
         }
 

@@ -1,5 +1,6 @@
 ﻿using Capa_Datos;
 using Capa_Datos.Manager.Empresa;
+using Capa_Datos.Manager.Epp;
 using System;
 using System.Linq;
 using System.Web;
@@ -50,17 +51,17 @@ namespace SGSSTC.source.sistema.GestionDatos
             }
             else
             {
-                Listas.TipoEpp(ddlTipoEppAdd);
-                Listas.TipoEpp(ddlTipoEppEdit);
+                Mgr_Epp.TipoEpp(ddlTipoEppAdd);
+                Mgr_Epp.TipoEpp(ddlTipoEppEdit);
             }
-            Listas.TipoEpp(ddlTipoEpp);
+            Mgr_Epp.TipoEpp(ddlTipoEpp);
         }
 
         private void LlenarGridView()
         {
             int Idempresa = Mgr_Empresa.Set_IdEmpresa(ObjUsuario, Convert.ToInt32(ViewState["empresa"]));
 
-            Tabla.Epp(GridView1,string.Empty + ViewState["tipo_epp"],string.Empty + ViewState["sWhere"]);
+            Mgr_Epp.Epp(GridView1,string.Empty + ViewState["tipo_epp"],string.Empty + ViewState["sWhere"]);
         }
 
         protected void AgregarRegistro(object sender, EventArgs e)

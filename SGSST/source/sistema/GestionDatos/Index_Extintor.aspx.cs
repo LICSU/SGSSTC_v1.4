@@ -82,7 +82,7 @@ namespace SGSSTC.source.sistema.GestionDatos
             int IdSucursal = Mgr_Sucursal.Set_IdSucursal(ObjUsuario, Convert.ToInt32(ViewState["sucursal"]));
             string IdArea = string.Empty + ViewState["area"];
 
-            Tabla.Extintores(GridView1, IdEmpresa, IdSucursal, IdArea, string.Empty + ViewState["sWhere"]);
+            Mgr_Area.Extintores(GridView1, IdEmpresa, IdSucursal, IdArea, string.Empty + ViewState["sWhere"]);
         }
         #endregion
 
@@ -204,7 +204,7 @@ namespace SGSSTC.source.sistema.GestionDatos
 
 
                 List<extintor> ListaExtintor = new List<extintor>();
-                ListaExtintor = Getter.Extintor(Convert.ToInt32(hdfExtintorIDEdit.Value));
+                ListaExtintor = Mgr_Area.Extintor(Convert.ToInt32(hdfExtintorIDEdit.Value));
 
                 foreach (var item in ListaExtintor)
                 {

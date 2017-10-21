@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Web.UI.WebControls;
 
 namespace Capa_Datos
 {
@@ -342,68 +340,6 @@ namespace Capa_Datos
 
 
             return bError;
-        }
-
-
-        public static bool Add_Lista_Actividad(int id_sucursal)
-        {
-            lista_actividad nuevo = new lista_actividad()
-            {
-                actividad = "Crear Documento de Autoevaluación",
-                id_sucursal = id_sucursal,
-                estatus = "No",
-                fase = "E",
-                link = "../EvaluacionInicial/index_AutoEvaluacion.aspx",
-                anho = DateTime.Now.Year
-            };
-
-            return Add_Fila(nuevo);
-        }
-        public static bool Add_Pregunta(Model_UsuarioSistema ObjUsuario, String[] valores)
-        {
-            Pregunta nuevo = new Pregunta()
-            {
-                titulo = valores[0],
-                cuerpo_pregunta = valores[1],
-                id_usuario = ObjUsuario.Id_usuario,
-                estatus = 0,
-                fecha = DateTime.Now
-            };
-
-            return Add_Fila(nuevo);
-        }
-        public static bool Add_Respuesta(String[] valores)
-        {
-            Respuesta nuevo = new Respuesta()
-            {
-                cuerpo_respuesta = valores[0],
-                usuario = valores[1],
-                id_pregunta = Convert.ToInt32(valores[2]),
-                fecha = DateTime.Now,
-                calificacion = 0
-            };
-
-            return Add_Fila(nuevo);
-        }
-        public static bool AddSenalizacion(String[] valores, FileUpload fuImagen)
-        {
-            string ruta = Utilidades.GuardarImagen(fuImagen, valores[0], Paginas.Archivos_Senalizacion.Value);
-
-            if (!ruta.Contains("ERR-"))
-            {
-                senalizacion nuevo = new senalizacion()
-                {
-                    nombre = valores[0],
-                    descripcion = valores[1],
-                    url_imagen = ruta
-                };
-
-                return Add_Fila(nuevo);
-            }
-            else
-            {
-                return false;
-            }
         }
 
     }

@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Capa_Datos.Manager.Documento;
 
 namespace SGSSTC.source.sistema.EvaluacionInicial
 {
@@ -53,7 +54,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
 
         private void LlenarGridView()
         {
-            Tabla.analisis_vulnerabilidad(GridView1, IdEmpresa, IdSucursal, ViewState["sWhere"].ToString());
+            Mgr_Documento.analisis_vulnerabilidad(GridView1, IdEmpresa, IdSucursal, ViewState["sWhere"].ToString());
         }
         #endregion
 

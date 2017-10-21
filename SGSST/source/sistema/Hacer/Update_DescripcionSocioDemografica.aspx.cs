@@ -1,4 +1,7 @@
 ﻿using Capa_Datos;
+using Capa_Datos.Manager.Epp;
+using Capa_Datos.Manager.Gobierno;
+using Capa_Datos.Manager.Trabajador;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,8 +31,8 @@ namespace SGSSTC.source.sistema.Hacer
 
             if (!IsPostBack)
             {
-                Listas.EPS(ddlEps);
-                Listas.AFP(ddlFondo);
+                Mgr_Gobierno.EPS(ddlEps);
+                Mgr_Gobierno.AFP(ddlFondo);
                 CargarUsuario();
             }
         }
@@ -37,7 +40,7 @@ namespace SGSSTC.source.sistema.Hacer
         private void CargarUsuario()
         {
             List<desc_socio> ListaDescSocio = new List<desc_socio>();
-            ListaDescSocio = Getter.DescripcionSociodemografica(Convert.ToInt32(idPerfil));
+            ListaDescSocio = Mgr_Trabajador.DescripcionSociodemografica(Convert.ToInt32(idPerfil));
 
             foreach (var item in ListaDescSocio)
             {
@@ -322,7 +325,7 @@ namespace SGSSTC.source.sistema.Hacer
                     limpiarCampos();
 
                     List<desc_socio> ListaDescSocio = new List<desc_socio>();
-                    ListaDescSocio = Getter.DescripcionSociodemografica(Convert.ToInt32(ViewState["DescID"]));
+                    ListaDescSocio = Mgr_Trabajador.DescripcionSociodemografica(Convert.ToInt32(ViewState["DescID"]));
 
                     foreach (var itemDesc in ListaDescSocio)
                     {

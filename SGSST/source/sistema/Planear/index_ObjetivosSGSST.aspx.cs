@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Capa_Datos.Manager.PoliticaSST;
 
 namespace SGSSTC.source.sistema.Hacer
 {
@@ -32,7 +33,7 @@ namespace SGSSTC.source.sistema.Hacer
         {
             int IdEmpresa = Mgr_Empresa.Set_IdEmpresa(ObjUsuario, Convert.ToInt32(ViewState["empresa"]));
             int IdSucursal = Mgr_Sucursal.Set_IdSucursal(ObjUsuario, Convert.ToInt32(ViewState["sucursal"]));
-            Tabla.objetivosSgsst(GridView1, IdEmpresa, IdSucursal);
+            Mgr_PoliticaSST.objetivosSgsst(GridView1, IdEmpresa, IdSucursal);
         }
 
         private void CargarListas()

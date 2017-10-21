@@ -53,7 +53,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
         #region acciones
         private void cargarInformacion()
         {
-            List<extintor> extintor = Getter.Extintor(Convert.ToInt32(ddlExtintor.SelectedValue));
+            List<extintor> extintor = Mgr_Area.Extintor(Convert.ToInt32(ddlExtintor.SelectedValue));
             lblArea.Text = ddlArea.SelectedItem.Text;
             lblPeso.Text = extintor.ElementAt(0).peso;
             lblPresion.Text = extintor.ElementAt(0).presion;
@@ -255,7 +255,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
             if (ddlArea.SelectedValue != string.Empty)
             {
                 ViewState["area"] = ddlArea.SelectedValue;
-                Listas.Extintor_Area(ddlExtintor, Convert.ToInt32(ddlArea.SelectedValue));
+                Mgr_Area.Extintor_Area(ddlExtintor, Convert.ToInt32(ddlArea.SelectedValue));
                 ViewState["extintor"] = "";
             }
             else

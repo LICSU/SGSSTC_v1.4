@@ -1,4 +1,5 @@
 ﻿using Capa_Datos;
+using Capa_Datos.Manager.PoliticaSST;
 using System;
 using System.Collections.Generic;
 using System.Web;
@@ -41,10 +42,10 @@ namespace SGSSTC.source.sistema.Hacer
 
         private void cargarPolitica()
         {
-            int idPolitica = GetterMax.PoliticaSST(ObjUsuario.Id_empresa);
+            int idPolitica = Mgr_PoliticaSST.Politica_SST(ObjUsuario.Id_empresa);
 
             List<politica_sst> ListaPolitica = new List<politica_sst>();
-            ListaPolitica = Getter.PoliticaSST(idPolitica);
+            ListaPolitica = Mgr_PoliticaSST.PoliticaSST(idPolitica);
 
             if (ListaPolitica.Count == 0)
             {

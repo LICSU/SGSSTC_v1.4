@@ -1,5 +1,6 @@
 ﻿using Capa_Datos.Manager.Empresa;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.UI.WebControls;
 
@@ -28,6 +29,22 @@ namespace Capa_Datos.Manager.Horario
             var consulta = new horario();
             int id = contexto.horario.Max(x => x.id_horario);
             return id;
+        }
+        public static horario Horario(int _id_horario)
+        {
+            GrupoLiEntities contexto = new GrupoLiEntities();
+            horario consulta = new horario();
+            consulta = contexto.horario.Where(x => x.id_horario == _id_horario).SingleOrDefault();
+            return consulta;
+        }
+        public static List<horario> ListHorario(int _id_empresa)
+        {
+            GrupoLiEntities contexto = new GrupoLiEntities();
+            List<horario> consulta = new List<horario>();
+
+            consulta = contexto.horario.Where(x => x.id_empresa == _id_empresa).ToList();
+
+            return consulta;
         }
 
         //---------horario

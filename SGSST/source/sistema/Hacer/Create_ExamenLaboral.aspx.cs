@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Capa_Datos.Manager.Salud;
 
 namespace SGSSTC.source.sistema.Hacer
 {
@@ -42,7 +43,7 @@ namespace SGSSTC.source.sistema.Hacer
         private void CargarListas()
         {
             Mgr_Empresa.Lista_Empresa(ddlEmpresa);
-            Listas.TipoExamen(ddlTipoExamen);
+            Mgr_Salud.TipoExamen(ddlTipoExamen);
 
             if (BoolEmpSuc.Item1)
             {
@@ -476,7 +477,7 @@ namespace SGSSTC.source.sistema.Hacer
                 lbUbicacion.Text = string.Empty + item.direccion;
             }
 
-            lbNumHistoria.Text = string.Empty + (GetterMax.HistoriaClinica() + 1);
+            lbNumHistoria.Text = string.Empty + (Mgr_Salud.HistoriaClinica() + 1);
             Mgr_Trabajador.Trabajadores_Sucursal(ddlTrabajador, Convert.ToInt32(ddlSucursal.SelectedValue));
         }
         protected void ddlEmpresa_SelectedIndexChanged(object sender, EventArgs e)
@@ -508,7 +509,7 @@ namespace SGSSTC.source.sistema.Hacer
         }
         private void cargarHistoriasClinicas()
         {
-            Tabla.HC_Trabajador(GridView2, ddlTrabajador.SelectedValue);
+            Mgr_Salud.HC_Trabajador(GridView2, ddlTrabajador.SelectedValue);
         }
         private void cargarAccidentesLaborales()
         {
@@ -539,7 +540,7 @@ namespace SGSSTC.source.sistema.Hacer
 
             if ("" + ViewState["id_desc_socio"] != string.Empty)
             {
-                ListaDescSocio = Getter.DescripcionSociodemografica(Convert.ToInt32(ViewState["id_desc_socio"]));
+                ListaDescSocio = Mgr_Trabajador.DescripcionSociodemografica(Convert.ToInt32(ViewState["id_desc_socio"]));
 
                 foreach (var itemDescSocio in ListaDescSocio)
                 {
@@ -602,7 +603,7 @@ namespace SGSSTC.source.sistema.Hacer
         {
             #region Socio Demografica
             List<desc_socio> ListaDescSocio = new List<desc_socio>();
-            ListaDescSocio = Getter.DescripcionSociodemografica(0, Convert.ToInt32(ddlTrabajador.SelectedValue));
+            ListaDescSocio = Mgr_Trabajador.DescripcionSociodemografica(0, Convert.ToInt32(ddlTrabajador.SelectedValue));
 
             foreach (var itemDescSocio in ListaDescSocio)
             {

@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Capa_Datos.Manager.PoliticaSST;
 
 namespace SGSSTC.source.sistema.Hacer
 {
@@ -63,7 +64,7 @@ namespace SGSSTC.source.sistema.Hacer
             if (!valor.Equals(string.Empty)) {
                 id_trabajador = Convert.ToInt32(string.Empty + ViewState["trabajador"]);
             }
-            Tabla.Encuesta_PoliticaSST(
+            Mgr_PoliticaSST.Encuesta_PoliticaSST(
                 GridView1,
                 IdEmpresa,
                 IdSucursal,

@@ -118,7 +118,8 @@
     <Compile Include="cno.cs">
       <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
     </Compile>
-    <Compile Include="ComandosGrid.cs" />
+    <Compile Include="Manager\Salud\Model_Data.cs" />
+    <Compile Include="ValoresGeneral\ComandosGrid.cs" />
     <Compile Include="consulta.cs">
       <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
     </Compile>
@@ -214,16 +215,24 @@
     <Compile Include="Manager\AutoEvaluacion\Mgr_Autoevaluacion.cs" />
     <Compile Include="Manager\Categoria\Mgr_Categoria.cs" />
     <Compile Include="Manager\CodigoCiiu\Mgr_CodigoCiiu.cs" />
+    <Compile Include="Manager\Comunicacion\Mgr_Comunicacion.cs" />
     <Compile Include="Manager\Documento\Mgr_Documento.cs" />
     <Compile Include="Manager\Empresa\Mgr_Empresa.cs" />
+    <Compile Include="Manager\Epp\Mgr_Epp.cs" />
     <Compile Include="Manager\Estatus\Mgr_Estatus.cs" />
+    <Compile Include="Manager\GestionLaboral\Mgr_GestionLaboral.cs" />
+    <Compile Include="Manager\Gobierno\Mgr_Gobierno.cs" />
     <Compile Include="Manager\Horario\Mgr_Horario.cs" />
     <Compile Include="Manager\Indicadores\Mgr_Indicadores.cs" />
     <Compile Include="Manager\Inspeccion\Mgr_Inspeccion.cs" />
     <Compile Include="Manager\Medidas\Mgr_Medidas.cs" />
     <Compile Include="Manager\Norma\Mgr_Norma.cs" />
+    <Compile Include="Manager\Obligacion\Mgr_Obligacion.cs" />
+    <Compile Include="Manager\PlanTrabajo\Mgr_PlanTrabajo.cs" />
+    <Compile Include="Manager\PoliticaSST\Mgr_PoliticaSST.cs" />
     <Compile Include="Manager\PuestoTrabajo\Mgr_PuestoTrabajo.cs" />
     <Compile Include="Manager\Riesgos\Mgr_Riesgos.cs" />
+    <Compile Include="Manager\Salud\Mgr_Salud.cs" />
     <Compile Include="Manager\Sucursal\Mgr_Sucursal.cs" />
     <Compile Include="Manager\Trabajador\Mgr_Trabajador.cs" />
     <Compile Include="Manager\Usuario\Mgr_Usuario.cs" />
@@ -236,7 +245,7 @@
     <Compile Include="medida_sucursal.cs">
       <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
     </Compile>
-    <Compile Include="MensajeError.cs" />
+    <Compile Include="ValoresGeneral\MensajeError.cs" />
     <Compile Include="ModeloGrupoLi.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -253,16 +262,11 @@
       <DependentUpon>ModeloGrupoLi.edmx</DependentUpon>
     </Compile>
     <Compile Include="Model_Celda.cs" />
-    <Compile Include="Model_CEPP.cs" />
-    <Compile Include="Model_Data.cs" />
+    <Compile Include="Manager\Epp\Model_CEPP.cs" />
     <Compile Include="ManageFiles.cs" />
-    <Compile Include="Getter.cs" />
-    <Compile Include="GetterCantidad.cs" />
-    <Compile Include="GetterMax.cs" />
-    <Compile Include="Listas.cs" />
     <Compile Include="Modal.cs" />
     <Compile Include="CRUD.cs" />
-    <Compile Include="Model_Enfermedad_Sistema.cs" />
+    <Compile Include="Manager\Salud\Model_Enfermedad_Sistema.cs" />
     <Compile Include="municipio.cs">
       <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
     </Compile>
@@ -284,7 +288,7 @@
     <Compile Include="obligacion.cs">
       <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
     </Compile>
-    <Compile Include="Paginas.cs" />
+    <Compile Include="ValoresGeneral\Paginas.cs" />
     <Compile Include="perfil_cargo.cs">
       <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
     </Compile>
@@ -343,10 +347,9 @@
     <Compile Include="sysdiagrams.cs">
       <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
     </Compile>
-    <Compile Include="Tabla.cs" />
-    <Compile Include="TipoDocumento.cs" />
-    <Compile Include="Model_UsuarioAutenticado.cs" />
-    <Compile Include="Model_UsuarioSistema.cs" />
+    <Compile Include="Manager\Documento\TipoDocumento.cs" />
+    <Compile Include="Manager\Usuario\Model_UsuarioAutenticado.cs" />
+    <Compile Include="Manager\Usuario\Model_UsuarioSistema.cs" />
     <Compile Include="tipo_documento.cs">
       <DependentUpon>ModeloGrupoLi.tt</DependentUpon>
     </Compile>
@@ -376,7 +379,7 @@
     </Compile>
     <Compile Include="Utilidades.cs" />
     <Compile Include="Utilidades_GridView.cs" />
-    <Compile Include="ValoresDefault.cs" />
+    <Compile Include="ValoresGeneral\ValoresDefault.cs" />
     <Compile Include="NodosArbol.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

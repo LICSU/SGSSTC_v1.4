@@ -10,6 +10,7 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Capa_Datos.Manager.Epp;
 
 namespace SGSSTC.source.sistema.EvaluacionInicial
 {
@@ -109,7 +110,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
         {
             int intContInspecciones = 0;
             intContInspecciones = Convert.ToInt32(cantInspecciones.Value);
-            eppTrab = Getter.Epp(Convert.ToInt32(ddlPuesto.SelectedValue));
+            eppTrab = Mgr_Epp.Epp(Convert.ToInt32(ddlPuesto.SelectedValue));
             ControlesDinamicos.Add_Fila_InspeccionUsoEpp(pnDatos, intContInspecciones, eppTrab);
         }
 
@@ -122,7 +123,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
             if (ddlTrabajador.SelectedValue != string.Empty)
             {
                 ViewState["trabajador"] = ddlTrabajador.SelectedValue;
-                eppTrab = Getter.Epp(Convert.ToInt32(ddlPuesto.SelectedValue));
+                eppTrab = Mgr_Epp.Epp(Convert.ToInt32(ddlPuesto.SelectedValue));
                 if (eppTrab.Count > 0)
                 {
                     phInformacion.Visible = true;

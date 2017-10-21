@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
+using Capa_Datos.Manager.Documento;
 
 namespace SGSSTC.source.sistema.Hacer
 {
@@ -53,12 +54,12 @@ namespace SGSSTC.source.sistema.Hacer
         {
             phTabla.Visible = true;
             int IdSucursal = Mgr_Sucursal.Set_IdSucursalDDl(ObjUsuario, ddlSucursal);
-            int idMatriz = GetterMax.MatrizResponsabilidad(IdSucursal);
+            int idMatriz = Mgr_Documento.Matriz_Responsabilidad(IdSucursal);
 
             if (idMatriz != 0)
             {
                 List<matriz_responsabilidad> ListaMatrizResponsabilidad = new List<matriz_responsabilidad>();
-                ListaMatrizResponsabilidad = Getter.MatrizResponsabilidad(idMatriz);
+                ListaMatrizResponsabilidad = Mgr_Documento.MatrizResponsabilidad(idMatriz);
 
                 if (ListaMatrizResponsabilidad.Count > 0)
                 {
@@ -193,7 +194,7 @@ namespace SGSSTC.source.sistema.Hacer
             int IdSucursal = Mgr_Sucursal.Set_IdSucursalDDl(ObjUsuario, ddlSucursal);
 
             matriz_responsabilidad tabla = new matriz_responsabilidad();
-            ObjUsuario.Error = CRUD.Delete_Fila(tabla, GetterMax.MatrizResponsabilidad(IdSucursal));
+            ObjUsuario.Error = CRUD.Delete_Fila(tabla, Mgr_Documento.Matriz_Responsabilidad(IdSucursal));
 
             matriz_responsabilidad nuevo = new matriz_responsabilidad()
             {

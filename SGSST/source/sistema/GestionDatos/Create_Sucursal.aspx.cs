@@ -12,6 +12,8 @@ using System.Web.Security;
 using Capa_Datos.Manager.CodigoCiiu;
 using Capa_Datos.Manager.Horario;
 using Capa_Datos.Manager.Documento;
+using Capa_Datos.Manager.PlanTrabajo;
+using Capa_Datos.Manager.Gobierno;
 
 namespace SGSSTC.source.sistema.GestionDatos
 {
@@ -54,7 +56,7 @@ namespace SGSSTC.source.sistema.GestionDatos
                 Mgr_CodigoCiiu.Codciiu_Div_item(ddlItemDivision2, "claseCiiu_Empresa", ObjUsuario.Id_empresa);
                 Mgr_CodigoCiiu.Codciiu_Div_item(ddlItemDivision3, "claseCiiu_Empresa", ObjUsuario.Id_empresa);
             }
-            Listas.Reg_Dpto_Mcpio(ddlRegionAdd, "Region");
+            Mgr_Gobierno.Reg_Dpto_Mcpio(ddlRegionAdd, "Region");
         }
 
         private void CargarControles()
@@ -249,7 +251,7 @@ namespace SGSSTC.source.sistema.GestionDatos
 
         private Boolean add_Lista_Actividad_Default()
         {
-            if (Capa_Datos.CRUD.Add_Lista_Actividad(id_sucursal))
+            if (Mgr_PlanTrabajo.Add_Lista_Actividad(id_sucursal))
             {
                 string empresa = "", correo = "";
                 List<empresa> data_empresa = Mgr_Empresa.EmpresaEmail(IdEmpresa);
@@ -283,12 +285,12 @@ namespace SGSSTC.source.sistema.GestionDatos
 
         protected void ddlRegionAdd_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Listas.Reg_Dpto_Mcpio(ddlDptoAdd, "RegionDpto", Convert.ToInt32(ddlRegionAdd.SelectedValue));
+            Mgr_Gobierno.Reg_Dpto_Mcpio(ddlDptoAdd, "RegionDpto", Convert.ToInt32(ddlRegionAdd.SelectedValue));
         }
 
         protected void ddlDptoAdd_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Listas.Reg_Dpto_Mcpio(ddlMcpioAdd, "McpioDpto", Convert.ToInt32(ddlDptoAdd.SelectedValue));
+            Mgr_Gobierno.Reg_Dpto_Mcpio(ddlMcpioAdd, "McpioDpto", Convert.ToInt32(ddlDptoAdd.SelectedValue));
         }
 
         protected void ddlItemDivision1_SelectedIndexChanged(object sender, EventArgs e)

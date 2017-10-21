@@ -17,7 +17,6 @@ namespace Capa_Datos.Manager.Area
             int id = contexto.area.Max(x => x.id_area);
             return id;
         }
-
         public static List<area> Area(int _id_empresa = 0, int _id_area = 0, string _nombre = "")
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
@@ -29,7 +28,6 @@ namespace Capa_Datos.Manager.Area
 
             return consulta;
         }
-
         public static int AreaByNombre(string nombre, int id_sucursal)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
@@ -39,14 +37,12 @@ namespace Capa_Datos.Manager.Area
             else
                 return 1;
         }
-
         public static List<usuario> AreaByUsuario(int _id_usuario)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             var consulta = contexto.usuario.Where(x => x.id_usuario == _id_usuario).ToList();
             return consulta;
         }
-
         public static bool Add_Area_Sucursal(String[] valores)
         {
             area nuevo = new area()
@@ -60,9 +56,16 @@ namespace Capa_Datos.Manager.Area
 
             return CRUD.Add_Fila(nuevo);
         }
-        
-        //---------------crud
+        public static List<extintor> Extintor(int _idExtintor)
+        {
+            GrupoLiEntities contexto = new GrupoLiEntities();
+            List<extintor> consulta = new List<extintor>();
+            consulta = contexto.extintor.Where(x => x.id_extintor == _idExtintor).ToList();
 
+            return consulta;
+        }
+
+        //---------------crud
         public static bool Add_Area(CheckBox chkAreaPadre, String[] valores)
         {
             int id_area_padre = 0;
@@ -135,9 +138,21 @@ namespace Capa_Datos.Manager.Area
             }
 
         }
+        public static void Extintor_Area(DropDownList DropDownList1, int _id_area)
+        {
+            GrupoLiEntities contexto = new GrupoLiEntities();
+            #region codigo
+            var Consulta = (from c in contexto.extintor.Where(x => x.area.id_area == _id_area)
+                            select new { c.id_extintor, c.serial_extintor }).ToList();
 
+            DropDownList1.DataValueField = "id_extintor";
+            DropDownList1.DataTextField = "serial_extintor";
+            DropDownList1.DataSource = Consulta;
+            DropDownList1.DataBind();
+            DropDownList1.Items.Insert(0, new ListItem("Seleccione el Extintor", ""));
+            #endregion
+        }
         //----------------grid
-
         public static void Area_General(GridView GridView1, int _id_empresa = 0, int _id_sucursal = 0, string _nivel = "", string _NumTrab_ini = "", string _NumTrab_fin = "", string _nombre = "")
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
@@ -171,6 +186,34 @@ namespace Capa_Datos.Manager.Area
 
             GridView1.DataSource = query;
             GridView1.DataBind();
+        }
+        public static void Extintores(GridView GridView1, int id_empresa = 0, int id_sucursal = 0, string id_area = "0", string buscar = "")
+        {
+            GrupoLiEntities contexto = new GrupoLiEntities();
+
+            var query = (
+            from E in contexto.extintor
+            select new
+            {
+                E.id_extintor,
+                E.serial_extintor,
+                E.fecha_proxima_recarga,
+                E.fecha_ultima_recarga,
+                area = E.area.nombre,
+                E.area.sucursal.empresa.id_empresa,
+                E.area.sucursal.id_sucursal,
+                E.id_area,
+                E.nombre_empresa
+            }).ToList();
+
+            if (id_empresa != 0) { query = query.Where(x => x.id_empresa == id_empresa).ToList(); }
+            if (id_sucursal != 0) { query = query.Where(x => x.id_sucursal == id_sucursal).ToList(); }
+            if (id_area != "0") { query = query.Where(x => x.id_area == Convert.ToInt32(id_area)).ToList(); }
+            if (buscar != string.Empty) { query = query.Where(x => x.serial_extintor.ToLower().Contains(buscar.ToLower())).ToList(); }
+
+            GridView1.DataSource = query;
+            GridView1.DataBind();
+
         }
 
 

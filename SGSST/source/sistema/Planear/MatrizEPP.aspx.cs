@@ -1,4 +1,5 @@
 ﻿using Capa_Datos;
+using Capa_Datos.Manager.Epp;
 using System;
 using System.Web;
 using System.Web.Security;
@@ -25,7 +26,7 @@ namespace SGSST.source.sistema.Planear
 
         private void LlenarGridView()
         {
-            Tabla.Epp(GridView1,"","");
+            Mgr_Epp.Epp(GridView1,"","");
         }
 
         #region  eventos del grid

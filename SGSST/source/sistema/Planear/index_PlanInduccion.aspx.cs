@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Web;
 using System.Web.Security;
+using Capa_Datos.Manager.Documento;
 
 namespace SGSSTC.source.sistema.Hacer
 {
@@ -55,12 +56,12 @@ namespace SGSSTC.source.sistema.Hacer
         private void cargarPlan()
         {
             int IdSucursal = Mgr_Sucursal.Set_IdSucursalDDl(ObjUsuario, ddlSucursal);
-            int idPlan = GetterMax.Plan(IdSucursal);
+            int idPlan = Mgr_Documento.Plan(IdSucursal);
 
             if (idPlan != 0)
             {
                 List<plan> consulta = new List<plan>();
-                consulta = Getter.Planes(idPlan);
+                consulta = Mgr_Documento.Planes(idPlan);
 
                 if (consulta.Count > 0)
                 {
@@ -103,7 +104,7 @@ namespace SGSSTC.source.sistema.Hacer
             int IdSucursal = Mgr_Sucursal.Set_IdSucursalDDl(ObjUsuario, ddlSucursal);
 
             plan tabla = new plan();
-            ObjUsuario.Error = CRUD.Delete_Fila(tabla, GetterMax.Plan(IdSucursal));
+            ObjUsuario.Error = CRUD.Delete_Fila(tabla, Mgr_Documento.Plan(IdSucursal));
 
             plan nuevo = new plan()
             {

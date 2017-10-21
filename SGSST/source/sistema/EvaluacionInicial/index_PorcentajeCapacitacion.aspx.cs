@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Capa_Datos.Manager.GestionLaboral;
 
 namespace SGSSTC.source.sistema.EvaluacionInicial
 {
@@ -59,7 +60,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
                                 nroTrabajadores = Mgr_Trabajador.Trabajadores_CantidadesByCapacidad(Convert.ToInt32(ddlSucursal.SelectedValue), fechaInicial, fechaFinal);
                                 //Cantidad de gestiones laborales de tipo capacitacion para el trimestre seleccionado (Cantidad de Columnas)
 
-                                cantGestiones = GetterCantidad.GestionLaboralByFecha(fechaInicial, fechaFinal);
+                                cantGestiones = Mgr_GestionLaboral.GestionLaboralByFecha(fechaInicial, fechaFinal);
                                 if (nroTrabajadores > 0)
                                 {
                                     crearTabla(nroTrabajadores, cantGestiones);
@@ -113,7 +114,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
                 nroTrabajadores = Mgr_Trabajador.Trabajadores_CantidadesByCapacidad(ObjUsuario.Id_sucursal, fechaInicial, fechaFinal);
                 //Cantidad de gestiones laborales de tipo capacitacion para el trimestre seleccionado (Cantidad de Columnas)
 
-                cantGestiones = GetterCantidad.GestionLaboralByFecha(fechaInicial, fechaFinal);
+                cantGestiones = Mgr_GestionLaboral.GestionLaboralByFecha(fechaInicial, fechaFinal);
                 if (nroTrabajadores > 0)
                 {
                     crearTabla(nroTrabajadores, cantGestiones);
@@ -225,7 +226,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
             IdSucursal = IdEmpSuc.Item2;
 
             List<gestion_laboral> gestion_lista = new List<gestion_laboral>();
-            gestion_lista = Getter.GesLabCap(fechaInicial, fechaFinal, IdEmpresa, IdSucursal);
+            gestion_lista = Mgr_GestionLaboral.GesLabCap(fechaInicial, fechaFinal, IdEmpresa, IdSucursal);
 
             foreach (gestion_laboral gl in gestion_lista)
             {

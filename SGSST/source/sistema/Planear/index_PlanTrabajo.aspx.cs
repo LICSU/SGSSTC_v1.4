@@ -11,6 +11,7 @@ using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Capa_Datos.Manager.Usuario;
+using Capa_Datos.Manager.PlanTrabajo;
 
 namespace SGSSTC.source.sistema.Hacer
 {
@@ -81,7 +82,7 @@ namespace SGSSTC.source.sistema.Hacer
 				lbAnho.Text = string.Empty + ViewState["anho"];
 			}
 
-			Tabla.PlanTrabajo(GridView1, IdSucursal, Convert.ToInt32(string.Empty + ViewState["anho"]));
+			Mgr_PlanTrabajo.PlanTrabajo(GridView1, IdSucursal, Convert.ToInt32(string.Empty + ViewState["anho"]));
 		}
 		#endregion
 
@@ -278,7 +279,7 @@ namespace SGSSTC.source.sistema.Hacer
 				hdfEditID.Value = Utilidades_GridView.DevolverIdRow(e, GridView1);
 				
 				List<plan_trabajo> ListaPlanTrabajo = new List<plan_trabajo>();
-				ListaPlanTrabajo = Getter.Plan_Trabajo(0, 0, Convert.ToInt32(hdfEditID.Value));
+				ListaPlanTrabajo = Mgr_PlanTrabajo.Plan_Trabajo(0, 0, Convert.ToInt32(hdfEditID.Value));
 
 				foreach (var item in ListaPlanTrabajo)
 				{
@@ -340,7 +341,7 @@ namespace SGSSTC.source.sistema.Hacer
 				string idPlanTrabajo = (e.Row.FindControl("id") as Label).Text;
 
 				List<plan_trabajo> ListaPlanTrabajo = new List<plan_trabajo>();
-				ListaPlanTrabajo = Getter.Plan_Trabajo(0, 0, Convert.ToInt32(idPlanTrabajo));
+				ListaPlanTrabajo = Mgr_PlanTrabajo.Plan_Trabajo(0, 0, Convert.ToInt32(idPlanTrabajo));
 
 				foreach (var itemPlanTrab in ListaPlanTrabajo)
 				{

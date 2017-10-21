@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Capa_Datos.Manager.Documento;
 
 namespace SGSSTC.source.sistema.EvaluacionInicial
 {
@@ -56,7 +57,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
         {
             int IdEmpresa = Mgr_Empresa.Set_IdEmpresa(ObjUsuario, Convert.ToInt32(ViewState["empresa"]));
             int IdSucursal = Mgr_Sucursal.Set_IdSucursal(ObjUsuario, Convert.ToInt32(ViewState["sucursal"]));
-            Tabla.vigilancia_epidemiologica(GridView1, IdEmpresa, IdSucursal, string.Empty + ViewState["sWhere"]);
+            Mgr_Documento.vigilancia_epidemiologica(GridView1, IdEmpresa, IdSucursal, string.Empty + ViewState["sWhere"]);
         }
         #endregion
 

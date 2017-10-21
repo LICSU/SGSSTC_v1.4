@@ -7,6 +7,8 @@ using System.Web.Security;
 using System.Web.UI;
 using Capa_Datos.Manager.Medidas;
 using Capa_Datos.Manager.Categoria;
+using Capa_Datos.Manager.PlanTrabajo;
+using Capa_Datos.Manager.Obligacion;
 
 namespace SGSSTC.source.sistema.Hacer
 {
@@ -60,9 +62,9 @@ namespace SGSSTC.source.sistema.Hacer
         private void CargarListas()
         {
             Mgr_Categoria.Categorias(ddlCategoria, IdEmpresa);
-            Listas.Frecuencia(ddlFrecuencia);
+            Mgr_Obligacion.Frecuencia(ddlFrecuencia);
             Capa_Datos.Manager.Usuario.Mgr_Usuario.Usuario_Sucursal(ddlResponsable, Convert.ToInt32(IdSucursal));
-            Listas.Actividades_Sucursal(ddlActividad, Convert.ToInt32(IdSucursal), DateTime.Now.Year);
+            Mgr_PlanTrabajo.Actividades_Sucursal(ddlActividad, Convert.ToInt32(IdSucursal), DateTime.Now.Year);
         }
 
         protected void Volver(object sender, EventArgs e)

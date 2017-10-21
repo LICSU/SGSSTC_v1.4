@@ -10,6 +10,7 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Capa_Datos.Manager.Documento;
 
 namespace SGSSTC.source.sistema.Hacer
 {
@@ -75,12 +76,12 @@ namespace SGSSTC.source.sistema.Hacer
         private void cargarBigrada()
         {
             int IdSucursal = Mgr_Sucursal.Set_IdSucursalDDl(ObjUsuario, ddlSucursal);
-            int idBrigada = GetterMax.BrigadaEmergencias(IdSucursal);
+            int idBrigada = Mgr_Documento.BrigadaEmergencias(IdSucursal);
 
             if (idBrigada != 0)
             {
                 List<brigada_emergencia> ListaBrigadaEmergencia = new List<brigada_emergencia>();
-                ListaBrigadaEmergencia = Getter.BrigadaEmergencia(idBrigada);
+                ListaBrigadaEmergencia = Mgr_Documento.BrigadaEmergencia(idBrigada);
 
                 if (ListaBrigadaEmergencia.Count > 0)
                 {
@@ -97,7 +98,7 @@ namespace SGSSTC.source.sistema.Hacer
                 }
 
                 List<procedimiento_comunicacion> ListaProcedimientoComunicacion = new List<procedimiento_comunicacion>();
-                ListaProcedimientoComunicacion = Getter.ProcedimientoComunicacion(idBrigada);
+                ListaProcedimientoComunicacion = Mgr_Documento.ProcedimientoComunicacion(idBrigada);
 
                 crearCampos((ListaProcedimientoComunicacion.Count));
 
@@ -322,7 +323,7 @@ namespace SGSSTC.source.sistema.Hacer
 
             if (ObjUsuario.Error)
             {
-                int IdBrigada = GetterMax.BrigadaEmergencias(IdSucursal);
+                int IdBrigada = Mgr_Documento.BrigadaEmergencias(IdSucursal);
 
                 int contador = 0;
                 string _nombre = string.Empty;

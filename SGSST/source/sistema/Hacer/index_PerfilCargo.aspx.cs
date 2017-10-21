@@ -1,5 +1,6 @@
 ﻿using Capa_Datos;
 using Capa_Datos.Manager.Empresa;
+using Capa_Datos.Manager.Trabajador;
 using System;
 using System.Web;
 using System.Web.Security;
@@ -8,7 +9,7 @@ using System.Web.UI.WebControls;
 
 namespace SGSSTC.source.sistema.Hacer
 {
-    public partial class index_PerfilCargo : Page
+	public partial class index_PerfilCargo : Page
 	{
 		private Model_UsuarioSistema ObjUsuario;
 		private  Utilidades objUtilidades = new Utilidades();
@@ -35,7 +36,7 @@ namespace SGSSTC.source.sistema.Hacer
 		{
 			int IdEmpresa = Mgr_Empresa.Set_IdEmpresa(ObjUsuario, Convert.ToInt32(ViewState["empresa"]));
 
-			Tabla.PerfilCargo(GridView1, IdEmpresa, string.Empty + ViewState["sWhere"]);
+			Mgr_Trabajador.PerfilCargo(GridView1, IdEmpresa, string.Empty + ViewState["sWhere"]);
 		}
 
 		protected void AgregarRegistro(object sender, EventArgs e)

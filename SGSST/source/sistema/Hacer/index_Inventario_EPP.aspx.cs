@@ -7,10 +7,11 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Capa_Datos.Manager.Epp;
 
 namespace SGSSTC.source.sistema.Hacer
 {
-    public partial class index_Inventario_EPP : Page
+	public partial class index_Inventario_EPP : Page
 	{
 		private Model_UsuarioSistema ObjUsuario;
 		private Tuple<bool, bool> BoolEmpSuc;
@@ -44,7 +45,7 @@ namespace SGSSTC.source.sistema.Hacer
 						{
 							if (c.ClientID.Contains("btnDocumento"))
 							{
-								epps = Getter.Epp(0, Convert.ToInt32(ddlSucursal.SelectedValue));
+								epps = Mgr_Epp.Epp(0, Convert.ToInt32(ddlSucursal.SelectedValue));
 								cantiEpp = epps.Count;
 								agregar_ingresos(epps);
 								agregar_egresos(epps);
@@ -52,7 +53,7 @@ namespace SGSSTC.source.sistema.Hacer
 							}
 							else if (c.ClientID.Contains("btnCalcular"))
 							{
-								epps = Getter.Epp(0, Convert.ToInt32(ddlSucursal.SelectedValue));
+								epps = Mgr_Epp.Epp(0, Convert.ToInt32(ddlSucursal.SelectedValue));
 								cantiEpp = epps.Count;
 								agregar_ingresos(epps);
 								agregar_egresos(epps);
@@ -94,7 +95,7 @@ namespace SGSSTC.source.sistema.Hacer
 			if (ddlSucursal.SelectedValue != string.Empty)
 			{
 				ViewState["sucursal"] = ddlSucursal.SelectedValue;
-				epps = Getter.Epp(0, Convert.ToInt32(ddlSucursal.SelectedValue));
+				epps = Mgr_Epp.Epp(0, Convert.ToInt32(ddlSucursal.SelectedValue));
 				cantiEpp = epps.Count;
 				if (cantiEpp > 0)
 				{

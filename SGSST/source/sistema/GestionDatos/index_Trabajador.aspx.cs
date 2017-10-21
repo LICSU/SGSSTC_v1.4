@@ -10,6 +10,7 @@ using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Capa_Datos.Manager.Estatus;
+using Capa_Datos.Manager.Salud;
 
 namespace SGSSTC.source.sistema.GestionDatos
 {
@@ -394,8 +395,8 @@ namespace SGSSTC.source.sistema.GestionDatos
                 if (rblDiagnostico.SelectedValue.Equals("EL"))
                 {
                     lblEnfermedad.Text = "Enfermedad Laboral";
-                    Listas.EnfermedadLaboral(ddlEnfermedadReposo);
-                    Listas.Sistema(ddlSistemaReposo);
+                    Mgr_Salud.EnfermedadLaboral(ddlEnfermedadReposo);
+                    Mgr_Salud.Sistema(ddlSistemaReposo);
                     ViewState["tpo_enfermedad"] = "ENFERMEDAD LABORAL";
                     phEnfermedadLaboral.Visible = true;
                     phAccidenteComun.Visible = false;
@@ -404,8 +405,8 @@ namespace SGSSTC.source.sistema.GestionDatos
                 else if (rblDiagnostico.SelectedValue.Equals("EC"))
                 {
                     lblEnfermedad.Text = "Enfermedad Común";
-                    Listas.EnfermedadComun(ddlEnfermedadReposo);
-                    Listas.Sistema(ddlSistemaReposo);
+                    Mgr_Salud.EnfermedadComun(ddlEnfermedadReposo);
+                    Mgr_Salud.Sistema(ddlSistemaReposo);
                     ViewState["tpo_enfermedad"] = "ENFERMEDAD COMUN";
                     phEnfermedadLaboral.Visible = true;
                     phAccidenteComun.Visible = false;
@@ -429,7 +430,7 @@ namespace SGSSTC.source.sistema.GestionDatos
                 }
                 else if (rblDiagnostico.SelectedValue.Equals("PEL"))
                 {
-                    Listas.EnfermedadComun(ddlEnfermedadLaboral);
+                    Mgr_Salud.EnfermedadComun(ddlEnfermedadLaboral);
                     ViewState["tpo_enfermedad"] = "POSIBLE ENFERMEDAD LABORAL";
                     phAccidenteComun.Visible = false;
                     phEnfermedadLaboral.Visible = false;

@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Capa_Datos.Manager.PoliticaSST;
 
 namespace SGSSTC.source.sistema.Hacer
 {
@@ -61,7 +62,7 @@ namespace SGSSTC.source.sistema.Hacer
             int IdEmpresa = Mgr_Empresa.Set_IdEmpresa(ObjUsuario, Convert.ToInt32(ViewState["empresa"]));
             int IdSucursal = Mgr_Sucursal.Set_IdSucursal(ObjUsuario, Convert.ToInt32(ViewState["sucursal"]));
 
-            Tabla.Comunicado_PoliticaSST(
+            Mgr_PoliticaSST.Comunicado_PoliticaSST(
                 GridView1,
                 IdEmpresa,
                 IdSucursal,
@@ -118,10 +119,10 @@ namespace SGSSTC.source.sistema.Hacer
         protected void crearlistaGral(object sender, EventArgs e)
         {
             int IdSucursal = Mgr_Sucursal.Set_IdSucursalDDl(ObjUsuario, ddlSucursalGral);
-            int idPolitica = GetterMax.PoliticaSST(ObjUsuario.Id_empresa);
+            int idPolitica = Mgr_PoliticaSST.Politica_SST(ObjUsuario.Id_empresa);
 
             List<politica_sst> ListaPolitica = new List<politica_sst>();
-            ListaPolitica = Getter.PoliticaSST(idPolitica);
+            ListaPolitica = Mgr_PoliticaSST.PoliticaSST(idPolitica);
 
             string Compromisos = string.Empty;
             string Objetivos = string.Empty;
@@ -167,9 +168,9 @@ namespace SGSSTC.source.sistema.Hacer
         protected void Guardar(object sender, EventArgs e)
         {
             int IdSucursal = Mgr_Sucursal.Set_IdSucursalDDl(ObjUsuario, ddlSucursalAdd);
-            int idPolitica = GetterMax.PoliticaSST(ObjUsuario.Id_empresa);
+            int idPolitica = Mgr_PoliticaSST.Politica_SST(ObjUsuario.Id_empresa);
             List<politica_sst> ListaPolitica = new List<politica_sst>();
-            ListaPolitica = Getter.PoliticaSST(idPolitica);
+            ListaPolitica = Mgr_PoliticaSST.PoliticaSST(idPolitica);
 
             string Compromisos = string.Empty;
             string Objetivos = string.Empty;

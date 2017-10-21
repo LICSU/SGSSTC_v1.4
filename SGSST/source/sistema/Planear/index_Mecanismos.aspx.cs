@@ -123,7 +123,7 @@ namespace SGSSTC.source.sistema.Hacer
                 hdfEditID.Value = (GridView1.Rows[RowIndex].FindControl("id") as Label).Text;
 
                 List<tipo_documento> ListaTipoDocumento = new List<tipo_documento>();
-                ListaTipoDocumento = Getter.TipoDocumento(Convert.ToInt32(hdfEditID.Value));
+                ListaTipoDocumento = Mgr_Documento.TipoDocumento(Convert.ToInt32(hdfEditID.Value));
 
                 Mgr_Sucursal.Sucursal(ddlSucursalEdit, ObjUsuario.Id_empresa);
 

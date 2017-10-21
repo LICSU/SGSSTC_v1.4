@@ -10,10 +10,11 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Capa_Datos.Manager.Usuario;
 using Capa_Datos.Manager.Categoria;
+using Capa_Datos.Manager.Obligacion;
 
 namespace SGSSTC.source.sistema.Hacer
 {
-    public partial class index_Obligaciones : Page
+	public partial class index_Obligaciones : Page
 	{
 		private Model_UsuarioSistema ObjUsuario;
 		private Tuple<bool, bool> BoolEmpSuc;
@@ -68,14 +69,14 @@ namespace SGSSTC.source.sistema.Hacer
 				Mgr_Usuario.Usuario_Sucursal(ddlResponsableEdit, ObjUsuario.Id_sucursal);
 			}
 
-			Listas.Frecuencia(ddlFrecuenciaEdit);
+			Mgr_Obligacion.Frecuencia(ddlFrecuenciaEdit);
 		}
 		private void LlenarGridView()
 		{
 			int IdEmpresa = Mgr_Empresa.Set_IdEmpresa(ObjUsuario, Convert.ToInt32(ViewState["empresa"]));
 			int IdSucursal = Mgr_Sucursal.Set_IdSucursal(ObjUsuario, Convert.ToInt32(ViewState["sucursal"]));
 
-			Tabla.Obligaciones(
+			Mgr_Obligacion.Obligaciones(
 				GridView1,
 				IdEmpresa,
 				Convert.ToInt32(string.Empty + ViewState["responsable"]),
@@ -140,7 +141,7 @@ namespace SGSSTC.source.sistema.Hacer
 				hdfObligacionID.Value = (gvrow.FindControl("id_obligacion") as Label).Text;
 
 				List<obligacion> ListaObligacion = new List<obligacion>();
-				ListaObligacion = Getter.Obligacion(Convert.ToInt32(hdfObligacionID.Value));
+				ListaObligacion = Mgr_Obligacion.Obligacion(Convert.ToInt32(hdfObligacionID.Value));
 				foreach (var item in ListaObligacion)
 				{
 					DateTime fechaEva = Convert.ToDateTime(Convert.ToString(item.fecha_creacion));
@@ -171,7 +172,7 @@ namespace SGSSTC.source.sistema.Hacer
 				hdfObligacionID.Value = (gvrow.FindControl("id_obligacion") as Label).Text;
 
 				List<obligacion> ListaObligacion = new List<obligacion>();
-				ListaObligacion = Getter.Obligacion(Convert.ToInt32(hdfObligacionID.Value));
+				ListaObligacion = Mgr_Obligacion.Obligacion(Convert.ToInt32(hdfObligacionID.Value));
 
 				foreach (var item in ListaObligacion)
 				{

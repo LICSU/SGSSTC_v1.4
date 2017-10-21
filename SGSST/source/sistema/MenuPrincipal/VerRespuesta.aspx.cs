@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI.WebControls;
 using Capa_Datos.Manager.Usuario;
+using Capa_Datos.Manager.Comunicacion;
 
 namespace SGSSTC.source.sistema.MenuPrincipal
 {
@@ -41,7 +42,7 @@ namespace SGSSTC.source.sistema.MenuPrincipal
             }
             
             List<Respuesta> ListRespuesta = new List<Respuesta>();
-            ListRespuesta = Getter.Respuesta(IdRespuesta);
+            ListRespuesta = Mgr_Comunicacion.Respuesta(IdRespuesta);
 
             foreach (var item in ListRespuesta)
             {

@@ -1,5 +1,8 @@
 ﻿using Capa_Datos.Manager.Acc_Inc;
 using Capa_Datos.Manager.Empresa;
+using Capa_Datos.Manager.Epp;
+using Capa_Datos.Manager.GestionLaboral;
+using Capa_Datos.Manager.PlanTrabajo;
 using Capa_Datos.Manager.PuestoTrabajo;
 using Capa_Datos.Manager.Riesgos;
 using Capa_Datos.Manager.Sucursal;
@@ -1296,7 +1299,7 @@ namespace Capa_Datos
         public static void PrintGestionLaboral(String[] valores, Page _page)
         {
             List<gestion_laboral> ListaGestionLaboral = new List<gestion_laboral>();
-            ListaGestionLaboral = Getter.GestionLaboral(Convert.ToInt32(valores[0]));
+            ListaGestionLaboral = Mgr_GestionLaboral.GestionLaboral(Convert.ToInt32(valores[0]));
 
             foreach (var itemGestionLaboral in ListaGestionLaboral)
             {
@@ -1488,7 +1491,7 @@ namespace Capa_Datos
             row.Visible = false;
             int i = 0;
             _table = (Table)_Panel.FindControl("tblEPP");
-            List<Model_CEPP> epp_datos = Getter.Epp(Convert.ToInt32(ddlPuesto.SelectedValue));
+            List<Model_CEPP> epp_datos = Mgr_Epp.Epp(Convert.ToInt32(ddlPuesto.SelectedValue));
             foreach (var dato in epp_datos)
             {
                 _radio = (RadioButton)_Panel.FindControl("eppNo" + i);
@@ -1506,7 +1509,7 @@ namespace Capa_Datos
             }
 
 
-            List<Model_CEPP> tipo_epp_datos = Getter.TipoEpp(Convert.ToInt32(ddlPuesto.SelectedValue));
+            List<Model_CEPP> tipo_epp_datos = Mgr_Epp.TipoEpp(Convert.ToInt32(ddlPuesto.SelectedValue));
             i = 0;
             _table = (Table)_Panel.FindControl("tblSenal");
             foreach (var dato in tipo_epp_datos)
@@ -3710,7 +3713,7 @@ namespace Capa_Datos
             miCelda1.Texto = "No Apto";
             DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, miCelda1));
 
-            List<Model_CEPP> epp_datos = Getter.Epp(Convert.ToInt32(valores[2]));
+            List<Model_CEPP> epp_datos = Mgr_Epp.Epp(Convert.ToInt32(valores[2]));
             Model_Celda miCelda161 = new Model_Celda(0, "H4", "C", "1|1|1|1", 4, epp_datos.Count, "", "EQUIPO DE PROTECCIÓN PERSONAL E.P.P");
             DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, miCelda161));
             int i = 0;
@@ -3738,7 +3741,7 @@ namespace Capa_Datos
                 DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, miCelda1));
                 i++;
             }
-            List<Model_CEPP> epp_tipo_datos = Getter.TipoEpp(Convert.ToInt32(Convert.ToInt32(valores[2])));
+            List<Model_CEPP> epp_tipo_datos = Mgr_Epp.TipoEpp(Convert.ToInt32(Convert.ToInt32(valores[2])));
             miCelda161 = new Model_Celda(0, "H4", "C", "1|1|1|1", 4, epp_tipo_datos.Count, "", "SEÑALIZACIÓN O AVISOS DE LOS E.P.P");
             DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, miCelda161));
             i = 0;
@@ -3770,7 +3773,7 @@ namespace Capa_Datos
             i = 0;
             if (row.Visible)
             {
-                epp_datos = Getter.Epp(Convert.ToInt32(valores[2]));
+                epp_datos = Mgr_Epp.Epp(Convert.ToInt32(valores[2]));
                 miCelda161 = new Model_Celda(0, "H4", "C", "1|1|1|1", 4, Convert.ToInt32(valores[3]), "", "EQUIPO DE PROTECCIÓN PERSONAL FALTANTES");
                 DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, miCelda161));
                 foreach (var dato in epp_datos)
@@ -3790,7 +3793,7 @@ namespace Capa_Datos
             i = 0;
             if (row.Visible)
             {
-                epp_datos = Getter.Epp(Convert.ToInt32(valores[2]));
+                epp_datos = Mgr_Epp.Epp(Convert.ToInt32(valores[2]));
                 miCelda161 = new Model_Celda(0, "H4", "C", "1|1|1|1", 4, Convert.ToInt32(valores[4]), "", "SEÑALIZACIÓN DE EPP FALTANTE");
                 DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, miCelda161));
                 foreach (var dato in epp_datos)
@@ -4978,7 +4981,7 @@ namespace Capa_Datos
                                         "PlanTrabajo(Vista General)_", "PLAN DE TRABAJO ANUAL", _page);
             #region contenido
             List<plan_trabajo> ListaPlanTrabajo = new List<plan_trabajo>();
-            ListaPlanTrabajo = Getter.Plan_Trabajo(Convert.ToInt32(valores[0]), Convert.ToInt32(valores[1]));
+            ListaPlanTrabajo = Mgr_PlanTrabajo.Plan_Trabajo(Convert.ToInt32(valores[0]), Convert.ToInt32(valores[1]));
             int contActividad = 0;
 
             miCelda12.Texto = "ACTIVIDADES";
@@ -5026,7 +5029,7 @@ namespace Capa_Datos
                                         "PlanTrabajo(Vista Especifico)_", "PLAN DE TRABAJO ANUAL", _page);
             #region contenido
             List<plan_trabajo> ListaPlanTrabajo = new List<plan_trabajo>();
-            ListaPlanTrabajo = Getter.Plan_Trabajo(Convert.ToInt32(valores[0]), Convert.ToInt32(valores[1]));
+            ListaPlanTrabajo = Mgr_PlanTrabajo.Plan_Trabajo(Convert.ToInt32(valores[0]), Convert.ToInt32(valores[1]));
             int contActividad = 0;
 
             foreach (var item in ListaPlanTrabajo)
@@ -7291,7 +7294,7 @@ namespace Capa_Datos
             DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, miCelda13));
 
             int id_puesto_trabajo = Mgr_PuestoTrabajo.idPuestoTrabajador(Convert.ToInt32(valores[2]));
-            List<Model_CEPP> epps = Getter.Epp(id_puesto_trabajo);
+            List<Model_CEPP> epps = Mgr_Epp.Epp(id_puesto_trabajo);
             int cont = 0;
             TextBox _textbox;
             foreach (var epp in epps)

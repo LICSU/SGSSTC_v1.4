@@ -132,7 +132,7 @@ namespace SGSSTC.source.sistema.Hacer
 
 			if (ObjUsuario.Error)
 			{
-				int idIdentificacionRiesgo = GetterMax.IdentificacionPeligro();
+				int idIdentificacionRiesgo = Mgr_Riesgos.IdentificacionPeligro();
 
 				foreach (var IdPuestos in Lista_IdPuestos)
 				{

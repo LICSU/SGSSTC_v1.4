@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Web;
 using System.Web.Security;
+using Capa_Datos.Manager.Trabajador;
 
 namespace SGSST.source.sistema.Planear
 {
@@ -37,12 +38,12 @@ namespace SGSST.source.sistema.Planear
             else
             {
                 Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
-                Listas.PerfilCargo(ddlCargo, ObjUsuario.Id_empresa);
+                Mgr_Trabajador.PerfilCargo(ddlCargo, ObjUsuario.Id_empresa);
             }
 
             if (!BoolEmpSuc.Item2)
             {
-                Listas.PerfilCargo(ddlCargo, ObjUsuario.Id_empresa);
+                Mgr_Trabajador.PerfilCargo(ddlCargo, ObjUsuario.Id_empresa);
             }
         }
 
@@ -52,7 +53,7 @@ namespace SGSST.source.sistema.Planear
             {
                 ViewState["empresa"] = ddlEmpresa.SelectedValue;
                 Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
-                Listas.PerfilCargo(ddlCargo, Convert.ToInt32(ddlEmpresa.SelectedValue));
+                Mgr_Trabajador.PerfilCargo(ddlCargo, Convert.ToInt32(ddlEmpresa.SelectedValue));
                 ViewState["sucursal"] = "0";
                 ViewState["cargo"] = "0";
             }

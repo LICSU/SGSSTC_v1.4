@@ -10,6 +10,8 @@ using System.Web.Security;
 using System.Web.UI;
 using Capa_Datos.Manager.CodigoCiiu;
 using Capa_Datos.Manager.PuestoTrabajo;
+using Capa_Datos.Manager.Horario;
+using Capa_Datos.Manager.Gobierno;
 
 namespace SGSSTC.source.sistema.Hacer
 {
@@ -105,11 +107,11 @@ namespace SGSSTC.source.sistema.Hacer
                         ControlesDinamicos.CrearLiteral("<div class='col-md-12 '><label>" + tituloAct + ": " + item4.claseCiiu.nombre + "</label></div>", pCodigoCiiu);
                     }
 
-                    Listas.Arl(ddlArp);
+                    Mgr_Gobierno.Arl(ddlArp);
                     ddlArp.SelectedValue = Convert.ToString(item.empresa.id_arl);
 
                     List<horario> ListaHorario = new List<horario>();
-                    ListaHorario = Getter.ListHorario(ObjUsuario.Id_empresa);
+                    ListaHorario = Mgr_Horario.ListHorario(ObjUsuario.Id_empresa);
                     foreach (var item5 in ListaHorario)
                     {
                         ControlesDinamicos.CrearLiteral("<div class='col-md-6 '><label>" + item5.nombre + "</label></div>", pHorario);

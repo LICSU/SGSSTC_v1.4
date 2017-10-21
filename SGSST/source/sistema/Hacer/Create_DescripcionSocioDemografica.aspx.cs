@@ -5,6 +5,8 @@ using Capa_Datos.Manager.Empresa;
 using System;
 using System.Web;
 using System.Web.Security;
+using Capa_Datos.Manager.Epp;
+using Capa_Datos.Manager.Gobierno;
 
 namespace SGSSTC.source.sistema.Hacer
 {
@@ -50,8 +52,8 @@ namespace SGSSTC.source.sistema.Hacer
             }
 
             Mgr_Empresa.Lista_Empresa(ddlEmpresa);
-            Listas.EPS(ddlEps);
-            Listas.AFP(ddlFondo);
+            Mgr_Gobierno.EPS(ddlEps);
+            Mgr_Gobierno.AFP(ddlFondo);
         }
 
         private bool validarCampos()
@@ -203,7 +205,7 @@ namespace SGSSTC.source.sistema.Hacer
                             años = txtAños1.Text,
                             meses = txtMeses1.Text,
                             enfermedades = txtEnfermadades1.Text,
-                            id_desc_socio = GetterMax.DescripcionSociodemografica()
+                            id_desc_socio = Mgr_Trabajador.DescripcionSociodemografica()
                         };
                         ObjUsuario.Error = CRUD.Add_Fila(nuevo1);
                     }
@@ -217,7 +219,7 @@ namespace SGSSTC.source.sistema.Hacer
                             años = txtAños2.Text,
                             meses = txtMeses2.Text,
                             enfermedades = txtEnfermadades2.Text,
-                            id_desc_socio = GetterMax.DescripcionSociodemografica()
+                            id_desc_socio = Mgr_Trabajador.DescripcionSociodemografica()
                         };
                         ObjUsuario.Error = CRUD.Add_Fila(nuevo2);
                     }
@@ -231,7 +233,7 @@ namespace SGSSTC.source.sistema.Hacer
                             años = txtAños3.Text,
                             meses = txtMeses3.Text,
                             enfermedades = txtEnfermadades3.Text,
-                            id_desc_socio = GetterMax.DescripcionSociodemografica()
+                            id_desc_socio = Mgr_Trabajador.DescripcionSociodemografica()
                         };
                         ObjUsuario.Error = CRUD.Add_Fila(nuevo3);
                     }

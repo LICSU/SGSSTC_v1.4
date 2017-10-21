@@ -1,4 +1,5 @@
 ﻿using Capa_Datos;
+using Capa_Datos.Manager.Trabajador;
 using System;
 using System.Collections.Generic;
 using System.Web;
@@ -7,7 +8,7 @@ using System.Web.Security;
 
 namespace SGSSTC.source.sistema.Hacer
 {
-    public partial class View_DescripcionSocioDemografica : System.Web.UI.Page
+	public partial class View_DescripcionSocioDemografica : System.Web.UI.Page
 	{
 		#region variables
 		private  Utilidades objUtilidades = new Utilidades();
@@ -31,7 +32,7 @@ namespace SGSSTC.source.sistema.Hacer
 		private void CargarUsuario()
 		{
 			List<desc_socio> ListaDescSocio = new List<desc_socio>();
-			ListaDescSocio = Getter.DescripcionSociodemografica(Convert.ToInt32(idPerfil));
+			ListaDescSocio = Mgr_Trabajador.DescripcionSociodemografica(Convert.ToInt32(idPerfil));
 
 			foreach (var itemDescSocio in ListaDescSocio)
 			{

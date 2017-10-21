@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Capa_Datos.Manager.Epp;
 
 namespace SGSSTC.source.sistema.Hacer
 {
@@ -138,7 +139,7 @@ namespace SGSSTC.source.sistema.Hacer
 			Label _label;
 			TextBox _textbox;
 			int id_puesto_trabajo = Mgr_PuestoTrabajo.idPuestoTrabajador(Convert.ToInt32(ddlTrabajador.SelectedValue));
-			List<Model_CEPP> epps = Getter.Epp(id_puesto_trabajo);
+			List<Model_CEPP> epps = Mgr_Epp.Epp(id_puesto_trabajo);
 			int cont = 0;
 
 			foreach (var epp in epps)

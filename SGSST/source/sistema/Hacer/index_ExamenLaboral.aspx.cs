@@ -1,5 +1,6 @@
 ﻿using Capa_Datos;
 using Capa_Datos.Manager.Empresa;
+using Capa_Datos.Manager.Salud;
 using System;
 using System.Web;
 using System.Web.Security;
@@ -44,12 +45,12 @@ namespace SGSSTC.source.sistema.Hacer
             if (BoolEmpSuc.Item1)
             {
                 Mgr_Empresa.Lista_Empresa(ddlEmpresa);
-                Listas.TipoExamen(ddlTipoExamen);
+                Mgr_Salud.TipoExamen(ddlTipoExamen);
             }
             else
             {
                 Mgr_Empresa.Lista_Empresa(ddlEmpresa);
-                Listas.TipoExamen(ddlTipoExamen);
+                Mgr_Salud.TipoExamen(ddlTipoExamen);
             }
 
         }
@@ -58,7 +59,7 @@ namespace SGSSTC.source.sistema.Hacer
         {
             int IdEmpresa = Mgr_Empresa.Set_IdEmpresa(ObjUsuario, Convert.ToInt32(ViewState["empresa"]));
 
-            Tabla.HC_Trabajador(GridView1,
+            Mgr_Salud.HC_Trabajador(GridView1,
                 string.Empty + ViewState["search"],
                 IdEmpresa,
                 string.Empty + ViewState["TipoExamen"],

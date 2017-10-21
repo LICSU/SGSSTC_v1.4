@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Security;
+using Capa_Datos.Manager.Gobierno;
 
 namespace SGSSTC.source.sistema.GestionDatos
 {
@@ -29,7 +30,7 @@ namespace SGSSTC.source.sistema.GestionDatos
                 if (Request.QueryString["id"] != string.Empty)
                 {
                     cargarDatos();
-                    Listas.Arl(ddlArp);
+                    Mgr_Gobierno.Arl(ddlArp);
                 }
             }
         }

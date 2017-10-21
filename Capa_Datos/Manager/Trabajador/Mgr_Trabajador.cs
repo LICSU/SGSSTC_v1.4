@@ -97,7 +97,6 @@ namespace Capa_Datos.Manager.Trabajador
             };
             return CRUD.Add_Fila(nuevo);
         }
-
         public static bool AddReporteTrabajadores(Tuple<int, int> IdEmpSuc, String[] valores, FileUpload flpArchivo)
         {
             int IdEmpresa = IdEmpSuc.Item1;
@@ -141,7 +140,6 @@ namespace Capa_Datos.Manager.Trabajador
 
             return consulta;
         }
-
         public static List<trabajador_gestion> Trabajadores_Capacitacion(int _id_trabajador, DateTime fechaIni, DateTime fechaFin)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
@@ -156,7 +154,6 @@ namespace Capa_Datos.Manager.Trabajador
 
             return consulta;
         }
-
         public static int TrabajadorByCedula(string cedula)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
@@ -166,14 +163,22 @@ namespace Capa_Datos.Manager.Trabajador
             else
                 return 1;
         }
-
         public static int TrabajadorAutocomplete(string valor)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             var consulta = contexto.trabajador.Where(c => c.primer_nombre + " " + c.primer_apellido + " " + c.cedula == valor).SingleOrDefault();
             return consulta.id_trabajador;
         }
-
+        public static List<trabajador_estatus> TrabajadorReposo(int _id_trabajador, DateTime fechaInicio, DateTime fechaFin)
+        {
+            GrupoLiEntities contexto = new GrupoLiEntities();
+            List<trabajador_estatus> consulta = new List<trabajador_estatus>();
+            consulta = contexto.trabajador_estatus.Where(
+                x => x.id_trabajador == _id_trabajador &&
+                (x.fecha_constancia >= fechaInicio && x.fecha_constancia <= fechaFin)
+            ).ToList();
+            return consulta;
+        }
         public static List<trabajador_gestion> TrabajadorInGestion(int id_trabajador = 0, int _id_ges_lab = 0)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
@@ -192,7 +197,6 @@ namespace Capa_Datos.Manager.Trabajador
 
             return consulta;
         }
-
         public static List<trabajador_estatus> HistorialTrabajador(int _id_trabajador)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
@@ -200,18 +204,6 @@ namespace Capa_Datos.Manager.Trabajador
             consulta = contexto.trabajador_estatus.Where(x => x.id_trabajador == _id_trabajador).ToList();
             return consulta;
         }
-
-        public static List<trabajador_estatus> TrabajadorReposo(int _id_trabajador, DateTime fechaInicio, DateTime fechaFin)
-        {
-            GrupoLiEntities contexto = new GrupoLiEntities();
-            List<trabajador_estatus> consulta = new List<trabajador_estatus>();
-            consulta = contexto.trabajador_estatus.Where(
-                x => x.id_trabajador == _id_trabajador &&
-                (x.fecha_constancia >= fechaInicio && x.fecha_constancia <= fechaFin)
-            ).ToList();
-            return consulta;
-        }
-
         public static int TrabPuesto(int _id_puesto)
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
@@ -376,8 +368,6 @@ namespace Capa_Datos.Manager.Trabajador
 
             return cantidad;
         }
-
-
         public static void TrabajadorGestion(GridView GridView1, string _id_trabajador = "")
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
@@ -396,12 +386,117 @@ namespace Capa_Datos.Manager.Trabajador
             GridView1.DataSource = query;
             GridView1.DataBind();
         }
-
         public static int Trabajador()
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
             var consulta = new trabajador();
             int id = contexto.trabajador.Max(x => x.id_trabajador);
+            return id;
+        }
+        public static int Reposos(int _anho, int id_empresa = 0, int id_sucursal = 0)
+        {
+            GrupoLiEntities contexto = new GrupoLiEntities();
+            var query = (
+                from TE in contexto.trabajador_estatus
+                join T in contexto.trabajador on TE.id_trabajador equals T.id_trabajador
+                where TE.fecha_constancia.Value.Year == _anho && TE.dias_reposo > 0
+                select new
+                {
+                    T.id_trabajador,
+                    T.puesto_trabajo.area.sucursal.id_sucursal,
+                    T.puesto_trabajo.area.sucursal.empresa.id_empresa
+                }
+            ).ToList();
+
+            if (id_empresa > 0) { query = query.Where(x => x.id_empresa == id_empresa).ToList(); }
+            if (id_sucursal > 0) { query = query.Where(x => x.id_sucursal == Convert.ToInt32(id_sucursal)).ToList(); }
+
+            return query.Count();
+        }
+        public static int RepososPorNombre(int _anho, string tipo, int id_empresa = 0, int id_sucursal = 0)
+        {
+            GrupoLiEntities contexto = new GrupoLiEntities();
+            var query = (
+                from TE in contexto.trabajador_estatus
+                join T in contexto.trabajador on TE.id_trabajador equals T.id_trabajador
+                where TE.fecha_constancia.Value.Year == _anho && TE.tpo_enfermedad == tipo && TE.dias_reposo > 0
+                select new
+                {
+                    T.id_trabajador,
+                    T.puesto_trabajo.area.sucursal.id_sucursal,
+                    T.puesto_trabajo.area.sucursal.empresa.id_empresa
+                }
+            ).ToList();
+
+            if (id_empresa > 0) { query = query.Where(x => x.id_empresa == id_empresa).ToList(); }
+            if (id_sucursal > 0) { query = query.Where(x => x.id_sucursal == Convert.ToInt32(id_sucursal)).ToList(); }
+
+            return query.Count();
+        }
+        public static int Constancias(int _anho, int id_empresa = 0, int id_sucursal = 0)
+        {
+            GrupoLiEntities contexto = new GrupoLiEntities();
+            var query = (
+                from TE in contexto.trabajador_estatus
+                join T in contexto.trabajador on TE.id_trabajador equals T.id_trabajador
+                where TE.fecha_constancia.Value.Year == _anho && TE.url_constancia != string.Empty
+                select new
+                {
+                    T.id_trabajador,
+                    T.puesto_trabajo.area.sucursal.id_sucursal,
+                    T.puesto_trabajo.area.sucursal.empresa.id_empresa
+                }
+            ).ToList();
+
+            if (id_empresa > 0) { query = query.Where(x => x.id_empresa == id_empresa).ToList(); }
+            if (id_sucursal > 0) { query = query.Where(x => x.id_sucursal == Convert.ToInt32(id_sucursal)).ToList(); }
+
+            return query.Count();
+        }
+        public static int DiasReposo(int _anho, int id_empresa = 0, int id_sucursal = 0)
+        {
+            GrupoLiEntities contexto = new GrupoLiEntities();
+            var query = (
+                from TE in contexto.trabajador_estatus
+                join T in contexto.trabajador on TE.id_trabajador equals T.id_trabajador
+                where TE.fecha_constancia.Value.Year == _anho && TE.url_constancia != string.Empty && TE.dias_reposo > 0
+                select new
+                {
+                    T.id_trabajador,
+                    TE.dias_reposo,
+                    T.puesto_trabajo.area.sucursal.id_sucursal,
+                    T.puesto_trabajo.area.sucursal.empresa.id_empresa
+                }
+            ).ToList();
+
+            if (id_empresa > 0) { query = query.Where(x => x.id_empresa == id_empresa).ToList(); }
+            if (id_sucursal > 0) { query = query.Where(x => x.id_sucursal == Convert.ToInt32(id_sucursal)).ToList(); }
+
+            int suma = Convert.ToInt32(query.Sum(x => x.dias_reposo));
+            return suma;
+        }
+
+        public static List<desc_socio> DescripcionSociodemografica(int _id_desc_socio = 0, int _id_trabajador = 0)
+        {
+            GrupoLiEntities contexto = new GrupoLiEntities();
+            List<desc_socio> consulta = new List<desc_socio>();
+
+            if (_id_desc_socio != 0) { consulta = contexto.desc_socio.Where(x => x.id_desc_socio == _id_desc_socio).ToList(); }
+            else if (_id_trabajador != 0) { consulta = contexto.desc_socio.Where(x => x.id_trabajador == _id_trabajador).ToList(); }
+
+            return consulta;
+        }
+
+        public static perfil_cargo PerfilCargo(int _id_perfil)
+        {
+            GrupoLiEntities contexto = new GrupoLiEntities();
+            return contexto.perfil_cargo.Where(x => x.id_perfil_cargo == _id_perfil).SingleOrDefault();
+        }
+        public static int DescripcionSociodemografica()
+        {
+            GrupoLiEntities contexto = new GrupoLiEntities();
+            var consulta = new desc_socio();
+            int id = contexto.desc_socio.Max(x => x.id_desc_socio);
             return id;
         }
 
@@ -458,6 +553,23 @@ namespace Capa_Datos.Manager.Trabajador
             DropDownList1.DataBind();
             DropDownList1.Items.Insert(0, new ListItem("Seleccione el Trabajador", ""));
         }
+        public static void PerfilCargo(DropDownList DropDownList1, int _id_empresa = 0)
+        {
+            GrupoLiEntities contexto = new GrupoLiEntities();
+            var Consulta = (from c in contexto.perfil_cargo
+                            select new { c.id_perfil_cargo, nombre = c.nombre, c.id_empresa }).OrderBy(x => x.nombre.Trim()).ToList();
+
+            if (_id_empresa > 0)
+            {
+                Consulta = Consulta.Where(x => x.id_empresa == _id_empresa).ToList();
+            }
+
+            DropDownList1.DataValueField = "id_perfil_cargo";
+            DropDownList1.DataTextField = "nombre";
+            DropDownList1.DataSource = Consulta;
+            DropDownList1.DataBind();
+            DropDownList1.Items.Insert(0, new ListItem("Seleccione el Cargo", ""));
+        }
 
         //-----------------grid
         public static void Trabajador(GridView GridView1, int MiTrabajador = 0, int _id_empresa = 0, string _id_area = "0", string _id_estatus_actual = "", string buscar = "", int _id_sucursal = 0)
@@ -501,6 +613,69 @@ namespace Capa_Datos.Manager.Trabajador
             GridView1.DataBind();
         }
 
+        public static void PerfilCargo(GridView GridView1, int id_empresa = 0, string _nombre = "")
+        {
+            GrupoLiEntities contexto = new GrupoLiEntities();
+            var query = (
+                from CA in contexto.perfil_cargo
+                select new
+                {
+                    CA.id_perfil_cargo,
+                    CA.nombre,
+                    CA.id_empresa,
+                    CA.descripcion,
+                    empresa = CA.empresa.nombre,
+                    ocupacion = CA.cno.ocupacion
+                }).ToList();
 
+            if (id_empresa != 0) { query = query.Where(x => x.id_empresa == id_empresa).ToList(); }
+            if (_nombre != string.Empty) { query = query.Where(x => x.nombre.ToLower().Contains(_nombre.ToLower())).ToList(); }
+
+            GridView1.DataSource = query;
+            GridView1.DataBind();
+        }
+
+        public static void PerfilMedico(GridView GridView1, int id_empresa = 0, int id_cargo = 0, string _nombre = "")
+        {
+            GrupoLiEntities contexto = new GrupoLiEntities();
+            var query = (
+                from PM in contexto.perfil_medico
+                select new
+                {
+                    PM.id_perfil_medico,
+                    PM.nombre,
+                    PM.id_empresa,
+                    PM.descripcion,
+                    PM.id_cargo,
+                    PM.ruta,
+                    empresa = PM.perfil_cargo.empresa.nombre,
+                    cargo = PM.perfil_cargo.nombre
+                }).ToList();
+
+            if (id_empresa != 0) { query = query.Where(x => x.id_empresa == id_empresa).ToList(); }
+            if (id_cargo != 0) { query = query.Where(x => x.id_cargo == id_cargo).ToList(); }
+            if (_nombre != string.Empty) { query = query.Where(x => x.nombre.ToLower().Contains(_nombre.ToLower())).ToList(); }
+
+            GridView1.DataSource = query;
+            GridView1.DataBind();
+        }
+
+        public static void DescSocio(GridView GridView1, string _where = "")
+        {
+            GrupoLiEntities contexto = new GrupoLiEntities();
+            var query = (
+                    from DS in contexto.desc_socio
+                    select new
+                    {
+                        DS.trabajador.cedula,
+                        DS.id_desc_socio,
+                        empresa = DS.trabajador.puesto_trabajo.area.sucursal.empresa.nombre,
+                        nombres = DS.trabajador.primer_nombre + " " + DS.trabajador.primer_apellido
+                    }).ToList();
+
+            if (_where != string.Empty) { query = query.Where(x => x.cedula.Contains(_where)).ToList(); }
+            GridView1.DataSource = query;
+            GridView1.DataBind();
+        }
     }
 }

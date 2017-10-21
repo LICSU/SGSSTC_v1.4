@@ -9,6 +9,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI.WebControls;
+using Capa_Datos.Manager.Epp;
 
 namespace SGSSTC.source.sistema.GestionDatos
 {
@@ -65,7 +66,7 @@ namespace SGSSTC.source.sistema.GestionDatos
 
                 Mgr_Area.Area_Sucursal(ddlArea, Convert.ToInt32(ddlSucursal.SelectedValue));
                 ddlArea.SelectedValue = Convert.ToString(itemPuestos.id_area);
-                Listas.Epp(ddlEpp);
+                Mgr_Epp.Epp(ddlEpp);
 
                 List<puesto_trabajo_epp> ListaPuestoTrabajo_Epp = new List<puesto_trabajo_epp>();
                 ListaPuestoTrabajo_Epp = new List<puesto_trabajo_epp>();
@@ -86,7 +87,7 @@ namespace SGSSTC.source.sistema.GestionDatos
 
         private void CargarListas()
         {
-            Listas.Epp(ddlEpp);
+            Mgr_Epp.Epp(ddlEpp);
             if (BoolEmpSuc.Item1)
             {
                 Mgr_Empresa.Lista_Empresa(ddlEmpresa);
@@ -160,7 +161,7 @@ namespace SGSSTC.source.sistema.GestionDatos
                             int existe = Mgr_PuestoTrabajo.PuestoEppValue(idPuestos, idEpp);
                             if (existe == 1)
                             {
-                                int idPEpp = Getter.Trae_ID_PEPP(idPuestos, idEpp);
+                                int idPEpp = Mgr_Epp.Trae_ID_PEPP(idPuestos, idEpp);
                                 puesto_trabajo_epp tabla = new puesto_trabajo_epp();
                                 ObjUsuario.Error = CRUD.Delete_Fila(tabla, idPEpp);
                             }
@@ -179,7 +180,7 @@ namespace SGSSTC.source.sistema.GestionDatos
             if (ddlEmpresa.SelectedValue != string.Empty)
             {
                 Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
-                Listas.Epp(ddlEpp);
+                Mgr_Epp.Epp(ddlEpp);
             }
         }
 

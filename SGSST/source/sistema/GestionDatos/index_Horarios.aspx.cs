@@ -145,7 +145,7 @@ namespace SGSSTC.source.sistema.GestionDatos
                 GridViewRow gvrow = GridView1.Rows[RowIndex];
                 hdfHorarioID.Value = Utilidades_GridView.DevolverIdRow(e, GridView1);
 
-                var _Horario = Getter.Horario(Convert.ToInt32(hdfHorarioID.Value));
+                var _Horario = Mgr_Horario.Horario(Convert.ToInt32(hdfHorarioID.Value));
 
                 txtNombreEdit.Text = _Horario.nombre;
                 txtFechaIniEdit.Text = _Horario.fecha_inicio;

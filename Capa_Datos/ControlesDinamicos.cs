@@ -1,5 +1,6 @@
 ﻿using Capa_Datos.Manager.Acc_Inc;
 using Capa_Datos.Manager.Empresa;
+using Capa_Datos.Manager.Epp;
 using Capa_Datos.Manager.Trabajador;
 using System;
 using System.Collections.Generic;
@@ -171,7 +172,7 @@ namespace Capa_Datos
             _table.Controls.Add(_header_row);
 
             //Empezar a agregar de forma dinamica...
-            List<Model_CEPP> epp_datos = Getter.Epp(Convert.ToInt32(ddlPuesto.SelectedValue));
+            List<Model_CEPP> epp_datos = Mgr_Epp.Epp(Convert.ToInt32(ddlPuesto.SelectedValue));
             int cant = epp_datos.Count;
             TableCell _cell;
             _header_row = new TableHeaderRow();
@@ -216,7 +217,7 @@ namespace Capa_Datos
 
             //Senalizaciones..
             i = 0;
-            List<Model_CEPP> tipo_epp_datos = Getter.TipoEpp(Convert.ToInt32(ddlPuesto.SelectedValue));
+            List<Model_CEPP> tipo_epp_datos = Mgr_Epp.TipoEpp(Convert.ToInt32(ddlPuesto.SelectedValue));
             int cant_tipo = tipo_epp_datos.Count;
             _header_row = new TableHeaderRow();
             _header_cell = new TableHeaderCell();

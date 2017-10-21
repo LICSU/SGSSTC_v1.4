@@ -1,4 +1,5 @@
 ﻿using Capa_Datos;
+using Capa_Datos.Manager.GestionLaboral;
 using Capa_Datos.Manager.Trabajador;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Web.Security;
 
 namespace SGSSTC.source.sistema.Hacer
 {
-    public partial class View_GestionLaboral : System.Web.UI.Page
+	public partial class View_GestionLaboral : System.Web.UI.Page
 	{
 		private  Utilidades objUtilidades = new Utilidades();
 		private Model_UsuarioSistema ObjUsuario;
@@ -26,7 +27,7 @@ namespace SGSSTC.source.sistema.Hacer
 		private void CargarGestion()
 		{
 			List<gestion_laboral> ListaGestionLaboral = new List<gestion_laboral>();
-			ListaGestionLaboral = Getter.GestionLaboral(Convert.ToInt32(idGestion));
+			ListaGestionLaboral = Mgr_GestionLaboral.GestionLaboral(Convert.ToInt32(idGestion));
 
 			foreach (var itemGestionLaboral in ListaGestionLaboral)
 			{

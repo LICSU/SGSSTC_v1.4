@@ -10,6 +10,7 @@ using System.Web;
 using System.Web.Security;
 using Capa_Datos.Manager.Estatus;
 using Capa_Datos.Manager.Horario;
+using Capa_Datos.Manager.Gobierno;
 
 namespace SGSSTC.source.sistema.GestionDatos
 {
@@ -33,7 +34,7 @@ namespace SGSSTC.source.sistema.GestionDatos
 
             if (!IsPostBack)
             {
-                Listas.Ccf(ddlCcf);
+                Mgr_Gobierno.Ccf(ddlCcf);
                 CargarUsuario();
             }
         }
@@ -80,19 +81,19 @@ namespace SGSSTC.source.sistema.GestionDatos
                 Mgr_PuestoTrabajo.PuestoTrabajo(ddlPuestoTrabajo, "Sucursal", itemTrabajador.puesto_trabajo.area.id_sucursal);
                 ddlPuestoTrabajo.SelectedValue = Convert.ToString(itemTrabajador.id_puesto_trabajo);
 
-                Listas.Reg_Dpto_Mcpio(ddlRegion, "Region");
+                Mgr_Gobierno.Reg_Dpto_Mcpio(ddlRegion, "Region");
                 ddlRegion.SelectedValue = string.Empty + itemTrabajador.municipio.departamento.Region.id_region;
 
-                Listas.Reg_Dpto_Mcpio(ddlDepartamento, "RegionDpto", itemTrabajador.municipio.departamento.Region.id_region);
+                Mgr_Gobierno.Reg_Dpto_Mcpio(ddlDepartamento, "RegionDpto", itemTrabajador.municipio.departamento.Region.id_region);
                 ddlDepartamento.SelectedValue = string.Empty + itemTrabajador.municipio.id_departamento;
 
-                Listas.Reg_Dpto_Mcpio(ddlMunicipio, "McpioDpto", itemTrabajador.municipio.id_departamento);
+                Mgr_Gobierno.Reg_Dpto_Mcpio(ddlMunicipio, "McpioDpto", itemTrabajador.municipio.id_departamento);
                 ddlMunicipio.SelectedValue = string.Empty + itemTrabajador.id_municipio;
 
-                Listas.Ccf(ddlCcf);
+                Mgr_Gobierno.Ccf(ddlCcf);
                 ddlCcf.SelectedValue = string.Empty + itemTrabajador.id_ccf;
 
-                Listas.PerfilCargo(ddlCargo);
+                Mgr_Trabajador.PerfilCargo(ddlCargo);
                 //ddlCargo.SelectedValue = Convert.ToString(itemTrabajador.perfil_cargo.id_cno);
 
                 ImgFoto.ImageUrl = itemTrabajador.foto;
@@ -172,7 +173,7 @@ namespace SGSSTC.source.sistema.GestionDatos
         {
             if (ddlRegion.SelectedValue != string.Empty)
             {
-                Listas.Reg_Dpto_Mcpio(ddlDepartamento, "RegionDpto", Convert.ToInt32(ddlRegion.SelectedValue));
+                Mgr_Gobierno.Reg_Dpto_Mcpio(ddlDepartamento, "RegionDpto", Convert.ToInt32(ddlRegion.SelectedValue));
             }
         }
 
@@ -180,7 +181,7 @@ namespace SGSSTC.source.sistema.GestionDatos
         {
             if (ddlDepartamento.SelectedValue != string.Empty)
             {
-                Listas.Reg_Dpto_Mcpio(ddlMunicipio, "McpioDpto", Convert.ToInt32(ddlDepartamento.SelectedValue));
+                Mgr_Gobierno.Reg_Dpto_Mcpio(ddlMunicipio, "McpioDpto", Convert.ToInt32(ddlDepartamento.SelectedValue));
             }
         }
 

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI.WebControls;
+using Capa_Datos.Manager.Gobierno;
 
 namespace SGSSTC.source.sistema.GestionDatos
 {
@@ -72,7 +73,7 @@ namespace SGSSTC.source.sistema.GestionDatos
                 Mgr_Empresa.Lista_Empresa(ddlEmpresa);
                 Mgr_Empresa.Lista_Empresa(ddlEmpresaEdit);
             }
-            Listas.Reg_Dpto_Mcpio(ddlRegionEdit, "Region");
+            Mgr_Gobierno.Reg_Dpto_Mcpio(ddlRegionEdit, "Region");
         }
 
         private void LlenarGridView()
@@ -108,10 +109,10 @@ namespace SGSSTC.source.sistema.GestionDatos
 
                     ddlRegionEdit.SelectedValue = Convert.ToString(item.municipio.departamento.id_region);
 
-                    Listas.Reg_Dpto_Mcpio(ddlDptoEdit, "RegionDpto", Convert.ToInt32(item.municipio.departamento.id_region));
+                    Mgr_Gobierno.Reg_Dpto_Mcpio(ddlDptoEdit, "RegionDpto", Convert.ToInt32(item.municipio.departamento.id_region));
                     ddlDptoEdit.SelectedValue = Convert.ToString(item.municipio.id_departamento);
 
-                    Listas.Reg_Dpto_Mcpio(ddlMcpioEdit, "McpioDpto", Convert.ToInt32(item.municipio.id_departamento));
+                    Mgr_Gobierno.Reg_Dpto_Mcpio(ddlMcpioEdit, "McpioDpto", Convert.ToInt32(item.municipio.id_departamento));
                     ddlMcpioEdit.SelectedValue = Convert.ToString(item.id_municpio);
                 }
                 Modal.registrarModal("editModal", "EditModalScript", this);
@@ -282,12 +283,12 @@ namespace SGSSTC.source.sistema.GestionDatos
 
         protected void ddlRegionEdit_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Listas.Reg_Dpto_Mcpio(ddlDptoEdit, "RegionDpto", Convert.ToInt32(ddlRegionEdit.SelectedValue));
+            Mgr_Gobierno.Reg_Dpto_Mcpio(ddlDptoEdit, "RegionDpto", Convert.ToInt32(ddlRegionEdit.SelectedValue));
         }
 
         protected void ddlDptoEdit_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Listas.Reg_Dpto_Mcpio(ddlMcpioEdit, "McpioDpto", Convert.ToInt32(ddlDptoEdit.SelectedValue));
+            Mgr_Gobierno.Reg_Dpto_Mcpio(ddlMcpioEdit, "McpioDpto", Convert.ToInt32(ddlDptoEdit.SelectedValue));
         }
         #endregion
     }

@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Web;
 using System.Web.Security;
+using Capa_Datos.Manager.Epp;
 
 namespace SGSSTC.source.sistema.GestionDatos
 {
@@ -39,12 +40,12 @@ namespace SGSSTC.source.sistema.GestionDatos
             else
             {
                 Mgr_Sucursal.Sucursal(ddlSucursal, ObjUsuario.Id_empresa);
-                Listas.Epp(ddlEpp);
+                Mgr_Epp.Epp(ddlEpp);
             }
 
             if (!BoolEmpSuc.Item2)
             {
-                Listas.Epp(ddlEpp);
+                Mgr_Epp.Epp(ddlEpp);
                 Mgr_Area.Area_Sucursal(ddlArea, ObjUsuario.Id_sucursal);
             }
         }
@@ -100,7 +101,7 @@ namespace SGSSTC.source.sistema.GestionDatos
             if (ddlEmpresa.SelectedValue != string.Empty)
             {
                 Mgr_Sucursal.Sucursal(ddlSucursal, Convert.ToInt32(ddlEmpresa.SelectedValue));
-                Listas.Epp(ddlEpp);
+                Mgr_Epp.Epp(ddlEpp);
             }
         }
 

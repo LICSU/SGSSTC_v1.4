@@ -64,7 +64,7 @@ namespace SGSSTC.source.sistema.Hacer
 
             if (!BoolEmpSuc.Item2)
             {
-                Listas.AnhoNorma(ddlAñoNorma, ObjUsuario.Id_sucursal);
+                Mgr_Norma.AnhoNorma(ddlAñoNorma, ObjUsuario.Id_sucursal);
             }
 
         }
@@ -128,7 +128,7 @@ namespace SGSSTC.source.sistema.Hacer
             if (ddlSucursal.SelectedValue != string.Empty)
             {
                 ViewState["sucursal"] = ddlSucursal.SelectedValue;
-                Listas.AnhoNorma(ddlAñoNorma, Convert.ToInt32(ddlSucursal.SelectedValue));
+                Mgr_Norma.AnhoNorma(ddlAñoNorma, Convert.ToInt32(ddlSucursal.SelectedValue));
                 estatus = Convert.ToString(Mgr_Norma.AvgEstatusNorma(Convert.ToInt32(ddlSucursal.SelectedValue)));
             }
             else

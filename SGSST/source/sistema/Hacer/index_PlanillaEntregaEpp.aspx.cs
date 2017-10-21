@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Capa_Datos.Manager.Epp;
 
 namespace SGSSTC.source.sistema.Hacer
 {
@@ -60,7 +61,7 @@ namespace SGSSTC.source.sistema.Hacer
         }
         private void LlenarGridView()
         {
-            Tabla.entrega_epp(GridView1, string.Empty + ViewState["empresa"], string.Empty + ViewState["sucursal"], string.Empty + ViewState["sWhere"], IdTrabajador);
+            Mgr_Epp.entrega_epp(GridView1, string.Empty + ViewState["empresa"], string.Empty + ViewState["sucursal"], string.Empty + ViewState["sWhere"], IdTrabajador);
         }
         #endregion
 

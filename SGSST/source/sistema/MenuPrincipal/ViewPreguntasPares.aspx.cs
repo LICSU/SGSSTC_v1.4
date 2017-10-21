@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI.WebControls;
 using Capa_Datos.Manager.CodigoCiiu;
+using Capa_Datos.Manager.Comunicacion;
 
 namespace SGSSTC.source.sistema.MenuPrincipal
 {
@@ -17,7 +18,7 @@ namespace SGSSTC.source.sistema.MenuPrincipal
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            ObjUsuario = Utilidades.ValidarSesion(HttpContext.Current.User.Identity as FormsIdentity, this);phAlerta.Visible = false;
+            ObjUsuario = Utilidades.ValidarSesion(HttpContext.Current.User.Identity as FormsIdentity, this); phAlerta.Visible = false;
 
             BoolEmpSuc = Mgr_Empresa.Get_Empresa_Sucursal(ObjUsuario);
 
@@ -59,9 +60,9 @@ namespace SGSSTC.source.sistema.MenuPrincipal
 
         private void LlenarGridView()
         {
-            Tabla.SusPreguntas(GridView1, 
-                ObjUsuario.Id_empresa, 
-                string.Empty + ViewState["FechaInicio"], 
+            Mgr_Comunicacion.SusPreguntas(GridView1,
+                ObjUsuario.Id_empresa,
+                string.Empty + ViewState["FechaInicio"],
                 string.Empty + ViewState["FechaFin"],
                 Convert.ToInt32(string.Empty + ViewState["Rol"]),
                 Convert.ToInt32(string.Empty + ViewState["Clase"]),
@@ -98,7 +99,7 @@ namespace SGSSTC.source.sistema.MenuPrincipal
                 Convert.ToString(idPregunta)
                 };
 
-            ObjUsuario.Error = Capa_Datos.CRUD.Add_Respuesta( valores);
+            ObjUsuario.Error = Mgr_Comunicacion.Add_Respuesta(valores);
 
             Modal.CerrarModal("RespuestaModal", "RespuestaModalScript", this);
 
@@ -121,7 +122,7 @@ namespace SGSSTC.source.sistema.MenuPrincipal
                 hdfPreguntaID.Value = (gvrow.FindControl("id_pregunta") as Label).Text;
 
                 List<Pregunta> ListaPregunta = new List<Pregunta>();
-                ListaPregunta = Getter.Pregunta(Convert.ToInt32(hdfPreguntaID.Value));
+                ListaPregunta = Mgr_Comunicacion.Pregunta(Convert.ToInt32(hdfPreguntaID.Value));
 
                 foreach (var item in ListaPregunta)
                 {

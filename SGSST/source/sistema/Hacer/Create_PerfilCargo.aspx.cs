@@ -1,4 +1,5 @@
 ﻿using Capa_Datos;
+using Capa_Datos.Manager.Gobierno;
 using System;
 using System.Web;
 using System.Web.Security;
@@ -15,7 +16,7 @@ namespace SGSSTC.source.sistema.Hacer
 
             if (!IsPostBack)
             {
-                Listas.Cno(ddlCargo);
+                Mgr_Gobierno.Cno(ddlCargo);
 
             }
         }

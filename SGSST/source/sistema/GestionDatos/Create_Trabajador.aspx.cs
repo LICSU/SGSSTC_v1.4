@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Security;
 using Capa_Datos.Manager.Estatus;
 using Capa_Datos.Manager.Horario;
+using Capa_Datos.Manager.Gobierno;
 
 namespace SGSSTC.source.sistema.GestionDatos
 {
@@ -52,9 +53,9 @@ namespace SGSSTC.source.sistema.GestionDatos
                 Mgr_Horario.Horario_Empresa(ddlHorario, ObjUsuario.Id_empresa);
             }
 
-            Listas.Reg_Dpto_Mcpio(ddlRegion, "Region");
-            Listas.Ccf(ddlCcf);
-            Listas.PerfilCargo(ddlCargo);
+            Mgr_Gobierno.Reg_Dpto_Mcpio(ddlRegion, "Region");
+            Mgr_Gobierno.Ccf(ddlCcf);
+            Mgr_Trabajador.PerfilCargo(ddlCargo);
         }
 
         protected void btnNuevo_Click(object sender, EventArgs e)
@@ -142,7 +143,7 @@ namespace SGSSTC.source.sistema.GestionDatos
         {
             if (ddlRegion.SelectedValue != string.Empty)
             {
-                Listas.Reg_Dpto_Mcpio(ddlDepartamento, "RegionDpto", Convert.ToInt32(ddlRegion.SelectedValue));
+                Mgr_Gobierno.Reg_Dpto_Mcpio(ddlDepartamento, "RegionDpto", Convert.ToInt32(ddlRegion.SelectedValue));
             }
         }
 
@@ -150,7 +151,7 @@ namespace SGSSTC.source.sistema.GestionDatos
         {
             if (ddlDepartamento.SelectedValue != string.Empty)
             {
-                Listas.Reg_Dpto_Mcpio(ddlMunicipio, "McpioDpto", Convert.ToInt32(ddlDepartamento.SelectedValue));
+                Mgr_Gobierno.Reg_Dpto_Mcpio(ddlMunicipio, "McpioDpto", Convert.ToInt32(ddlDepartamento.SelectedValue));
             }
         }
 

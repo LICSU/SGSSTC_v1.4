@@ -1,4 +1,5 @@
 ﻿using Capa_Datos;
+using Capa_Datos.Manager.Obligacion;
 using System;
 using System.Collections.Generic;
 using System.Web;
@@ -6,7 +7,7 @@ using System.Web.Security;
 
 namespace SGSSTC.source.sistema.Hacer
 {
-    public partial class View_Obligacion : System.Web.UI.Page
+	public partial class View_Obligacion : System.Web.UI.Page
 	{
 		private Utilidades objUtilidades = new Utilidades();
 		private Model_UsuarioSistema ObjUsuario;
@@ -25,7 +26,7 @@ namespace SGSSTC.source.sistema.Hacer
 		{
 			string valor = Request.QueryString["idO"];
 			List<obligacion> ListaObligacion = new List<obligacion>();
-			ListaObligacion = Getter.Obligacion(Convert.ToInt32(objUtilidades.descifrarCadena(valor)));
+			ListaObligacion = Mgr_Obligacion.Obligacion(Convert.ToInt32(objUtilidades.descifrarCadena(valor)));
 
 			foreach (var item in ListaObligacion)
 			{

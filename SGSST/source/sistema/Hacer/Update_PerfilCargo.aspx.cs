@@ -1,4 +1,6 @@
 ﻿using Capa_Datos;
+using Capa_Datos.Manager.Gobierno;
+using Capa_Datos.Manager.Trabajador;
 using System;
 using System.Linq;
 using System.Web;
@@ -20,7 +22,7 @@ namespace SGSSTC.source.sistema.Hacer
 
             if (!IsPostBack)
             {
-                Listas.Cno(ddlCargo);
+                Mgr_Gobierno.Cno(ddlCargo);
                 CargarPerfil();
             }
         }
@@ -28,7 +30,7 @@ namespace SGSSTC.source.sistema.Hacer
         private void CargarPerfil()
         {
             var _PerfilCargo = new perfil_cargo();
-            _PerfilCargo = Getter.PerfilCargo(IDPerfil);
+            _PerfilCargo = Mgr_Trabajador.PerfilCargo(IDPerfil);
 
             txtNombre.Text = _PerfilCargo.nombre;
             txtDescripcion.Text = _PerfilCargo.descripcion;

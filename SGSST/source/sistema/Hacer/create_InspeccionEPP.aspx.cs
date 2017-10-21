@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Capa_Datos.Manager.Epp;
 
 namespace SGSSTC.source.sistema.EvaluacionInicial
 {
@@ -96,7 +97,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
             row.Visible = false;
             int i = 0;
             _table = (Table)pnEpp.FindControl("tblEPP");
-            List<Model_CEPP> epp_datos = Getter.Epp(Convert.ToInt32(ddlPuesto.SelectedValue));
+            List<Model_CEPP> epp_datos = Mgr_Epp.Epp(Convert.ToInt32(ddlPuesto.SelectedValue));
             foreach (var dato in epp_datos)
             {
                 _radio = (RadioButton)pnEpp.FindControl("eppNo" + i);
@@ -115,7 +116,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
             }
             ViewState["EppFalt"] = contFal;
             contFal = 0;
-            List<Model_CEPP> tipo_epp_datos = Getter.TipoEpp(Convert.ToInt32(ddlPuesto.SelectedValue));
+            List<Model_CEPP> tipo_epp_datos = Mgr_Epp.TipoEpp(Convert.ToInt32(ddlPuesto.SelectedValue));
             i = 0;
             Table _table2 = new Table();
             _table2 = (Table)pnEpp.FindControl("tblSenal");
@@ -212,7 +213,7 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
             {
                 ViewState["puesto"] = ddlPuesto.SelectedValue;
 
-                List<Model_CEPP> epp = Getter.Epp(Convert.ToInt32(ddlPuesto.SelectedValue));
+                List<Model_CEPP> epp = Mgr_Epp.Epp(Convert.ToInt32(ddlPuesto.SelectedValue));
                 if (epp.Count > 0)
                 {
                     phInformacion.Visible = true;

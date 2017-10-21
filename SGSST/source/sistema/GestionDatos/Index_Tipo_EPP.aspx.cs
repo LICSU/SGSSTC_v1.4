@@ -1,5 +1,6 @@
 ﻿using Capa_Datos;
 using Capa_Datos.Manager.Empresa;
+using Capa_Datos.Manager.Epp;
 using System;
 using System.Linq;
 using System.Web;
@@ -46,7 +47,7 @@ namespace SGSSTC.source.sistema.GestionDatos
         private void LlenarGridView()
         {
             int IdEmpresa = Mgr_Empresa.Set_IdEmpresa(ObjUsuario, Convert.ToInt32(ViewState["empresa"]));
-            Tabla.TipoEpp(GridView1, string.Empty + ViewState["sWhere"]);
+            Mgr_Epp.TipoEpp(GridView1, string.Empty + ViewState["sWhere"]);
         }
 
         #region acciones

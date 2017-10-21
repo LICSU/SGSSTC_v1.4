@@ -9,6 +9,7 @@ using System.Web.Security;
 using System.Web.UI.WebControls;
 using Capa_Datos.Manager.CodigoCiiu;
 using Capa_Datos.Manager.Documento;
+using Capa_Datos.Manager.Comunicacion;
 
 namespace SGSSTC.source.sistema.MenuPrincipal
 {
@@ -451,7 +452,7 @@ namespace SGSSTC.source.sistema.MenuPrincipal
                 Convert.ToString(idPregunta)
                 };
 
-            ObjUsuario.Error = CRUD.Add_Respuesta( valores);
+            ObjUsuario.Error = Mgr_Comunicacion.Add_Respuesta( valores);
 
             Modal.CerrarModal("RespuestaModal", "RespuestaModalScript", this);
 
@@ -467,7 +468,7 @@ namespace SGSSTC.source.sistema.MenuPrincipal
                 txtPregunta.Text
                 };
 
-            ObjUsuario.Error = CRUD.Add_Pregunta(ObjUsuario, valores);
+            ObjUsuario.Error = Mgr_Comunicacion.Add_Pregunta(ObjUsuario, valores);
 
             Modal.CerrarModal("addModal", "AddModalScript", this);
 
