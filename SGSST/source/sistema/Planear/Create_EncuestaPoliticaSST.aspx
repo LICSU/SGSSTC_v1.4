@@ -17,6 +17,7 @@
         <div class="page-header">
             <h3 class="text-center">Encuesta De Conocimiento De La Política SGSST</h3>
         </div>
+
         <div class="row text-center">
                 <div class="row">
 
@@ -414,10 +415,10 @@
                 </div>
 
                 <hr />
-                <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js" type="text/javascript"></script>
-                <script type="text/javascript" src="//www.google.com/jsapi"></script>
 
                 <div class="row">
+                    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js" type="text/javascript"></script>
+                    <script type="text/javascript" src="//www.google.com/jsapi"></script>
                     <div class="col-md-10 col-md-offset-1">
                         <asp:Literal ID="ltReporte" runat="server"></asp:Literal>
                         <div id="piechart"></div>

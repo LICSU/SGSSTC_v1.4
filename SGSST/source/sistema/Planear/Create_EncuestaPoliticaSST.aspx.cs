@@ -16,8 +16,6 @@ namespace SGSSTC.source.sistema.Hacer
         private Model_UsuarioSistema ObjUsuario;
         private Tuple<bool, bool> BoolEmpSuc;
         private static int IdSucursal = 0;
-        private static int IdTrabajador = 0;
-        private static int IdPuesto = 0;
 
         protected void Page_Load(object sender, EventArgs e)
         {
