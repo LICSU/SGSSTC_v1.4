@@ -96,13 +96,18 @@
                                             </p>
                                         </td>
                                         <td>
-                                            <asp:DropDownList runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCumplimiento_SelectedIndexChanged" ID="ddlCumplimiento1" CssClass="form-control">
+                                            <asp:DropDownList runat="server" AutoPostBack="true" 
+                                                OnSelectedIndexChanged="ddlCumplimiento_SelectedIndexChanged" ID="ddlCumplimiento1" CssClass="form-control">
                                                 <asp:ListItem Text="Seleccione..." Value=""></asp:ListItem>
                                                 <asp:ListItem Text="Cumple" Value="Cumple"></asp:ListItem>
                                                 <asp:ListItem Text="No Cumple" Value="No_Cumple"></asp:ListItem>
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
                                             </asp:DropDownList>
+
+                                            <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
+                                                Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true"
+                                                ValidationGroup="CalcularAutoEvaluacion" runat="server" ControlToValidate="ddlCumplimiento1" />
                                         </td>
                                         <td>
                                             <asp:Label ID="lbCalificacion1" runat="server" Text="-"></asp:Label>
@@ -141,6 +146,10 @@
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
                                             </asp:DropDownList>
+
+                                            <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
+                                                Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true"
+                                                ValidationGroup="CalcularAutoEvaluacion" runat="server" ControlToValidate="ddlCumplimiento2" />
                                         </td>
                                         <td>
                                             <asp:Label ID="lbCalificacion2" runat="server" Text="-"></asp:Label>
@@ -171,6 +180,10 @@
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
                                             </asp:DropDownList>
+
+                                            <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
+                                                Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true"
+                                                ValidationGroup="CalcularAutoEvaluacion" runat="server" ControlToValidate="ddlCumplimiento3" />
                                         </td>
                                         <td>
                                             <asp:Label ID="lbCalificacion3" runat="server" Text="-"></asp:Label>
@@ -200,6 +213,10 @@
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
                                             </asp:DropDownList>
+
+                                            <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
+                                                Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true"
+                                                ValidationGroup="CalcularAutoEvaluacion" runat="server" ControlToValidate="ddlCumplimiento4" />
                                         </td>
                                         <td>
                                             <asp:Label ID="lbCalificacion4" runat="server" Text="-"></asp:Label>
@@ -238,6 +255,10 @@
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
                                             </asp:DropDownList>
+
+                                            <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
+                                                Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true"
+                                                ValidationGroup="CalcularAutoEvaluacion" runat="server" ControlToValidate="ddlCumplimiento5" />
                                         </td>
                                         <td>
                                             <asp:Label ID="lbCalificacion5" runat="server" Text="-"></asp:Label>
@@ -282,6 +303,10 @@
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
                                             </asp:DropDownList>
+
+                                            <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
+                                                Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true"
+                                                ValidationGroup="CalcularAutoEvaluacion" runat="server" ControlToValidate="ddlCumplimiento6" />
                                         </td>
                                         <td>
                                             <asp:Label ID="lbCalificacion6" runat="server" Text="-"></asp:Label>
@@ -315,6 +340,10 @@
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
                                             </asp:DropDownList>
+
+                                            <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
+                                                Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true"
+                                                ValidationGroup="CalcularAutoEvaluacion" runat="server" ControlToValidate="ddlCumplimiento7" />
                                         </td>
                                         <td>
                                             <asp:Label ID="lbCalificacion7" runat="server" Text="-"></asp:Label>
@@ -346,6 +375,10 @@
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
                                             </asp:DropDownList>
+
+                                            <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
+                                                Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true"
+                                                ValidationGroup="CalcularAutoEvaluacion" runat="server" ControlToValidate="ddlCumplimiento8" />
                                         </td>
                                         <td>
                                             <asp:Label ID="lbCalificacion8" runat="server" Text="-"></asp:Label>
@@ -397,6 +430,10 @@
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
                                             </asp:DropDownList>
+
+                                            <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
+                                                Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true"
+                                                ValidationGroup="CalcularAutoEvaluacion" runat="server" ControlToValidate="ddlCumplimiento9" />
                                         </td>
                                         <td>
                                             <asp:Label ID="lbCalificacion9" runat="server" Text="-"></asp:Label>
@@ -440,6 +477,10 @@
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
                                             </asp:DropDownList>
+
+                                            <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
+                                                Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true"
+                                                ValidationGroup="CalcularAutoEvaluacion" runat="server" ControlToValidate="ddlCumplimiento10" />
                                         </td>
                                         <td>
                                             <asp:Label ID="lbCalificacion10" runat="server" Text="-"></asp:Label>
@@ -471,6 +512,10 @@
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
                                             </asp:DropDownList>
+
+                                            <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
+                                                Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true"
+                                                ValidationGroup="CalcularAutoEvaluacion" runat="server" ControlToValidate="ddlCumplimiento11" />
                                         </td>
                                         <td>
                                             <asp:Label ID="lbCalificacion11" runat="server" Text="-"></asp:Label>
@@ -542,6 +587,10 @@
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
                                             </asp:DropDownList>
+
+                                            <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
+                                                Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true"
+                                                ValidationGroup="CalcularAutoEvaluacion" runat="server" ControlToValidate="ddlCumplimiento12" />
                                         </td>
                                         <td>
                                             <asp:Label ID="lbCalificacion12" runat="server" Text="-"></asp:Label>
@@ -600,6 +649,10 @@
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
                                             </asp:DropDownList>
+
+                                            <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
+                                                Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true"
+                                                ValidationGroup="CalcularAutoEvaluacion" runat="server" ControlToValidate="ddlCumplimiento13" />
                                         </td>
                                         <td>
                                             <asp:Label ID="lbCalificacion13" runat="server" Text="-"></asp:Label>
@@ -658,6 +711,10 @@
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
                                             </asp:DropDownList>
+
+                                            <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
+                                                Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true"
+                                                ValidationGroup="CalcularAutoEvaluacion" runat="server" ControlToValidate="ddlCumplimiento14" />
                                         </td>
                                         <td>
                                             <asp:Label ID="lbCalificacion14" runat="server" Text="-"></asp:Label>
@@ -717,6 +774,10 @@
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
                                             </asp:DropDownList>
+
+                                            <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
+                                                Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true"
+                                                ValidationGroup="CalcularAutoEvaluacion" runat="server" ControlToValidate="ddlCumplimiento15" />
                                         </td>
                                         <td>
                                             <asp:Label ID="lbCalificacion15" runat="server" Text="-"></asp:Label>
@@ -768,6 +829,10 @@
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
                                             </asp:DropDownList>
+
+                                            <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
+                                                Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true"
+                                                ValidationGroup="CalcularAutoEvaluacion" runat="server" ControlToValidate="ddlCumplimiento16" />
                                         </td>
                                         <td>
                                             <asp:Label ID="lbCalificacion16" runat="server" Text="-"></asp:Label>
@@ -819,6 +884,10 @@
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
                                             </asp:DropDownList>
+
+                                            <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
+                                                Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true"
+                                                ValidationGroup="CalcularAutoEvaluacion" runat="server" ControlToValidate="ddlCumplimiento17" />
                                         </td>
                                         <td>
                                             <asp:Label ID="lbCalificacion17" runat="server" Text="-"></asp:Label>
@@ -868,6 +937,10 @@
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
                                             </asp:DropDownList>
+
+                                            <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
+                                                Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true"
+                                                ValidationGroup="CalcularAutoEvaluacion" runat="server" ControlToValidate="ddlCumplimiento18" />
                                         </td>
                                         <td>
                                             <asp:Label ID="lbCalificacion18" runat="server" Text="-"></asp:Label>
@@ -920,6 +993,10 @@
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
                                             </asp:DropDownList>
+
+                                            <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
+                                                Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true"
+                                                ValidationGroup="CalcularAutoEvaluacion" runat="server" ControlToValidate="ddlCumplimiento19" />
                                         </td>
                                         <td>
                                             <asp:Label ID="lbCalificacion19" runat="server" Text="-"></asp:Label>
@@ -972,6 +1049,10 @@
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
                                             </asp:DropDownList>
+
+                                            <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
+                                                Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true"
+                                                ValidationGroup="CalcularAutoEvaluacion" runat="server" ControlToValidate="ddlCumplimiento20" />
                                         </td>
                                         <td>
                                             <asp:Label ID="lbCalificacion20" runat="server" Text="-"></asp:Label>
@@ -1026,6 +1107,10 @@
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
                                             </asp:DropDownList>
+
+                                            <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
+                                                Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true"
+                                                ValidationGroup="CalcularAutoEvaluacion" runat="server" ControlToValidate="ddlCumplimiento21" />
                                         </td>
                                         <td>
                                             <asp:Label ID="lbCalificacion21" runat="server" Text="-"></asp:Label>
@@ -1077,6 +1162,10 @@
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
                                             </asp:DropDownList>
+
+                                            <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
+                                                Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true"
+                                                ValidationGroup="CalcularAutoEvaluacion" runat="server" ControlToValidate="ddlCumplimiento22" />
                                         </td>
                                         <td>
                                             <asp:Label ID="lbCalificacion22" runat="server" Text="-"></asp:Label>
@@ -1134,6 +1223,10 @@
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
                                             </asp:DropDownList>
+
+                                            <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
+                                                Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true"
+                                                ValidationGroup="CalcularAutoEvaluacion" runat="server" ControlToValidate="ddlCumplimiento23" />
                                         </td>
                                         <td>
                                             <asp:Label ID="lbCalificacion23" runat="server" Text="-"></asp:Label>
@@ -1167,6 +1260,10 @@
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
                                             </asp:DropDownList>
+
+                                            <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
+                                                Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true"
+                                                ValidationGroup="CalcularAutoEvaluacion" runat="server" ControlToValidate="ddlCumplimiento24" />
                                         </td>
                                         <td>
                                             <asp:Label ID="lbCalificacion24" runat="server" Text="-"></asp:Label>
@@ -1199,6 +1296,10 @@
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
                                             </asp:DropDownList>
+
+                                            <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
+                                                Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true"
+                                                ValidationGroup="CalcularAutoEvaluacion" runat="server" ControlToValidate="ddlCumplimiento25" />
                                         </td>
                                         <td>
                                             <asp:Label ID="lbCalificacion25" runat="server" Text="-"></asp:Label>
@@ -1237,6 +1338,10 @@
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
                                             </asp:DropDownList>
+
+                                            <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
+                                                Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true"
+                                                ValidationGroup="CalcularAutoEvaluacion" runat="server" ControlToValidate="ddlCumplimiento26" />
                                         </td>
                                         <td>
                                             <asp:Label ID="lbCalificacion26" runat="server" Text="-"></asp:Label>
@@ -1273,6 +1378,10 @@
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
                                             </asp:DropDownList>
+
+                                            <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
+                                                Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true"
+                                                ValidationGroup="CalcularAutoEvaluacion" runat="server" ControlToValidate="ddlCumplimiento27" />
                                         </td>
                                         <td>
                                             <asp:Label ID="lbCalificacion27" runat="server" Text="-"></asp:Label>
@@ -1312,6 +1421,10 @@
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
                                             </asp:DropDownList>
+
+                                            <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
+                                                Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true"
+                                                ValidationGroup="CalcularAutoEvaluacion" runat="server" ControlToValidate="ddlCumplimiento28" />
                                         </td>
                                         <td>
                                             <asp:Label ID="lbCalificacion28" runat="server" Text="-"></asp:Label>
@@ -1344,6 +1457,10 @@
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
                                             </asp:DropDownList>
+
+                                            <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
+                                                Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true"
+                                                ValidationGroup="CalcularAutoEvaluacion" runat="server" ControlToValidate="ddlCumplimiento29" />
                                         </td>
                                         <td>
                                             <asp:Label ID="lbCalificacion29" runat="server" Text="-"></asp:Label>
@@ -1373,6 +1490,10 @@
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
                                             </asp:DropDownList>
+
+                                            <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
+                                                Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true"
+                                                ValidationGroup="CalcularAutoEvaluacion" runat="server" ControlToValidate="ddlCumplimiento30" />
                                         </td>
                                         <td>
                                             <asp:Label ID="lbCalificacion30" runat="server" Text="-"></asp:Label>
@@ -1406,6 +1527,9 @@
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
                                             </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
+                                                Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true"
+                                                ValidationGroup="CalcularAutoEvaluacion" runat="server" ControlToValidate="ddlCumplimiento31" />
                                         </td>
                                         <td>
                                             <asp:Label ID="lbCalificacion31" runat="server" Text="-"></asp:Label>
@@ -1464,6 +1588,9 @@
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
                                             </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
+                                                Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true"
+                                                ValidationGroup="CalcularAutoEvaluacion" runat="server" ControlToValidate="ddlCumplimiento32" />
                                         </td>
                                         <td>
                                             <asp:Label ID="lbCalificacion32" runat="server" Text="-"></asp:Label>
@@ -1494,6 +1621,9 @@
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
                                             </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
+                                                Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true"
+                                                ValidationGroup="CalcularAutoEvaluacion" runat="server" ControlToValidate="ddlCumplimiento33" />
                                         </td>
                                         <td>
                                             <asp:Label ID="lbCalificacion33" runat="server" Text="-"></asp:Label>
@@ -1537,6 +1667,9 @@
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
                                             </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
+                                                Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true"
+                                                ValidationGroup="CalcularAutoEvaluacion" runat="server" ControlToValidate="ddlCumplimiento34" />
                                         </td>
                                         <td>
                                             <asp:Label ID="lbCalificacion34" runat="server" Text="-"></asp:Label>
@@ -1589,6 +1722,9 @@
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
                                             </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
+                                                Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true"
+                                                ValidationGroup="CalcularAutoEvaluacion" runat="server" ControlToValidate="ddlCumplimiento35" />
                                         </td>
                                         <td>
                                             <asp:Label ID="lbCalificacion35" runat="server" Text="-"></asp:Label>
@@ -1620,6 +1756,9 @@
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
                                             </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
+                                                Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true"
+                                                ValidationGroup="CalcularAutoEvaluacion" runat="server" ControlToValidate="ddlCumplimiento36" />
                                         </td>
                                         <td>
                                             <asp:Label ID="lbCalificacion36" runat="server" Text="-"></asp:Label>
@@ -1651,6 +1790,9 @@
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
                                             </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
+                                                Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true"
+                                                ValidationGroup="CalcularAutoEvaluacion" runat="server" ControlToValidate="ddlCumplimiento37" />
                                         </td>
                                         <td>
                                             <asp:Label ID="lbCalificacion37" runat="server" Text="-"></asp:Label>
@@ -1679,6 +1821,9 @@
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
                                             </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
+                                                Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true"
+                                                ValidationGroup="CalcularAutoEvaluacion" runat="server" ControlToValidate="ddlCumplimiento38" />
                                         </td>
                                         <td>
                                             <asp:Label ID="lbCalificacion38" runat="server" Text="-"></asp:Label>
@@ -1710,6 +1855,9 @@
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
                                             </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
+                                                Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true"
+                                                ValidationGroup="CalcularAutoEvaluacion" runat="server" ControlToValidate="ddlCumplimiento39" />
                                         </td>
                                         <td>
                                             <asp:Label ID="lbCalificacion39" runat="server" Text="-"></asp:Label>
@@ -1739,6 +1887,9 @@
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
                                             </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
+                                                Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true"
+                                                ValidationGroup="CalcularAutoEvaluacion" runat="server" ControlToValidate="ddlCumplimiento40" />
                                         </td>
                                         <td>
                                             <asp:Label ID="lbCalificacion40" runat="server" Text="-"></asp:Label>
@@ -1797,6 +1948,9 @@
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
                                             </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
+                                                Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true"
+                                                ValidationGroup="CalcularAutoEvaluacion" runat="server" ControlToValidate="ddlCumplimiento41" />
                                         </td>
                                         <td>
                                             <asp:Label ID="lbCalificacion41" runat="server" Text="-"></asp:Label>
@@ -1831,6 +1985,9 @@
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
                                             </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
+                                                Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true"
+                                                ValidationGroup="CalcularAutoEvaluacion" runat="server" ControlToValidate="ddlCumplimiento42" />
                                         </td>
                                         <td>
                                             <asp:Label ID="lbCalificacion42" runat="server" Text="-"></asp:Label>
@@ -1865,6 +2022,9 @@
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
                                             </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
+                                                Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true"
+                                                ValidationGroup="CalcularAutoEvaluacion" runat="server" ControlToValidate="ddlCumplimiento43" />
                                         </td>
                                         <td>
                                             <asp:Label ID="lbCalificacion43" runat="server" Text="-"></asp:Label>
@@ -1894,6 +2054,9 @@
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
                                             </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
+                                                Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true"
+                                                ValidationGroup="CalcularAutoEvaluacion" runat="server" ControlToValidate="ddlCumplimiento44" />
                                         </td>
                                         <td>
                                             <asp:Label ID="lbCalificacion44" runat="server" Text="-"></asp:Label>
@@ -1948,6 +2111,9 @@
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
                                             </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
+                                                Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true"
+                                                ValidationGroup="CalcularAutoEvaluacion" runat="server" ControlToValidate="ddlCumplimiento45" />
                                         </td>
                                         <td>
                                             <asp:Label ID="lbCalificacion45" runat="server" Text="-"></asp:Label>
@@ -1981,6 +2147,9 @@
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
                                             </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
+                                                Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true"
+                                                ValidationGroup="CalcularAutoEvaluacion" runat="server" ControlToValidate="ddlCumplimiento46" />
                                         </td>
                                         <td>
                                             <asp:Label ID="lbCalificacion46" runat="server" Text="-"></asp:Label>
@@ -2013,6 +2182,9 @@
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
                                             </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
+                                                Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true"
+                                                ValidationGroup="CalcularAutoEvaluacion" runat="server" ControlToValidate="ddlCumplimiento47" />
                                         </td>
                                         <td>
                                             <asp:Label ID="lbCalificacion47" runat="server" Text="-"></asp:Label>
@@ -2044,6 +2216,9 @@
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
                                             </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
+                                                Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true"
+                                                ValidationGroup="CalcularAutoEvaluacion" runat="server" ControlToValidate="ddlCumplimiento48" />
                                         </td>
                                         <td>
                                             <asp:Label ID="lbCalificacion48" runat="server" Text="-"></asp:Label>
@@ -2075,6 +2250,9 @@
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
                                             </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
+                                                Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true"
+                                                ValidationGroup="CalcularAutoEvaluacion" runat="server" ControlToValidate="ddlCumplimiento49" />
                                         </td>
                                         <td>
                                             <asp:Label ID="lbCalificacion49" runat="server" Text="-"></asp:Label>
@@ -2114,6 +2292,9 @@
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
                                             </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
+                                                Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true"
+                                                ValidationGroup="CalcularAutoEvaluacion" runat="server" ControlToValidate="ddlCumplimiento50" />
                                         </td>
                                         <td>
                                             <asp:Label ID="lbCalificacion50" runat="server" Text="-"></asp:Label>
@@ -2178,6 +2359,9 @@
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
                                             </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
+                                                Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true"
+                                                ValidationGroup="CalcularAutoEvaluacion" runat="server" ControlToValidate="ddlCumplimiento51" />
                                         </td>
                                         <td>
                                             <asp:Label ID="lbCalificacion51" runat="server" Text="-"></asp:Label>
@@ -2216,6 +2400,9 @@
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
                                             </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
+                                                Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true"
+                                                ValidationGroup="CalcularAutoEvaluacion" runat="server" ControlToValidate="ddlCumplimiento52" />
                                         </td>
                                         <td>
                                             <asp:Label ID="lbCalificacion52" runat="server" Text="-"></asp:Label>
@@ -2275,6 +2462,9 @@
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
                                             </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
+                                                Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true"
+                                                ValidationGroup="CalcularAutoEvaluacion" runat="server" ControlToValidate="ddlCumplimiento53" />
                                         </td>
                                         <td>
                                             <asp:Label ID="lbCalificacion53" runat="server" Text="-"></asp:Label>
@@ -2302,6 +2492,9 @@
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
                                             </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
+                                                Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true"
+                                                ValidationGroup="CalcularAutoEvaluacion" runat="server" ControlToValidate="ddlCumplimiento54" />
                                         </td>
                                         <td>
                                             <asp:Label ID="lbCalificacion54" runat="server" Text="-"></asp:Label>
@@ -2332,6 +2525,9 @@
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
                                             </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
+                                                Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true"
+                                                ValidationGroup="CalcularAutoEvaluacion" runat="server" ControlToValidate="ddlCumplimiento55" />
                                         </td>
                                         <td>
                                             <asp:Label ID="lbCalificacion55" runat="server" Text="-"></asp:Label>
@@ -2366,6 +2562,9 @@
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
                                             </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
+                                                Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true"
+                                                ValidationGroup="CalcularAutoEvaluacion" runat="server" ControlToValidate="ddlCumplimiento56" />
                                         </td>
                                         <td>
                                             <asp:Label ID="lbCalificacion56" runat="server" Text="-"></asp:Label>
@@ -2420,6 +2619,9 @@
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
                                             </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
+                                                Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true"
+                                                ValidationGroup="CalcularAutoEvaluacion" runat="server" ControlToValidate="ddlCumplimiento57" />
                                         </td>
                                         <td>
                                             <asp:Label ID="lbCalificacion57" runat="server" Text="-"></asp:Label>
@@ -2456,6 +2658,9 @@
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
                                             </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
+                                                Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true"
+                                                ValidationGroup="CalcularAutoEvaluacion" runat="server" ControlToValidate="ddlCumplimiento58" />
                                         </td>
                                         <td>
                                             <asp:Label ID="lbCalificacion58" runat="server" Text="-"></asp:Label>
@@ -2487,6 +2692,9 @@
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
                                             </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
+                                                Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true"
+                                                ValidationGroup="CalcularAutoEvaluacion" runat="server" ControlToValidate="ddlCumplimiento59" />
                                         </td>
                                         <td>
                                             <asp:Label ID="lbCalificacion59" runat="server" Text="-"></asp:Label>
@@ -2520,6 +2728,9 @@
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
                                             </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
+                                                Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true"
+                                                ValidationGroup="CalcularAutoEvaluacion" runat="server" ControlToValidate="ddlCumplimiento60" />
                                         </td>
                                         <td>
                                             <asp:Label ID="lbCalificacion60" runat="server" Text="-"></asp:Label>
@@ -2557,7 +2768,7 @@
             <div class="row text-center">
                 <div class="col-md-4 col-md-offset-2">
                     <asp:ImageButton alt="-" ID="btnGenerar" runat="server" ImageUrl="~\ico\view.png"
-                        OnClick="btnGenerar_Onclick" />
+                        OnClick="btnGenerar_Onclick" ValidationGroup="CalcularAutoEvaluacion"/>
                     <h4>Generar Resultados</h4>
                 </div>
 
