@@ -41,7 +41,6 @@ namespace SGSSTC.source.sistema.EvaluacionInicial
             }
         }
 
-
         protected void btnGenerar_Onclick(object sender, EventArgs e)
         {
             phGuardar.Visible = true;
