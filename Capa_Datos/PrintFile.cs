@@ -21,6 +21,9 @@ namespace Capa_Datos
     public class PrintFile
     {
         private static Model_Celda B_H3_C_N_12_1_Bl = new Model_Celda(1, "H3", "C", "0|0|0|0", 12, 1, "", "");
+        private static Model_Celda B_H4_C_URDL_12_1_Ve = new Model_Celda(1, "H3", "C", "1|1|1|1", 12, 1, "verde", "");
+        private static Model_Celda B_H4_C_URDL_12_1_Ro = new Model_Celda(1, "H3", "C", "1|1|1|1", 12, 1, "rojo", "");
+        private static Model_Celda B_H4_C_URDL_12_1_Vi = new Model_Celda(1, "H3", "C", "1|1|1|1", 12, 1, "violeta", "");
         private static Model_Celda B_H3_C_N_3_1_Az = new Model_Celda(1, "H3", "C", "0|0|0|0", 3, 1, "azul", "");
         private static Model_Celda B_H3_C_N_8_1_Az = new Model_Celda(1, "H3", "C", "0|0|0|0", 8, 1, "azul", "");
         private static Model_Celda B_H3_C_RDL_6_1_Bl = new Model_Celda(1, "H3", "C", "0|1|1|1", 6, 1, "", "");
@@ -29,6 +32,7 @@ namespace Capa_Datos
         private static Model_Celda B_H3_C_URDL_1_2_Az = new Model_Celda(1, "H3", "C", "1|1|1|1", 1, 2, "azul", "");
         private static Model_Celda B_H3_C_URDL_12_1_Bl = new Model_Celda(1, "H3", "C", "1|1|1|1", 12, 1, "", "");
         private static Model_Celda B_H3_C_URDL_3_1_Az = new Model_Celda(1, "H3", "C", "1|1|1|1", 3, 1, "azul", "");
+        private static Model_Celda B_H4_C_URDL_3_1_Ro = new Model_Celda(1, "H3", "C", "1|1|1|1", 3, 1, "rojo", "");
         private static Model_Celda B_H3_C_URDL_3_1_Bl = new Model_Celda(1, "H3", "C", "1|1|1|1", 3, 1, "", "");
         private static Model_Celda B_H3_C_URDL_4_1_Az = new Model_Celda(1, "H3", "C", "1|1|1|1", 4, 1, "azul", "");
         private static Model_Celda B_H3_C_URL_6_1_Bl = new Model_Celda(1, "H3", "C", "1|1|0|1", 6, 1, "", "");
@@ -54,6 +58,7 @@ namespace Capa_Datos
         private static Model_Celda B_H4_C_URD_11_1_Az = new Model_Celda(1, "H4", "C", "1|1|1|0", 11, 1, "azul", "");
         private static Model_Celda B_H4_C_URD_9_1_Bl = new Model_Celda(1, "H4", "C", "1|1|1|1", 9, 1, "", "");
         private static Model_Celda B_H4_C_URDL_1_1_Az = new Model_Celda(1, "H4", "C", "1|1|1|1", 1, 1, "azul", "");
+        private static Model_Celda B_H4_C_URDL_1_1_Vi = new Model_Celda(1, "H4", "C", "1|1|1|1", 1, 1, "violeta", "");
         private static Model_Celda B_H4_C_URDL_1_1_Bl = new Model_Celda(1, "H4", "C", "1|1|1|1", 1, 1, "", "");
         private static Model_Celda B_H4_C_URDL_1_1_Ro = new Model_Celda(1, "H4", "C", "1|1|1|1", 1, 1, "rojo", "");
         private static Model_Celda B_H4_C_URDL_1_1_Ve = new Model_Celda(1, "H4", "C", "1|1|1|1", 1, 1, "verde", "");
@@ -69,10 +74,13 @@ namespace Capa_Datos
         private static Model_Celda B_H4_C_URDL_12_1_Gr = new Model_Celda(1, "H4", "C", "1|1|1|1", 12, 1, "gris", "");
         private static Model_Celda B_H4_C_URDL_2_1_Az = new Model_Celda(1, "H4", "C", "1|1|1|1", 2, 1, "azul", "");
         private static Model_Celda B_H4_C_URDL_2_1_Bl = new Model_Celda(1, "H4", "C", "1|1|1|1", 2, 1, "", "");
+        private static Model_Celda B_H4_C_URDL_2_1_Ro = new Model_Celda(1, "H4", "C", "1|1|1|1", 2, 1, "rojo", "");
         private static Model_Celda B_H4_C_URDL_2_1_Ve = new Model_Celda(1, "H4", "C", "1|1|1|1", 2, 1, "verde", "");
+        private static Model_Celda B_H4_C_URDL_2_1_Vi = new Model_Celda(1, "H4", "C", "1|1|1|1", 2, 1, "violeta", "");
         private static Model_Celda B_H4_C_URDL_2_2_Az = new Model_Celda(1, "H4", "C", "1|1|1|1", 2, 2, "azul", "");
         private static Model_Celda B_H4_C_URDL_3_1_Az = new Model_Celda(1, "H4", "C", "1|1|1|1", 3, 1, "azul", "");
         private static Model_Celda B_H4_C_URDL_3_1_Bl = new Model_Celda(1, "H4", "C", "1|1|1|1", 3, 1, "", "");
+        private static Model_Celda B_H4_C_URDL_3_1_Ve = new Model_Celda(1, "H4", "C", "1|1|1|1", 3, 1, "verde", "");
         private static Model_Celda B_H4_C_URDL_3_2_Az = new Model_Celda(1, "H4", "C", "1|1|1|1", 3, 2, "azul", "");
         private static Model_Celda B_H4_C_URDL_3_2_Bl = new Model_Celda(1, "H4", "C", "1|1|1|1", 3, 2, "", "");
         private static Model_Celda B_H4_C_URDL_4_1_Am = new Model_Celda(1, "H4", "C", "1|1|1|1", 4, 1, "amarillo", "");
@@ -82,6 +90,9 @@ namespace Capa_Datos
         private static Model_Celda B_H4_C_URDL_4_2_Az = new Model_Celda(1, "H4", "C", "1|1|1|1", 4, 2, "azul", "");
         private static Model_Celda B_H4_C_URDL_5_1_Az = new Model_Celda(1, "H4", "C", "1|1|1|1", 5, 1, "azul", "");
         private static Model_Celda B_H4_C_URDL_5_1_Bl = new Model_Celda(1, "H4", "C", "1|1|1|1", 5, 1, "", "");
+        private static Model_Celda B_H4_C_URDL_5_1_Ro = new Model_Celda(1, "H4", "C", "1|1|1|1", 5, 1, "rojo", "");
+        private static Model_Celda B_H4_C_URDL_5_1_Ve = new Model_Celda(1, "H4", "C", "1|1|1|1", 5, 1, "verde", "");
+        private static Model_Celda B_H4_C_URDL_5_1_Vi = new Model_Celda(1, "H4", "C", "1|1|1|1", 5, 1, "violeta", "");
         private static Model_Celda B_H4_C_URDL_6_1_Az = new Model_Celda(1, "H4", "C", "1|1|1|1", 6, 1, "azul", "");
         private static Model_Celda B_H4_C_URDL_6_2_Az = new Model_Celda(1, "H4", "C", "1|1|1|1", 6, 2, "azul", "");
         private static Model_Celda B_H4_C_URDL_6_2_Bl = new Model_Celda(1, "H4", "C", "1|1|1|1", 6, 2, "", "");
@@ -100,6 +111,7 @@ namespace Capa_Datos
         private static Model_Celda B_H4_L_URDL_10_2_Bl = new Model_Celda(1, "H4", "L", "1|1|1|1", 10, 2, "", "");
         private static Model_Celda B_H4_L_URDL_12_1_Bl = new Model_Celda(1, "H4", "L", "1|1|1|1", 12, 1, "", "");
         private static Model_Celda B_H4_L_URDL_3_1_Az = new Model_Celda(1, "H4", "L", "1|1|1|1", 3, 1, "azul", "");
+        private static Model_Celda B_H4_C_URDL_3_1_Vi = new Model_Celda(1, "H4", "L", "1|1|1|1", 3, 1, "violeta", "");
         private static Model_Celda B_H4_L_URDL_5_2_Az = new Model_Celda(1, "H4", "L", "1|1|1|1", 5, 2, "azul", "");
         private static Model_Celda B_H4_L_URDL_6_1_Bl = new Model_Celda(1, "H4", "L", "1|1|1|1", 6, 1, "", "");
         private static Model_Celda B_H4_L_URDL_8_1_Bl = new Model_Celda(1, "H4", "L", "1|1|1|1", 8, 1, "", "");
@@ -945,7 +957,8 @@ namespace Capa_Datos
             ManageFiles.PdfPart2(DocumentoPDF.Item1, DocumentoPDF.Item2, Convert.ToInt32(valores[0]), _page);
         }
 
-        public static void PrintAutoevaluacion(String[] valores, Page _page)
+        public static void PrintAutoevaluacion(String[] valores, String[] titulos,
+            String[]  ciclo, String[] item, String[] cumplimiento, String[] calificacion, String[] evidencia, Page _page)
         {
             Tuple<Document, PdfPTable> DocumentoPDF = ManageFiles.PdfParte1(
                 Convert.ToInt32(valores[0]),
@@ -955,22 +968,223 @@ namespace Capa_Datos
 
             #region cuerpo
 
-            #region cabecera fila 1
-            B_H4_C_URDL_2_2_Az.Texto = "FASE DEL SISTEMA CICLO PHVA";
-            DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, B_H4_C_URDL_2_2_Az));
+            #region Planear
+            int pos = 0;
+            int posTitulos = 0;
+            B_H4_C_URDL_12_1_Az.Texto = titulos[posTitulos];
+            posTitulos++;
+            DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCeldaHTML(DocumentoPDF.Item2, B_H4_C_URDL_12_1_Az));
 
-            B_H4_C_URDL_3_2_Az.Texto = "CRITERIO A REVISAR";
-            DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, B_H4_C_URDL_3_2_Az));
+            B_H4_C_URDL_1_1_Az.Texto = "CICLO";
+            DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, B_H4_C_URDL_1_1_Az));
 
-            B_H4_C_URDL_3_1_Az.Texto = "ESTADO DE IMPLEMENTACIÓN DEL SG-SST";
+            B_H4_C_URDL_5_1_Az.Texto = "ITEM DEL ESTÁNDAR";
+            DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, B_H4_C_URDL_5_1_Az));
+
+            B_H4_C_URDL_2_1_Az.Texto = "CUMPLIMIENTO";
+            DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, B_H4_C_URDL_2_1_Az));
+
+            B_H4_C_URDL_1_1_Az.Texto = "CALIFICACIÓN";
+            DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, B_H4_C_URDL_1_1_Az));
+
+            B_H4_C_URDL_3_1_Az.Texto = "EVIDENCIA";
             DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, B_H4_C_URDL_3_1_Az));
 
-            B_H4_C_URDL_4_2_Az.Texto = "EVIDENCIA ACTUAL";
-            DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, B_H4_C_URDL_4_2_Az));
+            //Fase Planear
+            for (int i = 0; i < 22; i++)
+            {
+                if (i == 7 || i == 11 || i == 12 || i == 13 || i == 14 || i == 15 || i == 16 || i == 17 || i == 18 || i == 19 || i == 20 || i == 21)
+                {
+                    B_H4_C_URDL_12_1_Az.Texto = titulos[posTitulos];
+                    DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCeldaHTML(DocumentoPDF.Item2, B_H4_C_URDL_12_1_Az));
+
+                    B_H4_C_URDL_1_1_Az.Texto = "CICLO";
+                    DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, B_H4_C_URDL_1_1_Az));
+
+                    B_H4_C_URDL_5_1_Az.Texto = "ITEM DEL ESTÁNDAR";
+                    DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, B_H4_C_URDL_5_1_Az));
+
+                    B_H4_C_URDL_2_1_Az.Texto = "CUMPLIMIENTO";
+                    DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, B_H4_C_URDL_2_1_Az));
+
+                    B_H4_C_URDL_1_1_Az.Texto = "CALIFICACIÓN";
+                    DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, B_H4_C_URDL_1_1_Az));
+
+                    B_H4_C_URDL_3_1_Az.Texto = "EVIDENCIA";
+                    DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, B_H4_C_URDL_3_1_Az));
+
+                    posTitulos++;
+                }
+
+                B_H4_C_URDL_1_1_Az.Texto = ciclo[0];
+                DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, B_H4_C_URDL_1_1_Az));
+
+                B_H4_C_URDL_5_1_Bl.Texto = item[pos];
+                DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCeldaHTML(DocumentoPDF.Item2, B_H4_C_URDL_5_1_Bl));
+
+                B_H4_C_URDL_2_1_Bl.Texto = cumplimiento[pos];
+                DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, B_H4_C_URDL_2_1_Bl));
+
+                B_H4_C_URDL_1_1_Bl.Texto = calificacion[pos];
+                DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, B_H4_C_URDL_1_1_Bl));
+
+                B_H4_C_URDL_3_1_Bl.Texto = evidencia[pos];
+                DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCeldaHTML(DocumentoPDF.Item2, B_H4_C_URDL_3_1_Bl));
+
+                pos++;
+
+            }
+
             #endregion
 
-            
+            #region Hacer
+            B_H4_C_URDL_12_1_Ve.Texto = titulos[posTitulos];
+            posTitulos++;
+            DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCeldaHTML(DocumentoPDF.Item2, B_H4_C_URDL_12_1_Ve));
 
+            B_H4_C_URDL_1_1_Ve.Texto = "CICLO";
+            DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, B_H4_C_URDL_1_1_Ve));
+
+            B_H4_C_URDL_5_1_Ve.Texto = "ITEM DEL ESTÁNDAR";
+            DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, B_H4_C_URDL_5_1_Ve));
+
+            B_H4_C_URDL_2_1_Ve.Texto = "CUMPLIMIENTO";
+            DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, B_H4_C_URDL_2_1_Ve));
+
+            B_H4_C_URDL_1_1_Ve.Texto = "CALIFICACIÓN";
+            DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, B_H4_C_URDL_1_1_Ve));
+
+            B_H4_C_URDL_3_1_Ve.Texto = "EVIDENCIA";
+            DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, B_H4_C_URDL_3_1_Ve));
+
+            for (int i = 0; i < 30; i++)
+            {
+                if (i == 8 || i == 11 || i == 18 || i == 22 || i == 28)
+                {
+                    B_H4_C_URDL_12_1_Ve.Texto = titulos[posTitulos];
+                    DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCeldaHTML(DocumentoPDF.Item2, B_H4_C_URDL_12_1_Ve));
+
+                    B_H4_C_URDL_1_1_Ve.Texto = "CICLO";
+                    DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, B_H4_C_URDL_1_1_Ve));
+
+                    B_H4_C_URDL_5_1_Ve.Texto = "ITEM DEL ESTÁNDAR";
+                    DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, B_H4_C_URDL_5_1_Ve));
+
+                    B_H4_C_URDL_2_1_Ve.Texto = "CUMPLIMIENTO";
+                    DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, B_H4_C_URDL_2_1_Ve));
+
+                    B_H4_C_URDL_1_1_Ve.Texto = "CALIFICACIÓN";
+                    DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, B_H4_C_URDL_1_1_Ve));
+
+                    B_H4_C_URDL_3_1_Ve.Texto = "EVIDENCIA";
+                    DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, B_H4_C_URDL_3_1_Ve));
+
+                    posTitulos++;
+                }
+
+                B_H4_C_URDL_1_1_Ve.Texto = ciclo[1];
+                DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, B_H4_C_URDL_1_1_Ve));
+
+                B_H4_C_URDL_5_1_Bl.Texto = item[pos];
+                DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCeldaHTML(DocumentoPDF.Item2, B_H4_C_URDL_5_1_Bl));
+
+                B_H4_C_URDL_2_1_Bl.Texto = cumplimiento[pos];
+                DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, B_H4_C_URDL_2_1_Bl));
+
+                B_H4_C_URDL_1_1_Bl.Texto = calificacion[pos];
+                DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, B_H4_C_URDL_1_1_Bl));
+
+                B_H4_C_URDL_3_1_Bl.Texto = evidencia[pos];
+                DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCeldaHTML(DocumentoPDF.Item2, B_H4_C_URDL_3_1_Bl));
+
+                pos++;
+            }
+
+            #endregion
+
+            #region Verificar
+            B_H4_C_URDL_12_1_Ro.Texto = titulos[posTitulos];
+            posTitulos++;
+            DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCeldaHTML(DocumentoPDF.Item2, B_H4_C_URDL_12_1_Ro));
+
+            B_H4_C_URDL_1_1_Ro.Texto = "CICLO";
+            DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, B_H4_C_URDL_1_1_Ro));
+
+            B_H4_C_URDL_5_1_Ro.Texto = "ITEM DEL ESTÁNDAR";
+            DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, B_H4_C_URDL_5_1_Ro));
+
+            B_H4_C_URDL_2_1_Ro.Texto = "CUMPLIMIENTO";
+            DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, B_H4_C_URDL_2_1_Ro));
+
+            B_H4_C_URDL_1_1_Ro.Texto = "CALIFICACIÓN";
+            DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, B_H4_C_URDL_1_1_Ro));
+
+            B_H4_C_URDL_3_1_Ro.Texto = "EVIDENCIA";
+            DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, B_H4_C_URDL_3_1_Ro));
+
+            for (int i = 0; i < 4; i++)
+            {
+                B_H4_C_URDL_1_1_Ro.Texto = ciclo[2];
+                DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, B_H4_C_URDL_1_1_Ro));
+
+                B_H4_C_URDL_5_1_Bl.Texto = item[pos];
+                DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCeldaHTML(DocumentoPDF.Item2, B_H4_C_URDL_5_1_Bl));
+
+                B_H4_C_URDL_2_1_Bl.Texto = cumplimiento[pos];
+                DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, B_H4_C_URDL_2_1_Bl));
+
+                B_H4_C_URDL_1_1_Bl.Texto = calificacion[pos];
+                DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, B_H4_C_URDL_1_1_Bl));
+
+                B_H4_C_URDL_3_1_Bl.Texto = evidencia[pos];
+                DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCeldaHTML(DocumentoPDF.Item2, B_H4_C_URDL_3_1_Bl));
+
+                pos++;
+            }
+
+            #endregion
+
+
+            #region Verificar
+            B_H4_C_URDL_12_1_Vi.Texto = titulos[posTitulos];
+            DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCeldaHTML(DocumentoPDF.Item2, B_H4_C_URDL_12_1_Vi));
+
+            B_H4_C_URDL_1_1_Vi.Texto = "CICLO";
+            DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, B_H4_C_URDL_1_1_Vi));
+
+            B_H4_C_URDL_5_1_Vi.Texto = "ITEM DEL ESTÁNDAR";
+            DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, B_H4_C_URDL_5_1_Vi));
+
+            B_H4_C_URDL_2_1_Vi.Texto = "CUMPLIMIENTO";
+            DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, B_H4_C_URDL_2_1_Vi));
+
+            B_H4_C_URDL_1_1_Vi.Texto = "CALIFICACIÓN";
+            DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, B_H4_C_URDL_1_1_Vi));
+
+            B_H4_C_URDL_3_1_Vi.Texto = "EVIDENCIA";
+            DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, B_H4_C_URDL_3_1_Vi));
+
+            for (int i = 0; i < 4; i++)
+            {
+                B_H4_C_URDL_1_1_Vi.Texto = ciclo[3];
+                DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, B_H4_C_URDL_1_1_Vi));
+
+                B_H4_C_URDL_5_1_Bl.Texto = item[pos];
+                DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCeldaHTML(DocumentoPDF.Item2, B_H4_C_URDL_5_1_Bl));
+
+                B_H4_C_URDL_2_1_Bl.Texto = cumplimiento[pos];
+                DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, B_H4_C_URDL_2_1_Bl));
+
+                B_H4_C_URDL_1_1_Bl.Texto = calificacion[pos];
+                DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, B_H4_C_URDL_1_1_Bl));
+
+                B_H4_C_URDL_3_1_Bl.Texto = evidencia[pos];
+                DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCeldaHTML(DocumentoPDF.Item2, B_H4_C_URDL_3_1_Bl));
+
+                pos++;
+            }
+
+            #endregion
 
             #endregion
 
@@ -7727,6 +7941,21 @@ namespace Capa_Datos
             DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCelda(DocumentoPDF.Item2, B_H4_C_URDL_12_1_Az));
 
             B_H3_C_URDL_12_1_Bl.Texto = valores[4];
+            DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCeldaHTML(DocumentoPDF.Item2, B_H3_C_URDL_12_1_Bl));
+
+            #endregion
+
+            ManageFiles.PdfPart2(DocumentoPDF.Item1, DocumentoPDF.Item2, Convert.ToInt32(valores[0]), _page);
+        }
+
+        public static void PrintProcedimientos(String[] valores, Page _page)
+        {
+            Tuple<Document, PdfPTable> DocumentoPDF = ManageFiles.PdfParte1(Convert.ToInt32(valores[0]),
+                                        "Procedimientos_", "PROCEDIMIENTOS DE INVESTIGACIÓN DE ACCIDENTES E INCIDENTES", _page);
+
+            #region contenido
+
+            B_H3_C_URDL_12_1_Bl.Texto = valores[1];
             DocumentoPDF = Tuple.Create(DocumentoPDF.Item1, ManageFiles.AddCeldaHTML(DocumentoPDF.Item2, B_H3_C_URDL_12_1_Bl));
 
             #endregion
