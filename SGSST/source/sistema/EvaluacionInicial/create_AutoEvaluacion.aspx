@@ -5,6 +5,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server"></asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="//www.google.com/jsapi"></script>
 

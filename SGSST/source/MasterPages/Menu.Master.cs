@@ -18,10 +18,6 @@ namespace SGSSTC.source.MasterPages
 
             System.Web.HttpBrowserCapabilities browser = Request.Browser;
             string Navegador = browser.Type.Substring(0, 6);
-            if (Navegador != "Chrome")
-            {
-                Response.Redirect("../Mensajes/Error.aspx");
-            }
 
             ObjUsuario = Model_UsuarioAutenticado.ValidarObjUsuario(_autenticado);
 
