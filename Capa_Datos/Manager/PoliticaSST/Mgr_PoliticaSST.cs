@@ -108,7 +108,7 @@ namespace Capa_Datos.Manager.PoliticaSST
                     sucursal = CT.trabajador.puesto_trabajo.area.sucursal.nombre,
                     CT.si,
                     CT.no,
-                    archivo = CT.ruta == null ? "No Tiene Soporte" : "Si tiene Soporte",
+                    archivo = CT.ruta == "" ? "No Tiene Soporte" : "Si tiene Soporte",
                     CT.ruta,
                     CT.tipo
                 }).ToList();

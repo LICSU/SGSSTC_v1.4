@@ -73,6 +73,7 @@ namespace Capa_Datos.Manager.Categoria
         public static void Grid_Categorias(GridView GridView1, int id_empresa = 0, string _nombre = "")
         {
             GrupoLiEntities contexto = new GrupoLiEntities();
+
             var query = (
                 from CA in contexto.categoria
                 select new
@@ -88,7 +89,6 @@ namespace Capa_Datos.Manager.Categoria
             if (_nombre != string.Empty) { query = query.Where(x => x.nombre.ToLower().Contains(_nombre.ToLower())).ToList(); }
 
             GridView1.DataSource = query;
-
             GridView1.DataBind();
         }
 
