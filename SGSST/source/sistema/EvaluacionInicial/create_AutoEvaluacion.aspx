@@ -74,33 +74,35 @@
                                     <tr>
                                         <td class="bg-aqua color-palette">PLANEAR</td>
                                         <td class="text-left">
-                                            <p>
-                                                NÚMERAL 1.1.1
+                                            <asp:Label ID="item1" runat="server">
+                                                <p>
+                                                    NÚMERAL 1.1.1
+                                                    <br />
+                                                    El diseño del Sistema de Gestión de Seguridad y Salud en el Trabajo, para empresas de 
+                                                diez (10) o menos trabajadores clasificadas en Riesgo I, II, III, podrá ser realizado 
+                                                por técnicos o tecnólogos en Seguridad y Salud en el Trabajo o en alguna de sus áreas, 
+                                                con licencia vigente en Salud Ocupacional o Seguridad y Salud en el Trabajo que acrediten
+                                                mínimo dos (2) años de experiencia en el desarrollo de actividades de Seguridad y Salud
+                                                en el Trabajo y que acrediten la aprobación del curso de capacitación virtual de 
+                                                cincuenta (50) horas.
                                                 <br />
-                                                El diseño del Sistema de Gestión de Seguridad y Salud en el Trabajo, para empresas de 
-                                            diez (10) o menos trabajadores clasificadas en Riesgo I, II, III, podrá ser realizado 
-                                            por técnicos o tecnólogos en Seguridad y Salud en el Trabajo o en alguna de sus áreas, 
-                                            con licencia vigente en Salud Ocupacional o Seguridad y Salud en el Trabajo que acrediten
-                                            mínimo dos (2) años de experiencia en el desarrollo de actividades de Seguridad y Salud
-                                            en el Trabajo y que acrediten la aprobación del curso de capacitación virtual de 
-                                            cincuenta (50) horas.
-                                            <br />
-                                                Para empresas de diez (10) o menos trabajadores clasificadas en Riesgo IV y V, podrá ser
-                                            realizado por un Profesional en Salud Ocupacional o Seguridad y Salud en el Trabajo, 
-                                            profesional con posgrado en Seguridad y Salud en el Trabajo, con licencia en Salud 
-                                            Ocupacional o Seguridad y Salud en el Trabajo vigente y que acrediten la aprobación 
-                                            del curso de capacitación virtual de cincuenta (50) horas.
-                                            <br />
-                                                La persona que diseñe, ejecute e implemente el Sistema de Gestión de Seguridad y Salud 
-                                            en el Trabajo tenga la formación y cursos solicitada en los artículos 5 y 6 de la 
-                                            presente resolución.
-                                            </p>
+                                                    Para empresas de diez (10) o menos trabajadores clasificadas en Riesgo IV y V, podrá ser
+                                                realizado por un Profesional en Salud Ocupacional o Seguridad y Salud en el Trabajo, 
+                                                profesional con posgrado en Seguridad y Salud en el Trabajo, con licencia en Salud 
+                                                Ocupacional o Seguridad y Salud en el Trabajo vigente y que acrediten la aprobación 
+                                                del curso de capacitación virtual de cincuenta (50) horas.
+                                                <br />
+                                                    La persona que diseñe, ejecute e implemente el Sistema de Gestión de Seguridad y Salud 
+                                                en el Trabajo tenga la formación y cursos solicitada en los artículos 5 y 6 de la 
+                                                presente resolución.
+                                                </p>
+                                            </asp:Label>
                                         </td>
                                         <td>
                                             <asp:DropDownList runat="server" AutoPostBack="true" 
                                                 OnSelectedIndexChanged="ddlCumplimiento_SelectedIndexChanged" ID="ddlCumplimiento1" CssClass="form-control">
                                                 <asp:ListItem Text="Seleccione..." Value=""></asp:ListItem>
-                                                <asp:ListItem Text="Cumple" Value="Cumple"></asp:ListItem>
+                                                <asp:ListItem Text="Cumple Totalmente" Value="Cumple Totalmente"></asp:ListItem>
                                                 <asp:ListItem Text="No Cumple" Value="No_Cumple"></asp:ListItem>
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
@@ -114,22 +116,25 @@
                                             <asp:Label ID="lbCalificacion1" runat="server" Text="-"></asp:Label>
                                         </td>
                                         <td class="text-left">
-                                            <p>
-                                                Documento en el que consta la designación del responsable del SG-SST, las 
-                                            responsabilidades asignadas que se le asignaron Certificados que lo acrediten como 
-                                            responsable del SG-SST :
-                                            <br />
-                                                <ul>
-                                                    <li>Titulo de Formación Académica</li>
-                                                    <li>Licencia en SST</li>
-                                                    <li>Curso de 50 Horas en SG-SST</li>
-                                                </ul>
-                                            </p>
+                                            <asp:Label ID="evi1" runat="server">
+                                                <p>
+                                                    Documento en el que consta la designación del responsable del SG-SST, las 
+                                                responsabilidades asignadas que se le asignaron Certificados que lo acrediten como 
+                                                responsable del SG-SST :
+                                                <br />
+                                                    <ul>
+                                                        <li>Titulo de Formación Académica</li>
+                                                        <li>Licencia en SST</li>
+                                                        <li>Curso de 50 Horas en SG-SST</li>
+                                                    </ul>
+                                                </p>
+                                            </asp:Label>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="bg-aqua color-palette">PLANEAR</td>
                                         <td class="text-left">
+                                            <asp:Label ID="item2" runat="server">
                                             <p>
                                                 NÚMERAL 1.1.2
                                                 <br />
@@ -138,11 +143,12 @@
                                                 para la implementación y mejora continua del Sistema de Gestión de Seguridad y Salud 
                                                 en el Trabajo.
                                             </p>
+                                            </asp:Label>
                                         </td>
                                         <td>
                                             <asp:DropDownList runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCumplimiento_SelectedIndexChanged" ID="ddlCumplimiento2" CssClass="form-control">
                                                 <asp:ListItem Text="Seleccione..." Value=""></asp:ListItem>
-                                                <asp:ListItem Text="Cumple" Value="Cumple"></asp:ListItem>
+                                                <asp:ListItem Text="Cumple Totalmente" Value="Cumple Totalmente"></asp:ListItem>
                                                 <asp:ListItem Text="No Cumple" Value="No_Cumple"></asp:ListItem>
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
@@ -156,15 +162,18 @@
                                             <asp:Label ID="lbCalificacion2" runat="server" Text="-"></asp:Label>
                                         </td>
                                         <td class="text-left">
+                                            <asp:Label ID="evi2" runat="server">
                                             <p>
                                                 Matriz de responsabilidades a todos  los niveles de la organización 
                                                 (Alta Dirección, Mandos Medios, Trabajadores, Copasst, Brigadistas)
                                             </p>
+                                            </asp:Label>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="bg-aqua color-palette">PLANEAR</td>
                                         <td class="text-left">
+                                            <asp:Label ID="item3" runat="server">
                                             <p>
                                                 NÚMERAL 1.1.3
                                                 <br />
@@ -172,11 +181,12 @@
                                                 tecnológicos, requeridos para la implementación, mantenimiento y continuidad 
                                                 del Sistema de Gestión de Seguridad y Salud en el Trabajo.
                                             </p>
+                                            </asp:Label>
                                         </td>
                                         <td>
                                             <asp:DropDownList runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCumplimiento_SelectedIndexChanged" ID="ddlCumplimiento3" CssClass="form-control">
                                                 <asp:ListItem Text="Seleccione..." Value=""></asp:ListItem>
-                                                <asp:ListItem Text="Cumple" Value="Cumple"></asp:ListItem>
+                                                <asp:ListItem Text="Cumple Totalmente" Value="Cumple Totalmente"></asp:ListItem>
                                                 <asp:ListItem Text="No Cumple" Value="No_Cumple"></asp:ListItem>
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
@@ -189,15 +199,18 @@
                                         <td>
                                             <asp:Label ID="lbCalificacion3" runat="server" Text="-"></asp:Label>
                                         </td>
-                                        <td class="text-left">Formato para el registro de los recursos financieros necesarios (Descripción, cantidad, 
+                                        
+                                        <td class="text-left">
+                                            <asp:Label ID="evi3" runat="server">Formato para el registro de los recursos financieros necesarios (Descripción, cantidad, 
                                             proveedor, costos) y montos aprobados por la Empresa para el SG-SST, así como los 
                                             recursos humanos, técnicos y tecnológicos, requeridos para la 
-                                            implementación del SG-SST
+                                            implementación del SG-SST<</asp:Label>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="bg-aqua color-palette">PLANEAR</td>
                                         <td class="text-left">
+                                            <asp:Label ID="item4" runat="server">
                                             <p>
                                                 NÚMERAL 1.1.4
                                                 <br />
@@ -205,11 +218,12 @@
                                                 están afiliados al Sistema General de Riesgos Laborales y el pago de los aportes se
                                                 realiza conforme a la normativa y en la respectiva clase de riesgo.
                                             </p>
+                                            </asp:label>
                                         </td>
                                         <td>
                                             <asp:DropDownList runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCumplimiento_SelectedIndexChanged" ID="ddlCumplimiento4" CssClass="form-control">
                                                 <asp:ListItem Text="Seleccione..." Value=""></asp:ListItem>
-                                                <asp:ListItem Text="Cumple" Value="Cumple"></asp:ListItem>
+                                                <asp:ListItem Text="Cumple Totalmente" Value="Cumple Totalmente"></asp:ListItem>
                                                 <asp:ListItem Text="No Cumple" Value="No_Cumple"></asp:ListItem>
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
@@ -222,20 +236,24 @@
                                         <td>
                                             <asp:Label ID="lbCalificacion4" runat="server" Text="-"></asp:Label>
                                         </td>
-                                        <td class="text-left">Registro de afiliación al Sistema de Gestión de Riesgos Laborales
-                                            <br />
-                                            Planilla de pago de aportes a la seguridad social de los cuatro (4) meses anteriores a 
-                                            la fecha de verificación
-                                            <br />
-                                            Lista de los trabajadores vinculados por prestación de servicios a la fecha y comparar 
-                                            con la última planilla de pago de aportes a la seguridad social suministrada por los 
-                                            contratistas                                            
+                                        <td class="text-left">
+                                            <asp:Label ID="evi4" runat="server">
+                                                Registro de afiliación al Sistema de Gestión de Riesgos Laborales
+                                                <br />
+                                                Planilla de pago de aportes a la seguridad social de los cuatro (4) meses anteriores a 
+                                                la fecha de verificación
+                                                <br />
+                                                Lista de los trabajadores vinculados por prestación de servicios a la fecha y comparar 
+                                                con la última planilla de pago de aportes a la seguridad social suministrada por los 
+                                                contratistas  
+                                            </asp:Label>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="bg-aqua color-palette">PLANEAR</td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="item5" runat="server">
                                                 NÚMERAL 1.1.5
                                                 <br />
                                                 Si aplica, se tienen plenamente identificados los trabajadores que se dediquen en 
@@ -246,12 +264,13 @@
                                                 Verificar si la empresa con la asistencia de la Administradora de Riesgos Laborales 
                                                 está cumpliendo con lo establecido en la presente resolución para actividades de 
                                                 alto riesgo.
+                                                </asp:Label>
                                             </p>
                                         </td>
                                         <td>
                                             <asp:DropDownList runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCumplimiento_SelectedIndexChanged" ID="ddlCumplimiento5" CssClass="form-control">
                                                 <asp:ListItem Text="Seleccione..." Value=""></asp:ListItem>
-                                                <asp:ListItem Text="Cumple" Value="Cumple"></asp:ListItem>
+                                                <asp:ListItem Text="Cumple Totalmente" Value="Cumple Totalmente"></asp:ListItem>
                                                 <asp:ListItem Text="No Cumple" Value="No_Cumple"></asp:ListItem>
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
@@ -265,7 +284,8 @@
                                             <asp:Label ID="lbCalificacion5" runat="server" Text="-"></asp:Label>
 
                                         </td>
-                                        <td class="text-left">Establecer el Formato para identificar  los trabajadores que se dediquen en forma 
+                                        <td class="text-left">
+                                            <asp:Label ID="evi5" runat="server">Establecer el Formato para identificar  los trabajadores que se dediquen en forma 
                                             permanente a las actividades de alto riesgo a las que hace referencia el Decreto 2090 
                                             de 2003 :
                                             <br />
@@ -279,12 +299,14 @@
                                                 <li>Personal dedicado a la custodia y vigilancia</li>
                                                 <li>Personal del cuerpo técnico de investigación de la Fiscalía</li>
                                             </ul>
+                                            </asp:Label>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="bg-aqua color-palette">PLANEAR</td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="item6" runat="server">
                                                 NÚMERAL 1.1.6
                                                 <br />
                                                 La empresa cuenta, de acuerdo con el número de trabajadores con:
@@ -294,12 +316,13 @@
                                                 <br />
                                                 Comité Paritario en Seguridad y Salud en el Trabajo para empresas de diez (10) o 
                                                 más trabajadores.
+                                                </asp:Label>
                                             </p>
                                         </td>
                                         <td>
                                             <asp:DropDownList runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCumplimiento_SelectedIndexChanged" ID="ddlCumplimiento6" CssClass="form-control">
                                                 <asp:ListItem Text="Seleccione..." Value=""></asp:ListItem>
-                                                <asp:ListItem Text="Cumple" Value="Cumple"></asp:ListItem>
+                                                <asp:ListItem Text="Cumple Totalmente" Value="Cumple Totalmente"></asp:ListItem>
                                                 <asp:ListItem Text="No Cumple" Value="No_Cumple"></asp:ListItem>
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
@@ -313,30 +336,35 @@
                                             <asp:Label ID="lbCalificacion6" runat="server" Text="-"></asp:Label>
 
                                         </td>
-                                        <td class="text-left">Soportes de la designación del vigía de seguridad y salud en el trabajo
+                                        <td class="text-left">
+                                            <asp:Label ID="evi6" runat="server">
+                                             Soportes de la designación del vigía de seguridad y salud en el trabajo
                                             <br />
                                             Registros del Proceso de convocatoria, elección, conformación del Comité Paritario de
                                             Seguridad y Salud en el Trabajo y el acta de constitución
                                             <br />
                                             Actas de   Reunión del Copasst del último año.
+                                            </asp:Label>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="bg-aqua color-palette">PLANEAR</td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="item7" runat="server">
                                                 NÚMERAL 1.1.7
                                                 <br />
                                                 El Vigía en Seguridad y Salud en el Trabajo y los miembros del Comité Paritario en 
                                                 Seguridad y Salud en el Trabajo y sus respectivos miembros (Principales y Suplentes)
                                                 se encuentran capacitados para poder cumplir las responsabilidades que les asigna 
                                                 la ley.
+                                                </asp:Label>
                                             </p>
                                         </td>
                                         <td>
                                             <asp:DropDownList runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCumplimiento_SelectedIndexChanged" ID="ddlCumplimiento7" CssClass="form-control">
                                                 <asp:ListItem Text="Seleccione..." Value=""></asp:ListItem>
-                                                <asp:ListItem Text="Cumple" Value="Cumple"></asp:ListItem>
+                                                <asp:ListItem Text="Cumple Totalmente" Value="Cumple Totalmente"></asp:ListItem>
                                                 <asp:ListItem Text="No Cumple" Value="No_Cumple"></asp:ListItem>
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
@@ -352,8 +380,10 @@
                                         </td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="evi7" runat="server">
                                                 Registro de porcentaje de asistencia a las capacitaciones, capacitaciones especificas
                                                 en materia de seguridad y salud en el trabajo al vigia y a los miembros del COPASST
+                                                </asp:Label>
                                             </p>
 
                                         </td>
@@ -362,16 +392,18 @@
                                         <td class="bg-aqua color-palette">PLANEAR</td>
                                         <td class="text-left">
                                             <p>
-                                                NÚMERAL 1.1.7
+                                                <asp:Label ID="item8" runat="server">
+                                                NÚMERAL 1.1.8
                                                 <br />
                                                 La empresa conformó el Comité de Convivencia Laboral y este funciona de acuerdo 
                                                 con la normativa vigente.
+                                                </asp:Label>
                                             </p>
                                         </td>
                                         <td>
                                             <asp:DropDownList runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCumplimiento_SelectedIndexChanged" ID="ddlCumplimiento8" CssClass="form-control">
                                                 <asp:ListItem Text="Seleccione..." Value=""></asp:ListItem>
-                                                <asp:ListItem Text="Cumple" Value="Cumple"></asp:ListItem>
+                                                <asp:ListItem Text="Cumple Totalmente" Value="Cumple Totalmente"></asp:ListItem>
                                                 <asp:ListItem Text="No Cumple" Value="No_Cumple"></asp:ListItem>
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
@@ -387,8 +419,10 @@
                                         </td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="evi8" runat="server">
                                                 Documento de conformación del Comité de Convivencia Laboral y actas de reuniones
                                                 ( como mínimo 1 reunión cada 3 meses)
+                                                </asp:Label>
                                             </p>
                                         </td>
                                     </tr>
@@ -416,17 +450,19 @@
                                         <td class="bg-aqua color-palette">PLANEAR</td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="item9" runat="server">
                                                 NÚMERAL 1.2.1
                                                 <br />
                                                 Se cuenta con un programa de capacitación anual en promoción y prevención, que 
                                                 incluye los peligros/riesgos prioritarios, extensivo a todos los niveles de la 
                                                 organización y el mismo se ejecuta.
+                                                </asp:Label>
                                             </p>
                                         </td>
                                         <td>
                                             <asp:DropDownList runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCumplimiento_SelectedIndexChanged" ID="ddlCumplimiento9" CssClass="form-control">
                                                 <asp:ListItem Text="Seleccione..." Value=""></asp:ListItem>
-                                                <asp:ListItem Text="Cumple" Value="Cumple"></asp:ListItem>
+                                                <asp:ListItem Text="Cumple Totalmente" Value="Cumple Totalmente"></asp:ListItem>
                                                 <asp:ListItem Text="No Cumple" Value="No_Cumple"></asp:ListItem>
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
@@ -442,6 +478,7 @@
                                         </td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="evi9" runat="server">
                                                 Programa de Capacitación que incluye el compendio de temas alineados a la Matriz de 
                                             Peligros
                                             <br />
@@ -450,6 +487,7 @@
                                                 Programa de Capacitación Anual Aprobado por el Copasst o el Vigía 
                                             <br />
                                                 Porcentaje de cumplimiento de asistencia a las capacitaciones
+                                                </asp:Label>
                                             </p>
                                         </td>
                                     </tr>
@@ -457,6 +495,7 @@
                                         <td class="bg-aqua color-palette">PLANEAR</td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="item10" runat="server">
                                                 NÚMERAL 1.2.2
                                                 <br />
                                                 Todos los trabajadores, independientemente de su forma de vinculación y/o 
@@ -468,12 +507,13 @@
                                                 <br />
                                                 Asimismo, se proporcionan las capacitaciones en Seguridad y Salud en el Trabajo de
                                                 acuerdo con las necesidades identificadas.
+                                                </asp:Label>
                                             </p>
                                         </td>
                                         <td>
                                             <asp:DropDownList runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCumplimiento_SelectedIndexChanged" ID="ddlCumplimiento10" CssClass="form-control">
                                                 <asp:ListItem Text="Seleccione..." Value=""></asp:ListItem>
-                                                <asp:ListItem Text="Cumple" Value="Cumple"></asp:ListItem>
+                                                <asp:ListItem Text="Cumple Totalmente" Value="Cumple Totalmente"></asp:ListItem>
                                                 <asp:ListItem Text="No Cumple" Value="No_Cumple"></asp:ListItem>
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
@@ -487,28 +527,33 @@
                                             <asp:Label ID="lbCalificacion10" runat="server" Text="-"></asp:Label>
 
                                         </td>
-                                        <td class="text-left">Registro de porcentaje de asistencia a las capacitaciones
+                                        <td class="text-left">
+                                            <asp:Label ID="evi10" runat="server">
+                                            Registro de porcentaje de asistencia a las capacitaciones
                                             <br />
                                             Programa de Capacitación (inducción o reinducción)
                                             <br />
                                             Formatos de inducción y reinducción
+                                            </asp:Label>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="bg-aqua color-palette">PLANEAR</td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="item11" runat="server">
                                                 NÚMERAL 1.2.3
                                                 <br />
                                                 Los responsables del Sistema de Gestión de Seguridad y Salud en el Trabajo cuentan 
                                                 con el certificado de aprobación del curso de capacitación virtual de cincuenta 
                                                 (50) horas definido por el Ministerio del Trabajo.
+                                                </asp:Label>
                                             </p>
                                         </td>
                                         <td>
                                             <asp:DropDownList runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCumplimiento_SelectedIndexChanged" ID="ddlCumplimiento11" CssClass="form-control">
                                                 <asp:ListItem Text="Seleccione..." Value=""></asp:ListItem>
-                                                <asp:ListItem Text="Cumple" Value="Cumple"></asp:ListItem>
+                                                <asp:ListItem Text="Cumple Totalmente" Value="Cumple Totalmente"></asp:ListItem>
                                                 <asp:ListItem Text="No Cumple" Value="No_Cumple"></asp:ListItem>
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
@@ -524,8 +569,10 @@
                                         </td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="evi11" runat="server">
                                                 Certificado del Curso de 50 horas definido por el Ministerio de Trabajo, expedido a
                                                 nombre del responsable del Sistema de Gestión de Seguridad y Salud en el Trabajo
+                                                </asp:Label>
                                             </p>
                                         </td>
                                     </tr>
@@ -556,6 +603,7 @@
                                         <td class="bg-aqua color-palette">PLANEAR</td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="item12" runat="server">
                                                 NÚMERAL 2.1.1
                                                 <br />
                                                 En el Sistema de Gestión de Seguridad y Salud en el Trabajo (SG-SST) se establece 
@@ -578,12 +626,13 @@
                                                 Proteger la seguridad y salud de todos los trabajadores, mediante la mejora continua
                                                 <br />
                                                 El cumplimiento de la normativa vigente aplicable en materia de riesgos laborales.
+                                                </asp:Label>
                                             </p>
                                         </td>
                                         <td>
                                             <asp:DropDownList runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCumplimiento_SelectedIndexChanged" ID="ddlCumplimiento12" CssClass="form-control">
                                                 <asp:ListItem Text="Seleccione..." Value=""></asp:ListItem>
-                                                <asp:ListItem Text="Cumple" Value="Cumple"></asp:ListItem>
+                                                <asp:ListItem Text="Cumple Totalmente" Value="Cumple Totalmente"></asp:ListItem>
                                                 <asp:ListItem Text="No Cumple" Value="No_Cumple"></asp:ListItem>
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
@@ -599,10 +648,12 @@
                                         </td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="evi12" runat="server">
                                                 Documento de Política del SG-SST por escrito, fechada y firmada por el 
                                                 representante legal actual y comunicada al COPASST 
                                                 <br />
                                                 Encuesta para indagar sobre el conocimiento de la Política
+                                                </asp:Label>
                                             </p>
                                         </td>
                                     </tr>
@@ -631,6 +682,7 @@
                                         <td class="bg-aqua color-palette">PLANEAR</td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="item13" runat="server">
                                                 NÚMERAL 2.2.1
                                                 <br />
                                                 Están definidos los objetivos del Sistema de Gestión de Seguridad y Salud en el 
@@ -640,12 +692,13 @@
                                                 documentados, son comunicados a los trabajadores, son revisados y evaluados 
                                                 mínimo una vez al año, actualizados de ser necesario, están acordes a las 
                                                 prioridades definidas y se encuentran firmados por el empleador.
+                                                </asp:Label>
                                             </p>
                                         </td>
                                         <td>
                                             <asp:DropDownList runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCumplimiento_SelectedIndexChanged" ID="ddlCumplimiento13" CssClass="form-control">
                                                 <asp:ListItem Text="Seleccione..." Value=""></asp:ListItem>
-                                                <asp:ListItem Text="Cumple" Value="Cumple"></asp:ListItem>
+                                                <asp:ListItem Text="Cumple Totalmente" Value="Cumple Totalmente"></asp:ListItem>
                                                 <asp:ListItem Text="No Cumple" Value="No_Cumple"></asp:ListItem>
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
@@ -661,10 +714,12 @@
                                         </td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="evi13" runat="server">
                                                 Objetivos del SG-SST que cumplan con las condiciones mencionadas en el criterio
                                                 <br />
                                                 Encuesta para determinar el conocimiento de los objetivos, como evidencia del 
                                                 proceso de difusión de los mismos
+                                                </asp:Label>
                                             </p>
                                         </td>
                                     </tr>
@@ -692,6 +747,7 @@
                                         <td class="bg-aqua color-palette">PLANEAR</td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="item14" runat="server">
                                                 NÚMERAL 2.3.1
                                                 <br />
                                                 La empresa realizó la evaluación inicial del Sistema de Gestión de Seguridad y Salud
@@ -702,12 +758,13 @@
                                                 y Salud en el Trabajo o conforme, verificando que la persona que diseñe, ejecute e 
                                                 implemente el Sistema de Gestión de Seguridad y Salud en el Trabajo tenga la 
                                                 formación y cursos solicitada en los artículos 5° y 6° de la presente resolución.
+                                                </asp:Label>
                                             </p>
                                         </td>
                                         <td>
                                             <asp:DropDownList runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCumplimiento_SelectedIndexChanged" ID="ddlCumplimiento14" CssClass="form-control">
                                                 <asp:ListItem Text="Seleccione..." Value=""></asp:ListItem>
-                                                <asp:ListItem Text="Cumple" Value="Cumple"></asp:ListItem>
+                                                <asp:ListItem Text="Cumple Totalmente" Value="Cumple Totalmente"></asp:ListItem>
                                                 <asp:ListItem Text="No Cumple" Value="No_Cumple"></asp:ListItem>
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
@@ -723,6 +780,7 @@
                                         </td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="evi14" runat="server">
                                                 El sistema en su evaluación inicial presenta: 
                                                 <br />
                                                 Documento de autoevaluación que comprende : Matriz de peligros, Matriz Legal, 
@@ -731,6 +789,7 @@
                                                 porcentaje de cumplimiento de capacitaciones, listado de asistencia a 
                                                 capacitaciones, vigilancia epidemiológica, descripción sociodemográfica, 
                                                 indicadores definidos por la empresa, estadística de accidentalidad.
+                                                </asp:Label>
                                             </p>
                                         </td>
                                     </tr>
@@ -758,6 +817,7 @@
                                         <td class="bg-aqua color-palette">PLANEAR</td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="item15" runat="server">
                                                 NÚMERAL 2.4.1
                                                 <br />
                                                 La empresa diseña y define un plan de trabajo anual para el cumplimiento del Sistema
@@ -765,12 +825,13 @@
                                                 metas, responsabilidades, recursos, cronograma de actividades y debe estar firmado 
                                                 por el empleador y el responsable del Sistema de Gestión de Seguridad y Salud en el
                                                 Trabajo.
+                                                </asp:Label>
                                             </p>
                                         </td>
                                         <td>
                                             <asp:DropDownList runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCumplimiento_SelectedIndexChanged" ID="ddlCumplimiento15" CssClass="form-control">
                                                 <asp:ListItem Text="Seleccione..." Value=""></asp:ListItem>
-                                                <asp:ListItem Text="Cumple" Value="Cumple"></asp:ListItem>
+                                                <asp:ListItem Text="Cumple Totalmente" Value="Cumple Totalmente"></asp:ListItem>
                                                 <asp:ListItem Text="No Cumple" Value="No_Cumple"></asp:ListItem>
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
@@ -786,8 +847,10 @@
                                         </td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="evi15" runat="server">
                                                 Plan de Trabajo Anual el cual identifica metas, responsabilidades, recursos, 
                                                 cronograma de actividades, firmado por el empleador y el responsable del SG-SST. 
+                                                </asp:Label>
                                             </p>
                                         </td>
                                     </tr>
@@ -815,17 +878,19 @@
                                         <td class="bg-aqua color-palette">PLANEAR</td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="item16" runat="server">
                                                 NÚMERAL 2.5.1
                                                 <br />
                                                 La empresa cuenta con un sistema de archivo o retención documental, para los 
                                                 registros y documentos que soportan el Sistema de Gestión de Seguridad y Salud 
                                                 en el Trabajo
+                                                </asp:Label>
                                             </p>
                                         </td>
                                         <td>
                                             <asp:DropDownList runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCumplimiento_SelectedIndexChanged" ID="ddlCumplimiento16" CssClass="form-control">
                                                 <asp:ListItem Text="Seleccione..." Value=""></asp:ListItem>
-                                                <asp:ListItem Text="Cumple" Value="Cumple"></asp:ListItem>
+                                                <asp:ListItem Text="Cumple Totalmente" Value="Cumple Totalmente"></asp:ListItem>
                                                 <asp:ListItem Text="No Cumple" Value="No_Cumple"></asp:ListItem>
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
@@ -841,9 +906,11 @@
                                         </td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="evi16" runat="server">
                                                 Constatar la existencia de un sistema de archivo o retención documental, para los 
                                                 registros y documentos que soportan el Sistema de Gestión de Seguridad y Salud en 
                                                 el Trabajo, protegidos contra daño o perdida
+                                                </asp:Label>
                                             </p>
                                         </td>
                                     </tr>
@@ -871,16 +938,18 @@
                                         <td class="bg-aqua color-palette">PLANEAR</td>
                                         <td class="text-left">
                                             <p>
-                                                NÚMERAL 2.5.1
+                                                <asp:Label ID="item17" runat="server">
+                                                NÚMERAL 2.6.1
                                                 <br />
                                                 Quienes tengan responsabilidad sobre el Sistema de Gestión de Seguridad y Salud en 
                                                 el Trabajo rinden cuentas anualmente sobre su desempeño.
+                                                </asp:Label>
                                             </p>
                                         </td>
                                         <td>
                                             <asp:DropDownList runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCumplimiento_SelectedIndexChanged" ID="ddlCumplimiento17" CssClass="form-control">
                                                 <asp:ListItem Text="Seleccione..." Value=""></asp:ListItem>
-                                                <asp:ListItem Text="Cumple" Value="Cumple"></asp:ListItem>
+                                                <asp:ListItem Text="Cumple Totalmente" Value="Cumple Totalmente"></asp:ListItem>
                                                 <asp:ListItem Text="No Cumple" Value="No_Cumple"></asp:ListItem>
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
@@ -896,7 +965,9 @@
                                         </td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="evi17" runat="server">
                                                 Documento de Rendición de cuentas anual  aplicable a todos los niveles de la Empresa
+                                                </asp:Label>
                                             </p>
                                         </td>
                                     </tr>
@@ -924,16 +995,18 @@
                                         <td class="bg-aqua color-palette">PLANEAR</td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="item18" runat="server">
                                                 NÚMERAL 2.7.1
                                                 <br />
                                                 La empresa define la matriz legal actualizada que contemple las normas del Sistema 
                                                 General de Riesgos Laborales aplicables a la empresa.
+                                                </asp:Label>
                                             </p>
                                         </td>
                                         <td>
                                             <asp:DropDownList runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCumplimiento_SelectedIndexChanged" ID="ddlCumplimiento18" CssClass="form-control">
                                                 <asp:ListItem Text="Seleccione..." Value=""></asp:ListItem>
-                                                <asp:ListItem Text="Cumple" Value="Cumple"></asp:ListItem>
+                                                <asp:ListItem Text="Cumple Totalmente" Value="Cumple Totalmente"></asp:ListItem>
                                                 <asp:ListItem Text="No Cumple" Value="No_Cumple"></asp:ListItem>
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
@@ -949,8 +1022,10 @@
                                         </td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="evi18" runat="server">
                                                 Matriz Legal en la cual se contemple la legislación nacional vigente en materia 
                                                 de riesgos laborales.
+                                                </asp:Label>
                                             </p>
                                         </td>
                                     </tr>
@@ -978,18 +1053,20 @@
                                         <td class="bg-aqua color-palette">PLANEAR</td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="item19" runat="server">
                                                 NÚMERAL 2.8.1
                                                 <br />
                                                 La empresa dispone de mecanismos eficaces para recibir y responder las comunicaciones
                                                 internas y externas relativas a la Seguridad y Salud en el Trabajo, como por ejemplo
                                                 auto reporte de condiciones de trabajo y de salud por parte de los trabajadores o 
                                                 contratistas.
+                                                </asp:Label>
                                             </p>
                                         </td>
                                         <td>
                                             <asp:DropDownList runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCumplimiento_SelectedIndexChanged" ID="ddlCumplimiento19" CssClass="form-control">
                                                 <asp:ListItem Text="Seleccione..." Value=""></asp:ListItem>
-                                                <asp:ListItem Text="Cumple" Value="Cumple"></asp:ListItem>
+                                                <asp:ListItem Text="Cumple Totalmente" Value="Cumple Totalmente"></asp:ListItem>
                                                 <asp:ListItem Text="No Cumple" Value="No_Cumple"></asp:ListItem>
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
@@ -1005,8 +1082,10 @@
                                         </td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="evi19" runat="server">
                                                 Registro con los mecanismos para recibir, documentar y responder a las 
                                                 comunicaciones, así como los reportes de los trabajadores 
+                                                </asp:Label>
                                             </p>
                                         </td>
                                     </tr>
@@ -1035,17 +1114,19 @@
                                         <td class="bg-aqua color-palette">PLANEAR</td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="item20" runat="server">
                                                 NÚMERAL 2.9.1
                                                 <br />
                                                 La empresa estableció un procedimiento para la identificación y evaluación de las 
                                                 especificaciones en Seguridad y Salud en el Trabajo, de las compras y adquisición 
                                                 de productos y servicios, como por ejemplo los elementos de protección personal.
+                                                </asp:Label>
                                             </p>
                                         </td>
                                         <td>
                                             <asp:DropDownList runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCumplimiento_SelectedIndexChanged" ID="ddlCumplimiento20" CssClass="form-control">
                                                 <asp:ListItem Text="Seleccione..." Value=""></asp:ListItem>
-                                                <asp:ListItem Text="Cumple" Value="Cumple"></asp:ListItem>
+                                                <asp:ListItem Text="Cumple Totalmente" Value="Cumple Totalmente"></asp:ListItem>
                                                 <asp:ListItem Text="No Cumple" Value="No_Cumple"></asp:ListItem>
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
@@ -1061,11 +1142,13 @@
                                         </td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="evi20" runat="server">
                                                 Matriz de EPP
                                                 <br />
                                                 Inventario de EPP
                                                 <br />
                                                 Procedimiento para la identificación y evaluación de las especificaciones en SST
+                                                </asp:Label>
                                             </p>
                                         </td>
                                     </tr>
@@ -1094,16 +1177,18 @@
                                         <td class="bg-aqua color-palette">PLANEAR</td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="item21" runat="server">
                                                 NÚMERAL 2.10.1
                                                 <br />
                                                 La empresa incluye los aspectos de Seguridad y Salud en el Trabajo en la evaluación
                                                 y selección de proveedores y contratistas.
+                                                </asp:Label>
                                             </p>
                                         </td>
                                         <td>
                                             <asp:DropDownList runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCumplimiento_SelectedIndexChanged" ID="ddlCumplimiento21" CssClass="form-control">
                                                 <asp:ListItem Text="Seleccione..." Value=""></asp:ListItem>
-                                                <asp:ListItem Text="Cumple" Value="Cumple"></asp:ListItem>
+                                                <asp:ListItem Text="Cumple Totalmente" Value="Cumple Totalmente"></asp:ListItem>
                                                 <asp:ListItem Text="No Cumple" Value="No_Cumple"></asp:ListItem>
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
@@ -1119,9 +1204,11 @@
                                         </td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="evi21" runat="server">
                                                 Manual de validación para seleccionar proveedores y/o contratistas
                                                 <br />
                                                 Matriz de evaluación de proveedores o contratistas 
+                                                </asp:Label>
                                             </p>
                                         </td>
                                     </tr>
@@ -1149,16 +1236,18 @@
                                         <td class="bg-aqua color-palette">PLANEAR</td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="item22" runat="server">
                                                 NÚMERAL 2.11.1
                                                 <br />
                                                 La empresa dispone de un procedimiento para evaluar el impacto sobre la Seguridad y 
                                                 Salud en el Trabajo que se pueda generar por cambios internos o externos.
+                                                </asp:Label>
                                             </p>
                                         </td>
                                         <td>
                                             <asp:DropDownList runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCumplimiento_SelectedIndexChanged" ID="ddlCumplimiento22" CssClass="form-control">
                                                 <asp:ListItem Text="Seleccione..." Value=""></asp:ListItem>
-                                                <asp:ListItem Text="Cumple" Value="Cumple"></asp:ListItem>
+                                                <asp:ListItem Text="Cumple Totalmente" Value="Cumple Totalmente"></asp:ListItem>
                                                 <asp:ListItem Text="No Cumple" Value="No_Cumple"></asp:ListItem>
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
@@ -1174,8 +1263,10 @@
                                         </td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="evi22" runat="server">
                                                 Formato de la Gestión del cambio para evaluar el impacto sobre la Seguridad y Salud 
                                                 en el Trabajo en cambios internos y externos que se presenten en la entidad.
+                                                </asp:Label>
                                             </p>
                                         </td>
                                     </tr>
@@ -1206,6 +1297,7 @@
                                         <td class="bg-green color-palette">HACER</td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="item23" runat="server">
                                                 NÚMERAL 3.1.1
                                                 <br />
                                                 Hay como mínimo, la siguiente información actualizada de todos los trabajadores, 
@@ -1214,12 +1306,13 @@
                                                 evaluación y análisis de las estadísticas sobre la salud de los trabajadores 
                                                 tanto de origen laboral como común, y los resultados de las evaluaciones médicas 
                                                 ocupacionales.
+                                                </asp:Label>
                                             </p>
                                         </td>
                                         <td>
                                             <asp:DropDownList runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCumplimiento_SelectedIndexChanged" ID="ddlCumplimiento23" CssClass="form-control">
                                                 <asp:ListItem Text="Seleccione..." Value=""></asp:ListItem>
-                                                <asp:ListItem Text="Cumple" Value="Cumple"></asp:ListItem>
+                                                <asp:ListItem Text="Cumple Totalmente" Value="Cumple Totalmente"></asp:ListItem>
                                                 <asp:ListItem Text="No Cumple" Value="No_Cumple"></asp:ListItem>
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
@@ -1235,9 +1328,11 @@
                                         </td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="evi23" runat="server">
                                                 Descripción Sociodemográfica  de los trabajadores
                                                 <br />
                                                 Evaluaciones médicas ocupacionales
+                                                </asp:Label>
                                             </p>
                                         </td>
                                     </tr>
@@ -1245,18 +1340,20 @@
                                         <td class="bg-green color-palette">HACER</td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="item24" runat="server">
                                                 NÚMERAL 3.1.2
                                                 <br />
                                                 Están definidas y se llevaron a cabo las actividades de medicina del trabajo, 
                                                 promoción y prevención, de conformidad con las prioridades que se identificaron 
                                                 en el diagnóstico de las condiciones de salud de los trabajadores y los 
                                                 peligros/riesgos de intervención prioritarios
+                                                </asp:Label>
                                             </p>
                                         </td>
                                         <td>
                                             <asp:DropDownList runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCumplimiento_SelectedIndexChanged" ID="ddlCumplimiento24" CssClass="form-control">
                                                 <asp:ListItem Text="Seleccione..." Value=""></asp:ListItem>
-                                                <asp:ListItem Text="Cumple" Value="Cumple"></asp:ListItem>
+                                                <asp:ListItem Text="Cumple Totalmente" Value="Cumple Totalmente"></asp:ListItem>
                                                 <asp:ListItem Text="No Cumple" Value="No_Cumple"></asp:ListItem>
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
@@ -1272,9 +1369,11 @@
                                         </td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="evi24" runat="server">
                                                 Programa de Vigilancia Epidemiológica
                                                 <br />
                                                 Actividades de medicina del trabajo, promoción y prevención
+                                                </asp:Label>
                                             </p>
                                         </td>
                                     </tr>
@@ -1282,17 +1381,19 @@
                                         <td class="bg-green color-palette">HACER</td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="item25" runat="server">
                                                 NÚMERAL 3.1.3
                                                 <br />
                                                 Se informa al médico que realiza las evaluaciones ocupacionales los perfiles del 
                                                 cargo, con una descripción de las tareas y el medio en el cual se desarrollará la 
                                                 labor respectiva.
+                                                </asp:Label>
                                             </p>
                                         </td>
                                         <td>
                                             <asp:DropDownList runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCumplimiento_SelectedIndexChanged" ID="ddlCumplimiento25" CssClass="form-control">
                                                 <asp:ListItem Text="Seleccione..." Value=""></asp:ListItem>
-                                                <asp:ListItem Text="Cumple" Value="Cumple"></asp:ListItem>
+                                                <asp:ListItem Text="Cumple Totalmente" Value="Cumple Totalmente"></asp:ListItem>
                                                 <asp:ListItem Text="No Cumple" Value="No_Cumple"></asp:ListItem>
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
@@ -1308,8 +1409,10 @@
                                         </td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="evi25" runat="server">
                                                 Formato para registra el perfil del cargo de los trabajadores y definir un mecanismo
                                                 de entrega de esta documentación al médico.
+                                                </asp:Label>
                                             </p>
                                         </td>
                                     </tr>
@@ -1317,6 +1420,7 @@
                                         <td class="bg-green color-palette">HACER</td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="item26" runat="server">
                                                 NÚMERAL 3.1.4
                                                 <br />
                                                 Se realizan las evaluaciones médicas de acuerdo con la normativa y los peligros a 
@@ -1329,12 +1433,13 @@
                                                 <br />
                                                 Los resultados de las evaluaciones médicas ocupacionales serán comunicados por 
                                                 escrito al trabajador y constarán en su historia médica.
+                                                </asp:Label>
                                             </p>
                                         </td>
                                         <td>
                                             <asp:DropDownList runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCumplimiento_SelectedIndexChanged" ID="ddlCumplimiento26" CssClass="form-control">
                                                 <asp:ListItem Text="Seleccione..." Value=""></asp:ListItem>
-                                                <asp:ListItem Text="Cumple" Value="Cumple"></asp:ListItem>
+                                                <asp:ListItem Text="Cumple Totalmente" Value="Cumple Totalmente"></asp:ListItem>
                                                 <asp:ListItem Text="No Cumple" Value="No_Cumple"></asp:ListItem>
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
@@ -1350,6 +1455,7 @@
                                         </td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="evi26" runat="server">
                                                 Documento de correspondencia entre las evaluaciones médicas y los peligros a los que se encuentra 
                                                 expuesto el trabajador
                                                 <br />
@@ -1357,6 +1463,7 @@
                                                 <br />
                                                 Documento de Registro que haga constar el recibido de los resultados de las evaluaciones médicas por
                                                 parte del trabajador
+                                                </asp:Label>
                                             </p>
                                         </td>
                                     </tr>
@@ -1364,17 +1471,19 @@
                                         <td class="bg-green color-palette">HACER</td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="item27" runat="server">
                                                 NÚMERAL 3.1.5
                                                 <br />
                                                 La empresa debe tener la custodia de las historias clínicas a cargo de una 
                                                 institución prestadora de servicios en Seguridad y Salud en el Trabajo o del médico
                                                 que practica los exámenes laborales en la empresa.
+                                                </asp:Label>
                                             </p>
                                         </td>
                                         <td>
                                             <asp:DropDownList runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCumplimiento_SelectedIndexChanged" ID="ddlCumplimiento27" CssClass="form-control">
                                                 <asp:ListItem Text="Seleccione..." Value=""></asp:ListItem>
-                                                <asp:ListItem Text="Cumple" Value="Cumple"></asp:ListItem>
+                                                <asp:ListItem Text="Cumple Totalmente" Value="Cumple Totalmente"></asp:ListItem>
                                                 <asp:ListItem Text="No Cumple" Value="No_Cumple"></asp:ListItem>
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
@@ -1390,8 +1499,10 @@
                                         </td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="evi27" runat="server">
                                                 Documentos de soporte para demostrar la custodia de las historias clínicas 
                                                 de los trabajadores
+                                                </asp:Label>
                                             </p>
                                         </td>
                                     </tr>
@@ -1399,6 +1510,7 @@
                                         <td class="bg-green color-palette">HACER</td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="item28" runat="server">
                                                 NÚMERAL 3.1.6
                                                 <br />
                                                 La empresa acata las restricciones y recomendaciones médico-laborales por parte de 
@@ -1412,12 +1524,13 @@
                                                 Juntas de Calificación de Invalidez los documentos que son responsabilidad del 
                                                 empleador que trata la norma para la calificación de origen y porcentaje de la 
                                                 pérdida de la capacidad laboral.
+                                                </asp:Label>
                                             </p>
                                         </td>
                                         <td>
                                             <asp:DropDownList runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCumplimiento_SelectedIndexChanged" ID="ddlCumplimiento28" CssClass="form-control">
                                                 <asp:ListItem Text="Seleccione..." Value=""></asp:ListItem>
-                                                <asp:ListItem Text="Cumple" Value="Cumple"></asp:ListItem>
+                                                <asp:ListItem Text="Cumple Totalmente" Value="Cumple Totalmente"></asp:ListItem>
                                                 <asp:ListItem Text="No Cumple" Value="No_Cumple"></asp:ListItem>
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
@@ -1433,9 +1546,11 @@
                                         </td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="evi28" runat="server">
                                                 Documento de reubicación laboral
                                                 <br />
                                                 Documento de readaptación laboral
+                                                </asp:Label>
                                             </p>
                                         </td>
                                     </tr>
@@ -1443,17 +1558,19 @@
                                         <td class="bg-green color-palette">HACER</td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="item29" runat="server">
                                                 NÚMERAL 3.1.7
                                                 <br />
                                                 Hay un programa para promover entre los trabajadores estilos de vida y entorno 
                                                 saludable, incluyendo campañas específicas tendientes a la prevención y el control 
                                                 de la farmacodependencia, el alcoholismo y el tabaquismo, entre otros.
+                                                </asp:Label>
                                             </p>
                                         </td>
                                         <td>
                                             <asp:DropDownList runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCumplimiento_SelectedIndexChanged" ID="ddlCumplimiento29" CssClass="form-control">
                                                 <asp:ListItem Text="Seleccione..." Value=""></asp:ListItem>
-                                                <asp:ListItem Text="Cumple" Value="Cumple"></asp:ListItem>
+                                                <asp:ListItem Text="Cumple Totalmente" Value="Cumple Totalmente"></asp:ListItem>
                                                 <asp:ListItem Text="No Cumple" Value="No_Cumple"></asp:ListItem>
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
@@ -1469,7 +1586,9 @@
                                         </td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="evi29" runat="server">
                                                 Programa para promover estilos de vida y entornos saludables
+                                                </asp:Label>
                                             </p>
                                         </td>
                                     </tr>
@@ -1477,16 +1596,18 @@
                                         <td class="bg-green color-palette">HACER</td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="item30" runat="server">
                                                 NÚMERAL 3.1.8
                                                 <br />
                                                 En la sede hay suministro permanente de agua potable, servicios sanitarios y 
                                                 mecanismos para disponer excretas y basuras.
+                                                </asp:Label>
                                             </p>
                                         </td>
                                         <td>
                                             <asp:DropDownList runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCumplimiento_SelectedIndexChanged" ID="ddlCumplimiento30" CssClass="form-control">
                                                 <asp:ListItem Text="Seleccione..." Value=""></asp:ListItem>
-                                                <asp:ListItem Text="Cumple" Value="Cumple"></asp:ListItem>
+                                                <asp:ListItem Text="Cumple Totalmente" Value="Cumple Totalmente"></asp:ListItem>
                                                 <asp:ListItem Text="No Cumple" Value="No_Cumple"></asp:ListItem>
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
@@ -1502,11 +1623,13 @@
                                         </td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="evi30" runat="server">
                                                 En el reporte de los trabajadores se evidencia la existencia de agua potable  y el 
                                                 estado de los servicios sanitarios.
                                                 <br />
                                                 Registros de análisis del agua para consumo humano y pruebas fotográficas o 
                                                 fílmicas de las instalaciones sanitarias
+                                                </asp:Label>
                                             </p>
                                         </td>
                                     </tr>
@@ -1514,16 +1637,18 @@
                                         <td class="bg-green color-palette">HACER</td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="item31" runat="server">
                                                 NÚMERAL 3.1.9
                                                 <br />
                                                 La empresa elimina los residuos sólidos, líquidos o gaseosos que se producen, así 
                                                 como los residuos peligrosos de forma que no se ponga en riesgo a los trabajadores.
+                                                </asp:Label>
                                             </p>
                                         </td>
                                         <td>
                                             <asp:DropDownList runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCumplimiento_SelectedIndexChanged" ID="ddlCumplimiento31" CssClass="form-control">
                                                 <asp:ListItem Text="Seleccione..." Value=""></asp:ListItem>
-                                                <asp:ListItem Text="Cumple" Value="Cumple"></asp:ListItem>
+                                                <asp:ListItem Text="Cumple Totalmente" Value="Cumple Totalmente"></asp:ListItem>
                                                 <asp:ListItem Text="No Cumple" Value="No_Cumple"></asp:ListItem>
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
@@ -1538,8 +1663,10 @@
                                         </td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="evi31" runat="server">
                                                 Registros fotográficos probatorios y el documento escaneado del contrato con la 
                                                 empresa que elimina y dispone de los residuos peligrosos
+                                                </asp:Label>
                                             </p>
                                         </td>
                                     </tr>
@@ -1568,6 +1695,7 @@
                                         <td class="bg-green color-palette">HACER</td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="item32" runat="server">
                                                 NÚMERAL 3.2.1
                                                 <br />
                                                 La empresa reporta a la Administradora de Riesgos Laborales (ARL), a la Entidad 
@@ -1579,12 +1707,15 @@
                                                 <br />
                                                 Estos reportes se realizarán dentro de los dos (2) días hábiles siguientes al 
                                                 evento o recibo del diagnóstico de la enfermedad.
+                                                <br />
+                                                Reporte de accidente a la ARL
+                                                </asp:Label>
                                             </p>
                                         </td>
                                         <td>
                                             <asp:DropDownList runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCumplimiento_SelectedIndexChanged" ID="ddlCumplimiento32" CssClass="form-control">
                                                 <asp:ListItem Text="Seleccione..." Value=""></asp:ListItem>
-                                                <asp:ListItem Text="Cumple" Value="Cumple"></asp:ListItem>
+                                                <asp:ListItem Text="Cumple Totalmente" Value="Cumple Totalmente"></asp:ListItem>
                                                 <asp:ListItem Text="No Cumple" Value="No_Cumple"></asp:ListItem>
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
@@ -1599,7 +1730,9 @@
                                         </td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="evi32" runat="server">
                                                 Registro de accidente y enfermedad laboral 
+                                                </asp:Label>
                                             </p>
                                         </td>
                                     </tr>
@@ -1607,17 +1740,19 @@
                                         <td class="bg-green color-palette">HACER</td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="item33" runat="server">
                                                 NÚMERAL 3.2.2
                                                 <br />
                                                 La empresa investiga todos los accidentes e incidentes de trabajo y las enfermedades
                                                 cuando sean diagnosticadas como laborales, determinando las causas básicas e 
                                                 inmediatas y la posibilidad de que se presenten nuevos casos.
+                                                </asp:Label>
                                             </p>
                                         </td>
                                         <td>
                                             <asp:DropDownList runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCumplimiento_SelectedIndexChanged" ID="ddlCumplimiento33" CssClass="form-control">
                                                 <asp:ListItem Text="Seleccione..." Value=""></asp:ListItem>
-                                                <asp:ListItem Text="Cumple" Value="Cumple"></asp:ListItem>
+                                                <asp:ListItem Text="Cumple Totalmente" Value="Cumple Totalmente"></asp:ListItem>
                                                 <asp:ListItem Text="No Cumple" Value="No_Cumple"></asp:ListItem>
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
@@ -1632,6 +1767,7 @@
                                         </td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="evi33" runat="server">
                                                 Formato Investigación de Accidente de Trabajo
                                                 <br />
                                                 Formato Investigación de Enfermedad laboral
@@ -1645,6 +1781,7 @@
                                                 de un profesional con licencia Salud Ocupacional o en Seguridad y Salud en el Trabajo
                                                 en la investigación (propio o contratado), así como del Comité Paritario o Vigía de
                                                 Seguridad y Salud en el Trabajo.
+                                                </asp:Label>
                                             </p>
                                         </td>
                                     </tr>
@@ -1652,18 +1789,20 @@
                                         <td class="bg-green color-palette">HACER</td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="item34" runat="server">
                                                 NÚMERAL 3.2.3
                                                 <br />
                                                 Hay un registro estadístico de los incidentes y de los accidentes de trabajo, así 
                                                 como de las enfermedades laborales que ocurren; se analiza este registro y las 
                                                 conclusiones derivadas del estudio son usadas para el mejoramiento del Sistema
                                                 de Gestión de Seguridad y Salud en el Trabajo.
+                                                </asp:Label>
                                             </p>
                                         </td>
                                         <td>
                                             <asp:DropDownList runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCumplimiento_SelectedIndexChanged" ID="ddlCumplimiento34" CssClass="form-control">
                                                 <asp:ListItem Text="Seleccione..." Value=""></asp:ListItem>
-                                                <asp:ListItem Text="Cumple" Value="Cumple"></asp:ListItem>
+                                                <asp:ListItem Text="Cumple Totalmente" Value="Cumple Totalmente"></asp:ListItem>
                                                 <asp:ListItem Text="No Cumple" Value="No_Cumple"></asp:ListItem>
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
@@ -1678,7 +1817,9 @@
                                         </td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="evi34" runat="server">
                                                 Estadísticas de accidentes, incidentes y enfermedades laborales
+                                                </asp:Label>
                                             </p>
                                         </td>
                                     </tr>
@@ -1707,18 +1848,20 @@
                                         <td class="bg-green color-palette">HACER</td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="item35" runat="server">
                                                 NÚMERAL 3.3.1
                                                 <br />
                                                 La empresa mide la severidad de los accidentes de trabajo como mínimo una vez al 
                                                 año y realiza la clasificación del origen del peligro/riesgo que los generó 
                                                 (físicos, químicos, biológicos, de seguridad, públicos, psicosociales, 
                                                 entre otros).
+                                                </asp:Label>
                                             </p>
                                         </td>
                                         <td>
                                             <asp:DropDownList runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCumplimiento_SelectedIndexChanged" ID="ddlCumplimiento35" CssClass="form-control">
                                                 <asp:ListItem Text="Seleccione..." Value=""></asp:ListItem>
-                                                <asp:ListItem Text="Cumple" Value="Cumple"></asp:ListItem>
+                                                <asp:ListItem Text="Cumple Totalmente" Value="Cumple Totalmente"></asp:ListItem>
                                                 <asp:ListItem Text="No Cumple" Value="No_Cumple"></asp:ListItem>
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
@@ -1733,7 +1876,9 @@
                                         </td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="evi35" runat="server">
                                                 Indicadores de accidentalidad
+                                                </asp:Label>
                                             </p>
                                         </td>
                                     </tr>
@@ -1741,18 +1886,20 @@
                                         <td class="bg-green color-palette">HACER</td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="item36" runat="server">
                                                 NÚMERAL 3.3.2
                                                 <br />
                                                 La empresa mide la frecuencia de los accidentes e incidentes de trabajo y enfermedad
                                                 laboral como mínimo una vez al año y realiza la clasificación del origen del
                                                 peligro/riesgo que los generó (físicos, químicos, biológicos, seguridad, públicos, 
                                                 psicosociales, entre otros.)
+                                                </asp:Label>
                                             </p>
                                         </td>
                                         <td>
                                             <asp:DropDownList runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCumplimiento_SelectedIndexChanged" ID="ddlCumplimiento36" CssClass="form-control">
                                                 <asp:ListItem Text="Seleccione..." Value=""></asp:ListItem>
-                                                <asp:ListItem Text="Cumple" Value="Cumple"></asp:ListItem>
+                                                <asp:ListItem Text="Cumple Totalmente" Value="Cumple Totalmente"></asp:ListItem>
                                                 <asp:ListItem Text="No Cumple" Value="No_Cumple"></asp:ListItem>
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
@@ -1767,7 +1914,9 @@
                                         </td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="evi36" runat="server">
                                                 Indicadores de accidentalidad
+                                                </asp:Label>
                                             </p>
                                         </td>
                                     </tr>
@@ -1775,18 +1924,20 @@
                                         <td class="bg-green color-palette">HACER</td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="item37" runat="server">
                                                 NÚMERAL 3.3.3
                                                 <br />
                                                 La empresa mide la mortalidad por accidentes de trabajo y enfermedades laborales 
                                                 como mínimo una vez al año y realiza la clasificación del origen del peligro/riesgo
                                                 que los generó (físicos, químicos, biológicos, de seguridad, públicos, psicosociales,
                                                 entre otros)
+                                                </asp:Label>
                                             </p>
                                         </td>
                                         <td>
                                             <asp:DropDownList runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCumplimiento_SelectedIndexChanged" ID="ddlCumplimiento37" CssClass="form-control">
                                                 <asp:ListItem Text="Seleccione..." Value=""></asp:ListItem>
-                                                <asp:ListItem Text="Cumple" Value="Cumple"></asp:ListItem>
+                                                <asp:ListItem Text="Cumple Totalmente" Value="Cumple Totalmente"></asp:ListItem>
                                                 <asp:ListItem Text="No Cumple" Value="No_Cumple"></asp:ListItem>
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
@@ -1800,24 +1951,28 @@
 
                                         </td>
                                         <td class="text-left">
+                                            <asp:Label ID="evi37" runat="server">
                                             <p>Indicadores de accidentalidad</p>
+                                            </asp:Label>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="bg-green color-palette">HACER</td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="item38" runat="server">
                                                 NÚMERAL 3.3.4
                                                 <br />
                                                 La empresa mide la prevalencia de la enfermedad laboral como mínimo una vez al año
                                                 y realiza la clasificación del origen del peligro/riesgo que la generó 
                                                 (físico, químico, biológico, ergonómico o biomecánico, psicosocial, entre otros)
+                                                </asp:Label>
                                             </p>
                                         </td>
                                         <td>
                                             <asp:DropDownList runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCumplimiento_SelectedIndexChanged" ID="ddlCumplimiento38" CssClass="form-control">
                                                 <asp:ListItem Text="Seleccione..." Value=""></asp:ListItem>
-                                                <asp:ListItem Text="Cumple" Value="Cumple"></asp:ListItem>
+                                                <asp:ListItem Text="Cumple Totalmente" Value="Cumple Totalmente"></asp:ListItem>
                                                 <asp:ListItem Text="No Cumple" Value="No_Cumple"></asp:ListItem>
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
@@ -1832,7 +1987,9 @@
                                         </td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="evi38" runat="server">
                                                 Indicadores de enfermedad laboral
+                                                </asp:Label>
                                             </p>
                                         </td>
                                     </tr>
@@ -1840,18 +1997,20 @@
                                         <td class="bg-green color-palette">HACER</td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="item39" runat="server">
                                                 NÚMERAL 3.3.5
                                                 <br />
                                                 La empresa mide la incidencia de la enfermedad laboral como mínimo una vez al año y 
                                                 realiza la clasificación del origen del peligro/riesgo que la generó 
                                                 (físicos, químicos, biológicos, ergonómicos o biomecánicos, psicosociales, entre 
                                                 otros)
+                                                </asp:Label>
                                             </p>
                                         </td>
                                         <td>
                                             <asp:DropDownList runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCumplimiento_SelectedIndexChanged" ID="ddlCumplimiento39" CssClass="form-control">
                                                 <asp:ListItem Text="Seleccione..." Value=""></asp:ListItem>
-                                                <asp:ListItem Text="Cumple" Value="Cumple"></asp:ListItem>
+                                                <asp:ListItem Text="Cumple Totalmente" Value="Cumple Totalmente"></asp:ListItem>
                                                 <asp:ListItem Text="No Cumple" Value="No_Cumple"></asp:ListItem>
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
@@ -1865,25 +2024,28 @@
 
                                         </td>
                                         <td class="text-left">
-                                            <p>Indicadores de enfermedad laboral</p>
+                                            <p>
+                                                <asp:Label ID="evi39" runat="server">Indicadores de enfermedad laboral</asp:Label></p>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="bg-green color-palette">HACER</td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="item40" runat="server">
                                                 NÚMERAL 3.3.6
                                                 <br />
                                                 La empresa mide el ausentismo por enfermedad laboral y común y por accidente de 
                                                 trabajo, como mínimo una vez al año y realiza la clasificación del origen del
                                                 peligro/riesgo que lo generó (físicos, ergonómicos, o biomecánicos, químicos, de 
                                                 seguridad, públicos, psicosociales, entre otros)
+                                                </asp:Label>
                                             </p>
                                         </td>
                                         <td>
                                             <asp:DropDownList runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCumplimiento_SelectedIndexChanged" ID="ddlCumplimiento40" CssClass="form-control">
                                                 <asp:ListItem Text="Seleccione..." Value=""></asp:ListItem>
-                                                <asp:ListItem Text="Cumple" Value="Cumple"></asp:ListItem>
+                                                <asp:ListItem Text="Cumple Totalmente" Value="Cumple Totalmente"></asp:ListItem>
                                                 <asp:ListItem Text="No Cumple" Value="No_Cumple"></asp:ListItem>
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
@@ -1898,7 +2060,9 @@
                                         </td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="evi40" runat="server">
                                                 Indicadores de enfermedad laboral y accidentalidad
+                                                </asp:Label>
                                             </p>
                                         </td>
                                     </tr>
@@ -1929,6 +2093,7 @@
                                         <td class="bg-green color-palette">HACER</td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="item41" runat="server">
                                                 NÚMERAL 4.1.1
                                                 <br />
                                                 La empresa tiene definida y aplica una metodología para la identificación de peligros
@@ -1939,12 +2104,13 @@
                                                 independientemente de su forma de vinculación y/o contratación.
                                                 <br />
                                                 Identificar con base en la valoración de los riesgos, aquellos que son prioritarios
+                                                </asp:Label>
                                             </p>
                                         </td>
                                         <td>
                                             <asp:DropDownList runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCumplimiento_SelectedIndexChanged" ID="ddlCumplimiento41" CssClass="form-control">
                                                 <asp:ListItem Text="Seleccione..." Value=""></asp:ListItem>
-                                                <asp:ListItem Text="Cumple" Value="Cumple"></asp:ListItem>
+                                                <asp:ListItem Text="Cumple Totalmente" Value="Cumple Totalmente"></asp:ListItem>
                                                 <asp:ListItem Text="No Cumple" Value="No_Cumple"></asp:ListItem>
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
@@ -1959,9 +2125,11 @@
                                         </td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="evi41" runat="server">
                                                 Matriz de evaluación de Riesgos, identificación de peligros, evaluación y valoración
                                                 de los riesgos, con alcance sobre todos los procesos, actividades rutinarias y no
                                                 rutinarias y con la participación de los trabajadores
+                                                </asp:Label>
                                             </p>
                                         </td>
                                     </tr>
@@ -1969,6 +2137,7 @@
                                         <td class="bg-green color-palette">HACER</td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="item42" runat="server">
                                                 NÚMERAL 4.1.2
                                                 <br />
                                                 La identificación de peligros, evaluación y valoración del riesgo se desarrolló con
@@ -1976,12 +2145,13 @@
                                                 como mínimo una vez al año y cada vez que ocurra un accidente de trabajo mortal o un
                                                 evento catastrófico en la empresa o cuando se presenten cambios en los procesos, en 
                                                 las instalaciones, o maquinaria o equipos.
+                                                </asp:Label>
                                             </p>
                                         </td>
                                         <td>
                                             <asp:DropDownList runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCumplimiento_SelectedIndexChanged" ID="ddlCumplimiento42" CssClass="form-control">
                                                 <asp:ListItem Text="Seleccione..." Value=""></asp:ListItem>
-                                                <asp:ListItem Text="Cumple" Value="Cumple"></asp:ListItem>
+                                                <asp:ListItem Text="Cumple Totalmente" Value="Cumple Totalmente"></asp:ListItem>
                                                 <asp:ListItem Text="No Cumple" Value="No_Cumple"></asp:ListItem>
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
@@ -1996,10 +2166,12 @@
                                         </td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="evi42" runat="server">
                                                 Reporte de los trabajadores de las condiciones de seguridad
                                                 <br />
                                                 Formato para la identificación de los peligros con la firma de participación 
                                                 de los trabajadores
+                                                </asp:Label>
                                             </p>
                                         </td>
                                     </tr>
@@ -2007,18 +2179,20 @@
                                         <td class="bg-green color-palette">HACER</td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="item43" runat="server">
                                                 NÚMERAL 4.1.3
                                                 <br />
                                                 La empresa donde se procese, manipule o trabaje con agentes o sustancias catalogadas
                                                 como carcinógenas o con toxicidad aguda, causantes de enfermedades, incluidas en la
                                                 tabla de enfermedades laborales, prioriza los riesgos asociados a estas sustancias
                                                 o agentes y realiza acciones de prevención e intervención al respecto.
+                                                </asp:Label>
                                             </p>
                                         </td>
                                         <td>
                                             <asp:DropDownList runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCumplimiento_SelectedIndexChanged" ID="ddlCumplimiento43" CssClass="form-control">
                                                 <asp:ListItem Text="Seleccione..." Value=""></asp:ListItem>
-                                                <asp:ListItem Text="Cumple" Value="Cumple"></asp:ListItem>
+                                                <asp:ListItem Text="Cumple Totalmente" Value="Cumple Totalmente"></asp:ListItem>
                                                 <asp:ListItem Text="No Cumple" Value="No_Cumple"></asp:ListItem>
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
@@ -2033,7 +2207,9 @@
                                         </td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="evi43" runat="server">
                                                 Registros de los datos técnicos de los productos químicos 
+                                                </asp:Label>
                                             </p>
                                         </td>
                                     </tr>
@@ -2041,16 +2217,18 @@
                                         <td class="bg-green color-palette">HACER</td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="item44" runat="server">
                                                 NÚMERAL 4.1.4
                                                 <br />
                                                 Se realizan mediciones ambientales de los riesgos prioritarios, provenientes de 
                                                 peligros químicos, físicos y/o biológicos.
+                                                </asp:Label>
                                             </p>
                                         </td>
                                         <td>
                                             <asp:DropDownList runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCumplimiento_SelectedIndexChanged" ID="ddlCumplimiento44" CssClass="form-control">
                                                 <asp:ListItem Text="Seleccione..." Value=""></asp:ListItem>
-                                                <asp:ListItem Text="Cumple" Value="Cumple"></asp:ListItem>
+                                                <asp:ListItem Text="Cumple Totalmente" Value="Cumple Totalmente"></asp:ListItem>
                                                 <asp:ListItem Text="No Cumple" Value="No_Cumple"></asp:ListItem>
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
@@ -2065,8 +2243,10 @@
                                         </td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="evi44" runat="server">
                                                 Registros de las mediciones ambientales ( Evaluación de niveles de ruido, 
                                                 temperatura, ventilación, iluminación, entre otras)
+                                                </asp:Label>
                                             </p>
                                         </td>
                                     </tr>
@@ -2094,6 +2274,7 @@
                                         <td class="bg-green color-palette">HACER</td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="item45" runat="server">
                                                 NÚMERAL 4.2.1
                                                 <br />
                                                 Se implementan las medidas de prevención y control con base en el resultado de la
@@ -2102,12 +2283,13 @@
                                                 otros), incluidos los prioritarios y éstas se ejecutan acorde con el esquema de 
                                                 jerarquización, de ser factible priorizar la intervención en la fuente y en el 
                                                 medio.
+                                                </asp:Label>
                                             </p>
                                         </td>
                                         <td>
                                             <asp:DropDownList runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCumplimiento_SelectedIndexChanged" ID="ddlCumplimiento45" CssClass="form-control">
                                                 <asp:ListItem Text="Seleccione..." Value=""></asp:ListItem>
-                                                <asp:ListItem Text="Cumple" Value="Cumple"></asp:ListItem>
+                                                <asp:ListItem Text="Cumple Totalmente" Value="Cumple Totalmente"></asp:ListItem>
                                                 <asp:ListItem Text="No Cumple" Value="No_Cumple"></asp:ListItem>
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
@@ -2122,10 +2304,12 @@
                                         </td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="evi45" runat="server">
                                                 Medidas de prevención y control de conformidad con la identificación de los peligros,
                                                 la evaluación y valoración de los riesgos (físicos, ergonómicos, biológicos, 
                                                 químicos, de seguridad, públicos, psicosociales, entre otros), y que dichas medidas
                                                 se encuentren programadas en el plan anual de trabajo.
+                                                </asp:Label>
                                             </p>
                                         </td>
                                     </tr>
@@ -2133,17 +2317,19 @@
                                         <td class="bg-green color-palette">HACER</td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="item46" runat="server">
                                                 NÚMERAL 4.2.2
                                                 <br />
                                                 Se verifica la aplicación por parte de los trabajadores de las medidas de prevención
                                                 y control de los peligros /riesgos (físicos, ergonómicos, biológicos, químicos, de 
                                                 seguridad, públicos, psicosociales, entre otros).
+                                                </asp:Label>
                                             </p>
                                         </td>
                                         <td>
                                             <asp:DropDownList runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCumplimiento_SelectedIndexChanged" ID="ddlCumplimiento46" CssClass="form-control">
                                                 <asp:ListItem Text="Seleccione..." Value=""></asp:ListItem>
-                                                <asp:ListItem Text="Cumple" Value="Cumple"></asp:ListItem>
+                                                <asp:ListItem Text="Cumple Totalmente" Value="Cumple Totalmente"></asp:ListItem>
                                                 <asp:ListItem Text="No Cumple" Value="No_Cumple"></asp:ListItem>
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
@@ -2158,9 +2344,11 @@
                                         </td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="evi46" runat="server">
                                                 Formato de inspección para verificar el cumplimiento de las responsabilidades de los
                                                 trabajadores frente a la aplicación de las medidas de prevención y control de los
                                                 peligros/riesgos
+                                                </asp:Label>
                                             </p>
                                         </td>
                                     </tr>
@@ -2168,17 +2356,19 @@
                                         <td class="bg-green color-palette">HACER</td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="item47" runat="server">
                                                 NÚMERAL 4.2.3
                                                 <br />
                                                 La empresa para los peligros identificados ha estructurado programa de prevención y 
                                                 protección de la seguridad y salud de las personas (incluye procedimientos,
                                                 instructivos, fichas técnicas).
+                                                </asp:Label>
                                             </p>
                                         </td>
                                         <td>
                                             <asp:DropDownList runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCumplimiento_SelectedIndexChanged" ID="ddlCumplimiento47" CssClass="form-control">
                                                 <asp:ListItem Text="Seleccione..." Value=""></asp:ListItem>
-                                                <asp:ListItem Text="Cumple" Value="Cumple"></asp:ListItem>
+                                                <asp:ListItem Text="Cumple Totalmente" Value="Cumple Totalmente"></asp:ListItem>
                                                 <asp:ListItem Text="No Cumple" Value="No_Cumple"></asp:ListItem>
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
@@ -2193,8 +2383,10 @@
                                         </td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="evi47" runat="server">
                                                 Desarrollar un programa de prevención y protección de la seguridad y salud de las 
                                                 personas (incluye procedimientos, instructivos, fichas técnicas).
+                                                </asp:Label>
                                             </p>
                                         </td>
                                     </tr>
@@ -2202,17 +2394,19 @@
                                         <td class="bg-green color-palette">HACER</td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="item48" runat="server">
                                                 NÚMERAL 4.2.4
                                                 <br />
                                                 Se realizan inspecciones sistemáticas a las instalaciones, maquinaria o equipos, 
                                                 incluidos los relacionados con la prevención y atención de emergencias; con la 
                                                 participación del Comité Paritario o Vigía de Seguridad y Salud en el Trabajo
+                                                </asp:Label>
                                             </p>
                                         </td>
                                         <td>
                                             <asp:DropDownList runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCumplimiento_SelectedIndexChanged" ID="ddlCumplimiento48" CssClass="form-control">
                                                 <asp:ListItem Text="Seleccione..." Value=""></asp:ListItem>
-                                                <asp:ListItem Text="Cumple" Value="Cumple"></asp:ListItem>
+                                                <asp:ListItem Text="Cumple Totalmente" Value="Cumple Totalmente"></asp:ListItem>
                                                 <asp:ListItem Text="No Cumple" Value="No_Cumple"></asp:ListItem>
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
@@ -2227,9 +2421,11 @@
                                         </td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="evi48" runat="server">
                                                 Registros de inspecciones por puesto de trabajo, equipos de protección personal, 
                                                 medios de escape, extintores, botiquín de primeros auxilios con la participación 
                                                 del Comité Paritario o Vigía de Seguridad y Salud en el Trabajo.
+                                                </asp:Label>
                                             </p>
                                         </td>
                                     </tr>
@@ -2237,16 +2433,18 @@
                                         <td class="bg-green color-palette">HACER</td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="item49" runat="server">
                                                 NÚMERAL 4.2.5
                                                 <br />
                                                 Se realiza el mantenimiento periódico de las instalaciones, equipos y herramientas,
                                                 de acuerdo con los informes de las inspecciones o reportes de condiciones inseguras.
+                                                </asp:Label>
                                             </p>
                                         </td>
                                         <td>
                                             <asp:DropDownList runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCumplimiento_SelectedIndexChanged" ID="ddlCumplimiento49" CssClass="form-control">
                                                 <asp:ListItem Text="Seleccione..." Value=""></asp:ListItem>
-                                                <asp:ListItem Text="Cumple" Value="Cumple"></asp:ListItem>
+                                                <asp:ListItem Text="Cumple Totalmente" Value="Cumple Totalmente"></asp:ListItem>
                                                 <asp:ListItem Text="No Cumple" Value="No_Cumple"></asp:ListItem>
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
@@ -2261,9 +2459,10 @@
                                         </td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="evi49" runat="server">
                                                 Registros de las actividades de mantenimiento aplicado a las instalaciones y equipos,
                                                 informes de inspecciones o reportes de condiciones inseguras
-
+                                                </asp:Label>
                                             </p>
                                         </td>
                                     </tr>
@@ -2271,6 +2470,7 @@
                                         <td class="bg-green color-palette">HACER</td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="item50" runat="server">
                                                 NÚMERAL 4.2.6
                                                 <br />
                                                 Se les suministran a los trabajadores que lo requieran los Elementos de Protección
@@ -2283,12 +2483,13 @@
                                                 oportunamente conforme al desgaste y condiciones de uso de los mismos.
                                                 <br />
                                                 Se realiza la capacitación para el uso de los Elementos de Protección Personal
+                                                </asp:Label>
                                             </p>
                                         </td>
                                         <td>
                                             <asp:DropDownList runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCumplimiento_SelectedIndexChanged" ID="ddlCumplimiento50" CssClass="form-control">
                                                 <asp:ListItem Text="Seleccione..." Value=""></asp:ListItem>
-                                                <asp:ListItem Text="Cumple" Value="Cumple"></asp:ListItem>
+                                                <asp:ListItem Text="Cumple Totalmente" Value="Cumple Totalmente"></asp:ListItem>
                                                 <asp:ListItem Text="No Cumple" Value="No_Cumple"></asp:ListItem>
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
@@ -2303,6 +2504,7 @@
                                         </td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="evi50" runat="server">
                                                 Formato para la inspección de Elementos de Protección Personal por áreas
                                                 <br />
                                                 Inspección para el control del uso y estado de los Elementos de Protección Personal
@@ -2315,6 +2517,7 @@
                                                 Formato para el registro de asistencia a los talleres de capacitación
                                                 <br />
                                                 Formato para el registro de inventario de Equipos de Protección Personal 
+                                                </asp:Label>
                                             </p>
                                         </td>
                                     </tr>
@@ -2343,6 +2546,7 @@
                                         <td class="bg-green color-palette">HACER</td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="item51" runat="server">
                                                 NÚMERAL 5.1.1
                                                 <br />
                                                 Se tiene un plan de prevención, preparación y respuesta ante emergencias que 
@@ -2350,12 +2554,13 @@
                                                 instalaciones que identifican áreas y salidas de emergencia, así como la señalización
                                                 debida, simulacros como mínimo una vez al año y este es divulgado. Se tienen en 
                                                 cuenta todas las jornadas de trabajo en todos los centros de trabajo
+                                                </asp:Label>
                                             </p>
                                         </td>
                                         <td>
                                             <asp:DropDownList runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCumplimiento_SelectedIndexChanged" ID="ddlCumplimiento51" CssClass="form-control">
                                                 <asp:ListItem Text="Seleccione..." Value=""></asp:ListItem>
-                                                <asp:ListItem Text="Cumple" Value="Cumple"></asp:ListItem>
+                                                <asp:ListItem Text="Cumple Totalmente" Value="Cumple Totalmente"></asp:ListItem>
                                                 <asp:ListItem Text="No Cumple" Value="No_Cumple"></asp:ListItem>
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
@@ -2370,6 +2575,7 @@
                                         </td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="evi51" runat="server">
                                                 Plan de prevención, preparación y respuesta ante emergencias
                                                 <br />
                                                 Análisis de Vulnerabilidad
@@ -2379,6 +2585,7 @@
                                                 Señalización
                                                 <br />
                                                 Simulacros
+                                                </asp:Label>
                                             </p>
                                         </td>
                                     </tr>
@@ -2386,17 +2593,19 @@
                                         <td class="bg-green color-palette">HACER</td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="item52" runat="server">
                                                 NÚMERAL 5.1.2
                                                 <br />
                                                 Se encuentra conformada, capacitada y dotada la brigada de prevención, preparación
                                                 y respuesta ante emergencias, organizada según las necesidades y el tamaño de la 
                                                 empresa (primeros auxilios, contra incendios, evacuación, etc.).
+                                                </asp:Label>
                                             </p>
                                         </td>
                                         <td>
                                             <asp:DropDownList runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCumplimiento_SelectedIndexChanged" ID="ddlCumplimiento52" CssClass="form-control">
                                                 <asp:ListItem Text="Seleccione..." Value=""></asp:ListItem>
-                                                <asp:ListItem Text="Cumple" Value="Cumple"></asp:ListItem>
+                                                <asp:ListItem Text="Cumple Totalmente" Value="Cumple Totalmente"></asp:ListItem>
                                                 <asp:ListItem Text="No Cumple" Value="No_Cumple"></asp:ListItem>
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
@@ -2411,6 +2620,7 @@
                                         </td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="evi52" runat="server">
                                                 Conformación de Brigadas de Emergencia (estructura, funciones y actividades)
                                                 <br />
                                                 Plan de Capacitación
@@ -2418,7 +2628,7 @@
                                                 Formato para el registro de asistencia a los talleres de capacitación
                                                 <br />
                                                 Registros de Dotación
-
+                                                </asp:Label>
                                             </p>
                                         </td>
                                     </tr>
@@ -2449,16 +2659,18 @@
                                         <td class="bg-red color-palette">VERIFICAR</td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="item53" runat="server">
                                                 NÚMERAL 6.1.1
                                                 <br />
                                                 El empleador tiene definidos los indicadores de estructura, proceso y resultado del
                                                 Sistema de Gestión de Seguridad y Salud en el Trabajo.
+                                                </asp:Label>
                                             </p>
                                         </td>
                                         <td>
                                             <asp:DropDownList runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCumplimiento_SelectedIndexChanged" ID="ddlCumplimiento53" CssClass="form-control">
                                                 <asp:ListItem Text="Seleccione..." Value=""></asp:ListItem>
-                                                <asp:ListItem Text="Cumple" Value="Cumple"></asp:ListItem>
+                                                <asp:ListItem Text="Cumple Totalmente" Value="Cumple Totalmente"></asp:ListItem>
                                                 <asp:ListItem Text="No Cumple" Value="No_Cumple"></asp:ListItem>
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
@@ -2472,23 +2684,29 @@
 
                                         </td>
                                         <td class="text-left">
-                                            <p>Ficha técnica de los indicadores del SG-SST (indicador de estructura, proceso y resultado) </p>
+                                            <p>
+                                                <asp:Label ID="evi53" runat="server">
+                                                Ficha técnica de los indicadores del SG-SST (indicador de estructura, proceso y resultado) 
+                                                </asp:Label>
+                                            </p>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="bg-red color-palette">VERIFICAR</td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="item54" runat="server">
                                                 NÚMERAL 6.1.2
                                                 <br />
                                                 El empleador debe realizar una auditoría anual, la cual será planificada con la 
                                                 participación del Comité Paritario o Vigía de Seguridad y Salud en el Trabajo.
+                                                </asp:Label>
                                             </p>
                                         </td>
                                         <td>
                                             <asp:DropDownList runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCumplimiento_SelectedIndexChanged" ID="ddlCumplimiento54" CssClass="form-control">
                                                 <asp:ListItem Text="Seleccione..." Value=""></asp:ListItem>
-                                                <asp:ListItem Text="Cumple" Value="Cumple"></asp:ListItem>
+                                                <asp:ListItem Text="Cumple Totalmente" Value="Cumple Totalmente"></asp:ListItem>
                                                 <asp:ListItem Text="No Cumple" Value="No_Cumple"></asp:ListItem>
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
@@ -2503,8 +2721,10 @@
                                         </td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="evi54" runat="server">
                                                 Programa de auditoria interna anual al SG-SST con la participación del Comité 
                                                 Paritario o Vigía de Seguridad y Salud en el Trabajo.
+                                                </asp:Label>
                                             </p>
                                         </td>
                                     </tr>
@@ -2512,16 +2732,18 @@
                                         <td class="bg-red color-palette">VERIFICAR</td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="item55" runat="server">
                                                 NÚMERAL 6.1.3
                                                 <br />
                                                 Alcance de la auditoría de cumplimiento del Sistema de Gestión de Seguridad y Salud
                                                 en el Trabajo.
+                                                </asp:Label>
                                             </p>
                                         </td>
                                         <td>
                                             <asp:DropDownList runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCumplimiento_SelectedIndexChanged" ID="ddlCumplimiento55" CssClass="form-control">
                                                 <asp:ListItem Text="Seleccione..." Value=""></asp:ListItem>
-                                                <asp:ListItem Text="Cumple" Value="Cumple"></asp:ListItem>
+                                                <asp:ListItem Text="Cumple Totalmente" Value="Cumple Totalmente"></asp:ListItem>
                                                 <asp:ListItem Text="No Cumple" Value="No_Cumple"></asp:ListItem>
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
@@ -2536,10 +2758,11 @@
                                         </td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="evi55" runat="server">
                                                 Documentos de registro Listado de Cumplimiento de la realización de actividades y 
                                                 obligaciones establecidas en los trece numerales del artículo 2.2.4.6.30 del 
                                                 Decreto 1072/2015
-
+                                                </asp:Label>
                                             </p>
                                         </td>
                                     </tr>
@@ -2547,18 +2770,20 @@
                                         <td class="bg-red color-palette">VERIFICAR</td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="item56" runat="server">
                                                 NÚMERAL 6.1.4
                                                 <br />
                                                 La Alta Dirección revisa una vez al año el Sistema de Gestión de Seguridad y Salud
                                                 en el Trabajo; sus resultados son comunicados al Comité Paritario de Seguridad y 
                                                 Salud en el Trabajo o al Vigía de Seguridad y Salud en el Trabajo y al responsable
                                                 del Sistema de Gestión de Seguridad y Salud en el Trabajo.
+                                                </asp:Label>
                                             </p>
                                         </td>
                                         <td>
                                             <asp:DropDownList runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCumplimiento_SelectedIndexChanged" ID="ddlCumplimiento56" CssClass="form-control">
                                                 <asp:ListItem Text="Seleccione..." Value=""></asp:ListItem>
-                                                <asp:ListItem Text="Cumple" Value="Cumple"></asp:ListItem>
+                                                <asp:ListItem Text="Cumple Totalmente" Value="Cumple Totalmente"></asp:ListItem>
                                                 <asp:ListItem Text="No Cumple" Value="No_Cumple"></asp:ListItem>
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
@@ -2573,8 +2798,10 @@
                                         </td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="evi56" runat="server">
                                                 Documento de constancia de revisión anual por la alta dirección, dando cumplimiento
                                                 a los 24 puntos del artículo  2.2.4.6.31
+                                                </asp:Label>
                                             </p>
                                         </td>
                                     </tr>
@@ -2605,17 +2832,19 @@
                                         <td class="bg-purple color-palette">ACTUAR</td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="item57" runat="server">
                                                 NÚMERAL 7.1.1
                                                 <br />
                                                 Garantizar que se definan e implementen las acciones preventivas y/o correctivas 
                                                 necesarias con base en los resultados de la supervisión, inspecciones, medición de 
                                                 indicadores del SG-SST y las recomendaciones del COPASST o Vigía
+                                                </asp:Label>
                                             </p>
                                         </td>
                                         <td>
                                             <asp:DropDownList runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCumplimiento_SelectedIndexChanged" ID="ddlCumplimiento57" CssClass="form-control">
                                                 <asp:ListItem Text="Seleccione..." Value=""></asp:ListItem>
-                                                <asp:ListItem Text="Cumple" Value="Cumple"></asp:ListItem>
+                                                <asp:ListItem Text="Cumple Totalmente" Value="Cumple Totalmente"></asp:ListItem>
                                                 <asp:ListItem Text="No Cumple" Value="No_Cumple"></asp:ListItem>
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
@@ -2630,11 +2859,12 @@
                                         </td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="evi57" runat="server">
                                                 Formato de registro de las acciones preventivas y correctivas con base en los 
                                                 resultados de la supervisión, en base a las inspecciones, la medición de los 
                                                 indicadores del Sistema de Gestión de Seguridad y Salud en el Trabajo, 
                                                 Recomendaciones del COPASST o Vigía
-
+                                                </asp:Label>
                                             </p>
                                         </td>
                                     </tr>
@@ -2642,6 +2872,7 @@
                                         <td class="bg-purple color-palette">ACTUAR</td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="item58" runat="server">
                                                 NÚMERAL 7.1.2
                                                 <br />
                                                 Cuando después de la revisión por la Alta Dirección del Sistema de Gestión de 
@@ -2649,12 +2880,13 @@
                                                 relativas a los peligros y riesgos en Seguridad y Salud en el Trabajo son inadecuadas
                                                 o pueden dejar de ser eficaces, la empresa toma las medidas correctivas, preventivas
                                                 y/o de mejora para subsanar lo detectado.
+                                                </asp:Label>
                                             </p>
                                         </td>
                                         <td>
                                             <asp:DropDownList runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCumplimiento_SelectedIndexChanged" ID="ddlCumplimiento58" CssClass="form-control">
                                                 <asp:ListItem Text="Seleccione..." Value=""></asp:ListItem>
-                                                <asp:ListItem Text="Cumple" Value="Cumple"></asp:ListItem>
+                                                <asp:ListItem Text="Cumple Totalmente" Value="Cumple Totalmente"></asp:ListItem>
                                                 <asp:ListItem Text="No Cumple" Value="No_Cumple"></asp:ListItem>
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
@@ -2669,8 +2901,10 @@
                                         </td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="evi58" runat="server">
                                                 Formato de registro de las acciones preventivas y correctivas con base a la revisión 
                                                 de la alta dirección
+                                                </asp:Label>
                                             </p>
                                         </td>
                                     </tr>
@@ -2678,17 +2912,19 @@
                                         <td class="bg-purple color-palette">ACTUAR</td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="item59" runat="server">
                                                 NÚMERAL 7.1.3
                                                 <br />
                                                 La empresa ejecuta las acciones preventivas, correctivas y de mejora que se 
                                                 plantean como resultado de la investigación de los accidentes y de los incidentes
                                                 y la determinación de las causas básicas e inmediatas de las enfermedades laborales.
+                                                </asp:Label>
                                             </p>
                                         </td>
                                         <td>
                                             <asp:DropDownList runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCumplimiento_SelectedIndexChanged" ID="ddlCumplimiento59" CssClass="form-control">
                                                 <asp:ListItem Text="Seleccione..." Value=""></asp:ListItem>
-                                                <asp:ListItem Text="Cumple" Value="Cumple"></asp:ListItem>
+                                                <asp:ListItem Text="Cumple Totalmente" Value="Cumple Totalmente"></asp:ListItem>
                                                 <asp:ListItem Text="No Cumple" Value="No_Cumple"></asp:ListItem>
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
@@ -2703,10 +2939,11 @@
                                         </td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="evi59" runat="server">
                                                 Formato de registro de las acciones preventivas y correctivas con base  a los 
                                                 resultado de la investigación de los accidentes y de los incidentes y la
                                                 determinación de las causas básicas e inmediatas de las enfermedades laborales.
-
+                                                </asp:Label>
                                             </p>
                                         </td>
                                     </tr>
@@ -2714,17 +2951,19 @@
                                         <td class="bg-purple color-palette">ACTUAR</td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="item60" runat="server">
                                                 NÚMERAL 7.1.4
                                                 <br />
                                                 Se implementan las medidas y acciones correctivas producto de requerimientos o 
                                                 recomendaciones de autoridades administrativas, así como de las Administradoras de
                                                 Riesgos Laborales.
+                                                </asp:Label>
                                             </p>
                                         </td>
                                         <td>
                                             <asp:DropDownList runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCumplimiento_SelectedIndexChanged" ID="ddlCumplimiento60" CssClass="form-control">
                                                 <asp:ListItem Text="Seleccione..." Value=""></asp:ListItem>
-                                                <asp:ListItem Text="Cumple" Value="Cumple"></asp:ListItem>
+                                                <asp:ListItem Text="Cumple Totalmente" Value="Cumple Totalmente"></asp:ListItem>
                                                 <asp:ListItem Text="No Cumple" Value="No_Cumple"></asp:ListItem>
                                                 <asp:ListItem Text="Justifica" Value="Justifica"></asp:ListItem>
                                                 <asp:ListItem Text="No Justifica" Value="No_Justifica"></asp:ListItem>
@@ -2739,8 +2978,10 @@
                                         </td>
                                         <td class="text-left">
                                             <p>
+                                                <asp:Label ID="evi60" runat="server">
                                                 Plan de acción en base a los requerimientos o recomendaciones de las autoridades 
                                                 administrativas ARL
+                                                </asp:Label>
                                             </p>
                                         </td>
                                     </tr>

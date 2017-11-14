@@ -333,6 +333,10 @@
 										<li><a href="../Hacer/MorbilidadGeneral.aspx"><i class="fa fa-map-o"></i><span>Morbilidad General</span></a></li>
 									</ul>
 								</li>
+                                <li>
+                                    <a href="../Hacer/index_PreProteccion.aspx"><i class="fa fa-map-o"></i><span>Procedimiento de investigación accidentes e incidentes</span></a>
+
+                                </li>
 							</ul>
 						</li>
 

@@ -124,6 +124,7 @@
         public static Paginas View_DescripcionSocioDemografica { get { return new Paginas("View_DescripcionSocioDemografica.aspx"); } }
         public static Paginas View_GestionLaboral { get { return new Paginas("View_GestionLaboral.aspx"); } }
         public static Paginas View_EvaluacionPuesto { get { return new Paginas("View_EvaluacionPuesto.aspx"); } }
+        public static Paginas index_PreProteccion { get { return new Paginas("index_PreProteccion.aspx"); } }
 
         public static Paginas Archivos_Autoevaluacion { get { return new Paginas("~/archivos/autoevaluacion/"); } }
         public static Paginas Archivos_Inspecciones { get { return new Paginas("~/archivos/inspecciones/"); } }

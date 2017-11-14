@@ -931,6 +931,7 @@
     <Content Include="source\sistema\GestionDatos\index_Area.aspx" />
     <Content Include="source\sistema\GestionDatos\index_Calendario.aspx" />
     <Content Include="source\sistema\GestionDatos\index_Categorias.aspx" />
+    <Content Include="source\sistema\Hacer\index_PreProteccion.aspx" />
     <Content Include="source\sistema\Hacer\index_Senalizacion.aspx" />
     <Content Include="source\sistema\GestionDatos\index_Empresa.aspx" />
     <Content Include="source\sistema\GestionDatos\index_Epp.aspx" />
@@ -1368,6 +1369,13 @@
     </Compile>
     <Compile Include="source\sistema\GestionDatos\index_Categorias.aspx.designer.cs">
       <DependentUpon>index_Categorias.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="source\sistema\Hacer\index_PreProteccion.aspx.cs">
+      <DependentUpon>index_PreProteccion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="source\sistema\Hacer\index_PreProteccion.aspx.designer.cs">
+      <DependentUpon>index_PreProteccion.aspx</DependentUpon>
     </Compile>
     <Compile Include="source\sistema\Hacer\index_Senalizacion.aspx.cs">
       <DependentUpon>index_Senalizacion.aspx</DependentUpon>

@@ -341,6 +341,8 @@ namespace Capa_Datos
                     return "yellow";
                 case "azul":
                     return "blue";
+                case "violeta":
+                    return "violet";
                 default:
                     return "white";
             }
